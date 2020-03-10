@@ -38,6 +38,19 @@
     <Folder Include="data\rules\" />
     <Folder Include="data\rules\protos\" />
     <Folder Include="data\scr\" />
+    <Folder Include="modules\" />
+    <Folder Include="modules\ToEE\" />
+    <Folder Include="modules\ToEE\art\" />
+    <Folder Include="modules\ToEE\rules\" />
+    <Folder Include="modules\ToEE\art\ground\" />
+    <Folder Include="data\mes\description\" />
+    <Folder Include="data\mes\long_descr\" />
+    <Folder Include="data\rules\protos\" />
+    <Folder Include="data\scr\tpModifiers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="modules\ToEE\art\ground\ground.mes" />
+    <Content Include="modules\ToEE\rules\MapList.mes" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

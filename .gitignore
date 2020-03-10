@@ -1500,7 +1500,7 @@ data/dlg/00402Medicine_Chest.dlg
 data/dlg/00403Weapons_Chest.dlg
 data/dlg/00404Armor_Chest.dlg
 data/dlg/00405Clothing_Chest.dlg
-data/dlg/00406Game_Portal.dlg
+#data/dlg/00406Game_Portal.dlg
 data/dlg/00416standard_equipment_chest.dlg
 data/dlg/00434traders_trail.dlg
 data/dlg/00435the_postNPC.dlg
@@ -1563,7 +1563,7 @@ data/mes/bonus.mes
 data/mes/combat.mes
 data/mes/damage.mes
 data/mes/deity.mes
-data/mes/description.mes
+#data/mes/description.mes
 data/mes/dice_rolls.MES
 data/mes/feat.mes
 data/mes/float.MES
@@ -1584,7 +1584,7 @@ data/mes/help.tab
 data/mes/item_creation.mes
 data/mes/item_creation_names.mes
 data/mes/logbook_ui_quests_text.mes
-data/mes/long_description.mes
+#data/mes/long_description.mes
 data/mes/MainMenu.mes
 data/mes/map_names.mes
 data/mes/map_numbers.mes
@@ -1619,12 +1619,12 @@ data/rules/InvenSourceBuy.mes
 data/rules/item_creation.mes
 data/rules/jumppoint.tab
 data/rules/levelup.tab
-data/rules/MapLimits.mes
+#data/rules/MapLimits.mes
 data/rules/materials.mes
 data/rules/partsys0.tab
 data/rules/partsys1.tab
 data/rules/pcvoice.mes
-data/rules/protos.tab
+#data/rules/protos.tab
 data/rules/spell_enum.mes
 data/rules/SpellList.mes
 data/rules/start_equipment.mes
