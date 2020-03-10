@@ -29,6 +29,16 @@
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|2.7-32" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="data\scr\" />
+    <Folder Include="data\dlg\" />
+    <Folder Include="data\mes\" />
+    <Folder Include="data\oemes\" />
+    <Folder Include="data\rules\" />
+    <Folder Include="data\rules\protos\" />
+    <Folder Include="data\scr\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
        AfterBuild targets below. -->

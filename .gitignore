@@ -260,11 +260,10 @@ paket-files/
 __pycache__/
 *.pyc
 
-data/
 docs_Co8 8.1.0 Standard/
 miles/
-modules/
 
+# root
 _sre.pyd
 _sre_d.pyd
 binkw32.dll
@@ -324,3 +323,1825 @@ V2Brute.exe
 worlded.cfg
 WorldEd.exe
 zlib-1.2.1.dll
+
+# data
+data/art/
+data/movies/
+data/oemes/
+data/slide/
+data/sound/
+
+# data/scr files
+data/scr/co8Util/
+data/scr/__future__.py
+data/scr/_co8init.py
+data/scr/_include.py
+data/scr/batch.py
+data/scr/Co8.py
+data/scr/combat_standard_routines.py
+data/scr/copy_reg.py
+data/scr/council.py
+data/scr/delete_pyc.cmd
+data/scr/ed.py
+data/scr/InventoryRespawn.py
+data/scr/itt.py
+data/scr/Livonya.py
+data/scr/PC_START.PY
+data/scr/PlanarAllies.py
+data/scr/py00001test.py
+data/scr/py00002black jay.py
+data/scr/py00003average farmer.py
+data/scr/py00004burne.py
+data/scr/py00005calmert.py
+data/scr/py00006captain.py
+data/scr/py00007carpenter brother.py
+data/scr/py00008carpenter.py
+data/scr/py00009church serving woman.py
+data/scr/py00010farmer old faith.py
+data/scr/py00011farmer wife.py
+data/scr/py00012jaroo.py
+data/scr/py00013miller servant.py
+data/scr/py00014miller.py
+data/scr/py00015prosperous elder d.py
+data/scr/py00016prosperous farmer.py
+data/scr/py00017prosperous younger d.py
+data/scr/py00018rufus.py
+data/scr/py00019stonemason.py
+data/scr/py00020tailor.py
+data/scr/py00021teamster son.py
+data/scr/py00022teamster.py
+data/scr/py00023terjon.py
+data/scr/py00024widow.py
+data/scr/py00025woodcutter.py
+data/scr/py00026TeleportRuinsEntry.py
+data/scr/py00027TeleportRuinsFromTower.py
+data/scr/py00028TeleportRuinsFromKeep.py
+data/scr/py00029TeleportTowerFromRuins.py
+data/scr/py00030TeleportKeepFromRuins.py
+data/scr/py00031TeleportKeepFromDungeon.py
+data/scr/py00032TeleportDungeonFromKeep.py
+data/scr/py00033SpiderDeath.py
+data/scr/py00034farm_animals.py
+data/scr/py00035brother_smyth_replacement.py
+data/scr/py00036armario_replacement.py
+data/scr/py00037st_cuthbert_clerics.py
+data/scr/py00038hommlet_refugees.py
+data/scr/py00039corl_replacement.py
+data/scr/py00040hedrack_allies.py
+data/scr/py00041animal_companion.py
+data/scr/py00042potion_bugbear.py
+data/scr/py00043senshock_minions.py
+data/scr/py00051smigmal_assassin.py
+data/scr/py00052temple_prisoners.py
+data/scr/py00053leatherworker.py
+data/scr/py00054generic_merchant.py
+data/scr/py00055moneychanger.py
+data/scr/py00056leatherworker wife.py
+data/scr/py00057bing.py
+data/scr/py00058wainwright.py
+data/scr/py00059blacksmith.py
+data/scr/py00060lareth.py
+data/scr/py00061gremag.py
+data/scr/py00062rannosdavl.py
+data/scr/py00063reclusive farmer.py
+data/scr/py00064brau apprentice.py
+data/scr/py00065man_at_arms.py
+data/scr/py00066courier.py
+data/scr/py00067turuko.py
+data/scr/py00068kobort.py
+data/scr/py00069spinster.py
+data/scr/py00070furnok.py
+data/scr/py00071zert.py
+data/scr/py00072braumeister.py
+data/scr/py00073innkeeper.py
+data/scr/py00074lubash.py
+data/scr/py00075gnoll_leader.py
+data/scr/py00076lieutenant.py
+data/scr/py00077sergeant.py
+data/scr/py00078gnome1.py
+data/scr/py00079gnome2.py
+data/scr/py00080elfcaptive.py
+data/scr/py00081spugnoir.py
+data/scr/py00082cowherd.py
+data/scr/py00083weaver.py
+data/scr/py00084weaver daughter.py
+data/scr/py00085weaver son in law.py
+data/scr/py00086agent of evil.py
+data/scr/py00087peasant laborers.py
+data/scr/py00088potter.py
+data/scr/py00089glora.py
+data/scr/py00090brau apprentice 3.py
+data/scr/py00091elmo.py
+data/scr/py00092town elder.py
+data/scr/py00093cabinet maker.py
+data/scr/py00094laszlo.py
+data/scr/py00095brau apprentice 2.py
+data/scr/py00096eddie.py
+data/scr/py00097otis.py
+data/scr/py00098ophelia.py
+data/scr/py00099jenelda.py
+data/scr/py00100riana.py
+data/scr/py00101sammy.py
+data/scr/py00102grud.py
+data/scr/py00103fuga.py
+data/scr/py00104homa.py
+data/scr/py00105charlotte.py
+data/scr/py00106mary.py
+data/scr/py00107preston.py
+data/scr/py00108bertram.py
+data/scr/py00109dala.py
+data/scr/py00110dick.py
+data/scr/py00111y'dey.py
+data/scr/py00112murfles.py
+data/scr/py00113wat.py
+data/scr/py00114pearl.py
+data/scr/py00115alira.py
+data/scr/py00116Tolub.py
+data/scr/py00117lodriss.py
+data/scr/py00118skole.py
+data/scr/py00119romag.py
+data/scr/py00120romag commander.py
+data/scr/py00121tower sentinel.py
+data/scr/py00122alrrem.py
+data/scr/py00123hartsch.py
+data/scr/py00124kelno.py
+data/scr/py00125belsornig.py
+data/scr/py00126oohlgrist.py
+data/scr/py00127tillahi.py
+data/scr/py00128juffer.py
+data/scr/py00129wonnilon.py
+data/scr/py00130sailor prisoner.py
+data/scr/py00131orc prisoner 1.py
+data/scr/py00132orc prisoner 2.py
+data/scr/py00133brigand prisoner.py
+data/scr/py00134merrolan.py
+data/scr/py00135nalorrem.py
+data/scr/py00136man_at_arms prisoner 1.py
+data/scr/py00137man_at_arms prisoner 2.py
+data/scr/py00138man_at_arms prisoner 3.py
+data/scr/py00139antonio.py
+data/scr/py00140tubal.py
+data/scr/py00141smigmal.py
+data/scr/py00142senshock.py
+data/scr/py00143paida.py
+data/scr/py00144murraya.py
+data/scr/py00145aern.py
+data/scr/py00146kelleen.py
+data/scr/py00147barkinar.py
+data/scr/py00148deggum.py
+data/scr/py00149thrommel.py
+data/scr/py00150werewolf mirror.py
+data/scr/py00151KellaHillGiant.py
+data/scr/py00152Kella.py
+data/scr/py00153turnkey.py
+data/scr/py00154farmer prisoner.py
+data/scr/py00155falrinth.py
+data/scr/py00156farmer prisoner wife.py
+data/scr/py00157bugbear chieftain.py
+data/scr/py00158jaer.py
+data/scr/py00159bugbear defectors.py
+data/scr/py00160ogre chief.py
+data/scr/py00161female prisoner 1.py
+data/scr/py00162female prisoner 2.py
+data/scr/py00163bassanio.py
+data/scr/py00164ogre for fire.py
+data/scr/py00165tubals bugbears.py
+data/scr/py00166sargen.py
+data/scr/py00167feldrin.py
+data/scr/py00168brunk.py
+data/scr/py00169grank.py
+data/scr/py00170taki.py
+data/scr/py00171darley.py
+data/scr/py00172iuz.py
+data/scr/py00173stcuthbert.py
+data/scr/py00174hedrack.py
+data/scr/py00175ashrem.py
+data/scr/py00176zuggtmoy.py
+data/scr/py00177scorpp.py
+data/scr/py00178erliter beggar.py
+data/scr/py00179average farmer beggar.py
+data/scr/py00180brau apprentice beggar.py
+data/scr/py00181moathouse gnoll heartbeat.py
+data/scr/py00182assassin.py
+data/scr/py00183courier.py
+data/scr/py00184elven maiden.py
+data/scr/py00185knight.py
+data/scr/py00186Lareth_item_insert.py
+data/scr/py00187caravan survivor.py
+data/scr/py00188caravan bandit.py
+data/scr/py00189elf noble.py
+data/scr/py00190hextor priest.py
+data/scr/py00191dying peasant.py
+data/scr/py00192hrudek.py
+data/scr/py00193murderous thief.py
+data/scr/py00194dead woman.py
+data/scr/py00195young acolyte.py
+data/scr/py00196lord mayor.py
+data/scr/py00197map.py
+data/scr/py00198chest.py
+data/scr/py00199talking peasant.py
+data/scr/py00200zaxis.py
+data/scr/py00201ikian.py
+data/scr/py00202NodeBalor.py
+data/scr/py00203NodeGlabrezu.py
+data/scr/py00204NodeHezrou.py
+data/scr/py00205NodeVrock.py
+data/scr/py00206KOS on non-air.py
+data/scr/py00207KOS on non-earth.py
+data/scr/py00208KOS on non-fire.py
+data/scr/py00209KOS on non-water.py
+data/scr/py00210KOS on non-temple robes.py
+data/scr/py00211troll with key.py
+data/scr/py00212burnebadger.py
+data/scr/py00213mona.py
+data/scr/py00214serena.py
+data/scr/py00215frederic.py
+data/scr/py00216streetwalker heartbeat.py
+data/scr/py00217ochre jelly death.py
+data/scr/py00218Golden_Skull.py
+data/scr/py00219Power_Gem.py
+data/scr/py00220Werewolf_death.py
+data/scr/py00221larethdiary_critter.py
+data/scr/py00222larethdiary_book.py
+data/scr/py00223guestbook.py
+data/scr/py00224zportal_controller.py
+data/scr/py00225zthrone_controller.py
+data/scr/py00226minotaur_statue_controller.py
+data/scr/py00227earth_altar.py
+data/scr/py00228kids_off.py
+data/scr/py00229darley_as_demon.py
+data/scr/py00230dying_vignette_npc.py
+data/scr/py00231shopmap_shopkeeper.py
+data/scr/py00232juggernaut_statue_controller.py
+data/scr/py00233romagdiary_critter.py
+data/scr/py00234romagdiary_book.py
+data/scr/py00235merchantprisoner.py
+data/scr/py00236heroicmerchant.py
+data/scr/py00237sadmerchant.py
+data/scr/py00238ariel.py
+data/scr/py00239Snake_death.py
+data/scr/py00240tutorial_room_1.py
+data/scr/py00241tutorial_room_2.py
+data/scr/py00242tutorial_room_2_chest.py
+data/scr/py00243tutorial_room_3.py
+data/scr/py00244tutorial_room_4.py
+data/scr/py00245tutorial_passage_icon.py
+data/scr/py00246tutorial_dialogue.py
+data/scr/py00247tutorial_room_6.py
+data/scr/py00248tutorial_room_7.py
+data/scr/py00249tutorial_loot_preference.py
+data/scr/py00250zombiedeath.py
+data/scr/py00251tutorial_passage_icon.py
+data/scr/py00252tutorial_locked_door.py
+data/scr/py00253tutorial_room_9.py
+data/scr/py00254fireballhallway.py
+data/scr/py00255tutorialend.py
+data/scr/py00256usefirechest.py
+data/scr/py00257inserting_earth_robe.py
+data/scr/py00258mark_map_temple.py
+data/scr/py00259mark_map_moathouse.py
+data/scr/py00260removing_gem_hoard.py
+data/scr/py00261laborer_cook.py
+data/scr/py00262burne_apprentice.py
+data/scr/py00263otis_anvil.py
+data/scr/py00264jarvis_well.py
+data/scr/py00265rainbow_rock.py
+data/scr/py00266poison_vial.py
+data/scr/py00267prison_guard_death.py
+data/scr/py00268trap_triggers_NPCs.py
+data/scr/py00269hill giant.py
+data/scr/py00270elmo_sober.py
+data/scr/py00281Yvy.py
+data/scr/py00282Ranged_Ammo.py
+data/scr/py00283ioun.py
+data/scr/py00284OrboftheMoons.py
+data/scr/py00285Box.py
+data/scr/py00286William.py
+data/scr/py00287Ronald.py
+data/scr/py00288AhFong.py
+data/scr/py00289Clarisse.py
+data/scr/py00290Alchemical_Capsules.py
+data/scr/py00291AtropalScion.py
+data/scr/py00292Undead_Death.py
+data/scr/py00294spawner.py
+data/scr/py00301dresser.py
+data/scr/py00302brigand.py
+data/scr/py00303skeleton_priest.py
+data/scr/py00304skeleton.py
+data/scr/py00305wizard.py
+data/scr/py00306witch.py
+data/scr/py00307zugpriest.py
+data/scr/py00308lareth.py
+data/scr/py00309demon.py
+data/scr/py00310livonya3f.py
+data/scr/py00311livonya9f.py
+data/scr/py00312locked_trapped_chest.py
+data/scr/py00313thug_dualwield.py
+data/scr/py00314electrical_trap.py
+data/scr/py00321captain_abiram.py
+data/scr/py00322captain_asaph.py
+data/scr/py00323Nulb_village_woman.py
+data/scr/py00324verbobonc_citizen_limiter.py
+data/scr/py00325Lhizeas.py
+data/scr/py00326panathaes.py
+data/scr/py00327rothbert.py
+data/scr/py00328becka.py
+data/scr/py00329rakham.py
+data/scr/py00330boroquin.py
+data/scr/py00331armor_merchant.py
+data/scr/py00332weapons_merchant.py
+data/scr/py00333proprietor.py
+data/scr/py00334generic_spawner.py
+data/scr/py00335banker.py
+data/scr/py00336familiar_death.py
+data/scr/py00337Elysia.py
+data/scr/py00338Viscount.py
+data/scr/py00339Hextor_Cleric.py
+data/scr/py00340assassin_leader.py
+data/scr/py00341kenan.py
+data/scr/py00342tarah.py
+data/scr/py00343sharar.py
+data/scr/py00344gadham.py
+data/scr/py00345abaddon.py
+data/scr/py00347gershom.py
+data/scr/py00348persis.py
+data/scr/py00349daniel.py
+data/scr/py00350bella.py
+data/scr/py00351captain_absalom.py
+data/scr/py00352captain_achan.py
+data/scr/py00353gladstone.py
+data/scr/py00354commonworth.py
+data/scr/py00355corpus.py
+data/scr/py00356corporal_holly.py
+data/scr/py00357jewel_merchant.py
+data/scr/py00358merchant_bodyguard.py
+data/scr/py00359attorney.py
+data/scr/py00360security_barricade.py
+data/scr/py00361pelor_cleric.py
+data/scr/py00362verbobonc_mage.py
+data/scr/py00363lady_asherah.py
+data/scr/py00364balor_verbobonc.py
+data/scr/py00365iuz_verbobonc.py
+data/scr/py00366stcuthbert_verbobonc.py
+data/scr/py00367sport_encounters.py
+data/scr/py00368gremlich.py
+data/scr/py00369executioner_guard.py
+data/scr/py00370innkeeper.py
+data/scr/py00371white_dragon.py
+data/scr/py00372senshock_verbobonc.py
+data/scr/py00373Jenna.py
+data/scr/py00374Nybble.py
+data/scr/py00375Gleem.py
+data/scr/py00376Chanda.py
+data/scr/py00377ariel.py
+data/scr/py00378Cousins.py
+data/scr/py00379canon_ramses.py
+data/scr/py00380bag_of_holding.py
+data/scr/py00381Drow.py
+data/scr/py00382Lerrik.py
+data/scr/py00383Prince_Zook.py
+data/scr/py00384Drow_Note.py
+data/scr/py00385verbobonc_guard.py
+data/scr/py00386gnome_guard.py
+data/scr/py00387drow_cleric.py
+data/scr/py00388drow_wizard.py
+data/scr/py00389drow_matriarch.py
+data/scr/py00390canon_thaddeus.py
+data/scr/py00391hextor_cleric_verbobonc.py
+data/scr/py00392hextor_cleric_welkwood.py
+data/scr/py00393night_watchman.py
+data/scr/py00394verbobonc_citizen_narc.py
+data/scr/py00395ghost.py
+data/scr/py00396overseer.py
+data/scr/py00397watch_post_guards.py
+data/scr/py00398rabbit_hole.py
+data/scr/py00399orrengaard.py
+data/scr/py00400castle_portal.py
+data/scr/py00401Supplies_Chest.py
+data/scr/py00402Medicine_Chest.py
+data/scr/py00403Weapons_Chest.py
+data/scr/py00404Armor_Chest.py
+data/scr/py00405Clothing_Chest.py
+data/scr/py00406Game_Portal.py
+data/scr/py00407retirement.py
+data/scr/py00416standard_equipment_chest.py
+data/scr/py00417jaroo_stolen_shit.py
+data/scr/py00429gaear_scripts.py
+data/scr/py00430cabbage_npc.py
+data/scr/py00434traders_trail.py
+data/scr/py00435the_postNPC.py
+data/scr/py00436the_post.py
+data/scr/py00439script_daemon.py
+data/scr/py00441earth_monster_death.py
+data/scr/py00442earth_affiliated_critter_death.py
+data/scr/py00443earth_troop_death.py
+data/scr/py00444special_npc_death.py
+data/scr/py00445sentry_heartbeat.py
+data/scr/py00446earthcombat.py
+data/scr/py00450lareth_troops.py
+data/scr/py00461tunnel_drains.py
+data/scr/py00462tunnel_effects.py
+data/scr/py00463tunnel_voices.py
+data/scr/py00464panathaes_unconscious.py
+data/scr/py00465physical_evidence.py
+data/scr/py00466shaggoth.py
+data/scr/py00467river_effects.py
+data/scr/py00468notices.py
+data/scr/py00469simon.py
+data/scr/py00470jesus_staccatori.py
+data/scr/py00471aerich_dragonsbane.py
+data/scr/py00472cyn.py
+data/scr/py00473carl.py
+data/scr/py00474dame_nelly.py
+data/scr/py00475anom.py
+data/scr/py00476Provisioner.py
+data/scr/py00477Alchemist.py
+data/scr/py00478heather.py
+data/scr/py00479veenah_glavrol.py
+data/scr/py00480mal.py
+data/scr/py00481robin_of_locksley.py
+data/scr/py00482elementalist.py
+data/scr/py00483enchantress.py
+data/scr/py00484wakefield.py
+data/scr/py00485hextor_invader.py
+data/scr/py00486king_battlehammer.py
+data/scr/py00487fireforge.py
+data/scr/py00488ariakas.py
+data/scr/py00489hextor_invader_assassin.py
+data/scr/py00490wotgsdoors.py
+data/scr/py00491quarryportal.py
+data/scr/py00500TEMPforDEMO.py
+data/scr/py00501mathel.py
+data/scr/py00502hill_giant_shade.py
+data/scr/py00503groaning_spirit_shade.py
+data/scr/py00504kwerd.py
+data/scr/py00521spawner_map_49_colosseum.py
+data/scr/py00522book_of_heroes_critter.py
+data/scr/py00523book_of_heroes.py
+data/scr/py00524master_of_the_arena.py
+data/scr/py00525owlbear.py
+data/scr/py00526hill_giant.py
+data/scr/py00527undead_wizard.py
+data/scr/py00541moathouse_respawn_bugbear_area.py
+data/scr/py00542moathouse_respawn_gnoll_area.py
+data/scr/py00543moathouse_respawn_lareth_area.py
+data/scr/py00544moathouse_respawn_ground_floor.py
+data/scr/py00545moathouse_respawn_exterior.py
+data/scr/py00546moathouse_witch.py
+data/scr/py00547mother.py
+data/scr/py00548DrowLeader.py
+data/scr/py00549letter.py
+data/scr/py00550gnarley_witch.py
+data/scr/py00551nightwalker.py
+data/scr/py00561kobort_ambush_backdoor.py
+data/scr/py00562kobort_ambush_courtyard.py
+data/scr/py00563kobort_ambush_caveexit.py
+data/scr/py00564moathouse_ambush_back_door.py
+data/scr/py00565moathouse_ambush_courtyard.py
+data/scr/py00566moathouse_ambush_cave_exit.py
+data/scr/py00581protect_chest.py
+data/scr/py00582hb_south.py
+data/scr/py00583hb_ravine.py
+data/scr/py00584bethany.py
+data/scr/py00585hb_north.py
+data/scr/py00586hb_east_west.py
+data/scr/py00587orc_shaman.py
+data/scr/py00588orc_medium.py
+data/scr/py00589orc_theurgist.py
+data/scr/py00590angra_mainyu.py
+data/scr/py00591ergo.py
+data/scr/py00592kallop.py
+data/scr/py00593boonthag.py
+data/scr/py00594ruff.py
+data/scr/py00595krunch.py
+data/scr/py00596hungous.py
+data/scr/py00597cave_blockage.py
+data/scr/py00598orc_witch.py
+data/scr/py00599orc_warlock.py
+data/scr/py00600naig_lliht.py
+data/scr/py00601knoll.py
+data/scr/py00602delilah.py
+data/scr/py00603donovan.py
+data/scr/py00604verbo_doors.py
+data/scr/py00620generic_citizen.py
+data/scr/py00621noostoron.py
+data/scr/py00622hb_pit.py
+data/scr/py00623hb_cave.py
+data/scr/py00801spawner map_2_hommlet_exterior.py
+data/scr/py00802spawner map15_dungeon_level_04.py
+data/scr/py32000BasicTrap.py
+data/scr/py32001AoETrap.py
+data/scr/py32002LargeScorpionPoisonGasAoETrap.py
+data/scr/py32003Trap1_poison_gas.py
+data/scr/py32004Trap3_poison_needle.py
+data/scr/py32005Trap5_acid_spray.py
+data/scr/py32006Trap6_fire_trap.py
+data/scr/py32007Trap8_scythe.py
+data/scr/py32008Trap9_spikes.py
+data/scr/py32009Trap10_explosive_runes.py
+data/scr/py32010Trap11_poison_spores.py
+data/scr/py32011Trap12_poison_darts.py
+data/scr/py32012Trap13_contact_poison.py
+data/scr/py32013Trap14_glyph_electricity.py
+data/scr/py32014Trap15_glyph_sonic.py
+data/scr/py32015Trap5_various.py
+data/scr/q.py
+data/scr/quickstart_module.py
+data/scr/random_encounter.py
+data/scr/rumor_control.py
+data/scr/Sample TimedEvent Script.py
+data/scr/scripts.py
+data/scr/Spell000 - Acid Fog.py
+data/scr/Spell001 - Aid.py
+data/scr/Spell005 - Analyze Dweomer.py
+data/scr/Spell007 - Animal Growth.py
+data/scr/Spell010 - Animal Trance.py
+data/scr/Spell011 - Animate Dead.py
+data/scr/Spell022 - Atonement.py
+data/scr/Spell025 - Bane.py
+data/scr/Spell026 - Banishment.py
+data/scr/Spell027 - Barkskin.py
+data/scr/Spell028 - Bestow Curse.py
+data/scr/Spell036 - Blasphemy.py
+data/scr/Spell037 - Bless.py
+data/scr/Spell038 - Bless Water.py
+data/scr/Spell040 - Blindness Deafness.py
+data/scr/Spell041 - Blink.py
+data/scr/Spell042 - Blur.py
+data/scr/Spell043 - Break Enchantment.py
+data/scr/Spell044 - Bulls Strength.py
+data/scr/Spell045 - Burning Hands.py
+data/scr/Spell046 - Call Lightning.py
+data/scr/Spell047 - Calm Animals.py
+data/scr/Spell048 - Calm Emotions.py
+data/scr/Spell049 - Cats Grace.py
+data/scr/Spell050 - Cause Fear.py
+data/scr/Spell051 - Chain Lightning.py
+data/scr/Spell054 - Chaos Hammer.py
+data/scr/Spell055 - Charm Monster.py
+data/scr/Spell056 - Charm Person.py
+data/scr/Spell057 - Charm Person or Animal.py
+data/scr/Spell058 - Chill Metal.py
+data/scr/Spell059 - Chill Touch.py
+data/scr/Spell060 - Circle of Death.py
+data/scr/Spell061 - Circle of Doom.py
+data/scr/Spell062 - Clairaudience Clairvoyance.py
+data/scr/Spell065 - Cloudkill.py
+data/scr/Spell066 - Color Spray.py
+data/scr/Spell067 - Command.py
+data/scr/Spell072 - Cone of Cold.py
+data/scr/Spell073 - Confusion.py
+data/scr/Spell074 - Consecrate.py
+data/scr/Spell076 - Contagion.py
+data/scr/Spell079 - Control Plants.py
+data/scr/Spell080 - Control Undead.py
+data/scr/Spell089 - Cure Critical Wounds.py
+data/scr/Spell090 - Cure Light Wounds.py
+data/scr/Spell091 - Cure Minor Wounds.py
+data/scr/Spell092 - Cure Moderate Wounds.py
+data/scr/Spell093 - Cure Serious Wounds.py
+data/scr/Spell094 - Curse Water.py
+data/scr/Spell097 - Darkvision.py
+data/scr/Spell099 - Daze.py
+data/scr/Spell100 - Death Knell.py
+data/scr/Spell101 - Death Ward.py
+data/scr/Spell104 - Delay Poison.py
+data/scr/Spell105 - Delayed Blast Fireball.py
+data/scr/Spell107 - Desecrate.py
+data/scr/Spell108 - Destruction.py
+data/scr/Spell110 - Detect Chaos.py
+data/scr/Spell111 - Detect Evil.py
+data/scr/Spell112 - Detect Good.py
+data/scr/Spell113 - Detect Law.py
+data/scr/Spell114 - Detect Magic.py
+data/scr/Spell117 - Detect Secret Doors.py
+data/scr/Spell120 - Detect Undead.py
+data/scr/Spell121 - Dictum.py
+data/scr/Spell122 - Dimensional Anchor.py
+data/scr/Spell123 - Dimension Door.py
+data/scr/Spell125 - Discern Lies.py
+data/scr/Spell127 - Disintegrate.py
+data/scr/Spell128 - Dismissal.py
+data/scr/Spell129 - Dispel Chaos.py
+data/scr/Spell130 - Dispel Evil.py
+data/scr/Spell131 - Dispel Good.py
+data/scr/Spell132 - Dispel Law.py
+data/scr/Spell133 - Dispel Magic.py
+data/scr/Spell134 - Displacement.py
+data/scr/Spell135 - Disrupt Undead.py
+data/scr/Spell137 - Divine Favor.py
+data/scr/Spell138 - Divine Power.py
+data/scr/Spell139 - Dominate Animal.py
+data/scr/Spell140 - Dominate Monster.py
+data/scr/Spell141 - Dominate Person.py
+data/scr/Spell142 - Doom.py
+data/scr/Spell148 - Endurance.py
+data/scr/Spell149 - Endure Elements.py
+data/scr/Spell152 - Enlarge.py
+data/scr/Spell153 - Entangle.py
+data/scr/Spell155 - Entropic Shield.py
+data/scr/Spell159 - Expeditious Retreat.py
+data/scr/Spell161 - Eyebite.py
+data/scr/Spell163 - Faerie Fire.py
+data/scr/Spell165 - Fear.py
+data/scr/Spell167 - Feeblemind.py
+data/scr/Spell169 - Find Traps.py
+data/scr/Spell170 - Finger of Death.py
+data/scr/Spell171 - Fireball.py
+data/scr/Spell173 - Fire Shield.py
+data/scr/Spell174 - Fire Storm.py
+data/scr/Spell178 - Flame Strike.py
+data/scr/Spell179 - Flaming Sphere.py
+data/scr/Spell180 - Flare.py
+data/scr/Spell183 - Fog Cloud.py
+data/scr/Spell188 - Freedom of Movement.py
+data/scr/Spell189 - Gaseous Form.py
+data/scr/Spell192 - Gentle Repose.py
+data/scr/Spell194 - Ghoul Touch.py
+data/scr/Spell195 - Giant Vermin.py
+data/scr/Spell196 - Glitterdust.py
+data/scr/Spell199 - Goodberry.py
+data/scr/Spell200 - Grease.py
+data/scr/Spell201 - Greater Command.py
+data/scr/Spell202 - Greater Dispelling.py
+data/scr/Spell204 - Greater Magic Fang.py
+data/scr/Spell205 - Greater Magic Weapon.py
+data/scr/Spell206 - Greater Planar Ally.py
+data/scr/Spell213 - Guidance.py
+data/scr/Spell214 - Gust of Wind.py
+data/scr/Spell217 - Halt Undead.py
+data/scr/Spell219 - Haste.py
+data/scr/Spell221 - Healing Circle.py
+data/scr/Spell223 - Heat Metal.py
+data/scr/Spell225 - Heroes' Feast.py
+data/scr/Spell226 - Hold Animal.py
+data/scr/Spell227 - Hold Monster.py
+data/scr/Spell228 - Hold Person.py
+data/scr/Spell229 - Hold Portal.py
+data/scr/Spell231 - Holy Smite.py
+data/scr/Spell232 - Holy Sword.py
+data/scr/Spell233 - Holy Word.py
+data/scr/Spell234 - Horrid Wilting.py
+data/scr/Spell237 - Ice Storm.py
+data/scr/Spell238 - Identify.py
+data/scr/Spell244 - Improved Invisibility.py
+data/scr/Spell246 - Inflict Critical Wounds.py
+data/scr/Spell247 - Inflict Light Wounds.py
+data/scr/Spell248 - Inflict Minor Wounds.py
+data/scr/Spell249 - Inflict Moderate Wounds.py
+data/scr/Spell250 - Inflict Serious Wounds.py
+data/scr/Spell251 - Insanity.py
+data/scr/Spell253 - Invisibility.py
+data/scr/Spell254 - Invisibility Purge.py
+data/scr/Spell255 - Invisibility Sphere.py
+data/scr/Spell256 - Invisibility to Animals.py
+data/scr/Spell257 - Invisibility to Undead.py
+data/scr/Spell261 - Keen Edge.py
+data/scr/Spell262 - Knock.py
+data/scr/Spell270 - Lesser Planar Ally.py
+data/scr/Spell272 - Lesser Restoration.py
+data/scr/Spell275 - Lightning Bolt.py
+data/scr/Spell280 - Mage Armor.py
+data/scr/Spell282 - Magic Circle against Chaos.py
+data/scr/Spell283 - Magic Circle against Evil.py
+data/scr/Spell284 - Magic Circle against Good.py
+data/scr/Spell285 - Magic Circle against Law.py
+data/scr/Spell286 - Magic Fang.py
+data/scr/Spell288 - Magic Missile.py
+data/scr/Spell290 - Magic Stone.py
+data/scr/Spell291 - Magic Vestment.py
+data/scr/Spell292 - Magic Weapon.py
+data/scr/Spell297 - Mass Charm Monster.py
+data/scr/Spell299 - Mass Heal.py
+data/scr/Spell303 - Meld Into Stone.py
+data/scr/Spell304 - Melf's Acid Arrow.py
+data/scr/Spell307 - Meteor Swarm.py
+data/scr/Spell309 - Mind Fog.py
+data/scr/Spell311 - Minor Globe of Invulnerability.py
+data/scr/Spell313 - Miracle.py
+data/scr/Spell315 - Mirror Image.py
+data/scr/Spell317 - Mislead.py
+data/scr/Spell318 - Modify Memory.py
+data/scr/Spell320 - Mordenkainens Faithful Hound.py
+data/scr/Spell323 - Mordenkainens Sword.py
+data/scr/Spell326 - Negative Energy Protection.py
+data/scr/Spell327 - Neutralize Poison.py
+data/scr/Spell333 - Obscuring Mist.py
+data/scr/Spell334 - Open Close.py
+data/scr/Spell335 - Orders Wrath.py
+data/scr/Spell337 - Otilukes Resilient Sphere.py
+data/scr/Spell345 - Phantasmal Killer.py
+data/scr/Spell348 - Planar Ally.py
+data/scr/Spell352 - Poison.py
+data/scr/Spell356 - Power Word Blind.py
+data/scr/Spell357 - Power Word Kill.py
+data/scr/Spell358 - Power Word Stun.py
+data/scr/Spell359 - Prayer.py
+data/scr/Spell362 - Prismatic Spray.py
+data/scr/Spell364 - Produce Flame.py
+data/scr/Spell367 - Protection From Arrows.py
+data/scr/Spell368 - Protection From Chaos.py
+data/scr/Spell369 - Protection From Elements.py
+data/scr/Spell370 - Protection From Evil.py
+data/scr/Spell371 - Protection From Good.py
+data/scr/Spell372 - Protection From Law.py
+data/scr/Spell379 - Raise Dead.py
+data/scr/Spell383 - Ray of Enfeeblement.py
+data/scr/Spell384 - Ray of Frost.py
+data/scr/Spell385 - Read Magic.py
+data/scr/Spell386 - Reduce.py
+data/scr/Spell390 - Remove Blindness Deafness.py
+data/scr/Spell391 - Remove Curse.py
+data/scr/Spell392 - Remove Disease.py
+data/scr/Spell393 - Remove Fear.py
+data/scr/Spell394 - Remove Paralysis.py
+data/scr/Spell396 - Repel Vermin.py
+data/scr/Spell399 - Resistance.py
+data/scr/Spell400 - Resist Elements.py
+data/scr/Spell401 - Restoration.py
+data/scr/Spell404 - Righteous Might.py
+data/scr/Spell407 - Sanctuary.py
+data/scr/Spell408 - Scare.py
+data/scr/Spell412 - Searing Light.py
+data/scr/Spell414 - See Invisibility.py
+data/scr/Spell425 - Shatter.py
+data/scr/Spell426 - Shield.py
+data/scr/Spell427 - Shield of Faith.py
+data/scr/Spell430 - Shillelagh.py
+data/scr/Spell431 - Shocking Grasp.py
+data/scr/Spell432 - Shout.py
+data/scr/Spell434 - Silence.py
+data/scr/Spell437 - Slay Living.py
+data/scr/Spell438 - Sleep.py
+data/scr/Spell439 - Sleet Storm.py
+data/scr/Spell440 - Slow.py
+data/scr/Spell442 - Soften Earth and Stone.py
+data/scr/Spell443 - Solid Fog.py
+data/scr/Spell445 - Sound Burst.py
+data/scr/Spell451 - Spell Resistance.py
+data/scr/Spell455 - Spike Growth.py
+data/scr/Spell456 - Spike Stones.py
+data/scr/Spell457 - Spiritual Weapon.py
+data/scr/Spell460 - Stinking Cloud.py
+data/scr/Spell462 - Stoneskin.py
+data/scr/Spell466 - Suggestion.py
+data/scr/Spell467 - Summon Monster I.py
+data/scr/Spell468 - Summon Monster II.py
+data/scr/Spell469 - Summon Monster III.py
+data/scr/Spell470 - Summon Monster IV.py
+data/scr/Spell471 - Summon Monster V.py
+data/scr/Spell472 - Summon Monster VI.py
+data/scr/Spell473 - Summon Monster VII.py
+data/scr/Spell474 - Summon Monster VIII.py
+data/scr/Spell475 - Summon Monster IX.py
+data/scr/Spell476 - Summon Nature's Ally I.py
+data/scr/Spell477 - Summon Nature's Ally II.py
+data/scr/Spell478 - Summon Nature's Ally III.py
+data/scr/Spell479 - Summon Nature's Ally IV.py
+data/scr/Spell480 - Summon Nature's Ally V.py
+data/scr/Spell481 - Summon Nature's Ally VI.py
+data/scr/Spell482 - Summon Nature's Ally VII.py
+data/scr/Spell483 - Summon Nature's Ally VIII.py
+data/scr/Spell484 - Summon Nature's Ally IX.py
+data/scr/Spell486 - Sunbeam.py
+data/scr/Spell487 - Sunburst.py
+data/scr/Spell490 - Tashas Hideous Laughter.py
+data/scr/Spell492 - Teleport.py
+data/scr/Spell497 - Tensers Transformation.py
+data/scr/Spell505 - Tree Shape.py
+data/scr/Spell508 - True Seeing.py
+data/scr/Spell509 - True Strike.py
+data/scr/Spell513 - Unholy Blight.py
+data/scr/Spell515 - Vampiric Touch.py
+data/scr/Spell519 - Virtue.py
+data/scr/Spell521 - Wail of the Banshee.py
+data/scr/Spell522 - Glibness.py
+data/scr/Spell528 - Warp Wood.py
+data/scr/Spell531 - Web.py
+data/scr/Spell532 - Weird.py
+data/scr/Spell536 - Wind Wall.py
+data/scr/Spell539 - Word of Chaos.py
+data/scr/Spell542 - Blight.py
+data/scr/Spell543 - Dispel Air.py
+data/scr/Spell544 - Dispel Earth.py
+data/scr/Spell545 - Dispel Fire.py
+data/scr/Spell546 - Dispel Water.py
+data/scr/Spell547 - Rage.py
+data/scr/Spell548 - Eagles Splendor.py
+data/scr/Spell549 - Foxs Cunning.py
+data/scr/Spell550 - Owls Wisdom.py
+data/scr/Spell551 - Reduce Animal.py
+data/scr/Spell552 - Glibness.py
+data/scr/Spell553 - False Life.py
+data/scr/Spell554 - Longstrider.py
+data/scr/Spell555 - Acid Splash.py
+data/scr/Spell556 - Daze Monster.py
+data/scr/Spell557 - Heroism.py
+data/scr/Spell558 - Greater Heroism.py
+data/scr/Spell559 - Quench.py
+data/scr/Spell560 - Call Lightning Storm.py
+data/scr/Spell561 - Lesser Confusion.py
+data/scr/Spell562 - Deep Slumber.py
+data/scr/Spell563 - Crushing Despair.py
+data/scr/Spell564 - Good Hope.py
+data/scr/Spell565 - Heal.py
+data/scr/Spell566 - Harm.py
+data/scr/Spell567 - Reincarnation.py
+data/scr/Spell569 - Cujos Magic Missile.py
+data/scr/Spell570 - ahobm.py
+data/scr/Spell571 - Mass Bears Endurance.py
+data/scr/Spell572 - Mass Bulls Strength.py
+data/scr/Spell573 - Mass Cats Grace.py
+data/scr/Spell574 - Mass Eagles Splendor.py
+data/scr/Spell575 - Mass Foxs Cunning.py
+data/scr/Spell576 - Mass Owls Wisdom.py
+data/scr/Spell577 - Mass Cure Moderate Wounds.py
+data/scr/Spell578 - Mass Cure Serious Wounds.py
+data/scr/Spell579 - Mass Cure Critical Wounds.py
+data/scr/Spell581 - Mass Inflict Moderate Wounds.py
+data/scr/Spell582 - Mass Inflict Serious Wounds.py
+data/scr/Spell583 - Mass Inflict Critical Wounds.py
+data/scr/Spell585 - Mass Hold Monster.py
+data/scr/Spell586 - Polar Ray.py
+data/scr/Spell587 - Undeath to Death.py
+data/scr/Spell588 - Mass Hold Person.py
+data/scr/Spell600 - Frog Tongue.py
+data/scr/Spell601 - Vrock Screech.py
+data/scr/Spell602 - Vrock Spores.py
+data/scr/Spell603 - Zuggtmoy Summon Fungi.py
+data/scr/Spell604 - Glabrezu Summon Quasits.py
+data/scr/Spell605 - senshock summon elemental.py
+data/scr/Spell606 - summon fungi.py
+data/scr/Spell607 - summon lamia.py
+data/scr/Spell608 - Gate.py
+data/scr/Spell609 - phycomid attack.py
+data/scr/Spell700 - Ring of Freedom of Movement.py
+data/scr/Spell701 - Potion of Enlarge.py
+data/scr/Spell702 - Potion of Haste.py
+data/scr/Spell703 - Boots of Speed.py
+data/scr/Spell704 - Dust of Disappearance.py
+data/scr/Spell705 - Potion of charisma.py
+data/scr/Spell706 - Potion of glibness.py
+data/scr/Spell707 - Potion of hiding.py
+data/scr/Spell708 - Potion of sneaking.py
+data/scr/Spell709 - Potion of heroism.py
+data/scr/Spell710 - Potion of super-heroism.py
+data/scr/Spell711 - Potion of protection from fire.py
+data/scr/Spell712 - Javelin of lightning.py
+data/scr/Spell713 - Flame tongue.py
+data/scr/Spell714 - Potion of protection from outsiders.py
+data/scr/Spell715 - Potion of protection from elementals.py
+data/scr/Spell716 - Potion of protection from earth.py
+data/scr/Spell717 - Potion of protection from magic.py
+data/scr/Spell718 - Potion of protection from undead.py
+data/scr/Spell719 - Ring of Animal Summoning (Dog).py
+data/scr/Spell720 - Potion of Protection From Acid.py
+data/scr/Spell721 - Potion of Protection From Electricity.py
+data/scr/Spell722 - Summon Air Elemental.py
+data/scr/Spell723 - Summon Earth Elemental.py
+data/scr/Spell724 - Summon Fire Elemental.py
+data/scr/Spell725 - Summon Water Elemental.py
+data/scr/Spell726 - Summon Balor.py
+data/scr/Spell727 - Summon Glabrezu.py
+data/scr/Spell728 - Summon Hezrou.py
+data/scr/Spell729 - Summon Vrock.py
+data/scr/Spell730 - Elixer of hiding.py
+data/scr/Spell731 - Elixer of sneaking.py
+data/scr/Spell732 - Elixer of vision.py
+data/scr/Spell733 - Scorching Ray.py
+data/scr/Spell734 - Elexir of break free.py
+data/scr/Spell735 - Hezrou Stench.py
+data/scr/Spell736 - Petrifying Breath.py
+data/scr/Spell737 - Death Gaze.py
+data/scr/Spell738 - Petrifying Gaze.py
+data/scr/Spell739 - Frozen Breath.py
+data/scr/Spell740 - Ray of Clumsiness.py
+data/scr/Spell741 - Ice Breath Weapon.py
+data/scr/Spell742 - Summon Giant Constrictor Snake.py
+data/scr/Spell743 - Abundant Step.py
+data/scr/Spell753 - Harpy Song.py
+data/scr/Spell754 - Unholy Blight Quickened.py
+data/scr/Spell755 - Fear Gaze.py
+data/scr/Spell756 - Spore No More.py
+data/scr/Spell757 - Ooze You Lose.py
+data/scr/Spell758 - Infatuation.py
+data/scr/Spell759 - Enslavement.py
+data/scr/Spell760 - Summon Familiar.py
+data/scr/Spell761 - Extraplanar Chest.py
+data/scr/Spell762 - All Die.py
+data/scr/Spell766 - Baleful Transposition.py
+data/scr/Spell767 - Benign Transposition.py
+data/scr/Spell768 - Mandragora.py
+data/scr/Spell769 - Power Sight.py
+data/scr/Spell770 - Summoning Surge.py
+data/scr/Spell771 - Ray of Entropy.py
+data/scr/Spell772 - Ray of Stupidity.py
+data/scr/Spell773 - Avasculate.py
+data/scr/Spell774 - Revenance.py
+data/scr/Spell775 - Resonance.py
+data/scr/Spell777 - Antidote.py
+data/scr/Spell788 - Lockslip Grease.py
+data/scr/Spell790 - Armour Oil.py
+data/scr/Spell802 - Scintillating Sphere.py
+data/scr/Spell803 - Snowball Swarm.py
+data/scr/Spell804 - Electric Jolt.py
+data/scr/stench.py
+data/scr/SummonMonsterTools.py
+data/scr/t.py
+data/scr/teleport_shortcuts.py
+data/scr/types.py
+data/scr/Ugignadl.py
+data/scr/utilities.py
+
+# data/dlg specific
+data/dlg/00002black jay.dlg
+data/dlg/00003average farmer.dlg
+data/dlg/00004burne.dlg
+data/dlg/00005calmert.dlg
+data/dlg/00006captain.dlg
+data/dlg/00007carpenter brother.dlg
+data/dlg/00008carpenter.dlg
+data/dlg/00009church serving woman.dlg
+data/dlg/00010farmer old faith.dlg
+data/dlg/00011farmer wife.dlg
+data/dlg/00012jaroo.dlg
+data/dlg/00013miller servant.dlg
+data/dlg/00014miller.dlg
+data/dlg/00015prosperous elder d.dlg
+data/dlg/00016prosperous farmer.dlg
+data/dlg/00017prosperous younger d.dlg
+data/dlg/00018rufus.dlg
+data/dlg/00019stonemason.dlg
+data/dlg/00020tailor.dlg
+data/dlg/00021teamster son.dlg
+data/dlg/00022teamster.dlg
+data/dlg/00023terjon.dlg
+data/dlg/00024widow.dlg
+data/dlg/00025woodcutter.dlg
+data/dlg/00035brother_smyth_replacement.dlg
+data/dlg/00036armario_replacement.dlg
+data/dlg/00039corl_replacement.dlg
+data/dlg/00052temple_prisoners.dlg
+data/dlg/00053leatherworker.dlg
+data/dlg/00054generic_merchant.dlg
+data/dlg/00055moneychanger.dlg
+data/dlg/00056leatherworker wife.dlg
+data/dlg/00057bing.dlg
+data/dlg/00058wainwright.dlg
+data/dlg/00059blacksmith.dlg
+data/dlg/00060lareth.dlg
+data/dlg/00061gremag.dlg
+data/dlg/00062rannosdavl.dlg
+data/dlg/00064brau apprentice.dlg
+data/dlg/00065man_at_arms.dlg
+data/dlg/00066courier.dlg
+data/dlg/00067turuko.dlg
+data/dlg/00068kobort.dlg
+data/dlg/00069spinster.dlg
+data/dlg/00070furnok.dlg
+data/dlg/00071zert.dlg
+data/dlg/00072braumeister.dlg
+data/dlg/00073innkeeper.dlg
+data/dlg/00074lubash.dlg
+data/dlg/00075gnoll_leader.dlg
+data/dlg/00076lieutenant.dlg
+data/dlg/00077sergeant.dlg
+data/dlg/00078gnome1.dlg
+data/dlg/00081spugnoir.dlg
+data/dlg/00081spugnoir-special.dlg
+data/dlg/00083weaver.dlg
+data/dlg/00084weaver daughter.dlg
+data/dlg/00086agent of evil.dlg
+data/dlg/00087peasant laborers.dlg
+data/dlg/00088potter.dlg
+data/dlg/00089glora.dlg
+data/dlg/00090brau apprentice 3.dlg
+data/dlg/00091elmo.dlg
+data/dlg/00092town elder.dlg
+data/dlg/00093cabinet maker.dlg
+data/dlg/00094laszlo.dlg
+data/dlg/00095brau apprentice 2.dlg
+data/dlg/00096eddie.dlg
+data/dlg/00097otis.dlg
+data/dlg/00098ophelia.dlg
+data/dlg/00099jenelda.dlg
+data/dlg/00100riana.dlg
+data/dlg/00101sammy.dlg
+data/dlg/00102grud.dlg
+data/dlg/00103fuga.dlg
+data/dlg/00104homa.dlg
+data/dlg/00105charlotte.dlg
+data/dlg/00106mary.dlg
+data/dlg/00107preston.dlg
+data/dlg/00108bertram.dlg
+data/dlg/00109dala.dlg
+data/dlg/00110dick.dlg
+data/dlg/00111y'dey.dlg
+data/dlg/00112murfles.dlg
+data/dlg/00113wat.dlg
+data/dlg/00116Tolub.dlg
+data/dlg/00117lodriss.dlg
+data/dlg/00118skole.dlg
+data/dlg/00119romag.dlg
+data/dlg/00120romag commander.dlg
+data/dlg/00121tower sentinel.dlg
+data/dlg/00122alrrem.dlg
+data/dlg/00123hartsch.dlg
+data/dlg/00124kelno.dlg
+data/dlg/00125belsornig.dlg
+data/dlg/00126oohlgrist.dlg
+data/dlg/00129wonnilon.dlg
+data/dlg/00130sailor prisoner.dlg
+data/dlg/00131orc prisoner 1.dlg
+data/dlg/00132orc prisoner 2.dlg
+data/dlg/00133brigand prisoner.dlg
+data/dlg/00139antonio.dlg
+data/dlg/00140tubal.dlg
+data/dlg/00141smigmal.dlg
+data/dlg/00142senshock.dlg
+data/dlg/00143paida.dlg
+data/dlg/00144murraya.dlg
+data/dlg/00145aern.dlg
+data/dlg/00146kelleen.dlg
+data/dlg/00147barkinar.dlg
+data/dlg/00148deggum.dlg
+data/dlg/00149thrommel.dlg
+data/dlg/00150werewolf mirror.dlg
+data/dlg/00151KellaHillGiant.dlg
+data/dlg/00152Kella.dlg
+data/dlg/00153turnkey.dlg
+data/dlg/00154farmer prisoner.dlg
+data/dlg/00155falrinth.dlg
+data/dlg/00156farmer prisoner wife.dlg
+data/dlg/00157bugbear chieftain.dlg
+data/dlg/00158jaer.dlg
+data/dlg/00161female prisoner 1.dlg
+data/dlg/00162female prisoner 2.dlg
+data/dlg/00163bassanio.dlg
+data/dlg/00166sargen.dlg
+data/dlg/00167feldrin.dlg
+data/dlg/00168brunk.dlg
+data/dlg/00170taki.dlg
+data/dlg/00171darley.dlg
+data/dlg/00172iuz.dlg
+data/dlg/00173stcuthbert.dlg
+data/dlg/00174hedrack.dlg
+data/dlg/00175ashrem.dlg
+data/dlg/00176zuggtmoy.dlg
+data/dlg/00177scorpp.dlg
+data/dlg/00178erliter beggar.dlg
+data/dlg/00179average farmer beggar.dlg
+data/dlg/00180brau apprentice beggar.dlg
+data/dlg/00182assassin.dlg
+data/dlg/00185knight.dlg
+data/dlg/00187caravan survivor.dlg
+data/dlg/00189elf noble.dlg
+data/dlg/00190hextor priest.dlg
+data/dlg/00192hrudek.dlg
+data/dlg/00194dead woman.dlg
+data/dlg/00195young acolyte.dlg
+data/dlg/00196lord mayor.dlg
+data/dlg/00197map.dlg
+data/dlg/00199talking peasant.dlg
+data/dlg/00200zaxis.dlg
+data/dlg/00201ikian.dlg
+data/dlg/00202NodeBalor.dlg
+data/dlg/00203NodeGlabrezu.dlg
+data/dlg/00205NodeVrock.dlg
+data/dlg/00211troll with key.dlg
+data/dlg/00212burnebadger.dlg
+data/dlg/00213mona.dlg
+data/dlg/00214serena.dlg
+data/dlg/00215frederic.dlg
+data/dlg/00221larethdiary_critter.dlg
+data/dlg/00228kids_off.dlg
+data/dlg/00229darley_as_demon.dlg
+data/dlg/00233romagdiary_critter.dlg
+data/dlg/00236heroicmerchant.dlg
+data/dlg/00261laborer_cook.dlg
+data/dlg/00262burne_apprentice.dlg
+data/dlg/00270elmo_sober.dlg
+data/dlg/00281Yvy.dlg
+data/dlg/00284OrboftheMoons.dlg
+data/dlg/00286William.dlg
+data/dlg/00287Ronald.dlg
+data/dlg/00288AhFong.dlg
+data/dlg/00289Clarisse.dlg
+data/dlg/00302brigand.dlg
+data/dlg/00308lareth.dlg
+data/dlg/00312locked_trapped_chest.dlg
+data/dlg/00314electrical_trap.dlg
+data/dlg/00321captain_abiram.dlg
+data/dlg/00322captain_asaph.dlg
+data/dlg/00323Nulb_village_woman.dlg
+data/dlg/00325Lhizeas.dlg
+data/dlg/00326panathaes.dlg
+data/dlg/00327rothbert.dlg
+data/dlg/00328becka.dlg
+data/dlg/00329rakham.dlg
+data/dlg/00330boroquin.dlg
+data/dlg/00331armor_merchant.dlg
+data/dlg/00332weapons_merchant.dlg
+data/dlg/00333proprietor.dlg
+data/dlg/00335banker.dlg
+data/dlg/00336familiar_death.dlg
+data/dlg/00337Elysia.dlg
+data/dlg/00338Viscount.dlg
+data/dlg/00339Hextor_Cleric.dlg
+data/dlg/00340Assassin_leader.dlg
+data/dlg/00341kenan.dlg
+data/dlg/00342tarah.dlg
+data/dlg/00343sharar.dlg
+data/dlg/00344gadham.dlg
+data/dlg/00345abaddon.dlg
+data/dlg/00346eran.dlg
+data/dlg/00347gershom.dlg
+data/dlg/00348persis.dlg
+data/dlg/00349daniel.dlg
+data/dlg/00350bella.dlg
+data/dlg/00351captain_absalom.dlg
+data/dlg/00352captain_achan.dlg
+data/dlg/00353gladstone.dlg
+data/dlg/00354commonworth.dlg
+data/dlg/00355corpus.dlg
+data/dlg/00356corporal_holly.dlg
+data/dlg/00358merchant_bodyguard.dlg
+data/dlg/00359attorney.dlg
+data/dlg/00360security_barricade.dlg
+data/dlg/00361pelor_cleric.dlg
+data/dlg/00362verbobonc_mage.dlg
+data/dlg/00363lady_asherah.dlg
+data/dlg/00370innkeeper.dlg
+data/dlg/00372senshock_verbobonc.dlg
+data/dlg/00373Jenna.dlg
+data/dlg/00374Nybble.dlg
+data/dlg/00375Gleem.dlg
+data/dlg/00376Chanda.dlg
+data/dlg/00377ariel.dlg
+data/dlg/00378Cousins.dlg
+data/dlg/00379canon_ramses.dlg
+data/dlg/00380bag_of_holding.dlg
+data/dlg/00382Lerrik.dlg
+data/dlg/00383Prince_Zook.dlg
+data/dlg/00384Drow_Note.dlg
+data/dlg/00385verbobonc_guard.dlg
+data/dlg/00386gnome_guard.dlg
+data/dlg/00390canon_thaddeus.dlg
+data/dlg/00391hextor_cleric_verbobonc.dlg
+data/dlg/00392hextor_cleric_welkwood.dlg
+data/dlg/00393night_watchman.dlg
+data/dlg/00395ghost.dlg
+data/dlg/00396overseer.dlg
+data/dlg/00398rabbit_hole.dlg
+data/dlg/00399orrengaard.dlg
+data/dlg/00400castle_portal.dlg
+data/dlg/00401Supplies_Chest.dlg
+data/dlg/00402Medicine_Chest.dlg
+data/dlg/00403Weapons_Chest.dlg
+data/dlg/00404Armor_Chest.dlg
+data/dlg/00405Clothing_Chest.dlg
+data/dlg/00406Game_Portal.dlg
+data/dlg/00416standard_equipment_chest.dlg
+data/dlg/00434traders_trail.dlg
+data/dlg/00435the_postNPC.dlg
+data/dlg/00445sentry_heartbeat.dlg
+data/dlg/00446earthcombat.dlg
+data/dlg/00450lareth_troops.dlg
+data/dlg/00464panathaes_unconscious.dlg
+data/dlg/00469simon.dlg
+data/dlg/00470jesus_staccatori.dlg
+data/dlg/00471aerich_dragonsbane.dlg
+data/dlg/00472cyn.dlg
+data/dlg/00473carl.dlg
+data/dlg/00474dame_nelly.dlg
+data/dlg/00475anom.dlg
+data/dlg/00476Provisioner.dlg
+data/dlg/00477Alchemist.dlg
+data/dlg/00478heather.dlg
+data/dlg/00479veenah_glavrol.dlg
+data/dlg/00480mal.dlg
+data/dlg/00481robin_of_locksley.dlg
+data/dlg/00482elementalist.dlg
+data/dlg/00484wakefield.dlg
+data/dlg/00485hextor_invader.dlg
+data/dlg/00486king_battlehammer.dlg
+data/dlg/00487fireforge.dlg
+data/dlg/00488ariakas.dlg
+data/dlg/00501mathel.dlg
+data/dlg/00502hill_giant_shade.dlg
+data/dlg/00503groaning_spirit_shade.dlg
+data/dlg/00504kwerd.dlg
+data/dlg/00522book_of_heroes_critter.dlg
+data/dlg/00524master_of_the_arena.dlg
+data/dlg/00547mother.dlg
+data/dlg/00548DrowLeader.dlg
+data/dlg/00549Letter.dlg
+data/dlg/00550gnarley_witch.dlg
+data/dlg/00584bethany.dlg
+data/dlg/00590angra_mainyu.dlg
+data/dlg/00591ergo.dlg
+data/dlg/00592kallop.dlg
+data/dlg/00593boonthag.dlg
+data/dlg/00594ruff.dlg
+data/dlg/00595krunch.dlg
+data/dlg/00596hungous.dlg
+data/dlg/00600naig_lliht.dlg
+data/dlg/00601knoll.dlg
+data/dlg/00602delilah.dlg
+data/dlg/00603donovan.dlg
+data/dlg/00620generic_citizen.dlg
+data/dlg/00621noostoron.dlg
+data/dlg/00622hb_pit.dlg
+
+# data/mes specific
+data/mes/pcvoice/
+data/mes/subtitles/
+data/mes/1_char_stats_ui_text.mes
+data/mes/5_char_inventory_ui_text.mes
+data/mes/14_char_spells_ui_text.mes
+data/mes/bonus.mes
+data/mes/combat.mes
+data/mes/damage.mes
+data/mes/deity.mes
+data/mes/description.mes
+data/mes/dice_rolls.MES
+data/mes/feat.mes
+data/mes/float.MES
+data/mes/game_rd_npc_f2f.mes
+data/mes/game_rd_npc_f2m.mes
+data/mes/game_rd_npc_m2f.mes
+data/mes/game_rd_npc_m2m.mes
+data/mes/game_rp_npc_f2f.mes
+data/mes/game_rp_npc_f2m.mes
+data/mes/game_rp_npc_m2f.mes
+data/mes/game_rp_npc_m2m.mes
+data/mes/gamekeylog.mes
+data/mes/gamequestlog.mes
+data/mes/gamereplog.mes
+data/mes/gd_pc2f.mes
+data/mes/gd_pc2m.mes
+data/mes/help.tab
+data/mes/item_creation.mes
+data/mes/item_creation_names.mes
+data/mes/logbook_ui_quests_text.mes
+data/mes/long_description.mes
+data/mes/MainMenu.mes
+data/mes/map_names.mes
+data/mes/map_numbers.mes
+data/mes/narrative.MES
+data/mes/party_pool.mes
+data/mes/pc_creation.mes
+data/mes/pcvoice.mes
+data/mes/script_activated.MES
+data/mes/skill.mes
+data/mes/skill_ui.mes
+data/mes/spell.mes
+data/mes/spells_radial_menu_options.mes
+data/mes/stat.mes
+data/mes/test.MES
+data/mes/tips.mes
+data/mes/tooltip_ui_strings.mes
+data/mes/townmap_ui_placed_flag_text.mes
+data/mes/transaction_sum.mes
+data/mes/worldmap_location_names_text.mes
+
+# data/rules/ specific
+data/rules/spells/
+data/rules/addmesh.mes
+data/rules/combat_vars.mes
+data/rules/daylight.mes
+data/rules/feat.tab
+data/rules/feat_enum.mes
+data/rules/gamequest.mes
+data/rules/gamerep.mes
+data/rules/InvenSource.mes
+data/rules/InvenSourceBuy.mes
+data/rules/item_creation.mes
+data/rules/jumppoint.tab
+data/rules/levelup.tab
+data/rules/MapLimits.mes
+data/rules/materials.mes
+data/rules/partsys0.tab
+data/rules/partsys1.tab
+data/rules/pcvoice.mes
+data/rules/protos.tab
+data/rules/spell_enum.mes
+data/rules/SpellList.mes
+data/rules/start_equipment.mes
+data/rules/strategy.tab
+data/rules/townmap_ui_placed_flag_locations.mes
+data/rules/traps.tab
+data/rules/written_ui.mes
+
+# modules
+modules/ToEE.dat
+modules/ToEE/mes
+modules/ToEE/movies
+modules/ToEE/players
+modules/ToEE/rules
+modules/ToEE/townmap
+modules/ToEE/Bag_of_Holding.mes
+modules/ToEE/Co8_config.ini
+modules/ToEE/delayed_blast_fireball.txt
+modules/ToEE/Exclude_List.mes
+modules/ToEE/hold_person_feedback.txt
+modules/ToEE/icetest.txt
+modules/ToEE/lockout.ini
+modules/ToEE/speedup.ini
+modules/ToEE/test_mode.ini
+
+# modules/ToEE/art
+modules/ToEE/art/ground/CO8_GNARLEY_FOREST_01_Exterior
+modules/ToEE/art/ground/CO8_HICKORY_BRANCH_01_Exterior-day
+modules/ToEE/art/ground/CO8_HICKORY_BRANCH_01_Exterior-night
+modules/ToEE/art/ground/CO8_HICKORY_BRANCH_02_Cave
+modules/ToEE/art/ground/CO8_HICKORY_BRANCH_03_Crypt
+modules/ToEE/art/ground/CO8_HOMMLET_01_Exterior_Substitute-day
+modules/ToEE/art/ground/CO8_HOMMLET_01_Exterior_Substitute-night
+modules/ToEE/art/ground/CO8_NULB_16_Mona's_Store-day
+modules/ToEE/art/ground/CO8_NULB_16_Mona's_Store-night
+modules/ToEE/art/ground/CO8_NULB_17_House_1_Poisoned
+modules/ToEE/art/ground/CO8_QUARRY_01_Exterior-day
+modules/ToEE/art/ground/CO8_QUARRY_01_Exterior-night
+modules/ToEE/art/ground/CO8_QUARRY_02_Interior
+modules/ToEE/art/ground/CO8_RANDOM_09_Caravan-day
+modules/ToEE/art/ground/CO8_RANDOM_09_Caravan-night
+modules/ToEE/art/ground/CO8_SHOPMAP-day
+modules/ToEE/art/ground/CO8_SHOPMAP-night
+modules/ToEE/art/ground/CO8_VERBOBONC_01_Exterior-day
+modules/ToEE/art/ground/CO8_VERBOBONC_01_Exterior-night
+modules/ToEE/art/ground/CO8_VERBOBONC_02_Asherah_Estate-day
+modules/ToEE/art/ground/CO8_VERBOBONC_02_Asherah_Estate-night
+modules/ToEE/art/ground/CO8_VERBOBONC_03_Gnome_Quarter_1-day
+modules/ToEE/art/ground/CO8_VERBOBONC_03_Gnome_Quarter_1-night
+modules/ToEE/art/ground/CO8_VERBOBONC_04_Gnome_Quarter_2-day
+modules/ToEE/art/ground/CO8_VERBOBONC_04_Gnome_Quarter_2-night
+modules/ToEE/art/ground/CO8_VERBOBONC_05_Gnome_Quarter_3-day
+modules/ToEE/art/ground/CO8_VERBOBONC_05_Gnome_Quarter_3-night
+modules/ToEE/art/ground/CO8_VERBOBONC_06_Gnome_Quarter_4-day
+modules/ToEE/art/ground/CO8_VERBOBONC_06_Gnome_Quarter_4-night
+modules/ToEE/art/ground/CO8_VERBOBONC_07_Gnome_Tunnels_1
+modules/ToEE/art/ground/CO8_VERBOBONC_08_Gnome_Tunnels_2
+modules/ToEE/art/ground/CO8_VERBOBONC_09_Gnome_Tunnels_3
+modules/ToEE/art/ground/CO8_VERBOBONC_10_Gnome_Tunnels_4
+modules/ToEE/art/ground/CO8_VERBOBONC_11_Gnome_Tunnels_5
+modules/ToEE/art/ground/CO8_VERBOBONC_12_Cave_Exit-day
+modules/ToEE/art/ground/CO8_VERBOBONC_12_Cave_Exit-night
+modules/ToEE/art/ground/CO8_VERBOBONC_13_Gnome_Quarter_5-day
+modules/ToEE/art/ground/CO8_VERBOBONC_13_Gnome_Quarter_5-night
+modules/ToEE/art/ground/CO8_VERBOBONC_14_Gnome_Quarter_6-day
+modules/ToEE/art/ground/CO8_VERBOBONC_14_Gnome_Quarter_6-night
+modules/ToEE/art/ground/CO8_VERBOBONC_15_Viscount_Residence-day
+modules/ToEE/art/ground/CO8_VERBOBONC_15_Viscount_Residence-night
+modules/ToEE/art/ground/CO8_VERBOBONC_17_Church_Pelor_Main-day
+modules/ToEE/art/ground/CO8_VERBOBONC_17_Church_Pelor_Main-night
+modules/ToEE/art/ground/CO8_VERBOBONC_18_Church_Pelor_Upper-day
+modules/ToEE/art/ground/CO8_VERBOBONC_18_Church_Pelor_Upper-night
+modules/ToEE/art/ground/CO8_VERBOBONC_19_Ruined_Church_Main-day
+modules/ToEE/art/ground/CO8_VERBOBONC_19_Ruined_Church_Main-night
+modules/ToEE/art/ground/CO8_VERBOBONC_20_Ruined_Church_Lower
+modules/ToEE/art/ground/CO8_VERBOBONC_21_Drainage_Tunnels
+modules/ToEE/art/ground/CO8_VERBOBONC_22_Rabbit_Hole
+modules/ToEE/art/ground/CO8_VERBOBONC_23_Castle_Basement
+modules/ToEE/art/ground/CO8_VERBOBONC_24_Castle_Dormitories
+modules/ToEE/art/ground/CO8_VERBOBONC_25_Castle_Main_Hall
+modules/ToEE/art/ground/CO8_VERBOBONC_26_Castle_Upper_Hall
+modules/ToEE/art/ground/CO8_VERBOBONC_27_Castle_Parapet
+modules/ToEE/art/ground/CO8_VERBOBONC_28_Castle_Outbuilding_1-day
+modules/ToEE/art/ground/CO8_VERBOBONC_28_Castle_Outbuilding_1-night
+modules/ToEE/art/ground/CO8_VERBOBONC_29_Castle_Outbuilding_2-day
+modules/ToEE/art/ground/CO8_VERBOBONC_29_Castle_Outbuilding_2-night
+modules/ToEE/art/ground/CO8_VERBOBONC_30_Castle_Outbuilding_3-day
+modules/ToEE/art/ground/CO8_VERBOBONC_30_Castle_Outbuilding_3-night
+modules/ToEE/art/ground/CO8_VERBOBONC_31_Spruce_Goose_First-day
+modules/ToEE/art/ground/CO8_VERBOBONC_31_Spruce_Goose_First-night
+modules/ToEE/art/ground/CO8_VERBOBONC_32_Spruce_Goose_Second-day
+modules/ToEE/art/ground/CO8_VERBOBONC_32_Spruce_Goose_Second-night
+modules/ToEE/art/ground/CO8_VERBOBONC_33_Coliseum_Tower_West-day
+modules/ToEE/art/ground/CO8_VERBOBONC_33_Coliseum_Tower_West-night
+modules/ToEE/art/ground/CO8_VERBOBONC_34_Coliseum_Tower_South-day
+modules/ToEE/art/ground/CO8_VERBOBONC_34_Coliseum_Tower_South-night
+modules/ToEE/art/ground/CO8_VERBOBONC_35_Warehouse_Office-day
+modules/ToEE/art/ground/CO8_VERBOBONC_35_Warehouse_Office-night
+modules/ToEE/art/ground/CO8_VERBOBONC_36_Warehouse_1-day
+modules/ToEE/art/ground/CO8_VERBOBONC_36_Warehouse_1-night
+modules/ToEE/art/ground/CO8_VERBOBONC_37_Warehouse_2-day
+modules/ToEE/art/ground/CO8_VERBOBONC_37_Warehouse_2-night
+modules/ToEE/art/ground/CO8_VERBOBONC_38_Maroon_Moon_First-day
+modules/ToEE/art/ground/CO8_VERBOBONC_38_Maroon_Moon_First-night
+modules/ToEE/art/ground/CO8_VERBOBONC_39_Maroon_Moon_Second-day
+modules/ToEE/art/ground/CO8_VERBOBONC_39_Maroon_Moon_Second-night
+modules/ToEE/art/ground/CO8_VERBOBONC_40_Maroon_Moon_Third-day
+modules/ToEE/art/ground/CO8_VERBOBONC_40_Maroon_Moon_Third-night
+modules/ToEE/art/ground/CO8_VERBOBONC_41_Archer_Eye_1-day
+modules/ToEE/art/ground/CO8_VERBOBONC_41_Archer_Eye_1-night
+modules/ToEE/art/ground/CO8_VERBOBONC_42_Archer_Eye_2-day
+modules/ToEE/art/ground/CO8_VERBOBONC_42_Archer_Eye_2-night
+modules/ToEE/art/ground/CO8_VERBOBONC_43_Archer_Eye_3-day
+modules/ToEE/art/ground/CO8_VERBOBONC_43_Archer_Eye_3-night
+modules/ToEE/art/ground/CO8_VERBOBONC_44_Archer_Eye_4-day
+modules/ToEE/art/ground/CO8_VERBOBONC_44_Archer_Eye_4-night
+modules/ToEE/art/ground/CO8_VERBOBONC_45_Residence_1-day
+modules/ToEE/art/ground/CO8_VERBOBONC_45_Residence_1-night
+modules/ToEE/art/ground/CO8_VERBOBONC_46_Residence_2-day
+modules/ToEE/art/ground/CO8_VERBOBONC_46_Residence_2-night
+modules/ToEE/art/ground/CO8_VERBOBONC_48_Residence_4-day
+modules/ToEE/art/ground/CO8_VERBOBONC_48_Residence_4-night
+modules/ToEE/art/ground/CO8_VERBOBONC_49_City_Hall_Main-day
+modules/ToEE/art/ground/CO8_VERBOBONC_49_City_Hall_Main-night
+modules/ToEE/art/ground/CO8_VERBOBONC_50_City_Hall_Viscount-day
+modules/ToEE/art/ground/CO8_VERBOBONC_50_City_Hall_Viscount-night
+modules/ToEE/art/ground/CO8_VERBOBONC_51_Watch_Post_Main-day
+modules/ToEE/art/ground/CO8_VERBOBONC_51_Watch_Post_Main-night
+modules/ToEE/art/ground/CO8_VERBOBONC_52_Watch_Post_Lower-day
+modules/ToEE/art/ground/CO8_VERBOBONC_52_Watch_Post_Lower-night
+modules/ToEE/art/ground/CO8_VERBOBONC_53_Jylee_Inn_First-day
+modules/ToEE/art/ground/CO8_VERBOBONC_53_Jylee_Inn_First-night
+modules/ToEE/art/ground/CO8_VERBOBONC_54_Jylee_Inn_Second-day
+modules/ToEE/art/ground/CO8_VERBOBONC_54_Jylee_Inn_Second-night
+modules/ToEE/art/ground/CO8_VERBOBONC_58_Merchant_Row_1-day
+modules/ToEE/art/ground/CO8_VERBOBONC_58_Merchant_Row_1-night
+modules/ToEE/art/ground/CO8_VERBOBONC_59_Merchant_Row_2-day
+modules/ToEE/art/ground/CO8_VERBOBONC_59_Merchant_Row_2-night
+modules/ToEE/art/ground/CO8_VERBOBONC_60_Merchant_Row_3-day
+modules/ToEE/art/ground/CO8_VERBOBONC_60_Merchant_Row_3-night
+modules/ToEE/art/ground/CO8_VERBOBONC_61_Merchant_Row_4-day
+modules/ToEE/art/ground/CO8_VERBOBONC_61_Merchant_Row_4-night
+modules/ToEE/art/ground/CO8_WELKWOOD_BOG_01_Exterior-day
+modules/ToEE/art/ground/CO8_WELKWOOD_BOG_01_Exterior-night
+modules/ToEE/art/ground/CO8_WELKWOOD_BOG_02_Run
+modules/ToEE/art/ground/CO8_WELKWOOD_BOG_03_Crypt
+modules/ToEE/art/ground/COLOSSEUM_01_Exterior-day
+modules/ToEE/art/ground/COLOSSEUM_01_Exterior-night
+modules/ToEE/art/ground/DEKLO_GROVE_01_Exterior-day
+modules/ToEE/art/ground/DEKLO_GROVE_01_Exterior-night
+modules/ToEE/art/ground/EMRIDY_MEADOWS_01_Exterior-day
+modules/ToEE/art/ground/EMRIDY_MEADOWS_01_Exterior-night
+modules/ToEE/art/ground/HOMMLET_01_Exterior-day
+modules/ToEE/art/ground/HOMMLET_01_Exterior-night
+modules/ToEE/art/ground/HOMMLET_02_Inn_Lower
+modules/ToEE/art/ground/HOMMLET_03_Inn_Main
+modules/ToEE/art/ground/HOMMLET_04_Inn_Upper
+modules/ToEE/art/ground/HOMMLET_05_Traders_Barn-day
+modules/ToEE/art/ground/HOMMLET_05_Traders_Barn-night
+modules/ToEE/art/ground/HOMMLET_06_Traders_Store
+modules/ToEE/art/ground/HOMMLET_07_Church_Upper-day
+modules/ToEE/art/ground/HOMMLET_07_Church_Upper-night
+modules/ToEE/art/ground/HOMMLET_08_Church_Main-day
+modules/ToEE/art/ground/HOMMLET_08_Church_Main-night
+modules/ToEE/art/ground/HOMMLET_09_Church_Lower-day
+modules/ToEE/art/ground/HOMMLET_09_Church_Lower-night
+modules/ToEE/art/ground/HOMMLET_10_Tower_Celler
+modules/ToEE/art/ground/HOMMLET_11_Tower_Lower
+modules/ToEE/art/ground/HOMMLET_12_Tower_Main-day
+modules/ToEE/art/ground/HOMMLET_12_Tower_Main-night
+modules/ToEE/art/ground/HOMMLET_13_Tower_Parapet_Exterior-day
+modules/ToEE/art/ground/HOMMLET_13_Tower_Parapet_Exterior-night
+modules/ToEE/art/ground/HOMMLET_14_Tower_Upper-day
+modules/ToEE/art/ground/HOMMLET_14_Tower_Upper-night
+modules/ToEE/art/ground/HOMMLET_15_Tower_Parapet_Interior
+modules/ToEE/art/ground/HOMMLET_16_Percy_Main-day
+modules/ToEE/art/ground/HOMMLET_16_Percy_Main-night
+modules/ToEE/art/ground/HOMMLET_17_Percy_Upper-day
+modules/ToEE/art/ground/HOMMLET_17_Percy_Upper-night
+modules/ToEE/art/ground/HOMMLET_18_Woodcutter-day
+modules/ToEE/art/ground/HOMMLET_18_Woodcutter-night
+modules/ToEE/art/ground/HOMMLET_19_Widow_Main-day
+modules/ToEE/art/ground/HOMMLET_19_Widow_Main-night
+modules/ToEE/art/ground/HOMMLET_20_Widow_Upper
+modules/ToEE/art/ground/HOMMLET_21_Filliken-day
+modules/ToEE/art/ground/HOMMLET_21_Filliken-night
+modules/ToEE/art/ground/HOMMLET_22_Leatherworker-day
+modules/ToEE/art/ground/HOMMLET_22_Leatherworker-night
+modules/ToEE/art/ground/HOMMLET_23_Blacksmith-day
+modules/ToEE/art/ground/HOMMLET_23_Blacksmith-night
+modules/ToEE/art/ground/HOMMLET_24_Weaver_Main-day
+modules/ToEE/art/ground/HOMMLET_24_Weaver_Main-night
+modules/ToEE/art/ground/HOMMLET_25_Weaver_Upper-day
+modules/ToEE/art/ground/HOMMLET_25_Weaver_Upper-night
+modules/ToEE/art/ground/HOMMLET_26_Tailor-day
+modules/ToEE/art/ground/HOMMLET_26_Tailor-night
+modules/ToEE/art/ground/HOMMLET_27_Otello-day
+modules/ToEE/art/ground/HOMMLET_27_Otello-night
+modules/ToEE/art/ground/HOMMLET_28_Teamster-day
+modules/ToEE/art/ground/HOMMLET_28_Teamster-night
+modules/ToEE/art/ground/HOMMLET_29_Moneychanger-day
+modules/ToEE/art/ground/HOMMLET_29_Moneychanger-night
+modules/ToEE/art/ground/HOMMLET_30_Cabinetmaker_Main-day
+modules/ToEE/art/ground/HOMMLET_30_Cabinetmaker_Main-night
+modules/ToEE/art/ground/HOMMLET_31_Cabinetmaker_Upper-day
+modules/ToEE/art/ground/HOMMLET_31_Cabinetmaker_Upper-night
+modules/ToEE/art/ground/HOMMLET_32_Potter-day
+modules/ToEE/art/ground/HOMMLET_32_Potter-night
+modules/ToEE/art/ground/HOMMLET_33_Brewhouse-day
+modules/ToEE/art/ground/HOMMLET_33_Brewhouse-night
+modules/ToEE/art/ground/HOMMLET_34_Black_Jay-day
+modules/ToEE/art/ground/HOMMLET_34_Black_Jay-night
+modules/ToEE/art/ground/HOMMLET_35_Cheesemaker-day
+modules/ToEE/art/ground/HOMMLET_35_Cheesemaker-night
+modules/ToEE/art/ground/HOMMLET_36_Mill-day
+modules/ToEE/art/ground/HOMMLET_36_Mill-night
+modules/ToEE/art/ground/HOMMLET_37_Holten_Kindlehopper-day
+modules/ToEE/art/ground/HOMMLET_37_Holten_Kindlehopper-night
+modules/ToEE/art/ground/HOMMLET_38_Grove-day
+modules/ToEE/art/ground/HOMMLET_38_Grove-night
+modules/ToEE/art/ground/HOMMLET_39_Herdsman_Barn-day
+modules/ToEE/art/ground/HOMMLET_39_Herdsman_Barn-night
+modules/ToEE/art/ground/HOMMLET_40_Herdsman_House-day
+modules/ToEE/art/ground/HOMMLET_40_Herdsman_House-night
+modules/ToEE/art/ground/HOMMLET_41_Wainwright-day
+modules/ToEE/art/ground/HOMMLET_41_Wainwright-night
+modules/ToEE/art/ground/HOMMLET_42_Village_Elder_Main-day
+modules/ToEE/art/ground/HOMMLET_42_Village_Elder_Main-night
+modules/ToEE/art/ground/HOMMLET_43_Village_Elder_Upper-day
+modules/ToEE/art/ground/HOMMLET_43_Village_Elder_Upper-night
+modules/ToEE/art/ground/HOMMLET_44_Carpenter-day
+modules/ToEE/art/ground/HOMMLET_44_Carpenter-night
+modules/ToEE/art/ground/HOMMLET_45_Town_Hall-day
+modules/ToEE/art/ground/HOMMLET_45_Town_Hall-night
+modules/ToEE/art/ground/HOMMLET_46_Stonemason-day
+modules/ToEE/art/ground/HOMMLET_46_Stonemason-night
+modules/ToEE/art/ground/HOMMLET_47_Renton-day
+modules/ToEE/art/ground/HOMMLET_47_Renton-night
+modules/ToEE/art/ground/IMERYDS_RUN_01_Exterior-day
+modules/ToEE/art/ground/IMERYDS_RUN_01_Exterior-night
+modules/ToEE/art/ground/MOATHOUSE_01_Exterior-day
+modules/ToEE/art/ground/MOATHOUSE_01_Exterior-night
+modules/ToEE/art/ground/MOATHOUSE_02_Tower-day
+modules/ToEE/art/ground/MOATHOUSE_02_Tower-night
+modules/ToEE/art/ground/MOATHOUSE_03_Interior-day
+modules/ToEE/art/ground/MOATHOUSE_03_Interior-night
+modules/ToEE/art/ground/MOATHOUSE_04_Dungeon
+modules/ToEE/art/ground/MOATHOUSE_05_Exit-day
+modules/ToEE/art/ground/MOATHOUSE_05_Exit-night
+modules/ToEE/art/ground/NODES_01_Air
+modules/ToEE/art/ground/NODES_02_Earth
+modules/ToEE/art/ground/NODES_03_Fire
+modules/ToEE/art/ground/NODES_04_Water
+modules/ToEE/art/ground/NULB_01_Exterior-day
+modules/ToEE/art/ground/NULB_01_Exterior-night
+modules/ToEE/art/ground/NULB_02_Boatmen's Tavern-day
+modules/ToEE/art/ground/NULB_02_Boatmen's Tavern-night
+modules/ToEE/art/ground/NULB_03_Herb_Shop_Main-day
+modules/ToEE/art/ground/NULB_03_Herb_Shop_Main-night
+modules/ToEE/art/ground/NULB_04_Herb_Shop_Upper-day
+modules/ToEE/art/ground/NULB_04_Herb_Shop_Upper-night
+modules/ToEE/art/ground/NULB_05_Herb_Shop_Top-day
+modules/ToEE/art/ground/NULB_05_Herb_Shop_Top-night
+modules/ToEE/art/ground/NULB_06_Smithy-day
+modules/ToEE/art/ground/NULB_06_Smithy-night
+modules/ToEE/art/ground/NULB_07_Brothel_Main-day
+modules/ToEE/art/ground/NULB_07_Brothel_Main-night
+modules/ToEE/art/ground/NULB_08_Brothel_Upper-day
+modules/ToEE/art/ground/NULB_08_Brothel_Upper-night
+modules/ToEE/art/ground/NULB_09_Brothel_Top-day
+modules/ToEE/art/ground/NULB_09_Brothel_Top-night
+modules/ToEE/art/ground/NULB_10_Waterside_Hostel_Main-day
+modules/ToEE/art/ground/NULB_10_Waterside_Hostel_Main-night
+modules/ToEE/art/ground/NULB_11_Waterside_Hostel_Upper-day
+modules/ToEE/art/ground/NULB_11_Waterside_Hostel_Upper-night
+modules/ToEE/art/ground/NULB_12_House_1-day
+modules/ToEE/art/ground/NULB_12_House_1-night
+modules/ToEE/art/ground/NULB_13_House_2-day
+modules/ToEE/art/ground/NULB_13_House_2-night
+modules/ToEE/art/ground/NULB_14_House_3-day
+modules/ToEE/art/ground/NULB_14_House_3-night
+modules/ToEE/art/ground/NULB_15_Emporium-day
+modules/ToEE/art/ground/NULB_15_Emporium-night
+modules/ToEE/art/ground/OGRE_CAVE_01_Exterior-day
+modules/ToEE/art/ground/OGRE_CAVE_01_Exterior-night
+modules/ToEE/art/ground/OGRE_CAVE_02_Interior
+modules/ToEE/art/ground/RANDOM_01_Scrub-day
+modules/ToEE/art/ground/RANDOM_01_Scrub-night
+modules/ToEE/art/ground/RANDOM_02_Forest-day
+modules/ToEE/art/ground/RANDOM_02_Forest-night
+modules/ToEE/art/ground/RANDOM_03_Swamp-day
+modules/ToEE/art/ground/RANDOM_03_Swamp-night
+modules/ToEE/art/ground/RANDOM_04_River-day
+modules/ToEE/art/ground/RANDOM_04_River-night
+modules/ToEE/art/ground/RANDOM_05_Scrub_Road-day
+modules/ToEE/art/ground/RANDOM_05_Scrub_Road-night
+modules/ToEE/art/ground/RANDOM_06_Forest_Road-day
+modules/ToEE/art/ground/RANDOM_06_Forest_Road-night
+modules/ToEE/art/ground/RANDOM_07_Swamp_Road-day
+modules/ToEE/art/ground/RANDOM_07_Swamp_Road-night
+modules/ToEE/art/ground/RANDOM_08_River_Road-day
+modules/ToEE/art/ground/RANDOM_08_River_Road-night
+modules/ToEE/art/ground/TEMPLE_01_Exterior
+modules/ToEE/art/ground/TEMPLE_02_Interior-day
+modules/ToEE/maps/CO8_GNARLEY_FOREST_01_Exterior
+modules/ToEE/maps/CO8_HICKORY_BRANCH_01_Exterior
+modules/ToEE/maps/CO8_HICKORY_BRANCH_02_Cave
+modules/ToEE/maps/CO8_HICKORY_BRANCH_03_Crypt
+modules/ToEE/maps/CO8_HOMMLET_01_Exterior_Substitute
+modules/ToEE/maps/CO8_NULB_16_Mona's_Store
+modules/ToEE/maps/CO8_NULB_17_House_1_Poisoned
+modules/ToEE/maps/CO8_QUARRY_01_Exterior
+modules/ToEE/maps/CO8_QUARRY_02_Interior
+modules/ToEE/maps/CO8_RANDOM_09_Caravan
+modules/ToEE/maps/CO8_SHOPMAP
+modules/ToEE/maps/CO8_VERBOBONC_01_Exterior
+modules/ToEE/maps/CO8_VERBOBONC_02_Asherah_Estate
+modules/ToEE/maps/CO8_VERBOBONC_03_Gnome_Quarter_1
+modules/ToEE/maps/CO8_VERBOBONC_04_Gnome_Quarter_2
+modules/ToEE/maps/CO8_VERBOBONC_05_Gnome_Quarter_3
+modules/ToEE/maps/CO8_VERBOBONC_06_Gnome_Quarter_4
+modules/ToEE/maps/CO8_VERBOBONC_07_Gnome_Tunnels_1
+modules/ToEE/maps/CO8_VERBOBONC_08_Gnome_Tunnels_2
+modules/ToEE/maps/CO8_VERBOBONC_09_Gnome_Tunnels_3
+modules/ToEE/maps/CO8_VERBOBONC_10_Gnome_Tunnels_4
+modules/ToEE/maps/CO8_VERBOBONC_11_Gnome_Tunnels_5
+modules/ToEE/maps/CO8_VERBOBONC_12_Cave_Exit
+modules/ToEE/maps/CO8_VERBOBONC_13_Gnome_Quarter_5
+modules/ToEE/maps/CO8_VERBOBONC_14_Gnome_Quarter_6
+modules/ToEE/maps/CO8_VERBOBONC_15_Viscount_Residence
+modules/ToEE/maps/CO8_VERBOBONC_17_Church_Pelor_Main
+modules/ToEE/maps/CO8_VERBOBONC_18_Church_Pelor_Upper
+modules/ToEE/maps/CO8_VERBOBONC_19_Ruined_Church_Main
+modules/ToEE/maps/CO8_VERBOBONC_20_Ruined_Church_Lower
+modules/ToEE/maps/CO8_VERBOBONC_21_Drainage_Tunnels
+modules/ToEE/maps/CO8_VERBOBONC_22_Rabbit_Hole
+modules/ToEE/maps/CO8_VERBOBONC_23_Castle_Basement
+modules/ToEE/maps/CO8_VERBOBONC_24_Castle_Dormitories
+modules/ToEE/maps/CO8_VERBOBONC_25_Castle_Main_Hall
+modules/ToEE/maps/CO8_VERBOBONC_26_Castle_Upper_Hall
+modules/ToEE/maps/CO8_VERBOBONC_27_Castle_Parapet
+modules/ToEE/maps/CO8_VERBOBONC_28_Castle_Outbuilding_1
+modules/ToEE/maps/CO8_VERBOBONC_29_Castle_Outbuilding_2
+modules/ToEE/maps/CO8_VERBOBONC_30_Castle_Outbuilding_3
+modules/ToEE/maps/CO8_VERBOBONC_31_Spruce_Goose_First
+modules/ToEE/maps/CO8_VERBOBONC_32_Spruce_Goose_Second
+modules/ToEE/maps/CO8_VERBOBONC_33_Coliseum_Tower_West
+modules/ToEE/maps/CO8_VERBOBONC_34_Coliseum_Tower_South
+modules/ToEE/maps/CO8_VERBOBONC_35_Warehouse_Office
+modules/ToEE/maps/CO8_VERBOBONC_36_Warehouse_1
+modules/ToEE/maps/CO8_VERBOBONC_37_Warehouse_2
+modules/ToEE/maps/CO8_VERBOBONC_38_Maroon_Moon_First
+modules/ToEE/maps/CO8_VERBOBONC_39_Maroon_Moon_Second
+modules/ToEE/maps/CO8_VERBOBONC_40_Maroon_Moon_Third
+modules/ToEE/maps/CO8_VERBOBONC_41_Archer_Eye_1
+modules/ToEE/maps/CO8_VERBOBONC_42_Archer_Eye_2
+modules/ToEE/maps/CO8_VERBOBONC_43_Archer_Eye_3
+modules/ToEE/maps/CO8_VERBOBONC_44_Archer_Eye_4
+modules/ToEE/maps/CO8_VERBOBONC_45_Residence_1
+modules/ToEE/maps/CO8_VERBOBONC_46_Residence_2
+modules/ToEE/maps/CO8_VERBOBONC_47_Residence_3
+modules/ToEE/maps/CO8_VERBOBONC_48_Residence_4
+modules/ToEE/maps/CO8_VERBOBONC_49_City_Hall_Main
+modules/ToEE/maps/CO8_VERBOBONC_50_City_Hall_Viscount
+modules/ToEE/maps/CO8_VERBOBONC_51_Watch_Post_Main
+modules/ToEE/maps/CO8_VERBOBONC_52_Watch_Post_Lower
+modules/ToEE/maps/CO8_VERBOBONC_53_Jylee_Inn_First
+modules/ToEE/maps/CO8_VERBOBONC_54_Jylee_Inn_Second
+modules/ToEE/maps/CO8_VERBOBONC_55_Wharves_1
+modules/ToEE/maps/CO8_VERBOBONC_56_Wharves_2
+modules/ToEE/maps/CO8_VERBOBONC_57_Wharves_3
+modules/ToEE/maps/CO8_VERBOBONC_58_Merchant_Row_1
+modules/ToEE/maps/CO8_VERBOBONC_59_Merchant_Row_2
+modules/ToEE/maps/CO8_VERBOBONC_60_Merchant_Row_3
+modules/ToEE/maps/CO8_VERBOBONC_61_Merchant_Row_4
+modules/ToEE/maps/CO8_VERBOBONC_62_City_Block_1
+modules/ToEE/maps/CO8_VERBOBONC_63_City_Block_2
+modules/ToEE/maps/CO8_VERBOBONC_64_City_Block_3
+modules/ToEE/maps/CO8_VERBOBONC_65_City_Block_4
+modules/ToEE/maps/CO8_VERBOBONC_66_Apartments
+modules/ToEE/maps/CO8_VERBOBONC_67_Tenements
+modules/ToEE/maps/CO8_VERBOBONC_68_Courtyard
+modules/ToEE/maps/CO8_WELKWOOD_BOG_01_Exterior
+modules/ToEE/maps/CO8_WELKWOOD_BOG_02_Run
+modules/ToEE/maps/CO8_WELKWOOD_BOG_03_Crypt
+modules/ToEE/maps/COLOSSEUM_01_Exterior
+modules/ToEE/maps/DEKLO_GROVE_01_Exterior
+modules/ToEE/maps/EMRIDY_MEADOWS_01_Exterior
+modules/ToEE/maps/HOMMLET_01_Exterior
+modules/ToEE/maps/HOMMLET_02_Inn_Lower
+modules/ToEE/maps/HOMMLET_03_Inn_Main
+modules/ToEE/maps/HOMMLET_04_Inn_Upper
+modules/ToEE/maps/HOMMLET_05_Traders_Barn
+modules/ToEE/maps/HOMMLET_06_Traders_Store
+modules/ToEE/maps/HOMMLET_07_Church_Upper
+modules/ToEE/maps/HOMMLET_08_Church_Main
+modules/ToEE/maps/HOMMLET_09_Church_Lower
+modules/ToEE/maps/HOMMLET_10_Tower_Celler
+modules/ToEE/maps/HOMMLET_11_Tower_Lower
+modules/ToEE/maps/HOMMLET_12_Tower_Main
+modules/ToEE/maps/HOMMLET_13_Tower_Parapet_Exterior
+modules/ToEE/maps/HOMMLET_14_Tower_Upper
+modules/ToEE/maps/HOMMLET_15_Tower_Parapet_Interior
+modules/ToEE/maps/HOMMLET_16_Percy_Main
+modules/ToEE/maps/HOMMLET_17_Percy_Upper
+modules/ToEE/maps/HOMMLET_18_Woodcutter
+modules/ToEE/maps/HOMMLET_19_Widow_Main
+modules/ToEE/maps/HOMMLET_20_Widow_Upper
+modules/ToEE/maps/HOMMLET_21_Filliken
+modules/ToEE/maps/HOMMLET_22_Leatherworker
+modules/ToEE/maps/HOMMLET_23_Blacksmith
+modules/ToEE/maps/HOMMLET_24_Weaver_Main
+modules/ToEE/maps/HOMMLET_25_Weaver_Upper
+modules/ToEE/maps/HOMMLET_26_Tailor
+modules/ToEE/maps/HOMMLET_27_Otello
+modules/ToEE/maps/HOMMLET_28_Teamster
+modules/ToEE/maps/HOMMLET_29_Moneychanger
+modules/ToEE/maps/HOMMLET_30_Cabinetmaker_Main
+modules/ToEE/maps/HOMMLET_31_Cabinetmaker_Upper
+modules/ToEE/maps/HOMMLET_32_Potter
+modules/ToEE/maps/HOMMLET_33_Brewhouse
+modules/ToEE/maps/HOMMLET_34_Black_Jay
+modules/ToEE/maps/HOMMLET_35_Cheesemaker
+modules/ToEE/maps/HOMMLET_36_Mill
+modules/ToEE/maps/HOMMLET_37_Holten_Kindlehopper
+modules/ToEE/maps/HOMMLET_38_Grove
+modules/ToEE/maps/HOMMLET_39_Herdsman_Barn
+modules/ToEE/maps/HOMMLET_40_Herdsman_House
+modules/ToEE/maps/HOMMLET_41_Wainwright
+modules/ToEE/maps/HOMMLET_42_Village_Elder_Main
+modules/ToEE/maps/HOMMLET_43_Village_Elder_Upper
+modules/ToEE/maps/HOMMLET_44_Carpenter
+modules/ToEE/maps/HOMMLET_45_Town_Hall
+modules/ToEE/maps/HOMMLET_46_Stonemason
+modules/ToEE/maps/HOMMLET_47_Renton
+modules/ToEE/maps/IMERYDS_RUN_01_Exterior
+modules/ToEE/maps/MOATHOUSE_01_Exterior
+modules/ToEE/maps/MOATHOUSE_02_Tower
+modules/ToEE/maps/MOATHOUSE_03_Interior
+modules/ToEE/maps/MOATHOUSE_04_Dungeon
+modules/ToEE/maps/MOATHOUSE_05_Exit
+modules/ToEE/maps/NODES_01_Air
+modules/ToEE/maps/NODES_02_Earth
+modules/ToEE/maps/NODES_03_Fire
+modules/ToEE/maps/NODES_04_Water
+modules/ToEE/maps/NULB_01_Exterior
+modules/ToEE/maps/NULB_02_Boatmen's Tavern
+modules/ToEE/maps/NULB_03_Herb_Shop_Main
+modules/ToEE/maps/NULB_04_Herb_Shop_Upper
+modules/ToEE/maps/NULB_05_Herb_Shop_Top
+modules/ToEE/maps/NULB_06_Smithy
+modules/ToEE/maps/NULB_07_Brothel_Main
+modules/ToEE/maps/NULB_08_Brothel_Upper
+modules/ToEE/maps/NULB_09_Brothel_Top
+modules/ToEE/maps/NULB_10_Waterside_Hostel_Main
+modules/ToEE/maps/NULB_11_Waterside_Hostel_Upper
+modules/ToEE/maps/NULB_12_House_1
+modules/ToEE/maps/NULB_13_House_2
+modules/ToEE/maps/NULB_14_House_3
+modules/ToEE/maps/NULB_15_Emporium
+modules/ToEE/maps/OGRE_CAVE_01_Exterior
+modules/ToEE/maps/OGRE_CAVE_02_Interior
+modules/ToEE/maps/RANDOM_01_Scrub
+modules/ToEE/maps/RANDOM_02_Forest
+modules/ToEE/maps/RANDOM_03_Swamp
+modules/ToEE/maps/RANDOM_04_River
+modules/ToEE/maps/RANDOM_05_Scrub_Road
+modules/ToEE/maps/RANDOM_06_Forest_Road
+modules/ToEE/maps/RANDOM_07_Swamp_Road
+modules/ToEE/maps/RANDOM_08_River_Road
+modules/ToEE/maps/ShopMaps
+modules/ToEE/maps/TEMPLE_01_Exterior
+modules/ToEE/maps/TEMPLE_02_Interior
+modules/ToEE/maps/TEMPLE_03_House
+modules/ToEE/maps/TEMPLE_04_Farm
+modules/ToEE/maps/TEMPLE_05_Tower_Exterior
+modules/ToEE/maps/TEMPLE_06_Tower_Interior
+modules/ToEE/maps/TEMPLE_07_Staircase
+modules/ToEE/maps/TEMPLE_08_Tunnel
+modules/ToEE/maps/TEMPLE_09_Level_1
+modules/ToEE/maps/TEMPLE_10_Level_2
+modules/ToEE/maps/TEMPLE_11_Level_3_Lower
+modules/ToEE/maps/TEMPLE_12_Level_3_Upper
+modules/ToEE/maps/TEMPLE_13_Level_4
+modules/ToEE/maps/VIGNETTE_01_Lawful_Good
+modules/ToEE/maps/VIGNETTE_02_Chaotic_Good
+modules/ToEE/maps/VIGNETTE_03_Lawful_Evil
+modules/ToEE/maps/VIGNETTE_04_Chaotic_Evil
+modules/ToEE/maps/VIGNETTE_05_True_Neutral
+modules/ToEE/maps/VIGNETTE_06_Neutral_Good
+modules/ToEE/maps/VIGNETTE_07_Neutral_Evil
+modules/ToEE/maps/VIGNETTE_08_Lawful_Neutral
+modules/ToEE/maps/VIGNETTE_09_Chaotic_Neutral
+modules/ToEE/art/ground/TEMPLE_02_Interior-night
+modules/ToEE/art/ground/TEMPLE_03_House
+modules/ToEE/art/ground/TEMPLE_04_Farm-day
+modules/ToEE/art/ground/TEMPLE_04_Farm-night
+modules/ToEE/art/ground/TEMPLE_05_Tower_Exterior
+modules/ToEE/art/ground/TEMPLE_06_Tower_Interior-day
+modules/ToEE/art/ground/TEMPLE_06_Tower_Interior-night
+modules/ToEE/art/ground/TEMPLE_07_Staircase
+modules/ToEE/art/ground/TEMPLE_08_Tunnel
+modules/ToEE/art/ground/TEMPLE_09_Level_1
+modules/ToEE/art/ground/TEMPLE_10_Level_2
+modules/ToEE/art/ground/TEMPLE_11_Level_3_Lower
+modules/ToEE/art/ground/TEMPLE_12_Level_3_Upper
+modules/ToEE/art/ground/TEMPLE_13_Level_4
+modules/ToEE/art/ground/VIGNETTE_01_Lawful_Good
+modules/ToEE/art/ground/VIGNETTE_02_Chaotic_Good
+modules/ToEE/art/ground/VIGNETTE_03_Lawful_Evil
+modules/ToEE/art/ground/VIGNETTE_04_Chaotic_Evil
+modules/ToEE/art/ground/VIGNETTE_05_True_Neutral
+modules/ToEE/art/ground/VIGNETTE_06_Neutral_Good
+modules/ToEE/art/ground/VIGNETTE_07_Neutral_Evil
+modules/ToEE/art/ground/VIGNETTE_08_Lawful_Neutral
+modules/ToEE/art/ground/VIGNETTE_09_Chaotic_Neutral
+modules/ToEE/art/ground/ground.mes
+
+# modules/ToEE/maps
+
