@@ -1638,7 +1638,6 @@ modules/ToEE.dat
 modules/ToEE/mes
 modules/ToEE/movies
 modules/ToEE/players
-modules/ToEE/rules
 modules/ToEE/townmap
 modules/ToEE/Bag_of_Holding.mes
 modules/ToEE/Co8_config.ini
@@ -2145,3 +2144,4 @@ modules/ToEE/art/ground/VIGNETTE_09_Chaotic_Neutral
 
 # modules/ToEE/maps
 
+modules/ToEE/rules/daynight.nxd
