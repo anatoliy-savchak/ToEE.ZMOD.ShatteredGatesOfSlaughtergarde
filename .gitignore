@@ -2141,7 +2141,7 @@ modules/ToEE/art/ground/VIGNETTE_06_Neutral_Good
 modules/ToEE/art/ground/VIGNETTE_07_Neutral_Evil
 modules/ToEE/art/ground/VIGNETTE_08_Lawful_Neutral
 modules/ToEE/art/ground/VIGNETTE_09_Chaotic_Neutral
-modules/ToEE/art/ground/ground.mes
+#modules/ToEE/art/ground/ground.mes
 
 # modules/ToEE/maps
 
