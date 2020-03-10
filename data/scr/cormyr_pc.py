@@ -1,5 +1,5 @@
 from toee import *
-from debug import *
+from debugg import *
 from obj_utils import *
 from toee_const import *
 from item_utils import *

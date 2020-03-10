@@ -1,6 +1,6 @@
 from templeplus.pymod import PythonModifier
 from toee import *
-from debug import *
+from debugg import *
 
 ###################################################
 

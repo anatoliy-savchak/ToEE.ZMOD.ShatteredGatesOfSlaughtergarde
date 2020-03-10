@@ -1,5 +1,5 @@
 from toee import *
-from debug import breakp
+from debugg import breakp
 from sneak_utils import *
 
 def san_start_combat(attachee, triggerer):

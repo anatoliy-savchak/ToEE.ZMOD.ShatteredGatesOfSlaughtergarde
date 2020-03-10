@@ -1,5 +1,5 @@
 from toee import *
-from debug import *
+from debugg import *
 
 def item_create_in_inventory(item_proto_num, npc):
 	assert isinstance(item_proto_num, int)

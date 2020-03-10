@@ -266,6 +266,7 @@ miles/
 # root
 _sre.pyd
 _sre_d.pyd
+anim_goal_setup.cpp
 binkw32.dll
 Circle of Eight Modpack 8.1.0 Standard.jpg
 Circle of Eight Modpack 8.1.0 Standard.tfm
@@ -2145,3 +2146,11 @@ modules/ToEE/art/ground/VIGNETTE_09_Chaotic_Neutral
 # modules/ToEE/maps
 
 modules/ToEE/rules/daynight.nxd
+modules/ToEE/Save/
+modules/ToEE/enemy_rolls.txt
+modules/ToEE/npc_rolls.txt
+modules/ToEE/overall_rolls.txt
+modules/ToEE/party_rolls.txt
+modules/ToEE/pc_rolls.txt
+hotkeys.sco
+*.mp3

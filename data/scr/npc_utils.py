@@ -1,5 +1,5 @@
 from toee import *
-from debug import breakp
+from debugg import breakp
 from toee_const import *
 
 def npc_feats_print(npc):

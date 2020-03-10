@@ -1,5 +1,5 @@
 from toee import *
-from debug import *
+from debugg import *
 
 def san_new_map( attachee, triggerer ):
 	#breakp("py06101_daemon_pc::san_new_map")

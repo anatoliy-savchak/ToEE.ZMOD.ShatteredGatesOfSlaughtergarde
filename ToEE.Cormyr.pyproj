@@ -6,7 +6,7 @@
     <ProjectGuid>e0c23be5-cc1e-4d2b-9a63-d2c7a4446903</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <ProjectTypeGuids>{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <SearchPath>C:\GitHub\anatoliy-savchak\ToEE.Python.Builtin\ToEE.Python.Builtin</SearchPath>
+    <SearchPath>data\scr.builtin</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <WebBrowserUrl>http://localhost</WebBrowserUrl>
@@ -109,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="data\scr\cormyr_pc.py" />
+    <Compile Include="data\scr\debugg.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\item_utils.py" />
     <Compile Include="data\scr\npc_utils.py" />
     <Compile Include="data\scr\obj_utils.py" />

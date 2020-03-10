@@ -1,7 +1,7 @@
 from __main__ import game
 from templeplus.pymod import PythonModifier
 from toee import *
-from debug import *
+from debugg import *
 import tpdp
 import math
 

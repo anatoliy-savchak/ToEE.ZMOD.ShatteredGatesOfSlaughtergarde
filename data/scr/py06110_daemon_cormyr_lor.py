@@ -1,5 +1,5 @@
 from toee import *
-from debug import *
+from debugg import *
 from obj_utils import *
 from toee_const import *
 from item_utils import *
@@ -77,7 +77,8 @@ def do_encounter_l1a():
 
 def create_guard_at(loc):
 	PROTO_NPC_MAN = 14831 #14000
-	newDescription = game.make_custom_name('Gatehouse Guard')
+	#newDescription = game.make_custom_name('Gatehouse Guard')
+	newDescription = 14007
 	npc = game.obj_create(PROTO_NPC_MAN, loc) # man
 
 	npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
@@ -149,7 +150,8 @@ def create_guard_at(loc):
 
 def create_shadowslain_lizardfolk_at(loc):
 	PROTO_NPC_SHADOWSLAIN_LIZARDFOLK = 14888
-	newDescription = game.make_custom_name('Shadowslain Lizardfolk')
+	#newDescription = game.make_custom_name('Shadowslain Lizardfolk')
+	newDescription = 14014
 	npc = game.obj_create(PROTO_NPC_SHADOWSLAIN_LIZARDFOLK, loc)
 
 	npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
@@ -245,7 +247,8 @@ def create_kithguard_at(loc):
 	npc = create_shadar_kai_at(loc, 0)
 	#breakp("create_kithguard_at 2")
 
-	newDescription = game.make_custom_name('Kithguard Maurran')
+	#newDescription = game.make_custom_name('Kithguard Maurran')
+	newDescription = 14018
 	npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
 	npc.obj_set_int(obj_f_description_correct, newDescription)
 
@@ -297,10 +300,3 @@ def create_kithguard_at(loc):
 	#breakp("create_kithguard_at npc_generate_hp")
 	npc_generate_hp(npc)
 	return npc
-
-def throwbomb():
-	loc = sec2loc(459, 523)
-	obj = game.obj_create(12676, loc) # Smokestick
-	obj.cast_spell(spell_fog_cloud, obj)
-	obj.destroy()
-	return

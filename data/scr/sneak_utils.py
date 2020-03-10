@@ -1,5 +1,5 @@
 from toee import *
-from debug import *
+from debugg import *
 
 def npc_is_observed(npc, target):
 	assert isinstance(npc, PyObjHandle)
