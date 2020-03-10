@@ -52,6 +52,25 @@
     <Content Include="modules\ToEE\art\ground\ground.mes" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="data\scr\cormyr_pc.py" />
+    <Compile Include="data\scr\item_utils.py" />
+    <Compile Include="data\scr\npc_utils.py" />
+    <Compile Include="data\scr\obj_utils.py" />
+    <Compile Include="data\scr\proto_armor_const.py" />
+    <Compile Include="data\scr\proto_items_const.py" />
+    <Compile Include="data\scr\proto_weapon_const.py" />
+    <Compile Include="data\scr\py06101_daemon_pc.py" />
+    <Compile Include="data\scr\py06110_daemon_cormyr_lor.py" />
+    <Compile Include="data\scr\py06111_sneak.py" />
+    <Compile Include="data\scr\sneak_utils.py" />
+    <Compile Include="data\scr\toee_const.py" />
+    <Compile Include="data\scr\toee_utils.py" />
+    <Compile Include="data\scr\tpModifiers\ai_improved_trip_aoo.py" />
+    <Compile Include="data\scr\tpModifiers\ex-Entangled.py" />
+    <Compile Include="data\scr\tpModifiers\sneak_attack_add.py" />
+    <Compile Include="data\scr\tpModifiers\sneak_attack_ex.py" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
        AfterBuild targets below. -->
