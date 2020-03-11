@@ -215,6 +215,18 @@ class PyObjHandle(object):
 		"""npc.critter_flag_unset(int[ONF_EX_FOLLOWER...]: flag) -> None"""
 		return
 
+	def object_flags_get(self):
+		"""npc.object_flags_get(int[OF_DESTROYED...]: flag) -> int"""
+		return 0
+
+	def object_flag_set(self, flag):
+		"""npc.object_flag_set(int[OF_DESTROYED...]: flag) -> None"""
+		return
+
+	def object_flag_unset(self, flag):
+		"""npc.portal_flag_unset(int[OF_DESTROYED...]: flag) -> None"""
+		return
+
 	def obj_get_int(self, field):
 		"""Get internal field int value. npc.obj_get_int(int[obj_f_*]: field) -> int"""
 		return 0
@@ -232,6 +244,18 @@ class PyObjHandle(object):
 		return 0
 
 	def portal_toggle_open(self):
+		return
+
+	def portal_flags_get(self):
+		"""npc.portal_flags_get(int[OPF_LOCKED...]: flag) -> int"""
+		return 0
+
+	def portal_flag_set(self, flag):
+		"""npc.portal_flag_set(int[OPF_LOCKED...]: flag) -> None"""
+		return
+
+	def portal_flag_unset(self, flag):
+		"""npc.portal_flag_unset(int[OPF_LOCKED...]: flag) -> None"""
 		return
 
 	def skill_level_get(self, obj2, skillId):
@@ -2779,3 +2803,47 @@ spell_wood_shape = 538
 spell_word_of_chaos = 539
 spell_word_of_recall = 540
 spell_zone_of_truth = 541
+
+OF_ANIMATED_DEAD = 536870912
+OF_CLICK_THROUGH = 2048
+OF_DESTROYED = 1
+OF_DISALLOW_WADING = 67108864
+OF_DONTDRAW = 256
+OF_DONTLIGHT = 1048576
+OF_DYNAMIC = 8192
+OF_EXTINCT = 8388608
+OF_FLAT = 4
+OF_HEIGHT_SET = 268435456
+OF_INVENTORY = 4096
+OF_INVISIBLE = 512
+OF_INVULNERABLE = 4194304
+OF_NOHEIGHT = 65536
+OF_NO_BLOCK = 1024
+OF_OFF = 2
+OF_PROVIDES_COVER = 16384
+OF_RADIUS_SET = 2147483648L
+OF_RANDOM_SIZE = 32768
+OF_SEE_THROUGH = 16
+OF_SHOOT_THROUGH = 32
+OF_SHRUNK = 128
+OF_STONED = 524288
+OF_TELEPORTED = 1073741824
+OF_TEXT = 8
+OF_TEXT_FLOATER = 2097152
+OF_TRANSLUCENT = 64
+OF_TRAP_PC = 16777216
+OF_TRAP_SPOTTED = 33554432
+OF_UNUSED_08000000 = 134217728
+OF_UNUSED_40000 = 262144
+OF_WADING = 131072
+
+OPF_ALWAYS_LOCKED = 16
+OPF_BUSTED = 128
+OPF_JAMMED = 2
+OPF_LOCKED = 1
+OPF_LOCKED_DAY = 32
+OPF_LOCKED_NIGHT = 64
+OPF_MAGICALLY_HELD = 4
+OPF_NEVER_LOCKED = 8
+OPF_NOT_STICKY = 256
+OPF_OPEN = 512

@@ -1,6 +1,6 @@
 from toee import *
 from debugg import breakp
-from toee_const import *
+from const_toee import *
 
 def sec2loc( x, y ):
 	# initialize loc to be a LONG integer
@@ -56,3 +56,11 @@ def obj_scripts_clear(obj):
 	mob_scripts[sn_unlock_attempt] = 0
 	return
 
+def obj_timed_destroy(obj, time):
+	assert isinstance(obj, PyObjHandle)
+	game.timevent_add( _destroy_on_timeevent, ( obj ), time) # 1000 = 1 second
+	return
+
+def _destroy_on_timeevent(obj):
+	obj.destroy()
+	return 1

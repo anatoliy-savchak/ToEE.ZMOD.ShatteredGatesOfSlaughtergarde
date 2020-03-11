@@ -49,6 +49,8 @@
     <Folder Include="data\scr\tpModifiers\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\dlg\00406Game_Portal.dlg" />
+    <Content Include="data\mes\description\cormyr_names.mes" />
     <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
     <Content Include="data\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
     <Content Include="data\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
@@ -112,18 +114,24 @@
     <Compile Include="data\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\item_utils.py" />
-    <Compile Include="data\scr\npc_utils.py" />
-    <Compile Include="data\scr\obj_utils.py" />
-    <Compile Include="data\scr\proto_armor_const.py" />
-    <Compile Include="data\scr\proto_items_const.py" />
-    <Compile Include="data\scr\proto_weapon_const.py" />
+    <Compile Include="data\scr\utils_item.py" />
+    <Compile Include="data\scr\utils_npc.py" />
+    <Compile Include="data\scr\utils_obj.py" />
+    <Compile Include="data\scr\const_proto_armor.py" />
+    <Compile Include="data\scr\const_proto_containers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\const_proto_items.py" />
+    <Compile Include="data\scr\const_proto_weapon.py" />
     <Compile Include="data\scr\py06101_daemon_pc.py" />
     <Compile Include="data\scr\py06110_daemon_cormyr_lor.py" />
     <Compile Include="data\scr\py06111_sneak.py" />
-    <Compile Include="data\scr\sneak_utils.py" />
-    <Compile Include="data\scr\toee_const.py" />
-    <Compile Include="data\scr\toee_utils.py" />
+    <Compile Include="data\scr\py06112_cormyr_lor_doors.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\utils_sneak.py" />
+    <Compile Include="data\scr\const_toee.py" />
+    <None Include="data\scr\utils_toee.py" />
     <Compile Include="data\scr\tpModifiers\ai_improved_trip_aoo.py" />
     <Compile Include="data\scr\tpModifiers\ex-Entangled.py" />
     <Compile Include="data\scr\tpModifiers\sneak_attack_add.py" />

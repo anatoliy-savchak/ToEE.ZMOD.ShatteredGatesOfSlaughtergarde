@@ -1,64 +1,40 @@
 from toee import *
 from debugg import *
-from obj_utils import *
-from toee_const import *
-from item_utils import *
-from npc_utils import *
-from proto_armor_const import *
-from proto_weapon_const import *
-
-# SAN hooks
-def san_use( attachee, triggerer ):
-	assert isinstance(attachee, PyObjHandle)
-	if (attachee.type == obj_t_portal):
-		return door_san_use(attachee, triggerer)
-	return RUN_DEFAULT
+from utils_obj import *
+from const_toee import *
+from utils_item import *
+from utils_npc import *
+from const_proto_armor import *
+from const_proto_weapon import *
+from const_proto_containers import *
+from math import radians
 
 # DAEMON
 def cormyr_lor_san_new_map( attachee, triggerer ):
 	#breakp("cormyr_lor_san_new_map")
 
-	do_daemon_doors()
+	do_hook_doors()
+	do_setup_chests()
 	return SKIP_DEFAULT
 
-def do_daemon_doors():
-	# clear hooks and destroy on open door
-	#breakp("do_daemon_doors")
+def do_hook_doors():
+	breakp("do_hook_doors")
 	for obj in game.obj_list_range(game.party[0].location, 200, OLC_PORTAL ):
 		assert isinstance(obj, PyObjHandle)
-		print("door " + str(obj.proto) + " " + obj.description)
 		obj_scripts_clear(obj)
-		#st = obj.stat_level_get(stat_hp_max) 
-		st = obj.obj_get_int(obj_f_hp_pts)
-		print("door stat_hp_max: {}".format(st))
-		#if (st == 55):
-		#	breakp("stat")
-		obj.scripts[sn_use] = 6110
-		#obj.scripts[sn_dialog] = 406 #experimenting, will use in the future
+		obj.scripts[sn_use] = 6112
 	return SKIP_DEFAULT
 
 # DOOR
-def door_san_use( attachee, triggerer ):
+def door_san_use( attachee, triggerer, already_used, marker):
+	if (already_used): return 1 # should_destroy
+
 	assert isinstance(attachee, PyObjHandle)
-	print("obj_f_description {}".format(obj_f_description_correct))
-	#breakp("cormyr door san_use")
+	assert isinstance(triggerer, PyObjHandle)
 
-	if (attachee.scripts[sn_dialog] != 0):
-		game.party[0].begin_dialog(attachee, 1)
-		return SKIP_DEFAULT
-
-	st = attachee.obj_get_int(obj_f_hp_pts)
-	obj_scripts_clear(attachee)
-	# open, otherwise unfogged glitch
-	attachee.portal_toggle_open()
-	# destroy
-	attachee.destroy()
-
-	#st = attachee.stat_level_get(stat_hp_max) 
-	print("door stat_hp_max: {}".format(st))
-	if (st == 55): #L1Door1
+	if (marker == 11): #L1Door1
 		do_encounter_l1()
-	return SKIP_DEFAULT
+	return 1 # should_destroy
 
 def do_encounter_l1():
 	create_guard_at(sec2loc(459, 523))
@@ -300,3 +276,20 @@ def create_kithguard_at(loc):
 	#breakp("create_kithguard_at npc_generate_hp")
 	npc_generate_hp(npc)
 	return npc
+
+def do_setup_chests():
+	obj = game.obj_create(PROTO_CONTAINER_CHEST_WOODEN_MEDIUM, sec2loc(453, 513))
+	obj.rotation = radians(135)
+	obj_scripts_clear(obj)
+	obj.scripts[sn_use] = 6112
+	return
+
+def chest_san_use( attachee, triggerer, already_used, marker):
+	if (already_used): return RUN_DEFAULT
+
+	assert isinstance(attachee, PyObjHandle)
+	assert isinstance(triggerer, PyObjHandle)
+
+	#if (marker == 11): #L1Door1
+	do_encounter_l1a()
+	return SKIP_DEFAULT

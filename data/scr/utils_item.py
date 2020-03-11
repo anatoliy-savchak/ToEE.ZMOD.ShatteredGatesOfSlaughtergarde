@@ -47,3 +47,17 @@ def item_unwield_all(npc):
 	for i in range(item_wear_helmet, item_wear_lockpicks):
 		npc.item_worn_unwield(i, 0)
 	return
+
+def item_do_use_getset(attachee, new_used = None):
+	assert isinstance(attachee, PyObjHandle)
+	result = attachee.object_flags_get() & OF_UNUSED_40000 != 0
+	if (new_used is None): return result
+	if (new_used):
+		attachee.object_flag_set(OF_UNUSED_40000)
+	else:
+		attachee.object_flag_unset(OF_UNUSED_40000)
+	return result
+
+def item_get_marker(attachee):
+	assert isinstance(attachee, PyObjHandle)
+	return attachee.obj_get_int(obj_f_hp_pts)

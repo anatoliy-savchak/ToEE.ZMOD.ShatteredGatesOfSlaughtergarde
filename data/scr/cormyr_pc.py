@@ -1,12 +1,12 @@
 from toee import *
 from debugg import *
 from obj_utils import *
-from toee_const import *
+from const_toee import *
 from item_utils import *
 from npc_utils import *
-from proto_armor_const import *
-from proto_weapon_const import *
-from proto_items_const import *
+from const_proto_armor import *
+from const_proto_weapon import *
+from const_proto_items import *
 
 def cmrlv5():
 	kostyantyn = game.party[0]

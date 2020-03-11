@@ -1,6 +1,6 @@
 from toee import *
 from debugg import breakp
-from toee_const import *
+from const_toee import *
 
 def npc_feats_print(npc):
 	assert isinstance(npc, PyObjHandle)

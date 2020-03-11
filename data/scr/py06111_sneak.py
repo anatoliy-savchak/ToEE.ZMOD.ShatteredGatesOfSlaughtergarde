@@ -1,6 +1,6 @@
 from toee import *
 from debugg import breakp
-from sneak_utils import *
+from utils_sneak import *
 
 def san_start_combat(attachee, triggerer):
 	#breakp("sneak san_start_combat")
