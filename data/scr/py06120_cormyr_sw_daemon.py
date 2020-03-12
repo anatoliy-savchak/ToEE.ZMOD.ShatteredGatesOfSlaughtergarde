@@ -5,8 +5,12 @@ from const_toee import *
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
-	do_hook_doors()
 	return SKIP_DEFAULT
+
+
+def cormyr_sw_init():
+	do_hook_doors()
+	return
 
 def do_hook_doors():
 	#breakp("do_hook_doors")
