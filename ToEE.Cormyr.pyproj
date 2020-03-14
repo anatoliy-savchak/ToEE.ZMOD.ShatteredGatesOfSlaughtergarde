@@ -47,6 +47,8 @@
     <Folder Include="data\mes\long_descr\" />
     <Folder Include="data\rules\protos\" />
     <Folder Include="data\scr\tpModifiers\" />
+    <Folder Include="overrides\" />
+    <Folder Include="overrides\scr\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\dlg\00406Game_Portal.dlg" />
@@ -110,8 +112,17 @@
     <Content Include="modules\ToEE\rules\MapList.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="data\scr\behavior.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\cormyr_pc.py" />
     <Compile Include="data\scr\debugg.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\py06120_cormyr_sw_daemon.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\py06121_marauder.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\utils_item.py" />
@@ -131,6 +142,11 @@
     </Compile>
     <Compile Include="data\scr\utils_sneak.py" />
     <Compile Include="data\scr\const_toee.py" />
+    <Compile Include="data\scr\utils_storage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\_include.py" />
+    <Compile Include="overrides\scr\_co8init.py" />
     <None Include="data\scr\utils_toee.py" />
     <Compile Include="data\scr\tpModifiers\ai_improved_trip_aoo.py" />
     <Compile Include="data\scr\tpModifiers\ex-Entangled.py" />

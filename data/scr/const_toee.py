@@ -46,3 +46,10 @@ san_all = (sn_examine, sn_use, sn_destroy, sn_unlock, sn_get, sn_drop, sn_throw,
 
 obj_f_description_correct = 25
 gp = 100
+
+White = 0
+Red = 1
+Green = 2
+Blue = 3
+Yellow = 4
+LightBlue = 5

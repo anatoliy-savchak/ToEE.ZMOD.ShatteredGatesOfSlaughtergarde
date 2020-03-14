@@ -23,6 +23,7 @@ def do_hook_doors():
 		assert isinstance(obj, PyObjHandle)
 		obj_scripts_clear(obj)
 		obj.scripts[sn_use] = 6112
+		obj.scripts[sn_trap] = 6110 # daemon ref
 	return SKIP_DEFAULT
 
 # DOOR

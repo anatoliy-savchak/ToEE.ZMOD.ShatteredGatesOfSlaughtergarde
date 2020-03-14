@@ -187,6 +187,18 @@ class PyObjHandle(object):
 		npc.feat_add(string[feat_enums]: featCode) -> int"""
 		return 1
 
+	def float_line(self, lineId, pc):
+		"""npc.float_line(int: lineId, PyObjHandle: pc) -> None"""
+		return
+	
+	def float_mesfile_line(self, mesFilename, lineId, colorId):
+		"""npc.float_mesfile_line(str: mesFilename, int: lineId, int: colorId) -> None"""
+		return
+	
+	def float_text_line(self, line, colorId):
+		"""npc.float_text_line(str: line, int: colorId) -> None"""
+		return
+
 	def has_los(self, target):
 		"""npc.faction_add(PyObjHandle: target) -> int"""
 		return 1
@@ -305,6 +317,21 @@ class game(object):
 	def getproto(protoId):
 		""" Get proto PyObjHandle based on protoId. game.getproto(int: protoId) -> PyObjHandle"""
 		return PyObjHandle()
+
+	@staticmethod
+	def combat_is_active():
+		""" Get 1 if combat is active. game.combat_is_active() -> int"""
+		return 0
+	
+	@staticmethod
+	def create_history_freeform(histText):
+		""" game.create_history_freeform(str: histText) -> None"""
+		return 0
+	
+	@staticmethod
+	def obj_list_range(location, radius, flags):
+		""" obj_list_range(long: location, int[feet]: radius, int[OLC_NONE]: flags) -> (PyObjHandle(), PyObjHandle())"""
+		return (PyObjHandle(), PyObjHandle())
 	
 
 def anyone(targetObjs, methodName, methodArg):
@@ -2847,3 +2874,27 @@ OPF_MAGICALLY_HELD = 4
 OPF_NEVER_LOCKED = 8
 OPF_NOT_STICKY = 256
 OPF_OPEN = 512
+
+OLC_ALL = 262142
+OLC_AMMO = 64
+OLC_ARMOR = 128
+OLC_BAG = 4096
+OLC_CONTAINER = 4
+OLC_CRITTERS = 98304
+OLC_FOOD = 512
+OLC_GENERIC = 16384
+OLC_IMMOBILE = 131082
+OLC_ITEMS = 32736
+OLC_KEY = 2048
+OLC_MOBILE = 131060
+OLC_MONEY = 256
+OLC_NONE = 0
+OLC_NPC = 65536
+OLC_PC = 32768
+OLC_PORTAL = 2
+OLC_PROJECTILE = 16
+OLC_SCENERY = 8
+OLC_SCROLL = 1024
+OLC_TRAP = 131072
+OLC_WEAPON = 32
+OLC_WRITTEN = 8192
