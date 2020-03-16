@@ -22,6 +22,7 @@ def do_hook_doors():
 		assert isinstance(obj, PyObjHandle)
 		obj_scripts_clear(obj)
 		obj.scripts[sn_use] = 6112
+		obj.scripts[sn_dialog] = 6112
 		obj.scripts[sn_trap] = 6120 # daemon ref
 		objStorage = obj_storage(obj)
 		objStorage.daemon = 6120
@@ -39,17 +40,31 @@ def door_san_use( attachee, triggerer, already_used, marker):
 	assert isinstance(triggerer, PyObjHandle)
 
 	if (marker == 31): 
-		do_encounter_w3a()
+		do_encounter_w3()
+	if ((marker == 61) or (marker == 62)): 
+		do_encounter_w6()
 	return 1 # should_destroy
 
-def do_encounter_w3a():
-	leader = create_shadowscale_marauder_at(sec2loc(513, 488))
+def do_encounter_w3():
+	leader = create_shadowscale_marauder_at(sec2loc(513, 489))
 	leader.critter_flag_set(OCF_UNRESSURECTABLE) # say Leader
 	leader.scripts[sn_heartbeat] = 6121
 	leader.scripts[sn_enter_combat] = 6121
 	leader.scripts[sn_dialog] = 6120
 
-	create_shadowscale_marauder_at(sec2loc(510, 484))
+	create_shadowscale_marauder_at(sec2loc(508, 483))
+	create_shadowscale_marauder_at(sec2loc(511, 493))
+	return
+
+def do_encounter_w6():
+	leader = create_shadowscale_marauder_at(sec2loc(458, 455))
+	leader.critter_flag_set(OCF_UNRESSURECTABLE) # say Leader
+	leader.scripts[sn_heartbeat] = 6121
+	leader.scripts[sn_enter_combat] = 6121
+	leader.scripts[sn_dialog] = 6120
+
+	create_shadowscale_marauder_at(sec2loc(463, 462))
+	create_shadowscale_marauder_at(sec2loc(466, 458))
 	return
 
 def create_shadowscale_marauder_at(loc):

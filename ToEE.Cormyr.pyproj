@@ -52,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\dlg\00406Game_Portal.dlg" />
+    <Content Include="data\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="data\mes\description\cormyr_names.mes" />
     <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
     <Content Include="data\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
+    <Content Include="data\mes\description\obj_t_generic_12707_knowstone_fireball.mes" />
     <Content Include="data\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
     <Content Include="data\mes\description\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
     <Content Include="data\mes\description\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
@@ -87,6 +89,7 @@
     <Content Include="data\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
     <Content Include="data\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
     <Content Include="data\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
+    <Content Include="data\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14093_bugbear_mm1.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.bk0" />
     <Content Include="data\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.tab" />
@@ -105,6 +108,8 @@
     <Content Include="data\rules\protos\obj_t_npc_14773_Monstrous_Spider_Small.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14831_man.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14832_shadar_kai.tab" />
+    <Content Include="data\rules\protos\obj_t_npc_14833_shadowscale_marauder.tab" />
+    <Content Include="data\rules\protos\obj_t_npc_14834_stirge.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14888_lizard_undead.tab" />
     <Content Include="data\rules\protos\obj_t_weapon_4708_greataxe_plus1.tab" />
     <Content Include="data\rules\protos\obj_t_weapon_4709_spiked_chain_plus_1.tab" />
@@ -119,12 +124,19 @@
     <Compile Include="data\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\py05000_knowstone.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\py06120_cormyr_sw_daemon.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\py06121_marauder.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\tpModifiers\base_movement.py" />
     <Compile Include="data\scr\utils_item.py" />
     <Compile Include="data\scr\utils_npc.py" />
     <Compile Include="data\scr\utils_obj.py" />

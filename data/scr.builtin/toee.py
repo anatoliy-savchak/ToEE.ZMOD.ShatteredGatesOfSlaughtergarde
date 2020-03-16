@@ -170,6 +170,22 @@ class PyObjHandle(object):
 		"""npc.inventory_item(int: index) -> PyObjHandle"""
 		return PyObjHandle()
 
+	def is_spell_known(self, spellEnum):
+		"""npc.is_spell_known(self, spellEnum) -> int"""
+		return 1
+
+	def item_flags_get(self):
+		"""item.item_flags_get() -> OIF_IDENTIFIED"""
+		return
+
+	def item_flag_set(self, flag):
+		"""item.item_flag_set(int[OIF_IDENTIFIED...]: flag) -> None"""
+		return
+
+	def item_flag_unset(self, flag):
+		"""item.item_flag_unset(int[OIF_IDENTIFIED...]: flag) -> None"""
+		return
+
 	def item_wield(self, item, equipSlot):
 		"""npc.item_wield(item: PyObjHandle, int[item_wear_helmet...]: index) -> None"""
 		return 
@@ -280,6 +296,10 @@ class PyObjHandle(object):
 
 	def skill_ranks_set(self, skillId, skillRanks):
 		"""Gets specific skill rank. npc.skill_ranks_set(int[skill_appraise...]: skillId, int: skillRanks) -> None"""
+		return
+
+	def spell_known_add(self, spellIdx, spellClassCode, slotLevel):
+		"""npc.spell_known_add(int[skill_appraise...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
 		return
 
 	def stat_base_set(self, stat, value):
@@ -2898,3 +2918,31 @@ OLC_SCROLL = 1024
 OLC_TRAP = 131072
 OLC_WEAPON = 32
 OLC_WRITTEN = 8192
+
+OIF_CAN_USE_BOX = 128
+OIF_DRAW_WHEN_PARENTED = 4194304
+OIF_EXPIRES_AFTER_USE = 8388608
+OIF_IDENTIFIED = 1
+OIF_IS_MAGICAL = 4
+OIF_LIGHT_LARGE = 2048
+OIF_LIGHT_MEDIUM = 1024
+OIF_LIGHT_SMALL = 512
+OIF_LIGHT_XLARGE = 4096
+OIF_MT_TRIGGERED = 16384
+OIF_NEEDS_SPELL = 64
+OIF_NEEDS_TARGET = 256
+OIF_NO_DECAY = 131072
+OIF_NO_DISPLAY = 16
+OIF_NO_DROP = 32
+OIF_NO_LOOT = 16777216
+OIF_NO_NPC_PICKUP = 524288
+OIF_NO_PICKPOCKET = 8
+OIF_NO_RANGED_USE = 1048576
+OIF_NO_TRANSFER = 67108864
+OIF_PERSISTENT = 8192
+OIF_STOLEN = 32768
+OIF_UBER = 262144
+OIF_USES_WAND_ANIM = 33554432
+OIF_USE_IS_THROW = 65536
+OIF_VALID_AI_ACTION = 2097152
+OIF_WONT_SELL = 2

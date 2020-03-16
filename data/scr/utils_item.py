@@ -61,3 +61,7 @@ def item_do_use_getset(attachee, new_used = None):
 def item_get_marker(attachee):
 	assert isinstance(attachee, PyObjHandle)
 	return attachee.obj_get_int(obj_f_hp_pts)
+
+def item_get_dialog_hint_id(attachee):
+	assert isinstance(attachee, PyObjHandle)
+	return attachee.obj_get_int(obj_f_hp_damage)

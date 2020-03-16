@@ -92,3 +92,28 @@ def npc_get(attachee,flagno):
 	else:
 		abc = pow(2,exponent)
 	return attachee.obj_get_int(obj_f_npc_pad_i_4) & abc != 0
+
+def readMes(mesfile):
+	""" Read the mesfile into a dictionary indexed by line number. """
+	mesFile = file(mesfile,'r')
+	mesDict = {}
+	for line in mesFile.readlines():
+		# Remove whitespace.
+		line = line.strip()
+		# Ignore empty lines.
+		if not line:
+			continue
+		# Ignore comment lines.
+		if line[0] != '{':
+			continue
+		# Decode the line.  Just standard python string processing.
+		line = line.split('}')[:-1]
+		for i in range(len(line)):
+			line[i] = line[i].strip()
+			line[i] = line[i][1:]
+		contents = line[1:]
+		# Insert the line into the mesDict.
+		mesDict[int(line[0])] = contents
+	mesFile.close()
+	# print 'File read'
+	return mesDict
