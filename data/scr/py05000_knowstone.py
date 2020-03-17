@@ -31,27 +31,27 @@ def san_insert_item(attachee, triggerer):
 		for idx in range(0, 19):
 			spell = attachee.obj_get_spell(obj_f_item_spell_idx, idx)
 			if (spell.spell_enum == 0): break
-			print(spell)
+			#print(spell)
 			spellName = spell_get_name(spell)
-			print(spellName)
-			print(spell.spell_enum)
-			breakp("san_insert_item 0")
+			#print(spellName)
+			#print(spell.spell_enum)
+			#breakp("san_insert_item 0")
 			spi = char_editor.KnownSpellInfo()
 			spi.spell_enum = spell.spell_enum
 			spi.spell_status = 1
 			spi.spell_class = spell.spell_class
 			spi.spell_level = spell.spell_level
 			caster_class = spi.get_casting_class()
-			print(spi)
-			print(caster_class)
+			#print(spi)
+			#print(caster_class)
 			#caster_stat = caster_class2caster_stat_level(caster_class)
 			#print(caster_stat)
-			breakp("san_insert_item 1")
+			#breakp("san_insert_item 1")
 			current_level = triggerer.stat_level_get(caster_class)
 			need_level_caster = get_caster_class_level(caster_class, spell.spell_level)
-			print("triggerer.stat_level_get(caster_class: {}): {}".format(caster_class, current_level))
-			print("need level: {}".format(need_level_caster))
-			breakp("san_insert_item 2")
+			#print("triggerer.stat_level_get(caster_class: {}): {}".format(caster_class, current_level))
+			#print("need level: {}".format(need_level_caster))
+			#breakp("san_insert_item 2")
 			if (spell.spell_level > current_level):
 				lastDenyMessage = "Spell {} cannot be added, as target requires spell level {} of {} but has {}!".format(spellName, need_level_caster, caster_class, current_level)
 				print(lastDenyMessage)

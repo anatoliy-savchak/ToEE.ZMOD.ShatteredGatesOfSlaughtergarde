@@ -260,6 +260,7 @@ class PyObjHandle(object):
 		return 0
 
 	def obj_set_int(self, field, value):
+		"""Set internal field int value. npc.obj_set_int(int[obj_f_*]: field, int: value) -> None"""
 		return
 
 

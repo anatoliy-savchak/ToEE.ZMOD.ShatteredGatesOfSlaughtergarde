@@ -64,3 +64,12 @@ def obj_timed_destroy(obj, time):
 def _destroy_on_timeevent(obj):
 	obj.destroy()
 	return 1
+
+def obj_timed_off(obj, time):
+	assert isinstance(obj, PyObjHandle)
+	game.timevent_add( _off_on_timeevent, ( obj ), time) # 1000 = 1 second
+	return
+
+def _off_on_timeevent(obj):
+	obj.object_flag_set(OF_OFF)
+	return 1

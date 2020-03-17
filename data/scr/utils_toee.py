@@ -117,3 +117,8 @@ def readMes(mesfile):
 	mesFile.close()
 	# print 'File read'
 	return mesDict
+
+def make_custom_name(new_name):
+	if (hasattr(game, 'make_custom_name') and callable(getattr(game, 'make_custom_name'))):
+		return game.make_custom_name(new_name)
+	return -1
