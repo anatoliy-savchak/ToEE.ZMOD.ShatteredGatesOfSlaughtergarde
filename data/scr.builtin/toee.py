@@ -138,7 +138,7 @@ class PyObjHandle(object):
 		"""npc.concealed_set(int: concealed) -> None"""
 		return
 
-	def cast_spell(spellEnum, targetObj):
+	def cast_spell(self, spellEnum, targetObj):
 		"""npc.cast_spell(int: spellEnum, PyObjHandle: targetObj) -> None"""
 		#npc.cast_spell(int[spell_aid...]: spellEnum|, PyObjHandle: targetObj) -> None
 		return
@@ -153,6 +153,15 @@ class PyObjHandle(object):
 		key --- if int then d20Query
 		"""
 		return
+
+	def d20_query_with_data(self, key, data1, data2):
+		"""npc.d20_query_with_data(int[EK_Q_Critter_Has_Condition]: key, int: data1, int: data2) -> int
+		key --- like EK_Q_Critter_Has_Condition
+		data1 --- tpdp.hash("Monster Fast Healing")
+		data2 -- usually 0
+		"""
+		return
+	
 
 	def destroy(self):
 		"""Destroys the object"""

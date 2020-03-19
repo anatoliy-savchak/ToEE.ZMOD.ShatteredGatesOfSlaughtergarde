@@ -2,6 +2,7 @@ from toee import *
 from math import sqrt, atan2
 import _include
 from co8Util.PersistentData import *
+import os
 
 #########################################
 # Persistent flags/vars/strs		#
@@ -122,3 +123,31 @@ def make_custom_name(new_name):
 	if (hasattr(game, 'make_custom_name') and callable(getattr(game, 'make_custom_name'))):
 		return game.make_custom_name(new_name)
 	return -1
+
+def readMesLine(mesfile, lineId):
+	result = ""
+	mesFile = file(mesfile,'r')
+	for line in mesFile.readlines():
+		# Remove whitespace.
+		line = line.strip()
+		# Ignore empty lines.
+		if not line:
+			continue
+		if line[0] != '{':
+			continue
+		line = line.split('}')[:-1]
+		if (len(line) < 2): continue
+		s = unicode(line[0][1:])
+		if (not s.isnumeric()): continue
+		if (int(line[0][1:]) == lineId): 
+			result = line[1][1:]
+			break
+	mesFile.close()
+	return result
+
+def find_dialog_file_name(scriptId):
+	files = os.listdir("data\\dlg")
+	starts = "{:0>5d}".format(scriptId)
+	for fileName in files:
+		if (starts in fileName): return fileName
+	return None

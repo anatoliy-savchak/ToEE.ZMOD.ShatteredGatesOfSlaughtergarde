@@ -1,6 +1,7 @@
 from toee import *
 from debugg import breakp
 from const_toee import *
+import utils_toee
 
 def sec2loc( x, y ):
 	# initialize loc to be a LONG integer
@@ -72,4 +73,37 @@ def obj_timed_off(obj, time):
 
 def _off_on_timeevent(obj):
 	obj.object_flag_set(OF_OFF)
+	return 1
+
+def obj_float_line_dialog(obj, method, lineId, npc):
+	assert isinstance(obj, PyObjHandle)
+	scriptId = obj.scripts[sn_dialog]
+	if (scriptId <=0): return 0
+	if (method == 0): 
+		attachee.float_line(lineId, npc)
+		return 1
+	#print("obj_float_line_dialog({}, {}, {})".format(obj, method, lineId))
+	#breakp("obj_float_line_dialog")
+	fileName = utils_toee.find_dialog_file_name(scriptId)
+	#print(fileName)
+	#breakp("obj_float_line_dialog 2")
+	if (fileName is None): return 0
+	#obj.float_mesfile_line(fileName, lineId, White)
+	#if (1==1): return 1
+	fileName = "data\\dlg\\" + fileName
+	line = utils_toee.readMesLine(fileName, lineId)
+	lineshort = ""
+	if (method == 3):
+		lines = line.split('.')
+		lineshort = lines[0]
+		if (len(lines) > 1): lineshort = lineshort + ".."
+	else: lineshort = line
+
+	#print("utils_toee.readMesLine = {}".format(line))
+	#breakp("obj_float_line_dialog 3")
+	if ((line is None) or (line == "")): return 0
+	#breakp("obj_float_line_dialog 4")
+	obj.float_text_line(lineshort, White)
+	line = line + "\n\n"
+	game.create_history_freeform(line)
 	return 1

@@ -18,6 +18,7 @@ def san_heartbeat( attachee, triggerer ):
 	foundTuple = game.obj_list_range(attachee.location, 10, OLC_PC)
 	if (len(foundTuple) > 0):
 		#breakp("py06121_marauder san_heartbeat 5")
+		attachee.scripts[sn_heartbeat] = 0
 		attachee.npc_flag_set(ONF_KOS)
 		attachee.unconceal()
 		baddies = game.obj_list_range(attachee.location, 40, OLC_NPC)

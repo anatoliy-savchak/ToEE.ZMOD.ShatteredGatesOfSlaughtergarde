@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\dlg\00406Game_Portal.dlg" />
+    <Content Include="data\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="data\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="data\mes\description\cormyr_names.mes" />
     <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
@@ -71,6 +72,7 @@
     <Content Include="data\mes\description\obj_t_npc_14771_monstrous_scorpion_large.mes" />
     <Content Include="data\mes\description\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
     <Content Include="data\mes\description\obj_t_npc_14773_Monstrous_Spider_Small.mes" />
+    <Content Include="data\mes\description\obj_t_npc_14830_prompter.mes" />
     <Content Include="data\mes\description\obj_t_npc_14832_shadar_kai.mes" />
     <Content Include="data\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
     <Content Include="data\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
@@ -106,6 +108,7 @@
     <Content Include="data\rules\protos\obj_t_npc_14771_monstrous_scorpion_large.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14772_monstrous_scorpion_huge.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14773_Monstrous_Spider_Small.tab" />
+    <Content Include="data\rules\protos\obj_t_npc_14830_prompter.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14831_man.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14832_shadar_kai.tab" />
     <Content Include="data\rules\protos\obj_t_npc_14833_shadowscale_marauder.tab" />
@@ -131,6 +134,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\py06121_marauder.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\py06122_cormyr_prompter.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">

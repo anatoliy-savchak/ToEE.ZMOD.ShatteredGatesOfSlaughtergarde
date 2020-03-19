@@ -1,6 +1,7 @@
 from toee import *
 from debugg import breakp
 from const_toee import *
+import tpdp
 
 def npc_feats_print(npc):
 	assert isinstance(npc, PyObjHandle)
@@ -24,3 +25,26 @@ def npc_money_set(npc, copper):
 	diff = copper - diff
 	npc.money_adj(diff)
 	return diff
+
+def npc_stat_generate(npc):
+	assert isinstance(npc, PyObjHandle)
+	result = ""
+	breakp("npc_stat_generate")
+
+	hp = npc.stat_level_get(stat_hp_max)
+	hd = npc.hit_dice_num
+	result = "hp {} ({} HD)".format(hp, hd)
+
+	q = EK_Q_Critter_Has_Condition - EK_Q_Helpless
+	has_fast_healing = npc.d20_query_has_condition("Monster Fast Healing")
+	if (has_fast_healing):
+		result = result + " fast healing"
+	result = result + "\p"
+
+	gender = npc.stat_level_get(stat_gender)
+	if (gender == 0):
+		result = result + "Male"
+	elif (gender == 1):
+		result = result + "Female"
+
+	return result

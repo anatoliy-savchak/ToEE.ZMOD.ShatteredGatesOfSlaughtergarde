@@ -6,6 +6,7 @@ from utils_item import *
 from utils_storage import *
 #from behavior import Behavior
 import utils_toee
+import utils_npc
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -36,6 +37,8 @@ def door_san_use( attachee, triggerer, already_used, marker):
 		do_encounter_w3()
 	if ((marker == 61) or (marker == 62)): 
 		do_encounter_w6()
+	if (marker == 32): 
+		do_encounter_w5()
 	return 1 # should_destroy
 
 def do_encounter_w3():
@@ -83,8 +86,9 @@ def create_shadowscale_marauder_at(loc):
 	return npc
 
 def do_place_promters():
+	#return
 	create_promter_at(sec2loc(517, 468), 6120, 21, 10, "Warren Entrance") # W1. WARREN ENTRANCE
-	create_promter_at(sec2loc(493, 458), 6120, 22, 60, "Dark Lake") # W2. DARK LAKE
+	create_promter_at(sec2loc(493, 458), 6120, 22, 30, "Dark Lake") # W2. DARK LAKE
 	create_promter_at(sec2loc(510, 489), 6120, 23, 20, "West Guard Chamber") # W3. WEST GUARD CHAMBER
 	create_promter_at(sec2loc(506, 472), 6120, 24, 10, "Empty Den") # W4A. EMPTY DEN
 	create_promter_at(sec2loc(489, 472), 6120, 24, 10, "Empty Den") # W4B. EMPTY DEN
@@ -100,18 +104,48 @@ def do_place_promters():
 
 def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, new_name):
 	PROTO_NPC_PROMPTER = 14830
+	#PROTO_NPC_PROMPTER = 14833
 	obj = game.obj_create(PROTO_NPC_PROMPTER, loc)
 	obj_scripts_clear(obj)
 	item_clear_all(obj)
 	obj.scripts[sn_dialog] = dialog_script_id
 	obj.scripts[sn_heartbeat] = 6122
+	obj.npc_flag_unset(ONF_KOS)
+	obj.obj_set_int(obj_f_hp_damage, radar_radius_ft)
 	line_id = line_id + 100
 	obj.obj_set_int(obj_f_hp_pts, line_id)
-	obj.obj_set_int(obj_f_hp_damage, radar_radius_ft)
-	#obj.object_flag_set(OF_DONTDRAW)
-	if (new_name != ""):
+	if (new_name):
 		new_name_id = utils_toee.make_custom_name(new_name)
 		if (new_name_id > 0):
 			obj.obj_set_int(obj_f_critter_description_unknown, new_name_id)
 			obj.obj_set_int(obj_f_description_correct, new_name_id)
 	return obj
+
+def do_encounter_w5():
+	return
+	create_banelar_at(sec2loc(489, 494))
+	return
+
+def create_banelar_at(loc):
+	PROTO_NPC_BANELAR = 14835
+	npc = game.obj_create(PROTO_NPC_BANELAR, loc)
+
+	#npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
+	#npc.obj_set_int(obj_f_description_correct, newDescription)
+
+	obj_scripts_clear(npc)
+	npc.scripts[sn_enter_combat] = 6123
+	npc.scripts[sn_start_combat] = 6123
+
+	item_clear_all(npc)
+
+	PROTO_RING_OF_PROTECTION_1 = 6082
+	item_create_in_inventory(PROTO_RING_OF_PROTECTION_1, npc)
+
+	npc.item_wield_best_all()
+	npc.faction_add(1)
+	#npc.critter_flag_set(OCF_MOVING_SILENTLY)
+	#npc.npc_flag_unset(ONF_KOS)
+	#npc.concealed_set(1)
+	#print(utils_npc.npc_stat_generate(npc))
+	return npc

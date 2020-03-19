@@ -15,7 +15,7 @@ def san_use( attachee, triggerer ):
 			already_used = utils_item.item_do_use_getset(attachee, 1)
 			marker = utils_item.item_get_marker(attachee)
 			dialog_hint_id = utils_item.item_get_dialog_hint_id(attachee)
-			if (dialog_hint_id > 0):
+			if (dialog_hint_id > 0 and attachee.scripts[sn_dialog] > 0):
 				print("dialog_hint_id: {}".format(dialog_hint_id))
 				attachee.float_line(dialog_hint_id, triggerer)# it will crash, bug in toee.exe, in 1014C8F0                 UiDialogBegin
 			should_destroy = 0
