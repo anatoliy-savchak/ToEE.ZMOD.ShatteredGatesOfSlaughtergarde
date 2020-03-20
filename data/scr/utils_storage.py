@@ -4,6 +4,7 @@ import os
 import sys
 import json
 from json import JSONEncoder
+import utils_obj
 
 def obj_storage(obj):
 	assert isinstance(obj, PyObjHandle)
@@ -70,10 +71,8 @@ class Storage(object):
 	def getObjectStorage(obj):
 		assert isinstance(obj, PyObjHandle)
 		#breakp("obj.__getstate__({})".format(obj))
-		name = obj.id
-		#name = obj.__getstate__()
-		#name = getIDfromObjHandle(obj)
-		#print(name)
+		name = utils_obj.obj_get_id(obj)
+		print(name)
 		#breakp("getObjectStorage({})".format(obj))
 		ss = Storage()
 		oo = ss.objs

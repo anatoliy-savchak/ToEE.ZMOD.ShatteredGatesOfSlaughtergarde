@@ -243,6 +243,12 @@ class PyObjHandle(object):
 	def money_adj(self, copper):
 		"""Add npc coppers, converted to money gp/10 etc. npc.money_adj(int: copper) -> None"""
 		return
+
+	def move(self, new_loc, off_x, off_y):
+		return
+	
+	def move(self, new_loc_x, new_loc_y, off_x, off_y):
+		return
 	
 	def npc_flag_set(self, flag):
 		"""npc.npc_flag_set(int[ONF_EX_FOLLOWER...]: flag) -> None"""
@@ -296,6 +302,9 @@ class PyObjHandle(object):
 		"""npc.portal_flag_unset(int[OPF_LOCKED...]: flag) -> None"""
 		return
 
+	def refresh_turn(self):
+		return
+
 	def skill_level_get(self, obj2, skillId):
 		"""Gets specific skill rank. npc.skill_level_get(PyObjHandle: obj2, int[skill_appraise...]: skillId) -> int"""
 		return
@@ -309,7 +318,14 @@ class PyObjHandle(object):
 		return
 
 	def spell_known_add(self, spellIdx, spellClassCode, slotLevel):
-		"""npc.spell_known_add(int[skill_appraise...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
+		"""npc.spell_known_add(int[...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
+		return
+
+	def spell_memorized_add(self, spellIdx, spellClassCode, slotLevel):
+		"""npc.spell_memorized_add(int[skill_appraise...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
+		return
+	
+	def spells_pending_to_memorized():
 		return
 
 	def stat_base_set(self, stat, value):
@@ -319,6 +335,10 @@ class PyObjHandle(object):
 	def stat_level_get(self, stat, statArg):
 		"""get specific stat. npc.stat_level_get(int[stat_strength-stat_psi_points_cur]: stat , int: statArg = None) -> int"""
 		return 0
+
+	def turn_towards(self, target):
+		"""npc.turn_towards(PyObjHandle: target) -> None"""
+		return
 
 	def unconceal(self):
 		"""npc.unconceal() -> int"""

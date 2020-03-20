@@ -3,10 +3,12 @@ from debugg import *
 from utils_obj import *
 from const_toee import *
 from utils_item import *
-from utils_storage import *
+import utils_storage
 #from behavior import Behavior
 import utils_toee
 import utils_npc
+import py06123_banelar
+#import debug
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -122,8 +124,14 @@ def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, new_name)
 	return obj
 
 def do_encounter_w5():
-	return
-	create_banelar_at(sec2loc(489, 494))
+	#loc = sec2loc(489, 495)
+	loc = sec2loc(485, 498)
+	#print(loc)
+	#loc = 2121713844713L
+	#print(loc)
+	print("create_banelar_at")
+	npc = create_banelar_at(loc)
+	#npc.move(2121713844713L, 0, 0)
 	return
 
 def create_banelar_at(loc):
@@ -136,16 +144,32 @@ def create_banelar_at(loc):
 	obj_scripts_clear(npc)
 	npc.scripts[sn_enter_combat] = 6123
 	npc.scripts[sn_start_combat] = 6123
+	npc.scripts[sn_spell_cast] = 6123
+	npc.scripts[sn_heartbeat] = 6123
+	#npc.scripts[sn_first_heartbeat] = 6123 mobs dont have this
+	
+	
 
 	item_clear_all(npc)
 
 	PROTO_RING_OF_PROTECTION_1 = 6082
 	item_create_in_inventory(PROTO_RING_OF_PROTECTION_1, npc)
 
+	#npc.make_class(stat_level_wizard, 6)
+	npc.condition_add_with_args("Caster_Level_Add", 6, 0)
+	npc.condition_add_with_args("Spell_Quicken_All", 0, 0)
 	npc.item_wield_best_all()
 	npc.faction_add(1)
+	#storage = utils_storage.obj_storage(npc)
+	#print(storage)
+	#breakp("create_banelar_at end")
 	#npc.critter_flag_set(OCF_MOVING_SILENTLY)
-	#npc.npc_flag_unset(ONF_KOS)
+	npc.npc_flag_unset(ONF_KOS)
+	py06123_banelar.banelar_init_storage(npc)
+	#f = open("d:\\tactics.txt", "w")
+	#d = debug.dump_ai_tactics()
+	#f.write(str(d))
+	#f.close()
 	#npc.concealed_set(1)
 	#print(utils_npc.npc_stat_generate(npc))
 	return npc

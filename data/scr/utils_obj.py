@@ -107,3 +107,12 @@ def obj_float_line_dialog(obj, method, lineId, npc):
 	line = line + "\n\n"
 	game.create_history_freeform(line)
 	return 1
+
+def obj_get_id(obj):
+	assert isinstance(obj, PyObjHandle)
+	if (hasattr(obj, 'id')):
+		return obj.id
+	s = obj.__getstate__()
+	print("obj_get_id({}) = {}".format(obj, s))
+	#breakp("obj_get_id")
+	return s
