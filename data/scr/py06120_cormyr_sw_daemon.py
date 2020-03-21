@@ -116,6 +116,10 @@ def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, new_name)
 	# test below
 	obj.object_flag_set(OF_DONTDRAW)
 	obj.object_flag_set(OF_CLICK_THROUGH)
+	obj.object_flag_set(OF_SEE_THROUGH)
+	obj.object_flag_set(OF_FLAT)
+	obj.object_flag_set(OF_TRANSLUCENT)
+	obj.object_flag_set(OF_NOHEIGHT)
 	#
 	obj.npc_flag_unset(ONF_KOS)
 	obj.obj_set_int(obj_f_hp_damage, radar_radius_ft)
@@ -159,14 +163,14 @@ def create_banelar_at(loc):
 	item_create_in_inventory(PROTO_RING_OF_PROTECTION_1, npc)
 
 	npc.condition_add_with_args("Caster_Level_Add", 6, 0)
-	npc.condition_add_with_args("Spell_Quicken_All", 0, 0)
-	#npc.condition_add_with_args("Spell_Quicken", 1, 0) # one quicken spell per round
+	#npc.condition_add_with_args("Spell_Quicken_All", 0, 0)
+	npc.condition_add_with_args("Spell_Quicken", 2, 0) # one quicken spell per round
 	npc.condition_add_with_args("Self_Saving_Fortitude", 20, 0)
 	npc.item_wield_best_all()
 	npc.faction_add(1)
 	#npc.npc_flag_unset(ONF_KOS)
 	npc.rotation = radians(225)
-	npc.skill_ranks_set(skill_concentration, 10)
+	npc.skill_ranks_set(skill_concentration, 11)
 
 	# make it go first
 	npc.stat_base_set(stat_dexterity, 50 )
