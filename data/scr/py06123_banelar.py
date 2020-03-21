@@ -141,6 +141,7 @@ def san_start_combat(attachee, triggerer):
 
 		if ((ban.round >= caster_level or ban.cured_s_times or ban.already_retreated) and ban.summoned_times < 2):
 			ban.summoned_times += 1
+			tac.add_five_foot_step()
 			tac.add_target_closest()
 			tac.add_cast_single(utils_spell.spell_name(spell_summon_monster_iii), class_cleric, caster_level)
 			if (hp_current < 60 and ban.cured_s_times < 2):
@@ -175,6 +176,7 @@ def san_start_combat(attachee, triggerer):
 
 		if (hp_current < 60 and ban.cured_s_times < 2):
 			ban.cured_s_times += 1
+			tac.add_five_foot_step()
 			tac.add_target_self()
 			tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
 			tac.add_clear_target()
