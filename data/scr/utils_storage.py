@@ -72,7 +72,7 @@ class Storage(object):
 		assert isinstance(obj, PyObjHandle)
 		#breakp("obj.__getstate__({})".format(obj))
 		name = utils_obj.obj_get_id(obj)
-		print(name)
+		#print(name)
 		#breakp("getObjectStorage({})".format(obj))
 		ss = Storage()
 		oo = ss.objs

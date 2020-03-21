@@ -113,6 +113,6 @@ def obj_get_id(obj):
 	if (hasattr(obj, 'id')):
 		return obj.id
 	s = obj.__getstate__()
-	print("obj_get_id({}) = {}".format(obj, s))
+	#print("obj_get_id({}) = {}".format(obj, s))
 	#breakp("obj_get_id")
 	return s

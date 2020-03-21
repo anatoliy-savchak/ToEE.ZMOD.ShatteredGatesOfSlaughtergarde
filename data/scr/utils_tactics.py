@@ -24,12 +24,56 @@ class TacticsHelper(object):
 		self.add_triplet(tac_name, spell_code)
 		return
 
+	def add_approach(self):
+		self.add_simple("approach")
+		return
+
+	def add_clear_target(self):
+		self.add_simple("clear target")
+		return
+
 	def add_target_self(self):
 		self.add_simple("target self")
 		return
 
 	def add_target_closest(self):
 		self.add_simple("target closest")
+		return
+
+	def add_target_low_ac(self):
+		self.add_simple("target low ac")
+		return
+
+	def add_target_high_ac(self):
+		self.add_simple("target high ac")
+		return
+
+	def add_target_damaged(self):
+		self.add_simple("target damaged")
+		return
+
+	def add_target_ranged(self):
+		self.add_simple("target ranged")
+		return
+
+	def add_target_prone(self):
+		self.add_simple("target prone")
+		return
+
+	def add_target_friend_high_ac(self):
+		self.add_simple("target friend high ac")
+		return
+
+	def add_target_friend_low_ac(self):
+		self.add_simple("target friend low ac")
+		return
+
+	def add_target_friend_hurt(self):
+		self.add_simple("target friend hurt")
+		return
+
+	def add_target_friend_nospell(self):
+		self.add_simple("target friend nospell")
 		return
 
 	def add_target_prone(self):
@@ -41,6 +85,18 @@ class TacticsHelper(object):
 
 	def add_cast_single(self, spell_name, class_name, class_level):
 		self.add_spell("cast single", spell_name, class_name, class_level)
+		return
+
+	def add_cast_fireball(self, spell_name, class_name, class_level):
+		self.add_spell("cast fireball", spell_name, class_name, class_level)
+		return
+
+	def add_cast_area(self, spell_name, class_name, class_level):
+		self.add_spell("cast area", spell_name, class_name, class_level)
+		return
+
+	def add_cast_party(self, spell_name, class_name, class_level):
+		self.add_spell("cast party", spell_name, class_name, class_level)
 		return
 
 	def add_five_foot_step(self):

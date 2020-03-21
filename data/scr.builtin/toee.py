@@ -121,6 +121,9 @@ class PyObjHandle(object):
 		"""
 		return 1
 
+	def can_find_path_to_obj(self, target, flags):
+		"""npc.can_find_path_to_obj(PyObjHandle: target, int: flags) -> int"""
+		return
 	
 	def critter_flags_get(self):
 		"""npc.critter_flags_get() -> OCF_IS_CONCEALED"""
@@ -332,6 +335,10 @@ class PyObjHandle(object):
 		"""Sets specific stat. npc.stat_base_set(int[stat_strength-stat_psi_points_cur]: stat, int: value) -> int"""
 		return
 
+	def stat_base_get(self, stat):
+		"""Gets specific stat. npc.stat_base_get(int[stat_strength-stat_psi_points_cur]: stat) -> int"""
+		return
+
 	def stat_level_get(self, stat, statArg):
 		"""get specific stat. npc.stat_level_get(int[stat_strength-stat_psi_points_cur]: stat , int: statArg = None) -> int"""
 		return 0
@@ -382,6 +389,12 @@ class game(object):
 	def obj_list_range(location, radius, flags):
 		""" obj_list_range(long: location, int[feet]: radius, int[OLC_NONE]: flags) -> (PyObjHandle(), PyObjHandle())"""
 		return (PyObjHandle(), PyObjHandle())
+
+	@staticmethod
+	def timevent_add(func, func_args_tuple, time_ms, is_realtime = 0):
+		""" Schedule function call game.timevent_add(func, func_args_tuple, time_ms, is_realtime = 0) -> None"""
+		return 0
+	
 	
 
 def anyone(targetObjs, methodName, methodArg):

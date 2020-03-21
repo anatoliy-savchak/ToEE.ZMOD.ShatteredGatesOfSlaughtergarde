@@ -1,5 +1,6 @@
 {1}{The portal opens before you...}{The portal opens before you...}{}{}{}{game.particles( 'ef-NODE-Air portal', npc ); game.sound( 4008 ); game.global_flags[601] = 1}
 {2}{Begin adventuring CORMYR.}{}{1}{}{0}{game.party[0].scripts[38] = 6101; game.fade_and_teleport( 0, 0, 0, 5195, 442, 536 )}
+{3}{Begin adventuring CORMYR - Shadowscale Warren.}{}{1}{}{0}{game.party[0].scripts[38] = 6101; game.fade_and_teleport( 0, 0, 0, 5196, 518, 458 )}
 {11}{Return to shopmap.}{}{1}{}{0}{}
 
 

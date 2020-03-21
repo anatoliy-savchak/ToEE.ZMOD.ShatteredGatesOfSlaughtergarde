@@ -53,3 +53,6 @@ Green = 2
 Blue = 3
 Yellow = 4
 LightBlue = 5
+
+rotation_grad_south_east = 135
+rotation_grad_south = 180

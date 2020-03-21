@@ -8,6 +8,7 @@ import utils_storage
 import utils_toee
 import utils_npc
 import py06123_banelar
+from math import radians
 #import debug
 
 # DAEMON
@@ -112,6 +113,10 @@ def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, new_name)
 	item_clear_all(obj)
 	obj.scripts[sn_dialog] = dialog_script_id
 	obj.scripts[sn_heartbeat] = 6122
+	# test below
+	obj.object_flag_set(OF_DONTDRAW)
+	obj.object_flag_set(OF_CLICK_THROUGH)
+	#
 	obj.npc_flag_unset(ONF_KOS)
 	obj.obj_set_int(obj_f_hp_damage, radar_radius_ft)
 	line_id = line_id + 100
@@ -148,28 +153,22 @@ def create_banelar_at(loc):
 	npc.scripts[sn_heartbeat] = 6123
 	#npc.scripts[sn_first_heartbeat] = 6123 mobs dont have this
 	
-	
-
 	item_clear_all(npc)
 
 	PROTO_RING_OF_PROTECTION_1 = 6082
 	item_create_in_inventory(PROTO_RING_OF_PROTECTION_1, npc)
 
-	#npc.make_class(stat_level_wizard, 6)
 	npc.condition_add_with_args("Caster_Level_Add", 6, 0)
 	npc.condition_add_with_args("Spell_Quicken_All", 0, 0)
+	#npc.condition_add_with_args("Spell_Quicken", 1, 0) # one quicken spell per round
+	npc.condition_add_with_args("Self_Saving_Fortitude", 20, 0)
 	npc.item_wield_best_all()
 	npc.faction_add(1)
-	#storage = utils_storage.obj_storage(npc)
-	#print(storage)
-	#breakp("create_banelar_at end")
-	#npc.critter_flag_set(OCF_MOVING_SILENTLY)
-	npc.npc_flag_unset(ONF_KOS)
+	#npc.npc_flag_unset(ONF_KOS)
+	npc.rotation = radians(225)
+	npc.skill_ranks_set(skill_concentration, 10)
+
+	# make it go first
+	npc.stat_base_set(stat_dexterity, 50 )
 	py06123_banelar.banelar_init_storage(npc)
-	#f = open("d:\\tactics.txt", "w")
-	#d = debug.dump_ai_tactics()
-	#f.write(str(d))
-	#f.close()
-	#npc.concealed_set(1)
-	#print(utils_npc.npc_stat_generate(npc))
 	return npc
