@@ -48,3 +48,11 @@ def npc_stat_generate(npc):
 		result = result + "Female"
 
 	return result
+
+def npc_spell_ensure(npc, spell_id, stat_class, spell_level, memorize = 0):
+	assert isinstance(npc, PyObjHandle)
+	npc.spell_known_add(spell_id, stat_class, spell_level)
+	npc.spell_memorized_add(spell_id, stat_class, spell_level)
+	if (memorize):
+		npc.spells_pending_to_memorized()
+	return 1

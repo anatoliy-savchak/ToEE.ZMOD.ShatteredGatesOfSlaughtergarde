@@ -35,8 +35,8 @@ def OnSpellEffect( spell ):
 	#print("npc_mode: {}".format(npc_mode))
 	#print("len(target_objects): {}".format(len(target_objects)))
 	#print("target_objects: {}".format(target_objects))
-	#lx, ly = location_to_axis(target_loc)
-	#print("orig target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
+	lx, ly = location_to_axis(target_loc)
+	print("orig target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
 
 	furthest = None
 	if (npc_mode and len(target_objects) > 1):
@@ -115,7 +115,6 @@ def OnSpellEffect( spell ):
 
 		target_objects = new_targets
 		#print("new target_objects: ")
-		#print(target_objects)
 
 	if (furthest is None and len(target_objects)):
 		furthest = target_objects[0]
@@ -125,17 +124,15 @@ def OnSpellEffect( spell ):
 		target_loc_off_x = furthest.off_x
 		target_loc_off_y = furthest.off_y
 
-	#lx, ly = location_to_axis(target_loc)
-	#print("new target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
+	print(target_objects)
+	lx, ly = location_to_axis(target_loc)
+	print("new target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
 
 	if (len(target_objects) > 0):
 		remove_list = []
 		damage_dice = dice_new( '1d6' )
 		damage_dice.number = min( 1 * spell.caster_level, 10 )
-		#game.particles( 'sp-Lightning Bolt-hit', target_loc )
-		#game.particles( 'sp-Chain Lightning-hit', target_loc )
-		
-		game.pfx_lightning_bolt( spell.caster, target_loc, target_loc_off_x, target_loc_off_y, target_loc_off_z )
+		game.pfx_lightning_bolt(caster, target_loc, target_loc_off_x, target_loc_off_y, target_loc_off_z )
 		for target_item in target_objects:
 			game.particles( 'sp-Lightning Bolt-hit', target_item )
 			if target_item.reflex_save_and_damage( spell.caster, spell.dc, D20_Save_Reduction_Half, D20STD_F_NONE, damage_dice, D20DT_ELECTRICITY, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, spell.id ) > 0:

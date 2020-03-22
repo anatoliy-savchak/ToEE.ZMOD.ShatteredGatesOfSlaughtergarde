@@ -1,3 +1,5 @@
+from toee import *
+
 class TacticsHelper(object):
 	def __init__(self, name_prefix):
 		self.name_prefix = name_prefix
@@ -107,6 +109,10 @@ class TacticsHelper(object):
 		self.add_simple("attack")
 		return
 
+	def add_ready_vs_approach(self):
+		self.add_simple("ready vs approach")
+		return
+
 	def make_name(self):
 		name = self.name_prefix
 		for i in range(1, self.count):
@@ -115,3 +121,31 @@ class TacticsHelper(object):
 				name = name + "(" + self.custom_tactics[i*3+1+2] + ")"
 		self.custom_tactics[0] = name
 		return
+
+	def add_move_beacon(self, loc, npc):
+		obj_beacon = game.obj_create(14074, loc)
+		obj_beacon.object_flag_set(OF_DONTDRAW)
+		obj_beacon.object_flag_set(OF_CLICK_THROUGH)
+		obj_beacon.move(loc, 0, 0)
+		can_path = npc.can_find_path_to_obj(obj_beacon, 0)
+		if (not can_path):
+			print("cannot find path!")
+			obj_beacon.destroy()
+		else:
+			obj_beacon.stat_base_set(stat_dexterity, -30 )
+			factions = npc.factions
+			for f in factions:
+				obj_beacon.faction_add(f)
+			obj_beacon.attack(game.leader)
+			obj_beacon.add_to_initiative()
+			game.timevent_add(on_kill_beacon_obj, (obj_beacon), 400, 1)
+
+			self.add_clear_target()
+			self.add_target_friend_low_ac()
+			self.add_approach()
+			self.add_clear_target()
+		return can_path
+
+def on_kill_beacon_obj(obj):
+	obj.destroy()
+	return

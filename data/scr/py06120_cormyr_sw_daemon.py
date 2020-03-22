@@ -140,6 +140,8 @@ def do_encounter_w5():
 	#print(loc)
 	print("create_banelar_at")
 	npc = create_banelar_at(loc)
+	# only for testing!!
+	utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
 	#npc.move(2121713844713L, 0, 0)
 	return
 
@@ -152,9 +154,11 @@ def create_banelar_at(loc):
 
 	obj_scripts_clear(npc)
 	npc.scripts[sn_enter_combat] = 6123
+	npc.scripts[sn_exit_combat] = 6123
+	
 	npc.scripts[sn_start_combat] = 6123
 	npc.scripts[sn_spell_cast] = 6123
-	npc.scripts[sn_heartbeat] = 6123
+	#npc.scripts[sn_heartbeat] = 6123
 	#npc.scripts[sn_first_heartbeat] = 6123 mobs dont have this
 	
 	item_clear_all(npc)
@@ -173,6 +177,7 @@ def create_banelar_at(loc):
 	npc.skill_ranks_set(skill_concentration, 11)
 
 	# make it go first
-	npc.stat_base_set(stat_dexterity, 50 )
+	#npc.stat_base_set(stat_dexterity, 50 )
 	py06123_banelar.banelar_init_storage(npc)
+	#debug_save_conds("d:\\conds.json")
 	return npc

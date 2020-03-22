@@ -93,6 +93,10 @@ class PyObjHandle(object):
 	def ai_strategy_set_custom(self, triplets):
 		""" npc.ai_strategy_set_custom(tuple: triplets) -> none"""
 		return
+
+	def allegiance_shared(self, target):
+		""" npc.allegiance_shared(PyObjHandle: triplets) -> int"""
+		return 0
 	
 	def ai_stop_attacking(self):
 		""" npc.ai_stop_attacking() -> none"""
@@ -121,6 +125,9 @@ class PyObjHandle(object):
 		"""
 		return 1
 
+	def can_see(self, target):
+		return 0
+
 	def can_find_path_to_obj(self, target, flags):
 		"""npc.can_find_path_to_obj(PyObjHandle: target, int: flags) -> int"""
 		return
@@ -139,6 +146,10 @@ class PyObjHandle(object):
 	
 	def concealed_set(self, concealed):
 		"""npc.concealed_set(int: concealed) -> None"""
+		return
+
+	def condition_add_with_args(self, cond_name, arg0 = None, arg1 = None, arg2 = None):
+		""" npc.condition_add_with_args(str: cond_name, int: arg0 = None, int: arg1 = None, int: arg2 = None) -> int"""
 		return
 
 	def cast_spell(self, spellEnum, targetObj):
@@ -395,6 +406,26 @@ class game(object):
 		""" Schedule function call game.timevent_add(func, func_args_tuple, time_ms, is_realtime = 0) -> None"""
 		return 0
 	
+	@staticmethod
+	def particles(name, loc_or_obj):
+		""" return particles.CreateAtObj(name, objHandle) == game.particles(str: name, PyObjHandle: loc_or_obj) -> int
+		 return particles.CreateAtPos(name, objHandle) == game.particles(str: name, int: loc_or_obj) -> int
+		"""
+		return 0
+
+	@staticmethod
+	def particles_end(part_id):
+		""" game.particles_end(int: part_id) -> None
+		gameSystems->GetParticleSys().Remove(partSysId);
+		"""
+		return
+	
+	@staticmethod
+	def particles_kill(part_id):
+		""" game.particles_kill(int: part_id) -> None
+		partSys->EndPrematurely();
+		"""
+		return
 	
 
 def anyone(targetObjs, methodName, methodArg):
