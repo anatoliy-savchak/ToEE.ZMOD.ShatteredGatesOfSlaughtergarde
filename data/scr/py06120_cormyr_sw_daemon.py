@@ -141,7 +141,7 @@ def do_encounter_w5():
 	print("create_banelar_at")
 	npc = create_banelar_at(loc)
 	# only for testing!!
-	utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
+	#utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
 	#npc.move(2121713844713L, 0, 0)
 	return
 

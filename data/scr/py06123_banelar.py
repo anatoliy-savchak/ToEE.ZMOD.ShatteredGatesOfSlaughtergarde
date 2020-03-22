@@ -220,7 +220,7 @@ def san_start_combat(attachee, triggerer):
 		strat = tac.custom_tactics
 		print("set strategy: {}".format(strat))
 		attachee.ai_strategy_set_custom(strat)
-	print("san_start_combat end")
+	#print("san_start_combat end")
 	#breakp("san_start_combat end")
 	return RUN_DEFAULT
 
@@ -230,7 +230,7 @@ def san_spell_cast(attachee, triggerer, spell):
 	if (not game.combat_is_active()): return RUN_DEFAULT
 	print("SAN_SPELL_CAST attachee: {}, triggerer: {}, spell: {}".format(attachee, triggerer, spell))
 	if (triggerer.proto != 14835): 
-		print("triggerer.proto != 14835 exit...")
+		#print("triggerer.proto != 14835 exit...")
 		return RUN_DEFAULT
 	
 	storage = utils_storage.obj_storage(triggerer)
@@ -240,11 +240,6 @@ def san_spell_cast(attachee, triggerer, spell):
 			o.free_spell_casts_left -= 1
 			triggerer.refresh_turn()
 			print("TRIGGERER.REFRESH_TURN()")
-	if (spell.spell == 431):
-		victims = game.obj_list_range(triggerer.location, 5, OLC_PC)
-		if (len(victims)):
-			if (triggerer.perform_touch_attack(victims[0], 1) & D20CAF_HIT):
-				pass #see ShockingGraspTouchAttack(DCA args) how to implement it
 	#breakp("san_spall_cast banelar")
 	return RUN_DEFAULT
 
@@ -254,10 +249,10 @@ def san_heartbeat(attachee, triggerer):
 		return RUN_DEFAULT
 	
 	v = find_victim_at(attachee, attachee.location)
-	print("san_heartbeat found victim - {}".format(v))
+	#print("san_heartbeat found victim - {}".format(v))
 	if (not v): return RUN_DEFAULT
 	attachee.turn_towards(v)
-	print("san_heartbeat attachee.attack {}".format(v))
+	#print("san_heartbeat attachee.attack {}".format(v))
 	attachee.set_initiative(30)
 	attachee.attack(v)
 	game.update_combat_ui()	
