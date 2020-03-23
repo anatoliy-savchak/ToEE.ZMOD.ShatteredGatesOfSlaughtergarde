@@ -80,7 +80,7 @@ def obj_float_line_dialog(obj, method, lineId, npc):
 	scriptId = obj.scripts[sn_dialog]
 	if (scriptId <=0): return 0
 	if (method == 0): 
-		attachee.float_line(lineId, npc)
+		obj.float_line(lineId, npc)
 		return 1
 	#print("obj_float_line_dialog({}, {}, {})".format(obj, method, lineId))
 	#breakp("obj_float_line_dialog")

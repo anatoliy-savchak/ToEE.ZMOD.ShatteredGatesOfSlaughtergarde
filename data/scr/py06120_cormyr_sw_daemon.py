@@ -9,6 +9,7 @@ import utils_toee
 import utils_npc
 import py06123_banelar
 from math import radians
+from const_proto_weapon import *
 #import debug
 
 # DAEMON
@@ -35,6 +36,8 @@ def door_san_use( attachee, triggerer, already_used, marker):
 
 	assert isinstance(attachee, PyObjHandle)
 	assert isinstance(triggerer, PyObjHandle)
+	#print(marker)
+	#breakp("door_san_use")
 
 	if (marker == 31): 
 		do_encounter_w3()
@@ -42,6 +45,8 @@ def door_san_use( attachee, triggerer, already_used, marker):
 		do_encounter_w6()
 	if (marker == 32): 
 		do_encounter_w5()
+	if (marker == 51): 
+		do_encounter_w8()
 	return 1 # should_destroy
 
 def do_encounter_w3():
@@ -66,6 +71,28 @@ def do_encounter_w6():
 
 	create_shadowscale_marauder_at(sec2loc(463, 462))
 	create_shadowscale_marauder_at(sec2loc(466, 458))
+	return
+
+def do_encounter_w5():
+	return
+	#loc = sec2loc(489, 495)
+	loc = sec2loc(485, 498)
+	#print(loc)
+	#loc = 2121713844713L
+	#print(loc)
+	print("create_banelar_at")
+	npc = create_banelar_at(loc)
+	# only for testing!!
+	#utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
+	#npc.move(2121713844713L, 0, 0)
+	return
+
+def do_encounter_w8():
+	create_shadowscale_marauder_warchief_at(sec2loc(464, 474))
+	#create_shadowscale_marauder_at(sec2loc(464, 474))
+	#create_shadowscale_marauder_at(sec2loc(462, 480))
+	#create_shadowscale_marauder_at(sec2loc(456, 473))
+	#create_shadowscale_marauder_at(sec2loc(454, 477))
 	return
 
 def create_shadowscale_marauder_at(loc):
@@ -132,19 +159,6 @@ def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, new_name)
 			obj.obj_set_int(obj_f_description_correct, new_name_id)
 	return obj
 
-def do_encounter_w5():
-	#loc = sec2loc(489, 495)
-	loc = sec2loc(485, 498)
-	#print(loc)
-	#loc = 2121713844713L
-	#print(loc)
-	print("create_banelar_at")
-	npc = create_banelar_at(loc)
-	# only for testing!!
-	#utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
-	#npc.move(2121713844713L, 0, 0)
-	return
-
 def create_banelar_at(loc):
 	PROTO_NPC_BANELAR = 14835
 	npc = game.obj_create(PROTO_NPC_BANELAR, loc)
@@ -180,4 +194,25 @@ def create_banelar_at(loc):
 	#npc.stat_base_set(stat_dexterity, 50 )
 	py06123_banelar.banelar_init_storage(npc)
 	#debug_save_conds("d:\\conds.json")
+	return npc
+
+def create_shadowscale_marauder_warchief_at(loc):
+	PROTO_NPC_SHADOWSCALE_MARAUDER_WARCHIEF = 14836
+	#newDescription = 14019
+	npc = game.obj_create(PROTO_NPC_SHADOWSCALE_MARAUDER_WARCHIEF, loc)
+
+	#npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
+	#npc.obj_set_int(obj_f_description_correct, newDescription)
+
+	obj_scripts_clear(npc)
+	item_clear_all(npc)
+
+	#npc.condition_add_with_args("Base_Attack_Bonus3", 5, 6)
+	#npc.condition_add_with_args("Multi_Attack", 0, 0)
+	
+
+	item_create_in_inventory(PROTO_WEAPON_GREATSWORD_PLUS1_FLAMING, npc)
+
+	npc.item_wield_best_all()
+	npc.faction_add(1)
 	return npc

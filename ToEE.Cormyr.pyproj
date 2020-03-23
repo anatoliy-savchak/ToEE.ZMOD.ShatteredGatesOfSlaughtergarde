@@ -145,6 +145,9 @@
     <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\tpModifiers\base_attack_bonus5.py" />
+    <Compile Include="data\scr\tpModifiers\multi_attack.py" />
+    <Compile Include="data\scr\tpModifiers\base_attack_bonus3.py" />
     <Compile Include="data\scr\tpModifiers\base_movement.py" />
     <Compile Include="data\scr\tpModifiers\caster_level_base_add.py" />
     <Compile Include="data\scr\tpModifiers\self_saving_fortitude.py">
