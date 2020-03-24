@@ -105,6 +105,10 @@ class TacticsHelper(object):
 		self.add_simple("five foot step")
 		return
 
+	def add_use_potion(self):
+		self.add_simple("use potion")
+		return
+
 	def add_attack(self):
 		self.add_simple("attack")
 		return

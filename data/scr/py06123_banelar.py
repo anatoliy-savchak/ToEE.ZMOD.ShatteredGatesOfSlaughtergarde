@@ -49,7 +49,7 @@ def san_enter_combat(attachee, triggerer):
 	utils_npc.npc_spell_ensure(attachee, spell_cure_serious_wounds, stat_class, spell_level)
 	# readd next round, bug
 	#utils_npc.npc_spell_ensure(attachee, spell_cure_serious_wounds, stat_class, spell_level)
-	utils_npc.npc_spell_ensure(attachee, spell_summon_monster_iii, stat_class, spell_level)
+	#utils_npc.npc_spell_ensure(attachee, spell_summon_monster_iii, stat_class, spell_level)
 	utils_npc.npc_spell_ensure(attachee, spell_summon_monster_iii, stat_class, spell_level)
 	#spell_level = 2
 	utils_npc.npc_spell_ensure(attachee, spell_death_knell, stat_class, spell_level)
@@ -85,10 +85,15 @@ def san_start_combat(attachee, triggerer):
 	# had to do it due to bug
 	if (ban.lightning_bolt_count == 1):
 		utils_npc.npc_spell_ensure(attachee, spell_lightning_bolt, stat_level_wizard, caster_level)
+
+	if (ban.color_spray_used == 1):
 		utils_npc.npc_spell_ensure(attachee, spell_color_spray, stat_level_wizard, caster_level)
 
 	if (ban.cured_s_times == 1):
 		utils_npc.npc_spell_ensure(attachee, spell_cure_serious_wounds, stat_level_cleric, caster_level)
+
+	if (ban.summoned_times == 1):
+		utils_npc.npc_spell_ensure(attachee, spell_summon_monster_iii, stat_level_cleric, caster_level)
 
 	#breakp("san_start_combat banelar")
 	strat = []
@@ -97,16 +102,13 @@ def san_start_combat(attachee, triggerer):
 	while(1==1):
 		if (ban.round == 1):
 			ban.free_spell_casts_left = 1
-			tac.add_target_self()
-			# this one should have been before encounter
-			#tac.add_cast_single(utils_spell.spell_name(spell_mage_armor), class_wizard, caster_level)
-			tac.add_cast_single(utils_spell.spell_name(spell_shield_of_faith), class_cleric, caster_level)
-			tac.add_clear_target()
-			#tac.add_target_low_ac()
+			tac.add_target_low_ac()
 			# Stinking Cloud
-			tac.add_clear_target()
-			tac.add_five_foot_step()
 			tac.add_cast_fireball(utils_spell.spell_name(spell_stinking_cloud), class_wizard, caster_level)
+			tac.add_clear_target()
+			tac.add_target_closest()
+			#tac.add_five_foot_step()
+			tac.add_attack()
 			break
 
 
@@ -114,94 +116,62 @@ def san_start_combat(attachee, triggerer):
 		if (ban.already_retreated == 0 and hp_current < 60):
 			print("RETREAT")
 			ban.already_retreated = 1
-			move_added = tac.add_move_beacon(utils_obj.sec2loc(497, 486), attachee)
 			tac.add_target_self()
-			#tac.add_cast_single(utils_spell.spell_name(spell_invisibility), class_wizard, caster_level)
-			tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
-			#tac.add_clear_target()
-			#tac.add_clear_target()
+			tac.add_cast_single(utils_spell.spell_name(spell_invisibility), class_wizard, caster_level)
+			move_added = tac.add_move_beacon(utils_obj.sec2loc(497, 486), attachee)
+			tac.add_use_potion()
+			#tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
+			tac.add_clear_target()
 			tac.add_five_foot_step()
-			break
-
-		if ((ban.round >= caster_level or ban.cured_s_times or ban.already_retreated) and ban.summoned_times < 2):
-			ban.summoned_times += 1
-			tac.add_five_foot_step()
-			tac.add_target_closest()
-			tac.add_cast_single(utils_spell.spell_name(spell_summon_monster_iii), class_cleric, caster_level)
-			if (hp_current < 60 and ban.cured_s_times < 2):
-				ban.cured_s_times += 1
-				tac.add_target_self()
-				tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
-				tac.add_clear_target()
-			elif (ban.summoned_times < 2):
-				ban.summoned_times += 1
-				tac.add_target_closest()
-				tac.add_cast_single(utils_spell.spell_name(spell_summon_monster_iii), class_cleric, caster_level)
-				tac.add_five_foot_step()
-			else:
-				tac.add_target_closest()
-				tac.add_attack()
 			break
 
 		if (not ban.already_cursed):
 			ban.already_cursed = 1
 			tac.add_target_closest()
 			tac.add_cast_single(utils_spell.spell_name(spell_bestow_curse), class_cleric, caster_level)
-			if (hp_current < 60 and ban.cured_s_times < 2):
-				ban.cured_s_times += 1
-				tac.add_target_self()
-				tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
-				tac.add_clear_target()
-				tac.add_five_foot_step()
-			else:
-				tac.add_target_closest()
-				tac.add_attack()
-			break
-
-		if (hp_current < 60 and ban.cured_s_times < 2):
-			ban.cured_s_times += 1
-			tac.add_five_foot_step()
-			tac.add_target_self()
-			tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
-			tac.add_clear_target()
-			if (hp_current < 60 and ban.cured_s_times < 2):
-				ban.cured_s_times += 1
-				tac.add_target_self()
-				tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
-				tac.add_clear_target()
-				tac.add_five_foot_step()
-			else:
-				tac.add_target_closest()
-				tac.add_attack()
+			tac.add_attack()
 			break
 
 		if (ban.lightning_bolt_count < 2):
 			ban.lightning_bolt_count += 1
 			tac.add_target_closest()
 			tac.add_cast_party(utils_spell.spell_name(spell_lightning_bolt), class_wizard, caster_level)
-			#tac.add_five_foot_step()
-			tac.add_cast_area(utils_spell.spell_name(spell_color_spray), class_wizard, caster_level)
-			#tac.add_attack()
+			tac.add_attack()
+			break
+
+		#if ((ban.round >= caster_level or ban.cured_s_times or ban.already_retreated) and ban.summoned_times < 2):
+		if ((ban.round >= caster_level) and ban.summoned_times < 2):
+			ban.summoned_times += 1
+			tac.add_target_closest()
+			tac.add_five_foot_step()
+			tac.add_cast_single(utils_spell.spell_name(spell_summon_monster_iii), class_cleric, caster_level)
+			tac.add_clear_target()
+			tac.add_target_closest()
+			tac.add_attack()
+			break
+
+		if (hp_current < 60 and ban.cured_s_times < 2):
+			ban.cured_s_times += 1
+			tac.add_target_self()
+			tac.add_cast_single(utils_spell.spell_name(spell_cure_serious_wounds), class_cleric, caster_level)
+			tac.add_target_closest()
+			tac.add_attack()
 			break
 
 		if (not ban.hold_person_used):
 			ban.hold_person_used += 1
 			tac.add_target_closest()
 			tac.add_cast_single(utils_spell.spell_name(spell_hold_person), class_cleric, caster_level)
-			tac.add_cast_single(utils_spell.spell_name(spell_summon_monster_ii), class_cleric, caster_level)
-			tac.add_five_foot_step()
-			#tac.add_attack()
+			tac.add_attack()
 			break
 
-		if (not ban.shocking_grasp_used):
-			ban.shocking_grasp_used += 1
-			#tac.add_target_high_ac()
-			#tac.add_cast_single(utils_spell.spell_name(spell_tashas_hideous_laughter), class_wizard, caster_level)
+		if (not ban.color_spray_used):
+			ban.color_spray_used += 1
+			tac.add_target_high_ac()
 			tac.add_target_closest()
-			tac.add_cast_single(utils_spell.spell_name(spell_shocking_grasp), class_wizard, caster_level)
-			#tac.add_approach()
-			#tac.add_attack()
-			tac.add_ready_vs_approach()
+			tac.add_cast_area(utils_spell.spell_name(spell_color_spray), class_wizard, caster_level)
+			tac.add_approach()
+			tac.add_attack()
 			break
 
 		if (not ban.obscuring_mist_used):
@@ -288,6 +258,7 @@ class BanelarStorage(object):
 		self.cured_s_times = 0
 		self.hold_person_used = 0
 		self.shocking_grasp_used = 0
+		self.color_spray_used = 0
 		self.obscuring_mist_used = 0
 		self.part_id_mage_armor = 0
 		return
