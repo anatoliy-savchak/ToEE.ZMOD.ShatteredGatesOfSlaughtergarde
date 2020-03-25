@@ -99,11 +99,15 @@ class PyObjHandle(object):
 		return 0
 	
 	def ai_stop_attacking(self):
-		""" npc.ai_stop_attacking() -> none"""
+		""" npc.ai_stop_attacking() -> None"""
 		return
 
 	def anim_goal_interrupt(self):
-		""" npc.anim_goal_interrupt() -> none"""
+		""" npc.anim_goal_interrupt() -> None"""
+		return
+
+	def attack(self, target):
+		""" npc.attack(PyObjHandle: target) -> None"""
 		return
 
 	def begin_dialog(self, target, line):
@@ -150,6 +154,10 @@ class PyObjHandle(object):
 
 	def condition_add_with_args(self, cond_name, arg0 = None, arg1 = None, arg2 = None):
 		""" npc.condition_add_with_args(str: cond_name, int: arg0 = None, int: arg1 = None, int: arg2 = None) -> int"""
+		return
+
+	def container_toggle_open(self):
+		"""door.container_toggle_open() -> None"""
 		return
 
 	def cast_spell(self, spellEnum, targetObj):
@@ -238,6 +246,10 @@ class PyObjHandle(object):
 		"""npc.float_text_line(str: line, int: colorId) -> None"""
 		return
 
+	def leader_get(self):
+		"""npc.leader_get() -> PyObjHandle"""
+		return 1
+
 	def has_los(self, target):
 		"""npc.faction_add(PyObjHandle: target) -> int"""
 		return 1
@@ -281,7 +293,7 @@ class PyObjHandle(object):
 		return
 
 	def object_flag_unset(self, flag):
-		"""npc.portal_flag_unset(int[OF_DESTROYED...]: flag) -> None"""
+		"""npc.object_flag_unset(int[OF_DESTROYED...]: flag) -> None"""
 		return
 
 	def obj_get_int(self, field):
@@ -292,7 +304,18 @@ class PyObjHandle(object):
 		"""Set internal field int value. npc.obj_set_int(int[obj_f_*]: field, int: value) -> None"""
 		return
 
+	def obj_set_obj(self, field, value):
+		"""Set internal field obj value. npc.obj_set_obj(int[obj_f_*]: field, PyObjHandle: value) -> int"""
+		return 1
 
+	def obj_get_obj(self, field):
+		"""Get internal field obj value. npc.obj_get_obj(int[obj_f_*]: field) -> int"""
+		return 1
+
+	def object_script_execute(self, triggerer, scriptEvent):
+		"""npc.object_script_execute(PyObjHandle: triggerer, int[sn_first_heartbeat]: field) -> int"""
+		return 1
+	
 	def pc_add(self, dude):
 		""" Adds object as a PC party member.	pc.pc_add(PyObjHandle: dude) -> int"""
 		return 0

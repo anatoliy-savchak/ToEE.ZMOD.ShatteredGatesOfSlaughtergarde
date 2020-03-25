@@ -1,5 +1,3 @@
-from toee import *
-
 class TacticsHelper(object):
 	def __init__(self, name_prefix):
 		self.name_prefix = name_prefix
@@ -7,9 +5,16 @@ class TacticsHelper(object):
 		self.count = 0
 		return
 
-	def add_triplet(self, tac_name, spell_spec):
+	def add_tuple(self, tac_name, spell_spec):
 		self.custom_tactics.append(tac_name)
 		self.custom_tactics.append("")
+		self.custom_tactics.append(spell_spec)
+		self.count += 1
+		return
+
+	def add_triplet(self, tac_name, middle, spell_spec):
+		self.custom_tactics.append(tac_name)
+		self.custom_tactics.append(middle)
 		self.custom_tactics.append(spell_spec)
 		self.count += 1
 		return
@@ -23,14 +28,16 @@ class TacticsHelper(object):
 
 	def add_spell(self, tac_name, spell_name, class_name, class_level):
 		spell_code = "'{}' {} {}".format(spell_name, class_name, class_level)
-		self.add_triplet(tac_name, spell_code)
+		self.add_tuple(tac_name, spell_code)
 		return
 
 	def add_approach(self):
+		""" If target is set, then will try to approach to it, otherwise fail 0. AiApproach. """
 		self.add_simple("approach")
 		return
 
 	def add_clear_target(self):
+		""" Will set target to 0 for ongoing tactics processing. AiClearTarget. """
 		self.add_simple("clear target")
 		return
 
@@ -110,7 +117,22 @@ class TacticsHelper(object):
 		return
 
 	def add_attack(self):
+		""" AiDefault. Will try to attack target D20A_UNSPECIFIED_ATTACK first.
+		If self is not wielding ranged then it will try to move, consider by 5 foot step otherwise simple approach."""
 		self.add_simple("attack")
+		return
+
+	def add_attack_threatened(self):
+		""" If CanMeleeTarget(current target) then Attack, otherwise fail. 
+		CanMeleeTarget(target): 
+			not OF_INVULNERABLE, 
+			and not target has Sancturary,
+			and not self has Sancturary 
+			and either attack by primary weapon
+				or attack by secondary weapon
+				or attack natural (first) weapon
+		"""
+		self.add_simple("attack threatened")
 		return
 
 	def add_ready_vs_approach(self):
@@ -126,30 +148,18 @@ class TacticsHelper(object):
 		self.custom_tactics[0] = name
 		return
 
-	def add_move_beacon(self, loc, npc):
-		obj_beacon = game.obj_create(14074, loc)
-		obj_beacon.object_flag_set(OF_DONTDRAW)
-		obj_beacon.object_flag_set(OF_CLICK_THROUGH)
-		obj_beacon.move(loc, 0, 0)
-		can_path = npc.can_find_path_to_obj(obj_beacon, 0)
-		if (not can_path):
-			print("cannot find path!")
-			obj_beacon.destroy()
-		else:
-			obj_beacon.stat_base_set(stat_dexterity, -30 )
-			factions = npc.factions
-			for f in factions:
-				obj_beacon.faction_add(f)
-			obj_beacon.attack(game.leader)
-			obj_beacon.add_to_initiative()
-			game.timevent_add(on_kill_beacon_obj, (obj_beacon), 400, 1)
+	def add_goto(self, loc):
+		self.add_triplet("goto", str(loc), "")
+		return
 
-			self.add_clear_target()
-			self.add_target_friend_low_ac()
-			self.add_approach()
-			self.add_clear_target()
-		return can_path
+	def add_goto2(self, locx, locy):
+		self.add_triplet("goto", str(locx) + " " + str(locy), "")
+		return
 
-def on_kill_beacon_obj(obj):
-	obj.destroy()
-	return
+	def add_halt(self):
+		self.add_simple("halt")
+		return
+
+	def add_target_obj(self, handle):
+		self.add_triplet("target obj", str(handle), "")
+		return

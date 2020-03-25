@@ -124,7 +124,16 @@
     <Compile Include="data\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\const_proto_potions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\cormyr_pc.py" />
+    <Compile Include="data\scr\data_critter.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\data_obj.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
@@ -141,12 +150,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\py06123_banelar.py" />
+    <Compile Include="data\scr\py06124_shadowscale_chief.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\Spell275 - Lightning Bolt.py" />
     <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\tpModifiers\base_attack_bonus5.py" />
-    <Compile Include="data\scr\tpModifiers\multi_attack.py" />
     <Compile Include="data\scr\tpModifiers\base_attack_bonus3.py" />
     <Compile Include="data\scr\tpModifiers\base_movement.py" />
     <Compile Include="data\scr\tpModifiers\caster_level_base_add.py" />

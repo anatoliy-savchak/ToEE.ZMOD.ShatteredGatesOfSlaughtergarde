@@ -71,3 +71,20 @@ def san_enter_combat( attachee, triggerer ):
 	#breakp("py06121_marauder san_enter_combat 5")
 	obj_scripts_clear(attachee)
 	return RUN_DEFAULT
+
+def san_start_combat(attachee, triggerer):
+	assert isinstance(attachee, PyObjHandle)
+	assert isinstance(triggerer, PyObjHandle)
+	leader = attachee.leader_get()
+	print(leader)
+	#breakp("py06121_marauder san_start_combat 1")
+	if (leader and not (leader.critter_flags_get() & OCF_COMBAT_MODE_ACTIVE)):
+		#print("adding leader to initiative...")
+		#leader.add_to_initiative()
+		#leader.critter_flag_set(OCF_COMBAT_MODE_ACTIVE)
+		#leader.ai_shitlist_add()
+		#breakp("py06121_marauder san_start_combat 2")
+		leader.object_script_execute(leader, sn_heartbeat)
+		#game.update_combat_ui()
+	return RUN_DEFAULT
+
