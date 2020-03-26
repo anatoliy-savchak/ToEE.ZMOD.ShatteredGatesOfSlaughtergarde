@@ -148,11 +148,11 @@ class TacticsHelper(object):
 		self.custom_tactics[0] = name
 		return
 
-	def add_goto(self, loc):
+	def add_goto_loc(self, loc):
 		self.add_triplet("goto", str(loc), "")
 		return
 
-	def add_goto2(self, locx, locy):
+	def add_goto(self, locx, locy):
 		self.add_triplet("goto", str(locx) + " " + str(locy), "")
 		return
 
@@ -160,6 +160,10 @@ class TacticsHelper(object):
 		self.add_simple("halt")
 		return
 
-	def add_target_obj(self, handle):
-		self.add_triplet("target obj", str(handle), "")
+	def add_stop(self):
+		self.add_simple("stop")
+		return
+
+	def add_target_obj(self, handle_lower, handle_upper):
+		self.add_triplet("target obj", str(handle_lower) + " " + str(handle_upper), "")
 		return
