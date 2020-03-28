@@ -116,3 +116,9 @@ def obj_get_id(obj):
 	#print("obj_get_id({}) = {}".format(obj, s))
 	#breakp("obj_get_id")
 	return s
+
+def isnull(obj, obj_when_null):
+	assert isinstance(obj, PyObjHandle)
+	assert isinstance(obj_when_null, PyObjHandle)
+	if (obj): return obj
+	return obj_when_null

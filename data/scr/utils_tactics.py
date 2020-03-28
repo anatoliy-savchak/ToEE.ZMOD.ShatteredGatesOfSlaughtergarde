@@ -28,6 +28,10 @@ class TacticsHelper(object):
 
 	def add_spell(self, tac_name, spell_name, class_name, class_level):
 		spell_code = "'{}' {} {}".format(spell_name, class_name, class_level)
+		self.add_spell_code(tac_name, spell_code)
+		return
+
+	def add_spell_code(self, tac_name, spell_code):
 		self.add_tuple(tac_name, spell_code)
 		return
 
@@ -96,16 +100,32 @@ class TacticsHelper(object):
 		self.add_spell("cast single", spell_name, class_name, class_level)
 		return
 
+	def add_cast_single_code(self, spell_code):
+		self.add_spell_code("cast single", spell_code)
+		return
+
 	def add_cast_fireball(self, spell_name, class_name, class_level):
 		self.add_spell("cast fireball", spell_name, class_name, class_level)
+		return
+
+	def add_cast_fireball_code(self, spell_code):
+		self.add_spell_code("cast fireball", spell_code)
 		return
 
 	def add_cast_area(self, spell_name, class_name, class_level):
 		self.add_spell("cast area", spell_name, class_name, class_level)
 		return
 
+	def add_cast_area_code(self, spell_code):
+		self.add_spell_code("cast area", spell_code)
+		return
+
 	def add_cast_party(self, spell_name, class_name, class_level):
 		self.add_spell("cast party", spell_name, class_name, class_level)
+		return
+
+	def add_cast_party_code(self, spell_code):
+		self.add_spell_code("cast party", spell_code)
 		return
 
 	def add_five_foot_step(self):
@@ -164,6 +184,10 @@ class TacticsHelper(object):
 		self.add_simple("stop")
 		return
 
-	def add_target_obj(self, handle_lower, handle_upper):
-		self.add_triplet("target obj", str(handle_lower) + " " + str(handle_upper), "")
+	def add_target_obj(self, id):
+		self.add_triplet("target obj", id, "")
+		return
+
+	def add_touch_attack(self):
+		self.add_simple("touch attack")
 		return

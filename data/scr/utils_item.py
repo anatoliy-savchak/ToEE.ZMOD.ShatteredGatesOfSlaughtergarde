@@ -1,13 +1,25 @@
 from toee import *
 from debugg import *
+from const_proto_items import *
 
-def item_create_in_inventory(item_proto_num, npc):
+def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 	assert isinstance(item_proto_num, int)
 	assert isinstance(npc, PyObjHandle)
 	item = game.obj_create(item_proto_num, npc.location)
 	if (item != OBJ_HANDLE_NULL):
 		npc.item_get(item)
+	if (quantity > 1):
+		for i in range(2, quantity):
+			item = game.obj_create(item_proto_num, npc.location)
+			if (item != OBJ_HANDLE_NULL):
+				npc.item_get(item)
 	return item
+
+def item_create_in_inventory_mass(npc, protos):
+	assert isinstance(npc, PyObjHandle)
+	for item_proto_num in protos:
+		item_create_in_inventory(item_proto_num, npc)
+	return
 
 def item_clear_all(npc):
 	assert isinstance(npc, PyObjHandle)
@@ -65,3 +77,19 @@ def item_get_marker(attachee):
 def item_get_dialog_hint_id(attachee):
 	assert isinstance(attachee, PyObjHandle)
 	return attachee.obj_get_int(obj_f_hp_damage)
+
+def item_money_create_in_inventory(obj, platinum, gold = None, silver = None, copper = None):
+	assert isinstance(obj, PyObjHandle)
+	if (platinum):
+		item = item_create_in_inventory(PROTO_MONEY_PLATINUM, obj)
+		item.obj_set_int(obj_f_money_quantity, platinum)
+	if (gold):
+		item = item_create_in_inventory(PROTO_MONEY_GOLD, obj)
+		item.obj_set_int(obj_f_money_quantity, gold)
+	if (silver):
+		item = item_create_in_inventory(PROTO_MONEY_SILVER, obj)
+		item.obj_set_int(obj_f_money_quantity, silver)
+	if (copper):
+		item = item_create_in_inventory(PROTO_MONEY_COPPER, obj)
+		item.obj_set_int(obj_f_money_quantity, copper)
+	return

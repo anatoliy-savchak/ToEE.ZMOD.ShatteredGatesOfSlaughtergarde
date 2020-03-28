@@ -10,7 +10,11 @@ import utils_npc
 import py06123_banelar
 from math import radians
 from const_proto_weapon import *
-#import debug
+from const_proto_potions import *
+from const_proto_items import *
+from const_proto_containers import *
+from const_proto_scrolls import *
+import math
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -26,8 +30,9 @@ def do_hook_doors():
 	for obj in game.obj_list_range(game.party[0].location, 200, OLC_PORTAL ):
 		assert isinstance(obj, PyObjHandle)
 		obj_scripts_clear(obj)
-		obj.scripts[sn_use] = 6112
 		obj.scripts[sn_trap] = 6120 # daemon ref
+		if (obj.obj_get_int(obj_f_hp_pts) == 91): pass
+		obj.scripts[sn_use] = 6112
 	return SKIP_DEFAULT
 
 # DOOR
@@ -74,28 +79,38 @@ def do_encounter_w6():
 	return
 
 def do_encounter_w5():
-	return
-	#loc = sec2loc(489, 495)
-	loc = sec2loc(485, 498)
-	#print(loc)
-	#loc = 2121713844713L
-	#print(loc)
-	print("create_banelar_at")
-	npc = create_banelar_at(loc)
+	#return
+	create_banelar_chest_at(sec2loc(478, 478))
+	npc = create_banelar_at(sec2loc(485, 498))
 	# only for testing!!
 	#utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
-	#npc.move(2121713844713L, 0, 0)
 	return
 
 def do_encounter_w8():
-	create_shadowscale_marauder_warchief_at(sec2loc(464, 474))
-	#create_shadowscale_marauder_at(sec2loc(464, 474))
-	#create_shadowscale_marauder_at(sec2loc(462, 480))
-	#create_shadowscale_marauder_at(sec2loc(456, 473))
-	#create_shadowscale_marauder_at(sec2loc(454, 477))
+	return
+	leader = create_shadowscale_marauder_warchief_at(sec2loc(442, 474))
+	#leader = create_shadowscale_marauder_warchief_at(sec2loc(445, 476))
+	minion = create_shadowscale_marauder_at(sec2loc(464, 474), 1)
+	minion.obj_set_obj(obj_f_npc_leader, leader)
+	minion.scripts[sn_start_combat] = 6121
+
+	minion = create_shadowscale_marauder_at(sec2loc(460, 486), 1)
+	minion.obj_set_obj(obj_f_npc_leader, leader)
+	minion.scripts[sn_start_combat] = 6121
+
+	minion = create_shadowscale_marauder_at(sec2loc(454, 471), 1)
+	minion.obj_set_obj(obj_f_npc_leader, leader)
+	minion.scripts[sn_start_combat] = 6121
+
+	minion = create_shadowscale_marauder_at(sec2loc(453, 478), 1)
+	minion.obj_set_obj(obj_f_npc_leader, leader)
+	minion.scripts[sn_start_combat] = 6121
+
+	leader.object_script_execute(leader, sn_first_heartbeat)
+	#create_knell_beetle_at(sec2loc(457, 481))
 	return
 
-def create_shadowscale_marauder_at(loc):
+def create_shadowscale_marauder_at(loc, nothidden = None):
 	PROTO_NPC_SHADOWSCALE_MARAUDER = 14833
 	#newDescription = 14019
 	npc = game.obj_create(PROTO_NPC_SHADOWSCALE_MARAUDER, loc)
@@ -110,9 +125,10 @@ def create_shadowscale_marauder_at(loc):
 
 	npc.item_wield_best_all()
 	npc.faction_add(1)
-	npc.critter_flag_set(OCF_MOVING_SILENTLY)
-	npc.npc_flag_unset(ONF_KOS)
-	npc.concealed_set(1)
+	if (not nothidden is None):
+		npc.critter_flag_set(OCF_MOVING_SILENTLY)
+		npc.npc_flag_unset(ONF_KOS)
+		npc.concealed_set(1)
 	return npc
 
 def do_place_promters():
@@ -180,6 +196,8 @@ def create_banelar_at(loc):
 	PROTO_RING_OF_PROTECTION_1 = 6082
 	item_create_in_inventory(PROTO_RING_OF_PROTECTION_1, npc)
 
+	item_create_in_inventory(PROTO_POTION_OF_CURE_SERIOUS_WOUNDS, npc)
+
 	npc.condition_add_with_args("Caster_Level_Add", 6, 0)
 	#npc.condition_add_with_args("Spell_Quicken_All", 0, 0)
 	npc.condition_add_with_args("Spell_Quicken", 2, 0) # one quicken spell per round
@@ -188,7 +206,10 @@ def create_banelar_at(loc):
 	npc.faction_add(1)
 	#npc.npc_flag_unset(ONF_KOS)
 	npc.rotation = radians(225)
-	npc.skill_ranks_set(skill_concentration, 11)
+	utils_npc.npc_skill_ensure(npc, skill_concentration, 10)
+	print("{} skill_concentration ranks: {}".format(npc, npc.skill_ranks_get(skill_concentration)))
+	#breakp("")
+	#npc.skill_ranks_set(skill_concentration, 11)
 
 	# make it go first
 	#npc.stat_base_set(stat_dexterity, 50 )
@@ -207,6 +228,11 @@ def create_shadowscale_marauder_warchief_at(loc):
 	obj_scripts_clear(npc)
 	item_clear_all(npc)
 
+	npc.scripts[sn_first_heartbeat] = 6124
+	npc.scripts[sn_heartbeat] = 6124
+	npc.scripts[sn_enter_combat] = 6124
+	npc.scripts[sn_start_combat] = 6124
+
 	#npc.condition_add_with_args("Base_Attack_Bonus3", 5, 6)
 	#npc.condition_add_with_args("Multi_Attack", 0, 0)
 	
@@ -216,3 +242,40 @@ def create_shadowscale_marauder_warchief_at(loc):
 	npc.item_wield_best_all()
 	npc.faction_add(1)
 	return npc
+
+def create_knell_beetle_at(loc):
+	PROTO_NPC_KNELL_BEETLE = 14768
+	#newDescription = 14019
+	npc = game.obj_create(PROTO_NPC_KNELL_BEETLE, loc)
+
+	#npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
+	#npc.obj_set_int(obj_f_description_correct, newDescription)
+
+	obj_scripts_clear(npc)
+	item_clear_all(npc)
+
+	#npc.scripts[sn_first_heartbeat] = 6124
+	#npc.scripts[sn_heartbeat] = 6124
+	#npc.scripts[sn_enter_combat] = 6124
+	#npc.scripts[sn_start_combat] = 6124
+
+	#npc.condition_add_with_args("Base_Attack_Bonus3", 5, 6)
+	#npc.condition_add_with_args("Multi_Attack", 0, 0)
+	
+	npc.faction_add(1)
+	return npc
+
+def create_banelar_chest_at(loc):
+	#breakp("create_banelar_chest_at")
+	obj = game.obj_create(PROTO_CONTAINER_CHEST_WOODEN_MEDIUM, loc)
+	obj.rotation = math.radians(135)
+	obj_scripts_clear(obj)
+	item_create_in_inventory(PROTO_POTION_OF_HEAL, obj)
+	item_create_in_inventory(PROTO_POTION_OF_REMOVE_CURSE, obj)
+	item_create_in_inventory(PROTO_POTION_OF_RESTORATION, obj)
+	item = item_create_in_inventory(PROTO_WAND_OF_CURE_SERIOUS_WOUNDS, obj)
+	item.obj_set_int(obj_f_item_spell_charges_idx, 40)
+	item_money_create_in_inventory(obj, 0, 250, 3300)
+	item_create_in_inventory(PROTO_GENERIC_PEARL_WHITE, obj, 3)
+	item_create_in_inventory_mass(obj, [PROTO_SCROLL_OF_COLOR_SPRAY, PROTO_SCROLL_OF_MAGE_ARMOR, PROTO_SCROLL_OF_MAGIC_MISSILE, PROTO_SCROLL_OF_TASHA_S_HIDEOUS_LAUGHTER, PROTO_SCROLL_OF_INVISIBILITY, PROTO_SCROLL_OF_MELF_S_ACID_ARROW, PROTO_SCROLL_OF_STINKING_CLOUD, PROTO_SCROLL_OF_LIGHTNING_BOLT])
+	return obj

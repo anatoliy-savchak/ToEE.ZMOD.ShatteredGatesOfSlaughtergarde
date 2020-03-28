@@ -127,6 +127,9 @@
     <Compile Include="data\scr\const_proto_potions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\const_proto_scrolls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\cormyr_pc.py" />
     <Compile Include="data\scr\data_critter.py">
       <SubType>Code</SubType>
@@ -168,8 +171,14 @@
     <Compile Include="data\scr\tpModifiers\spell_quicken_all.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\utils_target_list.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\utils_item.py" />
     <Compile Include="data\scr\utils_npc.py" />
+    <Compile Include="data\scr\utils_npc_spells.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\utils_obj.py" />
     <Compile Include="data\scr\const_proto_armor.py" />
     <Compile Include="data\scr\const_proto_containers.py">

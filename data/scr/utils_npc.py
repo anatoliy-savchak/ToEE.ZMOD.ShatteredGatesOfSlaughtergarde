@@ -51,8 +51,16 @@ def npc_stat_generate(npc):
 
 def npc_spell_ensure(npc, spell_id, stat_class, spell_level, memorize = 0):
 	assert isinstance(npc, PyObjHandle)
+	print("{}.npc_spell_ensure(spell_id: {}, stat_class: {}, spell_level: {})".format(npc, spell_id, stat_class, spell_level))
 	npc.spell_known_add(spell_id, stat_class, spell_level)
 	npc.spell_memorized_add(spell_id, stat_class, spell_level)
 	if (memorize):
 		npc.spells_pending_to_memorized()
 	return 1
+
+def npc_skill_ensure(npc, skill_id, target_skill_value):
+	assert isinstance(npc, PyObjHandle)
+	value = npc.skill_level_get(skill_id)
+	delta = target_skill_value - value
+	npc.skill_ranks_set(skill_id, delta)
+	return delta

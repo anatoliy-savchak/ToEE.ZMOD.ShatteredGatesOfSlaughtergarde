@@ -46,6 +46,7 @@ class PyObjHandle(object):
 		self.spells_memorized = [PySpell(), PySpell()]	#	Gets spells memorized
 		self.loots = 1	#	Gets and Sets LootBehaviour
 		self.proto = 1	#	GetProtoId
+		self.id = "G_123456"
 
 		#helpers
 		self.__state = "(2, (1880286368, 14202, 17600, (132, 111, 66, 228, 212, 83, 245, 5)))"
@@ -197,6 +198,10 @@ class PyObjHandle(object):
 		"""
 		return
 
+	def identify_all(self):
+		"""npc.identify_all()"""
+		return
+
 	def inventory_item(self, index):
 		"""npc.inventory_item(int: index) -> PyObjHandle"""
 		return PyObjHandle()
@@ -244,6 +249,22 @@ class PyObjHandle(object):
 	
 	def float_text_line(self, line, colorId):
 		"""npc.float_text_line(str: line, int: colorId) -> None"""
+		return
+
+	def get_base_attack_bonus(self):
+		"""npc.get_base_attack_bonus() -> int"""
+		return
+
+	def get_category_type(self):
+		"""npc.get_category_type() -> int"""
+		return
+
+	def get_handle_upper(self):
+		"""npc.get_handle_upper() -> int"""
+		return
+
+	def get_handle_lower(self):
+		"""npc.get_handle_lower() -> int"""
 		return
 
 	def leader_get(self):
@@ -343,16 +364,20 @@ class PyObjHandle(object):
 		return
 
 	def skill_level_get(self, obj2, skillId):
-		"""Gets specific skill rank. npc.skill_level_get(PyObjHandle: obj2, int[skill_appraise...]: skillId) -> int"""
-		return
+		"""Gets specific skill value. npc.skill_level_get(PyObjHandle: obj2, int[skill_appraise...]: skillId) -> int"""
+		return 0
 
 	def skill_level_get(self, skillId):
-		"""Gets specific skill rank. npc.skill_level_get(int[skill_appraise...]: skillId) -> int"""
-		return
+		"""Gets specific skill value. npc.skill_level_get(int[skill_appraise...]: skillId) -> int"""
+		return 0
 
-	def skill_ranks_set(self, skillId, skillRanks):
-		"""Gets specific skill rank. npc.skill_ranks_set(int[skill_appraise...]: skillId, int: skillRanks) -> None"""
-		return
+	def skill_level_get(self, skillId):
+		"""Gets specific skill value. npc.skill_level_get(int[skill_appraise...]: skillId) -> int"""
+		return 0
+
+	def skill_ranks_get(self, skillId):
+		"""Gets specific skill rank. npc.skill_ranks_get(int[skill_appraise...]: skillId) -> int"""
+		return 0
 
 	def spell_known_add(self, spellIdx, spellClassCode, slotLevel):
 		"""npc.spell_known_add(int[...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
