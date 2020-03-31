@@ -1,13 +1,18 @@
-from toee import *
-from debugg import *
+import toee
+import debugg
 import utils_storage
 import utils_obj
+import const_toee
+import utils_tactics
+import utils_npc
+import utils_target_list
 
 class ShadowscaleChief(object):
 	def __init__(self):
 		self.name = ShadowscaleChief.get_name()
 		self.round = 0
-		self.aware_of_combat = 0
+		self.countdown_status = 0 #0 - not started, 1 - started, 2 - finished
+		self.already_went_to_center = 0
 		return
 
 	@staticmethod
@@ -16,89 +21,104 @@ class ShadowscaleChief(object):
 
 
 def san_first_heartbeat(attachee, triggerer):
-	assert isinstance(attachee, PyObjHandle)
-	assert isinstance(triggerer, PyObjHandle)
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	attachee.critter_flag_set(OCF_SLEEPING)
 	#breakp("san_first_heartbeat")
 	utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()] = ShadowscaleChief()
-	return RUN_DEFAULT
+	return toee.RUN_DEFAULT
 
 def san_heartbeat(attachee, triggerer):
-	assert isinstance(attachee, PyObjHandle)
-	assert isinstance(triggerer, PyObjHandle)
-	#breakp("san_heartbeat chief")
-	if (attachee.critter_flags_get() & OCF_COMBAT_MODE_ACTIVE): 
-		attachee.scripts[sn_heartbeat] = 0
-		return RUN_DEFAULT
+	print("san_heartbeat")
+	print("san_heartbeat({}, {})".format(attachee, triggerer))
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
 
-	chief_store = utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()]
-	assert isinstance(chief_store, ShadowscaleChief)
+	dude = utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()]
+	print("dude.countdown_status: {}".format(dude.countdown_status))
+	if (dude.countdown_status == 0):
+		#debugg.breakp("san_heartbeat chief")
+		if (triggerer != attachee): # got triggerer from a minion
+			print("from minion: {}".format(triggerer))
+			if (1 or triggerer.critter_flags_get() & toee.OCF_COMBAT_MODE_ACTIVE):
+				dude.countdown_status = 1
+				print("chief_on_timeevent go")
+				toee.game.timevent_add(chief_on_timeevent, ( attachee ), 100, 0) # lets wait two rounds
+	elif (dude.countdown_status == 1):
+		# wait period
+		attachee.float_text_line("What is going on in here!", const_toee.Red)
+	else:
+		# we dont need it anymore
+		attachee.scripts[const_toee.sn_heartbeat] = 0
 
-	door = do_chief_manage_door(0)
-	if (not chief_store.aware_of_combat):
-		print("CHECK NEW_AWARE_OF_COMBAT")
-		new_aware_of_combat = 0
-		for obj in game.obj_list_range(attachee.location, 50, OLC_NPC):
-			if (obj.critter_flags_get() & OCF_COMBAT_MODE_ACTIVE and obj.leader_get() == attachee):
-				new_aware_of_combat = 1
-				break
-		if (new_aware_of_combat):
-			chief_store.aware_of_combat = 1
-			door = do_chief_manage_door(2)
-
-	if (not door):
-		attachee.move(utils_obj.sec2loc(452, 474))
-	return RUN_DEFAULT
+	return toee.RUN_DEFAULT
 
 def san_enter_combat(attachee, triggerer):
-	assert isinstance(attachee, PyObjHandle)
-	chief = utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()]
-	chief.round = 0
-	do_chief_manage_door(2)
-	return RUN_DEFAULT
+	assert isinstance(attachee, toee.PyObjHandle)
+	dude = utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()]
+	dude.round = 0
+	#debugg.breakp("san_enter_combat chief")
+	if (dude.countdown_status < 2):
+		attachee.ai_stop_attacking()
+		return toee.SKIP_DEFAULT
+	return toee.RUN_DEFAULT
 
 def san_start_combat(attachee, triggerer):
-	assert isinstance(attachee, PyObjHandle)
-	assert isinstance(triggerer, PyObjHandle)
-	#breakp("san_start_combat chief")
-	chief = utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()]
-	chief.round += 1
-	return RUN_DEFAULT
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	#debugg.breakp("san_start_combat chief")
+	dude = utils_storage.obj_storage(attachee).data[ShadowscaleChief.get_name()]
+	dude.round += 1
+	tac = utils_tactics.TacticsHelper(ShadowscaleChief.get_name())
+	while(1==1):
+		if (dude.countdown_status < 2):
+			tac.add_stop()
+			break
 
+		measures = utils_target_list.AITargetMeasure()
+		measures.measure_has_los = 1
+		measures.mult_has_los = 100
+		measures.measure_distance = 1
+		measures.mult_distance = 1
+		measures.measure_can_path = 1
+		measures.mult_can_path = 100
+		tl = utils_target_list.AITargetList(attachee, 1, 0, measures).rescan()
+		aitarget = tl.topt() #AITarget
+		if (aitarget):
+			if (not aitarget.measures.value_can_path):
+				if (not dude.already_went_to_center):
+					dude.already_went_to_center = 1
+					tac.add_goto(462, 477)
+				else: 
+					tac.add_total_defence()
+					break
 
-def do_chief_manage_door(shall_destroy):
-	door = None
-	for obj in game.obj_list_range(utils_obj.sec2loc(448, 474), 10, OLC_PORTAL):
-		assert isinstance(obj, PyObjHandle)
-		if (not (obj.object_flags_get() & OF_DESTROYED)):
-			door = obj
+		tac.add_target_closest()
+		tac.add_attack()
 		break
+	
+	print(tac)
+	if (tac.count > 0):
+		tac.make_name()
+		strat = tac.custom_tactics
+		print("set strategy: {}".format(strat))
+		attachee.ai_strategy_set_custom(strat)
 
-	print(door)
-	#breakp("do_chief_manage_door 1")
-	if (door and shall_destroy == 1):
-		door.destroy()
-		door = None
-	elif (door and shall_destroy > 1 and not (door.portal_flags_get() & OPF_OPEN)):
-		#breakp("do_chief_manage_door do destroy")
-		door.portal_toggle_open()
-		#door.portal_flag_set(OPF_BUSTED)
-		game.timevent_add(_door_destroy_postcall, ( door ), 2000, 0) # 1000 = 1 second
+	#debugg.breakp("san_start_combat chief end")
+	return toee.RUN_DEFAULT
 
-	return door
-
-def _door_destroy_postcall(obj):
-	#breakp("do_chief_manage_door on destroy")
-	obj.destroy()
-	return 1
-
-def find_closest_pc(loc):
-	#attachee.obj_get_obj(obj_f_npc_combat_focus)
-	closest_one = None
-	closest_one_dist = 10000
-	for pc in game.party:
-		if (pc == closest_one): continue
-		dist = attachee.distance_to(pc)
-		if (dist < closest_one_dist):
-			closest_one = pc
-			closest_one_dist = dist
-	return closest_one
+def chief_on_timeevent(obj):
+	assert isinstance(obj, toee.PyObjHandle)
+	print("chief_on_timeevent here")
+	#debugg.breakp("chief_on_timeevent")
+	if (not utils_npc.npc_is_alive(obj)): return
+	dude = utils_storage.obj_storage(obj).data[ShadowscaleChief.get_name()]
+	dude.countdown_status = 2
+	obj.npc_flag_set(ONF_KOS)
+	obj.npc_flag_unset(ONF_NO_ATTACK)
+	obj.faction_add(1)
+	print("chief_on_timeevent move")
+	obj.move(utils_obj.sec2loc(452, 475))
+	#obj.move(utils_obj.sec2loc(453, 471))
+	#obj.move(utils_obj.sec2loc(460, 478))
+	return

@@ -39,6 +39,8 @@ class NPCSpells(object):
 			class_name = "class_wizard"
 			if (rec.spell_class_stat == toee.stat_level_cleric):
 				class_name = "class_cleric"
+			if (rec.spell_class_stat == toee.stat_level_bard):
+				class_name = "class_bard"
 			spell_code = "'{}' {} {}".format(utils_spell.spell_name_safe(rec.spell_num), class_name, rec.spell_level)
 			return spell_code
 		return None

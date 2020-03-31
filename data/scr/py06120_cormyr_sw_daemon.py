@@ -9,12 +9,17 @@ import utils_toee
 import utils_npc
 import py06123_banelar
 from math import radians
-from const_proto_weapon import *
 from const_proto_potions import *
 from const_proto_items import *
 from const_proto_containers import *
-from const_proto_scrolls import *
 import math
+import utils_conds
+import py06125_knell_beetle_lesser
+import cormyr_config
+import const_proto_scrolls
+import const_proto_wands
+import const_proto_weapon
+import const_proto_armor
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -22,6 +27,8 @@ def cormyr_sw_san_new_map( attachee, triggerer ):
 
 
 def cormyr_sw_init():
+	if (utils_toee.get_f("cormyr_sw_init")): return
+	utils_toee.set_f("cormyr_sw_init")
 	do_hook_doors()
 	do_place_promters()
 	return
@@ -55,7 +62,10 @@ def door_san_use( attachee, triggerer, already_used, marker):
 	return 1 # should_destroy
 
 def do_encounter_w3():
-	return
+	if (not cormyr_config.cormyr_get_option("sw", "spawn_w3")): return
+	if (utils_toee.get_f("sw_spawn_w3")): return
+	utils_toee.set_f("sw_spawn_w3")
+
 	leader = create_shadowscale_marauder_at(sec2loc(513, 489))
 	leader.critter_flag_set(OCF_UNRESSURECTABLE) # say Leader
 	leader.scripts[sn_heartbeat] = 6121
@@ -67,7 +77,10 @@ def do_encounter_w3():
 	return
 
 def do_encounter_w6():
-	return
+	if (not cormyr_config.cormyr_get_option("sw", "spawn_w6")): return
+	if (utils_toee.get_f("sw_spawn_w6")): return
+	utils_toee.set_f("sw_spawn_w6")
+
 	leader = create_shadowscale_marauder_at(sec2loc(458, 455))
 	leader.critter_flag_set(OCF_UNRESSURECTABLE) # say Leader
 	leader.scripts[sn_heartbeat] = 6121
@@ -79,38 +92,52 @@ def do_encounter_w6():
 	return
 
 def do_encounter_w5():
-	#return
+	if (not cormyr_config.cormyr_get_option("sw", "spawn_w5")): return
+	if (utils_toee.get_f("sw_spawn_w5")): return
+	utils_toee.set_f("sw_spawn_w5")
 	create_banelar_chest_at(sec2loc(478, 478))
 	npc = create_banelar_at(sec2loc(485, 498))
 	# only for testing!!
-	#utils_npc.npc_spell_ensure(game.party[4], spell_lightning_bolt, stat_level_sorcerer, 3, 0)
+	utils_npc.npc_spell_ensure(game.party[4], spell_identify, stat_level_sorcerer, 1, 0)
 	return
 
 def do_encounter_w8():
-	return
+	if (utils_toee.get_f("sw_spawn_w8")): return
+	create_chief_chest_at(sec2loc(440, 472))
+	op = cormyr_config.cormyr_get_option("sw", "spawn_w8")
+	print("do_encounter_w8 op: {} type: {}".format(op, type(op)))
+	if (op == "0"): return
+	print("what the f")
+	utils_toee.set_f("sw_spawn_w8")
+
+	create_knell_beetle_at(sec2loc(457, 481))
+
 	leader = create_shadowscale_marauder_warchief_at(sec2loc(442, 474))
+	leader.npc_flag_unset(ONF_KOS)
+	leader.npc_flag_set(ONF_NO_ATTACK)
+	#leader.npc_flag_set(ONF_BACKING_OFF) # do not use it, it will move
+
 	#leader = create_shadowscale_marauder_warchief_at(sec2loc(445, 476))
-	minion = create_shadowscale_marauder_at(sec2loc(464, 474), 1)
-	minion.obj_set_obj(obj_f_npc_leader, leader)
-	minion.scripts[sn_start_combat] = 6121
+	minion = create_shadowscale_marauder_at(sec2loc(464, 474), 0)
+	#minion.obj_set_obj(obj_f_npc_leader, leader) having leader will provoke hostility constantly, do not use it for this encounter
+	minion.obj_set_obj(obj_f_critter_fleeing_from, leader)
+	minion.scripts[sn_enter_combat] = 6121
+	
+	minion.rotation = radians(225)
 
-	minion = create_shadowscale_marauder_at(sec2loc(460, 486), 1)
-	minion.obj_set_obj(obj_f_npc_leader, leader)
-	minion.scripts[sn_start_combat] = 6121
+	minion = create_shadowscale_marauder_at(sec2loc(460, 486), 0)
+	minion.rotation = radians(225)
 
-	minion = create_shadowscale_marauder_at(sec2loc(454, 471), 1)
-	minion.obj_set_obj(obj_f_npc_leader, leader)
-	minion.scripts[sn_start_combat] = 6121
+	minion = create_shadowscale_marauder_at(sec2loc(454, 471), 0)
+	minion.rotation = radians(225)
 
-	minion = create_shadowscale_marauder_at(sec2loc(453, 478), 1)
-	minion.obj_set_obj(obj_f_npc_leader, leader)
-	minion.scripts[sn_start_combat] = 6121
+	minion = create_shadowscale_marauder_at(sec2loc(453, 478), 0)
+	minion.rotation = radians(225)
 
 	leader.object_script_execute(leader, sn_first_heartbeat)
-	#create_knell_beetle_at(sec2loc(457, 481))
 	return
 
-def create_shadowscale_marauder_at(loc, nothidden = None):
+def create_shadowscale_marauder_at(loc, hidden = 1):
 	PROTO_NPC_SHADOWSCALE_MARAUDER = 14833
 	#newDescription = 14019
 	npc = game.obj_create(PROTO_NPC_SHADOWSCALE_MARAUDER, loc)
@@ -125,7 +152,12 @@ def create_shadowscale_marauder_at(loc, nothidden = None):
 
 	npc.item_wield_best_all()
 	npc.faction_add(1)
-	if (not nothidden is None):
+
+	#npc.critter_flag_set(OCF_SLEEPING)
+	#utils_conds.cond_add_prone(npc)
+	#npc.condition_add_with_args(utils_conds.CONDITION_SP_SLEEP, 100, 100)
+
+	if (hidden):
 		npc.critter_flag_set(OCF_MOVING_SILENTLY)
 		npc.npc_flag_unset(ONF_KOS)
 		npc.concealed_set(1)
@@ -237,32 +269,17 @@ def create_shadowscale_marauder_warchief_at(loc):
 	#npc.condition_add_with_args("Multi_Attack", 0, 0)
 	
 
-	item_create_in_inventory(PROTO_WEAPON_GREATSWORD_PLUS1_FLAMING, npc)
+	item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATSWORD_PLUS1_FLAMING, npc)
 
 	npc.item_wield_best_all()
-	npc.faction_add(1)
+	#npc.faction_add(1)
+	npc.rotation = radians(225)
 	return npc
 
 def create_knell_beetle_at(loc):
-	PROTO_NPC_KNELL_BEETLE = 14768
-	#newDescription = 14019
-	npc = game.obj_create(PROTO_NPC_KNELL_BEETLE, loc)
-
-	#npc.obj_set_int(obj_f_critter_description_unknown, newDescription)
-	#npc.obj_set_int(obj_f_description_correct, newDescription)
-
-	obj_scripts_clear(npc)
-	item_clear_all(npc)
-
-	#npc.scripts[sn_first_heartbeat] = 6124
-	#npc.scripts[sn_heartbeat] = 6124
-	#npc.scripts[sn_enter_combat] = 6124
-	#npc.scripts[sn_start_combat] = 6124
-
-	#npc.condition_add_with_args("Base_Attack_Bonus3", 5, 6)
-	#npc.condition_add_with_args("Multi_Attack", 0, 0)
-	
+	npc = py06125_knell_beetle_lesser.CtrlKnellBeetleLesser.create_obj(loc)
 	npc.faction_add(1)
+	npc.move(loc)
 	return npc
 
 def create_banelar_chest_at(loc):
@@ -273,9 +290,25 @@ def create_banelar_chest_at(loc):
 	item_create_in_inventory(PROTO_POTION_OF_HEAL, obj)
 	item_create_in_inventory(PROTO_POTION_OF_REMOVE_CURSE, obj)
 	item_create_in_inventory(PROTO_POTION_OF_RESTORATION, obj)
-	item = item_create_in_inventory(PROTO_WAND_OF_CURE_SERIOUS_WOUNDS, obj)
-	item.obj_set_int(obj_f_item_spell_charges_idx, 40)
+	item = item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_CURE_SERIOUS_WOUNDS, obj)
+	#item.obj_set_int(obj_f_item_spell_charges_idx, 40) fixed in proto_wands
 	item_money_create_in_inventory(obj, 0, 250, 3300)
 	item_create_in_inventory(PROTO_GENERIC_PEARL_WHITE, obj, 3)
-	item_create_in_inventory_mass(obj, [PROTO_SCROLL_OF_COLOR_SPRAY, PROTO_SCROLL_OF_MAGE_ARMOR, PROTO_SCROLL_OF_MAGIC_MISSILE, PROTO_SCROLL_OF_TASHA_S_HIDEOUS_LAUGHTER, PROTO_SCROLL_OF_INVISIBILITY, PROTO_SCROLL_OF_MELF_S_ACID_ARROW, PROTO_SCROLL_OF_STINKING_CLOUD, PROTO_SCROLL_OF_LIGHTNING_BOLT])
+	item_create_in_inventory_mass(obj, [const_proto_scrolls.PROTO_SCROLL_OF_COLOR_SPRAY, const_proto_scrolls.PROTO_SCROLL_OF_MAGE_ARMOR, const_proto_scrolls.PROTO_SCROLL_OF_MAGIC_MISSILE \
+		, const_proto_scrolls.PROTO_SCROLL_OF_TASHA_S_HIDEOUS_LAUGHTER, const_proto_scrolls.PROTO_SCROLL_OF_INVISIBILITY, const_proto_scrolls.PROTO_SCROLL_OF_MELF_S_ACID_ARROW \
+		, const_proto_scrolls.PROTO_SCROLL_OF_STINKING_CLOUD, const_proto_scrolls.PROTO_SCROLL_OF_LIGHTNING_BOLT \
+	])
+	return obj
+
+def create_chief_chest_at(loc):
+	#breakp("create_banelar_chest_at")
+	obj = game.obj_create(PROTO_CONTAINER_CHEST_WOODEN_MEDIUM, loc)
+	obj.rotation = math.radians(135)
+	obj_scripts_clear(obj)
+
+	igold = 1700 + 4*150 + 370 #he loot consists of 1,700 gp, 7,200 sp, 4 matched golden goblets worth 150 gp apiece, a large silver platter etched with a hunting scene worth 370 gp
+	item_money_create_in_inventory(obj, 0, igold, 7200)
+	item_create_in_inventory_mass(obj, [const_proto_scrolls.PROTO_SCROLL_OF_NEUTRALIZE_POISON, const_proto_scrolls.PROTO_SCROLL_OF_CLOUDKILL])
+	item = item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_LIGHTNING_BOLT, obj)
+	item = item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAIN_ELVEN_BLUE, obj)
 	return obj

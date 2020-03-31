@@ -13,7 +13,7 @@ class PySpell(object):
 class PyObjHandle(object):
 	"""Mobile object"""
 
-	def __init__(self):
+	def __init__(self, dummy = 0):
 		self.area = 1	#	Gets the id of the current area, which is based on the current map.
 		self.char_classes = ("first_class_name", "second_class_name")	#	a tuple containing the character classes array
 		self.highest_arcane_class = 1	#	Highest Arcane spell casting class
@@ -170,12 +170,20 @@ class PyObjHandle(object):
 		"""Send d20 signal. npc.d20_send_signal(int[DK_SIG_HP_Changed+signalId]: signalId, PyObjHandle: obj)"""
 		return
 
-	def d20_query(self, signalId, obj):
-		"""npc.d20_query(key) -> int
+	def d20_query(self, key):
+		"""npc.d20_query(int: key) -> int
 		key --- if string then D20QueryPython
-		key --- if int then d20Query
+		key --- if int then d20Query, e.g. EK_Q_Helpless
 		"""
-		return
+		return 0
+
+	def d20_query_has_spell_condition(self, spellId):
+		"""npc.d20_query_has_spell_condition(int[spell_sleep]: spellId) -> int"""
+		return 0
+
+	def d20_query_has_condition(self, name):
+		"""npc.d20_query_has_condition(str: name) -> int"""
+		return 0
 
 	def d20_query_with_data(self, key, data1, data2):
 		"""npc.d20_query_with_data(int[EK_Q_Critter_Has_Condition]: key, int: data1, int: data2) -> int
@@ -183,8 +191,7 @@ class PyObjHandle(object):
 		data1 --- tpdp.hash("Monster Fast Healing")
 		data2 -- usually 0
 		"""
-		return
-	
+		return 0
 
 	def destroy(self):
 		"""Destroys the object"""
@@ -330,8 +337,8 @@ class PyObjHandle(object):
 		return 1
 
 	def obj_get_obj(self, field):
-		"""Get internal field obj value. npc.obj_get_obj(int[obj_f_*]: field) -> int"""
-		return 1
+		"""Get internal field obj value. npc.obj_get_obj(int[obj_f_*]: field) -> PyObjHandle"""
+		return PyObjHandle()
 
 	def object_script_execute(self, triggerer, scriptEvent):
 		"""npc.object_script_execute(PyObjHandle: triggerer, int[sn_first_heartbeat]: field) -> int"""
@@ -487,6 +494,8 @@ class PyObjScripts(object):
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
+
+OBJ_HANDLE_NULL = PyObjHandle(0)
 
 #obj_f fields
 obj_f_3d_render_height = 40
@@ -1843,6 +1852,7 @@ stat_subrace = 285
 stat_weight = 235
 stat_wis_mod = 259
 
+# NPC Flags (obj_f_npc_flags)
 ONF_EX_FOLLOWER = 1
 ONF_WAYPOINTS_DAY = 2
 ONF_WAYPOINTS_NIGHT = 4
@@ -3041,11 +3051,16 @@ OLC_TRAP = 131072
 OLC_WEAPON = 32
 OLC_WRITTEN = 8192
 
+# Item Flags (obj_f_item_flags)
+OIF_IDENTIFIED = 1
+OIF_WONT_SELL = 2
+OIF_IS_MAGICAL = 4
+OIF_NO_PICKPOCKET = 8
+OIF_NO_DISPLAY = 16
+OIF_NO_DROP = 32
 OIF_CAN_USE_BOX = 128
 OIF_DRAW_WHEN_PARENTED = 4194304
 OIF_EXPIRES_AFTER_USE = 8388608
-OIF_IDENTIFIED = 1
-OIF_IS_MAGICAL = 4
 OIF_LIGHT_LARGE = 2048
 OIF_LIGHT_MEDIUM = 1024
 OIF_LIGHT_SMALL = 512
@@ -3054,11 +3069,8 @@ OIF_MT_TRIGGERED = 16384
 OIF_NEEDS_SPELL = 64
 OIF_NEEDS_TARGET = 256
 OIF_NO_DECAY = 131072
-OIF_NO_DISPLAY = 16
-OIF_NO_DROP = 32
 OIF_NO_LOOT = 16777216
 OIF_NO_NPC_PICKUP = 524288
-OIF_NO_PICKPOCKET = 8
 OIF_NO_RANGED_USE = 1048576
 OIF_NO_TRANSFER = 67108864
 OIF_PERSISTENT = 8192
@@ -3067,4 +3079,3 @@ OIF_UBER = 262144
 OIF_USES_WAND_ANIM = 33554432
 OIF_USE_IS_THROW = 65536
 OIF_VALID_AI_ACTION = 2097152
-OIF_WONT_SELL = 2

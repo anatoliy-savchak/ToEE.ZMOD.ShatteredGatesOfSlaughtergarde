@@ -191,3 +191,7 @@ class TacticsHelper(object):
 	def add_touch_attack(self):
 		self.add_simple("touch attack")
 		return
+
+	def add_total_defence(self):
+		self.add_simple("total defence")
+		return

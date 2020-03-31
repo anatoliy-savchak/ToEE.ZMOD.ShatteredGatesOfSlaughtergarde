@@ -64,3 +64,15 @@ def npc_skill_ensure(npc, skill_id, target_skill_value):
 	delta = target_skill_value - value
 	npc.skill_ranks_set(skill_id, delta)
 	return delta
+
+def npc_is_alive(npc):
+	assert isinstance(npc, PyObjHandle)
+	object_flags = npc.object_flags_get()
+	if ((object_flags & OF_DESTROYED) or (object_flags & OF_OFF)): return 0
+	result = npc.d20_query(EK_Q_Dead - EK_Q_Helpless)
+	if (result): return 0
+	result = npc.d20_query(EK_Q_Dying - EK_Q_Helpless)
+	if (result): return 0
+	hp = npc.stat_level_get(stat_hp_current)
+	if (hp <= 10): return 0
+	return 1

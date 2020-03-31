@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
+    <Folder Include="data\docs\" />
     <Folder Include="data\scr\" />
     <Folder Include="data\dlg\" />
     <Folder Include="data\mes\" />
@@ -54,6 +55,7 @@
     <Content Include="data\dlg\00406Game_Portal.dlg" />
     <Content Include="data\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="data\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="data\docs\conditions.md" />
     <Content Include="data\mes\description\cormyr_names.mes" />
     <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
     <Content Include="data\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
@@ -121,6 +123,7 @@
     <Content Include="modules\ToEE\rules\MapList.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="data\rules\protos\constr_proto_wands.py" />
     <Compile Include="data\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
@@ -128,6 +131,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\const_proto_scrolls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\const_proto_wands.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\cormyr_pc.py" />
@@ -156,7 +162,11 @@
     <Compile Include="data\scr\py06124_shadowscale_chief.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\py06125_knell_beetle_lesser.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\Spell275 - Lightning Bolt.py" />
+    <Compile Include="data\scr\Spell432 - Shout.py" />
     <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
@@ -169,6 +179,9 @@
     </Compile>
     <Compile Include="data\scr\tpModifiers\spell_quicken.py" />
     <Compile Include="data\scr\tpModifiers\spell_quicken_all.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="data\scr\utils_conds.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\utils_target_list.py">

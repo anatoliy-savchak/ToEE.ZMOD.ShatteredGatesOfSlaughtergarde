@@ -94,8 +94,12 @@ class AITargetMeasure(object):
 		self.measure_stat_save_willpower = 0
 		self.measure_has_los = 0
 		self.measure_range_is_within_melee = 0
+		self.measure_distance = 0
+		self.measure_can_path = 0
 
 		self.option_distance_over_reach_allowed = 0.0
+		self.option_can_path_flags = 0
+
 		#self.value_is_destroyed = 0
 		self.value_stat_ac = 0
 		self.value_stat_hp = 0
@@ -110,6 +114,7 @@ class AITargetMeasure(object):
 		self.value_distance_over_reach = 0
 		self.value_range_is_within_melee0 = 0
 		self.value_range_is_within_melee = 0
+		self.value_can_path = 0
 		
 		#self.mult_is_destroyed = -1000
 		self.mult_stat_ac = 0
@@ -121,6 +126,8 @@ class AITargetMeasure(object):
 		self.mult_stat_save_willpower = 0
 		self.mult_has_los = 0
 		self.mult_range_is_within_melee = 0
+		self.mult_distance = 0
+		self.mult_can_path = 0
 		
 		#self.qualify_is_destroyed_not = 1
 		self.qualify_has_los = 0
@@ -153,6 +160,18 @@ class AITargetMeasure(object):
 		measures = cls()
 		measures.measure_has_los = 1
 		measures.qualify_has_los = 1
+		return measures
+
+	@classmethod
+	def by_has_los_stay(cls):
+		measures = cls()
+		measures.measure_has_los = 1
+		measures.qualify_has_los = 0
+		return measures
+
+	@classmethod
+	def by_none(cls):
+		measures = cls()
 		return measures
 
 def btoi(b):
@@ -207,19 +226,27 @@ class AITarget(object):
 
 		dist_to_target = None
 		value_reach = None
+		if (self.measures.measure_range_is_within_melee or self.measures.measure_distance):
+			dist_to_target = self.npc.distance_to(self.target)
+			value_reach = 0.00 + self.npc.obj_get_int(toee.obj_f_critter_reach)
+			if (value_reach < 0.01): value_reach = 5.0
+
+		if (self.measures.measure_distance):
+			self.measures.value_distance = dist_to_target
+			self.measures.weight += self.measures.mult_distance * self.measures.value_distance
+
 		if (self.measures.measure_range_is_within_melee):
-			if (dist_to_target is None): 
-				dist_to_target = self.npc.distance_to(self.target)
-				self.measures.value_distance_to_target = dist_to_target
-			if (value_reach is None):
-				value_reach = 0.00 + self.npc.obj_get_int(toee.obj_f_critter_reach)
-				if (value_reach < 0.01): value_reach = 5.0
-				self.measures.value_reach = value_reach
-			
+			self.measures.value_distance_to_target = dist_to_target
+			self.measures.value_reach = value_reach
 			self.measures.value_distance_over_reach = self.measures.value_distance_to_target - self.measures.value_reach
 			self.measures.value_range_is_within_melee0 = btoi(self.measures.value_distance_over_reach <= 0)
 			self.measures.value_range_is_within_melee = btoi(self.measures.value_distance_over_reach <= self.measures.option_distance_over_reach_allowed)
 			self.measures.weight += self.measures.mult_range_is_within_melee * self.measures.value_range_is_within_melee
+
+		if (self.measures.measure_can_path):
+			self.measures.value_can_path = self.npc.can_find_path_to_obj(self.target, self.measures.option_can_path_flags)
+			self.measures.weight += self.measures.mult_can_path * self.measures.value_can_path
+
 		return
 
 	def __str__(self):
@@ -249,8 +276,14 @@ class AITarget(object):
 			s += frmt.format("has_los", self.measures.mult_has_los, self.measures.value_has_los)
 			if (self.measures.qualify_has_los): s += "!"
 
+		if (self.measures.measure_distance):
+			s += frmt.format("distance", self.measures.mult_distance, self.measures.value_distance)
+
 		if (self.measures.measure_range_is_within_melee):
 			s += "+ ({}: {}*{}, reach: {}, distance: {})".format("range_is_within_melee", self.measures.mult_range_is_within_melee, self.measures.value_range_is_within_melee, self.measures.value_reach, self.measures.value_distance_to_target)
+
+		if (self.measures.measure_can_path):
+			s += frmt.format("can_path", self.measures.mult_can_path, self.measures.value_can_path)
 		return s
 
 	def qualify(self):

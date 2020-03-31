@@ -35,9 +35,17 @@ def san_heartbeat( attachee, triggerer ):
 def san_enter_combat( attachee, triggerer ):
 	assert isinstance(attachee, PyObjHandle)
 	assert isinstance(triggerer, PyObjHandle)
-	#breakp("py06121_marauder san_enter_combat 1")
-	#if (game.combat_is_active()): return RUN_DEFAULT
-	#breakp("py06121_marauder san_enter_combat 2")
+
+	if (1): # leader logic once only
+		leader = attachee.obj_get_obj(obj_f_critter_fleeing_from)
+		if (leader): 
+			print("leader: {}".format(leader))
+			if (not (leader.critter_flags_get() & OCF_COMBAT_MODE_ACTIVE)):
+				attachee.float_text_line("Boss, help!", Red)
+				leader.object_script_execute(attachee, sn_heartbeat)
+			print("unsetting leader")
+			attachee.obj_set_obj(obj_f_critter_fleeing_from, OBJ_HANDLE_NULL)
+
 	# only do this for the Leader, use OCF_UNRESSURECTABLE for it 
 	if (not (attachee.critter_flags_get() & OCF_UNRESSURECTABLE)): return RUN_DEFAULT
 	#breakp("py06121_marauder san_enter_combat 3")
@@ -71,20 +79,3 @@ def san_enter_combat( attachee, triggerer ):
 	#breakp("py06121_marauder san_enter_combat 5")
 	obj_scripts_clear(attachee)
 	return RUN_DEFAULT
-
-def san_start_combat(attachee, triggerer):
-	assert isinstance(attachee, PyObjHandle)
-	assert isinstance(triggerer, PyObjHandle)
-	leader = attachee.leader_get()
-	print(leader)
-	#breakp("py06121_marauder san_start_combat 1")
-	if (leader and not (leader.critter_flags_get() & OCF_COMBAT_MODE_ACTIVE)):
-		#print("adding leader to initiative...")
-		#leader.add_to_initiative()
-		#leader.critter_flag_set(OCF_COMBAT_MODE_ACTIVE)
-		#leader.ai_shitlist_add()
-		#breakp("py06121_marauder san_start_combat 2")
-		leader.object_script_execute(leader, sn_heartbeat)
-		#game.update_combat_ui()
-	return RUN_DEFAULT
-

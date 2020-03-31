@@ -1,6 +1,7 @@
 from toee import *
 from debugg import breakp
 import math
+import sys
 
 def location_to_axis( loc ):
 	if type(loc) == type(OBJ_HANDLE_NULL):
