@@ -20,6 +20,7 @@ import const_proto_scrolls
 import const_proto_wands
 import const_proto_weapon
 import const_proto_armor
+import py06126_shocker_lizard
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -59,10 +60,12 @@ def door_san_use( attachee, triggerer, already_used, marker):
 		do_encounter_w5()
 	if (marker == 51): 
 		do_encounter_w8()
+	if (marker == 81 or marker == 111): 
+		do_encounter_w11()
 	return 1 # should_destroy
 
 def do_encounter_w3():
-	if (not cormyr_config.cormyr_get_option("sw", "spawn_w3")): return
+	if (not cormyr_config.cormyr_get_option_int("sw", "spawn_w3")): return
 	if (utils_toee.get_f("sw_spawn_w3")): return
 	utils_toee.set_f("sw_spawn_w3")
 
@@ -77,7 +80,7 @@ def do_encounter_w3():
 	return
 
 def do_encounter_w6():
-	if (not cormyr_config.cormyr_get_option("sw", "spawn_w6")): return
+	if (not cormyr_config.cormyr_get_option_int("sw", "spawn_w6")): return
 	if (utils_toee.get_f("sw_spawn_w6")): return
 	utils_toee.set_f("sw_spawn_w6")
 
@@ -92,7 +95,7 @@ def do_encounter_w6():
 	return
 
 def do_encounter_w5():
-	if (not cormyr_config.cormyr_get_option("sw", "spawn_w5")): return
+	if (not cormyr_config.cormyr_get_option_int("sw", "spawn_w5")): return
 	if (utils_toee.get_f("sw_spawn_w5")): return
 	utils_toee.set_f("sw_spawn_w5")
 	create_banelar_chest_at(sec2loc(478, 478))
@@ -104,10 +107,7 @@ def do_encounter_w5():
 def do_encounter_w8():
 	if (utils_toee.get_f("sw_spawn_w8")): return
 	create_chief_chest_at(sec2loc(440, 472))
-	op = cormyr_config.cormyr_get_option("sw", "spawn_w8")
-	print("do_encounter_w8 op: {} type: {}".format(op, type(op)))
-	if (op == "0"): return
-	print("what the f")
+	if (not cormyr_config.cormyr_get_option_int("sw", "spawn_w8")): return
 	utils_toee.set_f("sw_spawn_w8")
 
 	create_knell_beetle_at(sec2loc(457, 481))
@@ -135,6 +135,21 @@ def do_encounter_w8():
 	minion.rotation = radians(225)
 
 	leader.object_script_execute(leader, sn_first_heartbeat)
+	return
+
+def do_encounter_w11():
+	if (not cormyr_config.cormyr_get_option_int("sw", "spawn_w11")): return
+	if (utils_toee.get_f("sw_spawn_w11")): return
+	utils_toee.set_f("sw_spawn_w11")
+
+	loc = sec2loc(464, 498)
+	npc = py06126_shocker_lizard.CtrlShockerLizard.create_obj(loc)
+	npc.faction_add(1)
+	npc.move(loc)
+
+	#loc = sec2loc(456, 503)
+	#npc = create_shambling_mound_at(loc)
+	#npc.move(loc)
 	return
 
 def create_shadowscale_marauder_at(loc, hidden = 1):
@@ -312,3 +327,9 @@ def create_chief_chest_at(loc):
 	item = item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_LIGHTNING_BOLT, obj)
 	item = item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAIN_ELVEN_BLUE, obj)
 	return obj
+
+def create_shambling_mound_at(loc):
+	456, 503
+	npc = game.obj_create(14889, loc)
+	npc.rotation = radians(225)
+	return npc

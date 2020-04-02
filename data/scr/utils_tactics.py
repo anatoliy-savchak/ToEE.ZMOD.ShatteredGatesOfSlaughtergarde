@@ -195,3 +195,7 @@ class TacticsHelper(object):
 	def add_total_defence(self):
 		self.add_simple("total defence")
 		return
+
+	def add_python_action(self, action_enum):
+		self.add_triplet("python action", str(action_enum), "")
+		return

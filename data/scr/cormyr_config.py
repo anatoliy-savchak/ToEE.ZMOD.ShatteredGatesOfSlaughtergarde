@@ -17,12 +17,13 @@ class CormyrConfig(object):
 		type(self)._cfg = val
 		return
 
-def cormyr_get_option(section, option):
+def cormyr_get_option_int(section, option):
 	cc = CormyrConfig()
 	c = cc.cfg
 	if (not c): 
 		return None
 	assert isinstance(c, ConfigParser.SafeConfigParser)
-	r = c.get(section, option)
+	if (not c.has_option(section, option)): return None
+	r = c.getint(section, option)
 	print("cormyr_get_option({}, {}) = {}".format(section, option, r))
 	return r
