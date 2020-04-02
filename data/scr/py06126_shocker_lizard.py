@@ -43,6 +43,7 @@ class CtrlShockerLizard(object):
 		npc.scripts[const_toee.sn_enter_combat] = 6126
 		npc.scripts[const_toee.sn_spell_cast] = 6126
 		npc.condition_add_with_args("Stunning_Shock", 0, self.stunning_shock_off_field)
+		npc.condition_add_with_args("Lethal_Shock", 0, 0)
 		return
 
 	@staticmethod
