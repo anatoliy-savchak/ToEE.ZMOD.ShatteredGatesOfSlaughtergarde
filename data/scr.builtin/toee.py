@@ -164,9 +164,13 @@ class PyObjHandle(object):
 		"""npc.concealed_set(int: concealed) -> None"""
 		return
 
+	def condition_add(self, cond_name):
+		""" npc.condition_add(str: cond_name) -> int"""
+		return 0
+
 	def condition_add_with_args(self, cond_name, arg0 = None, arg1 = None, arg2 = None):
 		""" npc.condition_add_with_args(str: cond_name, int: arg0 = None, int: arg1 = None, int: arg2 = None) -> int"""
-		return
+		return 0
 
 	def container_toggle_open(self):
 		"""door.container_toggle_open() -> None"""
@@ -263,6 +267,10 @@ class PyObjHandle(object):
 	def faction_add(self, faction_num):
 		"""npc.faction_add(int[<55]: faction_num) -> int"""
 		return 1
+
+	def fall_down(self, unk_arg = None):
+		"""npc.fall_down(int: unk_arg = None) -> None"""
+		return
 
 	def feat_add(self, featCode, do_refresh_d20_status):
 		"""Adds a feat. npc.feat_add(int[FEAT_ACROBATIC - FEAT_INDOMITABLE_WILL]: featCode, int: do_refresh_d20_status) -> int

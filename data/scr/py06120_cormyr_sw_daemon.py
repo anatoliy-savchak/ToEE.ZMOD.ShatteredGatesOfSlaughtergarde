@@ -21,6 +21,7 @@ import const_proto_wands
 import const_proto_weapon
 import const_proto_armor
 import py06126_shocker_lizard
+import py06127_shambling_mound
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -142,14 +143,23 @@ def do_encounter_w11():
 	if (utils_toee.get_f("sw_spawn_w11")): return
 	utils_toee.set_f("sw_spawn_w11")
 
-	loc = sec2loc(464, 498)
-	npc = py06126_shocker_lizard.CtrlShockerLizard.create_obj(loc)
-	npc.faction_add(1)
-	npc.move(loc)
+	if (1==1):
+		loc = sec2loc(464, 498)
+		npc = py06126_shocker_lizard.CtrlShockerLizard.create_obj(loc)
+		npc.faction_add(1)
+		npc.move(loc)
 
-	#loc = sec2loc(456, 503)
-	#npc = create_shambling_mound_at(loc)
-	#npc.move(loc)
+	if (1==1):
+		loc = sec2loc(453, 496)
+		npc = py06126_shocker_lizard.CtrlShockerLizard.create_obj(loc)
+		npc.faction_add(1)
+		npc.move(loc)
+
+	if (1==1):
+		loc = sec2loc(456, 503)
+		npc = py06127_shambling_mound.CtrlShamblingMound.create_obj(loc)
+		npc.faction_add(1)
+		npc.move(loc)
 	return
 
 def create_shadowscale_marauder_at(loc, hidden = 1):

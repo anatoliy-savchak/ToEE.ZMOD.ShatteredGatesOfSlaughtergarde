@@ -172,6 +172,7 @@
     <Compile Include="data\scr\py06125_knell_beetle_lesser.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\py06127_shambling_mound.py" />
     <Compile Include="data\scr\py06126_shocker_lizard.py">
       <SubType>Code</SubType>
     </Compile>
@@ -182,6 +183,8 @@
     </Compile>
     <Compile Include="data\scr\tpModifiers\base_attack_bonus5.py" />
     <Compile Include="data\scr\tpModifiers\base_attack_bonus3.py" />
+    <Compile Include="data\scr\tpModifiers\pull_down_ceiling.py" />
+    <Compile Include="data\scr\tpModifiers\lethal_shock.py" />
     <Compile Include="data\scr\tpModifiers\stunning_shock.py" />
     <Compile Include="data\scr\tpModifiers\base_movement.py" />
     <Compile Include="data\scr\tpModifiers\caster_level_base_add.py" />
@@ -228,6 +231,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="data\scr\_include.py" />
+    <Compile Include="overrides\rules\d20_actions\action03002_pull_down_ceiling.py" />
     <Compile Include="overrides\rules\d20_actions\action03001_lethal_shock.py">
       <SubType>Code</SubType>
     </Compile>

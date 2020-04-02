@@ -76,3 +76,11 @@ def npc_is_alive(npc):
 	hp = npc.stat_level_get(stat_hp_current)
 	if (hp <= 10): return 0
 	return 1
+
+def npc_hp_current_percent(npc):
+	assert isinstance(npc, PyObjHandle)
+	maxhp = npc.stat_level_get(stat_hp_max)
+	hp = npc.stat_level_get(stat_hp_current)
+	if (maxhp):
+		return hp / maxhp * 100
+	return 100
