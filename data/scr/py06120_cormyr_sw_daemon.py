@@ -22,6 +22,7 @@ import const_proto_weapon
 import const_proto_armor
 import py06126_shocker_lizard
 import py06127_shambling_mound
+import const_proto_rings
 
 # DAEMON
 def cormyr_sw_san_new_map( attachee, triggerer ):
@@ -158,6 +159,9 @@ def do_encounter_w11():
 	if (1==1):
 		loc = sec2loc(456, 503)
 		npc = py06127_shambling_mound.CtrlShamblingMound.create_obj(loc)
+		item_money_create_in_inventory(npc, 0, 2000, 0)
+		item_create_in_inventory(PROTO_GENERIC_JASPER_BLUE, npc, 5)
+		item_create_in_inventory(const_proto_rings.PROTO_RING_OF_PROTECTION_PLUS_1, npc)
 		npc.faction_add(1)
 		npc.move(loc)
 	return

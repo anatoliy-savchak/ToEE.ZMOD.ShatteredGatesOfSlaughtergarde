@@ -83,7 +83,7 @@ def san_start_combat(attachee, triggerer):
 				tac.add_target_self()
 				tac.add_cast_single_code(ban.spells.prep_spell(attachee, spell_shield_of_faith, 1))
 				tac.add_target_closest()
-				tac.approach()
+				tac.add_approach()
 				tac.add_attack()
 				break
 			if (ban.spells.get_spell_count(spell_summon_monster_iii)):
@@ -117,16 +117,7 @@ def san_start_combat(attachee, triggerer):
 
 		if (ban.spells.get_spell_count(spell_bestow_curse)):
 			#breakp("measures")
-			measures = utils_target_list.AITargetMeasure.by_will(0)
-			measures.measure_range_is_within_melee = 1
-			measures.mult_range_is_within_melee = 2
-			measures.option_distance_over_reach_allowed = 5.0
-			tl = utils_target_list.AITargetList(attachee, 1, 0, measures).rescan()
-			targ = tl.topt()
-			if (targ): 
-				tac.add_target_obj(targ.target.id)
-			else: tac.add_target_closest()
-			tac.add_five_foot_step()
+			tac.add_target_closest()
 			tac.add_cast_single_code(ban.spells.prep_spell(attachee, spell_bestow_curse, 1))
 			tac.add_attack()
 			break
@@ -207,7 +198,7 @@ def san_spell_cast(attachee, triggerer, spell):
 			o.free_spell_casts_left -= 1
 			triggerer.refresh_turn()
 			print("TRIGGERER.REFRESH_TURN()")
-	#breakp("san_spall_cast banelar")
+	breakp("san_spall_cast banelar")
 	return RUN_DEFAULT
 
 def san_heartbeat(attachee, triggerer):
