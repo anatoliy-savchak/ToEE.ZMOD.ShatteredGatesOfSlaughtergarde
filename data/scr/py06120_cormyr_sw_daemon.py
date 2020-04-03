@@ -102,8 +102,6 @@ def do_encounter_w5():
 	utils_toee.set_f("sw_spawn_w5")
 	create_banelar_chest_at(sec2loc(478, 478))
 	npc = create_banelar_at(sec2loc(485, 498))
-	# only for testing!!
-	utils_npc.npc_spell_ensure(game.party[4], spell_identify, stat_level_sorcerer, 1, 0)
 	return
 
 def do_encounter_w8():

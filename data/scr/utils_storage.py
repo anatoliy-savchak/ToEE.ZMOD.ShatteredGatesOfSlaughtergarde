@@ -5,6 +5,8 @@ import sys
 import json
 from json import JSONEncoder
 import utils_obj
+import inspect
+import imp
 
 def obj_storage(obj):
 	assert isinstance(obj, PyObjHandle)
@@ -19,6 +21,15 @@ class ObjectStorage(object):
 class MyEncoder(JSONEncoder):
 	def default(self, o):
 		o.__dict__["_isofclass"] = o.__class__.__name__
+		breakp("MyEncoder start")
+		#print(o)
+		m = inspect.getmodule(o.__class__)
+		#print(m)
+		if (m and hasattr(m, '__file__')):
+			o.__dict__["_isofmodule"] = m.__file__
+			#print(type(m.__file__))
+			#print(m.__file__)
+		#breakp("MyEncoder")
 		return o.__dict__
 
 class Storage(object):
@@ -29,7 +40,7 @@ class Storage(object):
 		#breakp("Storage.save({})".format(savegame))
 		try:
 			saveDirBase = "modules\\ToEE\\save\\"
-			saveDirName = "d" + savegame
+			saveDirName = "d" + savegame + "\\storage"
 			saveDir = saveDirBase + saveDirName
 			#print(saveDir)
 			if (not os.path.exists(saveDir)):
@@ -49,7 +60,7 @@ class Storage(object):
 	def load(savegame):
 		#breakp("Storage.load({})".format(savegame))
 		saveDirBase = "modules\\ToEE\\save\\"
-		saveDirName = "d" + savegame
+		saveDirName = "d" + savegame + "\\storage"
 		saveDir = saveDirBase + saveDirName
 		ss = Storage()
 		oo = ss.objs
@@ -135,14 +146,15 @@ class Storage(object):
 	@staticmethod
 	def loadObjectStorage(dirname, fileName):
 		filePath = os.path.join(dirname, fileName)
-		#print("loadObjectStorage: filePath {}".format(filePath))
+		print("loadObjectStorage: filePath {}".format(filePath))
 		#breakp("loadObjectStorage")
 		try:
 			f = open(filePath, "r")
 			o = json.load(f)
 			f.close()
+			print("loadObjectStorage: json.load o = {}".format(o))
+			#breakp("loadObjectStorage o")
 			o = Storage.makeObjects(o)
-			#print("loadObjectStorage: json.load o = {}".format(o))
 			ostorage = ObjectStorage(o["name"])
 			ostorage.__dict__ = o
 			return ostorage
@@ -150,19 +162,84 @@ class Storage(object):
 			print "Storage.loadObjectStorage error:", sys.exc_info()[0]
 			print(str(e))
 			f.close()
-		#breakp("loadObjectStorage end")
+		breakp("loadObjectStorage end")
 		return
 
 	@staticmethod
-	def makeObjects(o):
-		assert isinstance(o, dict)
+	def makeObjects(odict):
+		#breakp("makeObjects 0")
+		assert isinstance(odict, dict)
 		r = dict()
-		for k in o.iterkeys():
-			if (isinstance(o[k], dict) and ("_isofclass" in o[k])):
-				inst = object()
-				inst.__dict__ = Storage.makeObjects(o[k])
-				r[k] = inst
-			else: r[k] = o[k]
+		for k in odict.iterkeys():
+			propval = odict[k]
+			print("{}({}): {}".format(k, type(propval), propval))
+			#breakp("makeObjects item")
+			if (isinstance(propval, dict)):
+				#breakp("makeObjects is dict")
+				if ("_isofclass" in propval):
+					isofclass = propval["_isofclass"]
+					print(isofclass)
+					#breakp("makeObjects isofclass")
+					inst = object()
+					inst_loaded = 0
+					try:
+						try:
+							inst2 = eval(isofclass)()
+							inst = inst2
+							inst_loaded = 1
+						except Exception, e:
+							print "makeObjects inst eval error:", sys.exc_info()[0]
+							print(str(e))
+						if (not inst_loaded and "_isofmodule" in propval):
+							isofmodule = propval["_isofmodule"]
+							print(isofmodule)
+							modlename = None
+							if (isofmodule):
+								modlename = os.path.basename(isofmodule)
+								if (modlename): modlename = modlename.split('.')[0]
+							print(modlename)
+							#breakp("makeObjects isofmodule")
+							if (modlename):
+								found = imp.find_module(modlename)
+								if (found):
+									print(found)
+									fullname = modlename + "." + isofclass
+									print(fullname)
+									#breakp("makeObjects find_module")
+									try:
+										inst2 = eval(fullname)()
+										inst = inst2
+										inst_loaded = 1
+									except Exception, e:
+										print "makeObjects inst eval error:", sys.exc_info()[0]
+										print(str(e))
+
+									if (not inst_loaded):
+										print("len of found: {}".format(len(found)))
+										#breakp("makeObjects load_module")
+										md = imp.load_module(modlename, found[0], found[1], found[2])
+										print(md)
+										#breakp("makeObjects inst2")
+										if (md):
+											c = getattr(md, isofclass)
+											print(c)
+											#breakp("makeObjects class")
+											if (c):
+												inst2 = c()
+												if (inst2): 
+													inst = inst2
+													inst.__dict__ = Storage.makeObjects(propval)
+													inst_loaded = 1
+					except Exception, e:
+						print "!!!!!!!!!!!!! makeObjects error:", sys.exc_info()[0]
+						print(str(e))
+					if (inst_loaded == 0):
+						inst.__dict__ = Storage.makeObjects(propval)
+					r[k] = inst
+				else:
+					r[k] = Storage.makeObjects(propval)
+			else: 
+				r[k] = propval
 		return r
 
 def getIDfromObjHandle(objhandle):
@@ -171,3 +248,13 @@ def getIDfromObjHandle(objhandle):
 	ID = string.split("(")[1][:-1]
 	return ID
 
+def get_subclass(module, base_class):
+	for name in dir(module):
+		obj = getattr(module, name)
+		try:
+			if issubclass(obj, base_class):
+				return obj
+		except TypeError:  # If 'obj' is not a class
+			print("get_subclass error ({}, {}): {}".format(module, base_class, sys.exc_info()[0]))
+			pass
+	return None

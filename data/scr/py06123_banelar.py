@@ -233,7 +233,7 @@ def find_victim_at(npc, loc):
 	return victim
 
 class BanelarStorage(object):
-	def __init__(self, aname):
+	def __init__(self, aname = None):
 		self.name = aname
 		self.round = 0
 		self.spells_acquired = 0
