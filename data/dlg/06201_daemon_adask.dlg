@@ -9,4 +9,9 @@
 {9}{The ground just outside it slopes away from the doorway, directing the falling water out and away. Given this fact and the sturdy nature of the hill, whatever space lies beyond the door should be both dry and safe from lightning and hail. The construction seems quite sturdy, so the likelihood of collapse, even in severe conditions such as these, is remote.}{}{}{}{}{}
 {10}{[exit]}{}{}{}{0}{}
 
-{11}{The stone chamber beyond the entrance measures at least ten paces square. Peeling paint and broken scrollwork suggest that it was once decorated with some care, but now only dust remains. Three massive stone doors—one each to the left and right, and one directly across from the entrance - lead deeper into the tor.}{}{}{}{}{}
+{11}{The stone chamber beyond the entrance measures at least ten paces square. Peeling paint and broken scrollwork suggest that it was once decorated with some care, but now only dust remains. Three massive stone doors-one each to the left and right, and one directly across from the entrance - lead deeper into the tor.}{}{}{}{}{}
+
+{20}{The sound of hissing rain, pounding hail, and howling wind from outside is interrupted only by the occasional loud crack of thunder. Still, this room seems stable enough for the most part. Even when the thunder seems to shake the very ground, not so much as a mote of dust filters down from the ceiling. The doors leading into the tor, however, do show signs of weakness, seeming to tremble with every thunderclap.}{}{}{}{21}{}
+{21}{Next...}{}{1}{}{22}{game.sound(4119)}
+{22}{Suddenly, in conjunction with a particularly loud thunderclap, all three doors break open at once, falling from their doorways into the room with a great cacophony. Seconds later, the sounds of squeaking fill the air as a pack of rats swarms in from the largest doorway.}{}{}{}{}{}
+{23}{Fight!}{}{1}{}{0}{game.sound(4119); do_encounter_a3();}

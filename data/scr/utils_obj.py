@@ -57,9 +57,9 @@ def obj_scripts_clear(obj):
 	mob_scripts[sn_unlock_attempt] = 0
 	return
 
-def obj_timed_destroy(obj, time):
+def obj_timed_destroy(obj, time, is_realtime = 0):
 	assert isinstance(obj, PyObjHandle)
-	game.timevent_add( _destroy_on_timeevent, ( obj ), time) # 1000 = 1 second
+	game.timevent_add( _destroy_on_timeevent, ( obj ), time, is_realtime) # 1000 = 1 second
 	return
 
 def _destroy_on_timeevent(obj):
@@ -74,6 +74,15 @@ def obj_timed_off(obj, time):
 def _off_on_timeevent(obj):
 	obj.object_flag_set(OF_OFF)
 	return 1
+
+def pop_up_box(message_id):
+	# generates popup box ala tutorial (without messing with the tutorial entries...)
+	a = game.obj_create(11001, game.leader.location)
+	a.obj_set_int(obj_f_written_text_start_line,message_id)
+	game.written_ui_show(a)
+	a.destroy()
+	return
+
 
 def obj_float_line_dialog(obj, method, lineId, npc):
 	assert isinstance(obj, PyObjHandle)
@@ -92,6 +101,16 @@ def obj_float_line_dialog(obj, method, lineId, npc):
 	#if (1==1): return 1
 	fileName = "data\\dlg\\" + fileName
 	line = utils_toee.readMesLine(fileName, lineId)
+	if (line):
+		line = line.replace("\\n", "\n")
+	print("utils_toee.readMesLine = {}, lineId: {}, dlg: {}".format(line, lineId, scriptId))
+	breakp("obj_float_line_dialog 3")
+
+
+	if (method == 2):
+		game.alert_show(line, "Close")
+		return 1
+
 	lineshort = ""
 	if (method == 3):
 		lines = line.split('.')
@@ -99,8 +118,6 @@ def obj_float_line_dialog(obj, method, lineId, npc):
 		if (len(lines) > 1): lineshort = lineshort + ".."
 	else: lineshort = line
 
-	#print("utils_toee.readMesLine = {}".format(line))
-	#breakp("obj_float_line_dialog 3")
 	if ((line is None) or (line == "")): return 0
 	#breakp("obj_float_line_dialog 4")
 	obj.float_text_line(lineshort, White)

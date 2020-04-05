@@ -525,6 +525,11 @@ class game(object):
 	def random_range(_from, to):
 		""" game.random_range(int: _from, int: to) -> int"""
 		return 0
+
+	@staticmethod
+	def alert_show(text, button_text):
+		""" game.alert_show(str: text, str: button_text) -> int"""
+		return 0
 	
 
 def anyone(targetObjs, methodName, methodArg):
@@ -3032,7 +3037,11 @@ OF_DESTROYED = 1
 OF_OFF = 2
 OF_FLAT = 4
 OF_TEXT = 8
+OF_SEE_THROUGH = 16
+OF_SHOOT_THROUGH = 32
 OF_ANIMATED_DEAD = 536870912
+OF_TRANSLUCENT = 64
+OF_SHRUNK = 128
 OF_CLICK_THROUGH = 2048
 OF_DISALLOW_WADING = 67108864
 OF_DONTDRAW = 256
@@ -3048,13 +3057,9 @@ OF_NO_BLOCK = 1024
 OF_PROVIDES_COVER = 16384
 OF_RADIUS_SET = 2147483648L
 OF_RANDOM_SIZE = 32768
-OF_SEE_THROUGH = 16
-OF_SHOOT_THROUGH = 32
-OF_SHRUNK = 128
 OF_STONED = 524288
 OF_TELEPORTED = 1073741824
 OF_TEXT_FLOATER = 2097152
-OF_TRANSLUCENT = 64
 OF_TRAP_PC = 16777216
 OF_TRAP_SPOTTED = 33554432
 OF_UNUSED_08000000 = 134217728

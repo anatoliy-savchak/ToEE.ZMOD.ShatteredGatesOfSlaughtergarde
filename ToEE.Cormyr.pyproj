@@ -176,6 +176,9 @@
     <Compile Include="data\scr\py06126_shocker_lizard.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\py06201_daemon_adask.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\Spell275 - Lightning Bolt.py" />
     <Compile Include="data\scr\Spell432 - Shout.py" />
     <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">
