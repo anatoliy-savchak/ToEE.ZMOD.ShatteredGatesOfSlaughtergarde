@@ -84,3 +84,17 @@ def npc_hp_current_percent(npc):
 	if (maxhp):
 		return hp / maxhp * 100
 	return 100
+
+def npc_find_nearest_pc(npc, distance_ft, should_see):
+	assert isinstance(npc, PyObjHandle)
+	nearest = None
+	nearest_dist = 10000
+	for obj in game.obj_list_range(npc.location, distance_ft, OLC_NPC):
+		assert isinstance(obj, PyObjHandle)
+		if (should_see):
+			if (not npc.can_see(obj)): continue
+		obj_dist = npc.distance_to(obj)
+		if (obj_dist < nearest_dist):
+			nearest = obj
+			nearest_dist = obj_dist
+	return nearest

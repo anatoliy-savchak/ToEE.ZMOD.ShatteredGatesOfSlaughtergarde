@@ -57,11 +57,13 @@
     <Content Include="data\dlg\00406Game_Portal.dlg" />
     <Content Include="data\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="data\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="data\dlg\06201_daemon_adask.dlg" />
     <Content Include="data\docs\conditions.html">
       <SubType>Content</SubType>
       <DependentUpon>data\docs\conditions.md</DependentUpon>
     </Content>
     <Content Include="data\docs\conditions.md" />
+    <Content Include="data\docs\dialog.md" />
     <Content Include="data\mes\description\cormyr_names.mes" />
     <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
     <Content Include="data\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />

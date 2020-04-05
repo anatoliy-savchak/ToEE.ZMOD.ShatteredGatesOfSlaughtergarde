@@ -1,11 +1,15 @@
 import toee, debugg, utils_obj, const_toee, utils_toee
 
+PROTO_NPC_PROMPTER = 14830
 PROMTER_PARAM_FIELD_LINEID = toee.obj_f_npc_pad_i_3
 PROMTER_PARAM_FIELD_RADAR_RADIUS = toee.obj_f_npc_pad_i_4
 PROMTER_PARAM_FIELD_METHOD = toee.obj_f_npc_pad_i_5
+PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE = 0
+PROMTER_DIALOG_METHOD_DIALOG = 1
+PROMTER_DIALOG_METHOD_ALERT_SHOW = 2
+PROMTER_DIALOG_METHOD_HISTORY = 3
 
 def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, method, new_name):
-	PROTO_NPC_PROMPTER = 14830
 	obj = toee.game.obj_create(PROTO_NPC_PROMPTER, loc)
 	obj.scripts[const_toee.sn_dialog] = dialog_script_id
 	obj.scripts[const_toee.sn_heartbeat] = 6122
@@ -49,7 +53,11 @@ def san_heartbeat( attachee, triggerer ):
 		foundTuple[0].begin_dialog(attachee, line_id)
 	elif (line_id > 0):
 		utils_obj.obj_float_line_dialog(attachee, method, line_id, foundTuple[0])
+		if (attachee.scripts[const_toee.sn_bust]):
+			attachee.object_script_execute(foundTuple[0], const_toee.sn_bust)
 	#utils_obj.obj_scripts_clear(attachee)
 	attachee.scripts[const_toee.sn_heartbeat] = 0
+	attachee.critter_flag_set(toee.OCF_SURRENDERED)
+	#toee.game.timevent_add(shut_up, ( attachee ), 2000, 1) # 1000 = 1 second
 	utils_obj.obj_timed_destroy(attachee, 10000)
 	return toee.RUN_DEFAULT
