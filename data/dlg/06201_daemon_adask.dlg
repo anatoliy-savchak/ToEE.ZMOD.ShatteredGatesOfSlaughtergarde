@@ -1,0 +1,12 @@
+{1}{The sky has been slowly darkening all day, and the smell of rain has been thick in the air. Now it has finally begun to fall, accompanied by loud peals of thunder that seem to roll across the landscape.}{}{}{}{2}{}
+{2}{Next...}{}{1}{}{3}{game.sound(4117)}
+{3}{The sun is hidden behind massive stormclouds, and a cold wind blows from the north. As bolts of lightning begin to slam from cloud to ground and pieces of hail begin to strike the earth, the need for shelter becomes obvious.}{}{}{}{}{}
+{4}{Next...}{}{1}{}{5}{}
+{5}{Ahead in the distance, a large tor rises from the ground, its form illuminated by the occasional lightning bolt. It seems rocky and solid, and though climbing it in this weather would be folly, it might have some outcropping that would provide safety from the storm. The only alternative is to endure the weather.}{}{}{}{}{}
+{6}{Next...}{}{1}{}{7}{}
+{7}{The massive tor towers above the surrounding country. A few narrow ledges offer scant protection from the elements, but a closer inspection reveals a massive, arched entryway at least 20 feet tall and 10 feet wide, set into the side of the hill.}{}{}{}{}{}
+{8}{Next...}{}{1}{}{9}{}
+{9}{The ground just outside it slopes away from the doorway, directing the falling water out and away. Given this fact and the sturdy nature of the hill, whatever space lies beyond the door should be both dry and safe from lightning and hail. The construction seems quite sturdy, so the likelihood of collapse, even in severe conditions such as these, is remote.}{}{}{}{}{}
+{10}{[exit]}{}{}{}{0}{}
+
+{11}{The stone chamber beyond the entrance measures at least ten paces square. Peeling paint and broken scrollwork suggest that it was once decorated with some care, but now only dust remains. Three massive stone doors—one each to the left and right, and one directly across from the entrance - lead deeper into the tor.}{}{}{}{}{}
