@@ -3,7 +3,9 @@
 # Simple Light Melee Weapons
 # Simple One-Handed Melee Weapons
 PROTO_WEAPON_MORNINGSTAR = 4070 # Cost: 8 gp, Dmg: 1d8
+
 # Simple Two-Handed Melee Weapons
+PROTO_WEAPON_LONGSPEAR = 4194 # Cost: 5 gp, Dmg: 1d8
 
 # Simple Ranged Weapons
 PROTO_WEAPON_CROSSBOW_LIGHT = 4096 # Cost: 30 gp, Dmg: 1d8
@@ -27,6 +29,7 @@ PROTO_WEAPON_WARHAMMER_PLUS_2 = 4079 # Cost
 
 # Martial Two-Handed Melee Weapons
 PROTO_WEAPON_HALBERD = 4412 # Cost
+PROTO_WEAPON_GREATAXE = 4064 # Cost 20 gp
 PROTO_WEAPON_GREATAXE_PLUS_1 = 4708 # Cost
 
 PROTO_WEAPON_GREATSWORD_PLUS1_FLAMING = 4711 # Cost 8350gp

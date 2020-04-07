@@ -1,5 +1,4 @@
 from toee import *
-from debugg import breakp
 import math
 import sys
 
@@ -20,8 +19,6 @@ def OnBeginSpellCast( spell ):
 def OnSpellEffect( spell ):
 	print "Lightning Bolt OnSpellEffect"
 	try:
-		#breakp("Lightning Bolt OnSpellEffect")
-
 		npc_mode = spell.caster.type == obj_t_npc
 		caster = spell.caster
 
@@ -34,11 +31,8 @@ def OnSpellEffect( spell ):
 		target_loc_off_y = spell.target_loc_off_y
 		target_loc_off_z = spell.target_loc_off_z
 
-		#print("npc_mode: {}".format(npc_mode))
-		#print("len(target_objects): {}".format(len(target_objects)))
-		#print("target_objects: {}".format(target_objects))
-		lx, ly = location_to_axis(target_loc)
-		print("orig target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
+		#lx, ly = location_to_axis(target_loc)
+		#print("orig target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
 
 		furthest = None
 		if (npc_mode and len(target_objects) > 1):
@@ -83,6 +77,7 @@ def OnSpellEffect( spell ):
 			for sobj, data in obj_data.items():
 				if (not data["can_see"]): continue
 				if (not data["primary"]): continue
+				if (data["ally"]): continue
 				if (master is None):
 					master = data["obj"]
 					smaster = sobj
@@ -125,10 +120,11 @@ def OnSpellEffect( spell ):
 			target_loc = furthest.location
 			target_loc_off_x = furthest.off_x
 			target_loc_off_y = furthest.off_y
+			caster.turn_towards(furthest)
 
-		print(target_objects)
-		lx, ly = location_to_axis(target_loc)
-		print("new target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
+		#print(target_objects)
+		#lx, ly = location_to_axis(target_loc)
+		#print("new target_loc: {} ({} {}), target_loc_off_x: {}, target_loc_off_y: {}, target_loc_off_z: {}".format(target_loc, lx, ly, target_loc_off_x, target_loc_off_y, target_loc_off_z))
 
 		if (len(target_objects) > 0):
 			remove_list = []
@@ -151,9 +147,8 @@ def OnSpellEffect( spell ):
 	except Exception, e:
 		print "Lightning Bolt OnSpellEffect error:", sys.exc_info()[0]
 		print(str(e))
-		breakp("Lightning Bolt OnSpellEffect error")
-	spell.spell_end(spell.id)
-	#breakp("Lightning Bolt OnSpellEffect end")
+	finally:
+		spell.spell_end(spell.id)
 	return
 
 def OnBeginRound( spell ):

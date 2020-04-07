@@ -21,7 +21,7 @@ class ObjectStorage(object):
 class MyEncoder(JSONEncoder):
 	def default(self, o):
 		o.__dict__["_isofclass"] = o.__class__.__name__
-		breakp("MyEncoder start")
+		#breakp("MyEncoder start")
 		#print(o)
 		m = inspect.getmodule(o.__class__)
 		#print(m)

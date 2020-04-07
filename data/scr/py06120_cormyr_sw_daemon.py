@@ -225,6 +225,7 @@ def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, new_name)
 	#
 	obj.npc_flag_unset(ONF_KOS)
 	obj.obj_set_int(obj_f_hp_damage, radar_radius_ft)
+	obj.obj_set_int(toee.obj_f_hp_adj, 3)
 	line_id = line_id + 100
 	obj.obj_set_int(obj_f_hp_pts, line_id)
 	if (new_name):

@@ -27,7 +27,7 @@
 
 ## Conditions
 ### Rend
-**Args** - none
+**Args** - **none**
 Will deal 2d6+9 if target, attack description, round coincide.
 
 ### Monster Damage Type
@@ -119,6 +119,17 @@ temple.dll::stru_102EC6C0
 Stability bonus (against Trip) +4.
 temple.dll::stru_102EC37C
 
+### Paralyzed
+**Args**
+* Arg0: round remaining
+Paralized condition.
+temple.dll::condParalyzed
+
+### Saving Throw Resistance Bonus
+**Args** - 2
+* Arg0: saving throw (for ex saving_throw_fortitude)
+* Arg1: bonus
+Adds saving throw resistance bonus.
 
 todo:
 pCondition_Monster_Banshee_Charisma_Drain

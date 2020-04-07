@@ -14,15 +14,24 @@
 {20}{The sound of hissing rain, pounding hail, and howling wind from outside is interrupted only by the occasional loud crack of thunder. Still, this room seems stable enough for the most part. Even when the thunder seems to shake the very ground, not so much as a mote of dust filters down from the ceiling. The doors leading into the tor, however, do show signs of weakness, seeming to tremble with every thunderclap.}{}{}{}{21}{}
 {21}{Next...}{}{1}{}{22}{game.sound(4119)}
 {22}{Suddenly, in conjunction with a particularly loud thunderclap, all three doors break open at once, falling from their doorways into the room with a great cacophony. Seconds later, the sounds of squeaking fill the air as a pack of rats swarms in from the largest doorway.}{}{}{}{}{}
-{23}{Fight!}{}{1}{}{0}{game.sound(4119); do_encounter_a3();}
+{23}{[exit]}}{}{1}{}{0}{game.sound(4119); do_encounter_a3();}
 
 {30}{The long stone hall ends in a stone chamber furnished only with cracked, moldering tables on which lie rusted implements of iron. Rain falls into the middle of the room from a shaft in the ceiling that must run all the way to the top of the tor. From the bottom of the shaft dangles a rope, swinging slightly. A drain in the center of the floor allows the water to escape, but old, dark stains suggest that it was used to carry away other fluids long ago.}{}{}{}{21}{}
 {31}{Next...}{}{1}{}{32}{}
 {32}{Suddenly, from a doorway on the far side of the room step two burly humanoids. Each stands more than 6 feet tall and has feral eyes and flat facial features. With a roar, the two draw their weapons and charge.}{}{}{}{}{}
-{33}{Attack!}{}{1}{}{0}{do_encounter_a4();}
+{33}{[exit]}}{}{1}{}{0}{do_encounter_a4();}
 
-{40}{At the end of this hallway is a small chamber whose wooden door lies on the floor. The smell of dust pervades the air, and the sound of thunder is muted here. Numerous body-shaped lumps are visible through the doorway, each wrapped carefully in layers of grey thread like woven mummies.}{}{}{}{}{}
-{41}{[exit]}{}{1}{}{0}{do_encounter_a5();}
+{50}{At the end of this hallway is a small chamber whose wooden door lies on the floor. The smell of dust pervades the air, and the sound of thunder is muted here.}{}{}{}{}{}
+{51}{Next...}{}{1}{}{52}{}
+{52}{Numerous body-shaped lumps are visible through the doorway, each wrapped carefully in layers of grey thread like woven mummies.}{}{}{}{}{}
+{53}{[exit]}{}{1}{}{0}{do_encounter_a5();}
+
+{60}{This room is empty save for dust and a single, small, stone chest in the center of the floor. Evidently no one has disturbed this chamber for many years.}{}{}{}{}{}
+
+{70}{The only object of interest in this chamber is a statue at the far end. It resembles a sarcophagus standing upright, except that the head of the figure carved upon its lid looks distorted and seems to have tendrils instead of hair. A pair of batlike wings extends from its temples.}{}{}{}{}{}
+{71}{Next...}{}{1}{}{72}{}
+{72}{Suddenly, its eyes open, revealing the glow of green flames, and the head flies forward to attack!}{}{}{}{}{}
+{73}{[exit]}{}{1}{}{0}{game.sound(4114); do_encounter_a7();}
 
 {80}{A long, stone table dominates the center of this chamber, and bright bits of gold wink from within the dust that covers the floor. Upon the table lies the well-preserved corpse of a tall humanoid wearing the tabard and belts of a knight.}{}{}{}{}{}
 {81}{Next...}{}{1}{}{82}{}

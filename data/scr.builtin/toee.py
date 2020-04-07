@@ -14,6 +14,25 @@ class PySpell(object):
 		self.spell = 1	
 		return
 
+class PyTrapDamage(object):
+	def __init__(self):
+		self.damage = PyDice()
+		self.type = D20DT_BLUDGEONING
+		return
+
+class PyTrap(object):
+	def __init__(self):
+		self.obj = PyObjHandle()
+		self.id = 1
+		self.san = 1
+		self.partsys = 1
+		self.damage = [PyTrapDamage(), PyTrapDamage()]
+		return
+
+	def attack(self, target, attack_bonus, crit_hit_range_start, is_ranged):
+		""" trap.attack(PyObjHandle: target, int: attack_bonus, int: crit_hit_range_start, int: is_ranged) -> int"""
+		return D20CAF_HIT
+
 class PyObjHandle(object):
 	"""Mobile object"""
 
@@ -171,6 +190,18 @@ class PyObjHandle(object):
 	def condition_add_with_args(self, cond_name, arg0 = None, arg1 = None, arg2 = None):
 		""" npc.condition_add_with_args(str: cond_name, int: arg0 = None, int: arg1 = None, int: arg2 = None) -> int"""
 		return 0
+
+	def container_flags_get(self):
+		"""npc.container_flags_get() -> OCOF_LOCKED"""
+		return
+
+	def container_flag_set(self, flag):
+		"""npc.container_flag_set(int[OCOF_LOCKED...]: flag) -> None"""
+		return
+
+	def container_flag_unset(self, flag):
+		"""npc.container_flag_unset(int[OCOF_LOCKED...]: flag) -> None"""
+		return
 
 	def container_toggle_open(self):
 		"""door.container_toggle_open() -> None"""
@@ -459,6 +490,7 @@ class PyObjHandle(object):
 
 class game(object):
 	"""access to game engine"""
+	leader = PyObjHandle()
 
 	@staticmethod
 	def obj_create(protoId, loc):
@@ -539,6 +571,25 @@ class PyObjScripts(object):
 	def __getitem__(self, key):
 		return PyObjHandle()
 	def __setitem__(self, key, value):
+		return
+
+class PyRandomEncounter(object):
+	def __init__(self):
+		self.id = 0
+		self.flags = 0
+		self.title = 0
+		self.dc = 0
+		self.map = 0
+		proto_id = 0
+		enemy = 0
+		self.enemies = [[proto_id, enemy_count], [proto_id, enemy_count]]
+		self.location = 0
+		return
+
+class PyRandomEncounterSetup(object):
+	def __init__(self):
+		self.terrain = 0
+		self.flags = 0
 		return
 
 RUN_DEFAULT = 1
@@ -3409,3 +3460,24 @@ AEC_TARGET_OUT_OF_RANGE = 5
 AEC_TARGET_TOO_CLOSE = 6
 AEC_TARGET_TOO_FAR = 8
 AEC_WRONG_WEAPON_TYPE = 17
+
+# Container Flags
+OCOF_LOCKED = 1
+OCOF_JAMMED = 2
+OCOF_MAGICALLY_HELD = 4
+OCOF_NEVER_LOCKED = 8
+OCOF_ALWAYS_LOCKED = 16
+OCOF_BUSTED = 128
+OCOF_HAS_BEEN_OPENED = 4096
+OCOF_INVEN_SPAWN_INDEPENDENT = 1024
+OCOF_INVEN_SPAWN_ONCE = 512
+OCOF_LOCKED_DAY = 32
+OCOF_LOCKED_NIGHT = 64
+OCOF_NOT_STICKY = 256
+OCOF_OPEN = 2048
+
+# random_encounter.can_sleep()
+SLEEP_DANGEROUS = 1
+SLEEP_IMPOSSIBLE = 2
+SLEEP_PASS_TIME_ONLY = 3
+SLEEP_SAFE = 0

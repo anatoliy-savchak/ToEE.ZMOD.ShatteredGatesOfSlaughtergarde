@@ -64,6 +64,7 @@
     </Content>
     <Content Include="data\docs\conditions.md" />
     <Content Include="data\docs\dialog.md" />
+    <Content Include="data\docs\trap.md" />
     <Content Include="data\mes\description\cormyr_names.mes" />
     <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
     <Content Include="data\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
@@ -136,6 +137,9 @@
     <Compile Include="data\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\const_proto_cloth.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="data\scr\const_proto_potions.py">
       <SubType>Code</SubType>
     </Compile>
@@ -171,6 +175,8 @@
     <Compile Include="data\scr\py06124_shadowscale_chief.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="data\scr\py06203_trap_chest.py" />
+    <Compile Include="data\scr\py06202_vargouille_lesser.py" />
     <Compile Include="data\scr\py06125_knell_beetle_lesser.py">
       <SubType>Code</SubType>
     </Compile>
@@ -190,6 +196,7 @@
     <Compile Include="data\scr\tpModifiers\base_attack_bonus3.py" />
     <Compile Include="data\scr\tpModifiers\pull_down_ceiling.py" />
     <Compile Include="data\scr\tpModifiers\lethal_shock.py" />
+    <Compile Include="data\scr\tpModifiers\python_action_shriek.py" />
     <Compile Include="data\scr\tpModifiers\stunning_shock.py" />
     <Compile Include="data\scr\tpModifiers\base_movement.py" />
     <Compile Include="data\scr\tpModifiers\caster_level_base_add.py" />
@@ -240,6 +247,8 @@
     <Compile Include="overrides\rules\d20_actions\action03001_lethal_shock.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\rules\d20_actions\action03003_shriek.py" />
+    <Compile Include="overrides\scr\random_encounter.py" />
     <Compile Include="overrides\scr\_co8init.py" />
     <None Include="data\scr\utils_toee.py" />
     <Compile Include="data\scr\tpModifiers\ai_improved_trip_aoo.py" />
