@@ -155,4 +155,8 @@ def find_dialog_file_name(scriptId):
 	starts = "{:0>5d}".format(scriptId)
 	for fileName in files:
 		if (starts in fileName): return fileName
+	files = os.listdir("overrides\\data\\dlg")
+	starts = "{:0>5d}".format(scriptId)
+	for fileName in files:
+		if (starts in fileName): return fileName
 	return None

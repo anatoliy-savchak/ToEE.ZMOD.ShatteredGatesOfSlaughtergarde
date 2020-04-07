@@ -37,17 +37,19 @@
     <Folder Include="data\mes\" />
     <Folder Include="data\oemes\" />
     <Folder Include="data\rules\" />
-    <Folder Include="data\rules\protos\" />
+    <Folder Include="overrides\mes\" />
+    <Folder Include="overrides\dlg\" />
+    <Folder Include="overrides\rules\protos\" />
     <Folder Include="data\scr\" />
     <Folder Include="modules\" />
     <Folder Include="modules\ToEE\" />
     <Folder Include="modules\ToEE\art\" />
     <Folder Include="modules\ToEE\rules\" />
     <Folder Include="modules\ToEE\art\ground\" />
-    <Folder Include="data\mes\description\" />
-    <Folder Include="data\mes\long_descr\" />
+    <Folder Include="overrides\mes\description\" />
+    <Folder Include="overrides\mes\long_descr\" />
     <Folder Include="data\rules\protos\" />
-    <Folder Include="data\scr\tpModifiers\" />
+    <Folder Include="overrides\scr\tpModifiers\" />
     <Folder Include="overrides\" />
     <Folder Include="overrides\rules\" />
     <Folder Include="overrides\rules\d20_actions\" />
@@ -55,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\dlg\00406Game_Portal.dlg" />
-    <Content Include="data\dlg\06112_cormyr_lor_doors.dlg" />
-    <Content Include="data\dlg\06120_cormyr_sw_daemon.dlg" />
-    <Content Include="data\dlg\06201_daemon_adask.dlg" />
+    <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
+    <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="overrides\dlg\06201_daemon_adask.dlg" />
     <Content Include="data\docs\conditions.html">
       <SubType>Content</SubType>
       <DependentUpon>data\docs\conditions.md</DependentUpon>
@@ -65,184 +67,186 @@
     <Content Include="data\docs\conditions.md" />
     <Content Include="data\docs\dialog.md" />
     <Content Include="data\docs\trap.md" />
-    <Content Include="data\mes\description\cormyr_names.mes" />
-    <Content Include="data\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
-    <Content Include="data\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
-    <Content Include="data\mes\description\obj_t_generic_12707_knowstone_fireball.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14765_DireRat.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14766_giant_fire_beetle.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14767_giant_stag_beetle.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14768_giant_bombardier_beetle.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14769_monstrous_scorpion_small.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14771_monstrous_scorpion_large.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14773_Monstrous_Spider_Small.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14830_prompter.mes" />
-    <Content Include="data\mes\description\obj_t_npc_14832_shadar_kai.mes" />
-    <Content Include="data\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
-    <Content Include="data\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14765_DireRat.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14766_giant_fire_beetle.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14767_giant_stag_beetle.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14768_giant_bombardier_beetle.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14769_monstrous_scorpion_small.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14771_monstrous_scorpion_large.mes" />
-    <Content Include="data\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
-    <Content Include="data\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
-    <Content Include="data\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
-    <Content Include="data\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14093_bugbear_mm1.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.bk0" />
-    <Content Include="data\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14761_Monstrous_Centipede_Medium.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14762_Monstrous_Centipede_Large.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14763_Monstrous_Centipede_Huge.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14765_DireRat.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14766_giant_fire_beetle.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14767_giant_stag_beetle.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14768_giant_bombardier_beetle.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14769_monstrous_scorpion_small.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14770_monstrous_scorpion_medium.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14771_monstrous_scorpion_large.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14772_monstrous_scorpion_huge.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14773_Monstrous_Spider_Small.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14830_prompter.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14831_man.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14832_shadar_kai.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14833_shadowscale_marauder.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14834_stirge.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14835_banelar.tab" />
-    <Content Include="data\rules\protos\obj_t_npc_14888_lizard_undead.tab" />
-    <Content Include="data\rules\protos\obj_t_weapon_4708_greataxe_plus1.tab" />
-    <Content Include="data\rules\protos\obj_t_weapon_4709_spiked_chain_plus_1.tab" />
-    <Content Include="data\rules\protos\proto_wands.tab" />
+    <Content Include="overrides\dlg\00406Game_Portal.dlg" />
+    <Content Include="overrides\mes\description\cormyr_names.mes" />
+    <Content Include="overrides\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
+    <Content Include="overrides\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
+    <Content Include="overrides\mes\description\obj_t_generic_12707_knowstone_fireball.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14765_DireRat.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14766_giant_fire_beetle.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14767_giant_stag_beetle.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14768_giant_bombardier_beetle.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14769_monstrous_scorpion_small.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14771_monstrous_scorpion_large.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14773_Monstrous_Spider_Small.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14830_prompter.mes" />
+    <Content Include="overrides\mes\description\obj_t_npc_14832_shadar_kai.mes" />
+    <Content Include="overrides\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
+    <Content Include="overrides\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14765_DireRat.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14766_giant_fire_beetle.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14767_giant_stag_beetle.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14768_giant_bombardier_beetle.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14769_monstrous_scorpion_small.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14771_monstrous_scorpion_large.mes" />
+    <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
+    <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
+    <Content Include="overrides\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
+    <Content Include="overrides\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14093_bugbear_mm1.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.bk0" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14761_Monstrous_Centipede_Medium.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14762_Monstrous_Centipede_Large.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14763_Monstrous_Centipede_Huge.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14765_DireRat.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14766_giant_fire_beetle.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14767_giant_stag_beetle.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14768_giant_bombardier_beetle.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14769_monstrous_scorpion_small.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14770_monstrous_scorpion_medium.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14771_monstrous_scorpion_large.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14772_monstrous_scorpion_huge.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14773_Monstrous_Spider_Small.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14830_prompter.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14831_man.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14832_shadar_kai.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14833_shadowscale_marauder.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14834_stirge.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14835_banelar.tab" />
+    <Content Include="overrides\rules\protos\obj_t_npc_14888_lizard_undead.tab" />
+    <Content Include="overrides\rules\protos\obj_t_weapon_4708_greataxe_plus1.tab" />
+    <Content Include="overrides\rules\protos\obj_t_weapon_4709_spiked_chain_plus_1.tab" />
+    <Content Include="overrides\rules\protos\proto_wands.tab" />
     <Content Include="modules\ToEE\art\ground\ground.mes" />
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="data\scr\behavior.py">
+    <Compile Include="overrides\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\const_proto_cloth.py">
+    <Compile Include="overrides\scr\const_proto_cloth.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\const_proto_potions.py">
+    <Compile Include="overrides\scr\const_proto_potions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\const_proto_scrolls.py">
+    <Compile Include="overrides\scr\const_proto_scrolls.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\const_proto_wands.py">
+    <Compile Include="overrides\scr\const_proto_wands.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\cormyr_pc.py" />
-    <Compile Include="data\scr\data_critter.py">
+    <Compile Include="overrides\scr\cormyr_pc.py" />
+    <Compile Include="overrides\scr\data_critter.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\data_obj.py">
+    <Compile Include="overrides\scr\data_obj.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\debugg.py">
+    <Compile Include="overrides\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py05000_knowstone.py">
+    <Compile Include="overrides\scr\py05000_knowstone.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06120_cormyr_sw_daemon.py">
+    <Compile Include="overrides\scr\py06120_cormyr_sw_daemon.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06121_marauder.py">
+    <Compile Include="overrides\scr\py06121_marauder.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06122_cormyr_prompter.py">
+    <Compile Include="overrides\scr\py06122_cormyr_prompter.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06123_banelar.py" />
-    <Compile Include="data\scr\py06124_shadowscale_chief.py">
+    <Compile Include="overrides\scr\py06123_banelar.py" />
+    <Compile Include="overrides\scr\py06124_shadowscale_chief.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06203_trap_chest.py" />
-    <Compile Include="data\scr\py06202_vargouille_lesser.py" />
-    <Compile Include="data\scr\py06125_knell_beetle_lesser.py">
+    <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06202_vargouille_lesser.py" />
+    <Compile Include="overrides\scr\py06125_knell_beetle_lesser.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06127_shambling_mound.py" />
-    <Compile Include="data\scr\py06126_shocker_lizard.py">
+    <Compile Include="overrides\scr\py06127_shambling_mound.py" />
+    <Compile Include="overrides\scr\py06126_shocker_lizard.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\py06201_daemon_adask.py">
+    <Compile Include="overrides\scr\py06201_daemon_adask.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\Spell275 - Lightning Bolt.py" />
-    <Compile Include="data\scr\Spell432 - Shout.py" />
-    <Compile Include="data\scr\tpModifiers\ability_check_modifier_attacker.py">
+    <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
+    <Compile Include="overrides\scr\Spell432 - Shout.py" />
+    <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\tpModifiers\base_attack_bonus5.py" />
-    <Compile Include="data\scr\tpModifiers\base_attack_bonus3.py" />
-    <Compile Include="data\scr\tpModifiers\pull_down_ceiling.py" />
-    <Compile Include="data\scr\tpModifiers\lethal_shock.py" />
-    <Compile Include="data\scr\tpModifiers\python_action_shriek.py" />
-    <Compile Include="data\scr\tpModifiers\stunning_shock.py" />
-    <Compile Include="data\scr\tpModifiers\base_movement.py" />
-    <Compile Include="data\scr\tpModifiers\caster_level_base_add.py" />
-    <Compile Include="data\scr\tpModifiers\self_saving_fortitude.py">
+    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus1.py" />
+    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus5.py" />
+    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus3.py" />
+    <Compile Include="overrides\scr\tpModifiers\pull_down_ceiling.py" />
+    <Compile Include="overrides\scr\tpModifiers\lethal_shock.py" />
+    <Compile Include="overrides\scr\tpModifiers\python_action_shriek.py" />
+    <Compile Include="overrides\scr\tpModifiers\stunning_shock.py" />
+    <Compile Include="overrides\scr\tpModifiers\base_movement.py" />
+    <Compile Include="overrides\scr\tpModifiers\caster_level_base_add.py" />
+    <Compile Include="overrides\scr\tpModifiers\self_saving_fortitude.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\tpModifiers\spell_quicken.py" />
-    <Compile Include="data\scr\tpModifiers\spell_quicken_all.py">
+    <Compile Include="overrides\scr\tpModifiers\spell_quicken.py" />
+    <Compile Include="overrides\scr\tpModifiers\spell_quicken_all.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_conds.py">
+    <Compile Include="overrides\scr\utils_conds.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_target_list.py">
+    <Compile Include="overrides\scr\utils_target_list.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_item.py" />
-    <Compile Include="data\scr\utils_npc.py" />
-    <Compile Include="data\scr\utils_npc_spells.py">
+    <Compile Include="overrides\scr\utils_item.py" />
+    <Compile Include="overrides\scr\utils_npc.py" />
+    <Compile Include="overrides\scr\utils_npc_spells.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_obj.py" />
-    <Compile Include="data\scr\const_proto_armor.py" />
-    <Compile Include="data\scr\const_proto_containers.py">
+    <Compile Include="overrides\scr\utils_obj.py" />
+    <Compile Include="overrides\scr\const_proto_armor.py" />
+    <Compile Include="overrides\scr\const_proto_containers.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\const_proto_items.py" />
-    <Compile Include="data\scr\const_proto_weapon.py" />
-    <Compile Include="data\scr\py06101_daemon_pc.py" />
-    <Compile Include="data\scr\py06110_daemon_cormyr_lor.py" />
-    <Compile Include="data\scr\py06111_sneak.py" />
-    <Compile Include="data\scr\py06112_cormyr_lor_doors.py">
+    <Compile Include="overrides\scr\const_proto_items.py" />
+    <Compile Include="overrides\scr\const_proto_weapon.py" />
+    <Compile Include="overrides\scr\py06101_daemon_pc.py" />
+    <Compile Include="overrides\scr\py06110_daemon_cormyr_lor.py" />
+    <Compile Include="overrides\scr\py06111_sneak.py" />
+    <Compile Include="overrides\scr\py06112_cormyr_lor_doors.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_sneak.py" />
-    <Compile Include="data\scr\const_toee.py" />
-    <Compile Include="data\scr\utils_spell.py">
+    <Compile Include="overrides\scr\utils_sneak.py" />
+    <Compile Include="overrides\scr\const_toee.py" />
+    <Compile Include="overrides\scr\utils_spell.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_storage.py">
+    <Compile Include="overrides\scr\utils_storage.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\utils_tactics.py">
+    <Compile Include="overrides\scr\utils_tactics.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\scr\_include.py" />
+    <Compile Include="overrides\scr\_include.py" />
     <Compile Include="overrides\rules\d20_actions\action03002_pull_down_ceiling.py" />
     <Compile Include="overrides\rules\d20_actions\action03001_lethal_shock.py">
       <SubType>Code</SubType>
@@ -250,11 +254,11 @@
     <Compile Include="overrides\rules\d20_actions\action03003_shriek.py" />
     <Compile Include="overrides\scr\random_encounter.py" />
     <Compile Include="overrides\scr\_co8init.py" />
-    <None Include="data\scr\utils_toee.py" />
-    <Compile Include="data\scr\tpModifiers\ai_improved_trip_aoo.py" />
-    <Compile Include="data\scr\tpModifiers\ex-Entangled.py" />
-    <Compile Include="data\scr\tpModifiers\sneak_attack_add.py" />
-    <Compile Include="data\scr\tpModifiers\sneak_attack_ex.py" />
+    <None Include="overrides\scr\utils_toee.py" />
+    <Compile Include="overrides\scr\tpModifiers\ai_improved_trip_aoo.py" />
+    <Compile Include="overrides\scr\tpModifiers\ex-Entangled.py" />
+    <Compile Include="overrides\scr\tpModifiers\sneak_attack_add.py" />
+    <Compile Include="overrides\scr\tpModifiers\sneak_attack_ex.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

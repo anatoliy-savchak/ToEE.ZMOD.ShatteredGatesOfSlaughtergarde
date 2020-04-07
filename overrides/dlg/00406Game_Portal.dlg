@@ -1,0 +1,12 @@
+{1}{The portal opens before you...}{The portal opens before you...}{}{}{}{game.particles( 'ef-NODE-Air portal', npc ); game.sound( 4008 ); game.global_flags[601] = 1}
+{2}{Begin adventuring A Dark and Stormy Knight.}{}{1}{}{0}{game.leader.scripts[38] = 6201; game.fade_and_teleport( 0, 0, 0, 5120, 564, 477 )}
+{11}{Return to shopmap.}{}{1}{}{0}{}
+
+
+{20}{The portal is open...}{The portal is open...}{}{}{}{}
+{21}{Begin adventuring A Dark and Stormy Knight.}{}{1}{}{0}{game.leader.scripts[38] = 6201; game.fade_and_teleport( 0, 0, 0, 5120, 564, 477 )}
+{30}{Return to shopmap.}{}{1}{}{0}{}
+
+
+{4000}{There's little to be gained by attacking the game portal.}{There's little to be gained by attacking the game portal.}{}{}{}{}
+{4001}{[exit]}{}{1}{}{0}{}

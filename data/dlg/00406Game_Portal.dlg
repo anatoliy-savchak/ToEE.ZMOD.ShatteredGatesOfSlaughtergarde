@@ -1,7 +1,28 @@
 {1}{The portal opens before you...}{The portal opens before you...}{}{}{}{game.particles( 'ef-NODE-Air portal', npc ); game.sound( 4008 ); game.global_flags[601] = 1}
-{2}{Begin adventuring CORMYR.}{}{1}{}{0}{game.party[0].scripts[38] = 6101; game.fade_and_teleport( 0, 0, 0, 5195, 442, 536 )}
-{3}{Begin adventuring CORMYR - Shadowscale Warren.}{}{1}{}{0}{game.party[0].scripts[38] = 6101; game.fade_and_teleport( 0, 0, 0, 5196, 518, 458 )}
+{2}{Begin adventuring.}{}{1}{(game.party_alignment == LAWFUL_GOOD)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport( 0, 0, 0, 5096, 488, 484 )}
+{3}{Begin adventuring.}{}{1}{(game.party_alignment == NEUTRAL_GOOD)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport( 0, 0, 0, 5101, 505, 488 )}
+{4}{Begin adventuring.}{}{1}{(game.party_alignment == CHAOTIC_GOOD)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5097, 484, 477 )}
+{5}{Begin adventuring.}{}{1}{(game.party_alignment == LAWFUL_NEUTRAL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5103, 500, 483)}
+{6}{Begin adventuring.}{}{1}{(game.party_alignment == TRUE_NEUTRAL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport( 0, 0, 0, 5100, 495, 533 )}
+{7}{Begin adventuring.}{}{1}{(game.party_alignment == CHAOTIC_NEUTRAL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5104, 510, 492 )}
+{8}{Begin adventuring.}{}{1}{(game.party_alignment == LAWFUL_EVIL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5098, 492, 489 )}
+{9}{Begin adventuring.}{}{1}{(game.party_alignment == NEUTRAL_EVIL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5102, 481, 505 )}
+{10}{Begin adventuring.}{}{1}{(game.party_alignment == CHAOTIC_EVIL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5099, 492, 496 )}
 {11}{Return to shopmap.}{}{1}{}{0}{}
 
 
+{20}{The portal is open...}{The portal is open...}{}{}{}{}
+{21}{Begin adventuring.}{}{1}{(game.party_alignment == LAWFUL_GOOD)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport( 0, 0, 0, 5096, 488, 484 )}
+{22}{Begin adventuring.}{}{1}{(game.party_alignment == NEUTRAL_GOOD)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport( 0, 0, 0, 5101, 505, 488 )}
+{23}{Begin adventuring.}{}{1}{(game.party_alignment == CHAOTIC_GOOD)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5097, 484, 477 )}
+{24}{Begin adventuring.}{}{1}{(game.party_alignment == LAWFUL_NEUTRAL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5103, 500, 483)}
+{25}{Begin adventuring.}{}{1}{(game.party_alignment == TRUE_NEUTRAL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport( 0, 0, 0, 5100, 495, 533 )}
+{26}{Begin adventuring.}{}{1}{(game.party_alignment == CHAOTIC_NEUTRAL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5104, 510, 492 )}
+{27}{Begin adventuring.}{}{1}{(game.party_alignment == LAWFUL_EVIL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5098, 492, 489 )}
+{28}{Begin adventuring.}{}{1}{(game.party_alignment == NEUTRAL_EVIL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5102, 481, 505 )}
+{29}{Begin adventuring.}{}{1}{(game.party_alignment == CHAOTIC_EVIL)}{0}{intro_movie_setup(npc,pc); game.fade_and_teleport(0, 0, 0, 5099, 492, 496 )}
+{30}{Return to shopmap.}{}{1}{}{0}{}
+
+
+{4000}{There's little to be gained by attacking the game portal.}{There's little to be gained by attacking the game portal.}{}{}{}{}
 {4001}{[exit]}{}{1}{}{0}{}
