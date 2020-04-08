@@ -2174,3 +2174,4 @@ data/rules/protos.tab
 data/mes/description.mes
 data/mes/long_description.mes
 data/rules/poisons.json
+data/rules/MapLimits.mes
