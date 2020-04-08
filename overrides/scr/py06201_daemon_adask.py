@@ -93,7 +93,6 @@ def post_open_door(obj):
 	return
 
 def post_create_rats(p):
-	return
 	PROTO_NPC_ANIMAL_RAT = 14774
 	obj = toee.game.obj_create(PROTO_NPC_ANIMAL_RAT, utils_obj.sec2loc(534, 453))
 	obj = toee.game.obj_create(PROTO_NPC_ANIMAL_RAT, utils_obj.sec2loc(531, 453))

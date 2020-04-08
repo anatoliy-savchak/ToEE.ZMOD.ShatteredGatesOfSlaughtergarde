@@ -56,7 +56,6 @@
     <Folder Include="overrides\scr\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\dlg\00406Game_Portal.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="overrides\dlg\06201_daemon_adask.dlg" />
@@ -103,6 +102,9 @@
     <Content Include="overrides\mes\long_descr\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14771_monstrous_scorpion_large.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
+    <Content Include="overrides\rules\combat_vars.mes" />
+    <Content Include="overrides\rules\MapLimits.mes" />
+    <Content Include="overrides\rules\poisons.json" />
     <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
     <Content Include="overrides\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
@@ -135,6 +137,7 @@
     <Content Include="modules\ToEE\art\ground\ground.mes" />
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
+    <Content Include="overrides\rules\traps.tab" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="overrides\scr\behavior.py">
@@ -146,12 +149,14 @@
     <Compile Include="overrides\scr\const_proto_potions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_proto_rings.py" />
     <Compile Include="overrides\scr\const_proto_scrolls.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\const_proto_wands.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\cormyr_config.py" />
     <Compile Include="overrides\scr\cormyr_pc.py" />
     <Compile Include="overrides\scr\data_critter.py">
       <SubType>Code</SubType>

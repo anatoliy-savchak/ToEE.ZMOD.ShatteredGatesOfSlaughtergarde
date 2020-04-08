@@ -1,0 +1,20 @@
+TRAP_NONE						TRAP_NONE							0
+TRAP_POISON_GAS	san_use		Trap-poisonGas	31	26	TRAP_NONE	poison 0d0+31					1	1
+TRAP_POISON_GAS_LARGE_SCORPION	san_use		Trap-poisonGas	15	18	TRAP_NONE	poison 0d0+1	poison 0d0+1	poison 0d0+1			1	2
+TRAP_POISON_NEEDLE	san_unlock		Trap-poisonGas	19	18	TRAP_NONE	poison 0d0+4	piercing 1d4				1	3
+TRAP_POISON_NEEDLE_AND_ACID	san_unlock		Trap-acid spray	28	24	TRAP_NONE	poison 0d0+1	piercing 1d2	acid 2d6+10			1	4
+TRAP_ACID_SPRAY	san_use		Trap-acid spray	25	22	TRAP_NONE	acid 3d6+4					1	5
+TRAP_FIRE_TRAP_SPELL	san_use	TRAP_F_MAGICAL	Trap-Fire	31	26	TRAP_NONE	fire 1d4+10					1	6
+TRAP_POISON_NEEDLE_AND_GAS	san_unlock		Trap-poisonGas	34	28	TRAP_NONE	poison 0d0+1	piercing 1d2	poison 0d0+31			1	7
+TRAP_SCYTHE	san_use		Trap-Scythe	21	18	TRAP_NONE	Slashing 2d4					1	8
+TRAP_SPIKES	san_use		Trap-Spikes	25	22	TRAP_NONE	Piercing 3d6+4					1	9
+TRAP_EXPLOSIVE_RUNES_SPELL	san_use	TRAP_F_MAGICAL	Trap-Fire	31	30	TRAP_NONE	force 6d6					1	10
+TRAP_POISON_SPORES	san_use		Trap-Spores	37	30	TRAP_NONE	poison 0d0+19					1	11
+TRAP_POISON_DARTS	san_use		Trap-Darts	28	24	TRAP_NONE	poison 0d0+0	piercing 1d4+4				1	12
+TRAP_CONTACT_POISON	san_use		Trap-poisonGas	31	26	TRAP_NONE	poison 0d0+28					1	13
+TRAP_GLYPH_OF_WARDING_ELECTRICITY	san_use	TRAP_F_MAGICAL	Trap-glyph	31	26	TRAP_NONE	electricity 5d8					1	14
+TRAP_GLYPH_OF_WARDING_SONIC	san_use	TRAP_F_MAGICAL	Trap-glyph	31	26	TRAP_NONE	sonic 5d8					1	15
+TRAP_FIRE_TRAP_SPELL	san_use	TRAP_F_MAGICAL	Trap-Fire	31	32	TRAP_NONE	fire 5d8+20					1	16
+TRAP_SPIKES	san_use		Trap-Spikes	27	24	TRAP_NONE	Piercing 5d6+6					1	17
+TRAP_SCYTHE	san_use		Trap-Scythe	24	23	TRAP_NONE	Slashing 4d4					1	18
+TRAP_20	san_use		Trap-poisonGas	20	20	TRAP_NONE	poison 0d0+1	piercing 1d2	poison 0d0+31			1	19

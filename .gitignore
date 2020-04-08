@@ -1500,7 +1500,7 @@ data/dlg/00402Medicine_Chest.dlg
 data/dlg/00403Weapons_Chest.dlg
 data/dlg/00404Armor_Chest.dlg
 data/dlg/00405Clothing_Chest.dlg
-#data/dlg/00406Game_Portal.dlg
+data/dlg/00406Game_Portal.dlg
 data/dlg/00416standard_equipment_chest.dlg
 data/dlg/00434traders_trail.dlg
 data/dlg/00435the_postNPC.dlg
@@ -2170,3 +2170,7 @@ Circle of Eight Modpack 8.1.0 New Content.tfs
 Circle of Eight Modpack 8.1.0 New Content.txt
 Circle of Eight Modpack 8.1.0 Standard.tfs
 data/mes/history.mes
+data/rules/protos.tab
+data/mes/description.mes
+data/mes/long_description.mes
+data/rules/poisons.json
