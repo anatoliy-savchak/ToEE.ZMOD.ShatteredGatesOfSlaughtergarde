@@ -9,6 +9,11 @@ def sec2loc( x, y ):
 	loc = ( loc << 32 ) + x
 	return loc
 
+def loc2sec(loc):
+	y = loc >> 32
+	x = loc & 4294967295
+	return ( x, y )
+
 def obj_scripts_clear(obj):
 	assert isinstance(obj, PyObjHandle)
 	mob_scripts = obj.scripts

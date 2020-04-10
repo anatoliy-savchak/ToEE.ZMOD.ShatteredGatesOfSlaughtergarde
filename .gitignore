@@ -2175,3 +2175,6 @@ data/mes/description.mes
 data/mes/long_description.mes
 data/rules/poisons.json
 data/rules/MapLimits.mes
+modules/ToEE/art/ground/ZMOD_CROSSROAD-day/Thumbs.db
+data/scr/Spell275 - Lightning Bolt.py
+data/scr/Spell432 - Shout.py

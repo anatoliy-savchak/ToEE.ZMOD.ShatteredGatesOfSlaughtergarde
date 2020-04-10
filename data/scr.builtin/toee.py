@@ -291,6 +291,10 @@ class PyObjHandle(object):
 		"""npc.item_wield(item: PyObjHandle, int[item_wear_helmet...]: index) -> None"""
 		return 
 
+	def item_wield_best_all(self):
+		"""npc.item_wield_best_all() -> None"""
+		return 
+
 	def item_worn_unwield(self, equip_slot, drop_flag):
 		"""Move item to inventory or drop. npc.item_worn_unwield(int[item_wear_helmet-item_wear_lockpicks]: equip_slot, int: drop_flag) -> none"""
 		return PyObjHandle()
@@ -491,6 +495,7 @@ class PyObjHandle(object):
 class game(object):
 	"""access to game engine"""
 	leader = PyObjHandle()
+	party = (PyObjHandle(), PyObjHandle())
 
 	@staticmethod
 	def obj_create(protoId, loc):
@@ -557,6 +562,11 @@ class game(object):
 	def random_range(_from, to):
 		""" game.random_range(int: _from, int: to) -> int"""
 		return 0
+
+	@staticmethod
+	def get_obj_by_id(id):
+		""" game.get_obj_by_id(str: id) -> PyObjHandle"""
+		return PyObjHandle()
 
 	@staticmethod
 	def alert_show(text, button_text):
