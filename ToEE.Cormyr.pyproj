@@ -196,6 +196,7 @@
     <Compile Include="overrides\scr\py06126_shocker_lizard.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\py06211_shuttered_monster.py" />
     <Compile Include="overrides\scr\py06210_daemon_shattered_lab.py" />
     <Compile Include="overrides\scr\py06204_daemon_crossroad.py">
       <SubType>Code</SubType>
@@ -211,6 +212,7 @@
     <Compile Include="overrides\scr\tpModifiers\pull_down_ceiling.py" />
     <Compile Include="overrides\scr\tpModifiers\lethal_shock.py" />
     <Compile Include="overrides\scr\tpModifiers\python_action_shriek.py" />
+    <Compile Include="overrides\scr\tpModifiers\hidden_attack.py" />
     <Compile Include="overrides\scr\tpModifiers\stunning_shock.py" />
     <Compile Include="overrides\scr\tpModifiers\base_movement.py" />
     <Compile Include="overrides\scr\tpModifiers\caster_level_base_add.py" />

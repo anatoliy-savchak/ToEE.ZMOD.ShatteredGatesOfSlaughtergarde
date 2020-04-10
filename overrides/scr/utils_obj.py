@@ -131,6 +131,7 @@ def obj_float_line_dialog(obj, method, lineId, npc):
 	return 1
 
 def obj_get_id(obj):
+	if (not obj): return None
 	assert isinstance(obj, PyObjHandle)
 	if (hasattr(obj, 'id')):
 		return obj.id

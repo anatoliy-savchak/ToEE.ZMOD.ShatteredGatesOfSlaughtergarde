@@ -12,6 +12,10 @@ def obj_storage(obj):
 	assert isinstance(obj, PyObjHandle)
 	return Storage.getObjectStorage(obj)
 
+def obj_storage_by_id(id):
+	assert isinstance(obj, PyObjHandle)
+	return Storage.getObjectStorageByName(id)
+
 class ObjectStorage(object):
 	def __init__(self, aname):
 		self.name = aname
@@ -97,6 +101,16 @@ class Storage(object):
 		return objStorage
 
 	@staticmethod
+	def getObjectStorageByName(name):
+		ss = Storage()
+		oo = ss.objs
+		if (name in oo):
+			return oo[name]
+		objStorage = ObjectStorage(name)
+		oo[name] = objStorage
+		return objStorage
+
+	@staticmethod
 	def saveObjects(dirname):
 		#breakp("Storage.saveObjects({})".format(dirname))
 		ss = Storage()
@@ -137,14 +151,15 @@ class Storage(object):
 		oo = ss.objs
 		oo.clear()
 		files = os.listdir(dirname)
+		loaded_modules = dict()
 		for fileName in files:
-			o = Storage.loadObjectStorage(dirname, fileName)
+			o = Storage.loadObjectStorage(dirname, fileName, loaded_modules)
 			if (not (o is None)):
 				oo[o.name] = o
 		return
 
 	@staticmethod
-	def loadObjectStorage(dirname, fileName):
+	def loadObjectStorage(dirname, fileName, loaded_modules):
 		filePath = os.path.join(dirname, fileName)
 		print("loadObjectStorage: filePath {}".format(filePath))
 		#breakp("loadObjectStorage")
@@ -154,7 +169,7 @@ class Storage(object):
 			f.close()
 			print("loadObjectStorage: json.load o = {}".format(o))
 			#breakp("loadObjectStorage o")
-			o = Storage.makeObjects(o)
+			o = Storage.makeObjects(o, loaded_modules)
 			ostorage = ObjectStorage(o["name"])
 			ostorage.__dict__ = o
 			return ostorage
@@ -166,7 +181,7 @@ class Storage(object):
 		return
 
 	@staticmethod
-	def makeObjects(odict):
+	def makeObjects(odict, loaded_modules):
 		#breakp("makeObjects 0")
 		assert isinstance(odict, dict)
 		r = dict()
@@ -200,44 +215,75 @@ class Storage(object):
 							print(modlename)
 							#breakp("makeObjects isofmodule")
 							if (modlename):
-								found = imp.find_module(modlename)
-								if (found):
-									print(found)
-									fullname = modlename + "." + isofclass
-									print(fullname)
-									#breakp("makeObjects find_module")
+								isofmoduledir = os.path.join(os.getcwd(), "overrides", "scr")
+								found = None
+								md = None
+								if (not loaded_modules is None and modlename in loaded_modules):
+									md = loaded_modules[modlename]
+								if (not md):
 									try:
-										inst2 = eval(fullname)()
-										inst = inst2
-										inst_loaded = 1
-									except Exception, e:
-										print "makeObjects inst eval error:", sys.exc_info()[0]
-										print(str(e))
+										try:
+											found = imp.find_module(modlename)
+										except Exception, e:
+											print "imp.find_module(modlename) error1:", sys.exc_info()[0]
+											print(str(e))
+										if (not found):
+											found = imp.find_module(modlename, isofmoduledir)
+										if (found):
+											print(found)
+											fullname = modlename + "." + isofclass
+											print(fullname)
+											#breakp("makeObjects find_module")
+											try:
+												inst2 = eval(fullname)()
+												inst = inst2
+												inst_loaded = 1
+											except Exception, e:
+												print "makeObjects inst eval error:", sys.exc_info()[0]
+												print(str(e))
 
-									if (not inst_loaded):
-										print("len of found: {}".format(len(found)))
-										#breakp("makeObjects load_module")
-										md = imp.load_module(modlename, found[0], found[1], found[2])
-										print(md)
-										#breakp("makeObjects inst2")
-										if (md):
-											c = getattr(md, isofclass)
-											print(c)
-											#breakp("makeObjects class")
-											if (c):
-												inst2 = c()
-												if (inst2): 
-													inst = inst2
-													inst.__dict__ = Storage.makeObjects(propval)
-													inst_loaded = 1
+											if (not inst_loaded):
+												print("len of found: {}".format(len(found)))
+												#breakp("makeObjects load_module")
+												md = imp.load_module(modlename, found[0], found[1], found[2])
+									except Exception, e:
+										print "imp.find_module(modlename):", sys.exc_info()[0]
+										print(str(e))
+									if (not found):
+										print("imp.load_source")
+										print(isofmodule)
+										#dir_path = os.path.dirname(os.path.realpath(__file__))
+										#isofmodulefull = os.path.join(dir_path, modlename +".py")
+										isofmodulefull = os.path.join(isofmoduledir, modlename +".py")
+										print(isofmodulefull)
+										#breakp("makeObjects load_source")
+										#isofmodule = "D:\\Temple\\Temple of Elemental Evil\\overrides\\scr\\py06211_shuttered_monster.py" 
+										md = imp.load_source(modlename, isofmodulefull)
+								print(md)
+								#breakp("makeObjects inst2")
+								if (md):
+									if (not loaded_modules is None and not modlename in loaded_modules):
+										print("caching...: {} ({})".format(modlename, md))
+										#breakp("loaded_modules[modlename] = md")
+										loaded_modules[modlename] = md
+										print("cached: {} ({})".format(modlename, md))
+									c = getattr(md, isofclass)
+									print(c)
+									#breakp("makeObjects class")
+									if (c):
+										inst2 = c()
+										if (inst2): 
+											inst = inst2
+											inst.__dict__ = Storage.makeObjects(propval, loaded_modules)
+											inst_loaded = 1
 					except Exception, e:
 						print "!!!!!!!!!!!!! makeObjects error:", sys.exc_info()[0]
 						print(str(e))
 					if (inst_loaded == 0):
-						inst.__dict__ = Storage.makeObjects(propval)
+						inst.__dict__ = Storage.makeObjects(propval, loaded_modules)
 					r[k] = inst
 				else:
-					r[k] = Storage.makeObjects(propval)
+					r[k] = Storage.makeObjects(propval, loaded_modules)
 			else: 
 				r[k] = propval
 		return r

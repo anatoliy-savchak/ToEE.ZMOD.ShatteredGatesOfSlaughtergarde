@@ -44,6 +44,12 @@ def san_heartbeat( attachee, triggerer ):
 	if (radar_radius_ft <= 0): radar_radius_ft = 10
 	foundTuple = toee.game.obj_list_range(attachee.location, radar_radius_ft, OLC_PC)
 	if (len(foundTuple) == 0): return toee.RUN_DEFAULT
+	talker = None
+	for pc in foundTuple:
+		if (not attachee.can_see(pc)): continue
+		talker = pc
+		break
+	if (not talker): return toee.RUN_DEFAULT
 	#line_id = attachee.obj_get_int(obj_f_hp_pts) - 100
 	line_id = attachee.obj_get_int(PROMTER_PARAM_FIELD_LINEID)
 	method = attachee.obj_get_int(PROMTER_PARAM_FIELD_METHOD)

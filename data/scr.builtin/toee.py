@@ -271,6 +271,10 @@ class PyObjHandle(object):
 		"""npc.inventory_item(int: index) -> PyObjHandle"""
 		return PyObjHandle()
 
+	def item_find_by_proto(self, proto):
+		"""npc.item_find_by_proto(int: proto) -> PyObjHandle"""
+		return PyObjHandle()
+
 	def is_spell_known(self, spellEnum):
 		"""npc.is_spell_known(self, spellEnum) -> int"""
 		return 1
@@ -294,6 +298,10 @@ class PyObjHandle(object):
 	def item_wield_best_all(self):
 		"""npc.item_wield_best_all() -> None"""
 		return 
+
+	def item_worn_at(self, equip_slot):
+		"""npc.item_worn_at(int[item_wear_helmet-item_wear_lockpicks]: equip_slot) -> PyObjHandle"""
+		return PyObjHandle()
 
 	def item_worn_unwield(self, equip_slot, drop_flag):
 		"""Move item to inventory or drop. npc.item_worn_unwield(int[item_wear_helmet-item_wear_lockpicks]: equip_slot, int: drop_flag) -> none"""
@@ -496,6 +504,7 @@ class game(object):
 	"""access to game engine"""
 	leader = PyObjHandle()
 	party = (PyObjHandle(), PyObjHandle())
+	combat_turn = 0
 
 	@staticmethod
 	def obj_create(protoId, loc):
@@ -530,6 +539,11 @@ class game(object):
 	@staticmethod
 	def obj_list_range(location, radius, flags):
 		""" obj_list_range(long: location, int[feet]: radius, int[OLC_NONE]: flags) -> (PyObjHandle(), PyObjHandle())"""
+		return (PyObjHandle(), PyObjHandle())
+
+	@staticmethod
+	def obj_list_vicinity(location, flags):
+		""" obj_list_vicinity(long: location, int[OLC_NONE]: flags) -> (PyObjHandle(), PyObjHandle())"""
 		return (PyObjHandle(), PyObjHandle())
 
 	@staticmethod

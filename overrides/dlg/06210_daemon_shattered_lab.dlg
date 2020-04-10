@@ -1,2 +1,22 @@
 {1}{This 10-foot-wide tunnel desc ends into the darkness. Timbers shore up its wall and ceiling, and loose stone litters the floor. A long rope has been attached to the middle of the tunnel floor with pitons every 20 feet or so.}{This 10-foot-wide tunnel desc ends into the darkness. Timbers shore up its wall and ceiling, and loose stone litters the floor. A long rope has been attached to the middle of the tunnel floor with pitons every 20 feet or so.}{}{}{}{}
 {10}{[exit]}{}{1}{}{0}{}
+
+{20}{The tunnel opens into a roughly square chamber shored by timbers. Four similar posts hold up the ceiling. A torch set in a sconce to the east of the doors lights the room.}{The tunnel opens into a roughly square chamber shored by timbers. Four similar posts hold up the ceiling. A torch set in a sconce to the east of the doors lights the room.}{}{}{}{csl().display_encounter_l2()}
+{21}{Continue}{}{1}{}{22}{}
+{22}{Two hobgoblins in heavy armor lean on the far wall, guarding burnished copper doors engraved leering demonic faces.}{Two hobgoblins in heavy armor lean on the far wall, guarding burnished copper doors engraved leering demonic faces.}{}{}{}{}
+{23}{Continue}{}{1}{}{24}{}
+{24}{Unlike the earthen walls in the other parts of the room, the walls that flanks the doors are made of grey-green masonry.}{Unlike the earthen walls in the other parts of the room, the walls that flanks the doors are made of grey-green masonry.}{}{}{}{}
+{25}{Continue}{}{1}{}{26}{}
+{26}{A hay bale is set near the eastern wall, arrows sticking out of it.}{A hay bale is set near the eastern wall, arrows sticking out of it.}{}{}{}{}
+{29}{Attack!}{}{1}{}{0}{csl().activate_encounter_l2()}
+
+{30}{Torch light reveals a wide and high chamber of gray-green stone. Chains and manacles hang from the walls.}{Torch light reveals a wide and high chamber of gray-green stone. Chains and manacles hang from the walls.}{}{}{}{}
+{31}{Continue}{}{1}{}{32}{}
+{32}{A roound wooden table surrounded by four chairs sits in the middle, and copper doors are set in the northent wall beyond.}{A roound wooden table surrounded by four chairs sits in the middle, and copper doors are set in the northent wall beyond.}{}{}{}{}
+{33}{Continue}{}{1}{}{34}{}
+{34}{Painted in red across those doors is a word of some sort. (The word painted on the doors is skruun, which is Goblin for "danger.")}{Painted in red across those doors is a word of some sort. (The word painted on the doors is skruun, which is Goblin for "danger.")}{}{}{}{}
+{35}{Continue}{}{1}{}{36}{}
+{36}{Piled in the sorners of the room are crates and burlap bags, some of them marked with the same moon-and sheaf sigil you saw on the Sumberton city pennants, To the east and west are passages; the arches over them are fashioned to look like demons gaping maws.}{Piled in the sorners of the room are crates and burlap bags, some of them marked with the same moon-and sheaf sigil you saw on the Sumberton city pennants, To the east and west are passages; the arches over them are fashioned to look like demons gaping maws.}{}{}{}{}
+{37}{Continue}{}{1}{}{38}{}
+{38}{Suddenly you spot creatures hiding behind the crates! These goblins wear mismatched pieces of leather, and they carry javelins and notched short swords.}{Suddenly you spot creatures hiding behind the crates! These goblins wear mismatched pieces of leather, and they carry javelins and notched short swords.}{}{}{}{csl().display_encounter_l3()}
+{39}{Close}{}{1}{}{0}{csl().activate_encounter_l3()}

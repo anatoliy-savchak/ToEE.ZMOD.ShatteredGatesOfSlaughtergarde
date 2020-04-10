@@ -115,3 +115,44 @@ def perform_sneak_for_attack(npc, target):
 	
 	print("HIDE success")
 	return 1
+
+def npc_make_hide(npc, ignore_observed):
+	assert isinstance(npc, PyObjHandle)
+	if (not ignore_observed): return 0 # implement it later
+
+	dice20 = dice_new("1d20")
+	npc_skill = npc.skill_level_get(skill_hide)
+	npcroll_result = dice20.roll()
+	npcroll_total = npcroll_result + npc_skill
+	print("perform_sneak_for_attack ROLL NPC ({}):{} = {} + npc_skill: {}".format(npc.description, npcroll_total, npcroll_result, npc_skill))
+
+	hidden_not_from_count = 0
+	objects = game.obj_list_vicinity(npc.location, OLC_PC | OLC_NPC)
+	if (objects):
+		foes = []
+		for obj in objects:
+			if (obj == npc): continue
+			f = obj.object_flags_get()
+			if ((f & OF_OFF) or (f & OF_DESTROYED) or (f & OF_DONTDRAW)): continue
+			if (obj.allegiance_shared(npc)): continue
+			if (not obj.can_see(npc)): continue
+			foes.append(obj)
+		if (foes):
+			for target in foes:
+				target_skill = target.skill_level_get(skill_spot)
+				targetroll_result = dice20.roll()
+				targetroll_total = targetroll_result + target_skill
+				print("perform_sneak_for_attack ROLL target ({}):{} = {} + skill_spot: {}".format(target.description, targetroll_total, targetroll_result, target_skill))
+				if (targetroll_total >= npcroll_total):
+					hidden_not_from_count += 1
+					game.create_history_freeform("{} failed to Hide from {}!\n\nSpot({})+1d20({}) = {} > Hide DC({})\n\n".format(npc.description, target.description, target_skill, targetroll_result, targetroll_total, npcroll_total))
+					target.float_text_line("Hey!", 2)
+					npc.float_text_line("(Failed to Hide)", 1)
+					print("Faield to Hide")
+					break
+
+	if (hidden_not_from_count): return 0
+	print("HIDDEN!")
+	npc.anim_goal_interrupt()
+	npc.critter_flag_set(OCF_MOVING_SILENTLY)
+	return 1
