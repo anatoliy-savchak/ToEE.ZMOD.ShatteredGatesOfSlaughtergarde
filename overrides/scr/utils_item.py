@@ -15,6 +15,13 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 				npc.item_get(item)
 	return item
 
+def item_place_into_inventory(item, npc):
+	assert isinstance(npc, PyObjHandle)
+	assert isinstance(item, PyObjHandle)
+	if (item != OBJ_HANDLE_NULL):
+		npc.item_get(item)
+	return item
+
 def item_create_in_inventory_mass(npc, protos):
 	assert isinstance(npc, PyObjHandle)
 	for item_proto_num in protos:

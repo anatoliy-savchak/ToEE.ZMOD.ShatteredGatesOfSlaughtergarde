@@ -1,0 +1,65 @@
+// Text descriptions of the keys used in the game.
+// For a key with a KeyID of i, the tile will be i, and the description will be i + MAX_KEYS
+// MAX_KEYS = 100
+
+// Titles
+{1} {reserved}
+{2}{Nira's key}
+{3}{Jaroo's key}
+{4}{Rentsch's key}
+{5}{Tower Brigand Leader's key}
+{6}{Romag's key}
+{7}{Alrrem's key}
+{8}{Belsornig's key}
+{9}{Kelno's key}
+{10}{Feldrin's key}
+{11}{Smigmal's key}
+{12}{Falrinth's key}
+{13}{Senshock's key}
+{14}{Ettin's key}
+{15}{Hedrack's key}
+{16}{Northwest troll's key}
+{17}{Northeast troll's key}
+{18}{Southwest troll's key}
+{19}{Southeast troll's key}
+{20}{Door key}
+{21}{Small gold key}
+{22}{Gnome Tunnels key}
+{23}{Half-Orc Commander's key}
+{24}{Minotaur's key}
+{25}{Drainage Tunnels key}
+{26}{Barkinar and Deggum's key}
+{31}{Footlocker 1 key}
+{32}{Footlocker 2 key}
+{33}{Footlocker 3 key}
+
+// Descriptions
+{101} {reserved description}
+{102}{You removed this key from the moneychanger Nire Melubb in Hommlet.}
+{103}{This key belonged to Jaroo Ashstaff, the druidical leader of Hommlet.}
+{104}{This key used to be on the person of Rentsch, owner of the Waterside Hostel in Nulb.}
+{105}{You absconded with this key from the brigand leader in the temple tower.}
+{106}{Somehow you have acquired this key from Romag, the high priest of the Earth Temple.}
+{107}{Alrrem, the high priest of the Fire Temple, used to own this key.}
+{108}{Belsornig, the high priest of the Water Temple, probably didn't give you this key.}
+{109}{Kelno, the high priest of the Air Temple, always kept this key on his person.}
+{110}{Commander Feldrin of the temple forces used to have this key. Now it's yours.}
+{111}{You took this key from Smigmal Redhand in the temple dungeons.}
+{112}{Falrinth the wizard owned this key.}
+{113}{This key was the propery of Senshock, Lord Wizard of the Greater Temple.}
+{114}{A big dumb ettin had this key, before you took it from him.}
+{115}{This key belongs to Supreme Commander Hedrack, High Priest and Most Honorable Emissary of Iuz Himself. You are a thief.}
+{116}{You found this key on the the third level of the temple dungeon in a room with four trolls nearby. This key was on the northwest troll.}
+{117}{You found this key on the the third level of the temple dungeon in a room with four trolls nearby. This key was on the northeast troll.}
+{118}{You found this key on the the third level of the temple dungeon in a room with four trolls nearby. This key was on the southwest troll.}
+{119}{You found this key on the the third level of the temple dungeon in a room with four trolls nearby. This key was on the southeast troll.}
+{120}{You found this key in the chest near the air elemental, It looks like a door key.}
+{121}{This key was pulled from the entrails of a giant rat. Around its edges there is deterioration from the rat's digestive fluids. This leads you to believe that the key is not real gold and probably holds no value.}
+{122}{This is the key to the door that keeps the Drow invaders out of Verbobonc's city streets.}
+{123}{You recovered this key from the Half-Orc Commander at Hickory Branch.}
+{124}{You recovered this key from the minotaur at Hickory Branch.}
+{125}{Captain Abiram of the Verbobonc Watch gave you this key to get into the city drainage tunnels.}
+{126}{This key belonged to Barkinar and Deggum, commander of the temple troops and guards respectively.}
+{131}{You took this key from Goblin Scrounger sleeping nearby.}
+{132}{You took this key from Hobgoblin Scrounger in the Gaol room.}
+{133}{No idea}

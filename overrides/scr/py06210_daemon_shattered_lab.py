@@ -159,6 +159,9 @@ class CtrlShatteredLab(object):
 			ctrl.option_first_javelin = 1
 			npc.condition_add_with_args("Sneak_Attack_Ex", 0, 0)
 			utils_npc.npc_skill_ensure(npc, toee.skill_hide, 5)
+			key = utils_item.item_create_in_inventory(10001, npc)
+			if (key):
+				key.obj_set_int(toee.obj_f_key_key_id, 32)
 
 		PROTO_NPC_HOBGOBLIN_2 = 14188
 		npc_loc = utils_obj.sec2loc(498, 478)
@@ -252,12 +255,15 @@ class CtrlShatteredLab(object):
 			utils_npc.npc_skill_ensure(npc, toee.skill_spot, 2)
 			utils_npc.npc_skill_ensure(npc, toee.skill_listen, 2)
 			npc.condition_add_with_args("Napping", 1, 0)
-		return
+		return npc
 
 	def place_encounter_l7(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(465, 478), 6210, 70, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE, "Balcony")
 
-		self.create_goblin_scrounger_at(utils_obj.sec2loc(468, 479), const_toee.rotation_1100_oclock, "l7", "goblin1")
+		npc = self.create_goblin_scrounger_at(utils_obj.sec2loc(468, 479), const_toee.rotation_1100_oclock, "l7", "goblin1")
+		key = utils_item.item_create_in_inventory(10001, npc)
+		if (key):
+			key.obj_set_int(toee.obj_f_key_key_id, 31)
 		self.create_goblin_scrounger_at(utils_obj.sec2loc(466, 474), const_toee.rotation_1100_oclock, "l7", "goblin2")
 		self.create_goblin_scrounger_at(utils_obj.sec2loc(463, 477), const_toee.rotation_1100_oclock, "l7", "goblin3")
 		return
@@ -391,17 +397,6 @@ class CtrlShatteredLab(object):
 		return
 
 	def activate_encounter_l6(self):
-		npc, info = self.get_monster_info_npc("l6", "hobgoblin1")
-		if (npc):
-			#npc.condition_add_with_args("sleeping", 20, 0)
-			#npc.anim_goal_push_animate(64)
-			npc.condition_add_with_args("Napping", 1, 0)
-
-		npc, info = self.get_monster_info_npc("l6", "hobgoblin2")
-		if (npc):
-			npc.condition_add_with_args("Napping", 1, 0)
-			#npc.condition_add_with_args("prone", 0, 0)
-			#npc.anim_goal_push_animate(64)
 		self.activate_monster("l6", "hobgoblin1")
 		self.activate_monster("l6", "hobgoblin2")
 		return
@@ -421,7 +416,24 @@ class CtrlShatteredLab(object):
 			no = obj.obj_get_int(toee.obj_f_hp_pts) 
 			if (no == 71):
 				obj.container_flag_set(toee.OCOF_LOCKED)
-				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_JASPER_BLUE, obj)
+				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
+				obj.obj_set_int(toee.obj_f_container_key_id, 31)
+				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_JASPER_BLUE, obj) # Originally ivory figurine
+			elif (no == 72):
+				obj.container_flag_set(toee.OCOF_LOCKED)
+				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
+				obj.obj_set_int(toee.obj_f_container_key_id, 32)
+				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_WHITE, obj) # Originally opal earrings
+				utils_item.item_money_create_in_inventory(obj, 0, 12)
+			elif (no == 73):
+				obj.container_flag_set(toee.OCOF_LOCKED)
+				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
+				obj.obj_set_int(toee.obj_f_container_key_id, 33)
+				utils_item.item_money_create_in_inventory(obj, 0, 350) # Originally porcelain plate
+			elif (no == 74):
+				obj.container_flag_set(toee.OCOF_LOCKED)
+				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
+				utils_item.item_money_create_in_inventory(obj, 0, 33)
 		return
 
 class MonsterInfo:

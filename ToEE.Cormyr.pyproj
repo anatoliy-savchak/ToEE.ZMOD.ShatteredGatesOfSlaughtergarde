@@ -91,6 +91,7 @@
     <Content Include="overrides\mes\description\obj_t_npc_14832_shadar_kai.mes" />
     <Content Include="overrides\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
     <Content Include="overrides\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
+    <Content Include="overrides\mes\gamekeylog.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />

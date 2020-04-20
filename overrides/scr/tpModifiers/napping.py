@@ -249,8 +249,9 @@ def Napping_Broadcast_Action(attachee, args, evt_obj):
 	dice_info = SkillDiceInfo()
 	dice_info.distance = distance
 	heard = dice_info.CheckListenAgainst(attachee, target)
-	if (heard): 
+	if (heard == 2): 
 		NappingRemove(attachee, args)
+	elif (heard): attachee.float_text_line("Zzzz?", 4) # yellow
 
 	return 0
 
