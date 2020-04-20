@@ -85,6 +85,8 @@ class CtrlMonster(object):
 			tac.add_attack()
 			break
 
+		if (not attachee.item_worn_at(toee.item_wear_weapon_primary)):
+			attachee.item_wield_best_all()
 		print(tac.custom_tactics)
 		if (tac.count > 0):
 			tac.make_name()

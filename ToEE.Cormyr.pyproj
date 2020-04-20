@@ -146,6 +146,9 @@
     <Compile Include="overrides\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_animate.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\const_proto_cloth.py">
       <SubType>Code</SubType>
     </Compile>
@@ -188,6 +191,7 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
     <Compile Include="overrides\scr\py06202_vargouille_lesser.py" />
     <Compile Include="overrides\scr\py06125_knell_beetle_lesser.py">
       <SubType>Code</SubType>
@@ -206,6 +210,7 @@
     <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\napping.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus1.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus5.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus3.py" />

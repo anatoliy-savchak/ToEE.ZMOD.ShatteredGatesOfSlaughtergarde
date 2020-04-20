@@ -9,6 +9,7 @@ print("Registering " + GetConditionName())
 ###################################################
 
 NAPPING_LISTEN_DISTANCE_DEFAULT = 15 # ft
+NAPPING_LISTEN_DEBUG_PRINT_LEVEL = 0
 
 def Napping_OnConditionAdd(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -85,7 +86,8 @@ class SkillDiceInfo:
 		self.npc_skill_bonus = -10 # PHB p79: A sleeping character may make Listen checks at a –10 penalty. A successful check awakens the sleeper.
 		self.npcroll_result = self.dice20.roll()
 		self.npcroll_total = self.npcroll_result + self.npc_skill + self.npc_skill_bonus
-		print("LISTEN ROLL NPC ({}):{} = {} + skill_listen: {} + npc_skill_bonus: {}".format(npc.description, self.npcroll_total, self.npcroll_result, self.npc_skill, self.npc_skill_bonus))
+		if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL == 2):
+			print("LISTEN ROLL NPC ({}):{} = {} + skill_listen: {} + npc_skill_bonus: {}".format(npc.description, self.npcroll_total, self.npcroll_result, self.npc_skill, self.npc_skill_bonus))
 		return
 
 	@staticmethod
@@ -98,7 +100,7 @@ class SkillDiceInfo:
 		if (not (target.critter_flags_get() & toee.OCF_MOVING_SILENTLY)):
 			has_los = attachee.can_sense(target)
 			if (not has_los): 
-				print("No LOS")
+				if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL == 2): print("No LOS")
 				return 0
 		return 1
 
@@ -109,6 +111,7 @@ class SkillDiceInfo:
 		if (self.dice20 is None):
 			self.RollNpc(attachee)
 
+		result = 0
 		#debug.breakp("CheckListenAgainst1")
 		target_distance = self.distance
 		if (target_distance is None): 
@@ -123,92 +126,65 @@ class SkillDiceInfo:
 		targetroll_result = 10
 		if (target_is_moving_silently): targetroll_result = self.dice20.roll()
 		targetroll_total = targetroll_result + target_skill + target_distance_bonus + target_battle_bonus
-		print("MOVE SILENTLY ROLL target ({}):{} = {} + skill_move_silently: {} + dist bonus: {}, _battle_bonus: {}".format(target.description, targetroll_total, targetroll_result, target_skill, target_distance_bonus, target_battle_bonus))
+		if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL == 2): print("MOVE SILENTLY ROLL target ({}):{} = {} + skill_move_silently: {} + dist bonus: {}, _battle_bonus: {}".format(target.description, targetroll_total, targetroll_result, target_skill, target_distance_bonus, target_battle_bonus))
 		if (self.npcroll_total < targetroll_total):
-			print("Did not hear")
+			if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL == 2): print("Did not hear")
+			result = 1
 		else:
-			print("Awakes!")
-
-			#npc_bonus_list = toee.PyBonusList()
-
-			#npc_bonus_list = attachee.skill_bonus_list_get(toee.skill_listen)
+			if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL == 2): print("Awakes!")
 			npc_bonus_list = tpdp.BonusList()
-			debug.breakp("CheckListenAgainst2")
+			#debug.breakp("CheckListenAgainst2")
 			tpdp.dispatch_skill(attachee, toee.skill_listen, npc_bonus_list, toee.OBJ_HANDLE_NULL, 1)
 			if (self.npc_skill_bonus):
-				#npc_bonus_list.add(npc_skill_bonus, 0, 101)
-				#npc_bonus_list.add_text(self.npc_skill_bonus, 0, "Sleeping")
 				npc_bonus_list.add(self.npc_skill_bonus, 0, "Sleeping")
 
-			#target_bonus_list = toee.PyBonusList()
 			target_bonus_list = tpdp.BonusList()
 			tpdp.dispatch_skill(target, toee.skill_move_silently, target_bonus_list, toee.OBJ_HANDLE_NULL, 1)
-			#target_bonus_list = target.skill_bonus_list_get(toee.skill_move_silently)
 			if (target_distance_bonus):
-				#target_bonus_list.add(target_distance_bonus, 0, 101)
-				#target_bonus_list.add_text(target_distance_bonus, 0, "Distance {:.0f} ft".format(target_distance))
 				target_bonus_list.add(target_distance_bonus, 0, "Distance {:.0f} ft".format(target_distance))
 
 			if (target_battle_bonus):
-				#target_bonus_list.add(target_battle_bonus, 0, 101)
-				#target_bonus_list.add_text(target_battle_bonus, 0, "Battle")
 				target_bonus_list.add(target_battle_bonus, 0, "Battle")
 
-			#if (target_is_moving_silently):
-				#target_bonus_list.add(0, 0, 101)
-				#target_bonus_list.add_text(0, 0, "Moving Silently")
-
-			target_battle_bonus_str = ""
-			if (target_battle_bonus != 0):
-				target_battle_bonus_str = "+ Battle {}".format(target_battle_bonus)
-
-			msg = "{} failed to stay silent from {}!\n\n".format(target.description, attachee.description)
-			#msg = "{} failed to stay silent from {}! Listen {} + roll {} + Sleeping {} ".format(target.description, attachee.description, self.npc_skill, self.npcroll_result, self.npc_skill_bonus)
-			print(msg)
-			#toee.game.create_history_freeform(msg)
-			#msg = "Listen {} + roll {} + Sleeping {} = {} >= DC {:.0f} = Move Silently {} + roll {} + Distance {:.0f}ft => {:.0f} {}\n\n".format(self.npc_skill, self.npcroll_result, self.npc_skill_bonus, self.npcroll_total, targetroll_total, target_skill, targetroll_result, target_distance, target_distance_bonus, target_battle_bonus_str)
-			msg = "DC = Listen {} + roll {} + Sleeping {} = {}\n\n".format(self.npc_skill, self.npcroll_result, self.npc_skill_bonus, self.npcroll_total)
-			print(msg)
-			#debug.breakp("Napping_OnBeginRound msg2")
-			#toee.game.create_history_freeform(msg)
 			attachee.float_text_line("Awakes!", 1)
-
-			#debug.breakp("create_history_type6_opposed_check")
-			#toee.game.create_history_type6_opposed_check(attachee, target, npc_bonus_list, target_bonus_list, self.npcroll_result, targetroll_result, 5125, 102, 1)
 			hist_id = tpdp.create_history_type6_opposed_check(attachee, target, self.npcroll_result, targetroll_result, npc_bonus_list, target_bonus_list, 5125, 102, 1)
 			toee.game.create_history_from_id(hist_id)
-			return 1
-		return 0
+			return 2
+		return result
 
 def Napping_OnBeginRound(attachee, args, evt_obj):
 	try:
 		assert isinstance(attachee, toee.PyObjHandle)
 		assert isinstance(args, templeplus.pymod.EventArgs)
 		assert isinstance(evt_obj, templeplus.pymod.DispIoD20Signal)
-		print("Napping_OnBeginRound")
-		if (not args.get_arg(0)): 
-			print("Not enabled")
-			return 0 # not enabled
-
-		dice_info = None
-		listen_distance = args.get_arg(1)
-		if (not listen_distance): listen_distance = NAPPING_LISTEN_DISTANCE_DEFAULT
-		objs = toee.game.obj_list_range(attachee.location, listen_distance, toee.OLC_PC) # removed for perfomance toee.OLC_PC | toee.OLC_NPC
-		
-		if (objs):
-			print("Processing {} targets...".format(len(objs)))
-			for target in objs:
-				if (not SkillDiceInfo.isTargetEligible(attachee, target)): 
-					print("Target is not eligible: {}".format(target))
-					continue
-				if (dice_info is None):
-					dice_info = SkillDiceInfo()
-				dice_info.distance = None
-				heard = dice_info.CheckListenAgainst(attachee, target)
-				if (heard): 
-					NappingRemove(attachee, args)
-					break
-		else: print("No immidiate targets found")
+		if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL): print("Napping_OnBeginRound")
+		if (args.get_arg(0)): 
+			had_rolls = 0
+			dice_info = None
+			listen_distance = args.get_arg(1)
+			if (not listen_distance): listen_distance = NAPPING_LISTEN_DISTANCE_DEFAULT
+			objs = toee.game.obj_list_range(attachee.location, listen_distance, toee.OLC_PC) # removed for perfomance toee.OLC_PC | toee.OLC_NPC
+			if (objs):
+				if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL): print("Processing {} targets...".format(len(objs)))
+				for target in objs:
+					if (not SkillDiceInfo.isTargetEligible(attachee, target)): 
+						if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL): print("Target is not eligible: {}".format(target))
+						continue
+					if (dice_info is None):
+						dice_info = SkillDiceInfo()
+					dice_info.distance = None
+					heard = dice_info.CheckListenAgainst(attachee, target)
+					if (heard == 2): 
+						NappingRemove(attachee, args)
+						break
+					if (heard):
+						had_rolls = 1
+			else: 
+				if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL): print("No immidiate targets found")
+			if (had_rolls):
+				attachee.float_text_line("Zzzz?", 4) # yellow
+		else:
+			attachee.float_text_line("Zzzz", 2) # green
 
 	except Exception, e:
 		print "Shout Napping_OnBeginRound error:", sys.exc_info()[0]
@@ -236,40 +212,40 @@ def Napping_OnGetACBonus2(attachee, args, evt_obj):
 
 def Napping_Broadcast_Action(attachee, args, evt_obj):
 	if (not args.get_arg(0)): return 0 # not enabled
-	print("Napping_Broadcast_Action:")
+	#print("Napping_Broadcast_Action:")
 	if (not toee.game.combat_is_active()): 
-		print("Not game.combat_is_active, exiting")
+		#print("Not game.combat_is_active, exiting")
 		return 0
 
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, templeplus.pymod.EventArgs)
 	assert isinstance(evt_obj, templeplus.pymod.DispIoD20Signal)
 	if (not evt_obj.data1): 
-		print("evt_obj.data1 is 0, exiting")
+		#print("evt_obj.data1 is 0, exiting")
 		return 0
 	d20a = evt_obj.get_d20_action()
 	if (not d20a):
-		print("d20a is null, exiting")
+		#print("d20a is null, exiting")
 		return 0
 	if (not d20a.performer): 
-		print("d20a.performer is null, exiting")
+		#print("d20a.performer is null, exiting")
 		return 0
 	target = d20a.performer
-	print("d20: {}, performer: {}".format(d20a.action_type, target))
+	#print("d20: {}, performer: {}".format(d20a.action_type, target))
 
 	listen_distance = args.get_arg(1)
 	if (not listen_distance): listen_distance = NAPPING_LISTEN_DISTANCE_DEFAULT
 
 	distance = attachee.distance_to(target)
 	if (distance > listen_distance): 
-		print("d20a.performer distance {:.1f} is too big, exiting".format(distance))
+		#print("d20a.performer distance {:.1f} is too big, exiting".format(distance))
 		return 0
 
 	if (not SkillDiceInfo.isTargetEligible(attachee, target)): 
-		print("d20a.performer {} is not eligible, exiting".format(target))
+		#print("d20a.performer {} is not eligible, exiting".format(target))
 		return 0
 
-	print("Checking ...")
+	#print("Checking ...")
 	dice_info = SkillDiceInfo()
 	dice_info.distance = distance
 	heard = dice_info.CheckListenAgainst(attachee, target)

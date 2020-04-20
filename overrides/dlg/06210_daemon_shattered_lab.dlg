@@ -20,3 +20,19 @@
 {37}{Continue}{}{1}{}{38}{}
 {38}{Suddenly you spot creatures hiding behind the crates! These goblins wear mismatched pieces of leather, and they carry javelins and notched short swords.}{Suddenly you spot creatures hiding behind the crates! These goblins wear mismatched pieces of leather, and they carry javelins and notched short swords.}{}{}{}{csl().display_encounter_l3()}
 {39}{Close}{}{1}{}{0}{csl().activate_encounter_l3()}
+
+{50}{Lit by a gently flickering torch, tlthe nearby chamber is indeterminately wide from your vintage.}{Lit by a gently flickering torch, tlthe nearby chamber is indeterminately wide from your vintage.}{}{}{}{}
+{51}{Continue}{}{1}{}{52}{}
+{52}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{}{}{}{}
+{53}{Continue}{}{1}{}{54}{}
+{54}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{}{}{}{}
+{59}{Close}{}{1}{}{0}{csl().activate_encounter_l5()}
+
+{60}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{}{}{}{}
+{61}{Continue}{}{1}{}{62}{}
+{62}{A tablehere has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{A tablehere has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{}{}{}{}
+{63}{Continue}{}{1}{}{64}{}
+{64}{Channels around edges of the room lead to a drain in the center. A railed balcony overlooks the torthwestern corner, exokaining the high ceiling.}{Channels around edges of the room lead to a drain in the center. A railed balcony overlooks the torthwestern corner, exokaining the high ceiling.}{}{}{}{}
+{69}{Close}{}{1}{}{0}{csl().activate_encounter_l6()}
+
+{70}{A dozen simple bedrolls are spread on the floor. Wooden rails guard balconies the the northwest and southeast. Four smal footlockers are here as well.}{A dozen simple bedrolls are spread on the floor. Wooden rails guard balconies the the northwest and southeast. Four smal footlockers are here as well.}{}{}{}{}
