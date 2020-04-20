@@ -1,5 +1,13 @@
 ﻿import toee
 
+def dispatch_skill(obj, skill_enum, bon_list, obj2 = toee.OBJ_HANDLE_NULL, flag = 1):
+	""" tpdp.dispatch_skill(toee.PyObjHandle: obj, int: skill_enum, BonusList: bon_list, toee.PyObjHandle: obj2 = toee.OBJ_HANDLE_NULL, int: flag = 1) -> int: skill_value"""
+	return 0
+
+def create_history_type6_opposed_check(performer, defender, performerRoll, defenderRoll, performerBonList, defenderBonList, combatMesLineTitle, combatMesLineResult, flag):
+	""" tpdp.create_history_type6_opposed_check(toee.PyObjHandle: performer, toee.PyObjHandle: defender, int: performerRoll, int: defenderRoll, BonusList: performerBonList, BonusList: defenderBonList, int: combatMesLineTitle, int: combatMesLineResult, int: flag) -> int: rollHistId"""
+	return 0
+
 class TurnBasedStatus:
 	def __init__(self):
 		self.hourglass_state = toee.D20ACT_Full_Round_Action
@@ -11,8 +19,8 @@ class TurnBasedStatus:
 
 class D20Action:
 	def __init__(self):
-		self.performer = toee.PyHandle()
-		self.target = toee.PyHandle()
+		self.performer = toee.PyObjHandle()
+		self.target = toee.PyObjHandle()
 		self.spell_id = 0
 		self.data1 = 0
 		self.flags0 # D20CAF_ flags
@@ -112,3 +120,4 @@ class AttackPacket:
 	def set_flags(self, flagsNew):
 		""" attack_packet.set_flags(int: flagsNew) -> None """
 		return
+

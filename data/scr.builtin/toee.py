@@ -163,6 +163,9 @@ class PyObjHandle(object):
 	def can_see(self, target):
 		return 0
 
+	def can_sense(self, target):
+		return 0
+
 	def can_find_path_to_obj(self, target, flags):
 		"""npc.can_find_path_to_obj(PyObjHandle: target, int: flags) -> int"""
 		return
@@ -538,6 +541,16 @@ class game(object):
 	@staticmethod
 	def create_history_freeform(histText):
 		""" game.create_history_freeform(str: histText) -> None"""
+		return
+
+	@staticmethod
+	def create_history_from_id(histId):
+		""" game.create_history_from_id(int: histId) -> None"""
+		return
+
+	@staticmethod
+	def create_history_type6_opposed_check(performer, combatant, performer_bonus_list, combatant_bonus_list, performer_roll, combatant_roll, combat_mesline_title, combat_mesline_result, flags):
+		""" game.create_history_type6_opposed_check(PyObjHandle: performer, PyObjHandle: combatant, PyBonusList: performer_bonus_list, PyBonusList: combatant_bonus_list, int: performer_roll, int: combatant_roll, int: combat_mesline_title, int: combat_mesline_result, int: flags) -> int: rollHistId"""
 		return 0
 	
 	@staticmethod
@@ -619,6 +632,30 @@ class PyRandomEncounterSetup(object):
 		self.terrain = 0
 		self.flags = 0
 		return
+
+class PyBonusList(object):
+	def __init__(self):
+		return
+
+	def get_sum(self):
+		return 0
+
+	def add(self, value, bonType, mesline):
+		""" bonus_list.add(int: value, int: bonType, int: mesline) -> int """
+		return 0
+
+	def add_text(self, value, bonType, text):
+		""" bonus_list.add(int: value, int: bonType, str: text) -> int """
+		return 0
+
+	def add_cap(self, value, capType, mesline):
+		""" Adds cap for a particular bonus type
+		bonus_list.add_cap(int: value, int: capType, int: mesline) -> int """
+		return 0
+
+	def add_from_feat(self, value, bonType, mesline, featEnum):
+		""" bonus_list.add_from_feat(int: value, int: bonType, int: mesline, int: featEnum) -> int """
+		return 0
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
