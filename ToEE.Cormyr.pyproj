@@ -40,6 +40,7 @@
     <Folder Include="overrides\mes\" />
     <Folder Include="overrides\dlg\" />
     <Folder Include="overrides\oemes\" />
+    <Folder Include="overrides\rules\indicators\" />
     <Folder Include="overrides\rules\protos\" />
     <Folder Include="data\scr\" />
     <Folder Include="modules\" />
@@ -107,6 +108,7 @@
     <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
     <Content Include="overrides\oemes\faction.mes" />
     <Content Include="overrides\rules\combat_vars.mes" />
+    <Content Include="overrides\rules\indicators\lodged_quills.txt" />
     <Content Include="overrides\rules\MapLimits.mes" />
     <Content Include="overrides\rules\poisons.json" />
     <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
@@ -144,6 +146,7 @@
     <Content Include="overrides\rules\traps.tab" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03004_remove_quills.py" />
     <Compile Include="overrides\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
@@ -211,6 +214,8 @@
     <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
+    <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />
     <Compile Include="overrides\scr\tpModifiers\napping.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus1.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus5.py" />

@@ -58,14 +58,14 @@ class EventArgs(object):
 
 class EventObjModifier(EventObj):
     def __init__(self):
-        self.evt_obj_type = 0 # enum_dispIO_type
+        self.evt_obj_type = 3 # dispTypeConditionAddPre
         self.return_val = 0
         self.arg1 = 0
         self.arg2 = 0
-        self.modifier_spec = object() # CondStruct
+        self.modifier_spec = tpdp.ModifierSpec() # CondStruct, foreign
         return
 
-    def is_modifier(self, s): 
+    def is_modifier(self, s): # foreign
         return 0
 
 class EventObjD20Query(EventObj):
@@ -105,7 +105,7 @@ class EventObjEffectTooltip(EventObj):
         """
         return
 
-class DispIoD20Signal(EventObj):
+class EventObjD20Signal(EventObj):
     def __init__(self):
         self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain
         self.return_val = 0
@@ -130,4 +130,20 @@ class EventObjAttack(EventObj):
         #, dispTypeGetDefenderConcealmentMissChance, dispTypeDeflectArrows, dispTypeProjectileCreated, dispTypeProjectileDestroyed, dispTypeBucklerAcPenalty:
         self.bonus_list = tpdp.BonusList()
         self.attack_packet = tpdp.AttackPacket()
+        return
+
+class EventObjD20Action(EventObj):
+    def __init__(self):
+        self.evt_obj_type = 36 # dispTypeD20ActionCheck,dispTypeD20ActionPerform, dispTypeD20ActionOnActionFrame,dispTypeGetNumAttacksBase, dispTypeGetBonusAttacks, dispTypeGetCritterNaturalAttacksNum,dispTypePythonActionPerform,dispTypePythonActionAdd ,dispTypePythonActionCheck ,dispTypePythonActionFrame
+        self.return_val = 0
+        self.d20a = tpdp.D20Action()
+        self.turnbased_status = EventObjTurnBasedStatus()
+        self.bonus_list = tpdp.BonusList()
+        return
+
+class EventObjDamage(EventObj):
+    def __init__(self):
+        self.evt_obj_type = 91 # dispTypeDealingDamageWeaponlikeSpell, dispTypeDealingDamage, dispTypeTakingDamage, dispTypeDealingDamage2, dispTypeTakingDamage2
+        self.attack_packet = tpdp.AttackPacket()
+        self.damage_packet = tpdp.DamagePacket()
         return

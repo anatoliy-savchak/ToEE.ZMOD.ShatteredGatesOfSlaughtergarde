@@ -73,6 +73,10 @@ class CtrlShatteredLab(object):
 
 	def place_encounters(self):
 		if (self.encounters_placed): return
+		#toee.game.party[0].condition_add_with_args("Lodged_Quills", 2, 0)
+		howler = toee.game.obj_create(14893, utils_obj.sec2loc(459, 466))
+		howler.condition_add_with_args("Quills_Ex", 1, 0)
+		howler.move(utils_obj.sec2loc(459, 466))
 		#debugg.breakp("place_encounters")
 		#bl = tpdp.BonusList()
 		#bl.add(0, 0, 0)
@@ -86,9 +90,10 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l3()
 		#self.place_encounter_l5()
 		#self.place_encounter_l6()
-		self.place_encounter_l7()
+		#self.place_encounter_l7()
 		self.place_chests()
 		self.print_monsters()
+		toee.game.fade_and_teleport( 0, 0, 0, 5121, 465, 483 )
 		return
 
 	def place_encounter_l1(self):
@@ -266,6 +271,20 @@ class CtrlShatteredLab(object):
 			key.obj_set_int(toee.obj_f_key_key_id, 31)
 		self.create_goblin_scrounger_at(utils_obj.sec2loc(466, 474), const_toee.rotation_1100_oclock, "l7", "goblin2")
 		self.create_goblin_scrounger_at(utils_obj.sec2loc(463, 477), const_toee.rotation_1100_oclock, "l7", "goblin3")
+		return
+
+	def place_encounter_l8(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(457, 481), 6210, 80, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE, "Howler Trap")
+
+		PROTO_NPC_HOWLER = 14893
+		npc_loc = utils_obj.sec2loc(459, 466)
+		npc = toee.game.obj_create(PROTO_NPC_HOWLER, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = const_toee.rotation_1800_oclock
+			self.monster_setup(npc, "l8", "howler", None, 0, 0)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+			ctrl.option_first_javelin = 1
 		return
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1):

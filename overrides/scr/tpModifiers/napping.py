@@ -156,7 +156,7 @@ def Napping_OnBeginRound(attachee, args, evt_obj):
 	try:
 		assert isinstance(attachee, toee.PyObjHandle)
 		assert isinstance(args, templeplus.pymod.EventArgs)
-		assert isinstance(evt_obj, templeplus.pymod.DispIoD20Signal)
+		assert isinstance(evt_obj, templeplus.pymod.EventObjD20Signal)
 		if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL): print("Napping_OnBeginRound")
 		if (args.get_arg(0)): 
 			had_rolls = 0
@@ -219,7 +219,7 @@ def Napping_Broadcast_Action(attachee, args, evt_obj):
 
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.DispIoD20Signal)
+	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Signal)
 	if (not evt_obj.data1): 
 		#print("evt_obj.data1 is 0, exiting")
 		return 0
