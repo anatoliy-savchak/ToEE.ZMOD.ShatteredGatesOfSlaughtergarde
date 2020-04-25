@@ -20,9 +20,28 @@ def san_first_heartbeat(attachee, triggerer):
 
 def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	#ctrl = CtrlShatteredLab.get_from_obj(attachee)
-	#if (ctrl):
-	#	ctrl.process_promters()
+	leader = toee.game.leader
+	lscripts = leader.scripts
+	if (leader.map == MAP_ID_SHATERRED_LAB):
+		if (lscripts[const_toee.sn_true_seeing] != 6210):
+			lscripts[const_toee.sn_true_seeing] = 6210
+			print("lscripts[const_toee.sn_true_seeing] = 6210")
+		c = csl()
+		if (c):
+			c.check_sleep_status_update()
+	else:
+		if (lscripts[const_toee.sn_true_seeing] == 6210):
+			lscripts[const_toee.sn_true_seeing] = 0
+			print("lscripts[const_toee.sn_true_seeing] = 0")
+	return toee.RUN_DEFAULT
+
+def san_true_seeing(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	leader = toee.game.leader
+	if (leader.map == MAP_ID_SHATERRED_LAB):
+		c = csl()
+		if (c):
+			return c.can_sleep()
 	return toee.RUN_DEFAULT
 
 def csl():
@@ -41,6 +60,7 @@ class CtrlShatteredLab(object):
 		self.monsters = dict()
 		self.promters = []
 		self.id = None
+		self.haertbeats_since_sleep_status_update = 0
 		return
 
 	def created(self, npc):
@@ -83,7 +103,8 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l6()
 		#self.place_encounter_l7()
 		#self.place_encounter_l8()
-		self.place_encounter_l9()
+		#self.place_encounter_l9()
+		self.place_encounter_l10()
 		self.place_chests()
 		self.print_monsters()
 
@@ -290,6 +311,23 @@ class CtrlShatteredLab(object):
 		self.create_dire_rat_at(utils_obj.sec2loc(477, 440), const_toee.rotation_0200_oclock, "l9", "dire_rat_3")
 		return
 
+	def place_encounter_l10(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(507, 436), 6210, 100, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Midden Heap")
+
+		PROTO_NPC_ANKHEG = 14894
+		npc_loc = utils_obj.sec2loc(514, 443)
+		npc = toee.game.obj_create(PROTO_NPC_ANKHEG, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			#dice_packed = toee.dice_new("1d4").dice_packed()
+			#print("PROTO_NPC_ANKHEG dice_packed: {}".format(dice_packed))
+			dice_packed = 513
+			npc.condition_add_with_args("Monster Bonus Damage", toee.D20DT_ACID, dice_packed)
+			npc.rotation = const_toee.rotation_0600_oclock
+			self.monster_setup(npc, "l10", "ankheg", None, 1, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+		return
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1):
 		assert isinstance(npc, toee.PyObjHandle)
 		npc.faction_add(FACTION_SLAUGHTERGARDE_LABORATORY)
@@ -367,6 +405,10 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l2", "hobgoblin2")
 		self.reveal_monster("l2", "hobgoblin_archer")
 		return
+	
+	def display_encounter_l10(self):
+		self.reveal_monster("l10", "ankheg")
+		return
 
 	def get_monster_info_npc(self, encounter_name, monster_code_name):
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
@@ -432,6 +474,10 @@ class CtrlShatteredLab(object):
 		self.activate_monster("l6", "hobgoblin2")
 		return
 
+	def activate_encounter_l10(self):
+		self.activate_monster("l10", "ankheg")
+		return
+
 	def remove_trap_doors(self):
 		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL):
 			assert isinstance(obj, toee.PyObjHandle)
@@ -466,6 +512,18 @@ class CtrlShatteredLab(object):
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				utils_item.item_money_create_in_inventory(obj, 0, 33)
 		return
+	
+	def check_sleep_status_update(self):
+		self.haertbeats_since_sleep_status_update +=1
+		if (self.haertbeats_since_sleep_status_update > 10):
+			self.haertbeats_since_sleep_status_update = 0
+			toee.game.sleep_status_update()
+		return
+
+	def can_sleep(self):
+		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 20):
+			return toee.SLEEP_SAFE
+		return toee.SLEEP_IMPOSSIBLE
 
 class MonsterInfo:
 	def __init__(self):

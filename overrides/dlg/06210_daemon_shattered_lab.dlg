@@ -30,7 +30,7 @@
 
 {60}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{}{}{}{}
 {61}{Continue}{}{1}{}{62}{}
-{62}{A tablehere has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{A tablehere has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{}{}{}{}
+{62}{A table here has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{A table here has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{}{}{}{}
 {63}{Continue}{}{1}{}{64}{}
 {64}{Channels around edges of the room lead to a drain in the center. A railed balcony overlooks the torthwestern corner, exokaining the high ceiling.}{Channels around edges of the room lead to a drain in the center. A railed balcony overlooks the torthwestern corner, exokaining the high ceiling.}{}{}{}{}
 {69}{Close}{}{1}{}{0}{csl().activate_encounter_l6()}
@@ -38,3 +38,8 @@
 {70}{A dozen simple bedrolls are spread on the floor. Wooden rails guard balconies the the northwest and southeast. Four smal footlockers are here as well.}{A dozen simple bedrolls are spread on the floor. Wooden rails guard balconies the the northwest and southeast. Four smal footlockers are here as well.}{}{}{}{}
 {80}{This immense chamber's floot is inscibed with a mazelike pattern, the lines of which glow purple. A large doglike monster that has a mane of long quills paces in the center of the pattern. Overlooking the southeastern portion of the room is a railed balcony.}{This immense chamber's floot is inscibed with a mazelike pattern, the lines of which glow purple. A large doglike monster that has a mane of long quills paces in the center of the pattern. Overlooking the southeastern portion of the room is a railed balcony.}{}{}{}{}
 {90}{A wooden plank bridge suspend from posts leads into this natural cavern. You can see rocks and dirt about 20 feet below the bridge. It looks like this cavern stretches north and south. Running through the middle is raised earthen pathway.}{A wooden plank bridge suspend from posts leads into this natural cavern. You can see rocks and dirt about 20 feet below the bridge. It looks like this cavern stretches north and south. Running through the middle is raised earthen pathway.}{}{}{}{}
+
+{100}{About 20 feet below you is an insectile creature that's 10 feet long, and it has pincers as large as a human arm.}{About 20 feet below you is an insectile creature that's 10 feet long, and it has pincers as large as a human arm.}{}{}{}{csl().display_encounter_l10()}
+{101}{Continue}{}{1}{}{102}{}
+{102}{The creature sits half-buried in a massive pile of debris - lots of rotted food, smashed crates, and a few corpses. A ladder lies on the ground near the edge of the cliff.}{The creature sits half-buried in a massive pile of debris - lots of rotted food, smashed crates, and a few corpses. A ladder lies on the ground near the edge of the cliff.}{}{}{}{}
+{109}{Put the ladder down.}{}{1}{}{0}{csl().activate_encounter_l10()}

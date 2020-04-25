@@ -8,6 +8,9 @@ class PyDice(object):
 	def roll(self):
 		return 1
 
+	def dice_packed(self):
+		return 1
+
 def dice_new(dice_str):
 	"""dice_new(str: dice_str) -> PyDice"""
 	return PyDice()
@@ -606,6 +609,11 @@ class game(object):
 	def alert_show(text, button_text):
 		""" game.alert_show(str: text, str: button_text) -> int"""
 		return 0
+
+	@staticmethod
+	def sleep_status_update():
+		""" game.sleep_status_update() -> None"""
+		return
 	
 
 def anyone(targetObjs, methodName, methodArg):
@@ -3548,10 +3556,10 @@ OCOF_NOT_STICKY = 256
 OCOF_OPEN = 2048
 
 # random_encounter.can_sleep()
+SLEEP_SAFE = 0
 SLEEP_DANGEROUS = 1
 SLEEP_IMPOSSIBLE = 2
 SLEEP_PASS_TIME_ONLY = 3
-SLEEP_SAFE = 0
 
 # Text Color (float)
 tf_white = 0
