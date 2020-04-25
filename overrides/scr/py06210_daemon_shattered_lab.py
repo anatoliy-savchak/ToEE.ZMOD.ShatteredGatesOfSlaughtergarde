@@ -73,16 +73,7 @@ class CtrlShatteredLab(object):
 
 	def place_encounters(self):
 		if (self.encounters_placed): return
-		#toee.game.party[0].condition_add_with_args("Lodged_Quills", 2, 0)
-		howler = toee.game.obj_create(14893, utils_obj.sec2loc(459, 466))
-		howler.condition_add_with_args("Quills_Ex", 1, 0)
-		howler.move(utils_obj.sec2loc(459, 466))
 		#debugg.breakp("place_encounters")
-		#bl = tpdp.BonusList()
-		#bl.add(0, 0, 0)
-		#tpdp.dispatch_skill(toee.game.party[0], toee.skill_listen, bl)
-		#bl = None
-		#toee.game.alert_show("text", "button text")
 		self.encounters_placed = 1
 		self.remove_trap_doors()
 		#self.place_encounter_l1()
@@ -91,8 +82,11 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l5()
 		#self.place_encounter_l6()
 		#self.place_encounter_l7()
+		self.place_encounter_l8()
 		self.place_chests()
 		self.print_monsters()
+
+		# debug
 		toee.game.fade_and_teleport( 0, 0, 0, 5121, 465, 483 )
 		return
 
@@ -281,10 +275,10 @@ class CtrlShatteredLab(object):
 		npc = toee.game.obj_create(PROTO_NPC_HOWLER, npc_loc)
 		if (npc):
 			npc.move(npc_loc)
-			npc.rotation = const_toee.rotation_1800_oclock
+			npc.condition_add_with_args("Quills_Ex", 1, 0)
+			npc.rotation = const_toee.rotation_0600_oclock
 			self.monster_setup(npc, "l8", "howler", None, 0, 0)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
-			ctrl.option_first_javelin = 1
 		return
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1):

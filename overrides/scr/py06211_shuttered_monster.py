@@ -19,7 +19,6 @@ def san_enter_combat(attachee, triggerer):
 class CtrlMonster(object):
 	def __init__(self):
 		self.option_is_melee = 1
-		self.option_stay = 0
 		self.option_first_javelin = 0
 		self.option_starts_combat_sneaked = 0
 		self.option_dont_move = 0
@@ -72,9 +71,6 @@ class CtrlMonster(object):
 				if (weapon):
 					attachee.item_wield(weapon, toee.item_wear_weapon_primary)
 				self.wield_next_round_back_proto = 0
-
-			if (self.option_stay):
-				tac.add_halt()
 
 			if (toee.game.combat_turn == 1 and self.option_first_javelin):
 				weapon = attachee.item_find_by_proto(const_proto_weapon.PROTO_WEAPON_JAVELIN)
