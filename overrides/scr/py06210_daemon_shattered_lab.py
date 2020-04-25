@@ -82,12 +82,13 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l5()
 		#self.place_encounter_l6()
 		#self.place_encounter_l7()
-		self.place_encounter_l8()
+		#self.place_encounter_l8()
+		self.place_encounter_l9()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport( 0, 0, 0, 5121, 465, 483 )
+		toee.game.fade_and_teleport(0, 0, 0, 5121, 492, 448)
 		return
 
 	def place_encounter_l1(self):
@@ -281,6 +282,14 @@ class CtrlShatteredLab(object):
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
+	def place_encounter_l9(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(491, 437), 6210, 90, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE, "Rift")
+
+		self.create_dire_rat_at(utils_obj.sec2loc(473, 438), const_toee.rotation_0200_oclock, "l9", "dire_rat_1")
+		self.create_dire_rat_at(utils_obj.sec2loc(475, 439), const_toee.rotation_0200_oclock, "l9", "dire_rat_2")
+		self.create_dire_rat_at(utils_obj.sec2loc(477, 440), const_toee.rotation_0200_oclock, "l9", "dire_rat_3")
+		return
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1):
 		assert isinstance(npc, toee.PyObjHandle)
 		npc.faction_add(FACTION_SLAUGHTERGARDE_LABORATORY)
@@ -299,6 +308,15 @@ class CtrlShatteredLab(object):
 		info.proto = npc.proto
 		self.monsters["{}_{}_{}".format(SHATERRED_LAB, encounter_name, monster_code_name)] = info
 		return
+
+	def create_dire_rat_at(self, npc_loc, rot, encounter, code_name):
+		PROTO_NPC_DIRE_RAT = 14765
+		npc = toee.game.obj_create(PROTO_NPC_DIRE_RAT, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 0, 0)
+		return npc
 
 	def print_monsters(self):
 		for key, value in self.monsters.items():
