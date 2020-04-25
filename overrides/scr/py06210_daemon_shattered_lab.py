@@ -104,7 +104,8 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l7()
 		#self.place_encounter_l8()
 		#self.place_encounter_l9()
-		self.place_encounter_l10()
+		#self.place_encounter_l10()
+		self.place_encounter_l12()
 		self.place_chests()
 		self.print_monsters()
 
@@ -328,6 +329,19 @@ class CtrlShatteredLab(object):
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
+	def place_encounter_l12(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(462, 445), 6210, 120, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE, "Summoning Pit")
+
+		PROTO_NPC_MAUG = 14895
+		npc_loc = utils_obj.sec2loc(461, 451)
+		npc = toee.game.obj_create(PROTO_NPC_MAUG, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = const_toee.rotation_0900_oclock
+			self.monster_setup(npc, "l12", "maug", None, 0, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+		return
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1):
 		assert isinstance(npc, toee.PyObjHandle)
 		npc.faction_add(FACTION_SLAUGHTERGARDE_LABORATORY)
@@ -357,9 +371,16 @@ class CtrlShatteredLab(object):
 		return npc
 
 	def print_monsters(self):
+		f = open("d:\\temp\\monsters.txt", "w")
 		for key, value in self.monsters.items():
 			assert isinstance(value, MonsterInfo)
-			print("{}={}".format(key, value.id))
+			#print("{}={}".format(key, value.id))
+			obj = toee.game.get_obj_by_id(value.id)
+			if (obj):
+				s = "{}\t{}".format(obj.obj_get_int(toee.obj_f_npc_challenge_rating), obj.description)
+				print(s)
+				f.write(s + "\n")
+		f.close()
 		return
 
 	def process_promters(self):
