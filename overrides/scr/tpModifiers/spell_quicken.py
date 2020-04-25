@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -29,7 +27,7 @@ def Spell_Quicken_OnBeginRound(attachee, args, evt_obj):
 	args.set_arg(1, args.get_arg(0))
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2) # arg0 - number of quicken spells in one round, arg1 - reserved (used up in one round)
-modObj.AddHook(ET_OnMetaMagicMod, EK_NONE, Spell_Quicken_OnMetaMagicMod, ())
-modObj.AddHook(ET_OnBeginRound, EK_NONE, Spell_Quicken_OnBeginRound, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # arg0 - number of quicken spells in one round, arg1 - reserved (used up in one round)
+modObj.AddHook(toee.ET_OnMetaMagicMod, toee.EK_NONE, Spell_Quicken_OnMetaMagicMod, ())
+modObj.AddHook(toee.ET_OnBeginRound, toee.EK_NONE, Spell_Quicken_OnBeginRound, ())
 #breakp("Registered " + GetConditionName())

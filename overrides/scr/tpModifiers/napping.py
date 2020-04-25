@@ -22,21 +22,21 @@ def Napping_OnConditionAdd(attachee, args, evt_obj):
 
 def Napping_OnD20Query_Q_Unconscious(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Query)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Query)
 	evt_obj.return_val = 1
 	return 0
 
 def Napping_OnGetTooltip(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjTooltip)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjTooltip)
 	evt_obj.append("Sleeping")
 	return 0
 
 def NappingRemove(attachee, args):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
+	assert isinstance(args, tpdp.EventArgs)
 	args.condition_remove()
 	attachee.critter_flag_unset(toee.OCF_SLEEPING)
 	#attachee.condition_remove("prone")
@@ -49,23 +49,23 @@ def Napping_Remove(attachee, args, evt_obj):
 
 def TurnBasedStatusInitNoActions(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjTurnBasedStatus)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjTurnBasedStatus)
 	evt_obj.tb_status.hourglass_state = 0
 	evt_obj.tb_status.flags |= 2
 	return 0
 
 def QuerySetReturnVal1(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Query)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Query)
 	evt_obj.return_val = 1
 	return 0
 
 def QuerySetReturnVal0(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Query)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Query)
 	evt_obj.return_val = 0
 	return 0
 
@@ -155,8 +155,8 @@ class SkillDiceInfo:
 def Napping_OnBeginRound(attachee, args, evt_obj):
 	try:
 		assert isinstance(attachee, toee.PyObjHandle)
-		assert isinstance(args, templeplus.pymod.EventArgs)
-		assert isinstance(evt_obj, templeplus.pymod.EventObjD20Signal)
+		assert isinstance(args, tpdp.EventArgs)
+		assert isinstance(evt_obj, tpdp.EventObjD20Signal)
 		if (NAPPING_LISTEN_DEBUG_PRINT_LEVEL): print("Napping_OnBeginRound")
 		if (args.get_arg(0)): 
 			had_rolls = 0
@@ -194,8 +194,8 @@ def Napping_OnBeginRound(attachee, args, evt_obj):
 
 def Napping_OnGetAC(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjAttack)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
 	if (evt_obj.attack_packet.get_flags() & toee.D20CAF_RANGED):
 		evt_obj.bonus_list.add(4, 0, 162) # {162}{~Prone~[TAG_PRONE]}
 	else:
@@ -204,8 +204,8 @@ def Napping_OnGetAC(attachee, args, evt_obj):
 
 def Napping_OnGetACBonus2(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjAttack)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
 	if (not (evt_obj.attack_packet.get_flags() & toee.D20CAF_RANGED)):
 		evt_obj.bonus_list.add(-4, 0, 162) # {162}{~Prone~[TAG_PRONE]}
 	return 0
@@ -218,8 +218,8 @@ def Napping_Broadcast_Action(attachee, args, evt_obj):
 		return 0
 
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Signal)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Signal)
 	if (not evt_obj.data1): 
 		#print("evt_obj.data1 is 0, exiting")
 		return 0

@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -18,6 +16,6 @@ def Caster_Level_Add_OnGetBaseCasterLevel(attachee, args, evt_obj):
 	evt_obj.bonus_list.add(classLvl, 0, 137)
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2) # 0 - add Class Level, classEnum (0 any)
-modObj.AddHook(ET_OnGetBaseCasterLevel, EK_NONE, Caster_Level_Add_OnGetBaseCasterLevel, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - add Class Level, classEnum (0 any)
+modObj.AddHook(toee.ET_OnGetBaseCasterLevel, toee.EK_NONE, Caster_Level_Add_OnGetBaseCasterLevel, ())
 #breakp("Registered " + GetConditionName())

@@ -14,8 +14,8 @@ LODGED_QUILLS_TOOLTIP_SUFFIX = " (-{} on attack, saves and skill checks)"
 
 def Lodged_Quills_OnToHitBonus2(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjAttack)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
 	
 	lodged_quills = args.get_arg(0)
 	if (lodged_quills):
@@ -24,8 +24,8 @@ def Lodged_Quills_OnToHitBonus2(attachee, args, evt_obj):
 
 def Lodged_Quills_OnSaveThrowLevel(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjAttack)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
 	
 	lodged_quills = args.get_arg(0)
 	if (lodged_quills):
@@ -34,8 +34,8 @@ def Lodged_Quills_OnSaveThrowLevel(attachee, args, evt_obj):
 
 def Lodged_Quills_OnGetSkillLevel(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjAttack)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
 	
 	lodged_quills = args.get_arg(0)
 	if (lodged_quills):
@@ -53,8 +53,8 @@ def Lodged_Quills_OnD20PythonActionCheck(attachee, args, evt_obj):
 
 def Lodged_Quills_OnD20PythonActionPerform(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Action)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Action)
 	#debug.breakp("Lodged_Quills_OnD20PythonActionPerform start")
 	try:
 		lodged_quills = args.get_arg(0)
@@ -79,16 +79,16 @@ def Lodged_Quills_OnD20PythonActionPerform(attachee, args, evt_obj):
 
 def Lodged_Quills_OnGetTooltip(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjTooltip)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjTooltip)
 	lodged_quills = args.get_arg(0)
 	evt_obj.append(LODGED_QUILLS_TOOLTIP.format(lodged_quills))
 	return 0
 
 def Lodged_Quills_OnGetEffectTooltip(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjEffectTooltip)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjEffectTooltip)
 	lodged_quills = args.get_arg(0)
 	if (lodged_quills):
 		evt_obj.append(tpdp.hash("LODGED_QUILLS"), -2, LODGED_QUILLS_TOOLTIP_SUFFIX.format(lodged_quills))
@@ -96,8 +96,8 @@ def Lodged_Quills_OnGetEffectTooltip(attachee, args, evt_obj):
 
 def Lodged_Quills_OnConditionAddPre(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjModifier)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjModifier)
 	
 	# check if same one wants to be added, if so, deny, but increase quills
 	if (evt_obj.is_modifier(GetConditionName())):

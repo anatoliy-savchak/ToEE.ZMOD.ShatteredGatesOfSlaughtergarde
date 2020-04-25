@@ -10,8 +10,8 @@ print("Registering " + GetConditionName())
 
 def Quills_Ex_OnDealingDamage(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjDamage)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjDamage)
 	
 	#print("evt_obj.attack_packet.event_key: {}".format(evt_obj.attack_packet.event_key))
 	#print("evt_obj.attack_packet.action_type: {}".format(evt_obj.attack_packet.action_type))
@@ -23,8 +23,8 @@ def Quills_Ex_OnDealingDamage(attachee, args, evt_obj):
 
 def Quills_Ex_OnGetBonusAttacks(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
-	assert isinstance(args, templeplus.pymod.EventArgs)
-	assert isinstance(evt_obj, templeplus.pymod.EventObjD20Action)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Action)
 	
 	if (evt_obj.bonus_list):
 		quill_attacks = toee.dice_new("1d4").roll()

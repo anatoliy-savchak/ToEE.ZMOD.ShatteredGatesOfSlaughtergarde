@@ -1,5 +1,4 @@
-from templeplus.pymod import PythonModifier
-import toee, debugg, sys
+import toee, templeplus.pymod, tpdp, debug, sys
 
 ###################################################
 
@@ -65,6 +64,6 @@ def Python_Action_Shriek_Perform(attachee, args, evt_obj):
 		#debugg.breakp("error")
 	return 1
 
-modObj = PythonModifier(GetConditionName(), 2) # reserved
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # reserved
 modObj.AddHook(toee.ET_OnD20PythonActionCheck, 3003, Python_Action_Shriek_Check, ())
 modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3003, Python_Action_Shriek_Perform, ())
