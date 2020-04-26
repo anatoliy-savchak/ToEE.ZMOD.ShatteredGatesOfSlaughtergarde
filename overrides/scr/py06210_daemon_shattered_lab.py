@@ -334,6 +334,9 @@ class CtrlShatteredLab(object):
 
 		self.create_goblin_trooper_at(utils_obj.sec2loc(462, 434), const_toee.rotation_0800_oclock, "l11", "trooper1", 1, 1)
 		self.create_goblin_trooper_at(utils_obj.sec2loc(459, 438), const_toee.rotation_0400_oclock, "l11", "trooper2", 1, 1)
+		key = utils_item.item_create_in_inventory(10001, npc)
+		if (key):
+			key.obj_set_int(toee.obj_f_key_key_id, 33)
 
 		return
 
