@@ -64,8 +64,6 @@ class CtrlMonster(object):
 		#debugg.breakp("start_combat")
 		tac = utils_tactics.TacticsHelper(self.get_name())
 		while (1):
-			if (self.option_dont_move):
-				tac.add
 			if (self.wield_next_round_back_proto):
 				weapon = attachee.item_find_by_proto(self.wield_next_round_back_proto)
 				if (weapon):

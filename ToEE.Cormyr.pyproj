@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
     <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
     <Compile Include="overrides\scr\py06202_vargouille_lesser.py" />
     <Compile Include="overrides\scr\py06125_knell_beetle_lesser.py">

@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls
+import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric
 
 MAP_ID_SHATERRED_LAB = 5121
 SHATERRED_LAB = "shattered_lab"
@@ -111,12 +111,13 @@ class CtrlShatteredLab(object):
 		self.place_encounter_l11()
 		self.place_encounter_l12()
 		#self.place_encounter_l13()
-		self.place_encounter_l15()
+		#self.place_encounter_l15()
+		self.place_encounter_l16()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport(0, 0, 0, 5121, 503, 499)
+		toee.game.fade_and_teleport(0, 0, 0, 5121, 491, 514)
 		#toee.game.scroll_to(toee.game.leader)
 		utils_obj.scroll_to_leader()
 		return
@@ -400,6 +401,18 @@ class CtrlShatteredLab(object):
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
+	def place_encounter_l16(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(480, 509), 6210, 160, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine")
+
+		self.create_hobgoblin_skeleton_at(utils_obj.sec2loc(476, 511), const_toee.rotation_1100_oclock, "l16", "skeleton1")
+		self.create_hobgoblin_skeleton_at(utils_obj.sec2loc(474, 510), const_toee.rotation_1100_oclock, "l16", "skeleton2")
+		self.create_hobgoblin_skeleton_at(utils_obj.sec2loc(472, 511), const_toee.rotation_0100_oclock, "l16", "skeleton3")
+
+		npc = py06213_hobgoblin_cleric.CtrlHobgoblinCleric.create_obj(utils_obj.sec2loc(474, 513))
+		npc.rotation = const_toee.rotation_1100_oclock
+		self.monster_setup(npc, "l16", "cleric", None, 1, 1)
+		return
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
 		if (not faction): faction = FACTION_SLAUGHTERGARDE_LABORATORY
@@ -428,6 +441,22 @@ class CtrlShatteredLab(object):
 			npc.move(npc_loc)
 			npc.rotation = rot
 			self.monster_setup(npc, encounter, code_name, None, 0, 0)
+		return npc
+	
+	def create_hobgoblin_skeleton_at(self, npc_loc, rot, encounter, code_name):
+		PROTO_NPC_SKELETON_HOBGOBLIN = 14194
+		npc = toee.game.obj_create(PROTO_NPC_SKELETON_HOBGOBLIN, npc_loc)
+		if (npc):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAIN_SHIRT, npc)
+			npc.item_wield_best_all()
+			item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SPEAR, npc)
+			npc.item_wield(item, toee.item_wear_weapon_primary)
+			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
+			npc.item_wield(item, toee.item_wear_shield)
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return npc
 
 	def print_monsters(self):
@@ -543,6 +572,13 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l15", "hyena")
 		return
 
+	def display_encounter_l16(self):
+		self.reveal_monster("l16", "skeleton1")
+		self.reveal_monster("l16", "skeleton2")
+		self.reveal_monster("l16", "skeleton3")
+		self.reveal_monster("l16", "cleric")
+		return
+
 	def activate_encounter_l3(self):
 		#debugg.breakp("activate_encounter_l3")
 		npc, info = self.activate_monster("l3", "hobgoblin1")
@@ -596,6 +632,13 @@ class CtrlShatteredLab(object):
 		self.activate_monster("l15", "hyena")
 		return
 
+	def activate_encounter_l16(self):
+		self.activate_monster("l16", "skeleton1")
+		self.activate_monster("l16", "skeleton2")
+		self.activate_monster("l16", "skeleton3")
+		self.activate_monster("l16", "cleric")
+		return
+
 	def remove_trap_doors(self):
 		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL):
 			assert isinstance(obj, toee.PyObjHandle)
@@ -630,7 +673,6 @@ class CtrlShatteredLab(object):
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				utils_item.item_money_create_in_inventory(obj, 0, 33)
 			elif (no == 151):
-				debugg.breakp("151")
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SHORTBOW_MASTERWORK, obj)
 				utils_item.item_create_in_inventory_mass(obj \
 					, [const_proto_scrolls.PROTO_SCROLL_OF_BURNING_HANDS \

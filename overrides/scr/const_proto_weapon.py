@@ -4,6 +4,14 @@
 # Simple One-Handed Melee Weapons
 PROTO_WEAPON_MORNINGSTAR = 4070 # Cost: 8 gp, Dmg: 1d8
 
+PROTO_WEAPON_SPEAR = 4117 # Cost: 8 gp, Dmg: 1d8
+PROTO_WEAPON_SPEAR_MASTERWORK = 4184 # Cost: 308 gp, Dmg: 1d8, Masterwork
+PROTO_WEAPON_SPEAR_PLUS_1 = 4121 # Cost: 2308 gp, Dmg: 1d8, Echn: +1
+
+PROTO_WEAPON_MACE_HEAVY = 4068 # Cost: 12 gp, Dmg: 1d8
+PROTO_WEAPON_MACE_HEAVY_MASTERWORK = 4166 # Cost: 312 gp, Dmg: 1d8, Masterwork
+PROTO_WEAPON_MACE_HEAVY_PLUS_1_HOLY = 4220 # Cost: 18,315 gp, Dmg: 1d8+2d6, Echn: +1, Holy
+
 # Simple Two-Handed Melee Weapons
 PROTO_WEAPON_LONGSPEAR = 4194 # Cost: 5 gp, Dmg: 1d8
 
