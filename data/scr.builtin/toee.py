@@ -317,7 +317,7 @@ class PyObjHandle(object):
 		return PyObjHandle()
 	
 	def faction_add(self, faction_num):
-		"""npc.faction_add(int[<55]: faction_num) -> int"""
+		"""npc.faction_add(int: faction_num) -> int"""
 		return 1
 
 	def fall_down(self, unk_arg = None):
@@ -615,6 +615,12 @@ class game(object):
 		""" game.sleep_status_update() -> None"""
 		return
 	
+	@staticmethod
+	def scroll_to(locOrObj):
+		""" game.scroll_to(PyObjHandle: locOrObj) -> int
+		game.scroll_to(long: locOrObj) -> int
+		"""
+		return
 
 def anyone(targetObjs, methodName, methodArg):
 	return PyObjHandle()

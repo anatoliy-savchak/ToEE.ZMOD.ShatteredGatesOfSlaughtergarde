@@ -4,6 +4,7 @@ import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_np
 MAP_ID_SHATERRED_LAB = 5121
 SHATERRED_LAB = "shattered_lab"
 FACTION_SLAUGHTERGARDE_LABORATORY = 73
+FACTION_CELESTIAL_ARMY = 74
 SHATERRED_LAB_DAEMON_ID = "G_E5ABE70D_F211_42B3_9822_DA440143228C"
 
 PROTO_NPC_HOBGOBLIN_1 = 14188
@@ -105,12 +106,14 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l8()
 		#self.place_encounter_l9()
 		#self.place_encounter_l10()
+		self.place_encounter_l11()
 		self.place_encounter_l12()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport(0, 0, 0, 5121, 492, 448)
+		toee.game.fade_and_teleport(0, 0, 0, 5121, 481, 437)
+		toee.game.scroll_to(toee.game.leader)
 		return
 
 	def place_encounter_l1(self):
@@ -228,14 +231,11 @@ class CtrlShatteredLab(object):
 	def place_encounter_l5(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(493, 456), 6210, 50, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Barracks")
 
-		PROTO_NPC_HOBGOBLIN_1 = 14188
-		self.create_hobgoblin_impaler_at(PROTO_NPC_HOBGOBLIN_1, utils_obj.sec2loc(479, 482), const_toee.rotation_0800_oclock, "l6", "hobgoblin1", 1)
-
-		PROTO_NPC_HOBGOBLIN_2 = 14189
-		self.create_hobgoblin_impaler_at(PROTO_NPC_HOBGOBLIN_2, utils_obj.sec2loc(475, 482), const_toee.rotation_0800_oclock, "l6", "hobgoblin2", 1)
+		self.create_goblin_trooper_at(utils_obj.sec2loc(496, 447), const_toee.rotation_0400_oclock, "l5", "trooper1", 1, 1)
+		self.create_goblin_trooper_at(utils_obj.sec2loc(492, 444), const_toee.rotation_0400_oclock, "l5", "trooper2", 1, 1)
 		return
 
-	def create_goblin_trooper_at(self, npc_loc, rot, encounter, code_name):
+	def create_goblin_trooper_at(self, npc_loc, rot, encounter, code_name, no_draw, no_kos):
 		PROTO_NPC_GOBLIN_TROOPER = 14190
 		npc = toee.game.obj_create(PROTO_NPC_GOBLIN_TROOPER, npc_loc)
 		if (npc):
@@ -247,7 +247,7 @@ class CtrlShatteredLab(object):
 			npc.item_wield_best_all()
 			npc.move(npc_loc)
 			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, None, 0)
+			self.monster_setup(npc, encounter, code_name, None, no_draw, no_kos)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			utils_npc.npc_skill_ensure(npc, toee.skill_spot, 4)
 		return
@@ -329,6 +329,14 @@ class CtrlShatteredLab(object):
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
+	def place_encounter_l11(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(464, 438), 6210, 110, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Mirror Hall")
+
+		self.create_goblin_trooper_at(utils_obj.sec2loc(462, 434), const_toee.rotation_0800_oclock, "l11", "trooper1", 1, 1)
+		self.create_goblin_trooper_at(utils_obj.sec2loc(459, 438), const_toee.rotation_0400_oclock, "l11", "trooper2", 1, 1)
+
+		return
+
 	def place_encounter_l12(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(462, 445), 6210, 120, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE, "Summoning Pit")
 
@@ -338,13 +346,17 @@ class CtrlShatteredLab(object):
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = const_toee.rotation_0900_oclock
-			self.monster_setup(npc, "l12", "maug", None, 0, 1)
+			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc, 2)
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
+			self.monster_setup(npc, "l12", "maug", None, 0, 1, FACTION_CELESTIAL_ARMY)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
-	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1):
+	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
-		npc.faction_add(FACTION_SLAUGHTERGARDE_LABORATORY)
+		if (not faction): faction = FACTION_SLAUGHTERGARDE_LABORATORY
+		if (faction and faction != -1):
+			npc.faction_add(faction)
 		#npc.npc_flag_set(toee.ONF_NO_ATTACK)
 		if (no_kos):
 			npc.npc_flag_unset(toee.ONF_KOS)
@@ -446,6 +458,10 @@ class CtrlShatteredLab(object):
 			if (npc):
 				npc.npc_flag_unset(toee.ONF_NO_ATTACK)
 				npc.npc_flag_set(toee.ONF_KOS)
+		
+		if (not npc):
+			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
+			debugg.breakp("Monster not found")
 		return npc, info
 
 	def activate_encounter_l2(self):
@@ -458,6 +474,11 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l3", "hobgoblin1")
 		self.reveal_monster("l3", "hobgoblin2")
 		self.reveal_monster("l3", "hobgoblin3")
+		return
+
+	def display_encounter_l11(self):
+		self.reveal_monster("l11", "trooper1")
+		self.reveal_monster("l11", "trooper2")
 		return
 
 	def activate_encounter_l3(self):
@@ -497,6 +518,12 @@ class CtrlShatteredLab(object):
 
 	def activate_encounter_l10(self):
 		self.activate_monster("l10", "ankheg")
+		return
+
+	def activate_encounter_l11(self):
+		debugg.breakp("activate_encounter_l11")
+		self.activate_monster("l11", "trooper1")
+		self.activate_monster("l11", "trooper2")
 		return
 
 	def remove_trap_doors(self):
