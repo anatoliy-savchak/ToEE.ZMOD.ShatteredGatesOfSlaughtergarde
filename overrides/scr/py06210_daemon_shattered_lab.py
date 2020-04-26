@@ -10,6 +10,8 @@ SHATERRED_LAB_DAEMON_ID = "G_E5ABE70D_F211_42B3_9822_DA440143228C"
 PROTO_NPC_HOBGOBLIN_1 = 14188
 PROTO_NPC_HOBGOBLIN_2 = 14189
 
+DEBUG_WRITE_MONSTERS_PATH = None #"d:\\temp\\monsters.txt"
+
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
@@ -108,12 +110,14 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l10()
 		self.place_encounter_l11()
 		self.place_encounter_l12()
+		self.place_encounter_l13()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport(0, 0, 0, 5121, 481, 437)
-		toee.game.scroll_to(toee.game.leader)
+		toee.game.fade_and_teleport(0, 0, 0, 5121, 492, 483)
+		#toee.game.scroll_to(toee.game.leader)
+		utils_obj.scroll_to_leader()
 		return
 
 	def place_encounter_l1(self):
@@ -250,7 +254,7 @@ class CtrlShatteredLab(object):
 			self.monster_setup(npc, encounter, code_name, None, no_draw, no_kos)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			utils_npc.npc_skill_ensure(npc, toee.skill_spot, 4)
-		return
+		return npc
 
 	def place_encounter_l6(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(477, 478), 6210, 60, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Operating Room")
@@ -333,7 +337,7 @@ class CtrlShatteredLab(object):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(464, 438), 6210, 110, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Mirror Hall")
 
 		self.create_goblin_trooper_at(utils_obj.sec2loc(462, 434), const_toee.rotation_0800_oclock, "l11", "trooper1", 1, 1)
-		self.create_goblin_trooper_at(utils_obj.sec2loc(459, 438), const_toee.rotation_0400_oclock, "l11", "trooper2", 1, 1)
+		npc = self.create_goblin_trooper_at(utils_obj.sec2loc(459, 438), const_toee.rotation_0400_oclock, "l11", "trooper2", 1, 1)
 		key = utils_item.item_create_in_inventory(10001, npc)
 		if (key):
 			key.obj_set_int(toee.obj_f_key_key_id, 33)
@@ -352,6 +356,19 @@ class CtrlShatteredLab(object):
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc, 2)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
 			self.monster_setup(npc, "l12", "maug", None, 0, 1, FACTION_CELESTIAL_ARMY)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+		return
+
+	def place_encounter_l13(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(502, 499), 6210, 130, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Lizard Lair")
+
+		PROTO_NPC_LIZARD_MONITOR = 14896
+		npc_loc = utils_obj.sec2loc(504, 493)
+		npc = toee.game.obj_create(PROTO_NPC_LIZARD_MONITOR, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = const_toee.rotation_0500_oclock
+			self.monster_setup(npc, "l13", "lizard", None, 0, 1, FACTION_CELESTIAL_ARMY)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
@@ -386,7 +403,9 @@ class CtrlShatteredLab(object):
 		return npc
 
 	def print_monsters(self):
-		f = open("d:\\temp\\monsters.txt", "w")
+		f = None
+		if (DEBUG_WRITE_MONSTERS_PATH):
+			f = open(DEBUG_WRITE_MONSTERS_PATH, "w")
 		for key, value in self.monsters.items():
 			assert isinstance(value, MonsterInfo)
 			#print("{}={}".format(key, value.id))
@@ -394,8 +413,11 @@ class CtrlShatteredLab(object):
 			if (obj):
 				s = "{}\t{}".format(obj.obj_get_int(toee.obj_f_npc_challenge_rating), obj.description)
 				print(s)
-				f.write(s + "\n")
-		f.close()
+				#print("{}={}".format(key, value.id))
+				if (f):
+					f.write(s + "\n")
+		if (f):
+			f.close()
 		return
 
 	def process_promters(self):
@@ -484,6 +506,10 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l11", "trooper2")
 		return
 
+	def display_encounter_l13(self):
+		self.reveal_monster("l13", "lizard")
+		return
+
 	def activate_encounter_l3(self):
 		#debugg.breakp("activate_encounter_l3")
 		npc, info = self.activate_monster("l3", "hobgoblin1")
@@ -524,9 +550,12 @@ class CtrlShatteredLab(object):
 		return
 
 	def activate_encounter_l11(self):
-		debugg.breakp("activate_encounter_l11")
 		self.activate_monster("l11", "trooper1")
 		self.activate_monster("l11", "trooper2")
+		return
+
+	def activate_encounter_l13(self):
+		self.activate_monster("l13", "lizard")
 		return
 
 	def remove_trap_doors(self):
