@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp
+import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls
 
 MAP_ID_SHATERRED_LAB = 5121
 SHATERRED_LAB = "shattered_lab"
@@ -110,12 +110,13 @@ class CtrlShatteredLab(object):
 		#self.place_encounter_l10()
 		self.place_encounter_l11()
 		self.place_encounter_l12()
-		self.place_encounter_l13()
+		#self.place_encounter_l13()
+		self.place_encounter_l15()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport(0, 0, 0, 5121, 492, 483)
+		toee.game.fade_and_teleport(0, 0, 0, 5121, 503, 499)
 		#toee.game.scroll_to(toee.game.leader)
 		utils_obj.scroll_to_leader()
 		return
@@ -372,6 +373,33 @@ class CtrlShatteredLab(object):
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
+	def place_encounter_l15(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(508, 510), 6210, 150, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Library")
+
+		PROTO_NPC_GOBLIN_UNDERBOSS = 14192
+		npc_loc = utils_obj.sec2loc(508, 514)
+		npc = toee.game.obj_create(PROTO_NPC_GOBLIN_UNDERBOSS, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = const_toee.rotation_1100_oclock
+			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAIN_SHIRT_MASTERWORK, npc)
+			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
+			npc.item_wield(item, toee.item_wear_shield)
+			item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_SCIMITAR_MASTERWORK, npc)
+			npc.item_wield(item, toee.item_wear_weapon_primary)
+			self.monster_setup(npc, "l15", "goblin_underboss", None, 1, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+
+		PROTO_NPC_HYENA = 14193
+		npc_loc = utils_obj.sec2loc(508, 512)
+		npc = toee.game.obj_create(PROTO_NPC_HYENA, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = const_toee.rotation_1100_oclock
+			self.monster_setup(npc, "l15", "hyena", None, 1, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+		return
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
 		if (not faction): faction = FACTION_SLAUGHTERGARDE_LABORATORY
@@ -510,6 +538,11 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l13", "lizard")
 		return
 
+	def display_encounter_l15(self):
+		self.reveal_monster("l15", "goblin_underboss")
+		self.reveal_monster("l15", "hyena")
+		return
+
 	def activate_encounter_l3(self):
 		#debugg.breakp("activate_encounter_l3")
 		npc, info = self.activate_monster("l3", "hobgoblin1")
@@ -558,6 +591,11 @@ class CtrlShatteredLab(object):
 		self.activate_monster("l13", "lizard")
 		return
 
+	def activate_encounter_l15(self):
+		self.activate_monster("l15", "goblin_underboss")
+		self.activate_monster("l15", "hyena")
+		return
+
 	def remove_trap_doors(self):
 		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL):
 			assert isinstance(obj, toee.PyObjHandle)
@@ -591,6 +629,20 @@ class CtrlShatteredLab(object):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				utils_item.item_money_create_in_inventory(obj, 0, 33)
+			elif (no == 151):
+				debugg.breakp("151")
+				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SHORTBOW_MASTERWORK, obj)
+				utils_item.item_create_in_inventory_mass(obj \
+					, [const_proto_scrolls.PROTO_SCROLL_OF_BURNING_HANDS \
+					, const_proto_scrolls.PROTO_SCROLL_OF_REDUCE_PERSON \
+					, const_proto_scrolls.PROTO_SCROLL_OF_CHILL_TOUCH \
+					, const_proto_scrolls.PROTO_SCROLL_OF_ENDURE_ELEMENTS \
+					, const_proto_scrolls.PROTO_SCROLL_OF_MAGIC_WEAPON \
+					, const_proto_scrolls.PROTO_SCROLL_OF_PROTECTION_FROM_GOOD \
+					, const_proto_scrolls.PROTO_SCROLL_OF_PROTECTION_FROM_LAW \
+					, const_proto_scrolls.PROTO_SCROLL_OF_RAY_OF_ENFEEBLEMENT \
+					, const_proto_scrolls.PROTO_SCROLL_OF_SUMMON_MONSTER_I \
+					, const_proto_scrolls.PROTO_SCROLL_OF_CHARM_PERSON])
 		return
 	
 	def check_sleep_status_update(self):
