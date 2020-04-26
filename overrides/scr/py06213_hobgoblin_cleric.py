@@ -1,4 +1,4 @@
-import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor
+import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls
 
 def san_start_combat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -29,6 +29,8 @@ class CtrlHobgoblinCleric(object):
 		npc.item_wield_best_all()
 		item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_MACE_HEAVY_MASTERWORK, npc)
 		npc.item_wield(item, toee.item_wear_weapon_primary)
+		utils_item.item_money_create_in_inventory(npc, 82, 355 + 200 + 3*50)
+		utils_item.item_create_in_inventory_mass(npc, [const_proto_scrolls.PROTO_SCROLL_OF_DELAY_POISON, const_proto_scrolls.PROTO_SCROLL_OF_RESIST_ENERGY])
 		return
 
 	@classmethod
