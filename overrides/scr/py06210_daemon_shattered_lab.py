@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric
+import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric, const_proto_rings
 
 MAP_ID_SHATERRED_LAB = 5121
 SHATERRED_LAB = "shattered_lab"
@@ -112,12 +112,14 @@ class CtrlShatteredLab(object):
 		self.place_encounter_l12()
 		#self.place_encounter_l13()
 		#self.place_encounter_l15()
-		self.place_encounter_l16()
+		#self.place_encounter_l16()
+		#self.place_encounter_l17()
+		self.place_encounter_l18()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport(0, 0, 0, 5121, 491, 514)
+		toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
 		#toee.game.scroll_to(toee.game.leader)
 		utils_obj.scroll_to_leader()
 		return
@@ -413,6 +415,22 @@ class CtrlShatteredLab(object):
 		self.monster_setup(npc, "l16", "cleric", None, 1, 1)
 		return
 
+	def place_encounter_l17(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(461, 510), 6210, 170, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gate")
+
+		self.create_hobgoblin_zombie_at(utils_obj.sec2loc(458, 501), const_toee.rotation_1100_oclock, "l17", "zombie1")
+		self.create_hobgoblin_zombie_at(utils_obj.sec2loc(456, 499), const_toee.rotation_1100_oclock, "l17", "zombie2")
+		self.create_hobgoblin_zombie_at(utils_obj.sec2loc(457, 507), const_toee.rotation_0600_oclock, "l17", "zombie3")
+		self.create_hobgoblin_zombie_at(utils_obj.sec2loc(455, 505), const_toee.rotation_0600_oclock, "l17", "zombie4")
+		return
+
+	def place_encounter_l18(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(474, 501), 6210, 180, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Emissary's Room")
+
+		self.create_dark_creeper_at(utils_obj.sec2loc(472, 500), const_toee.rotation_0500_oclock, "l18", "creeper1")
+		self.create_dark_creeper_at(utils_obj.sec2loc(474, 497), const_toee.rotation_0500_oclock, "l18", "creeper2")
+		return
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
 		if (not faction): faction = FACTION_SLAUGHTERGARDE_LABORATORY
@@ -457,6 +475,38 @@ class CtrlShatteredLab(object):
 			npc.rotation = rot
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+		return npc
+
+	def create_hobgoblin_zombie_at(self, npc_loc, rot, encounter, code_name):
+		PROTO_NPC_ZOMBIE_HOBGOBLIN = 14898
+		npc = toee.game.obj_create(PROTO_NPC_ZOMBIE_HOBGOBLIN, npc_loc)
+		if (npc):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+			item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_BATTLEAXE, npc)
+			npc.item_wield_best_all()
+			#npc.item_wield(item, toee.item_wear_weapon_primary)
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+		return npc
+
+	def create_dark_creeper_at(self, npc_loc, rot, encounter, code_name):
+		PROTO_NPC_DARK_CREEPER = 14897
+		npc = toee.game.obj_create(PROTO_NPC_DARK_CREEPER, npc_loc)
+		if (npc):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_BLACK, npc)
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_BLACK, npc)
+			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER, npc)
+			#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_THROWING, npc, 5)
+			utils_item.item_create_in_inventory(const_proto_rings.PROTO_RING_PLAIN_COPPER, npc)
+			npc.item_wield_best_all()
+			npc.move(npc_loc)
+			npc.rotation = rot
+			npc.critter_flag_set(toee.OCF_MOVING_SILENTLY)
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+			#ctrl.option_5fs_prefer = 1
 		return npc
 
 	def print_monsters(self):
@@ -579,6 +629,18 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l16", "cleric")
 		return
 
+	def display_encounter_l17(self):
+		self.reveal_monster("l17", "zombie1")
+		self.reveal_monster("l17", "zombie2")
+		self.reveal_monster("l17", "zombie3")
+		self.reveal_monster("l17", "zombie4")
+		return
+
+	def display_encounter_l18(self):
+		self.reveal_monster("l18", "creeper1")
+		self.reveal_monster("l18", "creeper2")
+		return
+
 	def activate_encounter_l3(self):
 		#debugg.breakp("activate_encounter_l3")
 		npc, info = self.activate_monster("l3", "hobgoblin1")
@@ -637,6 +699,18 @@ class CtrlShatteredLab(object):
 		self.activate_monster("l16", "skeleton2")
 		self.activate_monster("l16", "skeleton3")
 		self.activate_monster("l16", "cleric")
+		return
+
+	def activate_encounter_l17(self):
+		self.activate_monster("l17", "zombie1")
+		self.activate_monster("l17", "zombie2")
+		self.activate_monster("l17", "zombie3")
+		self.activate_monster("l17", "zombie4")
+		return
+
+	def activate_encounter_l18(self):
+		self.activate_monster("l18", "creeper1")
+		self.activate_monster("l18", "creeper2")
 		return
 
 	def remove_trap_doors(self):

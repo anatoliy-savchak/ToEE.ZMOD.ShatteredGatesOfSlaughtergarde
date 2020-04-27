@@ -86,15 +86,15 @@ def item_get_dialog_hint_id(attachee):
 def item_money_create_in_inventory(obj, platinum, gold = None, silver = None, copper = None):
 	assert isinstance(obj, toee.PyObjHandle)
 	if (platinum):
-		item = item_create_in_inventory(toee.PROTO_MONEY_PLATINUM, obj)
+		item = item_create_in_inventory(const_proto_items.PROTO_MONEY_PLATINUM, obj)
 		item.obj_set_int(toee.obj_f_money_quantity, platinum)
 	if (gold):
-		item = item_create_in_inventory(toee.PROTO_MONEY_GOLD, obj)
+		item = item_create_in_inventory(const_proto_items.PROTO_MONEY_GOLD, obj)
 		item.obj_set_int(toee.obj_f_money_quantity, gold)
 	if (silver):
-		item = item_create_in_inventory(toee.PROTO_MONEY_SILVER, obj)
+		item = item_create_in_inventory(const_proto_items.PROTO_MONEY_SILVER, obj)
 		item.obj_set_int(toee.obj_f_money_quantity, silver)
 	if (copper):
-		item = item_create_in_inventory(toee.PROTO_MONEY_COPPER, obj)
+		item = item_create_in_inventory(const_proto_items.PROTO_MONEY_COPPER, obj)
 		item.obj_set_int(toee.obj_f_money_quantity, copper)
 	return

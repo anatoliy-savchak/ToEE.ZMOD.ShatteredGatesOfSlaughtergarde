@@ -1,6 +1,11 @@
 # Weapon Price pattern - Masterwork: +300, Echantment +1: +2000, Echantment +2: +8000, Echantment +3: +18000
 
 # Simple Light Melee Weapons
+PROTO_WEAPON_DAGGER = 4060 # Cost: 2 gp, Dmg: 1d4
+PROTO_WEAPON_DAGGER_MASTERWORK = 4155 # Cost: 302 gp, Dmg: 1d4, Masterwork
+
+PROTO_WEAPON_DAGGER_THROWING = 4059 # Cost: 2 gp, Dmg: 1d4
+
 # Simple One-Handed Melee Weapons
 PROTO_WEAPON_MORNINGSTAR = 4070 # Cost: 8 gp, Dmg: 1d8
 

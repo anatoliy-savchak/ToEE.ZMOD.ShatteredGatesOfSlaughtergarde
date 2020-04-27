@@ -3169,6 +3169,7 @@ spell_word_of_chaos = 539
 spell_word_of_recall = 540
 spell_zone_of_truth = 541
 
+# object flags
 OF_DESTROYED = 1
 OF_OFF = 2
 OF_FLAT = 4

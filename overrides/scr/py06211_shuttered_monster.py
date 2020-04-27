@@ -23,6 +23,7 @@ class CtrlMonster(object):
 		self.option_starts_combat_sneaked = 0
 		self.option_dont_move = 0
 		self.wield_next_round_back_proto = 0
+		self.option_5fs_prefer = 0
 		return
 
 	def created(self, npc):
@@ -77,6 +78,9 @@ class CtrlMonster(object):
 					if (prev_item):
 						self.wield_next_round_back_proto = prev_item.proto
 					attachee.item_wield(weapon, toee.item_wear_weapon_primary)
+
+			if (self.option_5fs_prefer):
+				tac.add_five_foot_step()
 
 			tac.add_target_closest()
 			tac.add_attack()
