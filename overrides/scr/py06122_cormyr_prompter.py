@@ -15,6 +15,8 @@ def create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, method, n
 	obj.scripts[const_toee.sn_heartbeat] = 6122
 	obj.obj_set_int(PROMTER_PARAM_FIELD_RADAR_RADIUS, radar_radius_ft)
 	obj.obj_set_int(PROMTER_PARAM_FIELD_METHOD, method)
+	#obj.condition_add_with_args("Shutup_Promter", 0, 0)
+	obj.critter_flag_set(toee.OCF_SURRENDERED)
 	#obj.object_flag_unset(toee.OF_FLAT)
 	#obj.object_flag_unset(toee.OF_SEE_THROUGH)
 	#obj.object_flag_unset(toee.OF_SHOOT_THROUGH)
@@ -63,7 +65,6 @@ def san_heartbeat( attachee, triggerer ):
 			attachee.object_script_execute(foundTuple[0], const_toee.sn_bust)
 	#utils_obj.obj_scripts_clear(attachee)
 	attachee.scripts[const_toee.sn_heartbeat] = 0
-	attachee.critter_flag_set(toee.OCF_SURRENDERED)
 	#toee.game.timevent_add(shut_up, ( attachee ), 2000, 1) # 1000 = 1 second
 	utils_obj.obj_timed_destroy(attachee, 10000)
 	return toee.RUN_DEFAULT

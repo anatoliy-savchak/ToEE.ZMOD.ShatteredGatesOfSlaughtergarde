@@ -293,3 +293,96 @@ def c3():
 		npc.item_wield_best_all()
 
 	return
+
+def c4():
+	scout = game.party[0]
+	barbarian = game.party[1]
+	fighter = game.party[2]
+	cleric = game.party[3]
+	warmage = game.party[4]
+
+	npc = scout
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory_buy(PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_LEATHER_BOOTS_GREEN, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_SHORTBOW, npc)
+		item = item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		item_create_in_inventory_buy(PROTO_GENERIC_TOOLS_THIEVES, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = barbarian
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
+		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		#item_create_in_inventory_buy(PROTO_WEAPON_GREATAXE, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = fighter
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
+		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		#item_create_in_inventory_buy(PROTO_LONGSWORD, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_LARGE, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = cleric
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory_buy(PROTO_CLOAK_GREEN, npc)
+		#item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_CIRCLET_HOODLESS, npc)
+		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_MORNINGSTAR, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		#item_create_in_inventory(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = warmage
+	if (1==1):
+		#item_clear_all(npc)
+
+		item_create_in_inventory_buy(PROTO_CLOAK_WHITE, npc)
+		item_create_in_inventory_buy(const_proto_cloth.PROTO_CLOTH_CIRCLET_NICE, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		#item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, npc)
+		item_create_in_inventory_buy(PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_LEATHER_BOOTS_WHITE, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	return

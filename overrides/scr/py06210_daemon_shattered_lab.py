@@ -52,7 +52,9 @@ def csl():
 	o = utils_storage.obj_storage_by_id(SHATERRED_LAB_DAEMON_ID)
 	#print("utils_storage.obj_storage(): {}".format(o))
 	if (not o): return None
-	result = o.data[CtrlShatteredLab.get_name()]
+	if (CtrlShatteredLab.get_name() in o.data):
+		result = o.data[CtrlShatteredLab.get_name()]
+	else: return None
 	#print("data: {}".format(result))
 	#debugg.breakp("csl")
 	return result
@@ -98,30 +100,31 @@ class CtrlShatteredLab(object):
 		if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
 		self.encounters_placed = 1
-		self.remove_trap_doors()
-		#self.place_encounter_l1()
-		#self.place_encounter_l2()
-		#self.place_encounter_l3()
-		#self.place_encounter_l5()
-		#self.place_encounter_l6()
-		#self.place_encounter_l7()
-		#self.place_encounter_l8()
-		#self.place_encounter_l9()
-		#self.place_encounter_l10()
+		self.place_encounter_l1()
+		self.place_encounter_l2()
+		self.place_encounter_l3()
+		self.place_encounter_l4()
+		self.place_encounter_l5()
+		self.place_encounter_l6()
+		self.place_encounter_l7()
+		self.place_encounter_l8()
+		self.place_encounter_l9()
+		self.place_encounter_l10()
 		self.place_encounter_l11()
 		self.place_encounter_l12()
-		#self.place_encounter_l13()
-		#self.place_encounter_l15()
-		#self.place_encounter_l16()
-		#self.place_encounter_l17()
+		self.place_encounter_l13()
+		self.place_encounter_l15()
+		self.place_encounter_l16()
+		self.place_encounter_l17()
 		self.place_encounter_l18()
 		self.place_chests()
 		self.print_monsters()
 
 		# debug
-		toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
+		#self.remove_trap_doors()
+		#toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
 		#toee.game.scroll_to(toee.game.leader)
-		utils_obj.scroll_to_leader()
+		#utils_obj.scroll_to_leader()
 		return
 
 	def place_encounter_l1(self):
@@ -145,11 +148,15 @@ class CtrlShatteredLab(object):
 			npc.condition_add_with_args("Base_Attack_Bonus1", 1, 0)
 			npc.item_wield_best_all()
 			npc.obj_set_int(toee.obj_f_npc_challenge_rating, -1)
+			npc.condition_add_with_args("Hide_Ex", 0, 0)
 			npc.move(npc_loc)
 			npc.rotation = const_toee.rotation_0500_oclock
 			self.monster_setup(npc, "l2", "hobgoblin_archer", "Hobgoblin Archer")
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			ctrl.option_stay = 1
+			hidden = utils_sneak.npc_make_hide(npc, 1)
+			if (hidden):
+				ctrl.option_starts_combat_sneaked = 1
 		return
 
 	def create_hobgoblin_impaler_at(self, proto, npc_loc, rot, encounter, code_name, no_draw):
@@ -172,6 +179,8 @@ class CtrlShatteredLab(object):
 
 	def place_encounter_l3(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(495, 473), 6210, 30, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Gaol")
+
+		hb_hide_score = 5
 		PROTO_NPC_HOBGOBLIN_1 = 14188
 		npc_loc = utils_obj.sec2loc(498, 468)
 		npc = toee.game.obj_create(PROTO_NPC_HOBGOBLIN_1, npc_loc)
@@ -182,7 +191,7 @@ class CtrlShatteredLab(object):
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_JAVELIN, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
 			npc.condition_add_with_args("Base_Attack_Bonus1", 1, 0)
-			npc.condition_add_with_args("Hidden_Attack", 0, 0)
+			npc.condition_add_with_args("Hide_Ex", 0, 0)
 			npc.item_wield_best_all()
 			npc.obj_set_int(toee.obj_f_npc_challenge_rating, -1)
 			npc.move(npc_loc)
@@ -190,8 +199,7 @@ class CtrlShatteredLab(object):
 			self.monster_setup(npc, "l3", "hobgoblin1", "Hobgoblin Scrounger", 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			ctrl.option_first_javelin = 1
-			npc.condition_add_with_args("Sneak_Attack_Ex", 0, 0)
-			utils_npc.npc_skill_ensure(npc, toee.skill_hide, 5)
+			utils_npc.npc_skill_ensure(npc, toee.skill_hide, hb_hide_score)
 			key = utils_item.item_create_in_inventory(10001, npc)
 			if (key):
 				key.obj_set_int(toee.obj_f_key_key_id, 32)
@@ -206,7 +214,7 @@ class CtrlShatteredLab(object):
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_JAVELIN, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
 			npc.condition_add_with_args("Base_Attack_Bonus1", 1, 0)
-			npc.condition_add_with_args("Hidden_Attack", 0, 0)
+			npc.condition_add_with_args("Hide_Ex", 0, 0)
 			npc.item_wield_best_all()
 			npc.obj_set_int(toee.obj_f_npc_challenge_rating, -1)
 			npc.move(npc_loc)
@@ -214,7 +222,7 @@ class CtrlShatteredLab(object):
 			self.monster_setup(npc, "l3", "hobgoblin2", "Hobgoblin Scrounger", 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			ctrl.option_first_javelin = 1
-			utils_npc.npc_skill_ensure(npc, toee.skill_hide, 5)
+			utils_npc.npc_skill_ensure(npc, toee.skill_hide, hb_hide_score)
 
 		npc_loc = utils_obj.sec2loc(490, 477)
 		npc = toee.game.obj_create(PROTO_NPC_HOBGOBLIN_2, npc_loc)
@@ -225,7 +233,7 @@ class CtrlShatteredLab(object):
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_JAVELIN, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
 			npc.condition_add_with_args("Base_Attack_Bonus1", 1, 0)
-			npc.condition_add_with_args("Hidden_Attack", 0, 0)
+			npc.condition_add_with_args("Hide_Ex", 0, 0)
 			npc.item_wield_best_all()
 			npc.obj_set_int(toee.obj_f_npc_challenge_rating, -1)
 			npc.move(npc_loc)
@@ -233,7 +241,11 @@ class CtrlShatteredLab(object):
 			self.monster_setup(npc, "l3", "hobgoblin3", "Hobgoblin Scrounger", 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			ctrl.option_first_javelin = 1
-			utils_npc.npc_skill_ensure(npc, toee.skill_hide, 5)
+			utils_npc.npc_skill_ensure(npc, toee.skill_hide, hb_hide_score)
+		return
+
+	def place_encounter_l4(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(484, 472), 6210, 40, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Skythe Room")
 		return
 
 	def place_encounter_l5(self):
@@ -299,7 +311,7 @@ class CtrlShatteredLab(object):
 		return
 
 	def place_encounter_l8(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(457, 481), 6210, 80, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_FLOAT_DIALOG_LINE, "Howler Trap")
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(457, 481), 6210, 80, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Howler Trap")
 
 		PROTO_NPC_HOWLER = 14893
 		npc_loc = utils_obj.sec2loc(459, 466)
@@ -308,8 +320,9 @@ class CtrlShatteredLab(object):
 			npc.move(npc_loc)
 			npc.condition_add_with_args("Quills_Ex", 1, 0)
 			npc.rotation = const_toee.rotation_0600_oclock
-			self.monster_setup(npc, "l8", "howler", None, 0, 0)
+			self.monster_setup(npc, "l8", "howler", None, 1, 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+			npc.npc_flag_set(toee.ONF_NO_ATTACK)
 		return
 
 	def place_encounter_l9(self):
@@ -590,7 +603,6 @@ class CtrlShatteredLab(object):
 			if (npc):
 				npc.npc_flag_unset(toee.ONF_NO_ATTACK)
 				npc.npc_flag_set(toee.ONF_KOS)
-		
 		if (not npc):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")
@@ -606,6 +618,10 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l3", "hobgoblin1")
 		self.reveal_monster("l3", "hobgoblin2")
 		self.reveal_monster("l3", "hobgoblin3")
+		return
+
+	def display_encounter_l8(self):
+		self.reveal_monster("l8", "howler")
 		return
 
 	def display_encounter_l11(self):
@@ -674,6 +690,10 @@ class CtrlShatteredLab(object):
 	def activate_encounter_l6(self):
 		self.activate_monster("l6", "hobgoblin1")
 		self.activate_monster("l6", "hobgoblin2")
+		return
+
+	def activate_encounter_l8(self):
+		self.activate_monster("l8", "howler")
 		return
 
 	def activate_encounter_l10(self):

@@ -13,6 +13,23 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 				npc.item_get(item)
 	return item
 
+def item_create_in_inventory_buy(item_proto_num, npc):
+	assert isinstance(item_proto_num, int)
+	assert isinstance(npc, toee.PyObjHandle)
+	item = toee.game.obj_create(item_proto_num, npc.location)
+	if (item != toee.OBJ_HANDLE_NULL):
+		worth = item.obj_get_int(toee.obj_f_item_worth)
+		left = npc.money_get()
+		print("{}: {} gp | {}".format(item.description, worth // 100, left // 100))
+		if (left >= worth):
+			npc.money_adj(-worth)
+			npc.item_get(item)
+		else: 
+			print("Lack of money!")
+			item.destroy()
+			item = None
+	return item
+
 def item_place_into_inventory(item, npc):
 	assert isinstance(npc, toee.PyObjHandle)
 	assert isinstance(item, toee.PyObjHandle)
@@ -59,10 +76,53 @@ def item_clear_all(npc):
 
 	return numItems
 
+def item_clear_by_proto(npc, proto_id):
+	assert isinstance(npc, toee.PyObjHandle)
+	assert isinstance(proto_id, int)
+	#breakp("inventory clear_all")
+	item_unwield_by_proto(npc, proto_id)
+	otype = npc.type
+	invenField = 0
+	invenNumField = 0
+	if ((otype == toee.obj_t_npc) or (otype == toee.obj_t_pc)):
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	elif ((otype == toee.obj_t_container) or (otype == toee.obj_t_bag)):
+		invenField = toee.obj_f_container_inventory_list_idx
+		invenNumField = toee.obj_f_container_inventory_num
+	else:
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+
+	#print("invenField: {}, invenNumField: {}".format(invenField, invenNumField))
+	numItems = npc.obj_get_int(invenNumField)
+	#print("Inventory count {} for obj {}".format(numItems, npc))
+	if (numItems > 0):
+		for i in range(0, 199):
+			#itemProto = npc.obj_get_idx_obj(invenField, i)
+			#item = npc.item_find(4077)
+			item = npc.inventory_item(i)
+			#print("Item at {}: {}".format(i, item))
+			if (item != toee.OBJ_HANDLE_NULL):
+				numItems = numItems - 1
+				if (item.proto == proto_id): 
+					item.destroy()
+			if (numItems <=0): break
+
+	return numItems
+
 def item_unwield_all(npc):
 	assert isinstance(npc, toee.PyObjHandle)
 	for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
 		npc.item_worn_unwield(i, 0)
+	return
+
+def item_unwield_by_proto(npc, proto_id):
+	assert isinstance(npc, toee.PyObjHandle)
+	for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+		item = npc.item_worn_at(i)
+		if (item and item.proto == proto_id):
+			npc.item_worn_unwield(i, 0)
 	return
 
 def item_do_use_getset(attachee, new_used = None):

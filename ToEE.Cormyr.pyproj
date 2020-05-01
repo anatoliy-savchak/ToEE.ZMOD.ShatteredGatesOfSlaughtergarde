@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
     <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
     <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
     <Compile Include="overrides\scr\py06202_vargouille_lesser.py" />
@@ -215,6 +216,7 @@
     <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\shadow_cloak_su.py" />
     <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />
     <Compile Include="overrides\scr\tpModifiers\napping.py" />
@@ -224,7 +226,7 @@
     <Compile Include="overrides\scr\tpModifiers\pull_down_ceiling.py" />
     <Compile Include="overrides\scr\tpModifiers\lethal_shock.py" />
     <Compile Include="overrides\scr\tpModifiers\python_action_shriek.py" />
-    <Compile Include="overrides\scr\tpModifiers\hidden_attack.py" />
+    <Compile Include="overrides\scr\tpModifiers\hide_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\stunning_shock.py" />
     <Compile Include="overrides\scr\tpModifiers\base_movement.py" />
     <Compile Include="overrides\scr\tpModifiers\caster_level_base_add.py" />
