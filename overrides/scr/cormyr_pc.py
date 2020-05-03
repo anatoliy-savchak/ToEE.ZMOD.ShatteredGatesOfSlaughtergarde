@@ -386,3 +386,15 @@ def c4():
 		npc.item_wield_best_all()
 
 	return
+
+def pc_get_clw_half():
+	npc = game.leader
+	item = game.obj_create(PROTO_WAND_OF_CURE_LIGHT_WOUNDS, npc.location)
+	item.obj_set_int(obj_f_item_spell_charges_idx, 25)
+	worth = item.obj_get_int(obj_f_item_worth)
+	worth = worth // 2
+	item.obj_set_int(obj_f_item_worth, worth)
+	npc.money_adj(-worth)
+	npc.item_get(item)
+	npc.identify_all()
+	return

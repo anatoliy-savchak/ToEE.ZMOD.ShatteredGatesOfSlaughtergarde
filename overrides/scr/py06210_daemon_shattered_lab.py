@@ -311,7 +311,10 @@ class CtrlShatteredLab(object):
 		return
 
 	def place_encounter_l8(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(457, 481), 6210, 80, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Howler Trap")
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(457, 481), 6210, 80, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Howler Trap")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(454, 458), 6210, 80, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Howler Trap")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		PROTO_NPC_HOWLER = 14893
 		npc_loc = utils_obj.sec2loc(459, 466)
@@ -390,7 +393,10 @@ class CtrlShatteredLab(object):
 		return
 
 	def place_encounter_l15(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(508, 510), 6210, 150, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Library")
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(508, 510), 6210, 150, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Library")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(502, 513), 6210, 150, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Library")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		PROTO_NPC_GOBLIN_UNDERBOSS = 14192
 		npc_loc = utils_obj.sec2loc(508, 514)
@@ -417,7 +423,10 @@ class CtrlShatteredLab(object):
 		return
 
 	def place_encounter_l16(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(480, 509), 6210, 160, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine")
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(480, 509), 6210, 160, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(467, 509), 6210, 160, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		self.create_hobgoblin_skeleton_at(utils_obj.sec2loc(476, 511), const_toee.rotation_1100_oclock, "l16", "skeleton1")
 		self.create_hobgoblin_skeleton_at(utils_obj.sec2loc(474, 510), const_toee.rotation_1100_oclock, "l16", "skeleton2")
@@ -429,7 +438,10 @@ class CtrlShatteredLab(object):
 		return
 
 	def place_encounter_l17(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(461, 510), 6210, 170, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gate")
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(461, 510), 6210, 170, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gate")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(459, 498), 6210, 170, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gate")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		self.create_hobgoblin_zombie_at(utils_obj.sec2loc(458, 501), const_toee.rotation_1100_oclock, "l17", "zombie1")
 		self.create_hobgoblin_zombie_at(utils_obj.sec2loc(456, 499), const_toee.rotation_1100_oclock, "l17", "zombie2")
@@ -517,6 +529,7 @@ class CtrlShatteredLab(object):
 			npc.move(npc_loc)
 			npc.rotation = rot
 			npc.critter_flag_set(toee.OCF_MOVING_SILENTLY)
+			npc.condition_add_with_args("Hide_Ex", 0, 0)
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			#ctrl.option_5fs_prefer = 1
@@ -531,7 +544,8 @@ class CtrlShatteredLab(object):
 			#print("{}={}".format(key, value.id))
 			obj = toee.game.get_obj_by_id(value.id)
 			if (obj):
-				s = "{}\t{}".format(obj.obj_get_int(toee.obj_f_npc_challenge_rating), obj.description)
+				#s = "{}\t{}".format(obj.obj_get_int(toee.obj_f_npc_challenge_rating), obj.description)
+				s = "{} = {}".format(key, obj.description)
 				print(s)
 				#print("{}={}".format(key, value.id))
 				if (f):
@@ -582,6 +596,11 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l2", "hobgoblin1")
 		self.reveal_monster("l2", "hobgoblin2")
 		self.reveal_monster("l2", "hobgoblin_archer")
+		return
+
+	def display_encounter_l5(self):
+		self.reveal_monster("l5", "trooper1")
+		self.reveal_monster("l5", "trooper2")
 		return
 	
 	def display_encounter_l10(self):
@@ -683,8 +702,8 @@ class CtrlShatteredLab(object):
 		return
 
 	def activate_encounter_l5(self):
-		self.activate_monster("l5", "goblin1")
-		self.activate_monster("l5", "goblin2")
+		self.activate_monster("l5", "trooper1")
+		self.activate_monster("l5", "trooper2")
 		return
 
 	def activate_encounter_l6(self):

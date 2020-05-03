@@ -67,4 +67,10 @@ def san_heartbeat( attachee, triggerer ):
 	attachee.scripts[const_toee.sn_heartbeat] = 0
 	#toee.game.timevent_add(shut_up, ( attachee ), 2000, 1) # 1000 = 1 second
 	utils_obj.obj_timed_destroy(attachee, 10000)
+	duplicate1 = attachee.obj_get_obj(toee.obj_f_last_hit_by)
+	print("promter duplicate1: {}".format(duplicate1))
+	if (duplicate1):
+		duplicate1.scripts[const_toee.sn_heartbeat] = 0
+		duplicate1.scripts[const_toee.sn_dialog] = 0
+		utils_obj.obj_timed_destroy(duplicate1, 100, 1)
 	return toee.RUN_DEFAULT

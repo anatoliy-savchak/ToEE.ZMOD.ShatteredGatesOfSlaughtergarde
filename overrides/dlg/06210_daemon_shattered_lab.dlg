@@ -30,7 +30,7 @@
 
 {50}{Lit by a gently flickering torch, tlthe nearby chamber is indeterminately wide from your vintage.}{Lit by a gently flickering torch, tlthe nearby chamber is indeterminately wide from your vintage.}{}{}{}{}
 {51}{Continue}{}{1}{}{52}{}
-{52}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{}{}{}{}
+{52}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{}{}{}{csl().display_encounter_l5()}
 {53}{Continue}{}{1}{}{54}{}
 {54}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{}{}{}{}
 {59}{Close}{}{1}{}{0}{csl().activate_encounter_l5()}

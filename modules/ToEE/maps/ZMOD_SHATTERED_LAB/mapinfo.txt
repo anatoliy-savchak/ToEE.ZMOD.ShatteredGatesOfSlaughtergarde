@@ -1,1 +1,1 @@
-SoundScheme: 8,0
+SoundScheme: 32,32

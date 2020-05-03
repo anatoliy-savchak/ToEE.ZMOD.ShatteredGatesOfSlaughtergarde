@@ -52,6 +52,7 @@ def Hide_Ex_OnGetAcModifierFromAttacker(attachee, args, evt_obj):
 	return 0
 
 def Hide_Ex_OnGetToHitBonusBase(attachee, args, evt_obj):
+	EnsureTransparency(attachee, args)
 	if (not (attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY)): 
 		print("Hide_Ex_OnGetToHitBonusBase not OCF_MOVING_SILENTLY {}".format(attachee))
 		return 0
@@ -91,8 +92,43 @@ def Hide_Ex_OnGetDefenderConcealmentMissChance(attachee, args, evt_obj):
 
 	return 0
 
-modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2)
+obj_f_transparency = 7
+def EnsureTransparency(attachee, args):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	is_hidden = attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY
+	if (is_hidden and not args.get_arg(0)):
+		attachee.obj_set_int(obj_f_transparency, 128)
+		args.set_arg(0, 1)
+	elif(not is_hidden and args.get_arg(0)):
+		attachee.obj_set_int(obj_f_transparency, 256)
+		args.set_arg(0, 0)
+	return
+
+def Hide_Ex_Action_Recipient(attachee, args, evt_obj):
+	toee.game.timevent_add(post_ensure_trapsarency, (attachee, args), 100, 1)
+	return 0
+
+def Hide_Ex_Killed(attachee, args, evt_obj):
+	if (attachee == toee.OBJ_HANDLE_NULL): return 0
+	oflags = attachee.object_flags_get()
+	if ((oflags & toee.OF_OFF) or (oflags & toee.OF_DESTROYED) or (oflags & toee.OF_DONTDRAW)): return 0
+	attachee.obj_set_int(obj_f_transparency, 256)
+	return 0
+
+def post_ensure_trapsarency(attachee, args):
+	if (attachee == toee.OBJ_HANDLE_NULL): return
+	oflags = attachee.object_flags_get()
+	if ((oflags & toee.OF_OFF) or (oflags & toee.OF_DESTROYED) or (oflags & toee.OF_DONTDRAW)): return
+
+	EnsureTransparency(attachee, args)
+	return
+
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2, 1)
+modObj.MapToFeat(toee.feat_sneak_attack)
 modObj.AddHook(toee.ET_OnGetAcModifierFromAttacker, toee.EK_NONE, Hide_Ex_OnGetAcModifierFromAttacker, ())
 modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, Hide_Ex_OnGetToHitBonusBase, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, Hide_Ex_OnGetTooltip, ())
 modObj.AddHook(toee.ET_OnGetDefenderConcealmentMissChance, toee.EK_NONE, Hide_Ex_OnGetDefenderConcealmentMissChance, ())
+modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Action_Recipient, Hide_Ex_Action_Recipient, ())
+modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Killed, Hide_Ex_Killed, ())

@@ -177,7 +177,7 @@ class Storage(object):
 			print "Storage.loadObjectStorage error:", sys.exc_info()[0]
 			print(str(e))
 			f.close()
-		breakp("loadObjectStorage end")
+		#breakp("loadObjectStorage end")
 		return
 
 	@staticmethod

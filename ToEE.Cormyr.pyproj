@@ -39,6 +39,7 @@
     <Folder Include="data\rules\" />
     <Folder Include="overrides\mes\" />
     <Folder Include="overrides\dlg\" />
+    <Folder Include="overrides\sound\" />
     <Folder Include="overrides\oemes\" />
     <Folder Include="overrides\rules\indicators\" />
     <Folder Include="overrides\rules\protos\" />
@@ -144,6 +145,8 @@
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
     <Content Include="overrides\rules\traps.tab" />
+    <Content Include="overrides\sound\schemeindex.mes" />
+    <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="overrides\rules\d20_actions\action03004_remove_quills.py" />
@@ -209,6 +212,9 @@
     <Compile Include="overrides\scr\py06211_shuttered_monster.py" />
     <Compile Include="overrides\scr\py06210_daemon_shattered_lab.py" />
     <Compile Include="overrides\scr\py06204_daemon_crossroad.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\py00630_dwarf_item.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
