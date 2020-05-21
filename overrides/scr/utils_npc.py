@@ -60,9 +60,11 @@ def npc_spell_ensure(npc, spell_id, stat_class, spell_level, memorize = 0):
 
 def npc_skill_ensure(npc, skill_id, target_skill_value):
 	assert isinstance(npc, PyObjHandle)
-	value = npc.skill_level_get(skill_id)
-	delta = target_skill_value - value
-	npc.skill_ranks_set(skill_id, delta)
+	value_total = npc.skill_level_get(skill_id)
+	ranks = npc.skill_ranks_get(skill_id)
+	delta = target_skill_value - value_total
+	ranks += delta
+	npc.skill_ranks_set(skill_id, ranks)
 	return delta
 
 def npc_is_alive(npc):

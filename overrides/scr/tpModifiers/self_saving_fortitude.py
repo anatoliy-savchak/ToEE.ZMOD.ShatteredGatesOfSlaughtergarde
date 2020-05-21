@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -15,10 +13,10 @@ def OnGetSaveThrowFort(attachee, args, evt_obj):
 	if (evt_obj.obj == attachee):
 		value = args.get_arg(0)
 		evt_obj.bonus_list.add(value, 0, 137)
-		print("added value: {}".format(value))
+		#print("added value: {}".format(value))
 	#breakp("OnGetSaveThrowFort")
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2)
-modObj.AddHook(ET_OnSaveThrowLevel, EK_SAVE_FORTITUDE, OnGetSaveThrowFort, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2)
+modObj.AddHook(toee.ET_OnSaveThrowLevel, toee.EK_SAVE_FORTITUDE, OnGetSaveThrowFort, ())
 

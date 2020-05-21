@@ -1,0 +1,44 @@
+// Scheme index file
+// 04/20/00
+//
+// The numbers after the # sign point into the SCHEMELIST.MES file.
+//
+// When parsing the SchemeList.MES file, it assumes that all the elements from
+// +0 to +99 (relative to the # sign below) belong to that scheme.  Therefore
+// you must space them out by at LEAST 100 elements.
+//
+
+//Music
+{0}{<<NONE>>}
+{1}{Hommlet interior #100}
+{2}{Nulb interior #200}
+{3}{Moathouse exterior #300}
+{4}{Moathouse ruins #400}
+{5}{Moathouse dungeon #500}
+{6}{Air node #600}
+{7}{Temple topside #700}
+{8}{Temple dungeon #800}
+{9}{Earth node #900}
+{10}{Fire node #1000}
+{11}{Water node #1100}
+{12}{Hommlet temple #1200}
+{13}{3D Test #1300}
+{14}{Pregame credits #1400}
+{15}{Scrub random encounters #1500}
+{16}{Forest random encounters #1600}
+{17}{Swamp random encounters #1700}
+{18}{River random encounters #1800}
+{19}{Cave #1900}
+{20}{Hommlet exterior #2000}
+{21}{Nulb exterior #2100}
+{22}{Hommlet inn #2200}
+{23}{Nulb inn #2300}
+{24}{Zuggtmoy #2400}
+{25}{Good vignette #2500}
+{26}{Evil vignette #2600}
+{27}{Neutral vignette #2700}
+{28}{Pleasant nature sounds #2800}
+{29}{ShopMap #2900}
+{30}{Colosseum #3000}
+{31}{Tutorial #3100}
+{32}{Shattered lab #3200}

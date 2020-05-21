@@ -9,6 +9,11 @@ def sec2loc( x, y ):
 	loc = ( loc << 32 ) + x
 	return loc
 
+def loc2sec(loc):
+	y = loc >> 32
+	x = loc & 4294967295
+	return ( x, y )
+
 def obj_scripts_clear(obj):
 	assert isinstance(obj, PyObjHandle)
 	mob_scripts = obj.scripts
@@ -75,6 +80,14 @@ def _off_on_timeevent(obj):
 	obj.object_flag_set(OF_OFF)
 	return 1
 
+def scroll_to_leader(time = 100):
+	game.timevent_add(_scroll_to_leader_on_timeevent, (), time, 1) # 1000 = 1 second
+	return
+
+def _scroll_to_leader_on_timeevent():
+	game.scroll_to(game.leader)
+	return 1
+
 def pop_up_box(message_id):
 	# generates popup box ala tutorial (without messing with the tutorial entries...)
 	a = game.obj_create(11001, game.leader.location)
@@ -126,6 +139,7 @@ def obj_float_line_dialog(obj, method, lineId, npc):
 	return 1
 
 def obj_get_id(obj):
+	if (not obj): return None
 	assert isinstance(obj, PyObjHandle)
 	if (hasattr(obj, 'id')):
 		return obj.id
@@ -137,5 +151,5 @@ def obj_get_id(obj):
 def isnull(obj, obj_when_null):
 	assert isinstance(obj, PyObjHandle)
 	assert isinstance(obj_when_null, PyObjHandle)
-	if (obj): return obj
+	if (not obj is None): return obj
 	return obj_when_null

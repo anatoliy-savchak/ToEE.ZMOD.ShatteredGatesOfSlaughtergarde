@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -22,6 +20,6 @@ def SneakAttackAdd_SneakAttackDice(attachee, args, evt_obj):
 		#breakp("SneakAttackAdd_SneakAttackDice 3: {}, evt_obj.return_val: {}".format(attachee, evt_obj.return_val))
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2) # 0 - add Sneak Dice, 1 - min Sneak Dice
-modObj.AddHook(ET_OnD20PythonQuery, "Sneak Attack Dice", SneakAttackAdd_SneakAttackDice, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - add Sneak Dice, 1 - min Sneak Dice
+modObj.AddHook(toee.ET_OnD20PythonQuery, "Sneak Attack Dice", SneakAttackAdd_SneakAttackDice, ())
 #breakp("Registered " + GetConditionName())

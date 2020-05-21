@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -17,6 +15,6 @@ def Base_Attack_Bonus_OnToHitBonusBase(attachee, args, evt_obj):
 	#breakp("")
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2) # 0 - base attack
-modObj.AddHook(ET_OnToHitBonusBase, EK_NONE, Base_Attack_Bonus_OnToHitBonusBase, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - base attack
+modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, Base_Attack_Bonus_OnToHitBonusBase, ())
 

@@ -38,7 +38,7 @@ temple.dll::ConditionMonsterDamageType
 ### Monster Bonus Damage
 **Args**
 * Arg0: damage_type, like D20DT_BLUDGEONING etc
-* Arg1: damage_amount
+* Arg1: damage_dice_packed_
 temple.dll::ConditionMonsterBonusDamage
 
 ### Monster Energy Resistance

@@ -1,7 +1,4 @@
-from templeplus.pymod import PythonModifier
-import toee
-import debugg
-import sys
+import toee, templeplus.pymod, sys
 
 ###################################################
 
@@ -50,6 +47,6 @@ def Lethal_Shock_Perform(attachee, args, evt_obj):
 		#debugg.breakp("error")
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2) # reserved
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # reserved
 modObj.AddHook(toee.ET_OnD20PythonActionCheck, 3001, Lethal_Shock_Check, ())
 modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3001, Lethal_Shock_Perform, ())

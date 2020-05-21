@@ -1,0 +1,78 @@
+// add all new factions to the end of this list. Do not change
+// faction 0
+
+{0}{An unimportant faction}
+{1}{Moathouse brigands}
+{2}{Moathouse captives}
+{3}{Air temple}
+{4}{Earth temple}
+{5}{Fire temple}
+{6}{Water temple}
+{7}{Greater temple}
+{8}{Non-affiliated temple}
+{9}{Hommlet villager}	// this faction will only dislike you if you have the Butcher of Hommlet rep and includes generic citizens and anyone else unqualified to fight
+{10}{Nulb villager}
+{11}{St. Cuthbert member}
+{12}{Old Faith believer}
+{13}{Brothel Member}
+{14}{Pirate}
+{15}{Forces of Lareth}
+{16}{Men-at-arms captives}
+{17}{Farmer captives}
+{18}{Elven consortium prisoners}
+{19}{Orc prisoners}
+{20}{Female prisoners}
+{21}{Ashrem's bandits}
+{22}{Scorpp's rebels}
+{23}{Bugbear deserters}
+{24}{Ogre cave dwellers}
+{25}{Traders}
+{26}{Skole's goons}
+{27}{Ikian's adventuring party}
+{28}{Caravan survivor - vignette}
+{29}{Dead woman - vignette}
+{30}{Moathouse gnolls}
+{31}{Mayor faction}
+{32}{Hextor faction}
+{33}{Hrudek faction}
+{34}{Rat faction}
+{35}{Black Jay et al}
+{36}{Verbobonc citizen}
+{37}{Scarlet Brotherhood}
+{38}{Hickory Branch}
+{39}{Slave traders}
+{40}{Verbobonc fugitives}
+{41}{Smigmal Redhand & Falrinth}
+{42}{Mickey}
+{43}{Mathel}
+{44}{Pelor follower}
+{45}{Jewel Merchant's party}
+{46}{Bank of Verbobonc}
+{47}{Imeryds devils}
+{48}{Moathouse Ambushers}
+{49}{Burne's Badgers}	// this faction will attack you if you have the Butcher of Hommlet rep and includes badgers, militiamen, and any other qualified Hommlet citizens or sympathizers
+{50}{Waterside Hostel}
+{51}{Hommlet Miller et al}
+{52}{Jaroo et al}
+{53}{Hommlet Herdsman et al}
+{54}{Hommlet Labor Camp}
+{55}{Hommlet Woodcutter et al}
+{56}{Nerull faction}
+{57}{Olidammara faction}
+{58}{Erythnul faction}
+{59}{Deklo Bandits}
+{60}{Clan Battlehammer}
+{61}{Lady Asherah and guards}
+{62}{Iuz Verbobonc faction}
+{63}{St. Cuthbert Verbobonc faction}
+{64}{Hommlet Cuthbertian Priests}	// this faction will attack you if you have the Butcher of Hommlet rep and includes only St. Cuthbert clerics, Terjon, and Calmert
+{65}{Hextor Militant faction}
+{66}{Gnarley Drow}
+{67}{Verbobonc Drow}
+{68}{Simon and his familiar}
+{69}{Moathouse Respawners}
+{70}{Bethany faction}
+{71}{Hickory Branch animals}
+{72}{Bethany-Holly faction}
+{73}{Slaughtergarde Laboratory}
+{74}{Celestial army of the Heroic Domains of Ysgard}

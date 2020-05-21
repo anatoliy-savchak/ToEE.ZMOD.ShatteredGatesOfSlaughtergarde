@@ -1,10 +1,12 @@
 {1}{The portal opens before you...}{The portal opens before you...}{}{}{}{game.particles( 'ef-NODE-Air portal', npc ); game.sound( 4008 ); game.global_flags[601] = 1}
 {2}{Begin adventuring A Dark and Stormy Knight.}{}{1}{}{0}{game.leader.scripts[38] = 6201; game.fade_and_teleport( 0, 0, 0, 5120, 564, 477 )}
+{3}{Begin adventuring Shattered.}{}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5121, 518, 454 )}
 {11}{Return to shopmap.}{}{1}{}{0}{}
 
 
 {20}{The portal is open...}{The portal is open...}{}{}{}{}
 {21}{Begin adventuring A Dark and Stormy Knight.}{}{1}{}{0}{game.leader.scripts[38] = 6201; game.fade_and_teleport( 0, 0, 0, 5120, 564, 477 )}
+{22}{Begin adventuring Shattered.}{}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5121, 518, 454 )}
 {30}{Return to shopmap.}{}{1}{}{0}{}
 
 

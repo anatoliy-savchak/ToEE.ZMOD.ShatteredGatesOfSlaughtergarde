@@ -1,0 +1,83 @@
+{1}{This 10-foot-wide tunnel desc ends into the darkness. Timbers shore up its wall and ceiling, and loose stone litters the floor. A long rope has been attached to the middle of the tunnel floor with pitons every 20 feet or so.}{This 10-foot-wide tunnel desc ends into the darkness. Timbers shore up its wall and ceiling, and loose stone litters the floor. A long rope has been attached to the middle of the tunnel floor with pitons every 20 feet or so.}{}{}{}{}
+{10}{[exit]}{}{1}{}{0}{}
+
+{20}{The tunnel opens into a roughly square chamber shored by timbers. Four similar posts hold up the ceiling. A torch set in a sconce to the east of the doors lights the room.}{The tunnel opens into a roughly square chamber shored by timbers. Four similar posts hold up the ceiling. A torch set in a sconce to the east of the doors lights the room.}{}{}{}{csl().display_encounter_l2()}
+{21}{Continue}{}{1}{}{22}{}
+{22}{Two hobgoblins in heavy armor lean on the far wall, guarding burnished copper doors engraved leering demonic faces.}{Two hobgoblins in heavy armor lean on the far wall, guarding burnished copper doors engraved leering demonic faces.}{}{}{}{}
+{23}{Continue}{}{1}{}{24}{}
+{24}{Unlike the earthen walls in the other parts of the room, the walls that flanks the doors are made of grey-green masonry.}{Unlike the earthen walls in the other parts of the room, the walls that flanks the doors are made of grey-green masonry.}{}{}{}{}
+{25}{Continue}{}{1}{}{26}{}
+{26}{A hay bale is set near the eastern wall, arrows sticking out of it.}{A hay bale is set near the eastern wall, arrows sticking out of it.}{}{}{}{}
+{29}{Attack!}{}{1}{}{0}{csl().activate_encounter_l2()}
+
+{30}{Torch light reveals a wide and high chamber of gray-green stone. Chains and manacles hang from the walls.}{Torch light reveals a wide and high chamber of gray-green stone. Chains and manacles hang from the walls.}{}{}{}{}
+{31}{Continue}{}{1}{}{32}{}
+{32}{A roound wooden table surrounded by four chairs sits in the middle, and copper doors are set in the northent wall beyond.}{A roound wooden table surrounded by four chairs sits in the middle, and copper doors are set in the northent wall beyond.}{}{}{}{}
+{33}{Continue}{}{1}{}{34}{}
+{34}{Painted in red across those doors is a word of some sort. (The word painted on the doors is skruun, which is Goblin for "danger.")}{Painted in red across those doors is a word of some sort. (The word painted on the doors is skruun, which is Goblin for "danger.")}{}{}{}{}
+{35}{Continue}{}{1}{}{36}{}
+{36}{Piled in the sorners of the room are crates and burlap bags, some of them marked with the same moon-and sheaf sigil you saw on the Sumberton city pennants, To the east and west are passages; the arches over them are fashioned to look like demons gaping maws.}{Piled in the sorners of the room are crates and burlap bags, some of them marked with the same moon-and sheaf sigil you saw on the Sumberton city pennants, To the east and west are passages; the arches over them are fashioned to look like demons gaping maws.}{}{}{}{}
+{37}{Continue}{}{1}{}{38}{}
+{38}{Suddenly you spot creatures hiding behind the crates! These goblins wear mismatched pieces of leather, and they carry javelins and notched short swords.}{Suddenly you spot creatures hiding behind the crates! These goblins wear mismatched pieces of leather, and they carry javelins and notched short swords.}{}{}{}{csl().display_encounter_l3()}
+{39}{Close}{}{1}{}{0}{csl().activate_encounter_l3()}
+
+{40}{As the doors open, flame ignites atop six tiny copper braziers resting in holes cut into and equal number of short partitions jutting from the eastern and western walls of this dusty room.}{As the doors open, flame ignites atop six tiny copper braziers resting in holes cut into and equal number of short partitions jutting from the eastern and western walls of this dusty room.}{}{}{}{}
+{41}{Continue}{}{1}{}{42}{}
+{42}{In the illumination they provide, you see that roughly parallel scratches run along four sections of the floor, perpendicular to sets of copper doors - one you entered through and another across the room.}{In the illumination they provide, you see that roughly parallel scratches run along four sections of the floor, perpendicular to sets of copper doors - one you entered through and another across the room.}{}{}{}{}
+{43}{Continue}{}{1}{}{44}{}
+{44}{The ceiling has four dark slots cut into it along matching paths. You can't see into the slots, which are about 3 inches wide and run the length of the room.}{The ceiling has four dark slots cut into it along matching paths. You can't see into the slots, which are about 3 inches wide and run the length of the room.}{}{}{}{}
+{49}{Close}{}{1}{}{0}{}
+
+{50}{Lit by a gently flickering torch, tlthe nearby chamber is indeterminately wide from your vintage.}{Lit by a gently flickering torch, tlthe nearby chamber is indeterminately wide from your vintage.}{}{}{}{}
+{51}{Continue}{}{1}{}{52}{}
+{52}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{You call see a heavily armored goblin. He's crouched, and he's picking up something and dropping it the floor in front of him near a battleaxe.}{}{}{}{csl().display_encounter_l5()}
+{53}{Continue}{}{1}{}{54}{}
+{54}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{}{}{}{}
+{59}{Close}{}{1}{}{0}{csl().activate_encounter_l5()}
+
+{60}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{}{}{}{}
+{61}{Continue}{}{1}{}{62}{}
+{62}{A table here has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{A table here has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{}{}{}{}
+{63}{Continue}{}{1}{}{64}{}
+{64}{Channels around edges of the room lead to a drain in the center. A railed balcony overlooks the torthwestern corner, exokaining the high ceiling.}{Channels around edges of the room lead to a drain in the center. A railed balcony overlooks the torthwestern corner, exokaining the high ceiling.}{}{}{}{}
+{69}{Close}{}{1}{}{0}{csl().activate_encounter_l6()}
+
+{70}{A dozen simple bedrolls are spread on the floor. Wooden rails guard balconies the the northwest and southeast. Four smal footlockers are here as well.}{A dozen simple bedrolls are spread on the floor. Wooden rails guard balconies the the northwest and southeast. Four smal footlockers are here as well.}{}{}{}{}
+
+{80}{This immense chamber's floot is inscibed with a mazelike pattern, the lines of which glow purple.}{This immense chamber's floot is inscibed with a mazelike pattern, the lines of which glow purple.}{}{}{}{}
+{81}{Continue}{}{1}{}{82}{}
+{82}{A large doglike monster that has a mane of long quills paces in the center of the pattern. Overlooking the southeastern portion of the room is a railed balcony.}{A large doglike monster that has a mane of long quills paces in the center of the pattern. Overlooking the southeastern portion of the room is a railed balcony.}{}{}{}{csl().display_encounter_l8()}
+{89}{Put the ladder down.}{}{1}{}{0}{csl().activate_encounter_l8()}
+
+{90}{A wooden plank bridge suspend from posts leads into this natural cavern. You can see rocks and dirt about 20 feet below the bridge. It looks like this cavern stretches north and south. Running through the middle is raised earthen pathway.}{A wooden plank bridge suspend from posts leads into this natural cavern. You can see rocks and dirt about 20 feet below the bridge. It looks like this cavern stretches north and south. Running through the middle is raised earthen pathway.}{}{}{}{}
+
+{100}{About 20 feet below you is an insectile creature that's 10 feet long, and it has pincers as large as a human arm.}{About 20 feet below you is an insectile creature that's 10 feet long, and it has pincers as large as a human arm.}{}{}{}{csl().display_encounter_l10()}
+{101}{Continue}{}{1}{}{102}{}
+{102}{The creature sits half-buried in a massive pile of debris - lots of rotted food, smashed crates, and a few corpses. A ladder lies on the ground near the edge of the cliff.}{The creature sits half-buried in a massive pile of debris - lots of rotted food, smashed crates, and a few corpses. A ladder lies on the ground near the edge of the cliff.}{}{}{}{}
+{109}{Put the ladder down.}{}{1}{}{0}{csl().activate_encounter_l10()}
+
+{110}{Four mirrors that have green, glowing frames are mounted on the western and northern walls. Most are cracked. The eastern portion of the room has no wall. Instead, the precipice there apparently leads to a much larger room. A long ladder lies flat near the edge.}{Four mirrors that have green, glowing frames are mounted on the western and northern walls. Most are cracked. The eastern portion of the room has no wall. Instead, the precipice there apparently leads to a much larger room. A long ladder lies flat near the edge.}{}{}{}{}
+{111}{Continue}{}{1}{}{112}{}
+{112}{Two goblins in half-plate armor move toward you with grim resolve.}{Two goblins in half-plate armor move toward you with grim resolve.}{}{}{}{csl().display_encounter_l11()}
+{119}{Close}{}{1}{}{0}{csl().activate_encounter_l11()}
+
+{120}{Four circles of glowing red sigils are carved on the floor of the large chamber 20 feet below you. A massive creature seemingly formed of stone walks around them, a two-bladed sword held in its rocky gauntlet. It pauses and turns its head to look at you, then resumes its walk among the glowing circles. On the far side of the chamber is another ledge like the one you're standing on.}{Four circles of glowing red sigils are carved on the floor of the large chamber 20 feet below you. A massive creature seemingly formed of stone walks around them, a two-bladed sword held in its rocky gauntlet. It pauses and turns its head to look at you, then resumes its walk among the glowing circles. On the far side of the chamber is another ledge like the one you're standing on.}{}{}{}{}
+
+{130}{The flagstones flooring the passage give way to a natural cavern that has a muddy floor. A fat green lizard almost five feet long rests in the mud to the west. Three timbers brace the ceiling. A pair of copper doors is set into the southern wall near the southeastern corner.}{The flagstones flooring the passage give way to a natural cavern that has a muddy floor. A fat green lizard almost five feet long rests in the mud to the west. Three timbers brace the ceiling. A pair of copper doors is set into the southern wall near the southeastern corner.}{}{}{}{csl().display_encounter_l13()}
+{139}{Close}{}{1}{}{0}{csl().activate_encounter_l13()}
+
+{150}{Massive bookshelves and burgundy carpet distinguish this chamber from others you’ve seen. A few books lie on the shelves, and you spy a couple boxes with the Sumberton sigil on them. Papers are scattered across the floor, and the carpet has muddy tracks on it that from a path through the room. Hammocks hang between the bookshelves.}{Massive bookshelves and burgundy carpet distinguish this chamber from others you’ve seen. A few books lie on the shelves, and you spy a couple boxes with the Sumberton sigil on them. Papers are scattered across the floor, and the carpet has muddy tracks on it that from a path through the room. Hammocks hang between the bookshelves.}{}{}{}{}
+{151}{Continue}{}{1}{}{152}{}
+{152}{Stout goblin clad in chain and armed with scimitar and shield stands behind his hyena.}{Stout goblin clad in chain and armed with scimitar nad shield stands behind his hyena.}{}{}{}{csl().display_encounter_l15()}
+{159}{Close}{}{1}{}{0}{csl().activate_encounter_l15()}
+
+{160}{The chanting you've been hearing comes from this large chamber, which appears to be roughly octagonal and walled with worked red stone. A dim light issues from the east. Strips of gauzy cloth that look like bandages hang from rows of iron reels on the ceiling, draping down to the floor in places. They form veritable curtains.}{The chanting you've been hearing comes from this large chamber, which appears to be roughly octagonal and walled with worked red stone. A dim light issues from the east. Strips of gauzy cloth that look like bandages hang from rows of iron reels on the ceiling, draping down to the floor in places. They form veritable curtains.}{}{}{}{}
+{161}{Continue}{}{1}{}{162}{}
+{162}{A hobgoblin in a chain shirt is the chant's source; he holds a mace aloft in front of a black altar as he sways and intones. Black candles on the altar flicker in unison with his swaying. Three hobgoblin skeletons in chain shirts surround him, holding spears up and silently moving their jaws as if joining in the unholy praise. A pile of coins lies at the base of the altar.}{A hobgoblin in a chain shirt is the chant's source; he holds a mace aloft in front of a black altar as he sways and intones. Black candles on the altar flicker in unison with his swaying. Three hobgoblin skeletons in chain shirts surround him, holding spears up and silently moving their jaws as if joining in the unholy praise. A pile of coins lies at the base of the altar.}{}{}{}{csl().display_encounter_l16()}
+{169}{Close}{}{1}{}{0}{csl().activate_encounter_l16()}
+
+{170}{Four zombies, all obviously once hobgoblins, shuffle listlessly across the floor of this room. An ornately carved arch takes up the entire western wall. It's a larger, more detailed version of the demon arches you've seen, but this arch doesn't just has a blank wall beyond it. Two of the smaller demon arches, one you came through, pierce the southern wall.}{Four zombies, all obviously once hobgoblins, shuffle listlessly across the floor of this room. An ornately carved arch takes up the entire western wall. It's a larger, more detailed version of the demon arches you've seen, but this arch doesn't just has a blank wall beyond it. Two of the smaller demon arches, one you came through, pierce the southern wall.}{}{}{}{csl().display_encounter_l17()}
+{179}{Close}{}{1}{}{0}{csl().activate_encounter_l17()}
+
+{180}{The doors fly open to reveal a small, black-cloaked humanoid with pallid skin and sinister features. Next to him is a similar creature that appears to be female. Beyond them is a room that contains a wooden desk and a single wide bedroll. In the southwestern corner is a narrow tunnel that leads upward. By the smell of the room, which is fresher than other areas of this forsaken ruin, and the slight draft, you'd guess that tunnel leads to the surface.}{The doors fly open to reveal a small, black-cloaked humanoid with pallid skin and sinister features. Next to him is a similar creature that appears to be female. Beyond them is a room that contains a wooden desk and a single wide bedroll. In the southwestern corner is a narrow tunnel that leads upward. By the smell of the room, which is fresher than other areas of this forsaken ruin, and the slight draft, you'd guess that tunnel leads to the surface.}{}{}{}{csl().display_encounter_l18()}
+{189}{Close}{}{1}{}{0}{csl().activate_encounter_l18()}

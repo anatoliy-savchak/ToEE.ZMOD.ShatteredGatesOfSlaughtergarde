@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -19,6 +17,6 @@ def Spell_Quicken_All_OnMetaMagicMod(attachee, args, evt_obj):
 		metaMagicData.set_quicken(1)
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2)
-modObj.AddHook(ET_OnMetaMagicMod, EK_NONE, Spell_Quicken_All_OnMetaMagicMod, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2)
+modObj.AddHook(toee.ET_OnMetaMagicMod, toee.EK_NONE, Spell_Quicken_All_OnMetaMagicMod, ())
 #breakp("Registered " + GetConditionName())

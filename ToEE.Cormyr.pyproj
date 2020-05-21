@@ -39,6 +39,9 @@
     <Folder Include="data\rules\" />
     <Folder Include="overrides\mes\" />
     <Folder Include="overrides\dlg\" />
+    <Folder Include="overrides\sound\" />
+    <Folder Include="overrides\oemes\" />
+    <Folder Include="overrides\rules\indicators\" />
     <Folder Include="overrides\rules\protos\" />
     <Folder Include="data\scr\" />
     <Folder Include="modules\" />
@@ -58,6 +61,7 @@
   <ItemGroup>
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="overrides\dlg\06210_daemon_shattered_lab.dlg" />
     <Content Include="overrides\dlg\06201_daemon_adask.dlg" />
     <Content Include="data\docs\conditions.html">
       <SubType>Content</SubType>
@@ -89,6 +93,7 @@
     <Content Include="overrides\mes\description\obj_t_npc_14832_shadar_kai.mes" />
     <Content Include="overrides\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
     <Content Include="overrides\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
+    <Content Include="overrides\mes\gamekeylog.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
@@ -102,7 +107,9 @@
     <Content Include="overrides\mes\long_descr\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14771_monstrous_scorpion_large.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
+    <Content Include="overrides\oemes\faction.mes" />
     <Content Include="overrides\rules\combat_vars.mes" />
+    <Content Include="overrides\rules\indicators\lodged_quills.txt" />
     <Content Include="overrides\rules\MapLimits.mes" />
     <Content Include="overrides\rules\poisons.json" />
     <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
@@ -138,9 +145,15 @@
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
     <Content Include="overrides\rules\traps.tab" />
+    <Content Include="overrides\sound\schemeindex.mes" />
+    <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03004_remove_quills.py" />
     <Compile Include="overrides\scr\behavior.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\const_animate.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\const_proto_cloth.py">
@@ -183,7 +196,11 @@
     <Compile Include="overrides\scr\py06124_shadowscale_chief.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
+    <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
+    <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
     <Compile Include="overrides\scr\py06202_vargouille_lesser.py" />
     <Compile Include="overrides\scr\py06125_knell_beetle_lesser.py">
       <SubType>Code</SubType>
@@ -192,7 +209,12 @@
     <Compile Include="overrides\scr\py06126_shocker_lizard.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06201_daemon_adask.py">
+    <Compile Include="overrides\scr\py06211_shuttered_monster.py" />
+    <Compile Include="overrides\scr\py06210_daemon_shattered_lab.py" />
+    <Compile Include="overrides\scr\py06204_daemon_crossroad.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\py00630_dwarf_item.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
@@ -200,12 +222,17 @@
     <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\shadow_cloak_su.py" />
+    <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
+    <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />
+    <Compile Include="overrides\scr\tpModifiers\napping.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus1.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus5.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus3.py" />
     <Compile Include="overrides\scr\tpModifiers\pull_down_ceiling.py" />
     <Compile Include="overrides\scr\tpModifiers\lethal_shock.py" />
     <Compile Include="overrides\scr\tpModifiers\python_action_shriek.py" />
+    <Compile Include="overrides\scr\tpModifiers\hide_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\stunning_shock.py" />
     <Compile Include="overrides\scr\tpModifiers\base_movement.py" />
     <Compile Include="overrides\scr\tpModifiers\caster_level_base_add.py" />

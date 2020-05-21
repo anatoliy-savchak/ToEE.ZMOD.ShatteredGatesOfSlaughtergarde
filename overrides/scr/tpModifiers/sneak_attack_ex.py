@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod, tpdp
 
 ###################################################
 
@@ -11,24 +9,24 @@ print("Registering " + GetConditionName())
 ###################################################
 
 def is_ranged_weapon(weap):
-	if weap == OBJ_HANDLE_NULL:
+	if weap == toee.OBJ_HANDLE_NULL:
 		return 0
-	weap_flags = weap.obj_get_int(obj_f_weapon_flags)
-	if not (weap_flags & OWF_RANGED_WEAPON):
+	weap_flags = weap.obj_get_int(toee.obj_f_weapon_flags)
+	if not (weap_flags & toee.OWF_RANGED_WEAPON):
 		return 0
 	return 1
 
 def SneakAttackEx_TargetIsNOTEligible(attacker, target, evt_obj):
-	if (target == OBJ_HANDLE_NULL): return 1
-	assert isinstance(target, PyObjHandle)
-	assert isinstance(attacker, PyObjHandle)
+	if (target == toee.OBJ_HANDLE_NULL): return 1
+	assert isinstance(target, toee.PyObjHandle)
+	assert isinstance(attacker, toee.PyObjHandle)
 
 	if (not (attacker.can_sneak_attack(target))): return 2 # cannot sense (see)
 	weapon_used = evt_obj.attack_packet.get_weapon_used()
 	if (not is_ranged_weapon(weapon_used)):
-		if (target.has_feat(feat_blind_fight)): return 3 # feat_blind_fight
+		if (target.has_feat(toee.feat_blind_fight)): return 3 # feat_blind_fight
 	
-	if (target.d20_query(Q_Critter_Is_Blinded)):
+	if (target.d20_query(toee.Q_Critter_Is_Blinded)):
 		blindsightDistance = target.d20_query("Blindsight Range")
 		if (blindsightDistance > 0):
 			distance = target.distance_to(attacker)
@@ -38,7 +36,7 @@ def SneakAttackEx_TargetIsNOTEligible(attacker, target, evt_obj):
 	return 0 # no obsticles
 
 def SneakAttackEx_OnGetAcModifierFromAttacker(attachee, args, evt_obj):
-	if (not (attachee.critter_flags_get() & OCF_MOVING_SILENTLY)): return 0
+	if (not (attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY)): return 0
 	notEligible = SneakAttackEx_TargetIsNOTEligible(attachee, evt_obj.attack_packet.target, evt_obj)
 	if (notEligible): 
 		if (notEligible == 3):
@@ -46,7 +44,7 @@ def SneakAttackEx_OnGetAcModifierFromAttacker(attachee, args, evt_obj):
 		#if (notEligible == 4):
 		#	evt_obj.bonus_list.add_zeroed(337) # {337}{Dex bonus retained due to target is ~Blinded~[TAG_BLINDED]}
 		return 0
-	if (evt_obj.attack_packet.target.has_feat(feat_uncanny_dodge)):
+	if (evt_obj.attack_packet.target.has_feat(toee.feat_uncanny_dodge)):
 		evt_obj.bonus_list.add_zeroed(165) # {165}{Dex bonus retained due to ~Uncanny Dodge~[TAG_CLASS_FEATURES_UNCANNY_DODGE]}
 	else:
 		evt_obj.bonus_list.add_cap(8, 0, 153, "Sneak Attack") # {153}{Condition: ~Flatfooted~[TAG_FLAT_FOOTED]}
@@ -54,9 +52,9 @@ def SneakAttackEx_OnGetAcModifierFromAttacker(attachee, args, evt_obj):
 	return 0
 
 def SneakAttackEx_OnGetToHitBonusBase(attachee, args, evt_obj):
-	if (not (attachee.critter_flags_get() & OCF_MOVING_SILENTLY)): return 0
+	if (not (attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY)): return 0
 
-	if (evt_obj.attack_packet.target != OBJ_HANDLE_NULL):
+	if (evt_obj.attack_packet.target != toee.OBJ_HANDLE_NULL):
 		notEligible = SneakAttackEx_TargetIsNOTEligible(attachee, evt_obj.attack_packet.target, evt_obj)
 		if (notEligible): 
 			#if (notEligible == 3):
@@ -69,7 +67,16 @@ def SneakAttackEx_OnGetToHitBonusBase(attachee, args, evt_obj):
 	evt_obj.bonus_list.add(2, 0, 161) # {161}{Attacker is not Visible}
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2)
-modObj.MapToFeat(feat_sneak_attack)
-modObj.AddHook(ET_OnGetAcModifierFromAttacker, EK_NONE, SneakAttackEx_OnGetAcModifierFromAttacker, ())
-modObj.AddHook(ET_OnToHitBonusBase, EK_NONE, SneakAttackEx_OnGetToHitBonusBase, ())
+def SneakAttackEx_OnGetTooltip(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjTooltip)
+	if (not (attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY)): return 0
+	evt_obj.append("Hidden")
+	return 0
+
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2)
+modObj.MapToFeat(toee.feat_sneak_attack)
+#modObj.AddHook(toee.ET_OnGetAcModifierFromAttacker, toee.EK_NONE, SneakAttackEx_OnGetAcModifierFromAttacker, ())
+#modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, SneakAttackEx_OnGetToHitBonusBase, ())
+#modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, SneakAttackEx_OnGetTooltip, ())

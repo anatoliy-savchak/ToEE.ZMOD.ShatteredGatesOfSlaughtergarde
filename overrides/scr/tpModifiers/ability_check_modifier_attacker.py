@@ -1,6 +1,4 @@
-from templeplus.pymod import PythonModifier
-from toee import *
-from debugg import *
+import toee, templeplus.pymod
 
 ###################################################
 
@@ -18,7 +16,7 @@ def Ability_Check_Modifier_OnGetAbilityCheckModifier(attachee, args, evt_obj):
 		evt_obj.bonus_list.add(bonus, stat, 112) #{112}{~Item~[TAG_MAGIC_ITEMS] or ~Tool~[TAG_TOOLS]}
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 2) # 0 - bonus, 1 - ability
-modObj.AddHook(ET_OnGetAbilityCheckModifier, EK_NONE, Ability_Check_Modifier_OnGetAbilityCheckModifier, ())
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - bonus, 1 - ability
+modObj.AddHook(toee.ET_OnGetAbilityCheckModifier, toee.EK_NONE, Ability_Check_Modifier_OnGetAbilityCheckModifier, ())
 #breakp("Registered " + GetConditionName())
 

@@ -1,0 +1,5 @@
+ID_string: LODGED_QUILLS
+effect_type: 1
+texture_file: art\interface\player_conditions\ailments\Spell Chaos Hammer.tga
+help_topic: TAG_ROOT
+tooltip_base_text:Lodged Quills

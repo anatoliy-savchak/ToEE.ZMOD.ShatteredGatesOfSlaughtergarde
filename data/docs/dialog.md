@@ -25,3 +25,9 @@ NPC text
 
 NPC text 2
 1. Exit
+
+A: - Many thanks good sir!
+F: I have changed my mind, sir.
+
+## Notes
+line_id must be consecutive!!

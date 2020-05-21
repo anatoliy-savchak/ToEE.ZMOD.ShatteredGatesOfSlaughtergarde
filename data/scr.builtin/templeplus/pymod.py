@@ -1,4 +1,4 @@
-import tpdp
+import toee, tpdp
 
 class PythonModifier(tpdp.ModifierSpec):
     def AddHook(self, eventType, eventKey, callbackFcn, argsTuple ):

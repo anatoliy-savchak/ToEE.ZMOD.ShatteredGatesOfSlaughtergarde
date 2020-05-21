@@ -56,3 +56,16 @@ LightBlue = 5
 
 rotation_grad_south_east = 135
 rotation_grad_south = 180
+
+rotation_0000_oclock = 0.00000
+rotation_0100_oclock = 0.52360
+rotation_0200_oclock = 1.04720
+rotation_0300_oclock = 1.57080
+rotation_0400_oclock = 2.09440
+rotation_0500_oclock = 2.61799
+rotation_0600_oclock = 3.14159
+rotation_0700_oclock = 3.66519
+rotation_0800_oclock = 4.18879
+rotation_0900_oclock = 4.71239
+rotation_1000_oclock = 5.23599
+rotation_1100_oclock = 5.75959
