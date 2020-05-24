@@ -518,6 +518,7 @@ class game(object):
 	leader = PyObjHandle()
 	party = (PyObjHandle(), PyObjHandle())
 	combat_turn = 0
+	quests = PyQuests()
 
 	@staticmethod
 	def obj_create(protoId, loc):
@@ -673,6 +674,22 @@ class PyBonusList(object):
 	def add_from_feat(self, value, bonType, mesline, featEnum):
 		""" bonus_list.add_from_feat(int: value, int: bonType, int: mesline, int: featEnum) -> int """
 		return 0
+
+class PyQuests:
+	def __init__(self):
+		return
+
+	def __getitem__(self, idx):
+		"""game.quests[idx] -> PyQuest, idx <= 200"""
+		return PyQuest(idx)
+
+class PyQuest:
+	def __init__(self, idx):
+		self.state = qs_unknown
+		return
+
+	def unbotch(self):
+		return qs_accepted
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
@@ -3605,3 +3622,12 @@ race_drow = 66
 # Gender
 gender_female = 0
 gender_male = 1
+
+# Quests
+qs_unknown = 0
+qs_mentioned = 1
+qs_accepted = 2
+qs_achieved = 3
+qs_completed = 4
+qs_other = 5
+qs_botched = 6

@@ -1,0 +1,238 @@
+// gamequestlog.mes - text for the logbook
+// MAX_QUESTS = 200
+// there are two text entries that the logbook will need for quests: title and description
+// for quest i; title will be at line i, and description will be at i + MAX_QUESTS
+
+
+// Quest Titles 000 - 199
+{0} {Dominate Counter-Strike for 15 Consecutive Days}
+{1} {Unhappy Tailor}
+{2} {Woodcutter's Problem}
+{3} {Black Jay's Dead Sheep}
+{4} {A Ring For Black Jay}
+{5} {Carpenter's Dilemma}
+{6} {Cupid's Arrow}
+{7} {Flirting With Disaster}
+{8} {Grain For The Church}
+{9} {Stealing Farmers}
+{10} {Another Soul For Cuthbert}
+{11} {Terjon Wants More Followers}
+{12} {One Bride For One Player}
+{13} {Terjon Searches For A St. Cuthbert Artifact}
+{14} {Zealotry}
+{15} {Agent Revealed}
+{16} {Traders Revealed}
+{17} {The Traders' Courier}
+{18} {Know When To Fold Them}
+{19} {Drinking Contest}
+{20} {The Rescue Of Paida}
+{21} {The Courtship Of Eddie's Herdsman}
+{22} {Lawful Good Opening Vignette}
+{23} {Neutral Good Opening Vignette}
+{24} {Chaotic Good Opening Vignette}
+{25} {Lawful Neutral Opening Vignette}
+{26} {True Neutral Opening Vignette}
+{27} {Chaotic Neutral Opening Vignette}
+{28} {Lawful Evil Opening Vignette}
+{29} {Neutral Evil Opening Vignette}
+{30} {Chaotic Evil Opening Vignette}
+{31} {A Second Trip For Otis}
+{32} {Bribery For Profit}
+{33} {Madam Ophelia's Weakest Link}
+{34} {Porky's Revenge}
+{35} {Grud's Fish Story}	 	
+{36} {A Pirate's Life For Me}
+{37} {Thief!}
+{38} {The Spy Who Loved Me}
+{39} {Triple-Cross}
+{40} {Eye Of The Tiger}
+{41} {Preston Wetz's Tooth Of Pain}
+{42} {Assassination}
+{43} {Romag 1: Exterminator}
+{44} {Romag 2: A Note For Rentsch}
+{45} {Romag 3: Assassinate Belsornig}
+{46} {Belsornig 1: Oohlgrist For Water}
+{47} {Belsornig 2: Blame Game}
+{48} {Belsornig 3: The Setup }
+{49} {Kelno 1: Defection}
+{50} {Kelno 2: Desecration}
+{51} {Kelno 3: Assassination}
+{52} {Alrrem 1: Oohlgrist For Fire}
+{53} {Alrrem 2: Operation Ogre}
+{54} {Alrrem 3: The Orb}
+{55} {Equipment For Wonnilon}
+{56} {Of Gnomish Crossbows And Magic Scrolls}
+{57} {Tubal's Collection Agency}
+{58} {What's Eating The Supreme Commander?}
+{59} {Gypsy Road}
+{60} {Mona's Crystal Ball}
+{61} {Burne's Puzzles}					//co8 - hommlet
+{62} {Hickory Branch}					//co8 - hickory branch
+{63} {Bribery For Justice}				//co8 - nulb
+{64} {Retribution}					//co8 - hommlet
+{65} {Hero's Prize}					//co8 - arena of heroes
+{66} {Robbery at the Hostel}				//co8 - verbobonc
+{67} {Framework of a Murder}				//co8 - verbobonc
+{68} {Under Surveillance}				//co8 - verbobonc
+{69} {Under Attack From Underground}			//co8 - verbobonc
+{70} {Free Jenna}					//co8 - temple
+{71} {Free Elysia}					//co8 - temple
+{72} {Clear The Moathouse}				//co8 - moathouse
+{73} {Welkwood Bog}					//co8 - welkwood bog
+{74} {Frozen Assets}					//co8 - verbobonc
+{75} {Family Turmoil}					//co8 - verbobonc
+{76} {Catching The 'Cousin'}				//co8 - verbobonc
+{77} {Removing Wilfrick}				//co8 - verbobonc
+{78} {The Slave Traders}				//co8 - verbobonc
+{79} {Wanted: Guntur Gladstone}				//co8 - verbobonc
+{80} {Wanted: Kendrew Commonworth}			//co8 - verbobonc
+{81} {Wanted: Quintus Corpus}				//co8 - verbobonc
+{82} {Building Credit}					//co8 - verbobonc
+{83} {Fear Of Ghosts}					//co8 - verbobonc
+{84} {Contract On Canon Thaddeus}			//co8 - verbobonc
+{85} {Monster Mash}					//co8 - verbobonc
+{86} {Ratting Out The Hextorites}			//co8 - verbobonc
+{87} {Snitching On The Scarlet Brotherhood}		//co8 - verbobonc
+{88} {Narcing On The Scarlet Brotherhood}		//co8 - verbobonc
+{89} {The Rabbit Hole}					//co8 - verbobonc
+{90} {The Gremlich}					//co8 - verbobonc
+{91} {Gremag 1: Wherefore Art Thou, Armario?}		//co8 - hommlet
+{92} {Gremag 2: Kenter Nevets RIP}			//co8 - hommlet
+{93} {Gremag 3: Holy Smoke!}				//co8 - hommlet
+{94} {Romag 2: Alrrem Must Pay!}			//co8 - temple
+{95} {Season of the Witch}				//co8 - moathouse respawn
+{96} {Of Castles and Quarries}				//co8 - war of the golden skull
+{97} {War of the Golden Skull: Defender}		//co8 - war of the golden skull
+{98} {Tools of the Trade}				//co8 - war of the golden skull
+{99} {A Cure For Amii}					//co8 - hommlet
+{100} {Masterwork Items}				//co8 - hommlet
+{101} {Lords and Ladies}				//co8 - verbobonc
+{102} {Demons and Demigods}				//co8 - verbobonc
+{103} {War of the Golden Skull: Attacker}		//co8 - war of the golden skull
+{104} {Contact: Captain Renton}				//co8 - hommlet
+{105} {Missing Ranger}					//co8 - hickory branch
+{106} {Return to the Moathouse}				//co8 - moathouse
+{107} {Contact: Ariakas}				//co8 - verbobonc
+{108} {Notice: Prince Zook IV}				//co8 - verbobonc
+{109} {What Lies Beneath}				//co8 - verbobonc
+{110} {Notice: Captain Abiram}				//co8 - verbobonc
+{111} {Notice: Lord Viscount Wilfrick}			//co8 - verbobonc
+{112} {Notice: Lord Viscount Wilfrick}			//co8 - verbobonc
+{113} {Vintra: Recover spices shipment}
+
+
+// Quest Descriptions 200 - 399
+{200} {For this quest, you can't be killed, ever. If you are, then you lose the quest coz you suck.  Oh, and this has to last for 15 days.}
+{201} {Jinnerth, the tailor of Hommlet, has asked you to speak with the captain of the militia about allowing him to join the town militia.}
+{202} {Tarim has asked you to kill some spiders in a deklo grove so that he can get access to the wood there.}
+{203} {Black Jay has asked you to find out why his sheep are all dying.}
+{204} {Black Jay is looking for his wife's wedding ring.}
+{205} {The town carpenter would like his brother Marek to convert to Old Faith so that the villagers might better accept his family.}
+{206} {Gwynneth has asked you to try to pair up her brother-in-law Filliken with the widow Mathilde.}
+{207} {Meleny has fallen in love with you and would like to join you, but she requires the permission of her father (Filliken) first.}
+{208} {Myella, the church serving woman, has asked you to get flour from the miller for the church.}
+{209} {Filliken, a prosperous farmer, thinks that someone less fortunate is stealing from him.}
+{210} {Erliter, the miller's servant, would like to switch from Old Faith to St. Cuthbert but is afraid to tell the miller.}
+{211} {Terjon has asked you to try to convert the leatherworker's family to St. Cuthbert.}
+{212} {Holten Kindlehopper would like you to find a husband for his daughter, Fruella.}
+{213} {Terjon lost an item of great value to him during the Battle of Emridy Meadows and has asked for your help to find it.}
+{214} {Calmert has asked you to collect Church dues from one of the braumeister's apprentices.}
+{215} {Burne and Rufus would like you to infiltrate the laborer camp and look for a spy who is sabotaging their orders.}
+{216} {You have learned about the spy in the laborers' camp and returned to speak with Rannos Davl and Gremag.}
+{217} {You have learned that a suspicious courier to the traders is an agent of some mysterious entity.}
+{218} {Ostler suspects that Furnok is cheating at gambling in the inn.}
+{219} {Tuperello has asked you to join in a drinking contest.}
+{220} {Valden, the Hommlet wainwright, has told you about his concern that his wife has disappeared with a caravan to Verbobonc.}
+{221} {Laszlo, a herdsman in Hommlet, has lost his wife recently, raising suspicions in the town about his mental stability.}
+{222} {Deliver news of the ambushed caravan to Valden, the wainwright in Hommlet.}
+{223} {Deliver news of the death of Y'Dey to Terjon at the Church of St. Cuthbert in Hommlet.}
+{224} {You have been asked to discover the whereabouts of Princess Tillahi and Sir Juffer. You have been told Black Jay in Hommlet can give you further guidance.}
+{225} {The Directing Oligarchy of Greyhawk has ordered you visit the town elder in Hommlet as a response to his request for aid.}
+{226} {Travel to Hommlet to convince Jaroo, the druidical leader there, to send in his report to Hrudek, which has not been received for several months.}
+{227} {Find the Treasure Horde of Rainbow Rock near a small hamlet called Hommlet.}
+{228} {You have been ordered to destroy the sword Fragarach. Your contact for further information is Turuko in Hommlet at the Inn of the Welcome Wench.}
+{229} {Visit Terjon at the Church of St. Cuthbert in Hommlet and tell him of the burning of his church in Willip.}
+{230} {Talk to Rannos Davl in Hommlet to locate and possibly join with the bandits.}
+{231} {Otis has agreed to join you on one more trip to the Temple.}
+{232} {In an appeal to the opportunistic side of your nature, Sammy has offered to tell you where Otis keeps his stash for a price.}
+{233} {Ophelia is having troubles with Jenelda and Riana, two of her girls.}
+{234} {Mickey, one of the braumeister's apprentices, is causing trouble for Ophelia at the Snake Pit.}
+{235} {Grud has asked you to catch a gar for him in the Imeryds Run.}
+{236} {Bertram would be interested in a date with you but is afraid that Tolub would not let him go.}
+{237} {You have caught Dala, a serving wench at the Waterside Hostel, stealing from you.}
+{238} {Pearl, a serving wench at the Waterside Hostel, suspects Wat of cheating on her.}
+{239} {Having learned that Rentsch and Wat both work for the Temple, you have decided to play them against each other.}
+{240} {Tolub has challenged you to a brawl.}
+{241} {Preston Wetz has told you about his painful tooth.}
+{242} {Skole wants you to kill Lodriss.}
+{243} {Romag has asked you to kill a giant snake.}
+{244} {Romag has asked you to deliver a message to Rentsch.}
+{245} {Romag has asked you to kill Belsornig. }
+{246} {Belsornig has asked you to recruit the troll chief Oohlgrist to the Water Temple.}
+{247} {Belsornig has asked you to kill Alrrem and leave a specific poison at the scene.}
+{248} {Belsornig has asked you to kill the bugbears guarding the Greater Temple jail and leave incriminating evidence against Romag.}
+{249} {Kelno has asked you to recruit a bunch of nearby bugbears to the Air Temple.}
+{250} {Kelno has asked you to defile the Earth Temple altar with some specially prepared holy water.}
+{251} {Kelno has asked you to kill either Belsornig or Alrrem, your choice.}
+{252} {Alrrem has asked you to recruit the troll chief Oohlgrist to the Fire Temple by offering a ring of fire resistance.}
+{253} {Alrrem has asked you to recruit a tribe of ogres in an ogre cave northwest of Nulb to join the Fire Temple using diplomatic skills or non-lethal damage. Once convinced or subdued, report back to Alrrem immediately.}
+{254} {Alrrem has asked you to steal the Orb of Golden Death from Falrinth.}
+{255} {Wonnilon has asked you find his stolen equipment and return it to him in his hiding place.}
+{256} {Wonnilon has asked you to help him find his crossbow and magic scroll.}
+{257} {Tubal has asked you to get a mace from Antonio that he lost to Tubal in a dice game.}
+{258} {Hedrack has asked you to find out what is causing the disturbance on the third level.}
+{259} {Serena has asked you to help her gain her freedom from Mona.}
+{260} {Mona has asked you to find Mickey, take the Orb of Sah from him, and return it to her.}
+{261} {Burne has posed a few puzzles for you to solve.}
+{262} {The ranger Bethany has appraised you of a group of three mysterious figures amassing an army of highly trained orcs and other creatures at a location near the Kron Hills called Hickory Branch.}
+{263} {Sammy has inadvertently appealed to the scrupulous side of your nature with a chance to thwart his scheme of revealing Otis' stash.}
+{264} {Burne has asked you to investigate Rannos and Gremag's possible involvement in the assassin's attempt on your life.}
+{265} {The Master of the Arena has promised you a magnificent reward if you overcome all the challenges that he has in store for you.}
+{266} {You have been enlisted to rob and eliminate a wealthy jeweler at the Waterside Hostel in Nulb.}
+{267} {You've been hired to murder a member of the Verbobonc Patrol and frame a patrol captain in order to create dissention amongst the ranks of the Constabulary.}
+{268} {You've noticed men clad in scarlet watching you in and around Verbobonc.}
+{269} {You have been told about drow attackers who threaten to invade Verbobonc.}
+{270} {You have been asked to free Jenna from the temple prison.}
+{271} {You have been asked to free Elysia from the temple prison.}
+{272} {You have been asked to clear out the Moathouse.}
+{273} {You've been told of a location outside of Hommlet where you might find adventure of a more perilous nature than what the town seems to offer.}
+{274} {The Lord Viscount of Verbobonc has asked you to investigate why merchants are being frozen in their tracks.}
+{275} {Elysia has asked if you can convince her father to forgive her for misbehaving and release her from her punishment.}
+{276} {You've told Wilfrick of the plot to assassinate him, and he has asked you to arrest the assassin for the charge of treason.}
+{277} {The Scarlet Brotherhood have entrusted you with the task of assassinating the Viscount.}
+{278} {Lord Viscount Wilfrick has asked you to locate and destroy a group of slave traders from Dyvers.}
+{279} {You've been enlisted by Captain Achan of the Verbobonc Watch to bring in the fugitive Guntur Gladstone.}
+{280} {You've been enlisted by Captain Achan of the Verbobonc Watch to bring in the fugitive Kendrew Commonworth.}
+{281} {You've been enlisted by Captain Achan of the Verbobonc Watch to bring in the fugitive Quintus Corpus.}
+{282} {You have agreed to pay off your mortgage with the Silver Consortium for the Castle of the Lords in 21 days.}
+{283} {Three ghosts in and around your castle in Verbobonc are looking for the things they've lost, and they will plague you until their possessions are returned.}
+{284} {Hextor's actuaries in Verbobonc have hired you to assassinate a noted priest of Pelor from the city of Narwell.}
+{285} {The Church of Pelor in Verbobonc has hired you to carry out a strategic strike against a Hextor cell operating in the Temple of Elemental Evil.}
+{286} {You have reported the Hextorites' assassination plans to Canon Ramses, allowing him to send a warning to Canon Thaddeus and prevent his possible demise.}
+{287} {You have reported the Scarlet Brotherhood's robbery plans to the Verbobonc authorities, allowing them to arrest Darlia on charges of conspiracy to commit robbery.}
+{288} {You have reported the Scarlet Brotherhood's murder plans to the Verbobonc authorities, allowing them to arrest Darlia on charges of conspiracy to commit murder.}
+{289} {Prince Zook IV has asked you to find a valuable gem somewhere in The Castle of the Lords.}
+{290} {You've been informed that the Hextorites have sent the mythical Gremlich after you, and that a mystic might be able to help. The mystic may want you to destroy it.}
+{291} {Gremag has asked you to kill Armario, the cabinet maker. He says that this will allow you to join an assassins' group.}
+{292} {Gremag has asked you to kill Kenter Nevets, the town elder. He says that this is the next stage of your initiation into an assassins' group.}
+{293} {Gremag has asked you to kill Terjon, the priest of St.Cuthbert. He says that this is the next stage of your initiation into an assassins' group.}
+{294} {Romag has asked you to kill Alrrem's underlings Tubal and Antonio to avenge the death of his servant Rentsch.}
+{295} {You've detected something amiss at the Moathouse once again. Captain Asaph would want you to investigate and root out any undesirables.}
+{296} {A group of dwarves is refusing access to the quarry from which Hommlet has been mining stone for the construction of its new castle.}
+{297} {You've been enlisted to assist Hommlet in dealing with the threat of a hostile invasion from forces loyal to Hextor. These forces are said to seek the Orb of Golden Death.}
+{298} {You've been asked to acquire mithril tools for the dwarven blacksmith Fireforge.}
+{299} {Tarim the woodcutter has a sick daughter. He is Old Faith and therefore looks to Jaroo for a cure.}
+{300} {Brother Smyth doesn't want to sell you masterwork items, but you can change his mind by proving your worth. To do that you need to bring him the head of a giant.}
+{301} {Lady Asherah of Verbobonc has offered to entertain you for an evening as reward for your defense of Hommlet.}
+{302} {You must destroy the avatars of Iuz or St. Cuthbert, or the balor Alzoll and its cohorts, in order to save your life and the life of Lady Asherah.}
+{303} {You've been enlisted to assist Hommlet in dealing with the threat of a hostile invasion from forces loyal to Hextor, but you've switched sides and joined the Hextorites.}
+{304} {Brother Smyth has put you in touch with Captain Renton regarding a possible situation threatening the village. He lives on the southwest edge of town.}
+{305} {Captain Asaph of the Verbobonc Regional Patrol has asked you to be on the lookout for an elite ranger from the patrol who has gone missing.}
+{306} {Captain Asaph of the Verbobonc Regional Patrol has asked you to return to the Moathouse to investigate some possible malfeasance.}
+{307} {Lord Viscount Wilfrick has asked you to contact the adventurer Ariakas in Hommlet regarding a possible crisis threatening the village. He can be found in the town defense near the center of town.}
+{308} {Prince Zook IV has given notice requesting your presence in his chambers in the Gnome Quarter.}
+{309} {Captain Abiram of the Verbobonc Watch has asked you to investigate the disappearance of two Verbobonc children.}
+{310} {Captain Abiram has given notice requesting your presence at his desk in Verbobonc City Hall.}
+{311} {Lord Viscount Wilfrick has given notice requesting your presence in his chambers in Verbobonc City Hall.}
+{312} {Lord Viscount Wilfrick has given emergency notice requesting your presence in his chambers in Verbobonc City Hall.}
+{312} {Vintra Marktunsel has asked you to retrieve stolen shipment of spices.}
