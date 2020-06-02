@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
     <Content Include="overrides\dlg\06210_daemon_shattered_lab.dlg" />
     <Content Include="overrides\dlg\06201_daemon_adask.dlg" />
     <Content Include="data\docs\conditions.html">
@@ -73,7 +74,7 @@
     <Content Include="overrides\dlg\00406Game_Portal.dlg" />
     <Content Include="overrides\mes\description\cormyr_names.mes" />
     <Content Include="overrides\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
-    <Content Include="overrides\mes\description\obj_t_armor_6726_studded_leather_plus_1.tmes" />
+    <Content Include="overrides\mes\description\obj_t_armor_6726_studded_leather_plus_1.mes" />
     <Content Include="overrides\mes\description\obj_t_generic_12707_knowstone_fireball.mes" />
     <Content Include="overrides\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
     <Content Include="overrides\mes\description\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
@@ -150,6 +151,7 @@
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03005_inspect.py" />
     <Compile Include="overrides\rules\d20_actions\action03004_remove_quills.py" />
     <Compile Include="overrides\scr\behavior.py">
       <SubType>Code</SubType>
@@ -218,11 +220,25 @@
     <Compile Include="overrides\scr\py00630_dwarf_item.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\py06300_daemon_shattered_sumberton.py" />
+    <Compile Include="overrides\scr\py06400_daemon_shattered_temple.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\shattered_consts.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
+    <Compile Include="overrides\scr\stat_generator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\stat_inspect.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\inspect.py" />
     <Compile Include="overrides\scr\tpModifiers\shadow_cloak_su.py" />
     <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />

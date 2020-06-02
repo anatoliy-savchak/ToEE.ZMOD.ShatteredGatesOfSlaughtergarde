@@ -75,6 +75,13 @@ class StatInspect:
 		# attack
 		self.stats["weapon_list"] = self.get_weapon_list()
 
+		# combat gear
+		self.stats["combat_gear_dic"] = self.get_combat_gear_dic()
+
+		# posessions
+		self.stats["posessions_dic"] = self.get_posessions_dic()
+		
+
 		return self.stats
 
 	def get_cr(self):
@@ -291,6 +298,7 @@ class StatInspect:
 		return result
 
 	def get_gender_name(self):
+		#gender_present = obj_get_int(toee.obj_f_critter_gender)
 		gender = self.npc.stat_level_get(toee.stat_gender)
 		if (gender == toee.gender_female): return "Female"
 		if (gender == toee.gender_male): return "Male"
@@ -425,11 +433,12 @@ class StatInspect:
 
 	def get_weapon_list(self):
 		result = list()
+
 		weapon = self.npc.item_worn_at(toee.item_wear_weapon_primary)
 		if (weapon):
 			item = StatInspectWeapon()
-			item.name = weapon.description
 			item.attack_bonus = self.npc.stat_level_get(toee.stat_melee_attack_bonus)
+			item.name = weapon.description
 			weapon_type = weapon.obj_get_int(toee.obj_f_weapon_type)
 			item.is_ranged = toee.game.is_ranged_weapon(weapon_type)
 			if (item.is_ranged):
@@ -463,8 +472,83 @@ class StatInspect:
 				crit_hit_chart = weapon.obj_get_int(toee.obj_f_weapon_crit_hit_chart)
 				if (crit_hit_chart == 0): crit_hit_chart = 2
 				item.crit_chart = crit_hit_chart
-			
 			result.append(item)
+		else:
+			attack_count = 0
+			for i in range(0, 4):
+				atk = self.npc.obj_get_idx_int(toee.obj_f_critter_attacks_idx, i)
+				attack_count += atk
+			if (attack_count):
+				atkidx = 0
+				str_mod = self.npc.stat_level_get(toee.stat_str_mod)
+				for i in range(0, 3):
+					atk_num = self.npc.obj_get_idx_int(toee.obj_f_critter_attacks_idx, i)
+					if (not atk_num): continue
+					atkidx +=1
+					item = StatInspectWeapon()
+					#item.attack_bonus = self.npc.stat_level_get(toee.stat_melee_attack_bonus)
+					#item.name = "Natural {}".format("atkidx")
+					item.name = self.get_natural_attack_name(self.npc.obj_get_idx_int(toee.obj_f_attack_types_idx, i))
+					item.attack_bonus = self.npc.obj_get_idx_int(toee.obj_f_attack_bonus_idx, i)
+					if (not item.is_ranged and atkidx != 4):
+						item.attack_bonus += str_mod
+					item.atk_num = atk_num
+					dmg_dice_packed = self.npc.obj_get_idx_int(toee.obj_f_critter_damage_idx, i)
+					dmg_dice = toee.dice_new("1d1")
+					dmg_dice.packed = dmg_dice_packed
+					if (not item.is_ranged and atkidx != 4):
+						dmg_dice.bonus += str_mod
+					dmg_dice_str = str(dmg_dice)
+					if (debug_print): print("Natural dmg_dice_str: {}".format(dmg_dice_str))
+					item.damage_dice_str = dmg_dice_str
+					result.append(item)
+
+		return result
+
+	def get_natural_attack_name(self, atk_type):
+		if (atk_type==0): return "Bite"
+		if (atk_type==1): return "Claw"
+		if (atk_type==2): return "Rake"
+		if (atk_type==3): return "Gore"
+		if (atk_type==4): return "Slap"
+		if (atk_type==5): return "Slam"
+		if (atk_type==6): return "Sting"
+		return ""
+
+	def get_combat_gear_dic(self, invert = 0):
+		result = dict()
+		numItems = self.npc.obj_get_int(toee.obj_f_critter_inventory_num)
+		if (numItems):
+			for i in range(0, 199):
+				item = self.npc.inventory_item(i)
+				if (not item): continue
+				numItems = numItems - 1
+				if (numItems <=0): break
+				item_name = item.description
+				is_posession = not ("poison" in item_name or "scroll" in item_name or "oil" in item_name or "wand" in item_name or "staff" in item_name or "rod" in item_name or "potion" in item_name)
+				if (not invert and is_posession): continue
+				if (invert and not is_posession): continue
+				cnt = 0
+				if (item_name in result): cnt = result[item_name]
+				result[item_name] = cnt + 1
+		return result
+
+	def get_posessions_dic(self):
+		result = dict()
+		for slot in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+			if (slot == toee.item_wear_weapon_primary or slot == toee.item_wear_weapon_secondary): continue
+			gear = self.npc.item_worn_at(slot)
+			if (not gear): continue
+			gear_name = gear.description
+			cnt = 0
+			if (gear_name in result): cnt = result[gear_name]
+			result[gear_name] = cnt + 1
+
+		items = self.get_combat_gear_dic(1)
+		for item in items.keys():
+			cnt = 0
+			if (item in result): cnt = result[item]
+			result[item] = cnt
 		return result
 
 class StatInspectWeapon:
@@ -476,4 +560,5 @@ class StatInspectWeapon:
 		self.damage_dice_str = ""
 		self.crit_range_str = ""
 		self.crit_chart = 2
+		self.atk_num = 1
 		return

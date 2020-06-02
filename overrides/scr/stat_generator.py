@@ -134,12 +134,23 @@ class StatGenerator:
 		if (1):
 			weapon_list = self.values["weapon_list"]
 			if (weapon_list):
+				comma = ""
+				comma_ranged = ""
 				for w in weapon_list:
 					assert isinstance(w, stat_inspect.StatInspectWeapon)
-					phrase = "{} {} ({}/{}x{})".format(w.name, self.str_signed(w.attack_bonus), w.damage_dice_str, w.crit_range_str, w.crit_chart)
+					crit_str = ""
+					if (not w.crit_chart or w.crit_chart != 2): crit_str = "x{}".format(w.crit_chart)
+					crit_info = ""
+					if (w.crit_range_str and crit_str): crit_info = "/{}{}".format(w.crit_range_str, crit_str)
+					numstr = ""
+					if (w.atk_num > 1): numstr = "{} ".format(w.atk_num)
+					phrase = "{}{} {} ({}){}".format(numstr, w.name, self.str_signed(w.attack_bonus), w.damage_dice_str, crit_info)
 					if (w.is_ranged):
-						line_ranged += phrase
-					else: line_melee += phrase
+						line_ranged += comma_ranged + phrase
+						comma_ranged = " and "
+					else: 
+						line_melee += comma + phrase
+						comma = " and "
 
 		# Melee
 		if (1):
@@ -164,7 +175,18 @@ class StatGenerator:
 				lines.append(line)
 		# Combat gear
 		if (1):
-			line = "Combat Gear "
+			line = ""
+			combat_gear_dic = self.values["combat_gear_dic"]
+			if (combat_gear_dic):
+				line = "Combat Gear "
+				phrase = ""
+				comma = ""
+				for gear in combat_gear_dic.keys():
+					cnt = combat_gear_dic[gear]
+					if (cnt > 1): phrase = "{}{} {}".format(comma, cnt, gear)
+					else: phrase = "{}{}".format(comma, gear)
+					comma = ", "
+					line += phrase
 			if (line):
 				lines.append(line)
 		#
@@ -208,7 +230,18 @@ class StatGenerator:
 				lines.append(line)
 		# Posessions
 		if (1):
-			line = "Posessions "
+			line = ""
+			combat_gear_dic = self.values["posessions_dic"]
+			if (combat_gear_dic):
+				line = "Posessions "
+				phrase = ""
+				comma = ""
+				for gear in combat_gear_dic.keys():
+					cnt = combat_gear_dic[gear]
+					if (cnt > 1): phrase = "{}{} {}".format(comma, cnt, gear)
+					else: phrase = "{}{}".format(comma, gear)
+					comma = ", "
+					line += phrase
 			if (line):
 				lines.append(line)
 		#
