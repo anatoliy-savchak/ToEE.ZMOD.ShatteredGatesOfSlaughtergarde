@@ -3,12 +3,10 @@ class PyDice(object):
 		self.number = 1	#	GetCount
 		self.size = 1		#	GetSides
 		self.bonus = 1	#	GetModifier
+		self.packed = 1
 		return
 
 	def roll(self):
-		return 1
-
-	def dice_packed(self):
 		return 1
 
 def dice_new(dice_str):
@@ -411,6 +409,10 @@ class PyObjHandle(object):
 		"""Get internal field int value. npc.obj_get_int(int[obj_f_*]: field) -> int"""
 		return 0
 
+	def obj_get_int64(self, field):
+		"""Get internal field long value. npc.obj_get_int64(int[obj_f_*]: field) -> long"""
+		return 0
+
 	def obj_set_int(self, field, value):
 		"""Set internal field int value. npc.obj_set_int(int[obj_f_*]: field, int: value) -> None"""
 		return
@@ -525,6 +527,11 @@ class game(object):
 		""" Will create PyObjHandle based on protoId and place it on location. game.obj_create(int: protoId, int64: loc) -> PyObjHandle"""
 		return PyObjHandle()
 
+	@staticmethod
+	def is_ranged_weapon(weapon_type):
+		"""Check weapon type if ranged. game.is_ranged_weapon(int[wt_gauntlet]: weapon_type) -> int"""
+		return 1
+	
 	@staticmethod
 	def make_custom_name(name):
 		"""Will create new custom description. game.make_custom_name('new name') -> int: name_id"""
@@ -3631,3 +3638,66 @@ qs_achieved = 3
 qs_completed = 4
 qs_other = 5
 qs_botched = 6
+
+mc_subtype_air = 1
+mc_subtype_aquatic = 2
+mc_subtype_extraplanar = 4
+mc_subtype_extraplaner = 4
+mc_subtype_cold = 8
+mc_subtype_chaotic = 16
+mc_subtype_demon = 32
+mc_subtype_devil = 64
+mc_subtype_dwarf = 128
+mc_subtype_earth = 256
+mc_subtype_electricity = 512
+mc_subtype_elf = 1024
+mc_subtype_evil = 2048
+mc_subtype_fire = 4096
+mc_subtype_formian = 8192
+mc_subtype_gnoll = 16384
+mc_subtype_gnome = 32768
+mc_subtype_goblinoid = 65536
+mc_subtype_good = 131072
+mc_subtype_guardinal = 262144
+mc_subtype_half_orc = 524288
+mc_subtype_halfling = 1048576
+mc_subtype_human = 2097152
+mc_subtype_lawful = 4194304
+mc_subtype_incorporeal = 8388608
+mc_subtype_orc = 16777216
+mc_subtype_reptilian = 33554432
+mc_subtype_slaadi = 67108864
+mc_subtype_water = 134217728
+
+mc_type_aberration = 0
+mc_type_animal = 1
+mc_type_beast = 2
+mc_type_construct = 3
+mc_type_dragon = 4
+mc_type_elemental = 5
+mc_type_fey = 6
+mc_type_giant = 7
+mc_type_humanoid = 8
+mc_type_magical_beast = 9
+mc_type_monstrous_humanoid = 10
+mc_type_ooze = 11
+mc_type_outsider = 12
+mc_type_plant = 13
+mc_type_shapechanger = 14
+mc_type_undead = 15
+mc_type_vermin = 16
+
+ALIGNMENT_NEUTRAL = 0
+ALIGNMENT_TRUE_NEUTRAL = 0
+ALIGNMENT_LAWFUL = 1
+ALIGNMENT_LAWFUL_NEUTRAL = 1
+ALIGNMENT_CHAOTIC = 2
+ALIGNMENT_CHAOTIC_NEUTRAL = 2
+ALIGNMENT_GOOD = 4
+ALIGNMENT_NEUTRAL_GOOD = 4
+ALIGNMENT_LAWFUL_GOOD = 5
+ALIGNMENT_CHAOTIC_GOOD = 6
+ALIGNMENT_EVIL = 8
+ALIGNMENT_NEUTRAL_EVIL = 8
+ALIGNMENT_LAWFUL_EVIL = 9
+ALIGNMENT_CHAOTIC_EVIL = 10

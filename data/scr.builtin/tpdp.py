@@ -460,3 +460,25 @@ class EventObjSavingThrow(EventObj):
         self.obj = toee.PyObjHandle()
         self.flags = 0
         return
+
+class D20SpellData:
+	def __init__(self, spell_enum = 0):
+		self.spell_enum = 0
+		self.spell_class = 0
+		self.inven_idx = 0
+		return
+
+	def set_spell_level(self, spLvl): 
+		return
+
+	def get_spell_level(self): 
+		return 1
+
+	def get_spell_store(self): 
+		return object()
+
+	def set_spell_class(self, spClass): 
+		return
+
+	def get_metamagic_data(self, spLvl): 
+		return object()
