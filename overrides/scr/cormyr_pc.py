@@ -398,3 +398,8 @@ def pc_get_clw_half():
 	npc.item_get(item)
 	npc.identify_all()
 	return
+
+def pc_grand_inspect():
+	game.leader.condition_add("Inspect")
+	for pc in game.party: pc.condition_add("Inspect")
+	return

@@ -144,7 +144,14 @@ class StatGenerator:
 					if (w.crit_range_str and crit_str): crit_info = "/{}{}".format(w.crit_range_str, crit_str)
 					numstr = ""
 					if (w.atk_num > 1): numstr = "{} ".format(w.atk_num)
-					phrase = "{}{} {} ({}){}".format(numstr, w.name, self.str_signed(w.attack_bonus), w.damage_dice_str, crit_info)
+					wname = str(w.name)
+					if ("+1" in wname): wname = "+1 " + wname.replace("+1", "")
+					elif ("+2" in wname): wname = "+2 " + wname.replace("+2", "")
+					elif ("+3" in wname): wname = "+3 " + wname.replace("+3", "")
+					elif ("+4" in wname): wname = "+4 " + wname.replace("+4", "")
+					damage_dice_str = w.damage_dice_str
+					if (w.damage_bonus_dice_str): damage_dice_str = damage_dice_str + " " + w.damage_bonus_dice_str
+					phrase = "{}{} {} ({}){}".format(numstr, wname, self.str_signed(w.attack_bonus), damage_dice_str, crit_info)
 					if (w.is_ranged):
 						line_ranged += comma_ranged + phrase
 						comma_ranged = " and "

@@ -1,4 +1,4 @@
-import toee
+import toee, debugg
 
 debug_print = 1
 class StatInspect:
@@ -445,10 +445,70 @@ class StatInspect:
 				item.attack_bonus = self.npc.stat_level_get(toee.stat_ranged_attack_bonus)
 
 			if (1):
+				wname = item.name.lower()
+				conds_equipment = None
+				if (hasattr(self.npc, 'conditions_get')):
+					kind = 2 #itemConds
+					conds_equipment = self.npc.conditions_get(kind)
+					if (debug_print): print(conds_equipment)
+					already = dict()
+					for cond in conds_equipment:
+						cond_name = cond[0]
+						if (cond_name in already): continue
+						already[cond_name] = 1
+						if (cond_name == "Weapon Masterwork"):
+							if (not "Weapon Enhancement Bonus" in already):
+								item.attack_bonus += 1
+								item.is_masterwork = 1
+							continue
+
+						if (cond_name == "Weapon Enhancement Bonus"):
+							if ("Weapon Masterwork" in already):
+								item.attack_bonus -= 1
+								item.is_masterwork = 0
+							b = cond[1][0]
+							item.attack_bonus += b
+							item.damage_bonus += b
+							item.ench_bonus += b
+							continue
+
+						if (cond_name == "Weapon Flaming"):
+							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+							item.damage_bonus_dice_str += "+ 1d6 (fire)"
+							continue
+						
+						if (cond_name == "Weapon Frost"):
+							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+							item.damage_bonus_dice_str += "+ 1d6 (cold)"
+							continue
+
+						if (cond_name == "Weapon Shock"):
+							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+							item.damage_bonus_dice_str += "+ 1d6 (electricity)"
+							continue
+
+						if (cond_name == "Weapon Holy"):
+							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+							item.damage_bonus_dice_str += "+ 2d6 (holy)"
+							continue
+
+						if (cond_name == "Weapon Unholy"):
+							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+							item.damage_bonus_dice_str += "+ 2d6 (unholy)"
+							continue
+
+						if (cond_name == "Composite Bow"):
+							b = cond[1][0]
+							item.damage_bonus += b
+							continue
+				#debugg.breakp("")
+
+			if (1):
 				dmg_dice_packed = weapon.obj_get_int(toee.obj_f_weapon_damage_dice)
 				if (debug_print): print("Weapon dmg_dice_packed: {}".format(dmg_dice_packed))
 				dmg_dice = toee.dice_new("1d1")
 				dmg_dice.packed = dmg_dice_packed
+				dmg_dice.bonus += item.damage_bonus
 				if (not item.is_ranged):
 					damage_bonus = self.npc.stat_level_get(toee.stat_damage_bonus)
 					if (debug_print): print("Weapon damage_bonus: {}".format(damage_bonus))
@@ -472,6 +532,8 @@ class StatInspect:
 				crit_hit_chart = weapon.obj_get_int(toee.obj_f_weapon_crit_hit_chart)
 				if (crit_hit_chart == 0): crit_hit_chart = 2
 				item.crit_chart = crit_hit_chart
+			if (debug_print): print(item)
+
 			result.append(item)
 		else:
 			attack_count = 0
@@ -524,13 +586,14 @@ class StatInspect:
 				if (not item): continue
 				numItems = numItems - 1
 				if (numItems <=0): break
-				item_name = item.description
+				item_namef = item.description
+				item_name = item_namef.lower()
 				is_posession = not ("poison" in item_name or "scroll" in item_name or "oil" in item_name or "wand" in item_name or "staff" in item_name or "rod" in item_name or "potion" in item_name)
 				if (not invert and is_posession): continue
 				if (invert and not is_posession): continue
 				cnt = 0
-				if (item_name in result): cnt = result[item_name]
-				result[item_name] = cnt + 1
+				if (item_name in result): cnt = result[item_namef]
+				result[item_namef] = cnt + 1
 		return result
 
 	def get_posessions_dic(self):
@@ -561,4 +624,9 @@ class StatInspectWeapon:
 		self.crit_range_str = ""
 		self.crit_chart = 2
 		self.atk_num = 1
+		self.atk_bonus = 0
+		self.damage_bonus = 0
+		self.damage_bonus_dice_str = ""
+		self.ench_bonus = 0
+		self.is_masterwork = 0
 		return

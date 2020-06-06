@@ -16,6 +16,22 @@ def san_enter_combat(attachee, triggerer):
 		return ctrl.enter_combat(attachee, triggerer)
 	return toee.RUN_DEFAULT
 
+class MonsterInfo:
+	def __init__(self):
+		self.proto = 0
+		self.id = None
+		return
+
+	@classmethod
+	def create(cls, locx, locy, dialog_line, distance_trigger):
+		obj = cls()
+		obj.locx = locx
+		obj.locy = locy
+		obj.loc = utils_obj.sec2loc(locx, locy)
+		obj.dialog_line = dialog_line
+		obj.distance_trigger = distance_trigger
+		return obj
+
 class CtrlMonster(object):
 	def __init__(self):
 		self.option_is_melee = 1
@@ -24,6 +40,7 @@ class CtrlMonster(object):
 		self.option_dont_move = 0
 		self.wield_next_round_back_proto = 0
 		self.option_5fs_prefer = 0
+		self.option_prefer_low_ac = 0
 		return
 
 	def created(self, npc):
@@ -78,6 +95,15 @@ class CtrlMonster(object):
 					if (prev_item):
 						self.wield_next_round_back_proto = prev_item.proto
 					attachee.item_wield(weapon, toee.item_wear_weapon_primary)
+
+			if (self.option_prefer_low_ac):
+				tac.add_clear_target()
+				prev_item = attachee.item_worn_at(toee.item_wear_weapon_primary)
+				if (prev_item and toee.game.is_ranged_weapon(prev_item.obj_get_int(toee.obj_f_weapon_type))):
+					tac.add_five_foot_step()
+				tac.add_target_low_ac()
+				tac.add_attack()
+				break
 
 			if (self.option_5fs_prefer):
 				tac.add_five_foot_step()
