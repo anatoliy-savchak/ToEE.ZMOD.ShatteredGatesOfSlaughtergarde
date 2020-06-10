@@ -220,7 +220,6 @@
     <Compile Include="overrides\scr\py00630_dwarf_item.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06300_daemon_shattered_sumberton.py" />
     <Compile Include="overrides\scr\py06400_daemon_shattered_temple.py">
       <SubType>Code</SubType>
     </Compile>

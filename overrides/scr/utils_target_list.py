@@ -60,7 +60,7 @@ class AITargetList(object):
 	def top(self):
 		result = 0
 		assert isinstance(result, toee.PyObjHandle)
-		target = topt()
+		target = self.topt()
 		if (not target is None):
 			assert isinstance(target, AITarget)
 			result = target.target

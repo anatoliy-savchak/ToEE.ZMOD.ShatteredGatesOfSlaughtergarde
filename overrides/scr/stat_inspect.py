@@ -252,8 +252,8 @@ class StatInspect:
 		if (cat == toee.mc_type_fey): return "fey"
 		if (cat == toee.mc_type_giant): return "giant"
 		if (cat == toee.mc_type_humanoid): return "humanoid"
-		if (cat == toee.mc_type_magical_beast): return "magical_beast"
-		if (cat == toee.mc_type_monstrous_humanoid): return "monstrous_humanoid"
+		if (cat == toee.mc_type_magical_beast): return "magical beast"
+		if (cat == toee.mc_type_monstrous_humanoid): return "monstrous humanoid"
 		if (cat == toee.mc_type_ooze): return "ooze"
 		if (cat == toee.mc_type_outsider): return "outsider"
 		if (cat == toee.mc_type_plant): return "plant"
@@ -451,56 +451,57 @@ class StatInspect:
 					kind = 2 #itemConds
 					conds_equipment = self.npc.conditions_get(kind)
 					if (debug_print): print(conds_equipment)
-					already = dict()
-					for cond in conds_equipment:
-						cond_name = cond[0]
-						if (cond_name in already): continue
-						already[cond_name] = 1
-						if (cond_name == "Weapon Masterwork"):
-							if (not "Weapon Enhancement Bonus" in already):
-								item.attack_bonus += 1
-								item.is_masterwork = 1
-							continue
+					if conds_equipment:
+						already = dict()
+						for cond in conds_equipment:
+							cond_name = cond[0]
+							if (cond_name in already): continue
+							already[cond_name] = 1
+							if (cond_name == "Weapon Masterwork"):
+								if (not "Weapon Enhancement Bonus" in already):
+									item.attack_bonus += 1
+									item.is_masterwork = 1
+								continue
 
-						if (cond_name == "Weapon Enhancement Bonus"):
-							if ("Weapon Masterwork" in already):
-								item.attack_bonus -= 1
-								item.is_masterwork = 0
-							b = cond[1][0]
-							item.attack_bonus += b
-							item.damage_bonus += b
-							item.ench_bonus += b
-							continue
+							if (cond_name == "Weapon Enhancement Bonus"):
+								if ("Weapon Masterwork" in already):
+									item.attack_bonus -= 1
+									item.is_masterwork = 0
+								b = cond[1][0]
+								item.attack_bonus += b
+								item.damage_bonus += b
+								item.ench_bonus += b
+								continue
 
-						if (cond_name == "Weapon Flaming"):
-							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
-							item.damage_bonus_dice_str += "+ 1d6 (fire)"
-							continue
+							if (cond_name == "Weapon Flaming"):
+								if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+								item.damage_bonus_dice_str += "+ 1d6 (fire)"
+								continue
 						
-						if (cond_name == "Weapon Frost"):
-							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
-							item.damage_bonus_dice_str += "+ 1d6 (cold)"
-							continue
+							if (cond_name == "Weapon Frost"):
+								if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+								item.damage_bonus_dice_str += "+ 1d6 (cold)"
+								continue
 
-						if (cond_name == "Weapon Shock"):
-							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
-							item.damage_bonus_dice_str += "+ 1d6 (electricity)"
-							continue
+							if (cond_name == "Weapon Shock"):
+								if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+								item.damage_bonus_dice_str += "+ 1d6 (electricity)"
+								continue
 
-						if (cond_name == "Weapon Holy"):
-							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
-							item.damage_bonus_dice_str += "+ 2d6 (holy)"
-							continue
+							if (cond_name == "Weapon Holy"):
+								if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+								item.damage_bonus_dice_str += "+ 2d6 (holy)"
+								continue
 
-						if (cond_name == "Weapon Unholy"):
-							if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
-							item.damage_bonus_dice_str += "+ 2d6 (unholy)"
-							continue
+							if (cond_name == "Weapon Unholy"):
+								if (item.damage_bonus_dice_str): item.damage_bonus_dice_str = item.damage_bonus_dice_str + " "
+								item.damage_bonus_dice_str += "+ 2d6 (unholy)"
+								continue
 
-						if (cond_name == "Composite Bow"):
-							b = cond[1][0]
-							item.damage_bonus += b
-							continue
+							if (cond_name == "Composite Bow"):
+								b = cond[1][0]
+								item.damage_bonus += b
+								continue
 				#debugg.breakp("")
 
 			if (1):

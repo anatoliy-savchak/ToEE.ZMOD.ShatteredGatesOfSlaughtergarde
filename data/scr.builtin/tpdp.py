@@ -461,6 +461,14 @@ class EventObjSavingThrow(EventObj):
         self.flags = 0
         return
 
+class EventObjImmunityQuery(EventObj):
+    def __init__(self):
+        self.evt_obj_type = toee.ET_OnSpellImmunityCheck # dispTypeSpellImmunityCheck
+        self.spell_entry = SpellEntry()
+        self.spell_packet = SpellPacket()
+        self.return_val = 0
+        return
+
 class D20SpellData:
 	def __init__(self, spell_enum = 0):
 		self.spell_enum = 0
@@ -482,3 +490,84 @@ class D20SpellData:
 
 	def get_metamagic_data(self, spLvl): 
 		return object()
+
+class SpellEntry:
+	def __init__(self, spell_enum = 0):
+		self.spell_enum = toee.spell_aid
+		self.spell_school_enum = 0
+		self.spell_subschool_enum = 0
+		self.descriptor = 0
+		self.casting_time = 0
+		self.saving_throw_type = toee.D20_Save_Fortitude
+		self.min_target = 0
+		self.max_target = 0
+		self.mode_target = 0
+		return
+
+	def is_base_mode_target(self, type): 
+		return 1
+
+	def get_level_specs(self): 
+		return list()
+
+	def level_for_spell_class(self, spellClass): 
+		return 1
+
+class SpellPacket:
+	def __init__(self, spell_enum = 0):
+		self.spell_enum = toee.spell_aid
+		self.spell_known_slot_level = 0
+		self.inventory_idx = 0
+		self.picker_result = 0
+		self.spell_class = 0
+		self.spell_id = 0
+		self.caster_level = 0
+		self.loc = 0
+		self.caster = toee.PyObjHandle()
+		return
+
+	def get_spell_casting_class(self): 
+		return 1
+
+	def get_metamagic_data(self): 
+		return SpellPacket()
+
+	def get_target(self, idx): 
+		return toee.PyObjHandle()
+
+	def set_projectile(self, projectile): 
+		assert isinstance(projectile, toee.PyObjHandle)
+		return
+
+	def is_divine_spell(self):
+		return 1
+
+	def debit_spell(self):
+		return
+
+	def update_registry(self):
+		return
+
+	def set_spell_object(self, idx,  spellObj, partsysId):
+		return
+
+	def add_spell_object(self, spellObj, partsysId):
+		return
+
+	def add_target(self, handle, partsysId):
+		return
+
+	def end_target_particles(self, handle):
+		return
+
+	def remove_target(self, handle):
+		return
+
+	def check_spell_resistance(self, tgt):
+		return
+
+	def trigger_aoe_hit(self):
+		return
+
+	def float_spell_line(self, handle, lineId, color):
+		return

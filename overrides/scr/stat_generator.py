@@ -79,7 +79,7 @@ class StatGenerator:
 
 		lines.append(self.dashes())
 
-		# Init, Senses
+		# AC
 		if (1):
 			line = ""
 			line = "AC {}, touch {}, flat-footed {}".format(self.values["ac"], self.values["ac_touch"], self.values["ac_flatfooted"])
