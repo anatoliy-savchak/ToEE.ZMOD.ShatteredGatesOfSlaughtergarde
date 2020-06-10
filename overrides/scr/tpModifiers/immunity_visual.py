@@ -24,7 +24,7 @@ def Immunity_Visual_OnSpellImmunityCheck(attachee, args, evt_obj):
 	#print("spell_enum: {}, spell_school_enum: {}, spell_subschool_enum: {}, descriptor: {}".format(spell_entry.spell_enum, spell_entry.spell_school_enum, spell_entry.spell_subschool_enum, spell_entry.descriptor))
 
 	if (spell_entry.descriptor & (1<<(toee.D20STD_F_SPELL_DESCRIPTOR_LIGHT-toee.D20STD_F_SPELL_DESCRIPTOR_ACID))):
-		attachee.float_text_line( "Visaul Affecting Immunity", toee.tf_red)
+		attachee.float_text_line( "Visual Affecting Immunity", toee.tf_red)
 		evt_obj.return_val = 1
 	return 0
 

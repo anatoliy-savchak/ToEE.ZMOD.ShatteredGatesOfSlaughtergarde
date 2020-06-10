@@ -81,6 +81,8 @@ class StatInspect:
 		# posessions
 		self.stats["posessions_dic"] = self.get_posessions_dic()
 		
+		# immunities
+		self.stats["immunities_dic"] = self.get_immunities_dic()
 
 		return self.stats
 
@@ -613,6 +615,31 @@ class StatInspect:
 			cnt = 0
 			if (item in result): cnt = result[item]
 			result[item] = cnt
+		return result
+
+	def get_immunities_dic(self):
+		if (not hasattr(self.npc, 'conditions_get')): return None
+		conds = list()
+		conds_0 = self.npc.conditions_get(0)
+		if (conds_0):
+			for i in conds_0:
+				conds.append(i)
+		conds_1 = self.npc.conditions_get(1)
+		if (conds_1):
+			for i in conds_1:
+				conds.append(i)
+
+		if (not conds): return None
+
+		result = dict()
+		for cond_tuple in conds:
+			cond_name_l = cond_tuple[0].lower()
+			if (cond_name_l == "immunity_blindness"):
+				result["Blindness"] = 1
+			elif (cond_name_l == "immunity_illusion"):
+				result["Illusions"] = 1
+			elif (cond_name_l == "immunity_visual"):
+				result["Visual effects"] = 1
 		return result
 
 class StatInspectWeapon:

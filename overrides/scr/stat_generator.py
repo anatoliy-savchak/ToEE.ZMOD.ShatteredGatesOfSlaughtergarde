@@ -112,6 +112,20 @@ class StatGenerator:
 				lines.append(line)
 
 		# Immune
+		if (1):
+			immunities_dic = self.values["immunities_dic"]
+			if (immunities_dic):
+				comma = ""
+				phrase = ""
+				line = ""
+				for w in immunities_dic.keys():
+					phrase = "{}{}".format(comma, w)
+					line += phrase
+					comma = ", "
+				if (line):
+					line = "Immunities: " + line
+					lines.append(line)
+		
 		# Resist
 		# Fort, Ref, Will
 		if (1):

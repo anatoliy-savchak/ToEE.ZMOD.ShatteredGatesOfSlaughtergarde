@@ -174,6 +174,17 @@ class AITargetMeasure(object):
 		measures = cls()
 		return measures
 
+	@classmethod
+	def by_melee(cls):
+		# unfinished
+		measures = cls()
+		measures.measure_has_los = 1
+		measures.qualify_has_los = 0
+		measures.measure_can_path = 1
+		measures.measure_distance = 1
+		measures.measure_range_is_within_melee = 1
+		return measures
+
 def btoi(b):
 	if (b): return 1
 	return 0
@@ -298,3 +309,8 @@ def _AITargetList_cmp_default(m1, m2):
 	assert isinstance(m1, AITarget)
 	assert isinstance(m2, AITarget)
 	return m2.measures.weight - m1.measures.weight
+
+def _AITargetList_cmp_closest(m1, m2):
+	assert isinstance(m1, AITarget)
+	assert isinstance(m2, AITarget)
+	return m2.measures.value_distance - m1.measures.value_distance
