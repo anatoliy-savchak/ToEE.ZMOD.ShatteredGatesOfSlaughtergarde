@@ -127,6 +127,12 @@ class StatGenerator:
 					lines.append(line)
 		
 		# Resist
+		if (1):
+			sr = self.values["sr"]
+			if (sr):
+				line = "SR {}".format(sr)
+				lines.append(line)
+
 		# Fort, Ref, Will
 		if (1):
 			line = "Fort {}, Ref {}, Will {}".format(self.str_signed(self.values["save_fort"]), self.str_signed(self.values["save_ref"]), self.str_signed(self.values["save_will"]))

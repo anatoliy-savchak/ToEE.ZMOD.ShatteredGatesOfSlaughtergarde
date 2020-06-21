@@ -274,6 +274,10 @@ class PyObjHandle(object):
 		"""npc.identify_all()"""
 		return
 
+	def is_spell_known(self, spellEnum):
+		"""npc.is_spell_known(self, spellEnum) -> int"""
+		return 1
+
 	def inventory_item(self, index):
 		"""npc.inventory_item(int: index) -> PyObjHandle"""
 		return PyObjHandle()
@@ -282,8 +286,8 @@ class PyObjHandle(object):
 		"""npc.item_find_by_proto(int: proto) -> PyObjHandle"""
 		return PyObjHandle()
 
-	def is_spell_known(self, spellEnum):
-		"""npc.is_spell_known(self, spellEnum) -> int"""
+	def item_get(self, item, flags = 0):
+		"""npc.item_get(item: PyObjHandle, flags: int = 0) -> int"""
 		return 1
 
 	def item_flags_get(self):
@@ -335,7 +339,7 @@ class PyObjHandle(object):
 		"""npc.float_mesfile_line(str: mesFilename, int: lineId, int[tf_white]: colorId) -> None"""
 		return
 	
-	def float_text_line(self, line, colorId):
+	def float_text_line(self, line, colorId = tf_white):
 		"""npc.float_text_line(str: line, int[tf_white]: colorId) -> None"""
 		return
 
@@ -3221,7 +3225,7 @@ OF_INVULNERABLE = 4194304
 OF_NOHEIGHT = 65536
 OF_NO_BLOCK = 1024
 OF_PROVIDES_COVER = 16384
-OF_RADIUS_SET = 2147483648L
+OF_RADIUS_SET = 2147483648 #2147483648L
 OF_RANDOM_SIZE = 32768
 OF_STONED = 524288
 OF_TELEPORTED = 1073741824
@@ -3408,7 +3412,7 @@ D20CAF_COVER = 134217728
 D20CAF_COUNTERSPELLED = 268435456
 D20CAF_THROWN_GRENADE = 536870912
 D20CAF_FINAL_ATTACK_ROLL = 1073741824
-D20CAF_TRUNCATED = 2147483648L
+D20CAF_TRUNCATED = 2147483648 #2147483648L
 
 # SavingThrowType
 D20_Save_Fortitude = 0

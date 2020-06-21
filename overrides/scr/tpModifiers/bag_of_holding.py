@@ -26,9 +26,11 @@ def Bag_Of_Holding_OnD20PythonActionPerform(attachee, args, evt_obj):
 		for pc in toee.game.party:
 			pc.condition_add(Bag_Of_Holding_Support)
 
+		prev_bag = FindBag()
+		if (prev_bag): prev_bag.destroy()
 		bag = toee.game.obj_create(1300, attachee.location)
 		do_invisible = "anim_goal_use_object" in dir(attachee)
-		#do_invisible = 0
+		do_invisible = 0
 		if (do_invisible):
 			bag.object_flag_set(toee.OF_DONTDRAW)
 			bag.move(attachee.location)
@@ -71,7 +73,12 @@ def _Bag_Of_Holding_destroy_on_timeevent(bag):
 	assert isinstance(bag, toee.PyObjHandle)
 	#print("_Bag_Of_Holding_destroy_on_timeevent toee.game.char_ui_display_type: {}".format(toee.game.char_ui_display_type))
 	if (not bag.object_flags_get() & toee.OF_DESTROYED):
-		if (not toee.game.char_ui_display_type):
+		is_invetory_screen_opened = 0
+		if ("anim_goal_use_object" in dir(toee.game)):
+			is_invetory_screen_opened = toee.game.char_ui_display_type
+
+		is_invetory_screen_opened = 0
+		if (not is_invetory_screen_opened):
 			print("Bag_Of_Holding_S_Inventory_Update destroying bag {}".format(bag))
 			bag.destroy()
 		else:

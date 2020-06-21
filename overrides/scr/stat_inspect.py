@@ -84,6 +84,9 @@ class StatInspect:
 		# immunities
 		self.stats["immunities_dic"] = self.get_immunities_dic()
 
+		# resistances
+		self.stats["sr"] = self.get_sr()
+
 		return self.stats
 
 	def get_cr(self):
@@ -558,6 +561,7 @@ class StatInspect:
 					if (not item.is_ranged and atkidx != 4):
 						item.attack_bonus += str_mod
 					item.atk_num = atk_num
+					# todo size malus
 					dmg_dice_packed = self.npc.obj_get_idx_int(toee.obj_f_critter_damage_idx, i)
 					dmg_dice = toee.dice_new("1d1")
 					dmg_dice.packed = dmg_dice_packed
@@ -641,6 +645,28 @@ class StatInspect:
 			elif (cond_name_l == "immunity_visual"):
 				result["Visual effects"] = 1
 		return result
+
+	def get_sr(self):
+		if (not hasattr(self.npc, 'conditions_get')): return None
+		conds = list()
+		conds_0 = self.npc.conditions_get(0)
+		if (conds_0):
+			for i in conds_0:
+				conds.append(i)
+		conds_1 = self.npc.conditions_get(1)
+		if (conds_1):
+			for i in conds_1:
+				conds.append(i)
+
+		if (not conds): return None
+		for cond_tuple in conds:
+			cond_name_l = cond_tuple[0].lower()
+			if (cond_name_l == "monster spell resistance"):
+				return cond_tuple[1][0]
+
+		sr = self.npc.d20_query(toee.EK_Q_Critter_Has_Spell_Resistance - toee.EK_Q_Helpless)
+		if (sr): return sr
+		return
 
 class StatInspectWeapon:
 	def __init__(self):
