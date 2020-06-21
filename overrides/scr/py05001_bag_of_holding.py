@@ -9,6 +9,7 @@ def san_use(attachee, triggerer):
 	if (not triggerer): 
 		print("py05001_bag_of_holding::san_use triggerer is none, exit")
 		return toee.SKIP_DEFAULT
+
 	bag = find_bag(triggerer)
 	if (not bag): 
 		print("py05001_bag_of_holding::san_use bag is none, exit")
@@ -29,39 +30,42 @@ def san_transfer(attachee, triggerer):
 	if (not triggerer): 
 		print("py05001_bag_of_holding::san_transfer triggerer is none, exit")
 		return toee.SKIP_DEFAULT
-	bag = find_bag(triggerer)
-	if (not bag): 
-		print("py05001_bag_of_holding::san_transfer bag is none, exit")
-		return toee.SKIP_DEFAULT
 
-	ctrl = CtrlBagOfHolding.ensure(bag)
-	assert isinstance(ctrl, CtrlBagOfHolding)
-	#ctrl.elicit(attachee)
-	#print(ctrl.items)
+	bag = find_bag(triggerer)
+	#if (not bag): 
+	#	print("py05001_bag_of_holding::san_transfer bag is none, exit")
+	#	return toee.SKIP_DEFAULT
+
+	print("Bag_Of_Holding_timed_elicit go")
 	Bag_Of_Holding_timed_elicit(bag, attachee, 1)
 	return toee.RUN_DEFAULT
 
 def Bag_Of_Holding_timed_elicit(bag, chest, time):
 	assert isinstance(bag, toee.PyObjHandle)
 	assert isinstance(chest, toee.PyObjHandle)
-	toee.game.timevent_add(_Bag_Of_Holding_elicit_on_timeevent, (bag, chest), time) # 1000 = 1 second
+	toee.game.timevent_add(_Bag_Of_Holding_elicit_on_timeevent, (bag, chest), time, 1) # 1000 = 1 second
 	return
 
 def _Bag_Of_Holding_elicit_on_timeevent(bag, chest):
 	assert isinstance(bag, toee.PyObjHandle)
 	assert isinstance(chest, toee.PyObjHandle)
-	if (not bag or bag.object_flags_get() & toee.OF_DESTROYED or not chest or chest.object_flags_get() & toee.OF_DESTROYED): return 1
+	#print("_Bag_Of_Holding_elicit_on_timeevent")
+	CtrlBagOfHolding.eject_incompatible(chest)
+	if (not bag or bag.object_flags_get() & toee.OF_DESTROYED or not chest or chest.object_flags_get() & toee.OF_DESTROYED): 
+		#print("_Bag_Of_Holding_elicit_on_timeevent::san_transfer bag is none, exit")
+		return 1
 
 	ctrl = CtrlBagOfHolding.ensure(bag)
 	assert isinstance(ctrl, CtrlBagOfHolding)
 	ctrl.elicit(chest)
-	print(ctrl.items)
+	#print(ctrl.items)
 	return 1
 
 
 def find_bag(triggerer):
 	for i in range(0, 199):
 		item = triggerer.inventory_item(i)
+		if (not item or item == toee.OBJ_HANDLE_NULL): continue
 		if (item.proto == 12501):
 			return item
 	return None
@@ -99,12 +103,33 @@ class CtrlBagOfHolding(object):
 			return data[cls.get_name()]
 		return None
 
+	@classmethod
+	def eject_incompatible(cls, chest):
+		assert isinstance(chest, toee.PyObjHandle)
+		#print("eject_incompatible on chest: {}".format(chest))
+		leader = toee.game.leader 
+		for i in range(0, 199):
+			obj = chest.inventory_item(i)
+			assert isinstance(obj, toee.PyObjHandle)
+			if (not obj or obj == toee.OBJ_HANDLE_NULL): continue
+			#print("checking incompatible {}".format(obj))
+			if (cls.is_obj_incompatible(obj)):
+				leader.item_get(obj)
+				leader.float_text_line("Incompatible item: {}".format(obj.description), toee.tf_red)
+		return
+
+	@classmethod
+	def is_obj_incompatible(cls, obj):
+		assert isinstance(obj, toee.PyObjHandle)
+		if (obj.proto == 12501): return 1
+		return 0
+
 	def elicit(self, chest):
 		assert isinstance(chest, toee.PyObjHandle)
 		self.items = dict()
 		for i in range(0, 199):
 			obj = chest.inventory_item(i)
-			if (not obj): continue
+			if (not obj or obj == toee.OBJ_HANDLE_NULL): continue
 			item = HoldingItem()
 			item.assign(obj)
 			self.items[item.id] = item

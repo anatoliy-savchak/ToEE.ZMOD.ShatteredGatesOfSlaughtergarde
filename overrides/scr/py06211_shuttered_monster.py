@@ -1,4 +1,4 @@
-import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon
+import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_target_list
 
 def san_start_combat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -98,11 +98,45 @@ class CtrlMonster(object):
 
 			if (self.option_prefer_low_ac):
 				tac.add_clear_target()
-				prev_item = attachee.item_worn_at(toee.item_wear_weapon_primary)
-				if (prev_item and toee.game.is_ranged_weapon(prev_item.obj_get_int(toee.obj_f_weapon_type))):
-					tac.add_five_foot_step()
-				tac.add_target_low_ac()
-				tac.add_attack()
+
+				is_ranged = 0
+				curr_item = attachee.item_worn_at(toee.item_wear_weapon_primary)
+				if (curr_item and toee.game.is_ranged_weapon(curr_item.obj_get_int(toee.obj_f_weapon_type))):
+					is_ranged = 1
+
+				target = None
+				if (not is_ranged):
+					measures = utils_target_list.AITargetMeasure.by_ac(0)
+					measures.measure_can_path = 1
+					measures.measure_range_is_within_melee = 1
+					measures.measure_distance = 1
+					#measures.mult_can_path = 10
+					targs = utils_target_list.AITargetList(attachee, 1, 0, measures).rescan()
+					print(targs)
+					if (targs):
+						for item in targs.list:
+							assert isinstance(item, utils_target_list.AITarget)
+							if (not item.measures.value_range_is_within_melee and (not item.measures.value_can_path or item.measures.value_can_path > 24)): continue
+							target = item.target
+							if (target): break
+
+					print(target)
+
+				if (target is None or not target):
+					if (is_ranged):
+						tac.add_five_foot_step()
+						tac.add_target_low_ac()
+						tac.add_attack()
+					else: 
+						#tac.add_target_closest()
+						#tac.add_ready_vs_approach()
+						tac.add_total_defence()
+				else: 
+					tac.add_target_obj(target.id)
+					tac.add_approach();
+					tac.add_attack()
+					#tac.add_ready_vs_approach()
+					tac.add_total_defence()
 				break
 
 			if (self.option_5fs_prefer):

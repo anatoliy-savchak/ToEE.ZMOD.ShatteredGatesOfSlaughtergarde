@@ -1,0 +1,21 @@
+{1}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{}{}{}{}
+
+{10}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{}{}{}{}
+{11}{Continue}{}{1}{}{12}{}
+{12}{Two dusky-skinned warriors with longbows guard a demon arch that has glowing eyes and a violet gas swirling in its mouth. Burnished copper double doors are set into the walls to the north and south.}{Two dusky-skinned warriors with longbows guard a demon arch that has glowing eyes and a violet gas swirling in its mouth. Burnished copper double doors are set into the walls to the north and south.}{}{}{}{cst().display_encounter_t1()}
+{13}{Continue}{}{1}{}{14}{}
+{14}{Tapestries hanging from the walls in this room depict horned, crimson-skinned humanoid warriors marching across volcanic mountains.}{Tapestries hanging from the walls in this room depict horned, crimson-skinned humanoid warriors marching across volcanic mountains.}{}{}{}{}
+{19}{Close}{}{1}{}{0}{cst().activate_encounter_t1()}
+
+{20}{In the center of this wide intersection stand two muscular, gray-skinned humanoids in loincloths. They have blank sockets where their eyes should be, and they carry greataxes.}{In the center of this wide intersection stand two muscular, gray-skinned humanoids in loincloths. They have blank sockets where their eyes should be, and they carry greataxes.}{}{}{}{cst().display_encounter_t2()}
+{29}{Close}{}{1}{}{0}{cst().activate_encounter_t2()}
+
+{30}{Guarding this room are two dusky-skinned men wearing breastplates and carrying longswords.}{Guarding this room are two dusky-skinned men wearing breastplates and carrying longswords.}{}{}{}{cst().display_encounter_t3()}
+{31}{Continue}{}{1}{}{32}{}
+{32}{Crates line the eastern wall, and a round table and four chairs sit in the middle of the room. In the southwestern corner is an ironbound chest that has a glowing rune on its top.}{Crates line the eastern wall, and a round table and four chairs sit in the middle of the room. In the southwestern corner is an ironbound chest that has a glowing rune on its top.}{}{}{}{}
+{39}{Close}{}{1}{}{0}{cst().activate_encounter_t3()}
+
+{40}{Three upright lizards the size of horses are tied to the northern wall, each nosing a pile of mushrooms on the floor there. Another stands nearby on its powerful hind legs, ridden by a drow in heavy armor who’s carrying a lance.}{Three upright lizards the size of horses are tied to the northern wall, each nosing a pile of mushrooms on the floor there. Another stands nearby on its powerful hind legs, ridden by a drow in heavy armor who’s carrying a lance.}{}{}{}{cst().display_encounter_t4()}
+{41}{Continue}{}{1}{}{42}{}
+{42}{A mosaic depicting clawed footprints emerges from under copper double doors to the east, heads into the middle of the room, then turns south, where it disappears under double doors there.}{A mosaic depicting clawed footprints emerges from under copper double doors to the east, heads into the middle of the room, then turns south, where it disappears under double doors there.}{}{}{}{}
+{49}{Close}{}{1}{}{0}{cst().activate_encounter_t4()}

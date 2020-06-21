@@ -1,0 +1,52 @@
+[
+{
+"code": "skill_balance",
+"id": 22,
+"enabled": 1
+},
+{
+"code": "skill_climb",
+"id": 23,
+"enabled": 1
+},
+{
+"code": "skill_escape_artist",
+"id": 27,
+"enabled": 1
+},
+{
+"code": "skill_jump",
+"id": 32,
+"enabled": 1
+},
+{
+"code": "skill_jump",
+"id": 32,
+"enabled": 1
+},
+{
+"code": "skill_knowledge_arcana",
+"id": 33,
+"enabled": 1
+},
+{
+"code": "skill_knowledge_religion",
+"id": 34,
+"enabled": 1
+},
+{
+"code": "skill_knowledge_nature",
+"id": 35,
+"enabled": 1
+},
+{
+"code": "skill_knowledge_all",
+"id": 35,
+"enabled": 1
+},
+{
+"code": "skill_use_rope",
+"id": 41,
+"enabled": 1
+}
+]
