@@ -65,7 +65,9 @@ class CtrlShatteredTemple(object):
 		#debugg.breakp("place_encounters")
 		self.encounters_placed = 1
 		#self.place_encounter_t1()
-		self.place_encounter_t2()
+		#self.place_encounter_t2()
+		#self.place_encounter_t3()
+		self.place_encounter_t4()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -76,13 +78,12 @@ class CtrlShatteredTemple(object):
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
 		wizard.identify_all()
 		#self.remove_trap_doors()
-		#toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
-		#toee.game.scroll_to(toee.game.leader)
-		#utils_obj.scroll_to_leader()
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 486, 493)
+		utils_obj.scroll_to_leader()
 		return
 
 	def place_encounter_t1(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 1, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall")
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall")
 
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 472), const_toee.rotation_0800_oclock, "t1", "guard1")
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 478), const_toee.rotation_0800_oclock, "t1", "guard2")
@@ -99,7 +100,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t2(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(487, 492), 6400, 11, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Spring")
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(487, 492), 6400, 20, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Spring")
 
 		self.create_grimlock_at(utils_obj.sec2loc(484, 492), const_toee.rotation_1100_oclock, "t2", "grmilock1")
 		self.create_grimlock_at(utils_obj.sec2loc(488, 492), const_toee.rotation_1100_oclock, "t2", "grmilock2")
@@ -115,26 +116,75 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t2", "grmilock2")
 		return
 
-	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name):
+	def place_encounter_t3(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(485, 510), 6400, 30, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Storage")
+
+		self.create_surrinak_house_guard_at(utils_obj.sec2loc(492, 510), const_toee.rotation_1100_oclock, "t3", "guard1", 1)
+		self.create_surrinak_house_guard_at(utils_obj.sec2loc(492, 514), const_toee.rotation_1100_oclock, "t3", "guard2", 1)
+		return
+
+	def display_encounter_t3(self):
+		self.reveal_monster("t3", "guard1")
+		self.reveal_monster("t3", "guard2")
+		return
+
+	def activate_encounter_t3(self):
+		self.activate_monster("t3", "guard1")
+		self.activate_monster("t3", "guard2")
+		return
+
+	def place_encounter_t4(self):
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(470, 475), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(459, 479), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
+
+		self.create_riding_lizard_at(utils_obj.sec2loc(469, 470), const_toee.rotation_0800_oclock, "t4", "lizard1")
+		self.create_riding_lizard_at(utils_obj.sec2loc(464, 470), const_toee.rotation_0800_oclock, "t4", "lizard2")
+		self.create_riding_lizard_at(utils_obj.sec2loc(459, 470), const_toee.rotation_0800_oclock, "t4", "lizard3")
+		self.create_riding_lizard_at(utils_obj.sec2loc(464, 477), const_toee.rotation_0800_oclock, "t4", "lizard4")
+		self.create_drow_rider_at(utils_obj.sec2loc(465, 481), const_toee.rotation_0800_oclock, "t4", "rider")
+		return
+
+	def display_encounter_t4(self):
+		self.reveal_monster("t4", "lizard1")
+		self.reveal_monster("t4", "lizard2")
+		self.reveal_monster("t4", "lizard3")
+		self.reveal_monster("t4", "lizard4")
+		self.reveal_monster("t4", "rider")
+		return
+
+	def activate_encounter_t4(self):
+		self.activate_monster("t4", "lizard1")
+		self.activate_monster("t4", "lizard2")
+		self.activate_monster("t4", "lizard3")
+		self.activate_monster("t4", "lizard4")
+		self.activate_monster("t4", "rider")
+		return
+
+	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_MASTERWORK, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 			#utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_BLACK, npc)
-			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_14, npc)
-			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_ARROW_QUIVER, npc)
+			if (not skip_longbow):
+				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_14, npc)
+				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_ARROW_QUIVER, npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc)
 			npc.item_wield_best_all()
 			npc.move(npc_loc)
 			npc.rotation = rot
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
-			#ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
-			#ctrl.option_prefer_low_ac = 1
+			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+			ctrl.option_prefer_low_ac = 1
+			if (skip_longbow):
+				npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
 		return npc
 
 	def create_grimlock_at(self, npc_loc, rot, encounter, code_name):
-		PROTO_NPC_GRIMLOCK = 14901
+		PROTO_NPC_GRIMLOCK = 14916
 		npc = toee.game.obj_create(PROTO_NPC_GRIMLOCK, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATAXE, npc)
@@ -144,7 +194,37 @@ class CtrlShatteredTemple(object):
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 			ctrl.option_prefer_low_ac = 1
-			npc.condition_add_with_args("Fighting Defensively", 1, 0)
+			npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
+		return npc
+
+	def create_riding_lizard_at(self, npc_loc, rot, encounter, code_name):
+		PROTO_NPC_RIDING_LIZARD = 14917
+		npc = toee.game.obj_create(PROTO_NPC_RIDING_LIZARD, npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			#ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+			#ctrl.option_5fs_prefer = 1
+			#npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
+		return npc
+
+	def create_drow_rider_at(self, npc_loc, rot, encounter, code_name):
+		PROTO_NPC_DROW_RIDER = 14918
+		npc = toee.game.obj_create(PROTO_NPC_DROW_RIDER, npc_loc)
+		if (npc):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, npc)
+			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc)
+			npc.feat_add(toee.feat_weapon_focus_glaive, 1)
+			npc.item_wield_best_all()
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			#ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
+			#ctrl.option_prefer_low_ac = 1
+			npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
 		return npc
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
