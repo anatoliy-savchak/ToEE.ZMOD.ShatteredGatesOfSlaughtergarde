@@ -24,3 +24,10 @@
 {51}{Continue}{}{1}{}{52}{}
 {52}{Mosaic footprints lead from the northern passageway into the intersection, where they turn west and head toward you.}{Mosaic footprints lead from the northern passageway into the intersection, where they turn west and head toward you.}{}{}{}{}
 {59}{Close}{}{1}{}{0}{cst().activate_encounter_t5()}
+
+{60}{A tall gray-furred humanoid that has an ursine head and carries a hammerlike club is this octagonal room's only inhabitant. It stands amid crushed rock.}{A tall gray-furred humanoid that has an ursine head and carries a hammerlike club is this octagonal room's only inhabitant. It stands amid crushed rock.}{}{}{}{cst().display_encounter_t6()}
+{61}{Continue}{}{1}{}{62}{}
+{62}{Intertwining snakes of differing sizes are carved in relief on the walls and ceiling. A black marble altar is set against each of the room's remaining walls. Each altar has a strange object on it.}{Intertwining snakes of differing sizes are carved in relief on the walls and ceiling. A black marble altar is set against each of the room's remaining walls. Each altar has a strange object on it.}{}{}{}{}
+{63}{Continue}{}{1}{}{64}{}
+{64}{Mosaic clawed footprints lead from the northern passageway to the center of the chamber, where they turn west and head out of the room.}{Mosaic clawed footprints lead from the northern passageway to the center of the chamber, where they turn west and head out of the room.}{}{}{}{}
+{69}{Close}{}{1}{}{0}{cst().activate_encounter_t6()}

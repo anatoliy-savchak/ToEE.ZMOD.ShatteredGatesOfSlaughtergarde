@@ -379,6 +379,9 @@ class EventObjD20Query(EventObj):
     def get_d20_action(self): 
         return D20Action()
 
+    def get_obj(self):
+        return toee.PyObjHandle()
+
 class EventObjTooltip(EventObj):
     """ Tooltip event for mouse-overed objects. """
     def __init__(self):

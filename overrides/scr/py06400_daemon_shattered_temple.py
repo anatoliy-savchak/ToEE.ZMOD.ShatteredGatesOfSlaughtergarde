@@ -68,7 +68,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t2()
 		#self.place_encounter_t3()
 		#self.place_encounter_t4()
-		self.place_encounter_t5()
+		#self.place_encounter_t5()
+		self.place_encounter_t6()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -186,6 +187,23 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t5", "aguard")
 		return
 
+	def place_encounter_t6(self):
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(463, 495), 6400, 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Sinuous Serpent")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(470, 498), 6400, 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Sinuous Serpent")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
+
+		self.create_quaggoth_at(utils_obj.sec2loc(458, 498), const_toee.rotation_0200_oclock, "t6", "quaggoth")
+		return
+
+	def display_encounter_t6(self):
+		self.reveal_monster("t6", "quaggoth")
+		return
+
+	def activate_encounter_t6(self):
+		self.activate_monster("t6", "quaggoth")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -261,6 +279,14 @@ class CtrlShatteredTemple(object):
 
 	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name):
 		npc, ctrl = py06401_shattered_temple_encounters.CtrlArcaneGuard.create_obj_and_class(npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+		return npc
+
+	def create_quaggoth_at(self, npc_loc, rot, encounter, code_name):
+		npc, ctrl = py06401_shattered_temple_encounters.CtrlQuaggoth.create_obj_and_class(npc_loc)
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot

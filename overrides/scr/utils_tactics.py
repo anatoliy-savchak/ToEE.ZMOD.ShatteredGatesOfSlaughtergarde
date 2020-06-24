@@ -217,3 +217,7 @@ class TacticsHelper(object):
 	def add_target_threatened(self):
 		self.add_simple("target threatened")
 		return
+
+	def add_rage(self):
+		self.add_simple("rage")
+		return

@@ -241,3 +241,59 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 		utils_npc.npc_spell_ensure(npc, toee.spell_shield, toee.stat_level_wizard, 1)
 		npc.cast_spell(toee.spell_shield, npc)
 		return
+
+class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14921
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		# assign scripts
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_hit] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_miss] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_critter_hits] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_critical_hit] = shattered_temple_encounters
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATCLUB, npc)
+		npc.item_wield_best_all()
+		#npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		assert isinstance(attachee, toee.PyObjHandle)
+		print("{}::enter_combat {}".format(type(self).__name__, attachee))
+
+		attachee.turn_towards(toee.game.leader)
+		messages = ("I'm gonna pin your ears back!", "Fresh meat!", "You just made my day!", "You're gonna be my bitch!", "I'm gonna pin your ears back!", "I'm gonna settle your hash!")
+		opt = toee.game.random_range(0, len(messages)-1)
+		message = messages[opt]
+		if (message):
+			attachee.float_text_line(message, toee.tf_yellow)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		is_raged = npc.d20_query(toee.EK_Q_Barbarian_Raged - toee.EK_Q_Helpless)
+		go_rage = 0
+		if (not is_raged):
+			if (toee.game.random_range(1, 6) == 1):
+				go_rage = 1
+		#go_rage = 1
+		if (go_rage):
+			npc.condition_add_with_args("Barbarian_Raged", 0, 0)
+
+		tac = utils_tactics.TacticsHelper(self.get_name())
+		tac.add_clear_target()
+		tac.add_target_closest()
+		#tac.add_target_damaged()
+		tac.add_attack()
+		tac.add_ready_vs_approach()
+		tac.add_approach()
+		tac.add_attack()
+		tac.add_total_defence()
+		tac.add_halt()
+		return tac

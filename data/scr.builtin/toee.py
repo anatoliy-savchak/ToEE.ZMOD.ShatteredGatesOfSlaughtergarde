@@ -130,6 +130,10 @@ class PyObjHandle(object):
 		""" npc.anim_goal_push_attack(PyObjHandle: tgt, anim_idx, is_crit, is_secondary) -> int"""
 		return
 
+	def anim_goal_use_object(self, target, goal_type = 40, target_loc = None, some_flag = None):
+		""" npc.anim_goal_use_object(PyObjHandle: target, int: goal_type = 40, int: target_loc = None, int: some_flag = None) -> int"""
+		return
+
 	def anim_goal_get_new_id(self):
 		return 0
 
@@ -213,6 +217,10 @@ class PyObjHandle(object):
 	def container_toggle_open(self):
 		"""door.container_toggle_open() -> None"""
 		return
+
+	def container_open_ui(self):
+		"""npc.container_open_ui(PyObjHandle: container) -> int"""
+		return 1
 
 	def cast_spell(self, spellEnum, targetObj):
 		"""npc.cast_spell(int: spellEnum, PyObjHandle: targetObj) -> None"""
@@ -526,6 +534,10 @@ class PyObjHandle(object):
 		"""npc.unconceal() -> int"""
 		return
 
+	def use_item():
+		"""npc.use_item(PyObjHandle: item, PyObjHandle: target = None) -> int"""
+		return 1
+
 
 class game(object):
 	"""access to game engine"""
@@ -533,6 +545,7 @@ class game(object):
 	party = (PyObjHandle(), PyObjHandle())
 	combat_turn = 0
 	quests = PyQuests()
+	char_ui_display_type = 0
 
 	@staticmethod
 	def obj_create(protoId, loc):
