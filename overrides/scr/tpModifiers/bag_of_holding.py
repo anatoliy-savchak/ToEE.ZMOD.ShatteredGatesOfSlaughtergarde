@@ -30,7 +30,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform(attachee, args, evt_obj):
 		if (prev_bag): prev_bag.destroy()
 		bag = toee.game.obj_create(1300, attachee.location)
 		do_invisible = "anim_goal_use_object" in dir(attachee)
-		do_invisible = 0
+		#do_invisible = 0
 		if (do_invisible):
 			bag.object_flag_set(toee.OF_DONTDRAW)
 			bag.move(attachee.location)

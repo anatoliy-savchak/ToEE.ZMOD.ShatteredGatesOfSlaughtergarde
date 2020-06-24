@@ -59,6 +59,7 @@
     <Folder Include="overrides\scr\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\oemes\oname.mes" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
@@ -157,6 +158,7 @@
     <Compile Include="overrides\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_proto_food.py" />
     <Compile Include="overrides\scr\const_animate.py">
       <SubType>Code</SubType>
     </Compile>
@@ -225,6 +227,7 @@
     <Compile Include="overrides\scr\py06400_daemon_shattered_temple.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\py06401_shattered_temple_encounters.py" />
     <Compile Include="overrides\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>

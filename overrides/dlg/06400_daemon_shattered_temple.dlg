@@ -19,3 +19,8 @@
 {41}{Continue}{}{1}{}{42}{}
 {42}{A mosaic depicting clawed footprints emerges from under copper double doors to the east, heads into the middle of the room, then turns south, where it disappears under double doors there.}{A mosaic depicting clawed footprints emerges from under copper double doors to the east, heads into the middle of the room, then turns south, where it disappears under double doors there.}{}{}{}{}
 {49}{Close}{}{1}{}{0}{cst().activate_encounter_t4()}
+
+{50}{Two corridors cross ahead of you. Standing in the intersection are two burly hobgoblins in simple red breeches and tunics. Beyond them is a male drow in a shining chain shirt. He has a spiked chain in one hand and a piece of parchment in the other.}{Two corridors cross ahead of you. Standing in the intersection are two burly hobgoblins in simple red breeches and tunics. Beyond them is a male drow in a shining chain shirt. He has a spiked chain in one hand and a piece of parchment in the other.}{}{}{}{cst().display_encounter_t5()}
+{51}{Continue}{}{1}{}{52}{}
+{52}{Mosaic footprints lead from the northern passageway into the intersection, where they turn west and head toward you.}{Mosaic footprints lead from the northern passageway into the intersection, where they turn west and head toward you.}{}{}{}{}
+{59}{Close}{}{1}{}{0}{cst().activate_encounter_t5()}

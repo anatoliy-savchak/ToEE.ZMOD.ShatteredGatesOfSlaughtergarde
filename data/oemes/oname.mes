@@ -1,0 +1,670 @@
+// These are for internal use only, and will not be seen by the player
+// The player will see the descriptions in data\mes\description.mes
+
+// Keep these ranges sync'd with O_Name_Index in OName.h
+
+
+//Miscellaneous ranges from 0 - 799
+{0}{Miscellaneous}
+{1}{This internal name is used on all of Lareth's items that, if sold, trigger the assassin (except Lareth's gold chain, internal number 3006, which needed its own).}
+
+
+// Portal ranges from 800 - 1199
+{800}{Portal}
+{901}{Doors T1-T2}
+{902}{Doors T1-T15}
+{903}{Doors T4-T5}
+{905}{Doors T4-T6}
+
+
+// Container ranges from 1200 - 1599
+{1200}{Container}
+{1201}{Throne of gems}
+{1202}{Otis' anvil}
+{1203}{Earth altar}
+{1204}{Trader's substitute inventory}
+{1205}{Otis's substitute inventory}
+
+
+// Scenery ranges from 1600 - 1799
+{1600}{Scenery}
+{1601}{Secretdoor Effect Test}
+{1602}{Moathouse brigand exit}
+{1603}{Moathouse brigand stairs}
+{1604}{Moathouse tunnel}
+{1605}{Temple tower ladder}
+{1606}{Temple interior well}
+{1607}{Temple airshaft level 1}
+{1608}{Temple tunnel level 3}
+{1609}{Zuggtmoy Lair Portal}
+{1610}{Zuggtmoy Throne Portal}
+{1611}{Air Node Exit Portal}
+{1612}{Earth Node Exit Portal}
+{1613}{Fire Node Exit Portal}
+{1614}{Water Node Exit Portal}
+{1615}{Minotaur statue}
+{1616}{Temple interior drop-away floor}
+{1617}{Temple interior throne}
+{1618}{Juggernaut statue}
+{1619}{Platinum pillar}
+{1620}{Hickory Branch Cave Blockage portal}
+{1621}{Castle of Lords outside Security Barricade portal}
+{1622}{Verbobonc City Hall doors to tunnels portal}
+{1623}{Castle of Lords inside Security Barricade portal}
+
+{1701}{Homm door 01 prosperous farmer}
+{1702}{Homm door 02 modest farmhouse}
+{1703}{Homm door 03 woodcutter}
+{1704}{Homm door 04 well kept farm}
+{1705}{Homm door 05 prosperous farmhouse}
+{1706}{Homm door 06 leatherworker}
+{1707}{Homm door 07 moneychanger 2}
+{1708}{Homm door 08 blacksmith}
+{1709}{Homm door 09 new building}
+{1710}{Homm door 10 weaver}
+{1711}{Homm door 11 tailor}
+{1712}{Homm door 12 strapping farmer}
+{1713}{Homm door 13 cabinet maker 2}
+{1714}{Homm door 14 teamster}
+{1715}{Homm door 15 moneychanger 1}
+{1716}{Homm door 16 cabinet maker 1}
+{1717}{Homm door 17 potter}
+{1718}{Homm door 18 brewhouse 1}
+{1719}{Homm door 19 modest cottage}
+{1720}{Homm door 20 cabinet maker 3}
+{1721}{Homm door 21 cheesemaker}
+{1722}{Homm door 22 mill}
+{1723}{Homm door 23 reclusive farmer}
+{1724}{Homm door 24 the grove}
+{1725}{Homm door 25 herdsman barn 1}
+{1726}{Homm door 26 wainwright}
+{1727}{Homm door 27 village elder}
+{1728}{Homm door 28 carpenter}
+{1729}{Homm door 29 stone mason}
+{1730}{Homm door 30 brewhouse 2}
+{1731}{Homm door 31 inn first}
+{1732}{Homm door 32 traders barn 1}
+{1733}{Homm door 33 traders barn 2}
+{1734}{Homm door 34 traders barn 3}
+{1735}{Homm door 35 traders store 1}
+{1736}{Homm door 36 traders store 2}
+{1737}{Homm door 37 traders store 3}
+{1738}{Homm door 38 main floor}
+{1739}{Homm door 39 main hall}
+{1740}{Homm door 40 herdsman barn 2}
+
+
+// Tagged scenery ranges from 1800 - 1979
+{1800}{Generic tagged scenery}
+{1801}{Bronze doors}
+{1802}{Minotaur room}
+{1803}{Hall of Statues}
+{1804}{Hall of Verdigris}
+{1805}{Long stairs behind Lubash}
+{1806}{Thrommel}
+{1807}{Earth Temple}
+{1808}{Fire Temple}
+{1809}{Water Temple}
+{1810}{Air Temple}
+{1811}{Throne}
+{1812}{Greater Temple (inner sanctum)}
+{1813}{Zuggtmoy's prison}
+
+
+// Projectile ranges from 1980 - 1999
+{1980}{Projectile}
+
+
+// Weapon ranges from 2000 - 2399
+{2000}{Weapon}
+{2200}{Traders' shortsword +1}
+{2201}{Fragarach}
+{2202}{Otis' magic longsword}
+{2203}{Orb of Golden Death}
+{2204}{Wonnilon's dagger +2}
+{2205}{Wonnilon's repeating crossbow +1}
+{2206}{Antonio's mace}
+{2207}{Jaer's Ball of Fire}
+{2208}{Masterwork maul}
+
+
+// Ammo ranges from 2400 - 2799
+{2400}{Ammo}
+{2600}{Black Jay's magic arrows}
+{2601}{Hruda's silver-tipped arrows}
+
+
+// Armor ranges from 2800 - 3199
+{2800}{Armor}
+{3000}{Black Jay's ring}
+{3001}{Black Jay's magic cloak}
+{3002}{Black Jay's magic boots}
+{3003}{Canoness Y'Dey's brooch}
+{3004}{Copper starburst pendant}
+{3005}{Yellow eye of fire cape}
+{3006}{Lareth's golden chain}
+{3007}{Nybble's iron ring}
+{3008}{Otis' magic chainmail}
+{3009}{Skole's +2 shield}
+{3010}{Earth Temple brown robe}
+{3011}{Oohlgrist's ruby necklace}
+{3012}{Wonnilon's leather armor}
+{3013}{Tubal's Ring of Protection +1}
+{3014}{Thrommel's gold chain medallion}
+{3015}{eight-pointed amulet}
+{3016}{Water Temple moss-green robe}
+{3017}{Fire Temple crimson robe}
+{3018}{Valden's spiked wooden shield}
+{3019}{Barkinar's boots of speed}
+{3020}{Air Temple ivory robe}
+{3021}{Greater Temple black robe}
+{3022}{Thrommel's gold ring}
+
+
+// Gold ranges from 3200 - 3599
+{3200}{Gold}
+
+
+// Food ranges from 3600 - 3999
+{3600}{Food}
+{3601}{Kelno's Vial of unholy water}
+{3602}{Belsornig's poison vial}
+{3603}{Holy water}
+
+
+// Scrolls range from 4000 - 4399
+{4000}{Scroll}
+{4001}{Furnok's scroll of magic protection}
+{4002}{NOT USED}
+{4003}{Scroll of fireball}
+{4004}{Scroll of gust of wind}
+{4005}{Wonnilon's scroll of control plants}
+
+
+// Key ranges from 4400 - 5199
+{4400}{Key}
+{4401}{Keys from trolls in rooms 302-305}
+{4407}{Gnome tunnels key}
+{4408}{Drainage tunnels key}
+
+
+// Written ranges from 5200 - 5599
+{5200}{Written}
+
+
+// Generic ranges from 5600 - 5999
+{5600}{Generic}
+{5800}{Hemlock}
+{5801}{Hay}
+{5802}{Fungus Figurine}
+{5803}{Grud's Gar}
+{5804}{Skole's Violet Garnet}
+{5805}{Skole's Black Pearl}
+{5806}{Oohlgrist's emerald belt}
+{5807}{Romag's sealed letter to Dick Rentsch}
+{5808}{Air Elemental Power Gem for the Orb of Golden Death}
+{5809}{Earth Elemental Power Gem for the Orb of Golden Death}
+{5810}{Fire Elemental Power Gem for the Orb of Golden Death}
+{5811}{Water Elemental Power Gem for the Orb of Golden Death}
+{5812}{Thieves' tools}
+{5813}{Masterwork thieves' tools}
+{5814}{Thrommel's gold belt}
+{5815}{Orb of Sah}
+{5816}{Hoard of gems from Zuggtmoy's throne}
+
+
+// PC ranges from 6000 - 6399
+{6000}{PC}
+
+
+// NPC ranges from 6400 - 9999
+{6400}{NPC}
+{8000}{Elmo}
+{8001}{Paida}
+{8002}{Lareth}
+{8003}{Furnok}
+{8004}{Turuko}
+{8005}{Kobort}
+{8006}{Sunom}
+{8007}{Moneir}
+{8008}{Ostler}
+{8009}{Tuperello}
+{8010}{Zert}
+{8011}{Valden}
+{8012}{Rik}
+{8013}{Marek}
+{8014}{Otis}
+{8015}{Meleny}
+{8016}{Ophelia}
+{8017}{Dala}
+{8018}{Dick Rentsch}
+{8019}{Preston Wetz}
+{8020}{Bertram}
+{8021}{Y'Dey}
+{8022}{Murfles}
+{8023}{Oohlgrist}
+{8024}{Tillahi}
+{8025}{Pintark}
+{8026}{Tuelk}
+{8027}{Merrolan}
+{8028}{Nalorrem}
+{8029}{Ed #1}
+{8030}{Ed #2}
+{8031}{Prince Thrommel}
+{8032}{Hedrack}
+{8033}{Aern}
+{8034}{Scorpp}
+{8035}{Barkinar}
+{8036}{Deggum}
+{8037}{Mandy}
+{8038}{Whitman}
+{8039}{Taki}
+{8040}{Ashrem}
+{8041}{Brunk}
+{8042}{Iuz}
+{8043}{St. Cuthbert}
+{8045}{Romag}
+{8046}{Hedrack}
+{8047}{Alrrem}
+{8048}{Rannos Davl}
+{8049}{Gremag}
+{8050}{Raimol}
+{8051}{Chanda}
+{8052}{Gleem}
+{8053}{Treasure map for CN vignette}
+{8054}{Burne}
+{8055}{Mona}
+{8056}{Serena}
+{8057}{Frederic}
+{8058}{Riana}
+{8059}{Murraya}
+{8060}{Morgan}
+{8061}{Ted}
+{8062}{Zaxis}
+{8063}{Bassanio}
+{8064}{Zuggtmoy (either form, crone or demon)}
+{8065}{Temple Level 2 prison guards}
+{8066}{Ariel}
+{8067}{Fruella}
+{8068}{Kent}
+{8069}{Pishella}
+{8070}{Kella}
+{8071}{Rufus}
+{8072}{Spugnoir}
+{8073}{Hommlet Laborer day shift}
+{8074}{Hommlet Laborer night shift}
+{8075}{Hedrack ally - mage 1}
+{8076}{Hedrack ally - mage 2}
+{8077}{Hedrack ally - bugbear archer 1}
+{8078}{Hedrack ally - bugbear archer 2}
+{8079}{Hedrack ally - bugbear fighter 1}
+{8080}{Hedrack ally - bugbear fighter 2}
+{8081}{Hedrack ally - bugbear fighter 3}
+{8082}{Hedrack ally - bugbear fighter 4}
+{8083}{Hedrack ally - ettin 1}
+{8084}{Hedrack ally - ettin 2}
+{8085}{Hedrack ally - gargoyle 1}
+{8086}{Hedrack ally - gargoyle 2}
+{8087}{Hedrack ally - gargoyle 3}
+{8088}{Hedrack ally - gargoyle 4}
+{8089}{Hedrack ally - hill giant}
+{8090}{Amii}
+{8091}{Belsornig}
+{8092}{Kelno}
+
+{8601}{HB North 02 Orc Fighter 01}
+{8602}{HB North 02 Orc Fighter 02}
+{8603}{HB North 02 Orc Fighter 03}
+{8604}{HB North 02 Orc Fighter 04}
+{8605}{HB North 02 Orc Fighter 05}
+{8606}{HB North 02 Orc Fighter 06}
+{8607}{HB North 02 Orc Sniper 01}
+{8608}{HB North 02 Orc Sniper 02}
+{8609}{HB North 02 Orc Marksman 01}
+{8610}{HB East Orc Rundor 01}
+{8611}{HB East Orc Rundor 02}
+{8612}{HB East Orc Rundor 03}
+{8613}{Noostoron}
+{8614}{HB AM Bugbear 01}
+{8615}{HB AM Bugbear 02}
+{8616}{HB AM Orc Assassin 01}
+{8617}{HB AM Orc Trainer 01}
+{8618}{HB AM Ogre 01}
+{8619}{HB AM Ettin 01}
+{8620}{HB AM Stone Giant 01}
+{8621}{HB AM Hill Giant 01}
+{8622}{HB Pit Critter West 01}
+{8623}{HB Pit Critter East 01}
+{8624}{HB Cave Orc Theurgist 01}
+{8625}{HB Cave Orc Theurgist 02}
+{8626}{HB Cave Orc Warlock 01}
+{8627}{HB Cave Orc Witch 01}
+{8628}{HB Cave Orc Marksman 01}
+{8629}{HB Cave Orc Marksman 02}
+{8630}{HB Cave Orc Sniper 01}
+{8631}{HB Cave Orc Sniper 02}
+{8632}{HB Cave Orc Fighter 01}
+{8633}{HB Cave Orc Fighter 02}
+{8634}{HB Cave Gnoll Troop 01}
+{8635}{HB Cave Bugbear Troop 01}
+{8636}{HB Cave Orc Rundor 01}
+
+{8699}{Ghost - Turuko}
+{8700}{Prince Zook IV}
+{8701}{Lerrik}
+{8702}{Darlia}
+{8703}{Wilfrick}
+{8704}{Victor}
+{8705}{Gregor}
+{8706}{Captain Abiram}
+{8707}{Captain Absalom}
+{8708}{Captain Achan}
+{8709}{Captain Asaph}
+{8710}{Jylee}
+{8711}{Maurice}
+{8712}{Canon Ramses}
+{8713}{Bella}
+{8714}{Corporal Holly}
+{8715}{Kwerd}
+{8716}{Guntur Gladstone}
+{8717}{Kendrew Commonworth}
+{8718}{Quintus Corpus}
+{8719}{Lydia}
+{8720}{Daniel}
+{8721}{Cleric Rastes}
+{8722}{Ah Fong}
+{8723}{Canon Thaddeus}
+{8724}{Samson}
+{8725}{Goliath}
+{8726}{Bathsheba}
+{8727}{Jenna}
+{8728}{Elysia}
+{8729}{Senshock}
+{8730}{Ronald}
+{8731}{Ariakas}
+{8732}{Uncle Orrengaard III} 
+{8733}{Nybble}
+{8734}{Fireforge}
+{8735}{King Battlehammer}
+{8736}{Wakefield}
+{8737}{Hextor Town Defense Attacker}
+{8738}{Hextor Guard Tower Attacker}
+{8739}{Hextor Church of St. Cuthbert Attacker}
+{8740}{Hextor Grove Attacker}
+{8741}{Hextor Welcome Wench Attacker}
+{8742}{Hextor North Road Guard}
+{8743}{Hextor Southwest Road Guard}
+{8744}{Hextor South Road Guard}
+{8745}{Hextor East Road Guard}
+{8746}{Hextor Northwestern Patrol}
+{8747}{Hextor Western Patrol}
+{8748}{Hextor Eastern Patrol}
+{8749}{Hextor North Road Guard Assassin}
+{8750}{Hextor Southwest Road Guard Assassin}
+{8751}{Hextor South Road Guard Assassin}
+{8752}{Hextor East Road Guard Assassin}
+{8753}{Hextor Elementalist}
+{8754}{Hextor Enchantress}
+{8755}{Hextor Town Defense Attacker Assassin}
+{8756}{Hextor Guard Tower Attacker Assassin}
+{8757}{Hextor Church of St. Cuthbert Attacker Assassin}
+{8758}{Hextor Grove Attacker Assassin}
+{8759}{Hextor Welcome Wench Attacker Assassin}
+{8760}{Hextor Northwestern Patrol Assassin}
+{8761}{Hextor Western Patrol Assassin}
+{8762}{Hextor Eastern Patrol Assassin}
+{8763}{Lady Asherah Living Guard}
+{8764}{Lady Asherah Dead Guard}
+{8765}{Becka 1 418 247}
+{8766}{Rakham}
+{8767}{Boroquin}
+{8768}{Becka 2 365 376}
+{8769}{Becka 3 447 555}
+{8770}{Verbobonc Entry Guard}
+{8771}{Verbo Tunnels Small Drain 01 640 315 SFX Generator}
+{8772}{Verbo Tunnels Small Drain 02 703 416 SFX Generator}
+{8773}{Verbo Tunnels Small Drain 03 573 431 SFX Generator}
+{8774}{Verbo Tunnels Small Drain 04 652 619 SFX Generator}
+{8775}{Verbo Tunnels Small Drain 05 455 814 SFX Generator}
+{8776}{Verbo Tunnels Small Drain 06 292 652 SFX Generator}
+{8777}{Verbo Tunnels Medium Drain 01 701 388 SFX Generator}
+{8778}{Verbo Tunnels Medium Drain 02 531 308 SFX Generator}
+{8779}{Verbo Tunnels Medium Drain 03 285 543 SFX Generator}
+{8780}{Verbo Tunnels Large Drain 01 592 372 SFX Generator}
+{8781}{Verbo Tunnels Large Drain 02 655 473 SFX Generator}
+{8782}{Verbo Tunnels Large Drain 03 525 488 SFX Generator}
+{8783}{Verbo Tunnels Large Drain 04 604 676 SFX Generator}
+{8784}{Verbo Tunnels Large Drain 05 511 766 SFX Generator}
+{8785}{Verbo Tunnels Large Drain 06 349 604 SFX Generator}
+{8786}{Verbo Tunnels Huge Drain 01 477 318 SFX Generator}
+{8787}{Verbo Tunnels Huge Drain 02 410 434 SFX Generator}
+{8788}{Verbo Tunnels Huge Drain 03 295 489 SFX Generator}
+{8789}{Verbo Tunnels Huge Drain 04 457 652 SFX Generator}
+{8790}{Verbo Tunnels Huge Drain 05 490 622 SFX Generator}
+{8791}{Panathaes 1 584 237}
+{8792}{Panathaes 2 561 190}
+{8793}{Panathaes 3 450 208}
+{8794}{Panathaes 4 456 348}
+{8795}{Panathaes 5 448 425}
+{8796}{Panathaes 6 371 450}
+{8797}{Panathaes 7 463 512}
+{8798}{Panathaes 8 528 613}
+{8799}{Becka 4 397 592}
+{8800}{Arrow to the knee guard}
+{8801}{Lady Asherah}
+{8802}{Captain Krunch}
+{8803}{Lord Hungous}
+{8804}{Kenan-Be'thuel}
+{8805}{Tarah-ka-Turah}
+{8806}{Sharar-be-L'ial}
+{8807}{Gadham}
+{8808}{Abaddon}
+{8809}{Lieutenant Bethany}
+{8810}{Gershom}
+{8811}{Persis}
+{8812}{Mathel}
+{8813}{Sergeant Naig Lliht}
+{8814}{Sergeant Ergo}
+{8815}{Sergeant Kallop}
+{8816}{Sergeant Boonthag}
+{8817}{Lieutenant Ruff}
+{8818}{Lhizeas}
+{8819}{Rothbert 1 418 246}
+{8820}{Rothbert 2 367 375}
+{8821}{Rothbert 3 449 554}
+{8822}{Rothbert 4 397 594}
+{8823}{Verbo Tunnels Ambient 01 SFX Generator}
+{8824}{Verbo Tunnels Ambient 02 SFX Generator}
+{8825}{Verbo Tunnels Ambient 03 SFX Generator}
+{8826}{Verbo Tunnels Ambient 04 SFX Generator}
+{8827}{Verbo Tunnels Ambient 05 SFX Generator}
+{8828}{Verbo Tunnels Ambient 06 SFX Generator}
+{8829}{Verbo Tunnels Ambient 07 SFX Generator}
+{8830}{Verbo Tunnels Ambient 08 SFX Generator}
+{8831}{Verbo Tunnels Ambient 09 SFX Generator}
+{8832}{Verbo Tunnels Ambient 10 SFX Generator}
+{8833}{Verbo Tunnels Ambient 11 SFX Generator}
+{8834}{Verbo Tunnels Ambient 12 SFX Generator}
+{8835}{Verbo Tunnels Ambient 13 SFX Generator}
+{8836}{Verbo Tunnels Ambient 14 SFX Generator}
+{8837}{Verbo Tunnels Ambient 15 SFX Generator}
+{8838}{Verbo Tunnels Ambient 16 SFX Generator}
+{8839}{Verbo Tunnels Ambient 17 SFX Generator}
+{8840}{Verbo Tunnels Ambient 18 SFX Generator}
+{8841}{Verbo Tunnels Ambient 19 SFX Generator}
+{8842}{Verbo Tunnels Ambient 20 SFX Generator}
+{8843}{Verbo Tunnels Ambient 21 SFX Generator}
+{8844}{Verbo Tunnels Ambient 22 SFX Generator}
+{8845}{Verbo Tunnels Ambient 23 SFX Generator}
+{8846}{Verbo Tunnels Ambient 24 SFX Generator}
+{8847}{Verbo Tunnels Ambient 25 SFX Generator}
+{8848}{Verbo Tunnels Ambient 26 SFX Generator}
+{8849}{Verbo Tunnels Ambient 27 SFX Generator}
+{8850}{Verbo Tunnels Ambient 28 SFX Generator}
+{8851}{Verbo Tunnels Ambient 29 SFX Generator}
+{8852}{Verbo Tunnels Ambient 30 SFX Generator}
+{8853}{Verbo Tunnels Voices 01 SFX Generator}
+{8854}{Verbo Tunnels Voices 02 SFX Generator}
+{8855}{Verbo Tunnels Voices 03 SFX Generator}
+{8856}{Verbo Tunnels Voices 04 SFX Generator}
+{8857}{Shaggoth - Boroquin}
+{8858}{Shaggoth - Rakham}
+{8859}{Ghost - Zert}
+{8860}{Ghost - Kobort}
+{8861}{Verbo River Ambient 01 SFX Generator}
+{8862}{Verbo River Ambient 02 SFX Generator}
+{8863}{Verbo River Ambient 03 SFX Generator}
+{8864}{Verbo River Ambient 04 SFX Generator}
+{8865}{Verbo River Ambient 05 SFX Generator}
+{8866}{Verbo River Ambient 06 SFX Generator}
+{8867}{Verbo River Ambient 07 SFX Generator}
+{8868}{Verbo River Ambient 08 SFX Generator}
+{8869}{Verbo River Ambient 09 SFX Generator}
+{8870}{Verbo River Ambient 10 SFX Generator}
+{8871}{Verbo River Ambient 11 SFX Generator}
+{8872}{Verbo River Ambient 12 SFX Generator}
+{8873}{Verbo River Ambient 13 SFX Generator}
+{8874}{Verbo River Ambient 14 SFX Generator}
+{8875}{Verbo River Ambient 15 SFX Generator}
+{8876}{Verbo River Ambient 16 SFX Generator}
+{8877}{Verbo River Ambient 17 SFX Generator}
+{8878}{Verbo River Ambient 18 SFX Generator}
+{8879}{Verbo River Ambient 19 SFX Generator}
+{8880}{Verbo River Ambient 20 SFX Generator}
+{8881}{Verbo River Ambient 21 SFX Generator}
+{8882}{Verbo River Ambient 22 SFX Generator}
+{8883}{Verbo River Ambient 23 SFX Generator}
+{8884}{Verbo River Ambient 24 SFX Generator}
+{8885}{Verbo River Ambient 25 SFX Generator}
+{8886}{Verbo River Ambient 26 SFX Generator}
+{8887}{Verbo River Ambient 27 SFX Generator}
+{8888}{Verbo River Ambient 28 SFX Generator}
+{8889}{Verbo River Ambient 29 SFX Generator}
+{8890}{Verbo River Ambient 30 SFX Generator}
+{8891}{Verbo Firepit Ambient SFX Generator}
+{8892}{Verbo Fountain Ambient SFX Generator}
+{8893}{Angra Mainyu}
+{8894}{HB South 01 Orc Sergeant 01}
+{8895}{HB South 01 Orc Dominator 01}
+{8896}{HB South 01 Orc Rundor 01}
+{8897}{HB South 01 Orc Rundor 02}
+{8898}{HB South 01 Orc Rundor 03}
+{8899}{HB South 01 Orc Bowman 01}
+{8900}{HB South 01 Orc Bowman 02}
+{8901}{HB South 01 Orc Archer 01}
+{8902}{HB South 01 Orc Archer 02}
+{8903}{HB South 01 Orc Sniper 01}
+{8904}{HB South 01 Hill Giant 01}
+{8905}{HB South 01 Hill Giant 02}
+{8906}{HB South 01 Hill Giant 03}
+{8907}{HB South 01 Hill Giant 04}
+{8908}{HB South 01 Hill Giant 05}
+{8909}{HB South 01 Orc Shaman 01}
+{8910}{HB South 01 Orc Medium 01}
+{8911}{HB South 02 Ogre 01}
+{8912}{HB South 02 Ettin 01}
+{8913}{HB South 02 Ettin 02}
+{8914}{HB South 02 Ettin 03}
+{8915}{HB South 02 Ettin 04}
+{8916}{HB South 02 Ettin 05}
+{8917}{HB South 02 Orc Bowman 01}
+{8918}{HB South 02 Orc Bowman 02}
+{8919}{HB South 02 Orc Archer 01}
+{8920}{HB South 02 Orc Shaman 01}
+{8921}{HB South 02 Orc Medium 01}
+{8922}{HB South 03 Orc Trainer 01}
+{8923}{HB South 03 Dire Wolf 01}
+{8924}{HB South 03 Fiendish Dire Wolf 01}
+{8925}{HB South 03 Fiendish Dire Wolf 02}
+{8926}{HB South 03 Fiendish Dire Wolf 03}
+{8927}{HB South 03 Worg 01}
+{8928}{HB South 03 Worg 02}
+{8929}{HB South 03 Worg 03}
+{8930}{HB South 03 Worg 04}
+{8931}{HB Ravine 01 Gnoll 01}
+{8932}{HB Ravine 01 Gnoll 02}
+{8933}{HB Ravine 01 Gnoll 03}
+{8934}{HB Ravine 01 Gnoll 04}
+{8935}{HB Ravine 01 Gnoll 05}
+{8936}{HB Ravine 01 Bugbear 01}
+{8937}{HB Ravine 01 Bugbear 02}
+{8938}{HB Ravine 01 Bugbear 03}
+{8939}{HB Ravine 01 Bugbear 04}
+{8940}{HB Ravine 02 Bugbear 05}
+{8941}{HB Ravine 02 Orc Sergeant 01}
+{8942}{HB Ravine 02 Orc Fighter 01}
+{8943}{HB Ravine 02 Orc Fighter 02}
+{8944}{HB Ravine 02 Orc Fighter 03}
+{8945}{HB Ravine 02 Orc Murderer 01}
+{8946}{HB Ravine 02 Orc Dominator 01}
+{8947}{HB Ravine 02 Orc Fighter 04}
+{8948}{HB Ravine 02 Orc Fighter 05}
+{8949}{HB Ravine 02 Orc Rundor 01}
+{8950}{HB Ravine 03 Orc Sergeant 02}
+{8951}{HB Ravine 03 Bugbear 06}
+{8952}{HB Ravine 03 Bugbear 07}
+{8953}{HB Ravine 03 Bugbear 08}
+{8954}{HB Ravine 03 Bugbear 09}
+{8955}{HB Ravine 03 Gnoll 06}
+{8956}{HB Ravine 03 Gnoll 07}
+{8957}{HB Ravine 03 Gnoll 08}
+{8958}{HB Ravine 03 Gnoll 09}
+{8959}{HB Ravine 01 Worg 01}
+{8960}{HB Ravine 01 Orc Shaman 01}
+{8961}{HB Ravine 01 Orc Medium 01}
+{8962}{HB Ravine 02 Orc Theurgist 01}
+{8963}{HB Ravine 02 Worg 02}
+{8964}{HB Ravine 02 Orc Theurgist 02}
+{8965}{HB Ravine 03 Orc Medium 02}
+{8966}{HB Ravine 03 Orc Shaman 02}
+{8967}{HB Ravine 03 Dire Wolf 01}
+{8968}{HB Ravine 03 Fiendish Dire Wolf 01}
+{8969}{HB Ravine 01 Ogre 01}
+{8970}{HB Ravine 01 Ogre 02}
+{8971}{HB Ravine 01 Ogre 03}
+{8972}{HB Ravine 02 Stone Giant 01}
+{8973}{HB Ravine 02 Stone Giant 02}
+{8974}{HB Ravine 02 Stone Giant 03}
+{8975}{HB Ravine 03 Ettin 01}
+{8976}{HB Ravine 03 Ettin 02}
+{8977}{HB Ravine 03 Ettin 03}
+{8978}{HB Ravine 01 Orc Bowman 01}
+{8979}{HB Ravine 01 Orc Archer 01}
+{8980}{HB Ravine 01 Orc Sniper 01}
+{8981}{HB Ravine 01 Orc Marksman 01}
+{8982}{HB Ravine 01 Orc Sniper 02}
+{8983}{HB Ravine 01 Orc Archer 02}
+{8984}{HB Ravine 02 Orc Archer 03}
+{8985}{HB Ravine 02 Orc Archer 04}
+{8986}{HB Ravine 02 Orc Bowman 02}
+{8987}{HB Ravine 02 Orc Sniper 03}
+{8988}{HB Ravine 03 Orc Marksman 02}
+{8989}{HB Ravine 03 Orc Bowman 03}
+{8990}{HB Ravine 03 Orc Sniper 04}
+{8991}{HB Ravine 03 Orc Archer 05}
+{8992}{HB North 01 Orc Murderer 01}
+{8993}{HB North 01 Orc Sergeant 01}
+{8994}{HB North 01 Ogre 01}
+{8995}{HB North 01 Orc Sniper 01}
+{8996}{HB North 01 Orc Sniper 02}
+{8997}{HB North 01 Orc Marksman 01}
+{8998}{HB North 01 Orc Theurgist 01}
+{8999}{HB North 02 Orc Assassin 01}
+{9000}{HB North 02 Orc Theurgist 01}
+
+
+// Trap ranges from 10001 - 10400
+{10000}{Trap}
+{10001}{bp_trap_magical}
+{10002}{bp_trap_mechanical}
+{10003}{bp_trap_arrow}
+{10004}{bp_trap_bullet}
+{10005}{bp_trap_fire}
+{10006}{bp_trap_electrical}
+{10007}{bp_trap_poison}
+{10008}{bp_trap_source}
+
+
+// Bag ranges from 10401 - 10800
+{10401}{Bag}
+{10402}{Wonnilon's backpack}

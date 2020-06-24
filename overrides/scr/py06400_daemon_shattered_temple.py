@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls
+import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -67,7 +67,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t1()
 		#self.place_encounter_t2()
 		#self.place_encounter_t3()
-		self.place_encounter_t4()
+		#self.place_encounter_t4()
+		self.place_encounter_t5()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -78,7 +79,7 @@ class CtrlShatteredTemple(object):
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
 		wizard.identify_all()
 		#self.remove_trap_doors()
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 486, 493)
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 464, 477)
 		utils_obj.scroll_to_leader()
 		return
 
@@ -162,6 +163,29 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t4", "rider")
 		return
 
+	def place_encounter_t5(self):
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(449, 479), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(441, 486), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
+
+		self.create_doom_fist_monk_at(utils_obj.sec2loc(444, 476), const_toee.rotation_0800_oclock, "t5", "monk1")
+		self.create_doom_fist_monk_at(utils_obj.sec2loc(444, 482), const_toee.rotation_0800_oclock, "t5", "monk2")
+		self.create_arcane_guard_at(utils_obj.sec2loc(438, 476), const_toee.rotation_0800_oclock, "t5", "aguard")
+		return
+
+	def display_encounter_t5(self):
+		self.reveal_monster("t5", "monk1")
+		self.reveal_monster("t5", "monk2")
+		self.reveal_monster("t5", "aguard")
+		return
+
+	def activate_encounter_t5(self):
+		self.activate_monster("t5", "monk1")
+		self.activate_monster("t5", "monk2")
+		self.activate_monster("t5", "aguard")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -227,6 +251,22 @@ class CtrlShatteredTemple(object):
 			npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
 		return npc
 
+	def create_doom_fist_monk_at(self, npc_loc, rot, encounter, code_name):
+		npc, ctrl = py06401_shattered_temple_encounters.CtrlDoomFistMonk.create_obj_and_class(npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+		return npc
+
+	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name):
+		npc, ctrl = py06401_shattered_temple_encounters.CtrlArcaneGuard.create_obj_and_class(npc_loc)
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+		return npc
+
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
 		if (not faction): faction = shattered_consts.FACTION_SLAUGHTERGARDE_LABORATORY
@@ -261,7 +301,12 @@ class CtrlShatteredTemple(object):
 		if (info):
 			npc = toee.game.get_obj_by_id(info.id)
 			if (npc):
+				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
+				if (ctrl and ("revealing" in dir(ctrl))):
+					ctrl.revealing(npc)
 				npc.object_flag_unset(toee.OF_DONTDRAW)
+				if (ctrl and ("revealed" in dir(ctrl))):
+					ctrl.revealed(npc)
 		return
 
 	def activate_monster(self, encounter_name, monster_code_name):
@@ -270,8 +315,13 @@ class CtrlShatteredTemple(object):
 		if (info):
 			npc = toee.game.get_obj_by_id(info.id)
 			if (npc):
+				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
+				if (ctrl and ("activating" in dir(ctrl))):
+					ctrl.activating(npc)
 				npc.npc_flag_unset(toee.ONF_NO_ATTACK)
 				npc.npc_flag_set(toee.ONF_KOS)
+				if (ctrl and ("activated" in dir(ctrl))):
+					ctrl.activated(npc)
 		if (not npc):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")

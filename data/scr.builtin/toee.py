@@ -317,6 +317,9 @@ class PyObjHandle(object):
 	def item_worn_unwield(self, equip_slot, drop_flag):
 		"""Move item to inventory or drop. npc.item_worn_unwield(int[item_wear_helmet-item_wear_lockpicks]: equip_slot, int: drop_flag) -> none"""
 		return PyObjHandle()
+
+	def get_weapon_type(self):
+		return wt_gauntlet
 	
 	def faction_add(self, faction_num):
 		"""npc.faction_add(int: faction_num) -> int"""
@@ -638,6 +641,16 @@ class game(object):
 		game.scroll_to(long: locOrObj) -> int
 		"""
 		return
+
+	@staticmethod
+	def is_melee_weapon(weapon_type):
+		""" game.is_melee_weapon(weapon_type[wt_gauntlet]: int) -> int"""
+		return 1
+	
+	@staticmethod
+	def is_ranged_weapon(weapon_type):
+		""" game.is_ranged_weapon(weapon_type[wt_gauntlet]: int) -> int"""
+		return 1
 
 def anyone(targetObjs, methodName, methodArg):
 	return PyObjHandle()
@@ -3710,3 +3723,79 @@ ALIGNMENT_EVIL = 8
 ALIGNMENT_NEUTRAL_EVIL = 8
 ALIGNMENT_LAWFUL_EVIL = 9
 ALIGNMENT_CHAOTIC_EVIL = 10
+
+# Weapon Type
+wt_bastard_sword = 57
+wt_battleaxe = 26
+wt_club = 8
+wt_composite_longbow = 49
+wt_composite_shortbow = 47
+wt_dagger = 3
+wt_dart = 15
+wt_dire_flail = 62
+wt_dwarven_urgrosh = 64
+wt_dwarven_waraxe = 58
+wt_falchion = 35
+wt_gauntlet = 0
+wt_glaive = 37
+wt_gnome_hooked_hammer = 59
+wt_grapple = 70
+wt_greataxe = 38
+wt_greatclub = 39
+wt_greatsword = 40
+wt_grenade = 72
+wt_guisarme = 41
+wt_halberd = 42
+wt_halfling_kama = 50
+wt_halfling_nunchaku = 52
+wt_halfling_siangham = 53
+wt_hand_crossbow = 65
+wt_handaxe = 21
+wt_heavy_crossbow = 17
+wt_heavy_flail = 36
+wt_heavy_lance = 28
+wt_heavy_mace = 10
+wt_heavy_pick = 30
+wt_javelin = 18
+wt_kama = 54
+wt_kukri = 51
+wt_light_crossbow = 14
+wt_light_flail = 27
+wt_light_hammer = 20
+wt_light_lance = 22
+wt_light_mace = 6
+wt_light_pick = 23
+wt_longbow = 48
+wt_longspear = 43
+wt_longsword = 29
+wt_mindblade = 73
+wt_morningstar = 11
+wt_net = 69
+wt_nunchaku = 55
+wt_orc_double_axe = 60
+wt_punching_dagger = 4
+wt_quarterstaff = 12
+wt_ranseur = 44
+wt_rapier = 31
+wt_ray = 71
+wt_repeating_crossbow = 68
+wt_sap = 24
+wt_scimitar = 32
+wt_scythe = 45
+wt_short_sword = 25
+wt_shortbow = 46
+wt_shortspear = 9
+wt_shuriken = 66
+wt_siangham = 56
+wt_sickle = 7
+wt_sling = 16
+wt_spear = 13
+wt_spike_chain = 61
+wt_spiked_gauntlet = 5
+wt_throwing_axe = 19
+wt_trident = 33
+wt_two_bladed_sword = 63
+wt_unarmed_strike_medium_sized_being = 1
+wt_unarmed_strike_small_being = 2
+wt_warhammer = 34
+wt_whip = 67

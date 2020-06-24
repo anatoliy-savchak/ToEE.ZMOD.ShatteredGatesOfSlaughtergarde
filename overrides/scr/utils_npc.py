@@ -100,3 +100,10 @@ def npc_find_nearest_pc(npc, distance_ft, should_see):
 			nearest = obj
 			nearest_dist = obj_dist
 	return nearest
+
+def print_npc_vicinity(leader = None):
+	if (not leader):
+		leader = game.leader
+	for npc in game.obj_list_vicinity(leader.location, OLC_NPC):
+		print("{}: {}, distance: {} or {}".format(npc, npc.id, npc.distance_to(leader), leader.distance_to(npc)))
+	return
