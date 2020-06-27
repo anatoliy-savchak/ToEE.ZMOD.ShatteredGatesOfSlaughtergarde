@@ -1,6 +1,21 @@
 import toee
 import copy
 
+def find_pc_closest_to_origin(loc):
+	f = None
+	fdist = 0.0
+	for obj in toee.game.party:
+		assert isinstance(obj, toee.PyObjHandle)
+		if (f is None): 
+			f = obj
+			fdist = obj.distance_to(loc)
+			continue
+		dist = obj.distance_to(loc)
+		if (dist < fdist):
+			f = obj
+			fdist = dist
+	return f, fdist
+
 class AITargetList(object):
 	def __init__(self, npc, option_include_pc = 1, option_include_npc = 0, measures = None, option_scan_range = 120):
 		assert isinstance(npc, toee.PyObjHandle)
@@ -12,6 +27,7 @@ class AITargetList(object):
 		self.measures = measures
 		if (self.measures is None):
 			self.measures = AITargetMeasure()
+		self.aggr = AITargetMeasure()
 		return
 
 	def __str__(self):
@@ -52,6 +68,7 @@ class AITargetList(object):
 		for target in self.list:
 			assert isinstance(target, AITarget)
 			target.measure()
+		self.aggregate()
 		return self
 
 	def qualify(self):
@@ -64,6 +81,18 @@ class AITargetList(object):
 				print("target {} disqualified ".format(target.target))
 		self.list = new_list
 		return self
+
+	def aggregate(self):
+		if (not self.list): return
+		for t in self.list:
+			assert isinstance(t, AITarget)
+			if (t.measures.value_range_is_within_melee):
+				self.aggr.value_range_is_within_melee +=1
+			if (t.measures.value_weapon_melee):
+				self.aggr.value_weapon_melee +=1
+			if (t.measures.value_weapon_ranged):
+				self.aggr.value_weapon_ranged +=1
+		return
 
 	def sort_default(self):
 		self.list.sort(cmp = _AITargetList_cmp_default)
@@ -116,7 +145,7 @@ class AITargetMeasure(object):
 
 		#self.value_is_destroyed = 0
 		self.value_stat_ac = 0
-		self.value_stat_hp = 0
+		self.value_stat_hp = 1
 		self.value_stat_hp_max = 0
 		self.value_stat_hp_percent = 0
 		self.value_stat_save_fortitude = 0
@@ -149,6 +178,7 @@ class AITargetMeasure(object):
 		#self.qualify_is_destroyed_not = 1
 		self.qualify_has_los = 0
 		self.qualify_range_is_within_melee = 0
+		self.qualify_stat_hp = 1
 
 		self.weight = 0
 		return
@@ -238,7 +268,7 @@ class AITarget(object):
 			self.measures.value_stat_hp_max = self.target.stat_level_get(toee.stat_hp_max)
 			self.measures.weight += self.measures.mult_stat_hp_max * self.measures.value_stat_hp_max
 			self.measures.value_stat_hp_percent = 0
-			if (self.measures.value_stat_hp_max > 0):
+			if (self.measures.value_stat_hp_max > 0 and self.measures.value_stat_hp):
 				self.measures.value_stat_hp_percent = self.measures.value_stat_hp / self.measures.value_stat_hp
 			self.measures.weight += self.measures.mult_stat_hp_percent * self.measures.value_stat_hp_percent
 
@@ -350,6 +380,8 @@ class AITarget(object):
 	def qualify(self):
 		#if (self.measures.measure_is_destroyed):
 		#	if (self.measures.qualify_is_destroyed_not and self.measures.value_is_destroyed): return 0
+		if (self.measures.measure_stat_hp):
+			if (self.measures.qualify_stat_hp and not self.measures.value_stat_hp >= 0): return 0
 		if (self.measures.measure_has_los):
 			if (self.measures.qualify_has_los and not self.measures.value_has_los): return 0
 		if (self.measures.measure_range_is_within_melee):

@@ -52,15 +52,19 @@ def san_heartbeat( attachee, triggerer ):
 		talker = pc
 		break
 	if (not talker): return toee.RUN_DEFAULT
+	result = promter_talk(attachee, talker)
+	return result
+
+def promter_talk(attachee, talker):
 	#line_id = attachee.obj_get_int(obj_f_hp_pts) - 100
 	line_id = attachee.obj_get_int(PROMTER_PARAM_FIELD_LINEID)
 	method = attachee.obj_get_int(PROMTER_PARAM_FIELD_METHOD)
 	print("line_id: {}, method: {}".format(line_id, method))
 	#debugg.breakp("py06122_cormyr_prompter san_heartbeat 2")
 	if (method == 1):
-		foundTuple[0].begin_dialog(attachee, line_id)
+		talker.begin_dialog(attachee, line_id)
 	elif (line_id > 0):
-		utils_obj.obj_float_line_dialog(attachee, method, line_id, foundTuple[0])
+		utils_obj.obj_float_line_dialog(attachee, method, line_id, talker)
 		if (attachee.scripts[const_toee.sn_bust]):
 			attachee.object_script_execute(foundTuple[0], const_toee.sn_bust)
 	#utils_obj.obj_scripts_clear(attachee)

@@ -12,6 +12,43 @@ def san_first_heartbeat(attachee, triggerer):
 	ctrl.place_encounters()
 	return toee.RUN_DEFAULT
 
+NAMEID_DOOR_T7 = 907
+
+def san_use(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	if (attachee.name == NAMEID_DOOR_T7):
+		utils_obj.obj_scripts_clear(attachee)
+		#utils_obj.obj_timed_destroy(obj, 1000)
+		#toee.game.timevent_add(_door_used, (attachee, triggerer), 1000, 0) # 1000 = 1 second
+		toee.game.timevent_add(_door_used_interrupt, (attachee, triggerer), 100, 1) # 1000 = 1 second
+		for pc in toee.game.party:
+			pc.anim_goal_interrupt()
+
+		
+		#return toee.SKIP_DEFAULT
+		#attachee.portal_toggle_open()
+	return toee.RUN_DEFAULT
+
+def _door_used(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	loc = attachee.location
+	attachee.destroy()
+	for npc in toee.game.obj_list_vicinity(loc, toee.OLC_NPC):
+		if (npc.proto == 14830):
+			py06122_cormyr_prompter.promter_talk(npc, triggerer)
+			break
+	return 1
+
+def _door_used_interrupt(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	#attachee.portal_toggle_open()
+	triggerer.anim_goal_use_object(attachee, 12, attachee.location, 1)
+	toee.game.timevent_add(_door_used, (attachee, triggerer), 1000, 0) # 1000 = 1 second
+	#for pc in toee.game.party:
+	#	pc.anim_goal_interrupt()
+	return 1
+
 def cst():
 	#print("CtrlShatteredLab.get_name(): {}".format(CtrlShatteredLab.get_name()))
 	o = utils_storage.obj_storage_by_id(shattered_consts.SHATERRED_TEMPLE_DAEMON_ID)
@@ -69,7 +106,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t3()
 		#self.place_encounter_t4()
 		#self.place_encounter_t5()
-		self.place_encounter_t6()
+		#self.place_encounter_t6()
+		self.place_encounter_t7()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -78,9 +116,11 @@ class CtrlShatteredTemple(object):
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_INVISIBILITY, wizard)
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BLUR, wizard)
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, wizard)
 		wizard.identify_all()
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
 		#self.remove_trap_doors()
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 464, 477)
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
 		utils_obj.scroll_to_leader()
 		return
 
@@ -170,9 +210,13 @@ class CtrlShatteredTemple(object):
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
-		self.create_doom_fist_monk_at(utils_obj.sec2loc(444, 476), const_toee.rotation_0800_oclock, "t5", "monk1")
-		self.create_doom_fist_monk_at(utils_obj.sec2loc(444, 482), const_toee.rotation_0800_oclock, "t5", "monk2")
-		self.create_arcane_guard_at(utils_obj.sec2loc(438, 476), const_toee.rotation_0800_oclock, "t5", "aguard")
+		leader, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(438, 476), const_toee.rotation_0800_oclock, "t5", "aguard")
+		if (ctrl):
+			ctrl.fire_epicenter = utils_obj.sec2loc(453, 480)
+		minion = self.create_doom_fist_monk_at(utils_obj.sec2loc(442, 476), const_toee.rotation_0800_oclock, "t5", "monk1")
+		minion.obj_set_obj(obj_f_npc_leader, leader)
+		minion = self.create_doom_fist_monk_at(utils_obj.sec2loc(442, 482), const_toee.rotation_0800_oclock, "t5", "monk2")
+		minion.obj_set_obj(obj_f_npc_leader, leader)
 		return
 
 	def display_encounter_t5(self):
@@ -202,6 +246,28 @@ class CtrlShatteredTemple(object):
 
 	def activate_encounter_t6(self):
 		self.activate_monster("t6", "quaggoth")
+		return
+
+	def place_encounter_t7(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(430, 493), 6400, 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northern Quarters")
+
+		fire_epicenter = utils_obj.sec2loc(437, 494)
+		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(428, 493), const_toee.rotation_0800_oclock, "t7", "aguard1", 2)
+		if (ctrl):
+			ctrl.fire_epicenter = fire_epicenter
+		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(424, 493), const_toee.rotation_0800_oclock, "t7", "aguard2", 3)
+		if (ctrl):
+			ctrl.fire_epicenter = fire_epicenter
+		return
+
+	def display_encounter_t7(self):
+		self.reveal_monster("t7", "aguard1")
+		self.reveal_monster("t7", "aguard2")
+		return
+
+	def activate_encounter_t7(self):
+		self.activate_monster("t7", "aguard1")
+		self.activate_monster("t7", "aguard2")
 		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
@@ -277,13 +343,16 @@ class CtrlShatteredTemple(object):
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 		return npc
 
-	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name):
-		npc, ctrl = py06401_shattered_temple_encounters.CtrlArcaneGuard.create_obj_and_class(npc_loc)
+	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name, guard_ai_type = 0):
+		npc, ctrl = py06401_shattered_temple_encounters.CtrlArcaneGuard.create_obj_and_class(npc_loc, 0)
+		if (ctrl):
+			ctrl.guard_ai_type = guard_ai_type
+			ctrl.created(npc)
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, None, 1, 1)
-		return npc
+			self.monster_setup(npc, encounter, code_name, code_name, 1, 1)
+		return npc, ctrl
 
 	def create_quaggoth_at(self, npc_loc, rot, encounter, code_name):
 		npc, ctrl = py06401_shattered_temple_encounters.CtrlQuaggoth.create_obj_and_class(npc_loc)

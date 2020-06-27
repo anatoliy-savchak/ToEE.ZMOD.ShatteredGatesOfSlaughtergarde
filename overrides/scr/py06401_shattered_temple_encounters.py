@@ -1,4 +1,4 @@
-import toee, debug, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list
+import toee, debug, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands
 
 shattered_temple_encounters = 6401
 
@@ -70,17 +70,55 @@ class CtrlDoomFistMonk(ctrl_behaviour.CtrlBehaviour):
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		tac = None
+		melees = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_melee()).rescan()
 		dagger = npc.item_find_by_proto(MONK_THROW_WEAPON)
-		if (dagger): 
-			npc.item_wield(dagger, toee.item_wear_weapon_primary)
-			tac = utils_tactics.TacticsHelper(self.get_name())
-			#tac.add_five_foot_step()
-			tac.add_target_closest()
-			tac.add_halt()
-			tac.add_attack()
-			tac.add_total_defence()
-			tac.add_halt()
-		else:
+		healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_LIGHT_WOUNDS)
+		while (1):
+			if (dagger): 
+				print("dagger option, value_range_is_within_melee: {}".format(melees.aggr.value_range_is_within_melee))
+				if (melees.aggr.value_range_is_within_melee == 0): 
+					npc.item_wield(dagger, toee.item_wear_weapon_primary)
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					#tac.add_five_foot_step()
+					tac.add_target_closest()
+					tac.add_halt()
+					tac.add_attack()
+					tac.add_total_defence()
+					tac.add_halt()
+					break
+
+			leader = None
+			if (healing_potion and utils_npc.npc_hp_current_percent(npc) <= 50):
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_target_self()
+				tac.add_use_item(healing_potion.id)
+				#leader = utils_npc.find_npc_by_proto(14920)
+				if (leader is None): leader = npc.leader_get()
+				if (leader):
+					tac.add_target_obj(leader.id)
+				tac.add_d20_action(toee.D20A_FLEE_COMBAT, 0)
+				#tac.add_total_defence()
+				break
+
+			if (healing_potion):
+				if (leader is None): leader = npc.leader_get()
+				print("checking leader to be healed. Leader: {}".format(leader))
+				if (leader):
+					leader_hp_perc = utils_npc.npc_hp_current_percent(leader)
+					hp = leader.stat_level_get(toee.stat_hp_current)
+					print("Leader hp%: {}, hp: {}".format(leader_hp_perc, hp))
+					if (leader_hp_perc <= 50 and hp > -10):
+					#if (1):
+						print("go and heal")
+						tac = utils_tactics.TacticsHelper(self.get_name())
+						tac.add_target_obj(leader.id)
+						tac.add_approach()
+						tac.add_use_item(healing_potion.id)
+						tac.add_total_defence()
+						tac.add_halt()
+				break
+
 			tac = utils_tactics.TacticsHelper(self.get_name())
 			tac.add_clear_target()
 			tac.add_target_closest()
@@ -89,6 +127,7 @@ class CtrlDoomFistMonk(ctrl_behaviour.CtrlBehaviour):
 			tac.add_attack()
 			tac.add_approach()
 			tac.add_attack()
+			break
 		return tac
 
 def CtrlArcaneGuard_measures_cmp(x, y):
@@ -120,10 +159,19 @@ def CtrlArcaneGuard_measures_cmp(x, y):
 	#print("result: {}".format(result))
 	return result
 
+ARCANE_GUARD_SLEEP = toee.spell_deep_slumber
+ARCANE_GUARD_SLEEP_SCROLL_PROTO = const_proto_scrolls.PROTO_SCROLL_OF_DEEP_SLUMBER
+#ARCANE_GUARD_SLEEP_SCROLL_PROTO = const_proto_scrolls.PROTO_SCROLL_OF_SLEEP
 class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls):
 		return 14920
+
+	def __init__(self):
+		super(CtrlArcaneGuard, self).__init__()
+		self.guard_ai_type = 0
+		self.fire_epicenter = 0
+		return
 
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
@@ -133,13 +181,28 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, npc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_MITHRAL_SHIRT, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SPIKED_CHAIN_MASTERWORK, npc)
+		if (self.guard_ai_type == 0):
+			utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, npc)
+		elif (self.guard_ai_type == 2):
+			utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, npc)
+			pass
+		elif (self.guard_ai_type == 3):
+			#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, npc)
+			utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_MAGIC_MISSILES_1ST, npc)
+			#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_DEEP_SLUMBER, npc)
+			#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_SLEEP, npc)
+			utils_item.item_create_in_inventory(ARCANE_GUARD_SLEEP_SCROLL_PROTO, npc)
+
 		npc.item_wield_best_all()
 		npc.condition_add_with_args("AI_Improved_Trip_Aoo", 0, 0)
-		#npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
+
+		# attempt to disable combat casting, unsuccessful
+		npc.d20_send_signal("Cast_Defensively_Remove")
+		npc.d20_send_signal(toee.EK_S_Resurrection-toee.EK_S_HP_Changed, npc)
+		npc.d20_send_signal(toee.EK_S_SetCastDefensively-toee.EK_S_HP_Changed, 1)
 		return
 
 	def create_tactics(self, npc):
@@ -161,13 +224,61 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 					tac.add_total_defence()
 					break
 
+			if (self.spells.get_spell_count(ARCANE_GUARD_SLEEP)): 
+				#debug.breakp("spell_deep_slumber")
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				#tac.add_five_foot_step()
+				tac.add_target_closest()
+				#tac.add_halt()
+				tac.add_cast_area_code(self.spells.prep_spell(npc, ARCANE_GUARD_SLEEP))
+				break
+
 			if (self.spells.get_spell_count(toee.spell_fireball)): 
 				tac = utils_tactics.TacticsHelper(self.get_name())
 				#tac.add_five_foot_step()
 				tac.add_target_closest()
+				if (self.guard_ai_type == 2):
+					trg, dist = utils_target_list.find_pc_closest_to_origin(utils_obj.sec2loc(434, 493))
+					if (trg and dist <= 15):
+						tac.add_target_obj(trg.id)
 				tac.add_halt()
-				tac.add_cast_fireball_code(self.spells.prep_spell(npc, toee.spell_fireball))
+				#tac.add_cast_fireball_code(self.spells.prep_spell(npc, toee.spell_fireball))
+				tac.add_cast_area_code(self.spells.prep_spell(npc, toee.spell_fireball))
+				print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!CAST FIREBALL")
 				break
+
+			if (1): 
+				scroll = npc.item_find_by_proto(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL)
+				if (scroll):
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					#tac.add_five_foot_step()
+					tac.add_target_closest()
+					print("self.fire_epicenter: {}".format(self.fire_epicenter))
+					if (self.fire_epicenter):
+						trg, dist = utils_target_list.find_pc_closest_to_origin(self.fire_epicenter)
+						print("find_pc_closest_to_origin: {}, {}".format(trg, dist))
+						if (trg and dist <= 15):
+							tac.add_target_obj(trg.id)
+					tac.add_halt()
+					tac.add_use_item(scroll.id)
+					break
+			
+			if (1): 
+				scroll = npc.item_find_by_proto(ARCANE_GUARD_SLEEP_SCROLL_PROTO)
+				if (scroll):
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					#tac.add_five_foot_step()
+					tac.add_target_closest()
+					print("looking for good target for sleep")
+					print("self.fire_epicenter: {}".format(self.fire_epicenter))
+					if (self.fire_epicenter):
+						trg, dist = utils_target_list.find_pc_closest_to_origin(self.fire_epicenter)
+						print("find_pc_closest_to_origin: {}, {}".format(trg, dist))
+						if (trg and dist <= 15):
+							tac.add_target_obj(trg.id)
+					#tac.add_halt()
+					tac.add_use_item(scroll.id)
+					break
 
 			if (self.spells.get_spell_count(toee.spell_ray_of_enfeeblement)): 
 				tac = utils_tactics.TacticsHelper(self.get_name())
@@ -180,6 +291,7 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 			if (healing_potion and utils_npc.npc_hp_current_percent(npc) <= 50):
 				tac = utils_tactics.TacticsHelper(self.get_name())
 				tac.add_clear_target()
+				tac.add_target_self()
 				tac.add_use_item(healing_potion.id)
 				tac.add_total_defence()
 				break
@@ -187,6 +299,7 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 			
 			best_target = None
 			d20Action = toee.D20A_DISARM
+			melees = None
 			if (1):
 				#print("checking AITargetList...")
 				melees = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_melee()).rescan()
@@ -200,18 +313,28 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 						print("found atarget: {}".format(atarget))
 						print("found target: {}".format(atarget.target))
 						assert isinstance(atarget, utils_target_list.AITarget)
-						if (atarget.measures.value_prone): d20Action = 0
+						if (atarget.measures.value_prone): 
+							d20Action = 0
+						elif (not melees.aggr.value_weapon_melee):
+							d20Action = 0
 						best_target = atarget.target
 				#else: print("none found")
+
+			wand = None
+			if (self.guard_ai_type == 3 and not best_target):
+				wand = npc.item_find_by_proto(const_proto_wands.PROTO_WAND_OF_MAGIC_MISSILES_1ST)
 
 			tac = utils_tactics.TacticsHelper(self.get_name())
 			tac.add_clear_target()
 			if (best_target):
 				tac.add_target_obj(best_target.id)
 			else:
+				#tac.add_target_threatened() # if not then closest
 				tac.add_target_closest()
-				tac.add_target_threatened() # if not then closest
-			if (d20Action):
+			if (wand and (melees and not melees.aggr.value_range_is_within_melee)):
+				tac.add_halt()
+				tac.add_use_item(wand.id)
+			elif (d20Action):
 				tac.add_d20_action(d20Action, 0)
 			tac.add_attack()
 			tac.add_approach()
@@ -229,8 +352,21 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 		#self.spells.add_spell(toee.spell_shield, stat_class, caster_level)
 		self.spells.add_spell(toee.spell_ray_of_enfeeblement, stat_class, caster_level)
 
+		print("{}.guard_ai_type: {}".format(attachee, self.guard_ai_type))
+		#debug.breakp("enter_combat")
 		# special as scroll
-		self.spells.add_spell(toee.spell_fireball, stat_class, 3)
+		if (self.guard_ai_type == 0):
+			pass
+			#self.spells.add_spell(toee.spell_fireball, stat_class, 3)
+		elif (self.guard_ai_type == 2):
+			pass
+			#self.spells.add_spell(toee.spell_fireball, stat_class, 3)
+		elif (self.guard_ai_type == 3):
+			#self.spells.add_spell(ARCANE_GUARD_SLEEP, stat_class, 3)
+			pass
+
+		if (self.guard_ai_type == 2):
+			attachee.move(utils_obj.sec2loc(428, 493))
 
 		#attachee.item_worn_unwield(toee.item_wear_weapon_primary, 1)
 		return toee.RUN_DEFAULT
@@ -252,10 +388,10 @@ class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
 		utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
-		npc.scripts[const_toee.sn_hit] = shattered_temple_encounters
-		npc.scripts[const_toee.sn_miss] = shattered_temple_encounters
-		npc.scripts[const_toee.sn_critter_hits] = shattered_temple_encounters
-		npc.scripts[const_toee.sn_critical_hit] = shattered_temple_encounters
+		#npc.scripts[const_toee.sn_hit] = shattered_temple_encounters
+		#npc.scripts[const_toee.sn_miss] = shattered_temple_encounters
+		#npc.scripts[const_toee.sn_critter_hits] = shattered_temple_encounters
+		#npc.scripts[const_toee.sn_critical_hit] = shattered_temple_encounters
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATCLUB, npc)
 		npc.item_wield_best_all()

@@ -31,3 +31,6 @@
 {63}{Continue}{}{1}{}{64}{}
 {64}{Mosaic clawed footprints lead from the northern passageway to the center of the chamber, where they turn west and head out of the room.}{Mosaic clawed footprints lead from the northern passageway to the center of the chamber, where they turn west and head out of the room.}{}{}{}{}
 {69}{Close}{}{1}{}{0}{cst().activate_encounter_t6()}
+
+{70}{Two male drow in chain shirts glare at you, spiked chains at the ready. Six beds take up most of the room, and two footlockers are set against the eastern wall.}{Two male drow in chain shirts glare at you, spiked chains at the ready. Six beds take up most of the room, and two footlockers are set against the eastern wall.}{}{}{}{cst().display_encounter_t7()}
+{79}{Close}{}{1}{}{0}{cst().activate_encounter_t7()}

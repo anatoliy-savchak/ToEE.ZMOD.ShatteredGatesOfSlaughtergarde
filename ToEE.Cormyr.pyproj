@@ -243,11 +243,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
+    <Compile Include="overrides\scr\tpModifiers\combat_messages.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\tpModifiers\defensive_casting_disable.py" />
     <Compile Include="overrides\scr\tpModifiers\drow.py" />
     <Compile Include="overrides\scr\tpModifiers\fighting_defensively_monster.py" />
     <Compile Include="overrides\scr\tpModifiers\immunity_blindness.py" />
     <Compile Include="overrides\scr\tpModifiers\immunity_visual.py" />
     <Compile Include="overrides\scr\tpModifiers\inspect.py" />
+    <Compile Include="overrides\scr\tpModifiers\cast_defensively_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\shadow_cloak_su.py" />
     <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />
