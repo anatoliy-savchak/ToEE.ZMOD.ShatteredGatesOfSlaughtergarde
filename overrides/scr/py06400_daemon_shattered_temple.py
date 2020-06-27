@@ -108,7 +108,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t5()
 		#self.place_encounter_t6()
 		#self.place_encounter_t7()
-		self.place_encounter_t8()
+		#self.place_encounter_t8()
+		self.place_encounter_t9()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -285,6 +286,23 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t8", "gargoyle")
 		return
 
+	def place_encounter_t9(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(438, 511), 6400, 90, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Priest Quarters")
+
+		self.create_npc_at(utils_obj.sec2loc(441, 511), py06401_shattered_temple_encounters.CtrlDrowZombie, const_toee.rotation_0800_oclock, "t9", "dzombie1")
+		self.create_npc_at(utils_obj.sec2loc(438, 514), py06401_shattered_temple_encounters.CtrlDrowZombieDesicrate, const_toee.rotation_0800_oclock, "t9", "dzombie2")
+		return
+
+	def display_encounter_t9(self):
+		self.reveal_monster("t9", "dzombie1")
+		self.reveal_monster("t9", "dzombie2")
+		return
+
+	def activate_encounter_t9(self):
+		self.activate_monster("t9", "dzombie1")
+		self.activate_monster("t9", "dzombie2")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -432,7 +450,7 @@ class CtrlShatteredTemple(object):
 			debugg.breakp("Monster not found")
 		return
 
-	def activate_monster(self, encounter_name, monster_code_name):
+	def activate_monster(self, encounter_name, monster_code_name, remove_no_attack = 1, remove_no_kos = 1):
 		npc = None
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
@@ -441,8 +459,10 @@ class CtrlShatteredTemple(object):
 				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
 				if (ctrl and ("activating" in dir(ctrl))):
 					ctrl.activating(npc)
-				npc.npc_flag_unset(toee.ONF_NO_ATTACK)
-				npc.npc_flag_set(toee.ONF_KOS)
+				if (remove_no_attack):
+					npc.npc_flag_unset(toee.ONF_NO_ATTACK)
+				if (remove_no_kos):
+					npc.npc_flag_set(toee.ONF_KOS)
 				if (ctrl and ("activated" in dir(ctrl))):
 					ctrl.activated(npc)
 		if (not npc):

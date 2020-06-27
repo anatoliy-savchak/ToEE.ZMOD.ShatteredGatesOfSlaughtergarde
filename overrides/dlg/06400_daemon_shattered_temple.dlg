@@ -37,3 +37,6 @@
 
 {80}{Two beds are set against the northern wall of this small chamber, footlockers at their feet, while three beds are set against the southern wall with no accompanying lockers. A round table sits in the northeastern corner. Three places on it are set with pewter flatware.}{Two beds are set against the northern wall of this small chamber, footlockers at their feet, while three beds are set against the southern wall with no accompanying lockers. A round table sits in the northeastern corner. Three places on it are set with pewter flatware.}{}{}{}{cst().display_encounter_t8()}
 {89}{Close}{}{1}{}{0}{cst().activate_encounter_t8()}
+
+{90}{Two drow in heavy armor, each carrying a shield and longsword, guard this chamber. Their shuffling gait and unsettling pallor mark them clearly as undead. Beyond them are five beds along the southern wall and a small table that has a box on it.}{Two drow in heavy armor, each carrying a shield and longsword, guard this chamber. Their shuffling gait and unsettling pallor mark them clearly as undead. Beyond them are five beds along the southern wall and a small table that has a box on it.}{}{}{}{cst().display_encounter_t9()}
+{99}{Close}{}{1}{}{0}{cst().activate_encounter_t9()}

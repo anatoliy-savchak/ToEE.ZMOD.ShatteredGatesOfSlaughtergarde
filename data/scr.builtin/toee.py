@@ -14,8 +14,15 @@ def dice_new(dice_str):
 	return PyDice()
 
 class PySpell(object):
-	def __init__(self):
-		self.spell = 1	
+	def __init__(self, spellEnum = 0):
+		self.spell = PySpell()
+		self.begin_round_obj = PyObjHandle()
+		self.caster = PyObjHandle()
+		self.caster_class = stat_level_wizard
+		self.spell_level = 0
+		self.range_exact = 0
+		self.id = 0
+		# todo
 		return
 
 class PyTrapDamage(object):
@@ -362,12 +369,12 @@ class PyObjHandle(object):
 		"""npc.get_category_type() -> int"""
 		return
 
-	def get_handle_upper(self):
-		"""npc.get_handle_upper() -> int"""
+	def get_initiative(self):
+		"""npc.get_initiative() -> int"""
 		return
-
-	def get_handle_lower(self):
-		"""npc.get_handle_lower() -> int"""
+	
+	def set_initiative(self, initiative):
+		"""npc.set_initiative(int: initiative) -> None"""
 		return
 
 	def leader_get(self):
@@ -3812,3 +3819,6 @@ wt_unarmed_strike_medium_sized_being = 1
 wt_unarmed_strike_small_being = 2
 wt_warhammer = 34
 wt_whip = 67
+
+OBJECT_SPELL_CLOUDKILL = 12003
+OBJECT_SPELL_GENERIC = 12003

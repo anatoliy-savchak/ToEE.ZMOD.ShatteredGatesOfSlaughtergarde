@@ -1,4 +1,4 @@
-import toee, debug, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands
+import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands
 
 shattered_temple_encounters = 6401
 
@@ -437,3 +437,46 @@ class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
 class CtrlGargoyle(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14239
+
+class CtrlDrowZombie(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14922
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		# assign scripts
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_HALF_PLATE, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
+		npc.item_wield_best_all()
+		return
+
+class CtrlDrowZombieDesicrate(CtrlDrowZombie):
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlDrowZombieDesicrate, self).created(npc)
+		npc.condition_add_with_args("Initiative_Bonus", 30, 0)
+		return
+
+	def activated(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		desecrate_potion = utils_item.item_create_in_inventory(8600, npc)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		desecrate_potion = npc.item_find_by_proto(8600)
+		print("Find desecrate potion {}, self.desicrate: {} ".format(desecrate_potion, npc))
+		if (desecrate_potion):
+			#debug.breakp("desecrate")
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_clear_target()
+			tac.add_target_self()
+			tac.add_use_item(desecrate_potion.id)
+			tac.add_total_defence()
+			return tac
+		return None
