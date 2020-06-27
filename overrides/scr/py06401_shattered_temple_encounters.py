@@ -433,3 +433,7 @@ class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
 		tac.add_total_defence()
 		tac.add_halt()
 		return tac
+
+class CtrlGargoyle(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14239

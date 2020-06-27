@@ -107,7 +107,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t4()
 		#self.place_encounter_t5()
 		#self.place_encounter_t6()
-		self.place_encounter_t7()
+		#self.place_encounter_t7()
+		self.place_encounter_t8()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -270,6 +271,20 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t7", "aguard2")
 		return
 
+	def place_encounter_t8(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(428, 506), 6400, 80, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southern Quarters")
+
+		self.create_npc_at(utils_obj.sec2loc(422, 503), py06401_shattered_temple_encounters.CtrlGargoyle, const_toee.rotation_0800_oclock, "t8", "gargoyle")
+		return
+
+	def display_encounter_t8(self):
+		self.reveal_monster("t8", "gargoyle")
+		return
+
+	def activate_encounter_t8(self):
+		self.activate_monster("t8", "gargoyle")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -351,7 +366,7 @@ class CtrlShatteredTemple(object):
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, code_name, 1, 1)
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 		return npc, ctrl
 
 	def create_quaggoth_at(self, npc_loc, rot, encounter, code_name):
@@ -361,6 +376,15 @@ class CtrlShatteredTemple(object):
 			npc.rotation = rot
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 		return npc
+
+	def create_npc_at(self, npc_loc, ctrl_class, rot, encounter, code_name):
+		npc, ctrl = ctrl_class.create_obj_and_class(npc_loc)
+		print("create_npc_at npc: {}, ctrl: {}, id: {}".format(npc, ctrl, npc.id))
+		if (npc):
+			npc.move(npc_loc)
+			npc.rotation = rot
+			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+		return npc, ctrl
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
@@ -392,6 +416,7 @@ class CtrlShatteredTemple(object):
 		return None
 
 	def reveal_monster(self, encounter_name, monster_code_name):
+		npc = None
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
 			npc = toee.game.get_obj_by_id(info.id)
@@ -402,6 +427,9 @@ class CtrlShatteredTemple(object):
 				npc.object_flag_unset(toee.OF_DONTDRAW)
 				if (ctrl and ("revealed" in dir(ctrl))):
 					ctrl.revealed(npc)
+		if (not npc):
+			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
+			debugg.breakp("Monster not found")
 		return
 
 	def activate_monster(self, encounter_name, monster_code_name):

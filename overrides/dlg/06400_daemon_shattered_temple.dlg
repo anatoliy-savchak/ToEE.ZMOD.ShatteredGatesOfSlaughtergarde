@@ -34,3 +34,6 @@
 
 {70}{Two male drow in chain shirts glare at you, spiked chains at the ready. Six beds take up most of the room, and two footlockers are set against the eastern wall.}{Two male drow in chain shirts glare at you, spiked chains at the ready. Six beds take up most of the room, and two footlockers are set against the eastern wall.}{}{}{}{cst().display_encounter_t7()}
 {79}{Close}{}{1}{}{0}{cst().activate_encounter_t7()}
+
+{80}{Two beds are set against the northern wall of this small chamber, footlockers at their feet, while three beds are set against the southern wall with no accompanying lockers. A round table sits in the northeastern corner. Three places on it are set with pewter flatware.}{Two beds are set against the northern wall of this small chamber, footlockers at their feet, while three beds are set against the southern wall with no accompanying lockers. A round table sits in the northeastern corner. Three places on it are set with pewter flatware.}{}{}{}{cst().display_encounter_t8()}
+{89}{Close}{}{1}{}{0}{cst().activate_encounter_t8()}
