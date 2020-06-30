@@ -480,3 +480,19 @@ class CtrlDrowZombieDesicrate(CtrlDrowZombie):
 			tac.add_total_defence()
 			return tac
 		return None
+
+class CtrlDireBat(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14923
+
+class CtrlWererat(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14924
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlWererat, self).created(npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_RAPIER, npc)
+		#utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		npc.item_wield_best_all()
+		return

@@ -1,4 +1,4 @@
-import toee, debug, utils_storage
+import toee, debug, utils_storage, utils_items
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -17,6 +17,7 @@ def san_use(attachee, triggerer):
 
 	ctrl = CtrlBagOfHolding.ensure(bag)
 	assert isinstance(ctrl, CtrlBagOfHolding)
+	utils_items.item_clear_all(attachee)
 	ctrl.spawn(attachee)
 
 	return toee.RUN_DEFAULT

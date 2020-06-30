@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters
+import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -109,7 +109,9 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t6()
 		#self.place_encounter_t7()
 		#self.place_encounter_t8()
-		self.place_encounter_t9()
+		#self.place_encounter_t9()
+		#self.place_encounter_t10()
+		self.place_encounter_t11()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -119,10 +121,13 @@ class CtrlShatteredTemple(object):
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BLUR, wizard)
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, wizard)
+		utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_MAGIC_MISSILES_1ST, wizard)
+		utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_ACID_SPLASH, wizard)
 		wizard.identify_all()
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
 		#self.remove_trap_doors()
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
 		utils_obj.scroll_to_leader()
 		return
 
@@ -301,6 +306,43 @@ class CtrlShatteredTemple(object):
 	def activate_encounter_t9(self):
 		self.activate_monster("t9", "dzombie1")
 		self.activate_monster("t9", "dzombie2")
+		return
+
+	def place_encounter_t10(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(434, 460), 6400, 100, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Bat Lair")
+
+		self.create_npc_at(utils_obj.sec2loc(423, 462), py06401_shattered_temple_encounters.CtrlDireBat, const_toee.rotation_0800_oclock, "t10", "bat1")
+		self.create_npc_at(utils_obj.sec2loc(423, 466), py06401_shattered_temple_encounters.CtrlDireBat, const_toee.rotation_0800_oclock, "t10", "bat2")
+		return
+
+	def display_encounter_t10(self):
+		self.reveal_monster("t10", "bat1")
+		self.reveal_monster("t10", "bat2")
+		return
+
+	def activate_encounter_t10(self):
+		self.activate_monster("t10", "bat1")
+		self.activate_monster("t10", "bat2")
+		return
+
+	def place_encounter_t11(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(447, 461), 6400, 110, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Fout Arms")
+
+		self.create_npc_at(utils_obj.sec2loc(453, 459), py06401_shattered_temple_encounters.CtrlWererat, const_toee.rotation_1100_oclock, "t11", "warerat1")
+		self.create_npc_at(utils_obj.sec2loc(449, 459), py06401_shattered_temple_encounters.CtrlWererat, const_toee.rotation_1100_oclock, "t11", "warerat2")
+		return
+
+	def display_encounter_t11(self):
+		self.reveal_monster("t11", "warerat1")
+		self.reveal_monster("t11", "warerat2")
+
+		for obj in toee.game.obj_list_range(utils_obj.sec2loc(449, 459), 20, toee.OLC_PORTAL):
+			utils_obj.obj_timed_destroy(obj, 100, 1)
+		return
+
+	def activate_encounter_t11(self):
+		self.activate_monster("t11", "warerat1")
+		self.activate_monster("t11", "warerat2")
 		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):

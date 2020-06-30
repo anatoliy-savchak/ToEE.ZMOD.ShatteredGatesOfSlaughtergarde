@@ -17,8 +17,8 @@ def Cast_Defensively_Remove(attachee, args, evt_obj):
 	args.condition_remove()
 	return 0
 
-modObj = templeplus.pymod.PythonModifier()
-modObj.ExtendExisting("Cast_Defensively")
-modObj.AddHook(toee.ET_OnD20PythonSignal, "Cast_Defensively_Remove", Cast_Defensively_Remove, ())
-modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Resurrection, Cast_Defensively_Remove, ())
-modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_SetCastDefensively, Cast_Defensively_Remove, ())
+#modObj = templeplus.pymod.PythonModifier()
+#modObj.ExtendExisting("Cast_Defensively")
+#modObj.AddHook(toee.ET_OnD20PythonSignal, "Cast_Defensively_Remove", Cast_Defensively_Remove, ())
+#modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Resurrection, Cast_Defensively_Remove, ())
+#modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_SetCastDefensively, Cast_Defensively_Remove, ())

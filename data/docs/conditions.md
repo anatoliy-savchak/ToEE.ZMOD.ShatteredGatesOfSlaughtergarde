@@ -131,6 +131,13 @@ temple.dll::condParalyzed
 * Arg1: bonus
 Adds saving throw resistance bonus.
 
+### Monster DR Silver
+**Args**
+* Arg0: DR
+Damage resistance.
+temple.dll::aMonsterDrSilve
+
+
 todo:
 pCondition_Monster_Banshee_Charisma_Drain
 .data:102EC724 30 B7 2E 10      dd offset ConditionMonsterStirge

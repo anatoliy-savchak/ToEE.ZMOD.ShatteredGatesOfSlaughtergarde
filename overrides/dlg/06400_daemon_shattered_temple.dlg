@@ -40,3 +40,13 @@
 
 {90}{Two drow in heavy armor, each carrying a shield and longsword, guard this chamber. Their shuffling gait and unsettling pallor mark them clearly as undead. Beyond them are five beds along the southern wall and a small table that has a box on it.}{Two drow in heavy armor, each carrying a shield and longsword, guard this chamber. Their shuffling gait and unsettling pallor mark them clearly as undead. Beyond them are five beds along the southern wall and a small table that has a box on it.}{}{}{}{cst().display_encounter_t9()}
 {99}{Close}{}{1}{}{0}{cst().activate_encounter_t9()}
+
+{100}{Clearly subject to a cave-in, the eastern part of the room is cavelike. Two horse-sized bats hang there.}{Clearly subject to a cave-in, the eastern part of the room is cavelike. Two horse-sized bats hang there.}{}{}{}{cst().display_encounter_t10()}
+{109}{Close}{}{1}{}{0}{cst().activate_encounter_t10()}
+
+{110}{Two furry, rat-headed humanoids armed with crossbows are here. Turned on its side in the middle of the room is a table surrounded by broken chairs and other debris.}{Two furry, rat-headed humanoids armed with crossbows are here. Turned on its side in the middle of the room is a table surrounded by broken chairs and other debris.}{}{}{}{cst().display_encounter_t11()}
+{111}{Continue}{}{1}{}{112}{}
+{112}{Nearby, a small lamp provides soft light. A red stone altar is set against the western wall, topped by a four-armed statue that has wavy daggers. Red stone streaked with purple makes up the walls, looking disturbingly like flesh.}{Nearby, a small lamp provides soft light. A red stone altar is set against the western wall, topped by a four-armed statue that has wavy daggers. Red stone streaked with purple makes up the walls, looking disturbingly like flesh.}{}{}{}{}
+{113}{Continue}{}{1}{}{114}{}
+{114}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{}{}{}{}
+{119}{Close}{}{1}{}{0}{cst().activate_encounter_t11()}
