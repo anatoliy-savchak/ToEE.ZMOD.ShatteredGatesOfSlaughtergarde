@@ -55,3 +55,10 @@
 {121}{Continue}{}{1}{}{122}{}
 {122}{The western wall has a fresco of a ziggurat, a starry sky is painted on the southern wall, and roiling clouds and lightning adorn the eastern wall. To the north, mosaic footprints emerge from under tons of rock and dirt, heading south toward you.}{The western wall has a fresco of a ziggurat, a starry sky is painted on the southern wall, and roiling clouds and lightning adorn the eastern wall. To the north, mosaic footprints emerge from under tons of rock and dirt, heading south toward you.}{}{}{}{}
 {129}{Close}{}{1}{}{0}{cst().activate_encounter_t12()}
+
+{130}{Beyond the demon arch is a snake-headed man with a scimitar and shield, appearing seemingly out of nowhere.}{Beyond the demon arch is a snake-headed man with a scimitar and shield, appearing seemingly out of nowhere.}{}{}{}{cst().display_encounter_t13()}
+{131}{Continue}{}{1}{}{112}{}
+{132}{The room has a lectern at the northern end and four long pews.}{The room has a lectern at the northern end and four long pews.}{}{}{}{}
+{133}{Continue}{}{1}{}{114}{}
+{134}{A tunnel leads upward from the northeastern corner of the room, which apparently collapsed in the past.}{A tunnel leads upward from the northeastern corner of the room, which apparently collapsed in the past.}{}{}{}{}
+{139}{Close}{}{1}{}{0}{cst().activate_encounter_t13()}

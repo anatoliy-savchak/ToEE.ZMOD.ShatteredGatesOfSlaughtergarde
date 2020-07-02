@@ -114,6 +114,7 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t10()
 		#self.place_encounter_t11()
 		self.place_encounter_t12()
+		self.place_encounter_t13()
 		#self.print_monsters()
 
 		# debug
@@ -352,7 +353,9 @@ class CtrlShatteredTemple(object):
 	def place_encounter_t12(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(450, 449), 6400, 120, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Dragon's Lair")
 
-		self.create_npc_at(utils_obj.sec2loc(448, 442), py06401_shattered_temple_encounters.CtrlGaranaach, const_toee.rotation_0600_oclock, "t12", "dragon")
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(448, 442), py06401_shattered_temple_encounters.CtrlGaranaach, const_toee.rotation_0600_oclock, "t12", "dragon")
+		ctrl.notify_start_combat_npcid = self.id
+		ctrl.notify_start_combat_ctrlname = self.get_name()
 		return
 
 	def display_encounter_t12(self):
@@ -362,6 +365,20 @@ class CtrlShatteredTemple(object):
 	def activate_encounter_t12(self):
 		self.activate_monster("t12", "dragon")
 		return
+
+	def place_encounter_t13(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(440, 445), 6400, 132, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Yuan-Ti Lair")
+
+		self.create_npc_at(utils_obj.sec2loc(436, 443), py06401_shattered_temple_encounters.CtrlShenn, const_toee.rotation_0900_oclock, "t13", "shenn")
+		return
+
+	def display_encounter_t13(self):
+		self.reveal_monster("t13", "shenn", 1)
+		return
+
+	def activate_encounter_t13(self):
+		npc, info = self.activate_monster("t13", "shenn", 1, 1, 1)
+		return npc, info
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
@@ -496,7 +513,7 @@ class CtrlShatteredTemple(object):
 			return info
 		return None
 
-	def reveal_monster(self, encounter_name, monster_code_name):
+	def reveal_monster(self, encounter_name, monster_code_name, no_error = 0):
 		npc = None
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
@@ -508,12 +525,12 @@ class CtrlShatteredTemple(object):
 				npc.object_flag_unset(toee.OF_DONTDRAW)
 				if (ctrl and ("revealed" in dir(ctrl))):
 					ctrl.revealed(npc)
-		if (not npc):
+		if (not npc and not no_error):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")
 		return
 
-	def activate_monster(self, encounter_name, monster_code_name, remove_no_attack = 1, remove_no_kos = 1):
+	def activate_monster(self, encounter_name, monster_code_name, remove_no_attack = 1, remove_no_kos = 1, no_error = 0):
 		npc = None
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
@@ -528,7 +545,7 @@ class CtrlShatteredTemple(object):
 					npc.npc_flag_set(toee.ONF_KOS)
 				if (ctrl and ("activated" in dir(ctrl))):
 					ctrl.activated(npc)
-		if (not npc):
+		if (not npc and not no_error):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")
 		return npc, info
@@ -544,4 +561,33 @@ class CtrlShatteredTemple(object):
 			exptotal1 += exp // per
 			exptotal += exp
 			print("{}, cr: {}, exp: {}, total: {}, total per one: {}, id: {}".format(info.name, info.cr, exp, exptotal, exptotal1, info.id))
+		return
+
+	def on_notify_combat_start(self, ctrl, npc):
+		assert isinstance(ctrl, ctrl_behaviour.CtrlBehaviour)
+		assert isinstance(npc, toee.PyObjHandle)
+		print("on_notify_combat_start: {}, {}, {}".format(ctrl, npc, toee.game.combat_turn))
+		#debugg.breakp("on_notify_combat_start")
+		if (type(ctrl) is py06401_shattered_temple_encounters.CtrlGaranaach and toee.game.combat_turn == 1):
+			#debugg.breakp("on_notify_combat_start2")
+			self.display_encounter_t13()
+			npc2, info = self.activate_encounter_t13()
+			print("npc2, info: {}, {}".format(npc2, info))
+			closest = None
+			closest_dist = 0
+			for pc in toee.game.party:
+				if (not npc2.can_see(pc)): continue
+				dist = npc2.distance_to(pc)
+				if (not closest):
+					closest = pc
+					closest_dist = dist
+					continue
+				if (dist < closest_dist):
+					closest = pc
+			print("closest: {}".format(closest))
+			if (not closest):
+				debugg.breakp("problem")
+			else:
+				npc2.attack(closest)
+				npc2.add_to_initiative()
 		return

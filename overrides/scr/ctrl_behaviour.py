@@ -69,7 +69,13 @@ class CtrlBehaviour(object):
 			attachee.ai_strategy_set_custom(tac.custom_tactics)
 		return toee.RUN_DEFAULT
 
+	def exit_combat(self, attachee, triggerer):
+		return toee.RUN_DEFAULT
+
 	def enter_combat(self, attachee, triggerer):
+		return toee.RUN_DEFAULT
+
+	def end_combat(self, attachee, triggerer):
 		return toee.RUN_DEFAULT
 
 	def create_tactics(self, npc):

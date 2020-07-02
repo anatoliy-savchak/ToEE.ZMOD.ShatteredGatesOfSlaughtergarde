@@ -1,4 +1,4 @@
-import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands
+import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak
 
 shattered_temple_encounters = 6401
 
@@ -16,6 +16,22 @@ def san_enter_combat(attachee, triggerer):
 	ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(attachee)
 	if (ctrl):
 		return ctrl.enter_combat(attachee, triggerer)
+	return toee.RUN_DEFAULT
+
+def san_end_combat(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(attachee)
+	if (ctrl):
+		return ctrl.end_combat(attachee, triggerer)
+	return toee.RUN_DEFAULT
+
+def san_exit_combat(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(attachee)
+	if (ctrl):
+		return ctrl.exit_combat(attachee, triggerer)
 	return toee.RUN_DEFAULT
 
 MONK_THROW_WEAPON = const_proto_weapon.PROTO_WEAPON_JAVELIN
@@ -504,6 +520,8 @@ class CtrlGaranaach(ctrl_behaviour.CtrlBehaviour):
 	def __init__(self):
 		super(CtrlGaranaach, self).__init__()
 		self.next_breath_weapon_2_skip = 0
+		self.notify_start_combat_npcid = None
+		self.notify_start_combat_ctrlname = None
 		return
 
 	def created(self, npc):
@@ -532,8 +550,79 @@ class CtrlGaranaach(ctrl_behaviour.CtrlBehaviour):
 			print("next_breath_weapon_2_skip: {}".format(self.next_breath_weapon_2_skip))
 		return tac
 
-	def start_combat1(self, attachee, triggerer):
+	def start_combat(self, attachee, triggerer):
 		super(CtrlGaranaach, self).start_combat(attachee, triggerer)
-		#for pc in toee.game.party:
-		#	pc.condition_add("Surprised")
+		if (self.notify_start_combat_ctrlname and self.notify_start_combat_npcid):
+			storage = utils_storage.obj_storage_by_id(self.notify_start_combat_npcid)
+			if (storage and storage.data and self.notify_start_combat_ctrlname in storage.data):
+				ctrl = storage.data[self.notify_start_combat_ctrlname]
+				if (ctrl and "on_notify_combat_start" in dir(ctrl)):
+					ctrl.on_notify_combat_start(self, attachee)
+		return
+
+class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14926
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlShenn, self).created(npc)
+		# assign scripts
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_end_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_exit_combat] = shattered_temple_encounters
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_LARGE, npc)
+		npc.item_wield_best_all()
+
+		npc.condition_add_with_args("Caster_Level_Add", 7, 0)
+		npc.condition_add_with_args("Hide_Ex", 0, 0)
+		#npc.condition_add_with_args("Monster_Bite", 0, 0)
+
+		utils_npc.npc_skill_ensure(npc, toee.skill_hide, 20)
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		assert isinstance(attachee, toee.PyObjHandle)
+		self.spells.add_spell(toee.spell_cause_fear, toee.stat_level_cleric, 1)
+		self.spells.add_spell(toee.spell_cause_fear, toee.stat_level_cleric, 1)
+		self.spells.add_spell(toee.spell_cause_fear, toee.stat_level_cleric, 1)
+		utils_sneak.npc_make_hide(attachee, 1)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		skip_cause_fear = 0
+		while (not tac):
+			if (self.spells.get_spell_count(toee.spell_cause_fear) and not skip_cause_fear): 
+				melees = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_melee()).rescan()
+				target = None
+				for atarget in melees.list:
+					assert isinstance(atarget, utils_target_list.AITarget)
+					if (not atarget.target.d20_query(toee.EK_Q_Critter_Is_Afraid - toee.EK_Q_Helpless)):
+						target = atarget.target
+						break
+				if (not target):
+					skip_cause_fear = 1
+					tac = None
+					continue
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(target.id)
+				tac.add_halt()
+				tac.add_cast_area_code(self.spells.prep_spell(npc, toee.spell_cause_fear))
+				break
+			break
+		return tac
+
+	def end_combat(self, attachee, triggerer):
+		print("end_combat")
+		#utils_sneak.npc_make_hide(attachee, 1)
+		return toee.RUN_DEFAULT
+
+	def start_combat(self, attachee, triggerer):
+		super(CtrlShenn, self).start_combat(attachee, triggerer)
 		return
