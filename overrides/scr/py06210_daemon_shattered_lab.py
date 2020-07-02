@@ -63,6 +63,7 @@ class CtrlShatteredLab(object):
 	def __init__(self):
 		self.encounters_placed = 0
 		self.monsters = dict()
+		self.m2 = list()
 		self.promters = []
 		self.id = None
 		self.haertbeats_since_sleep_status_update = 0
@@ -388,7 +389,8 @@ class CtrlShatteredLab(object):
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = const_toee.rotation_0500_oclock
-			self.monster_setup(npc, "l13", "lizard", None, 0, 1, FACTION_CELESTIAL_ARMY)
+			info = self.monster_setup(npc, "l13", "lizard", None, 0, 1, FACTION_CELESTIAL_ARMY)
+			info.cr = 0
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
@@ -474,8 +476,11 @@ class CtrlShatteredLab(object):
 		info = MonsterInfo()
 		info.id = npc.id
 		info.proto = npc.proto
-		self.monsters["{}_{}_{}".format(SHATERRED_LAB, encounter_name, monster_code_name)] = info
-		return
+		info.cr = utils_npc.npc_get_cr(npc)
+		info.name = "{}_{}_{}".format(SHATERRED_LAB, encounter_name, monster_code_name)
+		self.m2.append(info)
+		self.monsters[info.name] = info
+		return info
 
 	def create_dire_rat_at(self, npc_loc, rot, encounter, code_name):
 		PROTO_NPC_DIRE_RAT = 14765
@@ -535,7 +540,7 @@ class CtrlShatteredLab(object):
 			#ctrl.option_5fs_prefer = 1
 		return npc
 
-	def print_monsters(self):
+	def print_monsters2(self):
 		f = None
 		if (DEBUG_WRITE_MONSTERS_PATH):
 			f = open(DEBUG_WRITE_MONSTERS_PATH, "w")
@@ -812,10 +817,26 @@ class CtrlShatteredLab(object):
 			return toee.SLEEP_SAFE
 		return toee.SLEEP_IMPOSSIBLE
 
+	def print_monsters(self):
+		exptotal = 0
+		exptotal1 = 0
+		per = len(toee.game.party)
+		for info in self.m2:
+			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			#npc = toee.game.get_obj_by_id(info.id)
+			exp = utils_npc.npc_get_cr_exp(toee.game.leader, info.cr)
+			exptotal1 += exp // per
+			exptotal += exp
+			print("{}, cr: {}, exp: {}, total: {}, total per one: {}, id: {}".format(info.name, info.cr, exp, exptotal, exptotal1, info.id))
+		return
+
+
 class MonsterInfo:
 	def __init__(self):
 		self.proto = 0
 		self.id = None
+		self.cr = 0
+		self.name = None
 		return
 
 	@classmethod

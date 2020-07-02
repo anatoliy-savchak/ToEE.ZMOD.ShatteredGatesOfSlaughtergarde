@@ -153,6 +153,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="overrides\rules\d20_actions\action03006_bag_of_holding_inventory.py" />
+    <Compile Include="overrides\rules\d20_actions\action03009_bag_of_holding_list.py" />
+    <Compile Include="overrides\rules\d20_actions\action03008_bag_of_holding_transfer_from_bodies.py" />
+    <Compile Include="overrides\rules\d20_actions\action03007_bag_of_holding_examine.py" />
     <Compile Include="overrides\rules\d20_actions\action03005_inspect.py" />
     <Compile Include="overrides\rules\d20_actions\action03004_remove_quills.py" />
     <Compile Include="overrides\scr\behavior.py">

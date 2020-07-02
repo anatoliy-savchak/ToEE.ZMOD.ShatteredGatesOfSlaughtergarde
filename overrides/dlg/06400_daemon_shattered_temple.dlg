@@ -50,3 +50,8 @@
 {113}{Continue}{}{1}{}{114}{}
 {114}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{}{}{}{}
 {119}{Close}{}{1}{}{0}{cst().activate_encounter_t11()}
+
+{120}{From the gloom comes a black dragon almost the size of a man, its gullet wide open. Beyond the dragon is a room that has suffered a cave-in along the northern wall. A passageway leaves the room to the east, passing under a demon arch that has neither dark energy nor flames in it.}{From the gloom comes a black dragon almost the size of a man, its gullet wide open. Beyond the dragon is a room that has suffered a cave-in along the northern wall. A passageway leaves the room to the east, passing under a demon arch that has neither dark energy nor flames in it.}{}{}{}{cst().display_encounter_t12()}
+{121}{Continue}{}{1}{}{122}{}
+{122}{The western wall has a fresco of a ziggurat, a starry sky is painted on the southern wall, and roiling clouds and lightning adorn the eastern wall. To the north, mosaic footprints emerge from under tons of rock and dirt, heading south toward you.}{The western wall has a fresco of a ziggurat, a starry sky is painted on the southern wall, and roiling clouds and lightning adorn the eastern wall. To the north, mosaic footprints emerge from under tons of rock and dirt, heading south toward you.}{}{}{}{}
+{129}{Close}{}{1}{}{0}{cst().activate_encounter_t12()}

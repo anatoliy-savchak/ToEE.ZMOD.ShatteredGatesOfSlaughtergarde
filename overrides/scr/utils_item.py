@@ -158,3 +158,36 @@ def item_money_create_in_inventory(obj, platinum, gold = None, silver = None, co
 		item = item_create_in_inventory(const_proto_items.PROTO_MONEY_COPPER, obj)
 		item.obj_set_int(toee.obj_f_money_quantity, copper)
 	return
+
+def items_get(npc, unwield_all = 1):
+	assert isinstance(npc, toee.PyObjHandle)
+	otype = npc.type
+	invenField = 0
+	invenNumField = 0
+	if ((otype == toee.obj_t_npc) or (otype == toee.obj_t_pc)):
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	elif ((otype == toee.obj_t_container) or (otype == toee.obj_t_bag)):
+		invenField = toee.obj_f_container_inventory_list_idx
+		invenNumField = toee.obj_f_container_inventory_num
+	else:
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	numItems = npc.obj_get_int(invenNumField)
+	result = list()
+	print("numItems: {}".format(numItems))
+	if (numItems > 0):
+		#debugg.breakp("numItems")
+		if (unwield_all):
+			for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+				npc.item_worn_unwield(i, 0)
+
+		for i in range(0, 199):
+			item = npc.inventory_item(i)
+			if (item):
+				print(item)
+				result.append(item)
+				numItems -= 1
+			if (numItems <=0): break
+	print(result)
+	return result

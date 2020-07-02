@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands
+import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -65,6 +65,7 @@ class CtrlShatteredTemple(object):
 	def __init__(self):
 		self.encounters_placed = 0
 		self.monsters = dict()
+		self.m2 = list()
 		self.id = None
 		self.haertbeats_since_sleep_status_update = 0
 		return
@@ -101,17 +102,19 @@ class CtrlShatteredTemple(object):
 		if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
 		self.encounters_placed = 1
-		#self.place_encounter_t1()
-		#self.place_encounter_t2()
-		#self.place_encounter_t3()
-		#self.place_encounter_t4()
-		#self.place_encounter_t5()
-		#self.place_encounter_t6()
-		#self.place_encounter_t7()
-		#self.place_encounter_t8()
-		#self.place_encounter_t9()
-		#self.place_encounter_t10()
+		self.place_encounter_t1()
+		self.place_encounter_t2()
+		self.place_encounter_t3()
+		self.place_encounter_t4()
+		self.place_encounter_t5()
+		self.place_encounter_t6()
+		self.place_encounter_t7()
+		self.place_encounter_t8()
+		self.place_encounter_t9()
+		self.place_encounter_t10()
 		self.place_encounter_t11()
+		self.place_encounter_t12()
+		self.print_monsters()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -127,7 +130,8 @@ class CtrlShatteredTemple(object):
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
 		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
 		utils_obj.scroll_to_leader()
 		return
 
@@ -345,6 +349,20 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t11", "warerat2")
 		return
 
+	def place_encounter_t12(self):
+		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(450, 449), 6400, 120, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Dragon's Lair")
+
+		self.create_npc_at(utils_obj.sec2loc(446, 441), py06401_shattered_temple_encounters.CtrlGaranaach, const_toee.rotation_0600_oclock, "t12", "dragon")
+		return
+
+	def display_encounter_t12(self):
+		self.reveal_monster("t12", "dragon")
+		return
+
+	def activate_encounter_t12(self):
+		self.activate_monster("t12", "dragon")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -464,7 +482,10 @@ class CtrlShatteredTemple(object):
 		info = py06211_shuttered_monster.MonsterInfo()
 		info.id = npc.id
 		info.proto = npc.proto
-		self.monsters["{}_{}_{}".format(shattered_consts.SHATERRED_TEMPLE, encounter_name, monster_code_name)] = info
+		info.cr = utils_npc.npc_get_cr(npc)
+		info.name = "{}_{}_{}".format(shattered_consts.SHATERRED_TEMPLE, encounter_name, monster_code_name)
+		self.m2.append(info)
+		self.monsters[info.name] = info
 		return
 
 	def get_monsterinfo(self, encounter_name, monster_code_name):
@@ -511,3 +532,16 @@ class CtrlShatteredTemple(object):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")
 		return npc, info
+
+	def print_monsters(self):
+		exptotal = 0
+		exptotal1 = 0
+		per = len(toee.game.party)
+		for info in self.m2:
+			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			#npc = toee.game.get_obj_by_id(info.id)
+			exp = utils_npc.npc_get_cr_exp(toee.game.leader, info.cr)
+			exptotal1 += exp // per
+			exptotal += exp
+			print("{}, cr: {}, exp: {}, total: {}, total per one: {}, id: {}".format(info.name, info.cr, exp, exptotal, exptotal1, info.id))
+		return

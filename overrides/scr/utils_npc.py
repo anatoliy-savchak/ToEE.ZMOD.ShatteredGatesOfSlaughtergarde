@@ -121,3 +121,25 @@ def find_npc_by_proto(loc, proto):
 		assert isinstance(obj, PyObjHandle)
 		if (obj.proto == proto): return obj
 	return OBJ_HANDLE_NULL
+
+def npc_get_cr(npc):
+	cr = 0
+	if (npc.type == obj_t_npc):
+		cr = npc.obj_get_int(obj_f_npc_challenge_rating)
+	level_cr = npc.stat_level_get(stat_level)
+	result = cr + level_cr
+	return result
+
+def npc_get_cr_exp(pc, cr):
+	pc_cr = pc.stat_level_get(stat_level)
+	if (pc_cr <= 3):
+		if (cr == 1): return 300
+		if (cr == 2): return 600
+		if (cr == 3): return 900
+		if (cr == 4): return 1350
+		if (cr == 5): return 1800
+		if (cr == 6): return 2700
+		if (cr == 7): return 3600
+		if (cr == 8): return 5400
+		if (cr == 9): return 7200
+	return 0

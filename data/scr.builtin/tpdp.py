@@ -32,7 +32,7 @@ class D20Action:
 		self.action_type = action_type #See D20A_ constants
 		self.loc = 0
 		self.anim_id = 0
-		self.spell_data = object() # todo d20SpellData
+		self.spell_data = D20SpellData()
 		self.roll_id_0 = 0
 		self.roll_id_1 = 0
 		self.roll_id_2 = 0
@@ -125,7 +125,31 @@ class AttackPacket:
 		""" attack_packet.set_flags(int: flagsNew) -> None """
 		return
 
-class RadialMenuEntryPythonAction:
+class RadialMenuEntry:
+	def __init__(self):
+		self.flags = 0 # RadialMenuEntryFlags: HasMinArg = 0x2, HasMaxArg = 0x4
+		self.min_arg = 0
+		self.max_arg = 0
+		return
+
+	def add_as_child(self, handle, parentId):
+		"""Adds this node as a child to a specified node ID, and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(parentId, int)
+		return 0
+
+	def add_child_to_standard(self, handle, stdNode):
+		"""Adds this node as a child to a Standard Node (one of several hardcoded root nodes such as class, inventory etc.), and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(stdNode, RadialMenuStandardNode)
+		return 0
+
+class RadialMenuEntryAction(RadialMenuEntry):
+	def set_spell_data(self, spellData):
+		assert isinstance(spellData, D20SpellData)
+		return
+
+class RadialMenuEntryPythonAction(RadialMenuEntryAction):
 	def __init__(self, combatMesLine, action_type, action_id, data1, helpTopic):
 		"""RadialMenuEntryPythonAction(int: combatMesLine, int: action_type, int: action_id, int: data1, str: helpTopic)"""
 		return
@@ -138,6 +162,27 @@ class RadialMenuEntryPythonAction:
 	def __init__(self, spell_store, action_type, action_id, data1, helpTopic):
 		"""RadialMenuEntryPythonAction(PySpellStore: spell_store, int: action_type, int: action_id, int: data1, str: helpTopic)"""
 		return
+
+class RadialMenuEntryParent:
+	def __init__(self, combesMesLine):
+		assert isinstance(combesMesLine, int)
+		return
+
+	def __init__(self, radialText):
+		assert isinstance(radialText, str)
+		return
+
+	def add_as_child(self, handle, parentId):
+		"""Adds this node as a child to a specified node ID, and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(parentId, int)
+		return 0
+
+	def add_child_to_standard(self, handle, stdNode):
+		"""Adds this node as a child to a Standard Node (one of several hardcoded root nodes such as class, inventory etc.), and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(stdNode, RadialMenuStandardNode)
+		return 0
 
 class RadialMenuStandardNode:
 	Root = 0

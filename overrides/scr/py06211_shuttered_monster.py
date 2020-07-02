@@ -20,6 +20,8 @@ class MonsterInfo:
 	def __init__(self):
 		self.proto = 0
 		self.id = None
+		self.cr = 0
+		self.name = None
 		return
 
 	@classmethod

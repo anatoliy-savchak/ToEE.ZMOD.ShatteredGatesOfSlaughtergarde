@@ -1,4 +1,4 @@
-import toee, debug, utils_storage, utils_items
+import toee, debug, utils_storage, utils_item
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -11,14 +11,22 @@ def san_use(attachee, triggerer):
 		return toee.SKIP_DEFAULT
 
 	bag = find_bag(triggerer)
+	#bag = triggerer.obj_get_obj(toee.obj_f_container_notify_npc)
 	if (not bag): 
 		print("py05001_bag_of_holding::san_use bag is none, exit")
 		return toee.SKIP_DEFAULT
 
 	ctrl = CtrlBagOfHolding.ensure(bag)
 	assert isinstance(ctrl, CtrlBagOfHolding)
-	utils_items.item_clear_all(attachee)
-	ctrl.spawn(attachee)
+
+	#tell somehow, that it was already swpawned
+	already_spwawned = attachee.object_flags_get() & toee.OF_STONED
+	print("already_spwawned: {}".format(already_spwawned))
+	#debug.breakp("already_spwawned")
+	if (not already_spwawned):
+		utils_item.item_clear_all(attachee)
+		ctrl.spawn(attachee)
+		attachee.object_flag_set(toee.OF_STONED)
 
 	return toee.RUN_DEFAULT
 
@@ -52,6 +60,16 @@ def _Bag_Of_Holding_elicit_on_timeevent(bag, chest):
 	assert isinstance(chest, toee.PyObjHandle)
 	#print("_Bag_Of_Holding_elicit_on_timeevent")
 	CtrlBagOfHolding.eject_incompatible(chest)
+	max_weight = 0
+	if (bag.proto == 12501):
+		max_weight = 250
+	elif (bag.proto == 12502):
+		max_weight = 500
+	elif (bag.proto == 12503):
+		max_weight = 1000
+	elif (bag.proto == 12504):
+		max_weight = 1500
+	CtrlBagOfHolding.eject_overweight(chest, max_weight)
 	if (not bag or bag.object_flags_get() & toee.OF_DESTROYED or not chest or chest.object_flags_get() & toee.OF_DESTROYED): 
 		#print("_Bag_Of_Holding_elicit_on_timeevent::san_transfer bag is none, exit")
 		return 1
@@ -120,6 +138,28 @@ class CtrlBagOfHolding(object):
 		return
 
 	@classmethod
+	def eject_overweight(cls, chest, max_weight):
+		assert isinstance(chest, toee.PyObjHandle)
+		assert isinstance(max_weight, int)
+		if (not max_weight): return
+		#print("eject_incompatible on chest: {}".format(chest))
+		leader = toee.game.leader 
+		curr_weight = 0
+		for i in range(0, 199):
+			obj = chest.inventory_item(i)
+			assert isinstance(obj, toee.PyObjHandle)
+			if (not obj or obj == toee.OBJ_HANDLE_NULL): continue
+			#print("checking incompatible {}".format(obj))
+			weight = obj.obj_get_int(toee.obj_f_item_weight)
+			if (curr_weight + weight > max_weight):
+				leader.item_get(obj)
+				text = "Overweight! Item: {}, weight: {}.".format(obj.description, weight)
+				leader.float_text_line(text, toee.tf_red)
+				text = text + "\n"
+				toee.game.create_history_freeform(text)
+		return
+
+	@classmethod
 	def is_obj_incompatible(cls, obj):
 		assert isinstance(obj, toee.PyObjHandle)
 		if (obj.proto == 12501): return 1
@@ -152,6 +192,7 @@ class HoldingItem(object):
 		self.id = ""
 		self.proto = 0
 		self.item_flags = 0
+		self.ammo_quantity = 0
 		return
 
 	def assign(self, obj):
@@ -159,15 +200,21 @@ class HoldingItem(object):
 		self.id = obj.id
 		self.proto = obj.proto
 		print("assigned obj: {}, id: {}, proto: {}".format(obj, self.id, self.proto))
-
-		if (obj.type == toee.obj_t_generic):
+		otype = obj.type
+		# IsEquipment
+		if (otype >= toee.obj_t_weapon and otype <= toee.obj_t_generic or otype <= toee.obj_t_bag):
 			self.item_flags = obj.obj_get_int(toee.obj_f_item_flags)
-
+		if (otype == toee.obj_t_ammo):
+			self.ammo_quantity = obj.obj_get_int(toee.obj_f_ammo_quantity)
 		return
 
 	def spawn(self, loc):
 		obj = toee.game.obj_create(self.proto, loc)
 		if (not obj): return None
-		if (obj.type == toee.obj_t_generic):
+		otype = obj.type
+		# IsEquipment
+		if (otype >= toee.obj_t_weapon and otype <= toee.obj_t_generic or otype <= toee.obj_t_bag):
 			obj.obj_set_int(toee.obj_f_item_flags, self.item_flags)
+		if (otype == toee.obj_t_ammo):
+			obj.obj_set_int(toee.obj_f_ammo_quantity, self.ammo_quantity)
 		return obj
