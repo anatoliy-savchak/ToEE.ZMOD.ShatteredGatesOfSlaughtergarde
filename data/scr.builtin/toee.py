@@ -479,6 +479,10 @@ class PyObjHandle(object):
 		"""npc.portal_flag_unset(int[OPF_LOCKED...]: flag) -> None"""
 		return
 
+	def reflex_save_and_damage(self, attacker, dc, reduction, flags, damageDice, damageType, attackPower, actionType, spellId):
+		"""npc.reflex_save_and_damage(PyObjHandle: attacker, int: dc, int[D20_Save_Reduction_Half]: reduction, int[D20SavingThrowFlag]: flags, PyDice: damageDice, int[D20DAP_UNSPECIFIED]: damageType, int[D20DAP_UNSPECIFIED]: attackPower, int[D20A_NONE]: actionType, int: spellId) -> None"""
+		return
+
 	def refresh_turn(self):
 		return
 
@@ -607,6 +611,11 @@ class game(object):
 	@staticmethod
 	def obj_list_vicinity(location, flags):
 		""" obj_list_vicinity(long: location, int[OLC_NONE]: flags) -> (PyObjHandle(), PyObjHandle())"""
+		return (PyObjHandle(), PyObjHandle())
+
+	@staticmethod
+	def obj_list_cone(originHndl, flags, radius, coneLeft, coneArc):
+		""" obj_list_cone(PyObjHandle: originHndl, int[OLC_NONE]: flags, int[feet]: radius, int: coneLeft, int: coneArc) -> (PyObjHandle(), PyObjHandle())"""
 		return (PyObjHandle(), PyObjHandle())
 
 	@staticmethod

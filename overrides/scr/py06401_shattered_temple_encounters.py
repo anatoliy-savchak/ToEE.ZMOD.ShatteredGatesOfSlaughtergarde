@@ -500,3 +500,40 @@ class CtrlWererat(ctrl_behaviour.CtrlBehaviour):
 class CtrlGaranaach(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14925
+
+	def __init__(self):
+		super(CtrlGaranaach, self).__init__()
+		self.next_breath_weapon_2_skip = 0
+		return
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlGaranaach, self).created(npc)
+		# assign scripts
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		npc.condition_add_with_args("Line_Of_Acid", 40, 4, 16)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		self.next_breath_weapon_2_skip -= 1
+		if (self.next_breath_weapon_2_skip <= 0):
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_clear_target()
+			tac.add_target_closest()
+			tac.add_halt()
+			tac.add_python_action(3010)
+			tac.add_ready_vs_approach()
+			self.next_breath_weapon_2_skip = toee.game.random_range(1, 4)
+			print("next_breath_weapon_2_skip: {}".format(self.next_breath_weapon_2_skip))
+		return tac
+
+	def start_combat1(self, attachee, triggerer):
+		super(CtrlGaranaach, self).start_combat(attachee, triggerer)
+		#for pc in toee.game.party:
+		#	pc.condition_add("Surprised")
+		return

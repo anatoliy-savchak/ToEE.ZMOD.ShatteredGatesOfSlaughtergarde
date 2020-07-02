@@ -102,19 +102,19 @@ class CtrlShatteredTemple(object):
 		if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
 		self.encounters_placed = 1
-		self.place_encounter_t1()
-		self.place_encounter_t2()
-		self.place_encounter_t3()
-		self.place_encounter_t4()
-		self.place_encounter_t5()
-		self.place_encounter_t6()
-		self.place_encounter_t7()
-		self.place_encounter_t8()
-		self.place_encounter_t9()
-		self.place_encounter_t10()
-		self.place_encounter_t11()
+		#self.place_encounter_t1()
+		#self.place_encounter_t2()
+		#self.place_encounter_t3()
+		#self.place_encounter_t4()
+		#self.place_encounter_t5()
+		#self.place_encounter_t6()
+		#self.place_encounter_t7()
+		#self.place_encounter_t8()
+		#self.place_encounter_t9()
+		#self.place_encounter_t10()
+		#self.place_encounter_t11()
 		self.place_encounter_t12()
-		self.print_monsters()
+		#self.print_monsters()
 
 		# debug
 		wizard = toee.game.party[4]
@@ -131,7 +131,7 @@ class CtrlShatteredTemple(object):
 		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
 		utils_obj.scroll_to_leader()
 		return
 
@@ -352,7 +352,7 @@ class CtrlShatteredTemple(object):
 	def place_encounter_t12(self):
 		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(450, 449), 6400, 120, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Dragon's Lair")
 
-		self.create_npc_at(utils_obj.sec2loc(446, 441), py06401_shattered_temple_encounters.CtrlGaranaach, const_toee.rotation_0600_oclock, "t12", "dragon")
+		self.create_npc_at(utils_obj.sec2loc(448, 442), py06401_shattered_temple_encounters.CtrlGaranaach, const_toee.rotation_0600_oclock, "t12", "dragon")
 		return
 
 	def display_encounter_t12(self):

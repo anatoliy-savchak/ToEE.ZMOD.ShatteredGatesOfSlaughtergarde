@@ -197,6 +197,7 @@ class TacticsHelper(object):
 		return
 
 	def add_python_action(self, action_enum):
+		assert isinstance(action_enum, int)
 		self.add_triplet("python action", str(action_enum), "")
 		return
 

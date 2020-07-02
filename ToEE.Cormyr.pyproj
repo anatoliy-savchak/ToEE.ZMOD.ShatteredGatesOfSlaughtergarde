@@ -152,6 +152,7 @@
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03010_breath_weapon.py" />
     <Compile Include="overrides\rules\d20_actions\action03006_bag_of_holding_inventory.py" />
     <Compile Include="overrides\rules\d20_actions\action03009_bag_of_holding_list.py" />
     <Compile Include="overrides\rules\d20_actions\action03008_bag_of_holding_transfer_from_bodies.py" />
@@ -258,6 +259,7 @@
     <Compile Include="overrides\scr\tpModifiers\immunity_visual.py" />
     <Compile Include="overrides\scr\tpModifiers\inspect.py" />
     <Compile Include="overrides\scr\tpModifiers\cast_defensively_ex.py" />
+    <Compile Include="overrides\scr\tpModifiers\line_of_acid.py" />
     <Compile Include="overrides\scr\tpModifiers\shadow_cloak_su.py" />
     <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />
