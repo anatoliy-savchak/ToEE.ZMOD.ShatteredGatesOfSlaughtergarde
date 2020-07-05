@@ -582,6 +582,7 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 		#npc.condition_add_with_args("Monster_Bite", 0, 0)
 
 		utils_npc.npc_skill_ensure(npc, toee.skill_hide, 20)
+		utils_npc.npc_skill_ensure(npc, toee.skill_concentration, 11)
 		return
 
 	def enter_combat(self, attachee, triggerer):
@@ -632,4 +633,25 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 
 	def start_combat(self, attachee, triggerer):
 		super(CtrlShenn, self).start_combat(attachee, triggerer)
+		return
+
+class CtrlLolthSting(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14927
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlLolthSting, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_RAPIER_MASTERWORK, npc)
+		crossbow = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_CROSSBOW_LIGHT, npc)
+		item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_BOLT_QUIVER_DROW_SLEEP, npc)
+		if (item):
+			item.obj_set_int(toee.obj_f_ammo_quantity, 4)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		npc.item_wield_best_all()
+		npc.item_wield(crossbow, toee.item_wear_weapon_primary)
 		return

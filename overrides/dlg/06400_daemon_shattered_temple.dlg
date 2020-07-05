@@ -62,3 +62,13 @@
 {133}{Continue}{}{1}{}{114}{}
 {134}{A tunnel leads upward from the northeastern corner of the room, which apparently collapsed in the past.}{A tunnel leads upward from the northeastern corner of the room, which apparently collapsed in the past.}{}{}{}{}
 {139}{Close}{}{1}{}{0}{cst().activate_encounter_t13()}
+
+{140}{Two furred humanoids that have the heads of rats are using rapiers to poke upward at massive bells hanging from two racks about 10 feet off the chamber floor.}{Two furred humanoids that have the heads of rats are using rapiers to poke upward at massive bells hanging from two racks about 10 feet off the chamber floor.}{}{}{}{cst().display_encounter_t14()}
+{141}{Continue}{}{1}{}{142}{}
+{142}{Wooden struts connect each bell to a cluster of levers on the far end of each rack. The northern end of the room angles to the northeast.}{Wooden struts connect each bell to a cluster of levers on the far end of each rack. The northern end of the room angles to the northeast.}{}{}{}{}
+{149}{Close}{}{1}{}{0}{cst().activate_encounter_t14()}
+
+{150}{Two drow in studded leather armor crouch near a demon arch in the southwestern corner of this room. They have rapiers and hand crossbows. In the middle of the room is a pool of still liquid. The pool has an iridescent, oily sheen on the surface, and you can't tell how deep it is.}{Two drow in studded leather armor crouch near a demon arch in the southwestern corner of this room. They have rapiers and hand crossbows. In the middle of the room is a pool of still liquid. The pool has an iridescent, oily sheen on the surface, and you can't tell how deep it is.}{}{}{}{cst().display_encounter_t15()}
+{151}{Continue}{}{1}{}{152}{}
+{152}{In the northeastern and northwestern corners of the room are massive statues of sinister elephants. Their trunks point downward, ending just above the surface of the water. They have spiked collars carved around their necks.}{In the northeastern and northwestern corners of the room are massive statues of sinister elephants. Their trunks point downward, ending just above the surface of the water. They have spiked collars carved around their necks.}{}{}{}{}
+{159}{Close}{}{1}{}{0}{cst().activate_encounter_t15()}

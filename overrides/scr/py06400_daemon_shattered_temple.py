@@ -118,8 +118,10 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t9()
 		#self.place_encounter_t10()
 		#self.place_encounter_t11()
-		self.place_encounter_t12()
-		self.place_encounter_t13()
+		#self.place_encounter_t12()
+		#self.place_encounter_t13()
+		#self.place_encounter_t14()
+		self.place_encounter_t15()
 		self.print_monsters()
 
 		# debug
@@ -384,6 +386,40 @@ class CtrlShatteredTemple(object):
 	def activate_encounter_t13(self):
 		npc, info = self.activate_monster("t13", "shenn", 1, 1, 1)
 		return npc, info
+
+	def place_encounter_t14(self):
+		self.create_promter_at(utils_obj.sec2loc(478, 455), 6400, 140, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Bell Chamber")
+
+		self.create_npc_at(utils_obj.sec2loc(478, 442), py06401_shattered_temple_encounters.CtrlWererat, const_toee.rotation_0200_oclock, "t14", "warerat1")
+		self.create_npc_at(utils_obj.sec2loc(475, 442), py06401_shattered_temple_encounters.CtrlWererat, const_toee.rotation_0800_oclock, "t14", "warerat2")
+		return
+
+	def display_encounter_t14(self):
+		self.reveal_monster("t14", "warerat1")
+		self.reveal_monster("t14", "warerat2")
+		return
+
+	def activate_encounter_t14(self):
+		self.activate_monster("t14", "warerat1")
+		self.activate_monster("t14", "warerat2")
+		return
+
+	def place_encounter_t15(self):
+		self.create_promter_at(utils_obj.sec2loc(495, 451), 6400, 150, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Baptismal Font")
+
+		self.create_npc_at(utils_obj.sec2loc(498, 450), py06401_shattered_temple_encounters.CtrlLolthSting, const_toee.rotation_0200_oclock, "t15", "sting1")
+		self.create_npc_at(utils_obj.sec2loc(498, 448), py06401_shattered_temple_encounters.CtrlLolthSting, const_toee.rotation_0200_oclock, "t15", "sting2")
+		return
+
+	def display_encounter_t15(self):
+		self.reveal_monster("t15", "sting1")
+		self.reveal_monster("t15", "sting2")
+		return
+
+	def activate_encounter_t15(self):
+		self.activate_monster("t15", "sting1")
+		self.activate_monster("t15", "sting2")
+		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
