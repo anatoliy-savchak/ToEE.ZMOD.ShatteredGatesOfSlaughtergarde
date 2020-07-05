@@ -602,7 +602,7 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 				target = None
 				for atarget in melees.list:
 					assert isinstance(atarget, utils_target_list.AITarget)
-					if (not atarget.target.d20_query(toee.EK_Q_Critter_Is_Afraid - toee.EK_Q_Helpless)):
+					if (not atarget.target.d20_query(toee.Q_Critter_Is_Afraid)):
 						target = atarget.target
 						break
 				if (not target):
@@ -615,6 +615,13 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 				tac.add_halt()
 				tac.add_cast_area_code(self.spells.prep_spell(npc, toee.spell_cause_fear))
 				break
+
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_target_closest()
+			tac.add_approach_single()
+			tac.add_attack()
+			tac.add_ready_vs_approach()
+			tac.add_total_defence()
 			break
 		return tac
 

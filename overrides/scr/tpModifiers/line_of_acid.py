@@ -95,7 +95,6 @@ def BreathLineGetBestTargets(caster, max_distance):
 	for sobj, data in obj_data.items():
 		if (not data["can_see"]): continue
 		if (not data["primary"]): continue
-		if (data["hp"] < 0): continue
 		for sobj2, data2 in obj_data.items():
 			if (sobj2 == sobj): continue
 			if (not data2["can_see"]): continue
@@ -109,6 +108,7 @@ def BreathLineGetBestTargets(caster, max_distance):
 	for sobj, data in obj_data.items():
 		if (not data["can_see"]): continue
 		if (not data["primary"]): continue
+		if (data["hp"] < 0): continue
 		if (data["ally"]): continue
 		if (master is None):
 			master = data["obj"]

@@ -222,3 +222,7 @@ class TacticsHelper(object):
 	def add_rage(self):
 		self.add_simple("rage")
 		return
+
+	def add_approach_single(self):
+		self.add_simple("approach single")
+		return

@@ -99,20 +99,25 @@ class CtrlShatteredTemple(object):
 		return None
 
 	def place_encounters(self):
-		if (self.encounters_placed): return
+		#if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
+
+		self.monsters = dict()
+		self.m2 = list()
+		self.destroy_all_npc()
+
 		self.encounters_placed = 1
-		self.place_encounter_t1()
-		self.place_encounter_t2()
-		self.place_encounter_t3()
-		self.place_encounter_t4()
-		self.place_encounter_t5()
-		self.place_encounter_t6()
-		self.place_encounter_t7()
-		self.place_encounter_t8()
-		self.place_encounter_t9()
-		self.place_encounter_t10()
-		self.place_encounter_t11()
+		#self.place_encounter_t1()
+		#self.place_encounter_t2()
+		#self.place_encounter_t3()
+		#self.place_encounter_t4()
+		#self.place_encounter_t5()
+		#self.place_encounter_t6()
+		#self.place_encounter_t7()
+		#self.place_encounter_t8()
+		#self.place_encounter_t9()
+		#self.place_encounter_t10()
+		#self.place_encounter_t11()
 		self.place_encounter_t12()
 		self.place_encounter_t13()
 		self.print_monsters()
@@ -132,12 +137,12 @@ class CtrlShatteredTemple(object):
 		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
 		utils_obj.scroll_to_leader()
 		return
 
 	def place_encounter_t1(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall")
+		self.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall")
 
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 472), const_toee.rotation_0800_oclock, "t1", "guard1")
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 478), const_toee.rotation_0800_oclock, "t1", "guard2")
@@ -154,7 +159,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t2(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(487, 492), 6400, 20, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Spring")
+		self.create_promter_at(utils_obj.sec2loc(487, 492), 6400, 20, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Spring")
 
 		self.create_grimlock_at(utils_obj.sec2loc(484, 492), const_toee.rotation_1100_oclock, "t2", "grmilock1")
 		self.create_grimlock_at(utils_obj.sec2loc(488, 492), const_toee.rotation_1100_oclock, "t2", "grmilock2")
@@ -171,7 +176,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t3(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(485, 510), 6400, 30, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Storage")
+		self.create_promter_at(utils_obj.sec2loc(485, 510), 6400, 30, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Storage")
 
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(492, 510), const_toee.rotation_1100_oclock, "t3", "guard1", 1)
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(492, 514), const_toee.rotation_1100_oclock, "t3", "guard2", 1)
@@ -188,8 +193,8 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t4(self):
-		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(470, 475), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
-		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(459, 479), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
+		p1 = self.create_promter_at(utils_obj.sec2loc(470, 475), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
+		p2 = self.create_promter_at(utils_obj.sec2loc(459, 479), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
@@ -217,8 +222,8 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t5(self):
-		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(449, 479), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
-		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(441, 486), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
+		p1 = self.create_promter_at(utils_obj.sec2loc(449, 479), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
+		p2 = self.create_promter_at(utils_obj.sec2loc(441, 486), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
@@ -244,8 +249,8 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t6(self):
-		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(463, 495), 6400, 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Sinuous Serpent")
-		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(470, 498), 6400, 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Sinuous Serpent")
+		p1 = self.create_promter_at(utils_obj.sec2loc(463, 495), 6400, 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Sinuous Serpent")
+		p2 = self.create_promter_at(utils_obj.sec2loc(470, 498), 6400, 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Sinuous Serpent")
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
@@ -261,7 +266,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t7(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(430, 493), 6400, 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northern Quarters")
+		self.create_promter_at(utils_obj.sec2loc(430, 493), 6400, 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northern Quarters")
 
 		fire_epicenter = utils_obj.sec2loc(437, 494)
 		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(428, 493), const_toee.rotation_0800_oclock, "t7", "aguard1", 2)
@@ -283,7 +288,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t8(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(428, 506), 6400, 80, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southern Quarters")
+		self.create_promter_at(utils_obj.sec2loc(428, 506), 6400, 80, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southern Quarters")
 
 		self.create_npc_at(utils_obj.sec2loc(422, 503), py06401_shattered_temple_encounters.CtrlGargoyle, const_toee.rotation_0800_oclock, "t8", "gargoyle")
 		return
@@ -297,7 +302,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t9(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(438, 511), 6400, 90, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Priest Quarters")
+		self.create_promter_at(utils_obj.sec2loc(438, 511), 6400, 90, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Priest Quarters")
 
 		self.create_npc_at(utils_obj.sec2loc(441, 511), py06401_shattered_temple_encounters.CtrlDrowZombie, const_toee.rotation_0800_oclock, "t9", "dzombie1")
 		self.create_npc_at(utils_obj.sec2loc(438, 514), py06401_shattered_temple_encounters.CtrlDrowZombieDesicrate, const_toee.rotation_0800_oclock, "t9", "dzombie2")
@@ -314,7 +319,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t10(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(434, 460), 6400, 100, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Bat Lair")
+		self.create_promter_at(utils_obj.sec2loc(434, 460), 6400, 100, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Bat Lair")
 
 		self.create_npc_at(utils_obj.sec2loc(423, 462), py06401_shattered_temple_encounters.CtrlDireBat, const_toee.rotation_0800_oclock, "t10", "bat1")
 		self.create_npc_at(utils_obj.sec2loc(423, 466), py06401_shattered_temple_encounters.CtrlDireBat, const_toee.rotation_0800_oclock, "t10", "bat2")
@@ -331,7 +336,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t11(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(447, 461), 6400, 110, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Fout Arms")
+		self.create_promter_at(utils_obj.sec2loc(447, 461), 6400, 110, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Fout Arms")
 
 		self.create_npc_at(utils_obj.sec2loc(453, 459), py06401_shattered_temple_encounters.CtrlWererat, const_toee.rotation_1100_oclock, "t11", "warerat1")
 		self.create_npc_at(utils_obj.sec2loc(449, 459), py06401_shattered_temple_encounters.CtrlWererat, const_toee.rotation_1100_oclock, "t11", "warerat2")
@@ -351,7 +356,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t12(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(450, 449), 6400, 120, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Dragon's Lair")
+		self.create_promter_at(utils_obj.sec2loc(450, 449), 6400, 120, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Dragon's Lair")
 
 		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(448, 442), py06401_shattered_temple_encounters.CtrlGaranaach, const_toee.rotation_0600_oclock, "t12", "dragon")
 		ctrl.notify_start_combat_npcid = self.id
@@ -367,7 +372,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t13(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(440, 445), 6400, 132, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Yuan-Ti Lair")
+		self.create_promter_at(utils_obj.sec2loc(440, 445), 6400, 132, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Yuan-Ti Lair")
 
 		self.create_npc_at(utils_obj.sec2loc(436, 443), py06401_shattered_temple_encounters.CtrlShenn, const_toee.rotation_0900_oclock, "t13", "shenn")
 		return
@@ -590,4 +595,15 @@ class CtrlShatteredTemple(object):
 			else:
 				npc2.attack(closest)
 				npc2.add_to_initiative()
+		return
+
+	def create_promter_at(self, loc, dialog_script_id, line_id, radar_radius_ft, method, new_name):
+		npc = py06122_cormyr_prompter.create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, method, new_name)
+		return npc
+
+	def destroy_all_npc(self):
+		myself = toee.game.get_obj_by_id(self.id)
+		for npc in toee.game.obj_list_range(myself.location, 200, toee.OLC_NPC):
+			if (npc.id == self.id): continue
+			npc.destroy()
 		return
