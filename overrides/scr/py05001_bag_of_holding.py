@@ -157,6 +157,8 @@ class CtrlBagOfHolding(object):
 				leader.float_text_line(text, toee.tf_red)
 				text = text + "\n"
 				toee.game.create_history_freeform(text)
+			else:
+				curr_weight += weight
 		return
 
 	@classmethod

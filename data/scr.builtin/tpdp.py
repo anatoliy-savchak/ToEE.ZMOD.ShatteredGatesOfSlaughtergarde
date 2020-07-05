@@ -12,6 +12,14 @@ def create_history_type6_opposed_check(performer, defender, performerRoll, defen
 	""" create_history_type6_opposed_check(toee.PyObjHandle: performer, toee.PyObjHandle: defender, int: performerRoll, int: defenderRoll, BonusList: performerBonList, BonusList: defenderBonList, int: combatMesLineTitle, int: combatMesLineResult, int: flag) -> int: rollHistId"""
 	return 0
 
+def dispatch_stat(obj, stat, bonlist):
+	""" dispatch_stat(toee.PyObjHandle: performer, int: stat, BonusList: bon_list) -> int: stat_value"""
+	return 0
+
+def create_history_type4(performer, dc, dice, roll, text, bonlist):
+	""" create_history_type4(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
+	return 0
+
 class TurnBasedStatus:
 	def __init__(self):
 		self.hourglass_state = toee.D20ACT_Full_Round_Action
@@ -27,7 +35,7 @@ class D20Action:
 		self.target = toee.PyObjHandle()
 		self.spell_id = 0
 		self.data1 = 0
-		self.flags0 # D20CAF_ flags
+		self.flags = toee.D20CAF_HIT # D20CAF_ flags
 		self.path = object() #todo
 		self.action_type = action_type #See D20A_ constants
 		self.loc = 0
@@ -619,3 +627,18 @@ class SpellPacket:
 
 	def float_spell_line(self, handle, lineId, color):
 		return
+
+class D20ActionType:
+	FiveFootStep = toee.D20A_5FOOTSTEP
+	PythonAction = toee.D20A_PYTHON_ACTION
+	StandardAttack = toee.D20A_STANDARD_ATTACK
+	FullAttack = toee.D20A_FULL_ATTACK
+	StandardRangedAttack = toee.D20A_STANDARD_RANGED_ATTACK
+	StandUp = toee.D20A_STAND_UP
+	TurnUndead = toee.D20A_TURN_UNDEAD
+	ClassAbility = toee.D20A_CLASS_ABILITY_SA
+	CastSpell = toee.D20A_CAST_SPELL
+	UseItem = toee.D20A_USE_ITEM
+	UsePotion = toee.D20A_USE_POTION
+	Feint = toee.D20A_FEINT
+	Move = toee.D20A_UNSPECIFIED_MOVE

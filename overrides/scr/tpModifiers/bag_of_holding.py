@@ -99,9 +99,15 @@ def Bag_Of_Holding_OnBuildRadialMenuEntry(attachee, args, evt_obj):
 	#assert isinstance(radial_action, tpdp.RadialMenuEntryParent)
 	#radial_action.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Items)
 	radial_action.add_as_child(attachee, radial_parent_id)
+
+	if (1):
+		radial_action = tpdp.RadialMenuEntryPythonAction("Autosell", toee.D20A_PYTHON_ACTION, 3013, 0, "TAG_INTERFACE_HELP")
+		#assert isinstance(radial_action, tpdp.RadialMenuEntryParent)
+		#radial_action.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Items)
+		radial_action.add_as_child(attachee, radial_parent_id)
 	return 0
 
-def Bag_Of_Holding_OnD20PythonActionPerform_3006(attachee, args, evt_obj):
+def Bag_Of_Holding_OnD20PythonActionPerform_inventory(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjD20Action)
@@ -128,7 +134,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_3006(attachee, args, evt_obj):
 		print '-'*60		
 	return 1
 
-def Bag_Of_Holding_OnD20PythonActionPerform_3007(attachee, args, evt_obj):
+def Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjD20Action)
@@ -168,7 +174,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_3007(attachee, args, evt_obj):
 		print '-'*60		
 	return 1
 
-def Bag_Of_Holding_OnD20PythonActionPerform_3008(attachee, args, evt_obj):
+def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjD20Action)
@@ -242,7 +248,27 @@ def sell_modifier():
 	else:
 		return 0.4 + float(highest_appraise)*0.03
 
-def Bag_Of_Holding_OnD20PythonActionPerform_3009(attachee, args, evt_obj):
+class ItemInfo:
+	def __init__(self, item, worth, weight, text = None):
+		assert isinstance(item, toee.PyObjHandle)
+		assert isinstance(worth, int)
+		assert isinstance(weight, int)
+		assert isinstance(text, str)
+		self.item = item
+		self.worth = worth
+		self.weight = weight
+		self.text = text
+		self.ratio = worth
+		if (weight):
+			self.ratio = worth / weight
+		return
+
+def ItemInfo_compare_ratio(m1, m2):
+	assert isinstance(m1, ItemInfo)
+	assert isinstance(m2, ItemInfo)
+	return m2.ratio - m1.ratio
+
+def Bag_Of_Holding_OnD20PythonActionPerform_autosell(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjD20Action)
@@ -266,21 +292,88 @@ def Bag_Of_Holding_OnD20PythonActionPerform_3009(attachee, args, evt_obj):
 		total_lb = 0
 		total_gp = 0
 		sm = sell_modifier()
+		total_sell = 0.0
+		for item in items:
+			num +=1
+			text = item.description
+			worth0 = item.obj_get_int(toee.obj_f_item_worth)
+			worth_gp = worth0 // 100
+			total_gp += worth_gp
+			total_sell += worth0 * sm
+			worth_gp_sell = worth_gp * sm
+			x2 = ""
+			x = item.obj_get_int(toee.obj_f_item_quantity)
+			if (x > 1): x2 = " x{}".format(x)
+			text = "{:02d}. {}{}.\n {} gp\n".format(num, text, x2, int(worth_gp_sell))
+			toee.game.create_history_freeform(text)
+
+		if (num):
+			toee.game.create_history_freeform("---------\n")
+			text = "Total sold: {} gp\n".format(int(total_sell / 100))
+			toee.game.create_history_freeform(text)
+		toee.game.create_history_freeform("\n")
+
+		for item in items:
+			item.destroy()
+		attachee.money_adj(int(total_sell))
+
+		attachee.anim_goal_use_object(bag)
+		#attachee.container_open_ui(bag)
+	except Exception, e:
+		print "Bag_Of_Holding_OnD20PythonActionPerform_list_bag:"
+		print '-'*60
+		traceback.print_exc(file=sys.stdout)
+		print '-'*60		
+	return 1
+
+def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Action)
+	#debug.breakp("Lodged_Quills_OnD20PythonActionPerform start")
+	try:
+		#debug.breakp("Bag_Of_Holding_OnD20PythonActionPerform")
+		prev_chest = FindChest()
+		if (prev_chest): prev_chest.destroy()
+		bag = toee.game.obj_create(1300, attachee.location)
+		do_invisible = "anim_goal_use_object" in dir(attachee)
+		#do_invisible = 0
+		if (do_invisible):
+			bag.object_flag_set(toee.OF_DONTDRAW)
+			bag.move(attachee.location)
+
+		# force load
+		bag.object_script_execute(attachee, 0x01) #sn_use
+		toee.game.create_history_freeform("Bag of Holding autosell:\n")
+		items = items_get(bag, 0)
+		num = 0
+		total_lb = 0
+		total_gp = 0
+		sm = sell_modifier()
 		total_gp_sell = 0.0
+		lst = list()
 		for item in items:
 			num +=1
 			weight = item.obj_get_int(toee.obj_f_item_weight)
 			total_lb += weight
 			text = item.description
-			worth = item.obj_get_int(toee.obj_f_item_worth)
-			worth_gp = worth // 100
+			worth0 = item.obj_get_int(toee.obj_f_item_worth)
+			worth_gp = worth0 // 100
 			total_gp += worth_gp
 			total_gp_sell += worth_gp * sm
+			worth_gp_sell = worth_gp * sm
 			x2 = ""
 			x = item.obj_get_int(toee.obj_f_item_quantity)
 			if (x > 1): x2 = " x{}".format(x)
-			text = "{:02d}. {}{}.\n   {} lb. {} gp.\n".format(num, text, x2, weight, worth_gp)
-			toee.game.create_history_freeform(text)
+			info = ItemInfo(item, worth_gp, weight)
+			text = "{:02d}. {}{}.\n   {} lb. {} gp ({}), r {}\n".format(num, text, x2, weight, worth_gp, int(worth_gp_sell), int(info.ratio))
+			info.text = text
+			lst.append(info)
+			#toee.game.create_history_freeform(text)
+
+		for info in sorted(lst, ItemInfo_compare_ratio):
+			toee.game.create_history_freeform(info.text)
+
 		if (num):
 			toee.game.create_history_freeform("---------\n")
 			text = "Total: {} lb, {} gp, sell: {} gp\n".format(total_lb, total_gp, int(total_gp_sell))
@@ -341,10 +434,11 @@ def _Bag_Of_Holding_destroy_on_timeevent(bag):
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - type
 modObj.AddHook(toee.ET_OnBuildRadialMenuEntry, toee.EK_NONE, Bag_Of_Holding_OnBuildRadialMenuEntry, ())
-modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3006, Bag_Of_Holding_OnD20PythonActionPerform_3006, ())
-modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3007, Bag_Of_Holding_OnD20PythonActionPerform_3007, ())
-modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3008, Bag_Of_Holding_OnD20PythonActionPerform_3008, ())
-modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3009, Bag_Of_Holding_OnD20PythonActionPerform_3009, ())
+modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3006, Bag_Of_Holding_OnD20PythonActionPerform_inventory, ())
+modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3007, Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies, ())
+modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3008, Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies, ())
+modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3009, Bag_Of_Holding_OnD20PythonActionPerform_list_bag, ())
+modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3013, Bag_Of_Holding_OnD20PythonActionPerform_autosell, ())
 #modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Inventory_Update, Bag_Of_Holding_S_Inventory_Update, ())
 
 modObj2 = templeplus.pymod.PythonModifier(Bag_Of_Holding_Support, 2) # 

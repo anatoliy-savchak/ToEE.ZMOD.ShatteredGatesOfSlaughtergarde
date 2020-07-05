@@ -71,9 +71,9 @@ def npc_is_alive(npc):
 	assert isinstance(npc, PyObjHandle)
 	object_flags = npc.object_flags_get()
 	if ((object_flags & OF_DESTROYED) or (object_flags & OF_OFF)): return 0
-	result = npc.d20_query(EK_Q_Dead - EK_Q_Helpless)
+	result = npc.d20_query(Q_Dead)
 	if (result): return 0
-	result = npc.d20_query(EK_Q_Dying - EK_Q_Helpless)
+	result = npc.d20_query(Q_Dying)
 	if (result): return 0
 	hp = npc.stat_level_get(stat_hp_current)
 	if (hp <= -10): return 0

@@ -45,7 +45,7 @@ def san_true_seeing(attachee, triggerer):
 		c = csl()
 		if (c):
 			return c.can_sleep()
-	return toee.RUN_DEFAULT
+	return toee.SLEEP_SAFE
 
 def csl():
 	#print("CtrlShatteredLab.get_name(): {}".format(CtrlShatteredLab.get_name()))
@@ -124,8 +124,10 @@ class CtrlShatteredLab(object):
 		# debug
 		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
-		#toee.game.scroll_to(toee.game.leader)
-		#utils_obj.scroll_to_leader()
+		#toee.game.fade_and_teleport(0, 0, 0, 5121, 466, 476)
+		utils_obj.scroll_to_leader()
+		for pc in toee.game.party:
+			pc.condition_add("Break_Object")
 		return
 
 	def place_encounter_l1(self):
@@ -770,27 +772,33 @@ class CtrlShatteredLab(object):
 		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_CONTAINER):
 			assert isinstance(obj, toee.PyObjHandle)
 			no = obj.obj_get_int(toee.obj_f_hp_pts) 
-			if (no == 71):
+			nameid = obj.name
+			if (nameid == 1301):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_key_id, 31)
+				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
 				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_JASPER_BLUE, obj) # Originally ivory figurine
-			elif (no == 72):
+			elif (nameid == 1302):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_key_id, 32)
+				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
 				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_WHITE, obj) # Originally opal earrings
 				utils_item.item_money_create_in_inventory(obj, 0, 12)
-			elif (no == 73):
+			elif (nameid == 1303):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_key_id, 33)
+				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
 				utils_item.item_money_create_in_inventory(obj, 0, 350) # Originally porcelain plate
-			elif (no == 74):
+			elif (nameid == 1304):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
+				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
 				utils_item.item_money_create_in_inventory(obj, 0, 33)
 			elif (no == 151):
+				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SHORTBOW_MASTERWORK, obj)
 				utils_item.item_create_in_inventory_mass(obj \
 					, [const_proto_scrolls.PROTO_SCROLL_OF_BURNING_HANDS \
@@ -815,6 +823,20 @@ class CtrlShatteredLab(object):
 	def can_sleep(self):
 		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 20):
 			return toee.SLEEP_SAFE
+
+		alive = 0
+		for info in self.m2:
+			assert isinstance(info, MonsterInfo)
+			if (not info): continue
+			if ("cr" in dir(info) and not info.cr): continue
+			npc = toee.game.get_obj_by_id(info.id)
+			if (not npc): continue
+			if (npc.proto == 14895): continue
+			if (utils_npc.npc_is_alive(npc)):
+				alive = 1
+				break
+		if (not alive):
+			return toee.SLEEP_SAFE
 		return toee.SLEEP_IMPOSSIBLE
 
 	def print_monsters(self):
@@ -822,7 +844,7 @@ class CtrlShatteredLab(object):
 		exptotal1 = 0
 		per = len(toee.game.party)
 		for info in self.m2:
-			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			assert isinstance(info, MonsterInfo)
 			#npc = toee.game.get_obj_by_id(info.id)
 			exp = utils_npc.npc_get_cr_exp(toee.game.leader, info.cr)
 			exptotal1 += exp // per
