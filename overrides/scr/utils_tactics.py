@@ -197,5 +197,32 @@ class TacticsHelper(object):
 		return
 
 	def add_python_action(self, action_enum):
+		assert isinstance(action_enum, int)
 		self.add_triplet("python action", str(action_enum), "")
+		return
+
+	def add_sniper(self):
+		self.add_simple("sniper")
+		return
+
+	def add_use_item(self, id):
+		self.add_triplet("use item", id, "")
+		return
+
+	def add_d20_action(self, d20type, data1):
+		assert isinstance(d20type, int)
+		assert isinstance(data1, int)
+		self.add_triplet("d20 action", "{} {}".format(d20type, data1), "")
+		return
+
+	def add_target_threatened(self):
+		self.add_simple("target threatened")
+		return
+
+	def add_rage(self):
+		self.add_simple("rage")
+		return
+
+	def add_approach_single(self):
+		self.add_simple("approach single")
 		return

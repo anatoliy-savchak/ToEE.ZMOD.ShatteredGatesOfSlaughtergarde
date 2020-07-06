@@ -329,9 +329,11 @@ zlib-1.2.1.dll
 # data
 data/art/
 data/movies/
-data/oemes/
 data/slide/
 data/sound/
+
+data/oemes/category.mes
+data/oemes/faction.mes
 
 # data/scr files
 data/scr/co8Util/

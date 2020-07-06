@@ -3,12 +3,10 @@ class PyDice(object):
 		self.number = 1	#	GetCount
 		self.size = 1		#	GetSides
 		self.bonus = 1	#	GetModifier
+		self.packed = 1
 		return
 
 	def roll(self):
-		return 1
-
-	def dice_packed(self):
 		return 1
 
 def dice_new(dice_str):
@@ -16,8 +14,15 @@ def dice_new(dice_str):
 	return PyDice()
 
 class PySpell(object):
-	def __init__(self):
-		self.spell = 1	
+	def __init__(self, spellEnum = 0):
+		self.spell = PySpell()
+		self.begin_round_obj = PyObjHandle()
+		self.caster = PyObjHandle()
+		self.caster_class = stat_level_wizard
+		self.spell_level = 0
+		self.range_exact = 0
+		self.id = 0
+		# todo
 		return
 
 class PyTrapDamage(object):
@@ -132,6 +137,10 @@ class PyObjHandle(object):
 		""" npc.anim_goal_push_attack(PyObjHandle: tgt, anim_idx, is_crit, is_secondary) -> int"""
 		return
 
+	def anim_goal_use_object(self, target, goal_type = 40, target_loc = None, some_flag = None):
+		""" npc.anim_goal_use_object(PyObjHandle: target, int: goal_type = 40, int: target_loc = None, int: some_flag = None) -> int"""
+		return
+
 	def anim_goal_get_new_id(self):
 		return 0
 
@@ -216,6 +225,10 @@ class PyObjHandle(object):
 		"""door.container_toggle_open() -> None"""
 		return
 
+	def container_open_ui(self):
+		"""npc.container_open_ui(PyObjHandle: container) -> int"""
+		return 1
+
 	def cast_spell(self, spellEnum, targetObj):
 		"""npc.cast_spell(int: spellEnum, PyObjHandle: targetObj) -> None"""
 		#npc.cast_spell(int[spell_aid...]: spellEnum|, PyObjHandle: targetObj) -> None
@@ -257,7 +270,7 @@ class PyObjHandle(object):
 		return
 
 	def deal_attack_damage(self, attacker, d20_data, flags, actionType):
-		"""npc.damage_with_reduction(PyObjHandle: attacker, int[dispatcher]: d20_data, int[D20CAF_HIT]: flags, int[D20A_NONE]: actionType) -> None"""
+		"""npc.deal_attack_damage(PyObjHandle: attacker, int[dispatcher]: d20_data, int[D20CAF_HIT]: flags, int[D20A_NONE]: actionType) -> None"""
 		return
 
 	def destroy(self):
@@ -276,6 +289,10 @@ class PyObjHandle(object):
 		"""npc.identify_all()"""
 		return
 
+	def is_spell_known(self, spellEnum):
+		"""npc.is_spell_known(self, spellEnum) -> int"""
+		return 1
+
 	def inventory_item(self, index):
 		"""npc.inventory_item(int: index) -> PyObjHandle"""
 		return PyObjHandle()
@@ -284,8 +301,8 @@ class PyObjHandle(object):
 		"""npc.item_find_by_proto(int: proto) -> PyObjHandle"""
 		return PyObjHandle()
 
-	def is_spell_known(self, spellEnum):
-		"""npc.is_spell_known(self, spellEnum) -> int"""
+	def item_get(self, item, flags = 0):
+		"""npc.item_get(item: PyObjHandle, flags: int = 0) -> int"""
 		return 1
 
 	def item_flags_get(self):
@@ -315,6 +332,9 @@ class PyObjHandle(object):
 	def item_worn_unwield(self, equip_slot, drop_flag):
 		"""Move item to inventory or drop. npc.item_worn_unwield(int[item_wear_helmet-item_wear_lockpicks]: equip_slot, int: drop_flag) -> none"""
 		return PyObjHandle()
+
+	def get_weapon_type(self):
+		return wt_gauntlet
 	
 	def faction_add(self, faction_num):
 		"""npc.faction_add(int: faction_num) -> int"""
@@ -337,7 +357,7 @@ class PyObjHandle(object):
 		"""npc.float_mesfile_line(str: mesFilename, int: lineId, int[tf_white]: colorId) -> None"""
 		return
 	
-	def float_text_line(self, line, colorId):
+	def float_text_line(self, line, colorId = tf_white):
 		"""npc.float_text_line(str: line, int[tf_white]: colorId) -> None"""
 		return
 
@@ -349,12 +369,12 @@ class PyObjHandle(object):
 		"""npc.get_category_type() -> int"""
 		return
 
-	def get_handle_upper(self):
-		"""npc.get_handle_upper() -> int"""
+	def get_initiative(self):
+		"""npc.get_initiative() -> int"""
 		return
-
-	def get_handle_lower(self):
-		"""npc.get_handle_lower() -> int"""
+	
+	def set_initiative(self, initiative):
+		"""npc.set_initiative(int: initiative) -> None"""
 		return
 
 	def leader_get(self):
@@ -411,6 +431,15 @@ class PyObjHandle(object):
 		"""Get internal field int value. npc.obj_get_int(int[obj_f_*]: field) -> int"""
 		return 0
 
+	def obj_get_idx_int(self, field, subIdx):
+		"""Get internal field array int value. npc.obj_get_idx_int(int[obj_f_*]: field, subIdx) -> int"""
+		return 0
+
+
+	def obj_get_int64(self, field):
+		"""Get internal field long value. npc.obj_get_int64(int[obj_f_*]: field) -> long"""
+		return 0
+
 	def obj_set_int(self, field, value):
 		"""Set internal field int value. npc.obj_set_int(int[obj_f_*]: field, int: value) -> None"""
 		return
@@ -448,6 +477,10 @@ class PyObjHandle(object):
 
 	def portal_flag_unset(self, flag):
 		"""npc.portal_flag_unset(int[OPF_LOCKED...]: flag) -> None"""
+		return
+
+	def reflex_save_and_damage(self, attacker, dc, reduction, flags, damageDice, damageType, attackPower, actionType, spellId):
+		"""npc.reflex_save_and_damage(PyObjHandle: attacker, int: dc, int[D20_Save_Reduction_Half]: reduction, int[D20SavingThrowFlag]: flags, PyDice: damageDice, int[D20DAP_UNSPECIFIED]: damageType, int[D20DAP_UNSPECIFIED]: attackPower, int[D20A_NONE]: actionType, int: spellId) -> None"""
 		return
 
 	def refresh_turn(self):
@@ -512,18 +545,29 @@ class PyObjHandle(object):
 		"""npc.unconceal() -> int"""
 		return
 
+	def use_item():
+		"""npc.use_item(PyObjHandle: item, PyObjHandle: target = None) -> int"""
+		return 1
+
 
 class game(object):
 	"""access to game engine"""
 	leader = PyObjHandle()
 	party = (PyObjHandle(), PyObjHandle())
 	combat_turn = 0
+	quests = PyQuests()
+	char_ui_display_type = 0
 
 	@staticmethod
 	def obj_create(protoId, loc):
 		""" Will create PyObjHandle based on protoId and place it on location. game.obj_create(int: protoId, int64: loc) -> PyObjHandle"""
 		return PyObjHandle()
 
+	@staticmethod
+	def is_ranged_weapon(weapon_type):
+		"""Check weapon type if ranged. game.is_ranged_weapon(int[wt_gauntlet]: weapon_type) -> int"""
+		return 1
+	
 	@staticmethod
 	def make_custom_name(name):
 		"""Will create new custom description. game.make_custom_name('new name') -> int: name_id"""
@@ -567,6 +611,11 @@ class game(object):
 	@staticmethod
 	def obj_list_vicinity(location, flags):
 		""" obj_list_vicinity(long: location, int[OLC_NONE]: flags) -> (PyObjHandle(), PyObjHandle())"""
+		return (PyObjHandle(), PyObjHandle())
+
+	@staticmethod
+	def obj_list_cone(originHndl, flags, radius, coneLeft, coneArc):
+		""" obj_list_cone(PyObjHandle: originHndl, int[OLC_NONE]: flags, int[feet]: radius, int: coneLeft, int: coneArc) -> (PyObjHandle(), PyObjHandle())"""
 		return (PyObjHandle(), PyObjHandle())
 
 	@staticmethod
@@ -622,6 +671,16 @@ class game(object):
 		"""
 		return
 
+	@staticmethod
+	def is_melee_weapon(weapon_type):
+		""" game.is_melee_weapon(weapon_type[wt_gauntlet]: int) -> int"""
+		return 1
+	
+	@staticmethod
+	def is_ranged_weapon(weapon_type):
+		""" game.is_ranged_weapon(weapon_type[wt_gauntlet]: int) -> int"""
+		return 1
+
 def anyone(targetObjs, methodName, methodArg):
 	return PyObjHandle()
 
@@ -673,6 +732,22 @@ class PyBonusList(object):
 	def add_from_feat(self, value, bonType, mesline, featEnum):
 		""" bonus_list.add_from_feat(int: value, int: bonType, int: mesline, int: featEnum) -> int """
 		return 0
+
+class PyQuests:
+	def __init__(self):
+		return
+
+	def __getitem__(self, idx):
+		"""game.quests[idx] -> PyQuest, idx <= 200"""
+		return PyQuest(idx)
+
+class PyQuest:
+	def __init__(self, idx):
+		self.state = qs_unknown
+		return
+
+	def unbotch(self):
+		return qs_accepted
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
@@ -3192,7 +3267,7 @@ OF_INVULNERABLE = 4194304
 OF_NOHEIGHT = 65536
 OF_NO_BLOCK = 1024
 OF_PROVIDES_COVER = 16384
-OF_RADIUS_SET = 2147483648L
+OF_RADIUS_SET = 2147483648 #2147483648L
 OF_RANDOM_SIZE = 32768
 OF_STONED = 524288
 OF_TELEPORTED = 1073741824
@@ -3379,7 +3454,7 @@ D20CAF_COVER = 134217728
 D20CAF_COUNTERSPELLED = 268435456
 D20CAF_THROWN_GRENADE = 536870912
 D20CAF_FINAL_ATTACK_ROLL = 1073741824
-D20CAF_TRUNCATED = 2147483648L
+D20CAF_TRUNCATED = 2147483648 #2147483648L
 
 # SavingThrowType
 D20_Save_Fortitude = 0
@@ -3404,26 +3479,26 @@ D20STD_F_SPELL_SCHOOL_EVOCATION = 10
 D20STD_F_SPELL_SCHOOL_ILLUSION = 11
 D20STD_F_SPELL_SCHOOL_NECROMANCY = 12
 D20STD_F_SPELL_SCHOOL_TRANSMUTATION = 13
-D20STD_F_SPELL_DESCRIPTOR_ACID = 14
-D20STD_F_SPELL_DESCRIPTOR_CHAOTIC = 15
-D20STD_F_SPELL_DESCRIPTOR_COLD = 16
-D20STD_F_SPELL_DESCRIPTOR_DARKNESS = 17
-D20STD_F_SPELL_DESCRIPTOR_DEATH = 18
-D20STD_F_SPELL_DESCRIPTOR_ELECTRICITY = 19
-D20STD_F_SPELL_DESCRIPTOR_EVIL = 20
-D20STD_F_SPELL_DESCRIPTOR_FEAR = 21
-D20STD_F_SPELL_DESCRIPTOR_FIRE = 22
-D20STD_F_SPELL_DESCRIPTOR_FORCE = 23
-D20STD_F_SPELL_DESCRIPTOR_GOOD = 24
-D20STD_F_SPELL_DESCRIPTOR_LANGUAGE_DEPENDENT = 25
-D20STD_F_SPELL_DESCRIPTOR_LAWFUL = 26
-D20STD_F_SPELL_DESCRIPTOR_LIGHT = 27
-D20STD_F_SPELL_DESCRIPTOR_MIND_AFFECTING = 28
-D20STD_F_SPELL_DESCRIPTOR_SONIC = 29
-D20STD_F_SPELL_DESCRIPTOR_TELEPORTATION = 30
-D20STD_F_SPELL_DESCRIPTOR_AIR = 31
-D20STD_F_SPELL_DESCRIPTOR_EARTH = 32
-D20STD_F_SPELL_DESCRIPTOR_WATER = 33
+D20STD_F_SPELL_DESCRIPTOR_ACID = 14 # ACID
+D20STD_F_SPELL_DESCRIPTOR_CHAOTIC = 15 # CHAOTIC
+D20STD_F_SPELL_DESCRIPTOR_COLD = 16 # COLD
+D20STD_F_SPELL_DESCRIPTOR_DARKNESS = 17 # DARKNESS
+D20STD_F_SPELL_DESCRIPTOR_DEATH = 18 # DEATH
+D20STD_F_SPELL_DESCRIPTOR_ELECTRICITY = 19 # ELECTRICITY
+D20STD_F_SPELL_DESCRIPTOR_EVIL = 20 # EVIL
+D20STD_F_SPELL_DESCRIPTOR_FEAR = 21 # FEAR
+D20STD_F_SPELL_DESCRIPTOR_FIRE = 22 # FIRE
+D20STD_F_SPELL_DESCRIPTOR_FORCE = 23 # FORCE
+D20STD_F_SPELL_DESCRIPTOR_GOOD = 24 # GOOD
+D20STD_F_SPELL_DESCRIPTOR_LANGUAGE_DEPENDENT = 25 # LANGUAGE
+D20STD_F_SPELL_DESCRIPTOR_LAWFUL = 26 # LAWFUL
+D20STD_F_SPELL_DESCRIPTOR_LIGHT = 27 # LIGHT
+D20STD_F_SPELL_DESCRIPTOR_MIND_AFFECTING = 28 # MIND
+D20STD_F_SPELL_DESCRIPTOR_SONIC = 29 # SONIC
+D20STD_F_SPELL_DESCRIPTOR_TELEPORTATION = 30 # TELEPORTATION
+D20STD_F_SPELL_DESCRIPTOR_AIR = 31 # AIR
+D20STD_F_SPELL_DESCRIPTOR_EARTH = 32 # EARTH
+D20STD_F_SPELL_DESCRIPTOR_WATER = 33 # WATER
 D20STD_F_DISABLE_SLIPPERY_MIND = 34
 D20STD_F_MAX = 0
 
@@ -3605,3 +3680,274 @@ race_drow = 66
 # Gender
 gender_female = 0
 gender_male = 1
+
+# Quests
+qs_unknown = 0
+qs_mentioned = 1
+qs_accepted = 2
+qs_achieved = 3
+qs_completed = 4
+qs_other = 5
+qs_botched = 6
+
+mc_subtype_air = 1
+mc_subtype_aquatic = 2
+mc_subtype_extraplanar = 4
+mc_subtype_extraplaner = 4
+mc_subtype_cold = 8
+mc_subtype_chaotic = 16
+mc_subtype_demon = 32
+mc_subtype_devil = 64
+mc_subtype_dwarf = 128
+mc_subtype_earth = 256
+mc_subtype_electricity = 512
+mc_subtype_elf = 1024
+mc_subtype_evil = 2048
+mc_subtype_fire = 4096
+mc_subtype_formian = 8192
+mc_subtype_gnoll = 16384
+mc_subtype_gnome = 32768
+mc_subtype_goblinoid = 65536
+mc_subtype_good = 131072
+mc_subtype_guardinal = 262144
+mc_subtype_half_orc = 524288
+mc_subtype_halfling = 1048576
+mc_subtype_human = 2097152
+mc_subtype_lawful = 4194304
+mc_subtype_incorporeal = 8388608
+mc_subtype_orc = 16777216
+mc_subtype_reptilian = 33554432
+mc_subtype_slaadi = 67108864
+mc_subtype_water = 134217728
+
+mc_type_aberration = 0
+mc_type_animal = 1
+mc_type_beast = 2
+mc_type_construct = 3
+mc_type_dragon = 4
+mc_type_elemental = 5
+mc_type_fey = 6
+mc_type_giant = 7
+mc_type_humanoid = 8
+mc_type_magical_beast = 9
+mc_type_monstrous_humanoid = 10
+mc_type_ooze = 11
+mc_type_outsider = 12
+mc_type_plant = 13
+mc_type_shapechanger = 14
+mc_type_undead = 15
+mc_type_vermin = 16
+
+ALIGNMENT_NEUTRAL = 0
+ALIGNMENT_TRUE_NEUTRAL = 0
+ALIGNMENT_LAWFUL = 1
+ALIGNMENT_LAWFUL_NEUTRAL = 1
+ALIGNMENT_CHAOTIC = 2
+ALIGNMENT_CHAOTIC_NEUTRAL = 2
+ALIGNMENT_GOOD = 4
+ALIGNMENT_NEUTRAL_GOOD = 4
+ALIGNMENT_LAWFUL_GOOD = 5
+ALIGNMENT_CHAOTIC_GOOD = 6
+ALIGNMENT_EVIL = 8
+ALIGNMENT_NEUTRAL_EVIL = 8
+ALIGNMENT_LAWFUL_EVIL = 9
+ALIGNMENT_CHAOTIC_EVIL = 10
+
+# Weapon Type
+wt_bastard_sword = 57
+wt_battleaxe = 26
+wt_club = 8
+wt_composite_longbow = 49
+wt_composite_shortbow = 47
+wt_dagger = 3
+wt_dart = 15
+wt_dire_flail = 62
+wt_dwarven_urgrosh = 64
+wt_dwarven_waraxe = 58
+wt_falchion = 35
+wt_gauntlet = 0
+wt_glaive = 37
+wt_gnome_hooked_hammer = 59
+wt_grapple = 70
+wt_greataxe = 38
+wt_greatclub = 39
+wt_greatsword = 40
+wt_grenade = 72
+wt_guisarme = 41
+wt_halberd = 42
+wt_halfling_kama = 50
+wt_halfling_nunchaku = 52
+wt_halfling_siangham = 53
+wt_hand_crossbow = 65
+wt_handaxe = 21
+wt_heavy_crossbow = 17
+wt_heavy_flail = 36
+wt_heavy_lance = 28
+wt_heavy_mace = 10
+wt_heavy_pick = 30
+wt_javelin = 18
+wt_kama = 54
+wt_kukri = 51
+wt_light_crossbow = 14
+wt_light_flail = 27
+wt_light_hammer = 20
+wt_light_lance = 22
+wt_light_mace = 6
+wt_light_pick = 23
+wt_longbow = 48
+wt_longspear = 43
+wt_longsword = 29
+wt_mindblade = 73
+wt_morningstar = 11
+wt_net = 69
+wt_nunchaku = 55
+wt_orc_double_axe = 60
+wt_punching_dagger = 4
+wt_quarterstaff = 12
+wt_ranseur = 44
+wt_rapier = 31
+wt_ray = 71
+wt_repeating_crossbow = 68
+wt_sap = 24
+wt_scimitar = 32
+wt_scythe = 45
+wt_short_sword = 25
+wt_shortbow = 46
+wt_shortspear = 9
+wt_shuriken = 66
+wt_siangham = 56
+wt_sickle = 7
+wt_sling = 16
+wt_spear = 13
+wt_spike_chain = 61
+wt_spiked_gauntlet = 5
+wt_throwing_axe = 19
+wt_trident = 33
+wt_two_bladed_sword = 63
+wt_unarmed_strike_medium_sized_being = 1
+wt_unarmed_strike_small_being = 2
+wt_warhammer = 34
+wt_whip = 67
+
+OBJECT_SPELL_CLOUDKILL = 12003
+OBJECT_SPELL_GENERIC = 12003
+
+Q_AI_Fireball_OK = 101
+Q_AI_Has_Spell_Override = 112
+Q_AOOIncurs = 52
+Q_AOOPossible = 51
+Q_AOOWillTake = 77
+Q_ActionAllowed = 57
+Q_ActionTriggersAOO = 56
+Q_Armor_Get_AC_Bonus = 87
+Q_Armor_Get_Max_DEX_Bonus = 88
+Q_Armor_Get_Max_Speed = 89
+Q_Autoend_Turn = 79
+Q_Barbarian_Fatigued = 68
+Q_Barbarian_Raged = 67
+Q_BardicInstrument = 99
+Q_CanBeAffected_ActionFrame = 76
+Q_CanBeAffected_PerformAction = 75
+Q_CanBeFlanked = 65
+Q_Can_Perform_Disarm = 116
+Q_CannotCast = 5
+Q_CannotUseChaSkill = 7
+Q_CannotUseIntSkill = 6
+Q_Commanded = 62
+Q_CoupDeGrace = 3
+Q_Craft_Wand_Spell_Level = 117
+Q_Critter_Can_Call_Lightning = 34
+Q_Critter_Can_Detect_Chaos = 39
+Q_Critter_Can_Detect_Evil = 40
+Q_Critter_Can_Detect_Good = 41
+Q_Critter_Can_Detect_Law = 42
+Q_Critter_Can_Detect_Magic = 43
+Q_Critter_Can_Detect_Undead = 44
+Q_Critter_Can_Discern_Lies = 38
+Q_Critter_Can_Dismiss_Spells = 46
+Q_Critter_Can_Find_Traps = 45
+Q_Critter_Can_See_Darkvision = 36
+Q_Critter_Can_See_Ethereal = 37
+Q_Critter_Can_See_Invisible = 35
+Q_Critter_Cannot_Loot = 102
+Q_Critter_Cannot_Wield_Items = 103
+Q_Critter_Has_Condition = 27
+Q_Critter_Has_Endure_Elements = 29
+Q_Critter_Has_Freedom_of_Movement = 28
+Q_Critter_Has_Mirror_Image = 107
+Q_Critter_Has_No_Con_Score = 109
+Q_Critter_Has_Protection_From_Elements = 30
+Q_Critter_Has_Resist_Elements = 31
+Q_Critter_Has_Spell_Active = 33
+Q_Critter_Has_Spell_Resistance = 26
+Q_Critter_Has_True_Seeing = 32
+Q_Critter_Is_AIControlled = 18
+Q_Critter_Is_Afraid = 14
+Q_Critter_Is_Blinded = 15
+Q_Critter_Is_Charmed = 16
+Q_Critter_Is_Concentrating = 9
+Q_Critter_Is_Confused = 17
+Q_Critter_Is_Cursed = 19
+Q_Critter_Is_Deafened = 20
+Q_Critter_Is_Diseased = 21
+Q_Critter_Is_Encumbered_Heavy = 96
+Q_Critter_Is_Encumbered_Light = 94
+Q_Critter_Is_Encumbered_Medium = 95
+Q_Critter_Is_Encumbered_Overburdened = 97
+Q_Critter_Is_Grappling = 66
+Q_Critter_Is_Held = 12
+Q_Critter_Is_Immune_Critical_Hits = 24
+Q_Critter_Is_Immune_Death_Touch = 85
+Q_Critter_Is_Immune_Energy_Drain = 84
+Q_Critter_Is_Immune_Poison = 25
+Q_Critter_Is_Invisible = 13
+Q_Critter_Is_On_Consecrate_Ground = 10
+Q_Critter_Is_On_Desecrate_Ground = 11
+Q_Critter_Is_Poisoned = 22
+Q_Critter_Is_Spell_An_Ability = 104
+Q_Critter_Is_Stunned = 23
+Q_Dead = 50
+Q_Disarmed = 114
+Q_Dying = 49
+Q_Elemental_Gem_State = 91
+Q_Empty_Body_Num_Rounds = 119
+Q_EnterCombat = 100
+Q_ExperienceExempt = 80
+Q_FailedDecipherToday = 72
+Q_Failed_Copy_Scroll = 86
+Q_FavoredClass = 81
+Q_FightingDefensively = 90
+Q_Flatfooted = 70
+Q_Has_Aura_Of_Courage = 98
+Q_Has_Temporary_Hit_Points = 54
+Q_Has_Thieves_Tools = 93
+Q_Helpless = 0
+Q_HoldingCharge = 53
+Q_IsActionInvalid_CheckAction = 74
+Q_IsFallenPaladin = 82
+Q_Is_BreakFree_Possible = 106
+Q_Is_Ethereal = 118
+Q_Item_Has_Enhancement_Bonus = 110
+Q_Item_Has_Keen_Bonus = 111
+Q_Masterwork = 71
+Q_Mute = 4
+Q_NewRound_This_Turn = 69
+Q_Obj_Is_Blessed = 47
+Q_OpponentSneakAttack = 2
+Q_Play_Critical_Hit_Anim = 105
+Q_Polymorphed = 73
+Q_Prone = 58
+Q_RapidShot = 8
+Q_Rebuked = 64
+Q_RerollAttack = 60
+Q_RerollCritical = 61
+Q_RerollSavingThrow = 59
+Q_SneakAttack = 1
+Q_SpellInterrupted = 55
+Q_Turned = 63
+Q_Unconscious = 48
+Q_Untripable = 92
+Q_Weapon_Get_Keen_Bonus = 113
+Q_Weapon_Is_Mighty_Cleaving = 78
+Q_Wearing_Ring_of_Change = 108
+Q_WieldedTwoHanded = 83

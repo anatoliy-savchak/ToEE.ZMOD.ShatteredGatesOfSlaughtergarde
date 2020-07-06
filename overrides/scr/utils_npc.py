@@ -1,7 +1,7 @@
 from toee import *
 from debugg import breakp
 from const_toee import *
-import tpdp
+import tpdp, utils_obj
 
 def npc_feats_print(npc):
 	assert isinstance(npc, PyObjHandle)
@@ -71,12 +71,12 @@ def npc_is_alive(npc):
 	assert isinstance(npc, PyObjHandle)
 	object_flags = npc.object_flags_get()
 	if ((object_flags & OF_DESTROYED) or (object_flags & OF_OFF)): return 0
-	result = npc.d20_query(EK_Q_Dead - EK_Q_Helpless)
+	result = npc.d20_query(Q_Dead)
 	if (result): return 0
-	result = npc.d20_query(EK_Q_Dying - EK_Q_Helpless)
+	result = npc.d20_query(Q_Dying)
 	if (result): return 0
 	hp = npc.stat_level_get(stat_hp_current)
-	if (hp <= 10): return 0
+	if (hp <= -10): return 0
 	return 1
 
 def npc_hp_current_percent(npc):
@@ -100,3 +100,46 @@ def npc_find_nearest_pc(npc, distance_ft, should_see):
 			nearest = obj
 			nearest_dist = obj_dist
 	return nearest
+
+def print_npc_vicinity(leader = None):
+	if (not leader):
+		leader = game.leader
+	for npc in game.obj_list_vicinity(leader.location, OLC_NPC):
+		print("{}: {}, distance: {} or {}".format(npc, npc.id, npc.distance_to(leader), leader.distance_to(npc)))
+	return
+
+def print_distances_at_origin(locx, locy):
+	print("Distances locx, locy: {}, {}".format(locx, locy))
+	loc = utils_obj.sec2loc(locx, locy)
+	for npc in game.obj_list_vicinity(loc, OLC_NPC | OLC_PC):
+		dist = npc.distance_to(loc)
+		print("{}: distance: {:06.2f} | id: {}".format(npc, dist, npc.id))
+	return
+
+def find_npc_by_proto(loc, proto):
+	for obj in game.obj_list_vicinity(loc, OLC_NPC):
+		assert isinstance(obj, PyObjHandle)
+		if (obj.proto == proto): return obj
+	return OBJ_HANDLE_NULL
+
+def npc_get_cr(npc):
+	cr = 0
+	if (npc.type == obj_t_npc):
+		cr = npc.obj_get_int(obj_f_npc_challenge_rating)
+	level_cr = npc.stat_level_get(stat_level)
+	result = cr + level_cr
+	return result
+
+def npc_get_cr_exp(pc, cr):
+	pc_cr = pc.stat_level_get(stat_level)
+	if (pc_cr <= 3):
+		if (cr == 1): return 300
+		if (cr == 2): return 600
+		if (cr == 3): return 900
+		if (cr == 4): return 1350
+		if (cr == 5): return 1800
+		if (cr == 6): return 2700
+		if (cr == 7): return 3600
+		if (cr == 8): return 5400
+		if (cr == 9): return 7200
+	return 0

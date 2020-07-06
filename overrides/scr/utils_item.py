@@ -4,6 +4,7 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 	assert isinstance(item_proto_num, int)
 	assert isinstance(npc, toee.PyObjHandle)
 	item = toee.game.obj_create(item_proto_num, npc.location)
+	item.item_flag_set(toee.OIF_IDENTIFIED)
 	if (item != toee.OBJ_HANDLE_NULL):
 		npc.item_get(item)
 	if (quantity > 1):
@@ -13,14 +14,18 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 				npc.item_get(item)
 	return item
 
-def item_create_in_inventory_buy(item_proto_num, npc):
+def item_create_in_inventory_buy(item_proto_num, npc, price_override = None, worth_mult = None):
 	assert isinstance(item_proto_num, int)
 	assert isinstance(npc, toee.PyObjHandle)
 	item = toee.game.obj_create(item_proto_num, npc.location)
+	item.item_flag_set(toee.OIF_IDENTIFIED)
 	if (item != toee.OBJ_HANDLE_NULL):
 		worth = item.obj_get_int(toee.obj_f_item_worth)
+		if (worth_mult): worth = int(worth * worth_mult)
+		if (price_override): worth = price_override
 		left = npc.money_get()
-		print("{}: {} gp | {}".format(item.description, worth // 100, left // 100))
+		text = "{}: {} gp | {}".format(item.description, worth // 100, left // 100)
+		print(text)
 		if (left >= worth):
 			npc.money_adj(-worth)
 			npc.item_get(item)
@@ -158,3 +163,36 @@ def item_money_create_in_inventory(obj, platinum, gold = None, silver = None, co
 		item = item_create_in_inventory(const_proto_items.PROTO_MONEY_COPPER, obj)
 		item.obj_set_int(toee.obj_f_money_quantity, copper)
 	return
+
+def items_get(npc, unwield_all = 1):
+	assert isinstance(npc, toee.PyObjHandle)
+	otype = npc.type
+	invenField = 0
+	invenNumField = 0
+	if ((otype == toee.obj_t_npc) or (otype == toee.obj_t_pc)):
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	elif ((otype == toee.obj_t_container) or (otype == toee.obj_t_bag)):
+		invenField = toee.obj_f_container_inventory_list_idx
+		invenNumField = toee.obj_f_container_inventory_num
+	else:
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	numItems = npc.obj_get_int(invenNumField)
+	result = list()
+	print("numItems: {}".format(numItems))
+	if (numItems > 0):
+		#debugg.breakp("numItems")
+		if (unwield_all):
+			for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+				npc.item_worn_unwield(i, 0)
+
+		for i in range(0, 199):
+			item = npc.inventory_item(i)
+			if (item):
+				print(item)
+				result.append(item)
+				numItems -= 1
+			if (numItems <=0): break
+	print(result)
+	return result

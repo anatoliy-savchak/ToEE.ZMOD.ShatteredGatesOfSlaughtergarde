@@ -12,6 +12,14 @@ def create_history_type6_opposed_check(performer, defender, performerRoll, defen
 	""" create_history_type6_opposed_check(toee.PyObjHandle: performer, toee.PyObjHandle: defender, int: performerRoll, int: defenderRoll, BonusList: performerBonList, BonusList: defenderBonList, int: combatMesLineTitle, int: combatMesLineResult, int: flag) -> int: rollHistId"""
 	return 0
 
+def dispatch_stat(obj, stat, bonlist):
+	""" dispatch_stat(toee.PyObjHandle: performer, int: stat, BonusList: bon_list) -> int: stat_value"""
+	return 0
+
+def create_history_type4(performer, dc, dice, roll, text, bonlist):
+	""" create_history_type4(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
+	return 0
+
 class TurnBasedStatus:
 	def __init__(self):
 		self.hourglass_state = toee.D20ACT_Full_Round_Action
@@ -27,12 +35,12 @@ class D20Action:
 		self.target = toee.PyObjHandle()
 		self.spell_id = 0
 		self.data1 = 0
-		self.flags0 # D20CAF_ flags
+		self.flags = toee.D20CAF_HIT # D20CAF_ flags
 		self.path = object() #todo
 		self.action_type = action_type #See D20A_ constants
 		self.loc = 0
 		self.anim_id = 0
-		self.spell_data = object() # todo d20SpellData
+		self.spell_data = D20SpellData()
 		self.roll_id_0 = 0
 		self.roll_id_1 = 0
 		self.roll_id_2 = 0
@@ -125,7 +133,31 @@ class AttackPacket:
 		""" attack_packet.set_flags(int: flagsNew) -> None """
 		return
 
-class RadialMenuEntryPythonAction:
+class RadialMenuEntry:
+	def __init__(self):
+		self.flags = 0 # RadialMenuEntryFlags: HasMinArg = 0x2, HasMaxArg = 0x4
+		self.min_arg = 0
+		self.max_arg = 0
+		return
+
+	def add_as_child(self, handle, parentId):
+		"""Adds this node as a child to a specified node ID, and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(parentId, int)
+		return 0
+
+	def add_child_to_standard(self, handle, stdNode):
+		"""Adds this node as a child to a Standard Node (one of several hardcoded root nodes such as class, inventory etc.), and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(stdNode, RadialMenuStandardNode)
+		return 0
+
+class RadialMenuEntryAction(RadialMenuEntry):
+	def set_spell_data(self, spellData):
+		assert isinstance(spellData, D20SpellData)
+		return
+
+class RadialMenuEntryPythonAction(RadialMenuEntryAction):
 	def __init__(self, combatMesLine, action_type, action_id, data1, helpTopic):
 		"""RadialMenuEntryPythonAction(int: combatMesLine, int: action_type, int: action_id, int: data1, str: helpTopic)"""
 		return
@@ -138,6 +170,27 @@ class RadialMenuEntryPythonAction:
 	def __init__(self, spell_store, action_type, action_id, data1, helpTopic):
 		"""RadialMenuEntryPythonAction(PySpellStore: spell_store, int: action_type, int: action_id, int: data1, str: helpTopic)"""
 		return
+
+class RadialMenuEntryParent:
+	def __init__(self, combesMesLine):
+		assert isinstance(combesMesLine, int)
+		return
+
+	def __init__(self, radialText):
+		assert isinstance(radialText, str)
+		return
+
+	def add_as_child(self, handle, parentId):
+		"""Adds this node as a child to a specified node ID, and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(parentId, int)
+		return 0
+
+	def add_child_to_standard(self, handle, stdNode):
+		"""Adds this node as a child to a Standard Node (one of several hardcoded root nodes such as class, inventory etc.), and returns the newly created node ID (so you may give it other children, etc.)"""
+		assert isinstance(handle, toee.PyObjHandle)
+		assert isinstance(stdNode, RadialMenuStandardNode)
+		return 0
 
 class RadialMenuStandardNode:
 	Root = 0
@@ -379,6 +432,9 @@ class EventObjD20Query(EventObj):
     def get_d20_action(self): 
         return D20Action()
 
+    def get_obj(self):
+        return toee.PyObjHandle()
+
 class EventObjTooltip(EventObj):
     """ Tooltip event for mouse-overed objects. """
     def __init__(self):
@@ -460,3 +516,129 @@ class EventObjSavingThrow(EventObj):
         self.obj = toee.PyObjHandle()
         self.flags = 0
         return
+
+class EventObjImmunityQuery(EventObj):
+    def __init__(self):
+        self.evt_obj_type = toee.ET_OnSpellImmunityCheck # dispTypeSpellImmunityCheck
+        self.spell_entry = SpellEntry()
+        self.spell_packet = SpellPacket()
+        self.return_val = 0
+        return
+
+class D20SpellData:
+	def __init__(self, spell_enum = 0):
+		self.spell_enum = 0
+		self.spell_class = 0
+		self.inven_idx = 0
+		return
+
+	def set_spell_level(self, spLvl): 
+		return
+
+	def get_spell_level(self): 
+		return 1
+
+	def get_spell_store(self): 
+		return object()
+
+	def set_spell_class(self, spClass): 
+		return
+
+	def get_metamagic_data(self, spLvl): 
+		return object()
+
+class SpellEntry:
+	def __init__(self, spell_enum = 0):
+		self.spell_enum = toee.spell_aid
+		self.spell_school_enum = 0
+		self.spell_subschool_enum = 0
+		self.descriptor = 0
+		self.casting_time = 0
+		self.saving_throw_type = toee.D20_Save_Fortitude
+		self.min_target = 0
+		self.max_target = 0
+		self.mode_target = 0
+		return
+
+	def is_base_mode_target(self, type): 
+		return 1
+
+	def get_level_specs(self): 
+		return list()
+
+	def level_for_spell_class(self, spellClass): 
+		return 1
+
+class SpellPacket:
+	def __init__(self, spell_enum = 0):
+		self.spell_enum = toee.spell_aid
+		self.spell_known_slot_level = 0
+		self.inventory_idx = 0
+		self.picker_result = 0
+		self.spell_class = 0
+		self.spell_id = 0
+		self.caster_level = 0
+		self.loc = 0
+		self.caster = toee.PyObjHandle()
+		return
+
+	def get_spell_casting_class(self): 
+		return 1
+
+	def get_metamagic_data(self): 
+		return SpellPacket()
+
+	def get_target(self, idx): 
+		return toee.PyObjHandle()
+
+	def set_projectile(self, projectile): 
+		assert isinstance(projectile, toee.PyObjHandle)
+		return
+
+	def is_divine_spell(self):
+		return 1
+
+	def debit_spell(self):
+		return
+
+	def update_registry(self):
+		return
+
+	def set_spell_object(self, idx,  spellObj, partsysId):
+		return
+
+	def add_spell_object(self, spellObj, partsysId):
+		return
+
+	def add_target(self, handle, partsysId):
+		return
+
+	def end_target_particles(self, handle):
+		return
+
+	def remove_target(self, handle):
+		return
+
+	def check_spell_resistance(self, tgt):
+		return
+
+	def trigger_aoe_hit(self):
+		return
+
+	def float_spell_line(self, handle, lineId, color):
+		return
+
+class D20ActionType:
+	FiveFootStep = toee.D20A_5FOOTSTEP
+	PythonAction = toee.D20A_PYTHON_ACTION
+	StandardAttack = toee.D20A_STANDARD_ATTACK
+	FullAttack = toee.D20A_FULL_ATTACK
+	StandardRangedAttack = toee.D20A_STANDARD_RANGED_ATTACK
+	StandUp = toee.D20A_STAND_UP
+	TurnUndead = toee.D20A_TURN_UNDEAD
+	ClassAbility = toee.D20A_CLASS_ABILITY_SA
+	CastSpell = toee.D20A_CAST_SPELL
+	UseItem = toee.D20A_USE_ITEM
+	UsePotion = toee.D20A_USE_POTION
+	Feint = toee.D20A_FEINT
+	Move = toee.D20A_UNSPECIFIED_MOVE

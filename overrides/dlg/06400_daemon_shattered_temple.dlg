@@ -1,0 +1,74 @@
+{1}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{}{}{}{}
+
+{10}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{About 15 feet from the bottom of the stairs, you pass beneath the ceiling of a room of gray stone.}{}{}{}{}
+{11}{Continue}{}{1}{}{12}{}
+{12}{Two dusky-skinned warriors with longbows guard a demon arch that has glowing eyes and a violet gas swirling in its mouth. Burnished copper double doors are set into the walls to the north and south.}{Two dusky-skinned warriors with longbows guard a demon arch that has glowing eyes and a violet gas swirling in its mouth. Burnished copper double doors are set into the walls to the north and south.}{}{}{}{cst().display_encounter_t1()}
+{13}{Continue}{}{1}{}{14}{}
+{14}{Tapestries hanging from the walls in this room depict horned, crimson-skinned humanoid warriors marching across volcanic mountains.}{Tapestries hanging from the walls in this room depict horned, crimson-skinned humanoid warriors marching across volcanic mountains.}{}{}{}{}
+{19}{Close}{}{1}{}{0}{cst().activate_encounter_t1()}
+
+{20}{In the center of this wide intersection stand two muscular, gray-skinned humanoids in loincloths. They have blank sockets where their eyes should be, and they carry greataxes.}{In the center of this wide intersection stand two muscular, gray-skinned humanoids in loincloths. They have blank sockets where their eyes should be, and they carry greataxes.}{}{}{}{cst().display_encounter_t2()}
+{29}{Close}{}{1}{}{0}{cst().activate_encounter_t2()}
+
+{30}{Guarding this room are two dusky-skinned men wearing breastplates and carrying longswords.}{Guarding this room are two dusky-skinned men wearing breastplates and carrying longswords.}{}{}{}{cst().display_encounter_t3()}
+{31}{Continue}{}{1}{}{32}{}
+{32}{Crates line the eastern wall, and a round table and four chairs sit in the middle of the room. In the southwestern corner is an ironbound chest that has a glowing rune on its top.}{Crates line the eastern wall, and a round table and four chairs sit in the middle of the room. In the southwestern corner is an ironbound chest that has a glowing rune on its top.}{}{}{}{}
+{39}{Close}{}{1}{}{0}{cst().activate_encounter_t3()}
+
+{40}{Three upright lizards the size of horses are tied to the northern wall, each nosing a pile of mushrooms on the floor there. Another stands nearby on its powerful hind legs, ridden by a drow in heavy armor who’s carrying a lance.}{Three upright lizards the size of horses are tied to the northern wall, each nosing a pile of mushrooms on the floor there. Another stands nearby on its powerful hind legs, ridden by a drow in heavy armor who’s carrying a lance.}{}{}{}{cst().display_encounter_t4()}
+{41}{Continue}{}{1}{}{42}{}
+{42}{A mosaic depicting clawed footprints emerges from under copper double doors to the east, heads into the middle of the room, then turns south, where it disappears under double doors there.}{A mosaic depicting clawed footprints emerges from under copper double doors to the east, heads into the middle of the room, then turns south, where it disappears under double doors there.}{}{}{}{}
+{49}{Close}{}{1}{}{0}{cst().activate_encounter_t4()}
+
+{50}{Two corridors cross ahead of you. Standing in the intersection are two burly hobgoblins in simple red breeches and tunics. Beyond them is a male drow in a shining chain shirt. He has a spiked chain in one hand and a piece of parchment in the other.}{Two corridors cross ahead of you. Standing in the intersection are two burly hobgoblins in simple red breeches and tunics. Beyond them is a male drow in a shining chain shirt. He has a spiked chain in one hand and a piece of parchment in the other.}{}{}{}{cst().display_encounter_t5()}
+{51}{Continue}{}{1}{}{52}{}
+{52}{Mosaic footprints lead from the northern passageway into the intersection, where they turn west and head toward you.}{Mosaic footprints lead from the northern passageway into the intersection, where they turn west and head toward you.}{}{}{}{}
+{59}{Close}{}{1}{}{0}{cst().activate_encounter_t5()}
+
+{60}{A tall gray-furred humanoid that has an ursine head and carries a hammerlike club is this octagonal room's only inhabitant. It stands amid crushed rock.}{A tall gray-furred humanoid that has an ursine head and carries a hammerlike club is this octagonal room's only inhabitant. It stands amid crushed rock.}{}{}{}{cst().display_encounter_t6()}
+{61}{Continue}{}{1}{}{62}{}
+{62}{Intertwining snakes of differing sizes are carved in relief on the walls and ceiling. A black marble altar is set against each of the room's remaining walls. Each altar has a strange object on it.}{Intertwining snakes of differing sizes are carved in relief on the walls and ceiling. A black marble altar is set against each of the room's remaining walls. Each altar has a strange object on it.}{}{}{}{}
+{63}{Continue}{}{1}{}{64}{}
+{64}{Mosaic clawed footprints lead from the northern passageway to the center of the chamber, where they turn west and head out of the room.}{Mosaic clawed footprints lead from the northern passageway to the center of the chamber, where they turn west and head out of the room.}{}{}{}{}
+{69}{Close}{}{1}{}{0}{cst().activate_encounter_t6()}
+
+{70}{Two male drow in chain shirts glare at you, spiked chains at the ready. Six beds take up most of the room, and two footlockers are set against the eastern wall.}{Two male drow in chain shirts glare at you, spiked chains at the ready. Six beds take up most of the room, and two footlockers are set against the eastern wall.}{}{}{}{cst().display_encounter_t7()}
+{79}{Close}{}{1}{}{0}{cst().activate_encounter_t7()}
+
+{80}{Two beds are set against the northern wall of this small chamber, footlockers at their feet, while three beds are set against the southern wall with no accompanying lockers. A round table sits in the northeastern corner. Three places on it are set with pewter flatware.}{Two beds are set against the northern wall of this small chamber, footlockers at their feet, while three beds are set against the southern wall with no accompanying lockers. A round table sits in the northeastern corner. Three places on it are set with pewter flatware.}{}{}{}{cst().display_encounter_t8()}
+{89}{Close}{}{1}{}{0}{cst().activate_encounter_t8()}
+
+{90}{Two drow in heavy armor, each carrying a shield and longsword, guard this chamber. Their shuffling gait and unsettling pallor mark them clearly as undead. Beyond them are five beds along the southern wall and a small table that has a box on it.}{Two drow in heavy armor, each carrying a shield and longsword, guard this chamber. Their shuffling gait and unsettling pallor mark them clearly as undead. Beyond them are five beds along the southern wall and a small table that has a box on it.}{}{}{}{cst().display_encounter_t9()}
+{99}{Close}{}{1}{}{0}{cst().activate_encounter_t9()}
+
+{100}{Clearly subject to a cave-in, the eastern part of the room is cavelike. Two horse-sized bats hang there.}{Clearly subject to a cave-in, the eastern part of the room is cavelike. Two horse-sized bats hang there.}{}{}{}{cst().display_encounter_t10()}
+{109}{Close}{}{1}{}{0}{cst().activate_encounter_t10()}
+
+{110}{Two furry, rat-headed humanoids armed with crossbows are here. Turned on its side in the middle of the room is a table surrounded by broken chairs and other debris.}{Two furry, rat-headed humanoids armed with crossbows are here. Turned on its side in the middle of the room is a table surrounded by broken chairs and other debris.}{}{}{}{cst().display_encounter_t11()}
+{111}{Continue}{}{1}{}{112}{}
+{112}{Nearby, a small lamp provides soft light. A red stone altar is set against the western wall, topped by a four-armed statue that has wavy daggers. Red stone streaked with purple makes up the walls, looking disturbingly like flesh.}{Nearby, a small lamp provides soft light. A red stone altar is set against the western wall, topped by a four-armed statue that has wavy daggers. Red stone streaked with purple makes up the walls, looking disturbingly like flesh.}{}{}{}{}
+{113}{Continue}{}{1}{}{114}{}
+{114}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{}{}{}{}
+{119}{Close}{}{1}{}{0}{cst().activate_encounter_t11()}
+
+{120}{From the gloom comes a black dragon almost the size of a man, its gullet wide open. Beyond the dragon is a room that has suffered a cave-in along the northern wall. A passageway leaves the room to the east, passing under a demon arch that has neither dark energy nor flames in it.}{From the gloom comes a black dragon almost the size of a man, its gullet wide open. Beyond the dragon is a room that has suffered a cave-in along the northern wall. A passageway leaves the room to the east, passing under a demon arch that has neither dark energy nor flames in it.}{}{}{}{cst().display_encounter_t12()}
+{121}{Continue}{}{1}{}{122}{}
+{122}{The western wall has a fresco of a ziggurat, a starry sky is painted on the southern wall, and roiling clouds and lightning adorn the eastern wall. To the north, mosaic footprints emerge from under tons of rock and dirt, heading south toward you.}{The western wall has a fresco of a ziggurat, a starry sky is painted on the southern wall, and roiling clouds and lightning adorn the eastern wall. To the north, mosaic footprints emerge from under tons of rock and dirt, heading south toward you.}{}{}{}{}
+{129}{Close}{}{1}{}{0}{cst().activate_encounter_t12()}
+
+{130}{Beyond the demon arch is a snake-headed man with a scimitar and shield, appearing seemingly out of nowhere.}{Beyond the demon arch is a snake-headed man with a scimitar and shield, appearing seemingly out of nowhere.}{}{}{}{cst().display_encounter_t13()}
+{131}{Continue}{}{1}{}{112}{}
+{132}{The room has a lectern at the northern end and four long pews.}{The room has a lectern at the northern end and four long pews.}{}{}{}{}
+{133}{Continue}{}{1}{}{114}{}
+{134}{A tunnel leads upward from the northeastern corner of the room, which apparently collapsed in the past.}{A tunnel leads upward from the northeastern corner of the room, which apparently collapsed in the past.}{}{}{}{}
+{139}{Close}{}{1}{}{0}{cst().activate_encounter_t13()}
+
+{140}{Two furred humanoids that have the heads of rats are using rapiers to poke upward at massive bells hanging from two racks about 10 feet off the chamber floor.}{Two furred humanoids that have the heads of rats are using rapiers to poke upward at massive bells hanging from two racks about 10 feet off the chamber floor.}{}{}{}{cst().display_encounter_t14()}
+{141}{Continue}{}{1}{}{142}{}
+{142}{Wooden struts connect each bell to a cluster of levers on the far end of each rack. The northern end of the room angles to the northeast.}{Wooden struts connect each bell to a cluster of levers on the far end of each rack. The northern end of the room angles to the northeast.}{}{}{}{}
+{149}{Close}{}{1}{}{0}{cst().activate_encounter_t14()}
+
+{150}{Two drow in studded leather armor crouch near a demon arch in the southwestern corner of this room. They have rapiers and hand crossbows. In the middle of the room is a pool of still liquid. The pool has an iridescent, oily sheen on the surface, and you can't tell how deep it is.}{Two drow in studded leather armor crouch near a demon arch in the southwestern corner of this room. They have rapiers and hand crossbows. In the middle of the room is a pool of still liquid. The pool has an iridescent, oily sheen on the surface, and you can't tell how deep it is.}{}{}{}{cst().display_encounter_t15()}
+{151}{Continue}{}{1}{}{152}{}
+{152}{In the northeastern and northwestern corners of the room are massive statues of sinister elephants. Their trunks point downward, ending just above the surface of the water. They have spiked collars carved around their necks.}{In the northeastern and northwestern corners of the room are massive statues of sinister elephants. Their trunks point downward, ending just above the surface of the water. They have spiked collars carved around their necks.}{}{}{}{}
+{159}{Close}{}{1}{}{0}{cst().activate_encounter_t15()}

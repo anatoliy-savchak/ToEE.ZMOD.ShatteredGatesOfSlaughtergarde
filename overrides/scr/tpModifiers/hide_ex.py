@@ -86,7 +86,7 @@ def Hide_Ex_OnGetDefenderConcealmentMissChance(attachee, args, evt_obj):
 	assert isinstance(evt_obj, tpdp.EventObjAttack)
 	if (not (attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY)): return 0
 
-	if (not evt_obj.attack_packet.attacker.d20_query(toee.EK_Q_Critter_Has_True_Seeing - toee.EK_Q_Helpless)):
+	if (not evt_obj.attack_packet.attacker.d20_query(toee.Q_Critter_Has_True_Seeing)):
 		miss_chance = 50
 		evt_obj.bonus_list.add(miss_chance, 19, "Hidden (Concealed)")
 
