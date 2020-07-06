@@ -165,6 +165,9 @@
     <Compile Include="overrides\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_deseases.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\const_proto_food.py" />
     <Compile Include="overrides\scr\const_animate.py">
       <SubType>Code</SubType>
@@ -238,6 +241,7 @@
     <Compile Include="overrides\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\Spell076 - Contagion.py" />
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
     <Compile Include="overrides\scr\stat_generator.py">
@@ -251,6 +255,7 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\contagion_desease_preference.py" />
     <Compile Include="overrides\scr\tpModifiers\initiative_bonus.py" />
     <Compile Include="overrides\scr\tpModifiers\combat_messages.py">
       <SubType>Code</SubType>

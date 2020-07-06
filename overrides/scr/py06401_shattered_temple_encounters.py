@@ -1,4 +1,5 @@
-import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour, const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak
+import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
+import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells
 
 shattered_temple_encounters = 6401
 
@@ -655,3 +656,200 @@ class CtrlLolthSting(ctrl_behaviour.CtrlBehaviour):
 		npc.item_wield_best_all()
 		npc.item_wield(crossbow, toee.item_wear_weapon_primary)
 		return
+
+class CtrlGrimlock(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14916
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlGrimlock, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATAXE, npc)
+		npc.item_wield_best_all()
+		return
+
+class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14928
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlLanthurrae, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_PLUS_1_BLACK, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_MASTERWORK, npc)
+		utils_item.item_money_create_in_inventory(npc, 100) # pearl of power
+		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_RESIST_ENERGY, npc, 2)
+		wand = utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_SOUND_BURST, npc)
+		if (wand):
+			wand.obj_set_int(toee.obj_f_item_spell_charges_idx, 10)
+		npc.item_wield_best_all()
+
+		utils_npc.npc_skill_ensure(npc, toee.skill_concentration, 13)
+		return
+
+	def revealed(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		#print("Wizard trying to cast shield...")
+
+		utils_npc.npc_spell_ensure(npc, toee.spell_shield_of_faith, toee.stat_level_cleric, 5, 1)
+		npc.cast_spell(toee.spell_shield_of_faith, npc)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+		sound_burst_skip = 0
+		check_threats_first = 0
+		if (threats): 
+			check_threats_first = 1
+			sound_burst_skip = 1
+		while (not tac):
+			hp_perc = utils_npc.npc_hp_current_percent(npc)
+			print("hp_perc: {}".format(hp_perc))
+			if (hp_perc <= 30):
+				if (hp_perc > 0 and self.spells.get_spell_count(toee.spell_invisibility)): 
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_clear_target()
+					tac.add_target_self()
+					tac.add_five_foot_step()
+					tac.add_halt()
+					tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_invisibility))
+					tac.add_total_defence()
+					break
+
+				healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
+				if (healing_potion):
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_clear_target()
+					tac.add_target_self()
+					tac.add_five_foot_step()
+					tac.add_halt()
+					tac.add_use_item(healing_potion.id)
+					tac.add_total_defence()
+					break
+
+			if (not check_threats_first):
+				if (not sound_burst_skip):
+					wand = npc.item_find_by_proto(const_proto_wands.PROTO_WAND_OF_SOUND_BURST)
+					if (not wand): 
+						sound_burst_skip = 1
+						continue
+					foes.measures.measure_affected_range = 25
+					foes.rescan()
+					targ = foes.find_affected_best(0, 1)
+					if (not targ or targ.measures.value_affected_range_count_foes <=1):
+						sound_burst_skip = 1
+						print("find_affected_best NONE!!")
+						continue
+
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_clear_target()
+					print("sound burst target {}".format(targ.target))
+					tac.add_target_obj(targ.target.id)
+					tac.add_halt()
+					tac.add_use_item(wand.id)
+					break
+
+				if (self.spells.get_spell_count(toee.spell_spiritual_weapon)): 
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_target_closest()
+					tac.add_five_foot_step()
+					tac.add_halt()
+					tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_spiritual_weapon))
+					tac.add_total_defence()
+					break
+
+				if (self.spells.get_spell_count(toee.spell_contagion)): 
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_target_closest()
+					arcane = foes.find_caster(0, 1)
+					if (arcane):
+						tac.add_target_obj(arcane.target.id)
+					tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_contagion))
+					tac.add_halt()
+					tac.add_total_defence()
+					npc.condition_add_with_args("Contagion_Desease_Preference", const_deseases.DESEASE_BLINDNING_SICKNESS, 0)
+					break
+
+			if (self.spells.get_spell_count(toee.spell_hold_person)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+					tac.add_five_foot_step()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_hold_person))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_cause_fear)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+					tac.add_five_foot_step()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_cause_fear))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_bestow_curse)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					#tac.add_five_foot_step() NO TOUCH!!
+					tac.add_target_obj(threats[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_bestow_curse))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+
+			if (self.spells.get_spell_count(toee.spell_inflict_serious_wounds)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					#tac.add_five_foot_step() NO TOUCH!!
+					tac.add_target_obj(threats[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_inflict_serious_wounds))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (not tac and check_threats_first): 
+				check_threats_first = 0
+				continue
+			break
+		#debug.breakp("create_tactics2")
+		return tac
+
+	def enter_combat(self, attachee, triggerer):
+		#debug.breakp("enter_combat")
+		self.spells = utils_npc_spells.NPCSpells()
+		caster_level_cleric = attachee.highest_divine_caster_level
+		self.spells.add_spell(toee.spell_bestow_curse, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_contagion, toee.stat_level_cleric, caster_level_cleric)
+		#self.spells.add_spell(toee.spell_dispel_magic, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_inflict_serious_wounds, toee.stat_level_cleric, caster_level_cleric)
+
+		self.spells.add_spell(toee.spell_hold_person, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_invisibility, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_spiritual_weapon, toee.stat_level_cleric, caster_level_cleric)
+
+		self.spells.add_spell(toee.spell_cause_fear, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_cure_light_wounds, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_inflict_light_wounds, toee.stat_level_cleric, caster_level_cleric)
+		return toee.RUN_DEFAULT

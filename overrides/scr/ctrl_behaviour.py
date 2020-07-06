@@ -56,8 +56,9 @@ class CtrlBehaviour(object):
 		return
 
 	def start_combat(self, attachee, triggerer):
+		print("")
 		print("{}::{} (round: {})".format(type(self).__name__, "start_combat", toee.game.combat_turn))
-
+		print("------------------------")
 		#debugg.breakp("start_combat")
 		tac = self.create_tactics(attachee)
 		if (not tac):

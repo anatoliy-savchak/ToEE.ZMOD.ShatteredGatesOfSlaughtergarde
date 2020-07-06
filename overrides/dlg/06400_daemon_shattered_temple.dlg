@@ -72,3 +72,10 @@
 {151}{Continue}{}{1}{}{152}{}
 {152}{In the northeastern and northwestern corners of the room are massive statues of sinister elephants. Their trunks point downward, ending just above the surface of the water. They have spiked collars carved around their necks.}{In the northeastern and northwestern corners of the room are massive statues of sinister elephants. Their trunks point downward, ending just above the surface of the water. They have spiked collars carved around their necks.}{}{}{}{}
 {159}{Close}{}{1}{}{0}{cst().activate_encounter_t15()}
+
+{160}{A drow female wearing chainmail and elaborate robes stands in the middle of this octagonal room. To either side of her are muscular gray humanoids wearing loincloths and bearing greataxes. These creatures have no eyes.}{A drow female wearing chainmail and elaborate robes stands in the middle of this octagonal room. To either side of her are muscular gray humanoids wearing loincloths and bearing greataxes. These creatures have no eyes.}{}{}{}{cst().display_encounter_t16()}
+{161}{Continue}{}{1}{}{162}{}
+{162}{Four altars are evenly spaced around the walls. Each has a statue depicting an elderly woman holding a crooked staff.}{Four altars are evenly spaced around the walls. Each has a statue depicting an elderly woman holding a crooked staff.}{}{}{}{}
+{163}{Continue}{}{1}{}{164}{}
+{164}{Mosaic footprints lead from southern doors into the middle of the room, then turn west and head underneath double doors in the western wall.}{Mosaic footprints lead from southern doors into the middle of the room, then turn west and head underneath double doors in the western wall.}{}{}{}{}
+{169}{Close}{}{1}{}{0}{cst().activate_encounter_t16()}

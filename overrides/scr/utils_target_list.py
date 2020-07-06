@@ -125,6 +125,40 @@ class AITargetList(object):
 			result = target
 		return result
 
+	def find_caster(self, is_divine = 0, can_path_to = 0):
+		for target in self.list:
+			assert isinstance(target, AITarget)
+			if ((is_divine and target.measures.value_divine_class) and (not can_path_to or target.measures.measure_can_path)): return target
+			if ((not is_divine and target.measures.value_arcane_class) and (not can_path_to or target.measures.measure_can_path)): return target
+		return
+
+	def find_affected_best(self, can_affect_self = 0, can_affect_ally = 1):
+		if (not self.measures.measure_affected_range): return None
+		result = None
+		affected_num = 0
+		for target in self.list:
+			assert isinstance(target, AITarget)
+			if (not target.measures.value_affected_range): continue
+			if ((target.measures.value_affected_range_count_foes > affected_num) and (can_affect_self or not target.measures.value_affected_range_count_self) and (can_affect_ally or not target.measures.value_affected_range_count_ally)):
+				affected_num = target.measures.value_affected_range_count_foes
+				result = target
+			
+		return result
+
+	def get_threats(self):
+		result = None
+		for target in self.list:
+			assert isinstance(target, AITarget)
+			if (not target.measures.value_range_is_within_melee): continue
+			if (target.target.d20_query(toee.Q_Critter_Is_Held)): continue
+			if (target.target.d20_query(toee.Q_Critter_Is_Afraid)): continue
+			if (target.target.d20_query(toee.Q_Critter_Is_Stunned)): continue
+			#if (target.target.d20_query(toee.Q_Critter_Is_Charmed)): continue
+			if (not result): result = list()
+			result.append(target)
+		if (result and len(result) > 1): result = sorted(result, _AITargetList_cmp_attack)
+		return result
+
 class AITargetMeasure(object):
 	def __init__(self):
 		#self.measure_is_destroyed = 1
@@ -139,6 +173,10 @@ class AITargetMeasure(object):
 		self.measure_can_path = 0
 		self.measure_weapons = 0
 		self.measure_prone = 0
+		self.measure_arcane_class = 0
+		self.measure_divine_class = 0
+		self.measure_affected_range = 0
+		self.measure_attack = 0
 
 		self.option_distance_over_reach_allowed = 0.0
 		self.option_can_path_flags = 0
@@ -161,6 +199,13 @@ class AITargetMeasure(object):
 		self.value_weapon_melee = 0
 		self.value_weapon_ranged = 0
 		self.value_prone = 0
+		self.value_arcane_class = 0
+		self.value_divine_class = 0
+		self.value_affected_range = None
+		self.value_affected_range_count_foes = 0
+		self.value_affected_range_count_ally = 0
+		self.value_affected_range_count_self = 0
+		self.value_attack = 0
 		
 		#self.mult_is_destroyed = -1000
 		self.mult_stat_ac = 0
@@ -236,6 +281,27 @@ class AITargetMeasure(object):
 		measures.measure_stat_hp = 1
 		measures.measure_stat_ac = 1
 		measures.measure_prone = 1
+		measures.measure_arcane_class = 1
+		measures.measure_divine_class = 1
+		measures.measure_attack = 1
+		return measures
+
+	@classmethod
+	def by_all(cls):
+		# unfinished
+		measures = cls()
+		measures.measure_has_los = 1
+		measures.qualify_has_los = 0
+		measures.measure_can_path = 1
+		measures.measure_distance = 1
+		measures.measure_range_is_within_melee = 1
+		measures.measure_weapons = 1
+		measures.measure_stat_hp = 1
+		measures.measure_stat_ac = 1
+		measures.measure_prone = 1
+		measures.measure_arcane_class = 1
+		measures.measure_divine_class = 1
+		measures.measure_attack = 1
 		return measures
 
 def btoi(b):
@@ -330,8 +396,40 @@ class AITarget(object):
 					self.measures.value_weapon_ranged = toee.game.is_ranged_weapon(wt)
 
 		if (self.measures.measure_prone):
-			self.measures.value_prone = self.target.d20_query(toee.EK_Q_Prone - toee.EK_Q_Helpless)
+			self.measures.value_prone = self.target.d20_query(toee.Q_Prone)
 				
+		if (self.measures.measure_arcane_class):
+			self.measures.value_arcane_class = self.target.highest_arcane_class
+				
+		if (self.measures.measure_divine_class):
+			self.measures.value_divine_class = self.target.highest_divine_class
+
+		if (self.measures.measure_affected_range):
+			self.measures.value_affected_range = list()
+			self.measures.value_affected_range_count_foes = 0
+			for obj in toee.game.obj_list_range(self.target.location, self.measures.measure_affected_range, toee.OLC_CRITTERS):
+				baddie = AITargetBaddie()
+				baddie.baddie = obj
+				if (obj.type == toee.obj_t_pc):
+					baddie.is_ally = 0
+					baddie.is_self = 0
+				else:
+					if (obj == self.npc):
+						baddie.is_ally = 1
+						baddie.is_self = 1
+					else:
+						baddie.is_ally = self.npc.allegiance_shared(obj)
+						baddie.is_self = 0
+				self.measures.value_affected_range.append(baddie)
+				if (not baddie.is_ally):
+					self.measures.value_affected_range_count_foes += 1
+				else:
+					self.measures.value_affected_range_count_ally += 1
+					if (baddie.is_self):
+						self.measures.value_affected_range_count_self += 1
+
+		if (self.measures.measure_attack):
+			self.measures.value_attack = self.target.stat_level_get(toee.stat_melee_attack_bonus)
 		return
 
 	def __str__(self):
@@ -375,6 +473,18 @@ class AITarget(object):
 
 		if (self.measures.measure_prone):
 			s += " prone: {}".format(self.measures.value_prone)
+
+		if (self.measures.measure_arcane_class):
+			s += " arcane: {}".format(self.measures.value_arcane_class)
+
+		if (self.measures.measure_divine_class):
+			s += " divine: {}".format(self.measures.value_divine_class)
+
+		if (self.measures.measure_affected_range):
+			s += " affected(foes {}, ally {}, self {})".format(self.measures.value_affected_range_count_foes, self.measures.value_affected_range_count_ally, self.measures.value_affected_range_count_self)
+
+		if (self.measures.measure_attack):
+			s += " attack: {}".format(self.measures.value_attack)
 		return s
 
 	def qualify(self):
@@ -399,3 +509,18 @@ def _AITargetList_cmp_closest(m1, m2):
 	assert isinstance(m1, AITarget)
 	assert isinstance(m2, AITarget)
 	return m2.measures.value_distance - m1.measures.value_distance
+
+class AITargetBaddie:
+	def __init__(self):
+		self.baddie = None
+		self.is_ally = 0
+		self.is_self = 0
+		return
+
+def _AITargetList_cmp_attack(m1, m2):
+	assert isinstance(m1, AITarget)
+	assert isinstance(m2, AITarget)
+	result = m2.measures.value_attack - m1.measures.value_attack
+	if (result == 0):
+		result = m1.measures.measure_stat_hp - m2.measures.measure_stat_hp
+	return result

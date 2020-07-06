@@ -121,7 +121,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t12()
 		#self.place_encounter_t13()
 		#self.place_encounter_t14()
-		self.place_encounter_t15()
+		#self.place_encounter_t15()
+		self.place_encounter_t16()
 		self.print_monsters()
 
 		# debug
@@ -139,7 +140,9 @@ class CtrlShatteredTemple(object):
 		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 454) #t15
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 449) #t16
 		utils_obj.scroll_to_leader()
 		return
 
@@ -419,6 +422,26 @@ class CtrlShatteredTemple(object):
 	def activate_encounter_t15(self):
 		self.activate_monster("t15", "sting1")
 		self.activate_monster("t15", "sting2")
+		return
+
+	def place_encounter_t16(self):
+		self.create_promter_at(utils_obj.sec2loc(506, 449), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone")
+
+		self.create_npc_at(utils_obj.sec2loc(510, 448), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock1")
+		self.create_npc_at(utils_obj.sec2loc(512, 450), py06401_shattered_temple_encounters.CtrlLanthurrae, const_toee.rotation_0200_oclock, "t16", "priestess")
+		self.create_npc_at(utils_obj.sec2loc(514, 452), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock2")
+		return
+
+	def display_encounter_t16(self):
+		self.reveal_monster("t16", "priestess")
+		self.reveal_monster("t16", "grimlock1")
+		self.reveal_monster("t16", "grimlock2")
+		return
+
+	def activate_encounter_t16(self):
+		self.activate_monster("t16", "priestess")
+		self.activate_monster("t16", "grimlock1")
+		self.activate_monster("t16", "grimlock2")
 		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):

@@ -84,7 +84,7 @@ def npc_hp_current_percent(npc):
 	maxhp = npc.stat_level_get(stat_hp_max)
 	hp = npc.stat_level_get(stat_hp_current)
 	if (maxhp):
-		return hp / maxhp * 100
+		return 100 * hp / maxhp
 	return 100
 
 def npc_find_nearest_pc(npc, distance_ft, should_see):
