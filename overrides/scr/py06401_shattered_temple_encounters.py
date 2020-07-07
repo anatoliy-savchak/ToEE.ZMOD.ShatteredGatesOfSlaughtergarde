@@ -672,6 +672,55 @@ class CtrlGrimlock(ctrl_behaviour.CtrlBehaviour):
 		npc.item_wield_best_all()
 		return
 
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		#threats = foes.get_threats()
+		#print("threats: {}".format(threats))
+		leader_last_hit_by = None
+		leader = npc.leader_get()
+		if (leader):
+			if (not utils_npc.npc_is_alive(leader)): leader = None
+			assert isinstance(leader, toee.PyObjHandle)
+			if (leader):
+				leader_last_hit_by = leader.obj_get_obj(toee.obj_f_last_hit_by)
+				if (leader_last_hit_by and not utils_npc.npc_is_alive(leader_last_hit_by)): leader_last_hit_by = None
+		coup_de_grace_targets = foes.get_coup_de_grace_targets()
+		print("coup_de_grace_targets: {}".format(coup_de_grace_targets))
+		while (not tac):
+			if (coup_de_grace_targets): 
+				#debug.breakp("coup_de_grace_targets")
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(coup_de_grace_targets[0].target.id)
+				tac.add_approach_single()
+				tac.add_d20_action(toee.D20A_COUP_DE_GRACE, 0)
+				tac.add_attack()
+				tac.add_total_defence()
+				break
+
+			if (leader_last_hit_by): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_obj(leader_last_hit_by.id)
+				tac.add_approach_single()
+				tac.add_attack()
+				tac.add_ready_vs_approach()
+				tac.add_total_defence()
+				break
+
+			if (toee.game.combat_turn == 1):
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_approach_single()
+				tac.add_attack()
+				tac.add_ready_vs_approach()
+				tac.add_total_defence()
+				break
+
+			break
+		return tac
+
 class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14928
@@ -711,6 +760,8 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
 		threats = foes.get_threats()
 		print("threats: {}".format(threats))
+		coup_de_grace_targets = foes.get_coup_de_grace_targets()
+		print("coup_de_grace_targets: {}".format(coup_de_grace_targets))
 		sound_burst_skip = 0
 		check_threats_first = 0
 		if (threats): 
@@ -719,6 +770,17 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 		while (not tac):
 			hp_perc = utils_npc.npc_hp_current_percent(npc)
 			print("hp_perc: {}".format(hp_perc))
+			if (coup_de_grace_targets): 
+				#debug.breakp("coup_de_grace_targets")
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(coup_de_grace_targets[0].target.id)
+				tac.add_approach_single()
+				tac.add_d20_action(toee.D20A_COUP_DE_GRACE, 0)
+				tac.add_attack()
+				tac.add_total_defence()
+				break
+
 			if (hp_perc <= 30):
 				if (hp_perc > 0 and self.spells.get_spell_count(toee.spell_invisibility)): 
 					tac = utils_tactics.TacticsHelper(self.get_name())
@@ -741,13 +803,36 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 					tac.add_total_defence()
 					break
 
+				if (self.spells.get_spell_count(toee.spell_cure_light_wounds)): 
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_target_self()
+					tac.add_five_foot_step()
+					tac.add_halt()
+					tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_cure_light_wounds))
+					tac.add_total_defence()
+					break
+
+			if (self.spells.get_spell_count(toee.spell_summon_monster_iii)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_target_closest()
+				foe_caster = foes.find_caster(0, 0)
+				if (foe_caster):
+					tac.add_target_obj(foe_caster.target.id)
+				tac.add_five_foot_step()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_summon_monster_iii))
+				tac.add_halt()
+				tac.add_total_defence()
+				npc.condition_add_with_args("Summon_Monster_Preference_3", 14394, 0) # Celestial Black Bear
+				break
+
 			if (not check_threats_first):
 				if (not sound_burst_skip):
 					wand = npc.item_find_by_proto(const_proto_wands.PROTO_WAND_OF_SOUND_BURST)
 					if (not wand): 
 						sound_burst_skip = 1
 						continue
-					foes.measures.measure_affected_range = 25
+					foes.measures.measure_affected_range = 25-5
 					foes.rescan()
 					targ = foes.find_affected_best(0, 1)
 					if (not targ or targ.measures.value_affected_range_count_foes <=1):
@@ -829,6 +914,17 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 				tac.add_total_defence()
 				break
 
+			if (self.spells.get_spell_count(toee.spell_inflict_light_wounds)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					#tac.add_five_foot_step() NO TOUCH!!
+					tac.add_target_obj(threats[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_inflict_light_wounds))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
 			if (not tac and check_threats_first): 
 				check_threats_first = 0
 				continue
@@ -841,9 +937,10 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 		self.spells = utils_npc_spells.NPCSpells()
 		caster_level_cleric = attachee.highest_divine_caster_level
 		self.spells.add_spell(toee.spell_bestow_curse, toee.stat_level_cleric, caster_level_cleric)
-		self.spells.add_spell(toee.spell_contagion, toee.stat_level_cleric, caster_level_cleric)
+		#self.spells.add_spell(toee.spell_contagion, toee.stat_level_cleric, caster_level_cleric)
 		#self.spells.add_spell(toee.spell_dispel_magic, toee.stat_level_cleric, caster_level_cleric)
-		self.spells.add_spell(toee.spell_inflict_serious_wounds, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_inflict_serious_wounds, toee.stat_level_cleric, caster_level_cleric, 1)
+		self.spells.add_spell(toee.spell_summon_monster_iii, toee.stat_level_cleric, caster_level_cleric)
 
 		self.spells.add_spell(toee.spell_hold_person, toee.stat_level_cleric, caster_level_cleric)
 		self.spells.add_spell(toee.spell_invisibility, toee.stat_level_cleric, caster_level_cleric)
@@ -851,5 +948,5 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 
 		self.spells.add_spell(toee.spell_cause_fear, toee.stat_level_cleric, caster_level_cleric)
 		self.spells.add_spell(toee.spell_cure_light_wounds, toee.stat_level_cleric, caster_level_cleric)
-		self.spells.add_spell(toee.spell_inflict_light_wounds, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_inflict_light_wounds, toee.stat_level_cleric, caster_level_cleric, 2) # due to supposed pearl of power
 		return toee.RUN_DEFAULT

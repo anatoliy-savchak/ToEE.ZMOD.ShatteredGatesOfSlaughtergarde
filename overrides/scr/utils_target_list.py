@@ -150,10 +150,20 @@ class AITargetList(object):
 		for target in self.list:
 			assert isinstance(target, AITarget)
 			if (not target.measures.value_range_is_within_melee): continue
-			if (target.target.d20_query(toee.Q_Critter_Is_Held)): continue
+			if (target.measures.value_is_held): continue
 			if (target.target.d20_query(toee.Q_Critter_Is_Afraid)): continue
 			if (target.target.d20_query(toee.Q_Critter_Is_Stunned)): continue
 			#if (target.target.d20_query(toee.Q_Critter_Is_Charmed)): continue
+			if (not result): result = list()
+			result.append(target)
+		if (result and len(result) > 1): result = sorted(result, _AITargetList_cmp_attack)
+		return result
+
+	def get_coup_de_grace_targets(self):
+		result = None
+		for target in self.list:
+			assert isinstance(target, AITarget)
+			if (not target.measures.value_is_held): continue
 			if (not result): result = list()
 			result.append(target)
 		if (result and len(result) > 1): result = sorted(result, _AITargetList_cmp_attack)
@@ -177,6 +187,7 @@ class AITargetMeasure(object):
 		self.measure_divine_class = 0
 		self.measure_affected_range = 0
 		self.measure_attack = 0
+		self.measure_is_held = 0
 
 		self.option_distance_over_reach_allowed = 0.0
 		self.option_can_path_flags = 0
@@ -206,6 +217,7 @@ class AITargetMeasure(object):
 		self.value_affected_range_count_ally = 0
 		self.value_affected_range_count_self = 0
 		self.value_attack = 0
+		self.value_is_held = 0
 		
 		#self.mult_is_destroyed = -1000
 		self.mult_stat_ac = 0
@@ -284,6 +296,7 @@ class AITargetMeasure(object):
 		measures.measure_arcane_class = 1
 		measures.measure_divine_class = 1
 		measures.measure_attack = 1
+		measures.measure_is_held = 1
 		return measures
 
 	@classmethod
@@ -302,6 +315,7 @@ class AITargetMeasure(object):
 		measures.measure_arcane_class = 1
 		measures.measure_divine_class = 1
 		measures.measure_attack = 1
+		measures.measure_is_held = 1
 		return measures
 
 def btoi(b):
@@ -408,6 +422,8 @@ class AITarget(object):
 			self.measures.value_affected_range = list()
 			self.measures.value_affected_range_count_foes = 0
 			for obj in toee.game.obj_list_range(self.target.location, self.measures.measure_affected_range, toee.OLC_CRITTERS):
+				dist = self.target.distance_to(obj) - 3
+				if (dist > self.measures.measure_affected_range): continue
 				baddie = AITargetBaddie()
 				baddie.baddie = obj
 				if (obj.type == toee.obj_t_pc):
@@ -430,6 +446,9 @@ class AITarget(object):
 
 		if (self.measures.measure_attack):
 			self.measures.value_attack = self.target.stat_level_get(toee.stat_melee_attack_bonus)
+
+		if (self.measures.measure_is_held):
+			self.measures.value_is_held = self.target.d20_query(toee.Q_Critter_Is_Held)
 		return
 
 	def __str__(self):
@@ -485,6 +504,9 @@ class AITarget(object):
 
 		if (self.measures.measure_attack):
 			s += " attack: {}".format(self.measures.value_attack)
+
+		if (self.measures.measure_is_held):
+			s += " is_held: {}".format(self.measures.value_is_held)
 		return s
 
 	def qualify(self):

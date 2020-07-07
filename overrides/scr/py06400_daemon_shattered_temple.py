@@ -236,9 +236,9 @@ class CtrlShatteredTemple(object):
 		if (ctrl):
 			ctrl.fire_epicenter = utils_obj.sec2loc(453, 480)
 		minion = self.create_doom_fist_monk_at(utils_obj.sec2loc(442, 476), const_toee.rotation_0800_oclock, "t5", "monk1")
-		minion.obj_set_obj(obj_f_npc_leader, leader)
+		minion.obj_set_obj(toee.obj_f_npc_leader, leader)
 		minion = self.create_doom_fist_monk_at(utils_obj.sec2loc(442, 482), const_toee.rotation_0800_oclock, "t5", "monk2")
-		minion.obj_set_obj(obj_f_npc_leader, leader)
+		minion.obj_set_obj(toee.obj_f_npc_leader, leader)
 		return
 
 	def display_encounter_t5(self):
@@ -427,9 +427,11 @@ class CtrlShatteredTemple(object):
 	def place_encounter_t16(self):
 		self.create_promter_at(utils_obj.sec2loc(506, 449), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone")
 
-		self.create_npc_at(utils_obj.sec2loc(510, 448), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock1")
-		self.create_npc_at(utils_obj.sec2loc(512, 450), py06401_shattered_temple_encounters.CtrlLanthurrae, const_toee.rotation_0200_oclock, "t16", "priestess")
-		self.create_npc_at(utils_obj.sec2loc(514, 452), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock2")
+		leader, ctrl = self.create_npc_at(utils_obj.sec2loc(512, 450), py06401_shattered_temple_encounters.CtrlLanthurrae, const_toee.rotation_0200_oclock, "t16", "priestess")
+		minion = self.create_npc_at(utils_obj.sec2loc(510, 448), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock1")[0]
+		minion.obj_set_obj(toee.obj_f_npc_leader, leader)
+		minion = self.create_npc_at(utils_obj.sec2loc(510, 452), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock2")[0]
+		minion.obj_set_obj(toee.obj_f_npc_leader, leader)
 		return
 
 	def display_encounter_t16(self):

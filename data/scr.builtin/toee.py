@@ -379,7 +379,7 @@ class PyObjHandle(object):
 
 	def leader_get(self):
 		"""npc.leader_get() -> PyObjHandle"""
-		return 1
+		return PyObjHandle()
 
 	def has_los(self, target):
 		"""npc.faction_add(PyObjHandle: target) -> int"""
