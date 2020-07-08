@@ -599,6 +599,11 @@ class game(object):
 		return
 
 	@staticmethod
+	def create_history_from_pattern(pattern_id, actor, target):
+		""" game.create_history_from_pattern(int[history.mes]: pattern_id, PyObjHandle: actor, PyObjHandle: target) -> None"""
+		return
+
+	@staticmethod
 	def create_history_type6_opposed_check(performer, combatant, performer_bonus_list, combatant_bonus_list, performer_roll, combatant_roll, combat_mesline_title, combat_mesline_result, flags):
 		""" game.create_history_type6_opposed_check(PyObjHandle: performer, PyObjHandle: combatant, PyBonusList: performer_bonus_list, PyBonusList: combatant_bonus_list, int: performer_roll, int: combatant_roll, int: combat_mesline_title, int: combat_mesline_result, int: flags) -> int: rollHistId"""
 		return 0

@@ -79,3 +79,8 @@
 {163}{Continue}{}{1}{}{164}{}
 {164}{Mosaic footprints lead from southern doors into the middle of the room, then turn west and head underneath double doors in the western wall.}{Mosaic footprints lead from southern doors into the middle of the room, then turn west and head underneath double doors in the western wall.}{}{}{}{}
 {169}{Close}{}{1}{}{0}{cst().activate_encounter_t16()}
+
+{170}{A pale drow that has burning red eyes menaces you from the corner of a sizable alcove in the western wall. Beyond the drow are three large frescoes depicting disturbing images.}{A pale drow that has burning red eyes menaces you from the corner of a sizable alcove in the western wall. Beyond the drow are three large frescoes depicting disturbing images.}{}{}{}{cst().display_encounter_t17()}
+{171}{Continue}{}{1}{}{172}{}
+{172}{A demon arch filled with violet energy thrums in the wall to the east. Clawed mosaic footprints run down the hall's center.}{A demon arch filled with violet energy thrums in the wall to the east. Clawed mosaic footprints run down the hall's center.}{}{}{}{}
+{179}{Close}{}{1}{}{0}{cst().activate_encounter_t17()}

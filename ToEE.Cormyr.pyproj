@@ -60,6 +60,7 @@
     <Folder Include="overrides\scr\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\docs\portrait.md" />
     <Content Include="data\oemes\oname.mes" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
@@ -98,6 +99,7 @@
     <Content Include="overrides\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
     <Content Include="overrides\mes\gamekeylog.mes" />
     <Content Include="overrides\mes\gamequestlog.mes" />
+    <Content Include="overrides\mes\history.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
@@ -113,6 +115,8 @@
     <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
     <Content Include="overrides\oemes\faction.mes" />
     <Content Include="overrides\rules\combat_vars.mes" />
+    <Content Include="overrides\rules\indicators\surprise_round2.txt" />
+    <Content Include="overrides\rules\indicators\surprised2.txt" />
     <Content Include="overrides\rules\indicators\lodged_quills.txt" />
     <Content Include="overrides\rules\MapLimits.mes" />
     <Content Include="overrides\rules\poisons.json" />
@@ -243,6 +247,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\Spell076 - Contagion.py" />
+    <Compile Include="overrides\scr\Spell090 - Cure Light Wounds.py" />
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
@@ -258,6 +263,9 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\surprise_round2.py" />
+    <Compile Include="overrides\scr\tpModifiers\surprised2.py" />
+    <Compile Include="overrides\scr\tpModifiers\energy_drain_su.py" />
     <Compile Include="overrides\scr\tpModifiers\summon_monster_preference.py" />
     <Compile Include="overrides\scr\tpModifiers\contagion_desease_preference.py" />
     <Compile Include="overrides\scr\tpModifiers\initiative_bonus.py" />

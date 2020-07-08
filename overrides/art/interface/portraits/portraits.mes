@@ -1,0 +1,4154 @@
+; portraits.mes
+; default path = "art\\interface\\portraits\\"
+; ---
+; .mes is broken down as follows:
+; (0000-0499) = temp/gnome portraits
+; (0500-0999) = human portraits
+; (1000-1499) = elf portraits
+; (1500-1999) = half-elf portraits
+; (2000-2499) = dwarf portraits
+; (2500-2999) = halfling portraits
+; (3000-3499) = half-orc portraits
+; (3500-5999) = monster portraits
+; (6000-....) = NPC portraits
+; ---
+; filename format as follows:
+; [32-bit] .tga
+
+; (race)(gender)_(number)_(size)_(desc)_(grey).tga
+
+;    (race)
+;    HU  = human
+;    EL  = elf
+;    HE  = half-elf
+;    DW  = dwarf
+;    HA  = halfling
+;    HO  = half-orc
+;    GN  = gnome
+;    MOO = monster   (if they don't fit in any of the above categories)
+;    TMP = temporary
+;    NPC = Non-Player Characters
+
+;    (gender)
+;    M = male
+;    F = female
+;    O = other  (for monsters usually)
+
+;    (number)
+;    0000-9999
+
+;    (size)
+;    b = big   (for pc's, character sheets)
+;    s = small (for pc's and followers in status windows and monsters in bestiary)
+;    m = mini  (for monsters in combat/initiative)
+
+;    (desc)
+;    any text description (should be short and concise)
+
+;    (grey)
+;    if the picture is grey-scale (used for disabled/dead), add 'grey' at the end
+;    used only for "small" pictures
+
+;    [examples]
+;    HUF_0502_s_hot_chick_fighter.tga
+;    HOM_3000_b_angry_barbarian.tga
+;    MOO_3501_s_gelatinous_cube_grey.tga
+
+; --- start ---
+
+; temp/gnomes
+{0000} {TMP_0000_b_smiley.tga}
+{0001} {TempMan_Mini.tga}
+{0002} {TempMan.tga}
+{0003} {TempMan_grey.tga}
+{0004} {TempMan_Mini_grey.tga}
+
+{0010} {GNM_0010_b_illusionist.tga}
+{0011} {GNM_0011_m_illusionist.tga}
+{0012} {GNM_0012_s_illusionist.tga}
+{0013} {GNM_0013_s_illusionist_grey.tga}
+{0014} {GNM_0014_m_illusionist_grey.tga}
+
+{0020} {GNM_0020_b_rogue.tga}
+{0021} {GNM_0021_m_rogue.tga}
+{0022} {GNM_0022_s_rogue.tga}
+{0023} {GNM_0023_s_rogue_grey.tga}
+{0024} {GNM_0024_m_rogue_grey.tga}
+
+{0030} {GNF_0030_b_rogue.tga}
+{0031} {GNF_0031_m_rogue.tga}
+{0032} {GNF_0032_s_rogue.tga}
+{0033} {GNF_0033_s_rogue_grey.tga}
+{0034} {GNF_0034_m_rogue_grey.tga}
+
+{0040} {GNM_0040_b_cabral.tga}
+{0041} {GNM_0041_m_cabral.tga}
+{0042} {GNM_0042_s_cabral.tga}
+{0043} {GNM_0043_s_cabral_grey.tga}
+{0044} {GNM_0044_m_cabral_grey.tga}
+
+{0050} {GNM_0050_b_cabral.tga}
+{0051} {GNM_0051_m_cabral.tga}
+{0052} {GNM_0052_s_cabral.tga}
+{0053} {GNM_0053_s_cabral_grey.tga}
+{0054} {GNM_0054_m_cabral_grey.tga}
+
+{0060} {GNF_0060_b_adamo.tga}
+{0061} {GNF_0061_m_adamo.tga}
+{0062} {GNF_0062_s_adamo.tga}
+{0063} {GNF_0063_s_adamo_grey.tga}
+{0064} {GNF_0064_m_adamo_grey.tga}
+
+{0070} {GNF_0070_b_adamo.tga}
+{0071} {GNF_0071_m_adamo.tga}
+{0072} {GNF_0072_s_adamo.tga}
+{0073} {GNF_0073_s_adamo_grey.tga}
+{0074} {GNF_0074_m_adamo_grey.tga}
+
+; humans
+{0500} {HUM_0500_b_warrior.tga}
+{0501} {HUM_0501_m_warrior.tga}
+{0502} {HUM_0502_s_warrior.tga}
+{0503} {HUM_0503_s_warrior_grey.tga}
+{0504} {HUM_0504_m_warrior_grey.tga}
+
+{0510} {HUF_0510_b_ranger.tga}
+{0511} {HUF_0511_m_ranger.tga}
+{0512} {HUF_0512_s_ranger.tga}
+{0513} {HUF_0513_s_ranger_grey.tga}
+{0514} {HUF_0514_m_ranger_grey.tga}
+
+{0520} {HUM_0520_b_paladin.tga}
+{0521} {HUM_0521_m_paladin.tga}
+{0522} {HUM_0522_s_paladin.tga}
+{0523} {HUM_0523_s_paladin_grey.tga}
+{0524} {HUM_0524_m_paladin_grey.tga}
+
+{0530} {HUM_0530_b_wizard.tga}
+{0531} {HUM_0531_m_wizard.tga}
+{0532} {HUM_0532_s_wizard.tga}
+{0533} {HUM_0533_s_wizard_grey.tga}
+{0534} {HUM_0534_m_wizard_grey.tga}
+
+{0540} {HUF_0540_b_rogue.tga}
+{0541} {HUF_0541_m_rogue.tga}
+{0542} {HUF_0542_s_rogue.tga}
+{0543} {HUF_0543_s_rogue_grey.tga}
+{0544} {HUF_0544_m_rogue_grey.tga}
+
+{0550} {HUM_0550_b_sorcerer.tga}
+{0551} {HUM_0551_m_sorcerer.tga}
+{0552} {HUM_0552_s_sorcerer.tga}
+{0553} {HUM_0553_s_sorcerer_grey.tga}
+{0554} {HUM_0554_m_sorcerer_grey.tga}
+
+{0560} {HUM_0560_b_cleric.tga}
+{0561} {HUM_0561_m_cleric.tga}
+{0562} {HUM_0562_s_cleric.tga}
+{0563} {HUM_0563_s_cleric_grey.tga}
+{0564} {HUM_0564_m_cleric_grey.tga}
+
+{0570} {HUF_0570_b_monk.tga}
+{0571} {HUF_0571_m_monk.tga}
+{0572} {HUF_0572_s_monk.tga}
+{0573} {HUF_0573_s_monk_grey.tga}
+{0574} {HUF_0574_m_monk_grey.tga}
+
+{0580} {HUF_0580_b_paladin.tga}
+{0581} {HUF_0581_m_paladin.tga}
+{0582} {HUF_0582_s_paladin.tga}
+{0583} {HUF_0583_s_paladin_grey.tga}
+{0584} {HUF_0584_m_paladin_grey.tga}
+
+{0590} {HUM_0590_b_antipaladin.tga}
+{0591} {HUM_0591_m_antipaladin.tga}
+{0592} {HUM_0592_s_antipaladin.tga}
+{0593} {HUM_0593_s_antipaladin_grey.tga}
+{0594} {HUM_0594_m_antipaladin_grey.tga}
+
+{0600} {HUM_0600_b_cabral.tga}
+{0601} {HUM_0601_m_cabral.tga}
+{0602} {HUM_0602_s_cabral.tga}
+{0603} {HUM_0603_s_cabral_grey.tga}
+{0604} {HUM_0604_m_cabral_grey.tga}
+
+{0610} {HUM_0610_b_cabral.tga}
+{0611} {HUM_0611_m_cabral.tga}
+{0612} {HUM_0612_s_cabral.tga}
+{0613} {HUM_0613_s_cabral_grey.tga}
+{0614} {HUM_0614_m_cabral_grey.tga}
+
+{0620} {HUF_0620_b_cabral.tga}
+{0621} {HUF_0621_m_cabral.tga}
+{0622} {HUF_0622_s_cabral.tga}
+{0623} {HUF_0623_s_cabral_grey.tga}
+{0624} {HUF_0624_m_cabral_grey.tga}
+
+{0630} {HUF_0630_b_cabral.tga}
+{0631} {HUF_0631_m_cabral.tga}
+{0632} {HUF_0632_s_cabral.tga}
+{0633} {HUF_0633_s_cabral_grey.tga}
+{0634} {HUF_0634_m_cabral_grey.tga}
+
+{0640} {HUM_0640_b_cabral.tga}
+{0641} {HUM_0641_m_cabral.tga}
+{0642} {HUM_0642_s_cabral.tga}
+{0643} {HUM_0643_s_cabral_grey.tga}
+{0644} {HUM_0644_m_cabral_grey.tga}
+
+{0650} {HUF_0650_b_cabral.tga}
+{0651} {HUF_0651_m_cabral.tga}
+{0652} {HUF_0652_s_cabral.tga}
+{0653} {HUF_0653_s_cabral_grey.tga}
+{0654} {HUF_0654_m_cabral_grey.tga}
+
+{0660} {HUF_0660_b_cabral.tga}
+{0661} {HUF_0661_m_cabral.tga}
+{0662} {HUF_0662_s_cabral.tga}
+{0663} {HUF_0663_s_cabral_grey.tga}
+{0664} {HUF_0664_m_cabral_grey.tga}
+
+{0670} {HUM_0670_b_adamo.tga}
+{0671} {HUM_0671_m_adamo.tga}
+{0672} {HUM_0672_s_adamo.tga}
+{0673} {HUM_0673_s_adamo_grey.tga}
+{0674} {HUM_0674_m_adamo_grey.tga}
+
+{0680} {HUM_0680_b_adamo.tga}
+{0681} {HUM_0681_m_adamo.tga}
+{0682} {HUM_0682_s_adamo.tga}
+{0683} {HUM_0683_s_adamo_grey.tga}
+{0684} {HUM_0684_m_adamo_grey.tga}
+
+{0690} {HUF_0690_b_adamo.tga}
+{0691} {HUF_0691_m_adamo.tga}
+{0692} {HUF_0692_s_adamo.tga}
+{0693} {HUF_0693_s_adamo_grey.tga}
+{0694} {HUF_0694_m_adamo_grey.tga}
+
+{0700} {HUF_0700_b_adamo.tga}
+{0701} {HUF_0701_m_adamo.tga}
+{0702} {HUF_0702_s_adamo.tga}
+{0703} {HUF_0703_s_adamo_grey.tga}
+{0704} {HUF_0704_m_adamo_grey.tga}
+
+{0710} {HUM_0710_b_adamo.tga}
+{0711} {HUM_0711_m_adamo.tga}
+{0712} {HUM_0712_s_adamo.tga}
+{0713} {HUM_0713_s_adamo_grey.tga}
+{0714} {HUM_0714_m_adamo_grey.tga}
+
+{0720} {HUM_0720_b_adamo.tga}
+{0721} {HUM_0721_m_adamo.tga}
+{0722} {HUM_0722_s_adamo.tga}
+{0723} {HUM_0723_s_adamo_grey.tga}
+{0724} {HUM_0724_m_adamo_grey.tga}
+
+{0730} {HUF_0730_b_adamo.tga}
+{0731} {HUF_0731_m_adamo.tga}
+{0732} {HUF_0732_s_adamo.tga}
+{0733} {HUF_0733_s_adamo_grey.tga}
+{0734} {HUF_0734_m_adamo_grey.tga}
+
+{0740} {HUM_0740_b_adamo.tga}
+{0741} {HUM_0741_m_adamo.tga}
+{0742} {HUM_0742_s_adamo.tga}
+{0743} {HUM_0743_s_adamo_grey.tga}
+{0744} {HUM_0744_m_adamo_grey.tga}
+
+{0750} {HUM_0750_b_adamo.tga}
+{0751} {HUM_0751_m_adamo.tga}
+{0752} {HUM_0752_s_adamo.tga}
+{0753} {HUM_0753_s_adamo_grey.tga}
+{0754} {HUM_0754_m_adamo_grey.tga}
+
+{0760} {HUF_0760_b_adamo.tga}
+{0761} {HUF_0761_m_adamo.tga}
+{0762} {HUF_0762_s_adamo.tga}
+{0763} {HUF_0763_s_adamo_grey.tga}
+{0764} {HUF_0764_m_adamo_grey.tga}
+
+{0770} {HUF_0770_b_adamo.tga}
+{0771} {HUF_0771_m_adamo.tga}
+{0772} {HUF_0772_s_adamo.tga}
+{0773} {HUF_0773_s_adamo_grey.tga}
+{0774} {HUF_0774_m_adamo_grey.tga}
+
+; elves
+{1000} {ELF_1000_b_sorcerer.tga}
+{1001} {ELF_1001_m_sorcerer.tga}
+{1002} {ELF_1002_s_sorcerer.tga}
+{1003} {ELF_1003_s_sorcerer_grey.tga}
+{1004} {ELF_1004_m_sorcerer_grey.tga}
+
+{1010} {ELF_1010_b_rogue.tga}
+{1011} {ELF_1011_m_rogue.tga}
+{1012} {ELF_1012_s_rogue.tga}
+{1013} {ELF_1013_s_rogue_grey.tga}
+{1014} {ELF_1014_m_rogue_grey.tga}
+
+{1020} {ELM_1020_b_mage.tga}
+{1021} {ELM_1021_m_mage.tga}
+{1022} {ELM_1022_s_mage.tga}
+{1023} {ELM_1023_s_mage_grey.tga}
+{1024} {ELM_1024_m_mage_grey.tga}
+
+{1030} {ELF_1030_b_mage.tga}
+{1031} {ELF_1031_m_mage.tga}
+{1032} {ELF_1032_s_mage.tga}
+{1033} {ELF_1033_s_mage_grey.tga}
+{1034} {ELF_1034_m_mage_grey.tga}
+
+{1040} {ELM_1040_b_ranger.tga}
+{1041} {ELM_1041_m_ranger.tga}
+{1042} {ELM_1042_s_ranger.tga}
+{1043} {ELM_1043_s_ranger_grey.tga}
+{1044} {ELM_1044_m_ranger_grey.tga}
+
+{1050} {ELF_1050_b_cabral.tga}
+{1051} {ELF_1051_m_cabral.tga}
+{1052} {ELF_1052_s_cabral.tga}
+{1053} {ELF_1053_s_cabral_grey.tga}
+{1054} {ELF_1054_m_cabral_grey.tga}
+
+{1060} {ELM_1060_b_paladin.tga}
+{1061} {ELM_1061_m_paladin.tga}
+{1062} {ELM_1062_s_paladin.tga}
+{1063} {ELM_1063_s_paladin_grey.tga}
+{1064} {ELM_1064_m_paladin_grey.tga}
+
+{1070} {ELM_1070_b_adamo.tga}
+{1071} {ELM_1071_m_adamo.tga}
+{1072} {ELM_1072_s_adamo.tga}
+{1073} {ELM_1073_s_adamo_grey.tga}
+{1074} {ELM_1074_m_adamo_grey.tga}
+
+{1080} {ELM_1080_b_adamo.tga}
+{1081} {ELM_1081_m_adamo.tga}
+{1082} {ELM_1082_s_adamo.tga}
+{1083} {ELM_1083_s_adamo_grey.tga}
+{1084} {ELM_1084_m_adamo_grey.tga}
+
+{1090} {ELM_1090_b_adamo.tga}
+{1091} {ELM_1091_m_adamo.tga}
+{1092} {ELM_1092_s_adamo.tga}
+{1093} {ELM_1093_s_adamo_grey.tga}
+{1094} {ELM_1094_m_adamo_grey.tga}
+
+{1100} {ELM_1100_b_adamo.tga}
+{1101} {ELM_1101_m_adamo.tga}
+{1102} {ELM_1102_s_adamo.tga}
+{1103} {ELM_1103_s_adamo_grey.tga}
+{1104} {ELM_1104_m_adamo_grey.tga}
+
+{1110} {ELF_1110_b_adamo.tga}
+{1111} {ELF_1111_m_adamo.tga}
+{1112} {ELF_1112_s_adamo.tga}
+{1113} {ELF_1113_s_adamo_grey.tga}
+{1114} {ELF_1114_m_adamo_grey.tga}
+
+; half-elves
+{1500} {HEF_1500_b_druid.tga}
+{1501} {HEF_1501_m_druid.tga}
+{1502} {HEF_1502_s_druid.tga}
+{1503} {HEF_1503_s_druid_grey.tga}
+{1504} {HEF_1504_m_druid_grey.tga}
+
+{1510} {HEM_1510_b_bard.tga}
+{1511} {HEM_1511_m_bard.tga}
+{1512} {HEM_1512_s_bard.tga}
+{1513} {HEM_1513_s_bard_grey.tga}
+{1514} {HEM_1514_m_bard_grey.tga}
+
+; dwarves
+{2000} {DWM_2000_b_fighter.tga}
+{2001} {DWM_2001_m_fighter.tga}
+{2002} {DWM_2002_s_fighter.tga}
+{2003} {DWM_2003_s_fighter_grey.tga}
+{2004} {DWM_2004_m_fighter_grey.tga}
+
+{2010} {DWM_2010_b_barbarian.tga}
+{2011} {DWM_2011_m_barbarian.tga}
+{2012} {DWM_2012_s_barbarian.tga}
+{2013} {DWM_2013_s_barbarian_grey.tga}
+{2014} {DWM_2014_m_barbarian_grey.tga}
+
+{2020} {DWM_2020_b_cleric.tga}
+{2021} {DWM_2021_m_cleric.tga}
+{2022} {DWM_2022_s_cleric.tga}
+{2023} {DWM_2023_s_cleric_grey.tga}
+{2024} {DWM_2024_m_cleric_grey.tga}
+
+{2030} {DWM_2030_b_fighter.tga}
+{2031} {DWM_2031_m_fighter.tga}
+{2032} {DWM_2032_s_fighter.tga}
+{2033} {DWM_2033_s_fighter_grey.tga}
+{2034} {DWM_2034_m_fighter_grey.tga}
+
+{2040} {DWF_2040_b_fighter.tga}
+{2041} {DWF_2041_m_fighter.tga}
+{2042} {DWF_2042_s_fighter.tga}
+{2043} {DWF_2043_s_fighter_grey.tga}
+{2044} {DWF_2044_m_fighter_grey.tga}
+
+{2050} {DWM_2050_b_monk.tga}
+{2051} {DWM_2051_m_monk.tga}
+{2052} {DWM_2052_s_monk.tga}
+{2053} {DWM_2053_s_monk_grey.tga}
+{2054} {DWM_2054_m_monk_grey.tga}
+
+{2060} {DWF_2060_b_cabral.tga}
+{2061} {DWF_2061_m_cabral.tga}
+{2062} {DWF_2062_s_cabral.tga}
+{2063} {DWF_2063_s_cabral_grey.tga}
+{2064} {DWF_2064_m_cabral_grey.tga}
+
+{2070} {DWF_2070_b_cabral.tga}
+{2071} {DWF_2071_m_cabral.tga}
+{2072} {DWF_2072_s_cabral.tga}
+{2073} {DWF_2073_s_cabral_grey.tga}
+{2074} {DWF_2074_m_cabral_grey.tga}
+
+{2080} {DWM_2080_b_adamo.tga}
+{2081} {DWM_2081_m_adamo.tga}
+{2082} {DWM_2082_s_adamo.tga}
+{2083} {DWM_2083_s_adamo_grey.tga}
+{2084} {DWM_2084_m_adamo_grey.tga}
+
+{2090} {DWF_2090_b_adamo.tga}
+{2091} {DWF_2091_m_adamo.tga}
+{2092} {DWF_2092_s_adamo.tga}
+{2093} {DWF_2093_s_adamo_grey.tga}
+{2094} {DWF_2094_m_adamo_grey.tga}
+
+{2100} {DWM_2100_b_adamo.tga}
+{2101} {DWM_2101_m_adamo.tga}
+{2102} {DWM_2102_s_adamo.tga}
+{2103} {DWM_2103_s_adamo_grey.tga}
+{2104} {DWM_2104_m_adamo_grey.tga}
+
+{2110} {DWM_2110_b_adamo.tga}
+{2111} {DWM_2111_m_adamo.tga}
+{2112} {DWM_2112_s_adamo.tga}
+{2113} {DWM_2113_s_adamo_grey.tga}
+{2114} {DWM_2114_m_adamo_grey.tga}
+
+{2120} {DWF_2120_b_adamo.tga}
+{2121} {DWF_2121_m_adamo.tga}
+{2122} {DWF_2122_s_adamo.tga}
+{2123} {DWF_2123_s_adamo_grey.tga}
+{2124} {DWF_2124_m_adamo_grey.tga}
+
+{2130} {DWM_2130_b_adamo.tga}
+{2131} {DWM_2131_m_adamo.tga}
+{2132} {DWM_2132_s_adamo.tga}
+{2133} {DWM_2133_s_adamo_grey.tga}
+{2134} {DWM_2134_m_adamo_grey.tga}
+
+; halflings
+{2500} {HAM_2500_b_rogue.tga}
+{2501} {HAM_2501_m_rogue.tga}
+{2502} {HAM_2502_s_rogue.tga}
+{2503} {HAM_2503_s_rogue_grey.tga}
+{2504} {HAM_2504_m_rogue_grey.tga}
+
+{2510} {HAF_2510_b_rogue.tga}
+{2511} {HAF_2511_m_rogue.tga}
+{2512} {HAF_2512_s_rogue.tga}
+{2513} {HAF_2513_s_rogue_grey.tga}
+{2514} {HAF_2514_m_rogue_grey.tga}
+
+{2520} {HAM_2520_b_cabral.tga}
+{2521} {HAM_2521_m_cabral.tga}
+{2522} {HAM_2522_s_cabral.tga}
+{2523} {HAM_2523_s_cabral_grey.tga}
+{2524} {HAM_2524_m_cabral_grey.tga}
+
+{2530} {HAM_2530_b_cabral.tga}
+{2531} {HAM_2531_m_cabral.tga}
+{2532} {HAM_2532_s_cabral.tga}
+{2533} {HAM_2533_s_cabral_grey.tga}
+{2534} {HAM_2534_m_cabral_grey.tga}
+
+{2540} {HAF_2540_b_cabral.tga}
+{2541} {HAF_2541_m_cabral.tga}
+{2542} {HAF_2542_s_cabral.tga}
+{2543} {HAF_2543_s_cabral_grey.tga}
+{2544} {HAF_2544_m_cabral_grey.tga}
+
+{2550} {HAF_2550_b_cabral.tga}
+{2551} {HAF_2551_m_cabral.tga}
+{2552} {HAF_2552_s_cabral.tga}
+{2553} {HAF_2553_s_cabral_grey.tga}
+{2554} {HAF_2554_m_cabral_grey.tga}
+
+{2560} {HAF_2560_b_adamo.tga}
+{2561} {HAF_2561_m_adamo.tga}
+{2562} {HAF_2562_s_adamo.tga}
+{2563} {HAF_2563_s_adamo_grey.tga}
+{2564} {HAF_2564_m_adamo_grey.tga}
+
+; half-orcs
+{3000} {HOM_3000_b_barbarian.tga}
+{3001} {HOM_3001_m_barbarian.tga}
+{3002} {HOM_3002_s_barbarian.tga}
+{3003} {HOM_3003_s_barbarian_grey.tga}
+{3004} {HOM_3004_m_barbarian_grey.tga}
+
+{3010} {HOM_3010_b_barbarian.tga}
+{3011} {HOM_3011_m_barbarian.tga}
+{3012} {HOM_3012_s_barbarian.tga}
+{3013} {HOM_3013_s_barbarian_grey.tga}
+{3014} {HOM_3014_m_barbarian_grey.tga}
+
+{3020} {HOM_3020_b_barbarian.tga}
+{3021} {HOM_3021_m_barbarian.tga}
+{3022} {HOM_3022_s_barbarian.tga}
+{3023} {HOM_3023_s_barbarian_grey.tga}
+{3024} {HOM_3024_m_barbarian_grey.tga}
+
+{3030} {HOM_3030_b_fighter.tga}
+{3031} {HOM_3031_m_fighter.tga}
+{3032} {HOM_3032_s_fighter.tga}
+{3033} {HOM_3033_s_fighter_grey.tga}
+{3034} {HOM_3034_m_fighter_grey.tga}
+
+{3040} {HOM_3040_b_fighter.tga}
+{3041} {HOM_3041_m_fighter.tga}
+{3042} {HOM_3042_s_fighter.tga}
+{3043} {HOM_3043_s_fighter_grey.tga}
+{3044} {HOM_3044_m_fighter_grey.tga}
+
+{3050} {HOF_3050_b_sorcerer.tga}
+{3051} {HOF_3051_m_sorcerer.tga}
+{3052} {HOF_3052_s_sorcerer.tga}
+{3053} {HOF_3053_s_sorcerer_grey.tga}
+{3054} {HOF_3054_m_sorcerer_grey.tga}
+
+{3060} {HOF_3060_b_rogue.tga}
+{3061} {HOF_3061_m_rogue.tga}
+{3062} {HOF_3062_s_rogue.tga}
+{3063} {HOF_3063_s_rogue_grey.tga}
+{3064} {HOF_3064_m_rogue_grey.tga}
+
+{3070} {HOM_3070_b_cabral.tga}
+{3071} {HOM_3071_m_cabral.tga}
+{3072} {HOM_3072_s_cabral.tga}
+{3073} {HOM_3073_s_cabral_grey.tga}
+{3074} {HOM_3074_m_cabral_grey.tga}
+
+{3080} {HOM_3080_b_cabral.tga}
+{3081} {HOM_3081_m_cabral.tga}
+{3082} {HOM_3082_s_cabral.tga}
+{3083} {HOM_3083_s_cabral_grey.tga}
+{3084} {HOM_3084_m_cabral_grey.tga}
+
+{3090} {HOF_3090_b_cabral.tga}
+{3091} {HOF_3091_m_cabral.tga}
+{3092} {HOF_3092_s_cabral.tga}
+{3093} {HOF_3093_s_cabral_grey.tga}
+{3094} {HOF_3094_m_cabral_grey.tga}
+
+{3100} {HOM_3100_b_adamo.tga}
+{3101} {HOM_3101_m_adamo.tga}
+{3102} {HOM_3102_s_adamo.tga}
+{3103} {HOM_3103_s_adamo_grey.tga}
+{3104} {HOM_3104_m_adamo_grey.tga}
+
+{3110} {HOM_3110_b_adamo.tga}
+{3111} {HOM_3111_m_adamo.tga}
+{3112} {HOM_3112_s_adamo.tga}
+{3113} {HOM_3113_s_adamo_grey.tga}
+{3114} {HOM_3114_m_adamo_grey.tga}
+
+{3120} {HOF_3120_b_adamo.tga}
+{3121} {HOF_3121_m_adamo.tga}
+{3122} {HOF_3122_s_adamo.tga}
+{3123} {HOF_3123_s_adamo_grey.tga}
+{3124} {HOF_3124_m_adamo_grey.tga}
+
+{3130} {HOM_3130_b_adamo.tga}
+{3131} {HOM_3131_m_adamo.tga}
+{3132} {HOM_3132_s_adamo.tga}
+{3133} {HOM_3133_s_adamo_grey.tga}
+{3134} {HOM_3134_m_adamo_grey.tga}
+
+; monsters
+{3500} {}
+{3501} {MOO_3501_m_GiantFrog.tga}
+{3502} {MOO_3502_s_GiantFrog.tga}
+{3503} {MOO_3503_s_GiantFrog_Grey.tga}
+{3504} {MOO_3504_m_GiantFrog_Grey.tga}
+
+{3510} {}
+{3511} {MOO_3511_m_GiantRat.tga}
+{3512} {MOO_3512_s_GiantRat.tga}
+{3513} {MOO_3513_s_GiantRat_Grey.tga}
+{3514} {MOO_3514_m_GiantRat_Grey.tga}
+
+{3520} {}
+{3521} {MOO_3521_m_LizardMan.tga}
+{3522} {MOO_3522_s_LizardMan.tga}
+{3523} {MOO_3523_s_LizardMan_Grey.tga}
+{3524} {MOO_3524_m_LizardMan_Grey.tga}
+
+{3530} {}
+{3531} {MOO_3531_m_LizardMan-Sgt.tga}
+{3532} {MOO_3532_s_LizardMan-Sgt.tga}
+{3533} {MOO_3533_s_LizardMan-Sgt_Grey.tga}
+{3534} {MOO_3534_m_LizardMan-Sgt_Grey.tga}
+
+{3540} {}
+{3541} {MOO_3541_m_OwlBear.tga}
+{3542} {MOO_3542_s_OwlBear.tga}
+{3543} {MOO_3543_s_OwlBear_Grey.tga}
+{3544} {MOO_3544_m_OwlBear_Grey.tga}
+
+{3550} {}
+{3551} {MOO_3551_m_VaporRat.tga}
+{3552} {MOO_3552_s_VaporRat.tga}
+{3553} {MOO_3553_s_VaporRat_Grey.tga}
+{3554} {MOO_3554_m_VaporRat_Grey.tga}
+
+{3560} {}
+{3561} {MOO_3561_m_FireToad.tga}
+{3562} {MOO_3562_s_FireToad.tga}
+{3563} {MOO_3563_s_FireToad_Grey.tga}
+{3564} {MOO_3564_m_FireToad_Grey.tga}
+
+{3570} {}
+{3571} {MOO_3571_m_IceToad.tga}
+{3572} {MOO_3572_s_IceToad.tga}
+{3573} {MOO_3573_s_IceToad_Grey.tga}
+{3574} {MOO_3574_m_IceToad_Grey.tga}
+
+{3580} {}
+{3581} {MOO_3581_m_BalorDemon.tga}
+{3582} {MOO_3582_s_BalorDemon.tga}
+{3583} {MOO_3583_s_BalorDemon_Grey.tga}
+{3584} {MOO_3584_m_BalorDemon_Grey.tga}
+
+{3590} {}
+{3591} {MOO_3591_m_GiantIceLizard.tga}
+{3592} {MOO_3592_s_GiantIceLizard.tga}
+{3593} {MOO_3593_s_GiantIceLizard_grey.tga}
+{3594} {MOO_3594_m_GiantIceLizard_grey.tga}
+
+{3600} {}
+{3601} {MOO_3601_m_Ogre.tga}
+{3602} {MOO_3602_s_Ogre.tga}
+{3603} {MOO_3603_s_Ogre_grey.tga}
+{3604} {MOO_3604_m_Ogre_grey.tga}
+
+{3610} {}
+{3611} {MOO_3611_m_GiantSnake.tga}
+{3612} {MOO_3612_s_GiantSnake.tga}
+{3613} {MOO_3613_s_GiantSnake_grey.tga}
+{3614} {MOO_3614_m_GiantSnake_grey.tga}
+
+{3620} {}
+{3621} {MOO_3621_m_Lareth.tga}
+{3622} {MOO_3622_s_Lareth.tga}
+{3623} {MOO_3623_s_Lareth_grey.tga}
+{3624} {MOO_3624_m_Lareth_grey.tga}
+
+{3630} {}
+{3631} {MOO_3631_m_Zombie.tga}
+{3632} {MOO_3632_s_Zombie.tga}
+{3633} {MOO_3633_s_Zombie_grey.tga}
+{3634} {MOO_3634_m_Zombie_grey.tga}
+
+{3640} {}
+{3641} {MOO_3641_m_Ghoul.tga}
+{3642} {MOO_3642_s_Ghoul.tga}
+{3643} {MOO_3643_s_Ghoul_grey.tga}
+{3644} {MOO_3644_m_Ghoul_grey.tga}
+
+{3650} {}
+{3651} {MOO_3651_m_Lacedon.tga}
+{3652} {MOO_3652_s_Lacedon.tga}
+{3653} {MOO_3653_s_Lacedon_grey.tga}
+{3654} {MOO_3654_m_Lacedon_grey.tga}
+
+{3660} {}
+{3661} {MOO_3661_m_Ghast.tga}
+{3662} {MOO_3662_s_Ghast.tga}
+{3663} {MOO_3663_s_Ghast_grey.tga}
+{3664} {MOO_3664_m_Ghast_grey.tga}
+
+{3670} {}
+{3671} {MOO_3671_m_FireSnake.tga}
+{3672} {MOO_3672_s_FireSnake.tga}
+{3673} {MOO_3673_s_FireSnake_grey.tga}
+{3674} {MOO_3674_m_FireSnake_grey.tga}
+
+{3680} {}
+{3681} {MOO_3681_m_WaterWeird.tga}
+{3682} {MOO_3682_s_WaterWeird.tga}
+{3683} {MOO_3683_s_WaterWeird_grey.tga}
+{3684} {MOO_3684_m_WaterWeird_grey.tga}
+
+{3690} {}
+{3691} {MOO_3691_m_DogRegular.tga}
+{3692} {MOO_3692_s_DogRegular.tga}
+{3693} {MOO_3693_s_DogRegular_grey.tga}
+{3694} {MOO_3694_m_DogRegular_grey.tga}
+
+{3700} {}
+{3701} {MOO_3701_m_DogAttack.tga}
+{3702} {MOO_3702_s_DogAttack.tga}
+{3703} {MOO_3703_s_DogAttack_grey.tga}
+{3704} {MOO_3704_m_DogAttack_grey.tga}
+
+{3710} {}
+{3711} {MOO_3711_m_Jackal.tga}
+{3712} {MOO_3712_s_Jackal.tga}
+{3713} {MOO_3713_s_Jackal_grey.tga}
+{3714} {MOO_3714_m_Jackal_grey.tga}
+
+{3720} {}
+{3721} {MOO_3721_m_GiantSpider.tga}
+{3722} {MOO_3722_s_GiantSpider.tga}
+{3723} {MOO_3723_s_GiantSpider_grey.tga}
+{3724} {MOO_3724_m_GiantSpider_grey.tga}
+
+{3730} {}
+{3731} {MOO_3731_m_Wolf.tga}
+{3732} {MOO_3732_s_Wolf.tga}
+{3733} {MOO_3733_s_Wolf_grey.tga}
+{3734} {MOO_3734_m_Wolf_grey.tga}
+
+{3740} {}
+{3741} {MOO_3741_m_GrizzlyBear.tga}
+{3742} {MOO_3742_s_GrizzlyBear.tga}
+{3743} {MOO_3743_s_GrizzlyBear_grey.tga}
+{3744} {MOO_3744_m_GrizzlyBear_grey.tga}
+
+{3750} {}
+{3751} {MOO_3751_m_BlackBear.tga}
+{3752} {MOO_3752_s_BlackBear.tga}
+{3753} {MOO_3753_s_BlackBear_grey.tga}
+{3754} {MOO_3754_m_BlackBear_grey.tga}
+
+{3760} {}
+{3761} {MOO_3761_m_PolarBear.tga}
+{3762} {MOO_3762_s_PolarBear.tga}
+{3763} {MOO_3763_s_PolarBear_grey.tga}
+{3764} {MOO_3764_m_PolarBear_grey.tga}
+
+{3770} {}
+{3771} {MOO_3771_m_PandaBear.tga}
+{3772} {MOO_3772_s_PandaBear.tga}
+{3773} {MOO_3773_s_PandaBear_grey.tga}
+{3774} {MOO_3774_m_PandaBear_grey.tga}
+
+{3780} {}
+{3781} {MOO_3781_m_FireBat.tga}
+{3782} {MOO_3782_s_FireBat.tga}
+{3783} {MOO_3783_s_FireBat_grey.tga}
+{3784} {MOO_3784_m_FireBat_grey.tga}
+
+{3790} {}
+{3791} {MOO_3791_m_CarrionCrawler.tga}
+{3792} {MOO_3792_s_CarrionCrawler.tga}
+{3793} {MOO_3793_s_CarrionCrawler_grey.tga}
+{3794} {MOO_3794_m_CarrionCrawler_grey.tga}
+
+{3800} {}
+{3801} {MOO_3801_m_Hobgoblin.tga}
+{3802} {MOO_3802_s_Hobgoblin.tga}
+{3803} {MOO_3803_s_Hobgoblin_grey.tga}
+{3804} {MOO_3804_m_Hobgoblin_grey.tga}
+
+{3810} {}
+{3811} {MOO_3811_m_Goblin.tga}
+{3812} {MOO_3812_s_Goblin.tga}
+{3813} {MOO_3813_s_Goblin_grey.tga}
+{3814} {MOO_3814_m_Goblin_grey.tga}
+
+{3820} {}
+{3821} {MOO_3821_m_GoblinLeader.tga}
+{3822} {MOO_3822_s_GoblinLeader.tga}
+{3823} {MOO_3823_s_GoblinLeader_grey.tga}
+{3824} {MOO_3824_m_GoblinLeader_grey.tga}
+
+{3830} {}
+{3831} {MOO_3831_m_Gnoll.tga}
+{3832} {MOO_3832_s_Gnoll.tga}
+{3833} {MOO_3833_s_Gnoll_grey.tga}
+{3834} {MOO_3834_m_Gnoll_grey.tga}
+
+{3840} {}
+{3841} {MOO_3841_m_GnollLeader.tga}
+{3842} {MOO_3842_s_GnollLeader.tga}
+{3843} {MOO_3843_s_GnollLeader_grey.tga}
+{3844} {MOO_3844_m_GnollLeader_grey.tga}
+
+{3850} {}
+{3851} {MOO_3851_m_GnollSkeleton.tga}
+{3852} {MOO_3852_s_GnollSkeleton.tga}
+{3853} {MOO_3853_s_GnollSkeleton_grey.tga}
+{3854} {MOO_3854_m_GnollSkeleton_grey.tga}
+
+{3860} {}
+{3861} {MOO_3861_m_OchreJelly.tga}
+{3862} {MOO_3862_s_OchreJelly.tga}
+{3863} {MOO_3863_s_OchreJelly_grey.tga}
+{3864} {MOO_3864_m_OchreJelly_grey.tga}
+
+{3870} {}
+{3871} {MOO_3871_m_GreyOoze.tga}
+{3872} {MOO_3872_s_GreyOoze.tga}
+{3873} {MOO_3873_s_GreyOoze_grey.tga}
+{3874} {MOO_3874_m_GreyOoze_grey.tga}
+
+{3880} {}
+{3881} {MOO_3881_m_GreenSlime.tga}
+{3882} {MOO_3882_s_GreenSlime.tga}
+{3883} {MOO_3883_s_GreenSlime_grey.tga}
+{3884} {MOO_3884_m_GreenSlime_grey.tga}
+
+{3890} {}
+{3891} {MOO_3891_m_CrystalOoze.tga}
+{3892} {MOO_3892_s_CrystalOoze.tga}
+{3893} {MOO_3893_s_CrystalOoze_grey.tga}
+{3894} {MOO_3894_m_CrystalOoze_grey.tga}
+
+{3900} {}
+{3901} {MOO_3901_m_BlackPudding.tga}
+{3902} {MOO_3902_s_BlackPudding.tga}
+{3903} {MOO_3903_s_BlackPudding_grey.tga}
+{3904} {MOO_3904_m_BlackPudding_grey.tga}
+
+{3910} {}
+{3911} {MOO_3911_m_GelCube.tga}
+{3912} {MOO_3912_s_GelCube.tga}
+{3913} {MOO_3913_s_GelCube_grey.tga}
+{3914} {MOO_3914_m_GelCube_grey.tga}
+
+{3920} {}
+{3921} {MOO_3921_m_Quasit.tga}
+{3922} {MOO_3922_s_Quasit.tga}
+{3923} {MOO_3923_s_Quasit_grey.tga}
+{3924} {MOO_3924_m_Quasit_grey.tga}
+
+{3930} {}
+{3931} {MOO_3931_m_Salamander.tga}
+{3932} {MOO_3932_s_Salamander.tga}
+{3933} {MOO_3933_s_Salamander_grey.tga}
+{3934} {MOO_3934_m_Salamander_grey.tga}
+
+{3940} {}
+{3941} {MOO_3941_m_Skeleton.tga}
+{3942} {MOO_3942_s_Skeleton.tga}
+{3943} {MOO_3943_s_Skeleton_grey.tga}
+{3944} {MOO_3944_m_Skeleton_grey.tga}
+
+{3950} {}
+{3951} {MOO_3951_m_Jackalwere.tga}
+{3952} {MOO_3952_s_Jackalwere.tga}
+{3953} {MOO_3953_s_Jackalwere_grey.tga}
+{3954} {MOO_3954_m_Jackalwere_grey.tga}
+
+{3960} {}
+{3961} {MOO_3961_m_GiantLizard.tga}
+{3962} {MOO_3962_s_GiantLizard.tga}
+{3963} {MOO_3963_s_GiantLizard_grey.tga}
+{3964} {MOO_3964_m_GiantLizard_grey.tga}
+
+{3970} {}
+{3971} {MOO_3971_m_Ettin.tga}
+{3972} {MOO_3972_s_Ettin.tga}
+{3973} {MOO_3973_s_Ettin_grey.tga}
+{3974} {MOO_3974_m_Ettin_grey.tga}
+
+{3980} {}
+{3981} {MOO_3981_m_HillGiant.tga}
+{3982} {MOO_3982_s_HillGiant.tga}
+{3983} {MOO_3983_s_HillGiant_grey.tga}
+{3984} {MOO_3984_m_HillGiant_grey.tga}
+
+{3990} {}
+{3991} {MOO_3991_m_Stirge.tga}
+{3992} {MOO_3992_s_Stirge.tga}
+{3993} {MOO_3993_s_Stirge_grey.tga}
+{3994} {MOO_3994_m_Stirge_grey.tga}
+
+{4000} {}
+{4001} {MOO_4001_m_IldrissGrue.tga}
+{4002} {MOO_4002_s_IldrissGrue.tga}
+{4003} {MOO_4003_s_IldrissGrue_grey.tga}
+{4004} {MOO_4004_m_IldrissGrue_grey.tga}
+
+{4010} {}
+{4011} {MOO_4011_m_ChaggrinGrue.tga}
+{4012} {MOO_4012_s_ChaggrinGrue.tga}
+{4013} {MOO_4013_s_ChaggrinGrue_grey.tga}
+{4014} {MOO_4014_m_ChaggrinGrue_grey.tga}
+
+{4020} {}
+{4021} {MOO_4021_m_Merrow.tga}
+{4022} {MOO_4022_s_Merrow.tga}
+{4023} {MOO_4023_s_Merrow_grey.tga}
+{4024} {MOO_4024_m_Merrow_grey.tga}
+
+{4030} {}
+{4031} {MOO_4031_m_GroaningSpirit.tga}
+{4032} {MOO_4032_s_GroaningSpirit.tga}
+{4033} {MOO_4033_s_GroaningSpirit_grey.tga}
+{4034} {MOO_4034_m_GroaningSpirit_grey.tga}
+
+{4040} {}
+{4041} {MOO_4041_m_SeaHag.tga}
+{4042} {MOO_4042_s_SeaHag.tga}
+{4043} {MOO_4043_s_SeaHag_grey.tga}
+{4044} {MOO_4044_m_SeaHag_grey.tga}
+
+{4050} {}
+{4051} {MOO_4051_m_Shadow.tga}
+{4052} {MOO_4052_s_Shadow.tga}
+{4053} {MOO_4053_s_Shadow_grey.tga}
+{4054} {MOO_4054_m_Shadow_grey.tga}
+
+{4060} {}
+{4061} {MOO_4061_m_Minotaur.tga}
+{4062} {MOO_4062_s_Minotaur.tga}
+{4063} {MOO_4063_s_Minotaur_grey.tga}
+{4064} {MOO_4064_m_Minotaur_grey.tga}
+
+{4070} {}
+{4071} {MOO_4071_m_Bugbear_Unaffiliated.tga}
+{4072} {MOO_4072_s_Bugbear_Unaffiliated.tga}
+{4073} {MOO_4073_s_Bugbear_Unaffiliated_grey.tga}
+{4074} {MOO_4074_m_Bugbear_Unaffiliated_grey.tga}
+
+{4080} {}
+{4081} {MOO_4081_m_Bugbear_Temple.tga}
+{4082} {MOO_4082_s_Bugbear_Temple.tga}
+{4083} {MOO_4083_s_Bugbear_Temple_grey.tga}
+{4084} {MOO_4084_m_Bugbear_Temple_grey.tga}
+
+{4090} {}
+{4091} {MOO_4091_m_Bugbear_Fire.tga}
+{4092} {MOO_4092_s_Bugbear_Fire.tga}
+{4093} {MOO_4093_s_Bugbear_Fire_grey.tga}
+{4094} {MOO_4094_m_Bugbear_Fire_grey.tga}
+
+{4100} {}
+{4101} {MOO_4101_m_Bugbear_Earth.tga}
+{4102} {MOO_4102_s_Bugbear_Earth.tga}
+{4103} {MOO_4103_s_Bugbear_Earth_grey.tga}
+{4104} {MOO_4104_m_Bugbear_Earth_grey.tga}
+
+{4110} {}
+{4111} {MOO_4111_m_Bugbear_Air.tga}
+{4112} {MOO_4112_s_Bugbear_Air.tga}
+{4113} {MOO_4113_s_Bugbear_Air_grey.tga}
+{4114} {MOO_4114_m_Bugbear_Air_grey.tga}
+
+{4120} {}
+{4121} {MOO_4121_m_Bugbear_Water.tga}
+{4122} {MOO_4122_s_Bugbear_Water.tga}
+{4123} {MOO_4123_s_Bugbear_Water_grey.tga}
+{4124} {MOO_4124_m_Bugbear_Water_grey.tga}
+
+{4130} {}
+{4131} {MOO_4131_m_BugbearLeader_Unaffiliated.tga}
+{4132} {MOO_4132_s_BugbearLeader_Unaffiliated.tga}
+{4133} {MOO_4133_s_BugbearLeader_Unaffiliated_grey.tga}
+{4134} {MOO_4134_m_BugbearLeader_Unaffiliated_grey.tga}
+
+{4140} {}
+{4141} {MOO_4141_m_BugbearLeader_Temple.tga}
+{4142} {MOO_4142_s_BugbearLeader_Temple.tga}
+{4143} {MOO_4143_s_BugbearLeader_Temple_grey.tga}
+{4144} {MOO_4144_m_BugbearLeader_Temple_grey.tga}
+
+{4150} {}
+{4151} {MOO_4151_m_BugbearLeader_Fire.tga}
+{4152} {MOO_4152_s_BugbearLeader_Fire.tga}
+{4153} {MOO_4153_s_BugbearLeader_Fire_grey.tga}
+{4154} {MOO_4154_m_BugbearLeader_Fire_grey.tga}
+
+{4160} {}
+{4161} {MOO_4161_m_BugbearLeader_Earth.tga}
+{4162} {MOO_4162_s_BugbearLeader_Earth.tga}
+{4163} {MOO_4163_s_BugbearLeader_Earth_grey.tga}
+{4164} {MOO_4164_m_BugbearLeader_Earth_grey.tga}
+
+{4170} {}
+{4171} {MOO_4171_m_BugbearLeader_Air.tga}
+{4172} {MOO_4172_s_BugbearLeader_Air.tga}
+{4173} {MOO_4173_s_BugbearLeader_Air_grey.tga}
+{4174} {MOO_4174_m_BugbearLeader_Air_grey.tga}
+
+{4180} {}
+{4181} {MOO_4181_m_BugbearLeader_Water.tga}
+{4182} {MOO_4182_s_BugbearLeader_Water.tga}
+{4183} {MOO_4183_s_BugbearLeader_Water_grey.tga}
+{4184} {MOO_4184_m_BugbearLeader_Water_grey.tga}
+
+{4190} {}
+{4191} {MOO_4191_m_Vrock.tga}
+{4192} {MOO_4192_s_Vrock.tga}
+{4193} {MOO_4193_s_Vrock_grey.tga}
+{4194} {MOO_4194_m_Vrock_grey.tga}
+
+{4200} {}
+{4201} {MOO_4201_m_Gargoyle.tga}
+{4202} {MOO_4202_s_Gargoyle.tga}
+{4203} {MOO_4203_s_Gargoyle_grey.tga}
+{4204} {MOO_4204_m_Gargoyle_grey.tga}
+
+{4210} {}
+{4211} {MOO_4211_m_GargoyleAqua.tga}
+{4212} {MOO_4212_s_GargoyleAqua.tga}
+{4213} {MOO_4213_s_GargoyleAqua_grey.tga}
+{4214} {MOO_4214_m_GargoyleAqua_grey.tga}
+
+{4220} {}
+{4221} {MOO_4221_m_Minotaur_Stone.tga}
+{4222} {MOO_4222_s_Minotaur_Stone.tga}
+{4223} {MOO_4223_s_Minotaur_Stone_grey.tga}
+{4224} {MOO_4224_m_Minotaur_Stone_grey.tga}
+
+{4230} {}
+{4231} {MOO_4231_m_EarthElemental.tga}
+{4232} {MOO_4232_s_EarthElemental.tga}
+{4233} {MOO_4233_s_EarthElemental_grey.tga}
+{4234} {MOO_4234_m_EarthElemental_grey.tga}
+
+{4240} {}
+{4241} {MOO_4241_m_Efreet.tga}
+{4242} {MOO_4242_s_Efreet.tga}
+{4243} {MOO_4243_s_Efreet_grey.tga}
+{4244} {MOO_4244_m_Efreet_grey.tga}
+
+{4250} {}
+{4251} {MOO_4251_m_Troll.tga}
+{4252} {MOO_4252_s_Troll.tga}
+{4253} {MOO_4253_s_Troll_grey.tga}
+{4254} {MOO_4254_m_Troll_grey.tga}
+
+{4260} {}
+{4261} {MOO_4261_m_Bodak.tga}
+{4262} {MOO_4262_s_Bodak.tga}
+{4263} {MOO_4263_s_Bodak_grey.tga}
+{4264} {MOO_4264_m_Bodak_grey.tga}
+
+{4270} {}
+{4271} {MOO_4271_m_Bugbear_Female.tga}
+{4272} {MOO_4272_s_Bugbear_Female.tga}
+{4273} {MOO_4273_s_Bugbear_Female_grey.tga}
+{4274} {MOO_4274_m_Bugbear_Female_grey.tga}
+
+{4280} {}
+{4281} {MOO_4281_m_Drelb.tga}
+{4282} {MOO_4282_s_Drelb.tga}
+{4283} {MOO_4283_s_Drelb_grey.tga}
+{4284} {MOO_4284_m_Drelb_grey.tga}
+
+{4290} {}
+{4291} {MOO_4291_m_UmberHulk.tga}
+{4292} {MOO_4292_s_UmberHulk.tga}
+{4293} {MOO_4293_s_UmberHulk_grey.tga}
+{4294} {MOO_4294_m_UmberHulk_grey.tga}
+
+{4300} {}
+{4301} {MOO_4301_m_Glabrezu.tga}
+{4302} {MOO_4302_s_Glabrezu.tga}
+{4303} {MOO_4303_s_Glabrezu_grey.tga}
+{4304} {MOO_4304_m_Glabrezu_grey.tga}
+
+{4310} {}
+{4311} {MOO_4311_m_EyeOfTheDeep.tga}
+{4312} {MOO_4312_s_EyeOfTheDeep.tga}
+{4313} {MOO_4313_s_EyeOfTheDeep_grey.tga}
+{4314} {MOO_4314_m_EyeOfTheDeep_grey.tga}
+
+{4320} {}
+{4321} {MOO_4321_m_WillowWisp.tga}
+{4322} {MOO_4322_s_WillowWisp.tga}
+{4323} {MOO_4323_s_WillowWisp_grey.tga}
+{4324} {MOO_4324_m_WillowWisp_grey.tga}
+
+{4330} {}
+{4331} {MOO_4331_m_AirElemental.tga}
+{4332} {MOO_4332_s_AirElemental.tga}
+{4333} {MOO_4333_s_AirElemental_grey.tga}
+{4334} {MOO_4334_m_AirElemental_grey.tga}
+
+{4340} {}
+{4341} {MOO_4341_m_GiantCrayfish.tga}
+{4342} {MOO_4342_s_GiantCrayfish.tga}
+{4343} {MOO_4343_s_GiantCrayfish_grey.tga}
+{4344} {MOO_4344_m_GiantCrayfish_grey.tga}
+
+{4350} {}
+{4351} {MOO_4351_m_GalebDuhr.tga}
+{4352} {MOO_4352_s_GalebDuhr.tga}
+{4353} {MOO_4353_s_GalebDuhr_grey.tga}
+{4354} {MOO_4354_m_GalebDuhr_grey.tga}
+
+{4360} {}
+{4361} {MOO_4361_m_FireElemental.tga}
+{4362} {MOO_4362_s_FireElemental.tga}
+{4363} {MOO_4363_s_FireElemental_grey.tga}
+{4364} {MOO_4364_m_FireElemental_grey.tga}
+
+{4370} {}
+{4371} {MOO_4371_m_Gorgon.tga}
+{4372} {MOO_4372_s_Gorgon.tga}
+{4373} {MOO_4373_s_Gorgon_grey.tga}
+{4374} {MOO_4374_m_Gorgon_grey.tga}
+
+{4380} {}
+{4381} {MOO_4381_m_GarFish.tga}
+{4382} {MOO_4382_s_GarFish.tga}
+{4383} {MOO_4383_s_GarFish_grey.tga}
+{4384} {MOO_4384_m_GarFish_grey.tga}
+
+{4390} {}
+{4391} {MOO_4391_m_Hezrou.tga}
+{4392} {MOO_4392_s_Hezrou.tga}
+{4393} {MOO_4393_s_Hezrou_grey.tga}
+{4394} {MOO_4394_m_Hezrou_grey.tga}
+
+{4400} {}
+{4401} {MOO_4401_m_Lamia.tga}
+{4402} {MOO_4402_s_Lamia.tga}
+{4403} {MOO_4403_s_Lamia_grey.tga}
+{4404} {MOO_4404_m_Lamia_grey.tga}
+
+{4410} {}
+{4411} {MOO_4411_m_Harpy.tga}
+{4412} {MOO_4412_s_Harpy.tga}
+{4413} {MOO_4413_s_Harpy_grey.tga}
+{4414} {MOO_4414_m_Harpy_grey.tga}
+
+{4420} {}
+{4421} {MOO_4421_m_Ascomid.tga}
+{4422} {MOO_4422_s_Ascomid.tga}
+{4423} {MOO_4423_s_Ascomid_grey.tga}
+{4424} {MOO_4424_m_Ascomid_grey.tga}
+
+{4430} {}
+{4431} {MOO_4431_m_Vortex.tga}
+{4432} {MOO_4432_s_Vortex.tga}
+{4433} {MOO_4433_s_Vortex_grey.tga}
+{4434} {MOO_4434_m_Vortex_grey.tga}
+
+{4440} {}
+{4441} {MOO_4441_m_Basidirond.tga}
+{4442} {MOO_4442_s_Basidirond.tga}
+{4443} {MOO_4443_s_Basidirond_grey.tga}
+{4444} {MOO_4444_m_Basidirond_grey.tga}
+
+{4450} {}
+{4451} {MOO_4451_m_HootingFungi.tga}
+{4452} {MOO_4452_s_HootingFungi.tga}
+{4453} {MOO_4453_s_HootingFungi_grey.tga}
+{4454} {MOO_4454_m_HootingFungi_grey.tga}
+
+{4460} {}
+{4461} {MOO_4461_m_Ustilagor.tga}
+{4462} {MOO_4462_s_Ustilagor.tga}
+{4463} {MOO_4463_s_Ustilagor_grey.tga}
+{4464} {MOO_4464_m_Ustilagor_grey.tga}
+
+{4470} {}
+{4471} {MOO_4471_m_Phycomid.tga}
+{4472} {MOO_4472_s_Phycomid.tga}
+{4473} {MOO_4473_s_Phycomid_grey.tga}
+{4474} {MOO_4474_m_Phycomid_grey.tga}
+
+{4480} {}
+{4481} {MOO_4481_m_YellowMold.tga}
+{4482} {MOO_4482_s_YellowMold.tga}
+{4483} {MOO_4483_s_YellowMold_grey.tga}
+{4484} {MOO_4484_m_YellowMold_grey.tga}
+
+{4490} {}
+{4491} {MOO_4491_m_Shrieker.tga}
+{4492} {MOO_4492_s_Shrieker.tga}
+{4493} {MOO_4493_s_Shrieker_grey.tga}
+{4494} {MOO_4494_m_Shrieker_grey.tga}
+
+{4500} {}
+{4501} {MOO_4501_m_VioletFungi.tga}
+{4502} {MOO_4502_s_VioletFungi.tga}
+{4503} {MOO_4503_s_VioletFungi_grey.tga}
+{4504} {MOO_4504_m_VioletFungi_grey.tga}
+
+{4510} {}
+{4511} {MOO_4511_m_Juggernaut.tga}
+{4512} {MOO_4512_s_Juggernaut.tga}
+{4513} {MOO_4513_s_Juggernaut_grey.tga}
+{4514} {MOO_4514_m_Juggernaut_grey.tga}
+
+{4520} {}
+{4521} {MOO_4521_m_Basilisk.tga}
+{4522} {MOO_4522_s_Basilisk.tga}
+{4523} {MOO_4523_s_Basilisk_grey.tga}
+{4524} {MOO_4524_m_Basilisk_grey.tga}
+
+{4530} {}
+{4531} {MOO_4531_m_Vodyani.tga}
+{4532} {MOO_4532_s_Vodyani.tga}
+{4533} {MOO_4533_s_Vodyani_grey.tga}
+{4534} {MOO_4534_m_Vodyani_grey.tga}
+
+{4540} {}
+{4541} {MOO_4541_m_Hydra.tga}
+{4542} {MOO_4542_s_Hydra.tga}
+{4543} {MOO_4543_s_Hydra_grey.tga}
+{4544} {MOO_4544_m_Hydra_grey.tga}
+
+{4550} {}
+{4551} {MOO_4551_m_Luecrotta.tga}
+{4552} {MOO_4552_s_Luecrotta.tga}
+{4553} {MOO_4553_s_Luecrotta_grey.tga}
+{4554} {MOO_4554_m_Luecrotta_grey.tga}
+
+{4560} {}
+{4561} {MOO_4561_m_WaterElemental.tga}
+{4562} {MOO_4562_s_WaterElemental.tga}
+{4563} {MOO_4563_s_WaterElemental_grey.tga}
+{4564} {MOO_4564_m_WaterElemental_grey.tga}
+
+{4570} {}
+{4571} {MOO_4571_m_Rooster.tga}
+{4572} {MOO_4572_s_Rooster.tga}
+{4573} {MOO_4573_s_Rooster_grey.tga}
+{4574} {MOO_4574_m_Rooster_grey.tga}
+
+{4580} {}
+{4581} {MOO_4581_m_Chicken.tga}
+{4582} {MOO_4582_s_Chicken.tga}
+{4583} {MOO_4583_s_Chicken_grey.tga}
+{4584} {MOO_4584_m_Chicken_grey.tga}
+
+{4590} {}
+{4591} {MOO_4591_m_Sheep.tga}
+{4592} {MOO_4592_s_Sheep.tga}
+{4593} {MOO_4593_s_Sheep_grey.tga}
+{4594} {MOO_4594_m_Sheep_grey.tga}
+
+{4600} {}
+{4601} {MOO_4601_m_Cow.tga}
+{4602} {MOO_4602_s_Cow.tga}
+{4603} {MOO_4603_s_Cow_grey.tga}
+{4604} {MOO_4604_m_Cow_grey.tga}
+
+{4610} {}
+{4611} {MOO_4611_m_Pig.tga}
+{4612} {MOO_4612_s_Pig.tga}
+{4613} {MOO_4613_s_Pig_grey.tga}
+{4614} {MOO_4614_m_Pig_grey.tga}
+
+{4620} {}
+{4621} {MOO_4621_m_GiantTick.tga}
+{4622} {MOO_4622_s_GiantTick.tga}
+{4623} {MOO_4623_s_GiantTick_grey.tga}
+{4624} {MOO_4624_m_GiantTick_grey.tga}
+
+{4630} {}
+{4631} {MOO_4631_m_BlackSheep.tga}
+{4632} {MOO_4632_s_BlackSheep.tga}
+{4633} {MOO_4633_s_BlackSheep_grey.tga}
+{4634} {MOO_4634_m_BlackSheep_grey.tga}
+
+{4640} {}
+{4641} {MOO_4641_m_OgreShaman.tga}
+{4642} {MOO_4642_s_OgreShaman.tga}
+{4643} {MOO_4643_s_OgreShaman_grey.tga}
+{4644} {MOO_4644_m_OgreShaman_grey.tga}
+
+{4650} {}
+{4651} {MOO_4651_m_WaterSnake.tga}
+{4652} {MOO_4652_s_WaterSnake.tga}
+{4653} {MOO_4653_s_WaterSnake_grey.tga}
+{4654} {MOO_4654_m_WaterSnake_grey.tga}
+
+{4660} {}
+{4661} {MOO_4661_m_Constrictor.tga}
+{4662} {MOO_4662_s_Constrictor.tga}
+{4663} {MOO_4663_s_Constrictor_grey.tga}
+{4664} {MOO_4664_m_Constrictor_grey.tga}
+
+{4670} {}
+{4671} {MOO_4671_m_Viper.tga}
+{4672} {MOO_4672_s_Viper.tga}
+{4673} {MOO_4673_s_Viper_grey.tga}
+{4674} {MOO_4674_m_Viper_grey.tga}
+
+{4680} {}
+{4681} {MOO_4681_m_BlackWidow.tga}
+{4682} {MOO_4682_s_BlackWidow.tga}
+{4683} {MOO_4683_s_BlackWidow_grey.tga}
+{4684} {MOO_4684_m_BlackWidow_grey.tga}
+
+{4690} {}
+{4691} {MOO_4691_m_LanternArchon.tga}
+{4692} {MOO_4692_s_LanternArchon.tga}
+{4693} {MOO_4693_s_LanternArchon_grey.tga}
+{4694} {MOO_4694_m_LanternArchon_grey.tga}
+
+{4700} {}
+{4701} {MOO_4701_m_Windwalker.tga}
+{4702} {MOO_4702_s_Windwalker.tga}
+{4703} {MOO_4703_s_Windwalker_grey.tga}
+{4704} {MOO_4704_m_Windwalker_grey.tga}
+
+{4710} {}
+{4711} {MOO_4711_m_Werewolf.tga}
+{4712} {MOO_4712_s_Werewolf.tga}
+{4713} {MOO_4713_s_Werewolf_grey.tga}
+{4714} {MOO_4714_m_Werewolf_grey.tga}
+
+{4720} {}
+{4721} {MOO_4721_m_FaithfulHound.tga}
+{4722} {MOO_4722_s_FaithfulHound.tga}
+{4723} {MOO_4723_s_FaithfulHound_grey.tga}
+{4724} {MOO_4724_m_FaithfulHound_grey.tga}
+
+{4730} {}
+{4731} {MOO_4731_m_Yeth_Hound.tga}
+{4732} {MOO_4732_s_Yeth_Hound.tga}
+{4733} {MOO_4733_s_Yeth_Hound_grey.tga}
+{4734} {MOO_4734_m_Yeth_Hound_grey.tga}
+
+{4740} {}
+{4741} {MOO_4741_m_White_Dragon.tga}
+{4742} {MOO_4742_s_White_Dragon.tga}
+{4743} {MOO_4743_s_White_Dragon_grey.tga}
+{4744} {MOO_4744_m_White_Dragon_grey.tga}
+
+{4750} {}
+{4751} {MOO_4751_m_White_Dragon_Juvenile.tga}
+{4752} {MOO_4752_s_White_Dragon_Juvenile.tga}
+{4753} {MOO_4753_s_White_Dragon_Juvenile_grey.tga}
+{4754} {MOO_4754_m_White_Dragon_Juvenile_grey.tga}
+
+{4760} {}
+{4761} {MOO_4761_m_owl.tga}
+{4762} {MOO_4762_s_owl.tga}
+{4763} {MOO_4763_s_owl_grey.tga}
+{4764} {MOO_4764_m_owl_grey.tga}
+
+{4770} {}
+{4771} {MOO_4771_m_Dire_Bear.tga}
+{4772} {MOO_4772_s_Dire_Bear.tga}
+{4773} {MOO_4773_s_Dire_Bear_grey.tga}
+{4774} {MOO_4774_m_Dire_Bear_grey.tga}
+
+{4780} {}
+{4781} {MOO_4781_m_Dire_Boar.tga}
+{4782} {MOO_4782_s_Dire_Boar.tga}
+{4783} {MOO_4783_s_Dire_Boar_grey.tga}
+{4784} {MOO_4784_m_Dire_Boar_grey.tga}
+
+{4790} {}
+{4791} {MOO_4791_m_Avoral.tga}
+{4792} {MOO_4792_s_Avoral.tga}
+{4793} {MOO_4793_s_Avoral_grey.tga}
+{4794} {MOO_4794_m_Avoral_grey.tga}
+
+{4800} {}
+{4801} {MOO_4801_m_Bebilith.tga}
+{4802} {MOO_4802_s_Bebilith.tga}
+{4803} {MOO_4803_s_Bebilith_grey.tga}
+{4804} {MOO_4804_m_Bebilith_grey.tga}
+
+{4810} {}
+{4811} {MOO_4811_m_Bralani.tga}
+{4812} {MOO_4812_s_Bralani.tga}
+{4813} {MOO_4813_s_Bralani_grey.tga}
+{4814} {MOO_4814_m_Bralani_grey.tga}
+
+{4820} {}
+{4821} {MOO_4821_m_Orc_Commander.tga}
+{4822} {MOO_4822_s_Orc_Commander.tga}
+{4823} {MOO_4823_s_Orc_Commander_grey.tga}
+{4824} {MOO_4824_m_Orc_Commander_grey.tga}
+
+{4830} {}
+{4831} {MOO_4831_m_Orc_Captain.tga}
+{4832} {MOO_4832_s_Orc_Captain.tga}
+{4833} {MOO_4833_s_Orc_Captain_grey.tga}
+{4834} {MOO_4834_m_Orc_Captain_grey.tga}
+
+{4840} {}
+{4841} {MOO_4841_m_eagle.tga}
+{4842} {MOO_4842_s_eagle.tga}
+{4843} {MOO_4843_s_eagle_grey.tga}
+{4844} {MOO_4844_m_eagle_grey.tga}
+
+{4850} {}
+{4851} {MOO_4851_m_hawk.tga}
+{4852} {MOO_4852_s_hawk.tga}
+{4853} {MOO_4853_s_hawk_grey.tga}
+{4854} {MOO_4854_m_hawk_grey.tga}
+
+{4860} {}
+{4861} {MOO_4861_m_Roc.tga}
+{4862} {MOO_4862_s_Roc.tga}
+{4863} {MOO_4863_s_Roc_grey.tga}
+{4864} {MOO_4864_m_Roc_grey.tga}
+
+{4870} {}
+{4871} {MOO_4871_m_Djinni.tga}
+{4872} {MOO_4872_s_Djinni.tga}
+{4873} {MOO_4873_s_Djinni_grey.tga}
+{4874} {MOO_4874_m_Djinni_grey.tga}
+
+{4880} {}
+{4881} {MOO_4881_m_Hell_Hound.tga}
+{4882} {MOO_4882_s_Hell_Hound.tga}
+{4883} {MOO_4883_s_Hell_Hound_grey.tga}
+{4884} {MOO_4884_m_Hell_Hound_grey.tga}
+
+{4890} {}
+{4891} {MOO_4891_m_Hound_Archon.tga}
+{4892} {MOO_4892_s_Hound_Archon.tga}
+{4893} {MOO_4893_s_Hound_Archon_grey.tga}
+{4894} {MOO_4894_m_Hound_Archon_grey.tga}
+
+{4900} {}
+{4901} {MOO_4901_m_raven.tga}
+{4902} {MOO_4902_s_raven.tga}
+{4903} {MOO_4903_s_raven_grey.tga}
+{4904} {MOO_4904_m_raven_grey.tga}
+
+{4910} {}
+{4911} {MOO_4911_m_Leonal.tga}
+{4912} {MOO_4912_s_Leonal.tga}
+{4913} {MOO_4913_s_Leonal_grey.tga}
+{4914} {MOO_4914_m_Leonal_grey.tga}
+
+{4920} {}
+{4921} {MOO_4921_m_orc_warlock.tga}
+{4922} {MOO_4922_s_orc_warlock.tga}
+{4923} {MOO_4923_s_orc_warlock_grey.tga}
+{4924} {MOO_4924_m_orc_warlock_grey.tga}
+
+{4930} {}
+{4931} {MOO_4931_m_orc_shaman.tga}
+{4932} {MOO_4932_s_orc_shaman.tga}
+{4933} {MOO_4933_s_orc_shaman_grey.tga}
+{4934} {MOO_4934_m_orc_shaman_grey.tga}
+
+{4940} {}
+{4941} {MOO_4941_m_orc_medium.tga}
+{4942} {MOO_4942_s_orc_medium.tga}
+{4943} {MOO_4943_s_orc_medium_grey.tga}
+{4944} {MOO_4944_m_orc_medium_grey.tga}
+
+{4950} {}
+{4951} {MOO_4951_m_Fire_Mephit.tga}
+{4952} {MOO_4952_s_Fire_Mephit.tga}
+{4953} {MOO_4953_s_Fire_Mephit_grey.tga}
+{4954} {MOO_4954_m_Fire_Mephit_grey.tga}
+
+{4960} {}
+{4961} {MOO_4961_m_Ice_Mephit.tga}
+{4962} {MOO_4962_s_Ice_Mephit.tga}
+{4963} {MOO_4963_s_Ice_Mephit_grey.tga}
+{4964} {MOO_4964_m_Ice_Mephit_grey.tga}
+
+{4970} {}
+{4971} {MOO_4971_m_orc_theurgist.tga}
+{4972} {MOO_4972_s_orc_theurgist.tga}
+{4973} {MOO_4973_s_orc_theurgist_grey.tga}
+{4974} {MOO_4974_m_orc_theurgist_grey.tga}
+
+{4980} {}
+{4981} {MOO_4981_m_orc_witch.tga}
+{4982} {MOO_4982_s_orc_witch.tga}
+{4983} {MOO_4983_s_orc_witch_grey.tga}
+{4984} {MOO_4984_m_orc_witch_grey.tga}
+
+{4990} {}
+{4991} {MOO_4991_m_Bearded_Devil.tga}
+{4992} {MOO_4992_s_Bearded_Devil.tga}
+{4993} {MOO_4993_s_Bearded_Devil_grey.tga}
+{4994} {MOO_4994_m_Bearded_Devil_grey.tga}
+
+{5000} {}
+{5001} {MOO_5001_m_Steam_Mephit.tga}
+{5002} {MOO_5002_s_Steam_Mephit.tga}
+{5003} {MOO_5003_s_Steam_Mephit_grey.tga}
+{5004} {MOO_5004_m_Steam_Mephit_grey.tga}
+
+{5010} {}
+{5011} {MOO_5011_m_Chain_Devil.tga}
+{5012} {MOO_5012_s_Chain_Devil.tga}
+{5013} {MOO_5013_s_Chain_Devil_grey.tga}
+{5014} {MOO_5014_m_Chain_Devil_grey.tga}
+
+{5020} {}
+{5021} {MOO_5021_m_bison.tga}
+{5022} {MOO_5022_s_bison.tga}
+{5023} {MOO_5023_s_bison_grey.tga}
+{5024} {MOO_5024_m_bison_grey.tga}
+
+{5030} {}
+{5031} {MOO_5031_m_Nixie.tga}
+{5032} {MOO_5032_s_Nixie.tga}
+{5033} {MOO_5033_s_Nixie_grey.tga}
+{5034} {MOO_5034_m_Nixie_grey.tga}
+
+{5040} {}
+{5041} {MOO_5041_m_Pixie.tga}
+{5042} {MOO_5042_s_Pixie.tga}
+{5043} {MOO_5043_s_Pixie_grey.tga}
+{5044} {MOO_5044_m_Pixie_grey.tga}
+
+{5050} {}
+{5051} {MOO_5051_m_Shadow_Mastiff.tga}
+{5052} {MOO_5052_s_Shadow_Mastiff.tga}
+{5053} {MOO_5053_s_Shadow_Mastiff_grey.tga}
+{5054} {MOO_5054_m_Shadow_Mastiff_grey.tga}
+
+{5060} {}
+{5061} {MOO_5061_m_Kobold.tga}
+{5062} {MOO_5062_s_Kobold.tga}
+{5063} {MOO_5063_s_Kobold_grey.tga}
+{5064} {MOO_5064_m_Kobold_grey.tga}
+
+{5070} {}
+{5071} {MOO_5071_m_Kobold_Sergeant.tga}
+{5072} {MOO_5072_s_Kobold_Sergeant.tga}
+{5073} {MOO_5073_s_Kobold_Sergeant_grey.tga}
+{5074} {MOO_5074_m_Kobold_Sergeant_grey.tga}
+
+{5080} {}
+{5081} {MOO_5081_m_phase_spider.tga}
+{5082} {MOO_5082_s_phase_spider.tga}
+{5083} {MOO_5083_s_phase_spider_grey.tga}
+{5084} {MOO_5084_m_phase_spider_grey.tga}
+
+{5090} {}
+{5091} {MOO_5091_m_flamebrother.tga}
+{5092} {MOO_5092_s_flamebrother.tga}
+{5093} {MOO_5093_s_flamebrother_grey.tga}
+{5094} {MOO_5094_m_flamebrother_grey.tga}
+
+{5100} {}
+{5101} {MOO_5101_m_balor_regular.tga}
+{5102} {MOO_5102_s_balor_regular.tga}
+{5103} {MOO_5103_s_balor_regular_grey.tga}
+{5104} {MOO_5104_m_balor_regular_grey.tga}
+
+{5110} {}
+{5111} {MOO_5111_m_glabrezu_regular.tga}
+{5112} {MOO_5112_s_glabrezu_regular.tga}
+{5113} {MOO_5113_s_glabrezu_regular_grey.tga}
+{5114} {MOO_5114_m_glabrezu_regular_grey.tga}
+
+{5120} {}
+{5121} {MOO_5121_m_hezrou_regular.tga}
+{5122} {MOO_5122_s_hezrou_regular.tga}
+{5123} {MOO_5123_s_hezrou_regular_grey.tga}
+{5124} {MOO_5124_m_hezrou_regular_grey.tga}
+
+{5130} {}
+{5131} {MOO_5131_m_vrock_regular.tga}
+{5132} {MOO_5132_s_vrock_regular.tga}
+{5133} {MOO_5133_s_vrock_regular_grey.tga}
+{5134} {MOO_5134_m_vrock_regular_grey.tga}
+
+{5140} {}
+{5141} {MOO_5141_m_stone_giant.tga}
+{5142} {MOO_5142_s_stone_giant.tga}
+{5143} {MOO_5143_s_stone_giant_grey.tga}
+{5144} {MOO_5144_m_stone_giant_grey.tga}
+
+{5150} {}
+{5151} {MOO_5151_m_Mathel.tga}
+{5152} {MOO_5152_s_Mathel.tga}
+{5153} {MOO_5153_s_Mathel_grey.tga}
+{5154} {MOO_5154_m_Mathel_grey.tga}
+
+{5160} {}
+{5161} {MOO_5161_m_Kwerd.tga}
+{5162} {MOO_5162_s_Kwerd.tga}
+{5163} {MOO_5163_s_Kwerd_grey.tga}
+{5164} {MOO_5164_m_Kwerd_grey.tga}
+
+{5170} {}
+{5171} {MOO_5171_m_undead_wizard.tga}
+{5172} {MOO_5172_s_undead_wizard.tga}
+{5173} {MOO_5173_s_undead_wizard_grey.tga}
+{5174} {MOO_5174_m_undead_wizard_grey.tga}
+
+{5180} {}
+{5181} {MOO_5181_m_undead_wizard.tga}
+{5182} {MOO_5182_s_undead_wizard.tga}
+{5183} {MOO_5183_s_undead_wizard_grey.tga}
+{5184} {MOO_5184_m_undead_wizard_grey.tga}
+
+{5190} {}
+{5191} {MOO_5191_m_skeleton_priest.tga}
+{5192} {MOO_5192_s_skeleton_priest.tga}
+{5193} {MOO_5193_s_skeleton_priest_grey.tga}
+{5194} {MOO_5194_m_skeleton_priest_grey.tga}
+
+{5200} {}
+{5201} {MOO_5201_m_undead_wizard.tga}
+{5202} {MOO_5202_s_undead_wizard.tga}
+{5203} {MOO_5203_s_undead_wizard_grey.tga}
+{5204} {MOO_5204_m_undead_wizard_grey.tga}
+
+{5210} {}
+{5211} {MOO_5211_m_skeletal_hill_giant.tga}
+{5212} {MOO_5212_s_skeletal_hill_giant.tga}
+{5213} {MOO_5213_s_skeletal_hill_giant_grey.tga}
+{5214} {MOO_5214_m_skeletal_hill_giant_grey.tga}
+
+{5220} {}
+{5221} {MOO_5221_m_lhizeas.tga}
+{5222} {MOO_5222_s_lhizeas.tga}
+{5223} {MOO_5223_s_lhizeas_grey.tga}
+{5224} {MOO_5224_m_lhizeas_grey.tga}
+
+{5230} {}
+{5231} {MOO_5231_m_wizard_zombie.tga}
+{5232} {MOO_5232_s_wizard_zombie.tga}
+{5233} {MOO_5233_s_wizard_zombie_grey.tga}
+{5234} {MOO_5234_m_wizard_zombie_grey.tga}
+
+{5240} {}
+{5241} {MOO_5241_m_bugbear_zombie.tga}
+{5242} {MOO_5242_s_bugbear_zombie.tga}
+{5243} {MOO_5243_s_bugbear_zombie_grey.tga}
+{5244} {MOO_5244_m_bugbear_zombie_grey.tga}
+
+{5250} {}
+{5251} {MOO_5251_m_bugbear_leader_zombie.tga}
+{5252} {MOO_5252_s_bugbear_leader_zombie.tga}
+{5253} {MOO_5253_s_bugbear_leader_zombie_grey.tga}
+{5254} {MOO_5254_m_bugbear_leader_zombie_grey.tga}
+
+{5260} {}
+{5261} {MOO_5261_m_ettin_zombie.tga}
+{5262} {MOO_5262_s_ettin_zombie.tga}
+{5263} {MOO_5263_s_ettin_zombie_grey.tga}
+{5264} {MOO_5264_m_ettin_zombie_grey.tga}
+
+{5270} {}
+{5271} {MOO_5271_m_hill_giant_zombie.tga}
+{5272} {MOO_5272_s_hill_giant_zombie.tga}
+{5273} {MOO_5273_s_hill_giant_zombie_grey.tga}
+{5274} {MOO_5274_m_hill_giant_zombie_grey.tga}
+
+{5280} {}
+{5281} {MOO_5281_m_orc_lieutenant.tga}
+{5282} {MOO_5282_s_orc_lieutenant.tga}
+{5283} {MOO_5283_s_orc_lieutenant_grey.tga}
+{5284} {MOO_5284_m_orc_lieutenant_grey.tga}
+
+{5290} {}
+{5291} {MOO_5291_m_mohrg.tga}
+{5292} {MOO_5292_s_mohrg.tga}
+{5293} {MOO_5293_s_mohrg_grey.tga}
+{5294} {MOO_5294_m_mohrg_grey.tga}
+
+{5300} {}
+{5301} {MOO_5301_m_blaspheme.tga}
+{5302} {MOO_5302_s_blaspheme.tga}
+{5303} {MOO_5303_s_blaspheme_grey.tga}
+{5304} {MOO_5304_m_blaspheme_grey.tga}
+
+{5310} {}
+{5311} {MOO_5311_m_scion.tga}
+{5312} {MOO_5312_s_scion.tga}
+{5313} {MOO_5313_s_scion_grey.tga}
+{5314} {MOO_5314_m_scion_grey.tga}
+
+{5320} {}
+{5321} {MOO_5321_m_blood.tga}
+{5322} {MOO_5322_s_blood.tga}
+{5323} {MOO_5323_s_blood_grey.tga}
+{5324} {MOO_5324_m_blood_grey.tga}
+
+{5330} {}
+{5331} {MOO_5331_m_wight.tga}
+{5332} {MOO_5332_s_wight.tga}
+{5333} {MOO_5333_s_wight_grey.tga}
+{5334} {MOO_5334_m_wight_grey.tga}
+
+{5340} {}
+{5341} {MOO_5341_m_night_hag.tga}
+{5342} {MOO_5342_s_night_hag.tga}
+{5343} {MOO_5343_s_night_hag_grey.tga}
+{5344} {MOO_5344_m_night_hag_grey.tga}
+
+{5350} {}
+{5351} {MOO_5351_m_nightwalker.tga}
+{5352} {MOO_5352_s_nightwalker.tga}
+{5353} {MOO_5353_s_nightwalker_grey.tga}
+{5354} {MOO_5354_m_nightwalker_grey.tga}
+
+{5360} {}
+{5361} {MOO_5361_m_hulking_corpse.tga}
+{5362} {MOO_5362_s_hulking_corpse.tga}
+{5363} {MOO_5363_s_hulking_corpse_grey.tga}
+{5364} {MOO_5364_m_hulking_corpse_grey.tga}
+
+{5370} {}
+{5371} {MOO_5371_m_skeleton_guard.tga}
+{5372} {MOO_5372_s_skeleton_guard.tga}
+{5373} {MOO_5373_s_skeleton_guard_grey.tga}
+{5374} {MOO_5374_m_skeleton_guard_grey.tga}
+
+{5380} {}
+{5381} {MOO_5381_m_forest_tyrant.tga}
+{5382} {MOO_5382_s_forest_tyrant.tga}
+{5383} {MOO_5383_s_forest_tyrant_grey.tga}
+{5384} {MOO_5384_m_forest_tyrant_grey.tga}
+
+{5390} {}
+{5391} {MOO_5391_m_river_tyrant.tga}
+{5392} {MOO_5392_s_river_tyrant.tga}
+{5393} {MOO_5393_s_river_tyrant_grey.tga}
+{5394} {MOO_5394_m_river_tyrant_grey.tga}
+
+{5400} {}
+{5401} {MOO_5401_m_swamp_tyrant.tga}
+{5402} {MOO_5402_s_swamp_tyrant.tga}
+{5403} {MOO_5403_s_swamp_tyrant_grey.tga}
+{5404} {MOO_5404_m_swamp_tyrant_grey.tga}
+
+{5410} {}
+{5411} {MOO_5411_m_stone_golem.tga}
+{5412} {MOO_5412_s_stone_golem.tga}
+{5413} {MOO_5413_s_stone_golem_grey.tga}
+{5414} {MOO_5414_m_stone_golem_grey.tga}
+
+{5420} {}
+{5421} {MOO_5421_m_orc_murderer.tga}
+{5422} {MOO_5422_s_orc_murderer.tga}
+{5423} {MOO_5423_s_orc_murderer_grey.tga}
+{5424} {MOO_5424_m_orc_murderer_grey.tga}
+
+{5430} {}
+{5431} {MOO_5431_m_orc_trainer.tga}
+{5432} {MOO_5432_s_orc_trainer.tga}
+{5433} {MOO_5433_s_orc_trainer_grey.tga}
+{5434} {MOO_5434_m_orc_trainer_grey.tga}
+
+{5440} {}
+{5441} {MOO_5441_m_orc_dominator.tga}
+{5442} {MOO_5442_s_orc_dominator.tga}
+{5443} {MOO_5443_s_orc_dominator_grey.tga}
+{5444} {MOO_5444_m_orc_dominator_grey.tga}
+
+{5450} {}
+{5451} {MOO_5451_m_orc_rundor.tga}
+{5452} {MOO_5452_s_orc_rundor.tga}
+{5453} {MOO_5453_s_orc_rundor_grey.tga}
+{5454} {MOO_5454_m_orc_rundor_grey.tga}
+
+{5460} {}
+{5461} {MOO_5461_m_llih.tga}
+{5462} {MOO_5462_s_llih.tga}
+{5463} {MOO_5463_s_llih_grey.tga}
+{5464} {MOO_5464_m_llih_grey.tga}
+
+{5470} {}
+{5471} {MOO_5471_m_ergo.tga}
+{5472} {MOO_5472_s_ergo.tga}
+{5473} {MOO_5473_s_ergo_grey.tga}
+{5474} {MOO_5474_m_ergo_grey.tga}
+
+{5480} {}
+{5481} {MOO_5481_m_fiendish_minotaur.tga}
+{5482} {MOO_5482_s_fiendish_minotaur.tga}
+{5483} {MOO_5483_s_fiendish_minotaur_grey.tga}
+{5484} {MOO_5484_m_fiendish_minotaur_grey.tga}
+
+{5490} {}
+{5491} {MOO_5491_m_orc_sergeant.tga}
+{5492} {MOO_5492_s_orc_sergeant.tga}
+{5493} {MOO_5493_s_orc_sergeant_grey.tga}
+{5494} {MOO_5494_m_orc_sergeant_grey.tga}
+
+{5500} {}
+{5501} {MOO_5501_m_orc_fighter.tga}
+{5502} {MOO_5502_s_orc_fighter.tga}
+{5503} {MOO_5503_s_orc_fighter_grey.tga}
+{5504} {MOO_5504_m_orc_fighter_grey.tga}
+
+{5510} {}
+{5511} {MOO_5511_m_orc_bowman.tga}
+{5512} {MOO_5512_s_orc_bowman.tga}
+{5513} {MOO_5513_s_orc_bowman_grey.tga}
+{5514} {MOO_5514_m_orc_bowman_grey.tga}
+
+{5520} {}
+{5521} {MOO_5521_m_orc_archer.tga}
+{5522} {MOO_5522_s_orc_archer.tga}
+{5523} {MOO_5523_s_orc_archer_grey.tga}
+{5524} {MOO_5524_m_orc_archer_grey.tga}
+
+{5530} {}
+{5531} {MOO_5531_m_orc_sniper.tga}
+{5532} {MOO_5532_s_orc_sniper.tga}
+{5533} {MOO_5533_s_orc_sniper_grey.tga}
+{5534} {MOO_5534_m_orc_sniper_grey.tga}
+
+{5540} {}
+{5541} {MOO_5541_m_lich.tga}
+{5542} {MOO_5542_s_lich.tga}
+{5543} {MOO_5543_s_lich_grey.tga}
+{5544} {MOO_5544_m_lich_grey.tga}
+
+{5550} {}
+{5551} {MOO_5551_m_familiar_racoon.tga}
+{5552} {MOO_5552_s_familiar_racoon.tga}
+{5553} {MOO_5553_s_familiar_racoon_grey.tga}
+{5554} {MOO_5554_m_familiar_racoon_grey.tga}
+
+{5560} {}
+{5561} {MOO_5561_m_tendril.tga}
+{5562} {MOO_5562_s_tendril.tga}
+{5563} {MOO_5563_s_tendril_grey.tga}
+{5564} {MOO_5564_m_tendril_grey.tga}
+
+{5570} {}
+{5571} {MOO_5571_m_black_dragon.tga}
+{5572} {MOO_5572_s_black_dragon.tga}
+{5573} {MOO_5573_s_black_dragon_grey.tga}
+{5574} {MOO_5574_m_black_dragon_grey.tga}
+
+{5580} {}
+{5581} {MOO_5581_m_skeleton_1.tga}
+{5582} {MOO_5582_s_skeleton_1.tga}
+{5583} {MOO_5583_s_skeleton_1_grey.tga}
+{5584} {MOO_5584_m_skeleton_1_grey.tga}
+
+{5590} {}
+{5591} {MOO_5591_m_skeleton_2.tga}
+{5592} {MOO_5592_s_skeleton_2.tga}
+{5593} {MOO_5593_s_skeleton_2_grey.tga}
+{5594} {MOO_5594_m_skeleton_2_grey.tga}
+
+{5600} {}
+{5601} {MOO_5601_m_skeleton_3.tga}
+{5602} {MOO_5602_s_skeleton_3.tga}
+{5603} {MOO_5603_s_skeleton_3_grey.tga}
+{5604} {MOO_5604_m_skeleton_3_grey.tga}
+
+{5610} {}
+{5611} {MOO_5611_m_skeleton_4.tga}
+{5612} {MOO_5612_s_skeleton_4.tga}
+{5613} {MOO_5613_s_skeleton_4_grey.tga}
+{5614} {MOO_5614_m_skeleton_4_grey.tga}
+
+{5620} {}
+{5621} {MOO_5621_m_skeleton_5.tga}
+{5622} {MOO_5622_s_skeleton_5.tga}
+{5623} {MOO_5623_s_skeleton_5_grey.tga}
+{5624} {MOO_5624_m_skeleton_5_grey.tga}
+
+{5630} {}
+{5631} {MOO_5631_m_familiar_falcon.tga}
+{5632} {MOO_5632_s_familiar_falcon.tga}
+{5633} {MOO_5633_s_familiar_falcon_grey.tga}
+{5634} {MOO_5634_m_familiar_falcon_grey.tga}
+
+{5640} {}
+{5641} {MOO_5641_m_familiar_deer_mouse.tga}
+{5642} {MOO_5642_s_familiar_deer_mouse.tga}
+{5643} {MOO_5643_s_familiar_deer_mouse_grey.tga}
+{5644} {MOO_5644_m_familiar_deer_mouse_grey.tga}
+
+{5650} {}
+{5651} {MOO_5651_m_familiar_turtle.tga}
+{5652} {MOO_5652_s_familiar_turtle.tga}
+{5653} {MOO_5653_s_familiar_turtle_grey.tga}
+{5654} {MOO_5654_m_familiar_turtle_grey.tga}
+
+{5660} {}
+{5661} {MOO_5661_m_familiar_thrush_bird.tga}
+{5662} {MOO_5662_s_familiar_thrush_bird.tga}
+{5663} {MOO_5663_s_familiar_thrush_bird_grey.tga}
+{5664} {MOO_5664_m_familiar_thrush_bird_grey.tga}
+
+{5670} {}
+{5671} {MOO_5671_m_familiar_chameleon.tga}
+{5672} {MOO_5672_s_familiar_chameleon.tga}
+{5673} {MOO_5673_s_familiar_chameleon_grey.tga}
+{5674} {MOO_5674_m_familiar_chameleon_grey.tga}
+
+; NPCs
+
+{6000} {}
+{6001} {NPC_6001_m_Terjon.tga}
+{6002} {NPC_6002_s_Terjon.tga}
+{6003} {NPC_6003_s_Terjon_grey.tga}
+{6004} {NPC_6004_m_Terjon_grey.tga}
+
+{6010} {}
+{6011} {NPC_6011_m_Jayfie.tga}
+{6012} {NPC_6012_s_Jayfie.tga}
+{6013} {NPC_6013_s_Jayfie_grey.tga}
+{6014} {NPC_6014_m_Jayfie_grey.tga}
+
+{6020} {}
+{6021} {NPC_6021_m_Scorpp.tga}
+{6022} {NPC_6022_s_Scorpp.tga}
+{6023} {NPC_6023_s_Scorpp_grey.tga}
+{6024} {NPC_6024_m_Scorpp_grey.tga}
+
+{6030} {}
+{6031} {NPC_6031_m_Rufus.tga}
+{6032} {NPC_6032_s_Rufus.tga}
+{6033} {NPC_6033_s_Rufus_grey.tga}
+{6034} {NPC_6034_m_Rufus_grey.tga}
+
+{6040} {}
+{6041} {NPC_6041_m_RannosDavi.tga}
+{6042} {NPC_6042_s_RannosDavi.tga}
+{6043} {NPC_6043_s_RannosDavi_grey.tga}
+{6044} {NPC_6044_m_RannosDavi_grey.tga}
+
+{6050} {}
+{6051} {NPC_6051_m_OstlerGundigoot.tga}
+{6052} {NPC_6052_s_OstlerGundigoot.tga}
+{6053} {NPC_6053_s_OstlerGundigoot_grey.tga}
+{6054} {NPC_6054_m_OstlerGundigoot_grey.tga}
+
+{6060} {}
+{6061} {NPC_6061_m_NiraMelubb.tga}
+{6062} {NPC_6062_s_NiraMelubb.tga}
+{6063} {NPC_6063_s_NiraMelubb_grey.tga}
+{6064} {NPC_6064_m_NiraMelubb_grey.tga}
+
+{6070} {}
+{6071} {NPC_6071_m_KenterNevets.tga}
+{6072} {NPC_6072_s_KenterNevets.tga}
+{6073} {NPC_6073_s_KenterNevets_grey.tga}
+{6074} {NPC_6074_m_KenterNevets_grey.tga}
+
+{6080} {}
+{6081} {NPC_6081_m_Jaroo.tga}
+{6082} {NPC_6082_s_Jaroo.tga}
+{6083} {NPC_6083_s_Jaroo_grey.tga}
+{6084} {NPC_6084_m_Jaroo_grey.tga}
+
+{6090} {}
+{6091} {NPC_6091_m_Gremag.tga}
+{6092} {NPC_6092_s_Gremag.tga}
+{6093} {NPC_6093_s_Gremag_grey.tga}
+{6094} {NPC_6094_m_Gremag_grey.tga}
+
+{6100} {}
+{6101} {NPC_6101_m_Filiken.tga}
+{6102} {NPC_6102_s_Filiken.tga}
+{6103} {NPC_6103_s_Filiken_grey.tga}
+{6104} {NPC_6104_m_Filiken_grey.tga}
+
+{6110} {}
+{6111} {NPC_6111_m_Elmo.tga}
+{6112} {NPC_6112_s_Elmo.tga}
+{6113} {NPC_6113_s_Elmo_grey.tga}
+{6114} {NPC_6114_m_Elmo_grey.tga}
+
+{6120} {}
+{6121} {NPC_6121_m_Calmert.tga}
+{6122} {NPC_6122_s_Calmert.tga}
+{6123} {NPC_6123_s_Calmert_grey.tga}
+{6124} {NPC_6124_m_Calmert_grey.tga}
+
+{6130} {}
+{6131} {NPC_6131_m_Burne.tga}
+{6132} {NPC_6132_s_Burne.tga}
+{6133} {NPC_6133_s_Burne_grey.tga}
+{6134} {NPC_6134_m_Burne_grey.tga}
+
+{6140} {}
+{6141} {NPC_6141_m_BrotherSmyth.tga}
+{6142} {NPC_6142_s_BrotherSmyth.tga}
+{6143} {NPC_6143_s_BrotherSmyth_grey.tga}
+{6144} {NPC_6144_m_BrotherSmyth_grey.tga}
+
+{6150} {}
+{6151} {NPC_6151_m_BlackJay.tga}
+{6152} {NPC_6152_s_BlackJay.tga}
+{6153} {NPC_6153_s_BlackJay_grey.tga}
+{6154} {NPC_6154_m_BlackJay_grey.tga}
+
+{6160} {}
+{6161} {NPC_6161_m_Zuggtmoy_D.tga}
+{6162} {NPC_6162_s_Zuggtmoy_D.tga}
+{6163} {NPC_6163_s_Zuggtmoy_D_grey.tga}
+{6164} {NPC_6164_m_Zuggtmoy_D_grey.tga}
+
+{6170} {}
+{6171} {NPC_6171_m_Erliter.tga}
+{6172} {NPC_6172_s_Erliter.tga}
+{6173} {NPC_6173_s_Erliter_grey.tga}
+{6174} {NPC_6174_m_Erliter_grey.tga}
+
+{6180} {}
+{6181} {NPC_6181_m_Marek.tga}
+{6182} {NPC_6182_s_Marek.tga}
+{6183} {NPC_6183_s_Marek_grey.tga}
+{6184} {NPC_6184_m_Marek_grey.tga}
+
+{6190} {}
+{6191} {NPC_6191_m_LikRinkin.tga}
+{6192} {NPC_6192_s_LikRinkin.tga}
+{6193} {NPC_6193_s_LikRinkin_grey.tga}
+{6194} {NPC_6194_m_LikRinkin_grey.tga}
+
+{6200} {}
+{6201} {NPC_6201_m_Mickey.tga}
+{6202} {NPC_6202_s_Mickey.tga}
+{6203} {NPC_6203_s_Mickey_grey.tga}
+{6204} {NPC_6204_m_Mickey_grey.tga}
+
+{6210} {}
+{6211} {NPC_6211_m_Tupperelo.tga}
+{6212} {NPC_6212_s_Tupperelo.tga}
+{6213} {NPC_6213_s_Tupperelo_grey.tga}
+{6214} {NPC_6214_m_Tupperelo_grey.tga}
+
+{6220} {}
+{6221} {NPC_6221_m_Cavanaugh.tga}
+{6222} {NPC_6222_s_Cavanaugh.tga}
+{6223} {NPC_6223_s_Cavanaugh_grey.tga}
+{6224} {NPC_6224_m_Cavanaugh_grey.tga}
+
+{6230} {}
+{6231} {NPC_6231_m_Eddie.tga}
+{6232} {NPC_6232_s_Eddie.tga}
+{6233} {NPC_6233_s_Eddie_grey.tga}
+{6234} {NPC_6234_m_Eddie_grey.tga}
+
+{6240} {}
+{6241} {NPC_6241_m_Corl.tga}
+{6242} {NPC_6242_s_Corl.tga}
+{6243} {NPC_6243_s_Corl_grey.tga}
+{6244} {NPC_6244_m_Corl_grey.tga}
+
+{6250} {}
+{6251} {NPC_6251_m_Myella.tga}
+{6252} {NPC_6252_s_Myella.tga}
+{6253} {NPC_6253_s_Myella_grey.tga}
+{6254} {NPC_6254_m_Myella_grey.tga}
+
+{6260} {}
+{6261} {NPC_6261_m_Gwynneth.tga}
+{6262} {NPC_6262_s_Gwynneth.tga}
+{6263} {NPC_6263_s_Gwynneth_grey.tga}
+{6264} {NPC_6264_m_Gwynneth_grey.tga}
+
+{6270} {}
+{6271} {NPC_6271_m_SefFlettner.tga}
+{6272} {NPC_6272_s_SefFlettner.tga}
+{6273} {NPC_6273_s_SefFlettner_grey.tga}
+{6274} {NPC_6274_m_SefFlettner_grey.tga}
+
+{6280} {}
+{6281} {NPC_6281_m_Percy.tga}
+{6282} {NPC_6282_s_Percy.tga}
+{6283} {NPC_6283_s_Percy_grey.tga}
+{6284} {NPC_6284_m_Percy_grey.tga}
+
+{6290} {}
+{6291} {NPC_6291_m_Glora.tga}
+{6292} {NPC_6292_s_Glora.tga}
+{6293} {NPC_6293_s_Glora_grey.tga}
+{6294} {NPC_6294_m_Glora_grey.tga}
+
+{6300} {}
+{6301} {NPC_6301_m_Armario.tga}
+{6302} {NPC_6302_s_Armario.tga}
+{6303} {NPC_6303_s_Armario_grey.tga}
+{6304} {NPC_6304_m_Armario_grey.tga}
+
+{6310} {}
+{6311} {NPC_6311_m_Huburtus.tga}
+{6312} {NPC_6312_s_Huburtus.tga}
+{6313} {NPC_6313_s_Huburtus_grey.tga}
+{6314} {NPC_6314_m_Huburtus_grey.tga}
+
+{6320} {}
+{6321} {NPC_6321_m_Otello.tga}
+{6322} {NPC_6322_s_Otello.tga}
+{6323} {NPC_6323_s_Otello_grey.tga}
+{6324} {NPC_6324_m_Otello_grey.tga}
+
+{6330} {}
+{6331} {NPC_6331_m_CaptainRenton.tga}
+{6332} {NPC_6332_s_CaptainRenton.tga}
+{6333} {NPC_6333_s_CaptainRenton_grey.tga}
+{6334} {NPC_6334_m_CaptainRenton_grey.tga}
+
+{6340} {}
+{6341} {NPC_6341_m_JakkBorton.tga}
+{6342} {NPC_6342_s_JakkBorton.tga}
+{6343} {NPC_6343_s_JakkBorton_grey.tga}
+{6344} {NPC_6344_m_JakkBorton_grey.tga}
+
+{6350} {}
+{6351} {NPC_6351_m_Kobort.tga}
+{6352} {NPC_6352_s_Kobort.tga}
+{6353} {NPC_6353_s_Kobort_grey.tga}
+{6354} {NPC_6354_m_Kobort_grey.tga}
+
+{6360} {}
+{6361} {NPC_6361_m_Laszlo.tga}
+{6362} {NPC_6362_s_Laszlo.tga}
+{6363} {NPC_6363_s_Laszlo_grey.tga}
+{6364} {NPC_6364_m_Laszlo_grey.tga}
+
+{6370} {}
+{6371} {NPC_6371_m_Lowen.tga}
+{6372} {NPC_6372_s_Lowen.tga}
+{6373} {NPC_6373_s_Lowen_grey.tga}
+{6374} {NPC_6374_m_Lowen_grey.tga}
+
+{6380} {}
+{6381} {NPC_6381_m_HextorPriest.tga}
+{6382} {NPC_6382_s_HextorPriest.tga}
+{6383} {NPC_6383_s_HextorPriest_grey.tga}
+{6384} {NPC_6374_m_HextorPriest_grey.tga}
+
+{6390} {}
+{6391} {NPC_6391_m_Iuz.tga}
+{6392} {NPC_6392_s_Iuz.tga}
+{6393} {NPC_6393_s_Iuz_grey.tga}
+{6394} {NPC_6394_m_Iuz_grey.tga}
+
+{6400} {}
+{6401} {NPC_6401_m_StCuthbert.tga}
+{6402} {NPC_6402_s_StCuthbert.tga}
+{6403} {NPC_6403_s_StCuthbert_grey.tga}
+{6404} {NPC_6404_m_StCuthbert_grey.tga}
+
+{6410} {}
+{6411} {NPC_6411_m_Romag.tga}
+{6412} {NPC_6412_s_Romag.tga}
+{6413} {NPC_6413_s_Romag_grey.tga}
+{6414} {NPC_6414_m_Romag_grey.tga}
+
+{6420} {}
+{6421} {NPC_6421_m_Crone.tga}
+{6422} {NPC_6422_s_Crone.tga}
+{6423} {NPC_6423_s_Crone_grey.tga}
+{6424} {NPC_6424_m_Crone_grey.tga}
+
+{6430} {}
+{6431} {NPC_6431_m_Senshock.tga}
+{6432} {NPC_6432_s_Senshock.tga}
+{6433} {NPC_6433_s_Senshock_grey.tga}
+{6434} {NPC_6434_m_Senshock_grey.tga}
+
+{6440} {}
+{6441} {NPC_6441_m_Hedrack.tga}
+{6442} {NPC_6442_s_Hedrack.tga}
+{6443} {NPC_6443_s_Hedrack_grey.tga}
+{6444} {NPC_6444_m_Hedrack_grey.tga}
+
+{6450} {}
+{6451} {NPC_6451_m_PrinceThrommel.tga}
+{6452} {NPC_6452_s_PrinceThrommel.tga}
+{6453} {NPC_6453_s_PrinceThrommel_grey.tga}
+{6454} {NPC_6454_m_PrinceThrommel_grey.tga}
+
+{6460} {}
+{6461} {NPC_6461_m_Spugnoir.tga}
+{6462} {NPC_6462_s_Spugnoir.tga}
+{6463} {NPC_6463_s_Spugnoir_grey.tga}
+{6464} {NPC_6464_m_Spugnoir_grey.tga}
+
+{6470} {}
+{6471} {NPC_6471_m_Pintark.tga}
+{6472} {NPC_6472_s_Pintark.tga}
+{6473} {NPC_6473_s_Pintark_grey.tga}
+{6474} {NPC_6474_m_Pintark_grey.tga}
+
+{6480} {}
+{6481} {NPC_6481_m_Tuelk.tga}
+{6482} {NPC_6482_s_Tuelk.tga}
+{6483} {NPC_6483_s_Tuelk_grey.tga}
+{6484} {NPC_6484_m_Tuelk_grey.tga}
+
+{6490} {}
+{6491} {NPC_6491_m_Turuko.tga}
+{6492} {NPC_6492_s_Turuko.tga}
+{6493} {NPC_6493_s_Turuko_grey.tga}
+{6494} {NPC_6494_m_Turuko_grey.tga}
+
+{6500} {}
+{6501} {NPC_6501_m_Wicked.tga}
+{6502} {NPC_6502_s_Wicked.tga}
+{6503} {NPC_6503_s_Wicked_grey.tga}
+{6504} {NPC_6504_m_Wicked_grey.tga}
+
+{6510} {}
+{6511} {NPC_6511_m_Darley1.tga}
+{6512} {NPC_6512_s_Darley1.tga}
+{6513} {NPC_6513_s_Darley1_grey.tga}
+{6514} {NPC_6514_m_Darley1_grey.tga}
+
+{6520} {}
+{6521} {NPC_6521_m_Darley2.tga}
+{6522} {NPC_6522_s_Darley2.tga}
+{6523} {NPC_6523_s_Darley2_grey.tga}
+{6524} {NPC_6524_m_Darley2_grey.tga}
+
+{6530} {}
+{6531} {NPC_6531_m_Belsornig.tga}
+{6532} {NPC_6532_s_Belsornig.tga}
+{6533} {NPC_6533_s_Belsornig_grey.tga}
+{6534} {NPC_6534_m_Belsornig_grey.tga}
+
+{6540} {}
+{6541} {NPC_6541_m_Ashrem.tga}
+{6542} {NPC_6542_s_Ashrem.tga}
+{6543} {NPC_6543_s_Ashrem_grey.tga}
+{6544} {NPC_6544_m_Ashrem_grey.tga}
+
+{6550} {}
+{6551} {NPC_6551_m_Alrrem.tga}
+{6552} {NPC_6552_s_Alrrem.tga}
+{6553} {NPC_6553_s_Alrrem_grey.tga}
+{6554} {NPC_6554_m_Alrrem_grey.tga}
+
+{6560} {}
+{6561} {NPC_6561_m_Kelno.tga}
+{6562} {NPC_6562_s_Kelno.tga}
+{6563} {NPC_6563_s_Kelno_grey.tga}
+{6564} {NPC_6564_m_Kelno_grey.tga}
+
+{6570} {}
+{6571} {NPC_6571_m_Jaer.tga}
+{6572} {NPC_6572_s_Jaer.tga}
+{6573} {NPC_6573_s_Jaer_grey.tga}
+{6574} {NPC_6574_m_Jaer_grey.tga}
+
+{6580} {}
+{6581} {NPC_6581_m_Furnok.tga}
+{6582} {NPC_6582_s_Furnok.tga}
+{6583} {NPC_6583_s_Furnok_grey.tga}
+{6584} {NPC_6584_m_Furnok_grey.tga}
+
+{6590} {}
+{6591} {NPC_6591_m_Otis.tga}
+{6592} {NPC_6592_s_Otis.tga}
+{6593} {NPC_6593_s_Otis_grey.tga}
+{6594} {NPC_6594_m_Otis_grey.tga}
+
+{6600} {}
+{6601} {NPC_6601_m_CE_Peasant_01.tga}
+{6602} {NPC_6602_s_CE_Peasant_01.tga}
+{6603} {NPC_6603_s_CE_Peasant_01_grey.tga}
+{6604} {NPC_6604_m_CE_Peasant_01_grey.tga}
+
+{6610} {}
+{6611} {NPC_6611_m_CE_Peasant_02.tga}
+{6612} {NPC_6612_s_CE_Peasant_02.tga}
+{6613} {NPC_6613_s_CE_Peasant_02_grey.tga}
+{6614} {NPC_6614_m_CE_Peasant_02_grey.tga}
+
+{6620} {}
+{6621} {NPC_6621_m_CE_Peasant_03.tga}
+{6622} {NPC_6622_s_CE_Peasant_03.tga}
+{6623} {NPC_6623_s_CE_Peasant_03_grey.tga}
+{6624} {NPC_6624_m_CE_Peasant_03_grey.tga}
+
+{6630} {}
+{6631} {NPC_6631_m_Zert.tga}
+{6632} {NPC_6632_s_Zert.tga}
+{6633} {NPC_6633_s_Zert_grey.tga}
+{6634} {NPC_6634_m_Zert_grey.tga}
+
+{6640} {}
+{6641} {NPC_6641_m_Oohlgrist.tga}
+{6642} {NPC_6642_s_Oohlgrist.tga}
+{6643} {NPC_6643_s_Oohlgrist_grey.tga}
+{6644} {NPC_6644_m_Oohlgrist_grey.tga}
+
+{6650} {}
+{6651} {NPC_6651_m_Taki.tga}
+{6652} {NPC_6652_s_Taki.tga}
+{6653} {NPC_6653_s_Taki_grey.tga}
+{6654} {NPC_6654_m_Taki_grey.tga}
+
+{6660} {}
+{6661} {NPC_6661_m_Wonnilon.tga}
+{6662} {NPC_6662_s_Wonnilon.tga}
+{6663} {NPC_6663_s_Wonnilon_grey.tga}
+{6664} {NPC_6664_m_Wonnilon_grey.tga}
+
+{6670} {}
+{6671} {NPC_6671_m_Bertram.tga}
+{6672} {NPC_6672_s_Bertram.tga}
+{6673} {NPC_6673_s_Bertram_grey.tga}
+{6674} {NPC_6674_m_Bertram_grey.tga}
+
+{6680} {}
+{6681} {NPC_6681_m_Morgan.tga}
+{6682} {NPC_6682_s_Morgan.tga}
+{6683} {NPC_6683_s_Morgan_grey.tga}
+{6684} {NPC_6684_m_Morgan_grey.tga}
+
+{6690} {}
+{6691} {NPC_6691_m_Sargen.tga}
+{6692} {NPC_6692_s_Sargen.tga}
+{6693} {NPC_6693_s_Sargen_grey.tga}
+{6694} {NPC_6694_m_Sargen_grey.tga}
+
+{6700} {}
+{6701} {NPC_6701_m_LG_Survivor.tga}
+{6702} {NPC_6702_s_LG_Survivor.tga}
+{6703} {NPC_6703_s_LG_Survivor_grey.tga}
+{6704} {NPC_6704_m_LG_Survivor_grey.tga}
+
+{6710} {}
+{6711} {NPC_6711_m_YDey.tga}
+{6712} {NPC_6712_s_YDey.tga}
+{6713} {NPC_6713_s_YDey_grey.tga}
+{6714} {NPC_6714_m_YDey_grey.tga}
+
+{6720} {}
+{6721} {NPC_6721_m_Murfles.tga}
+{6722} {NPC_6722_s_Murfles.tga}
+{6723} {NPC_6723_s_Murfles_grey.tga}
+{6724} {NPC_6724_m_Murfles_grey.tga}
+
+{6730} {}
+{6731} {NPC_6731_m_Raimol.tga}
+{6732} {NPC_6732_s_Raimol.tga}
+{6733} {NPC_6733_s_Raimol_grey.tga}
+{6734} {NPC_6734_m_Raimol_grey.tga}
+
+{6740} {}
+{6741} {NPC_6741_m_LordMayor.tga}
+{6742} {NPC_6742_s_LordMayor.tga}
+{6743} {NPC_6743_s_LordMayor_grey.tga}
+{6744} {NPC_6744_m_LordMayor_grey.tga}
+
+{6750} {}
+{6751} {NPC_6751_m_ElfNoblewoman.tga}
+{6752} {NPC_6752_s_ElfNoblewoman.tga}
+{6753} {NPC_6753_s_ElfNoblewoman_grey.tga}
+{6754} {NPC_6754_m_ElfNoblewoman_grey.tga}
+
+{6760} {}
+{6761} {NPC_6761_m_ElfGuard.tga}
+{6762} {NPC_6762_s_ElfGuard.tga}
+{6763} {NPC_6763_s_ElfGuard_grey.tga}
+{6764} {NPC_6764_m_ElfGuard_grey.tga}
+
+{6770} {}
+{6771} {NPC_6771_m_LarethSgt.tga}
+{6772} {NPC_6772_s_LarethSgt.tga}
+{6773} {NPC_6773_s_LarethSgt_grey.tga}
+{6774} {NPC_6774_m_LarethSgt_grey.tga}
+
+{6780} {}
+{6781} {NPC_6781_m_LarethGuard.tga}
+{6782} {NPC_6782_s_LarethGuard.tga}
+{6783} {NPC_6783_s_LarethGuard_grey.tga}
+{6784} {NPC_6784_m_LarethGuard_grey.tga}
+
+{6790} {}
+{6791} {NPC_6791_m_Seleucas.tga}
+{6792} {NPC_6792_s_Seleucas.tga}
+{6793} {NPC_6793_s_Seleucas_grey.tga}
+{6794} {NPC_6794_m_Seleucas_grey.tga}
+
+{6800} {}
+{6801} {NPC_6801_m_RaulTheGrim.tga}
+{6802} {NPC_6802_s_RaulTheGrim.tga}
+{6803} {NPC_6803_s_RaulTheGrim_grey.tga}
+{6804} {NPC_6804_m_RaulTheGrim_grey.tga}
+
+{6810} {}
+{6811} {NPC_6811_m_MoathouseBandit.tga}
+{6812} {NPC_6812_s_MoathouseBandit.tga}
+{6813} {NPC_6813_s_MoathouseBandit_grey.tga}
+{6814} {NPC_6814_m_MoathouseBandit_grey.tga}
+
+{6820} {}
+{6821} {NPC_6821_m_LG_BanditLeader.tga}
+{6822} {NPC_6822_s_LG_BanditLeader.tga}
+{6823} {NPC_6823_s_LG_BanditLeader_grey.tga}
+{6824} {NPC_6824_m_LG_BanditLeader_grey.tga}
+
+{6830} {}
+{6831} {NPC_6831_m_LG_Bandit.tga}
+{6832} {NPC_6832_s_LG_Bandit.tga}
+{6833} {NPC_6833_s_LG_Bandit_grey.tga}
+{6834} {NPC_6834_m_LG_Bandit_grey.tga}
+
+{6840} {}
+{6841} {NPC_6841_m_Hrudek.tga}
+{6842} {NPC_6842_s_Hrudek.tga}
+{6843} {NPC_6843_s_Hrudek_grey.tga}
+{6844} {NPC_6844_m_Hrudek_grey.tga}
+
+{6850} {}
+{6851} {NPC_6851_m_Acolyte.tga}
+{6852} {NPC_6852_s_Acolyte.tga}
+{6853} {NPC_6853_s_Acolyte_grey.tga}
+{6854} {NPC_6854_m_Acolyte_grey.tga}
+
+{6860} {}
+{6861} {NPC_6861_m_Scroll.tga}
+{6862} {NPC_6862_s_Scroll.tga}
+{6863} {NPC_6863_s_Scroll_grey.tga}
+{6864} {NPC_6864_m_Scroll_grey.tga}
+
+{6870} {}
+{6871} {NPC_6871_m_G_Thief.tga}
+{6872} {NPC_6872_s_G_Thief.tga}
+{6873} {NPC_6873_s_G_Thief_grey.tga}
+{6874} {NPC_6874_m_G_Thief_grey.tga}
+
+{6880} {}
+{6881} {NPC_6881_m_L_Guard.tga}
+{6882} {NPC_6882_s_L_Guard.tga}
+{6883} {NPC_6883_s_L_Guard_grey.tga}
+{6884} {NPC_6884_m_L_Guard_grey.tga}
+
+{6890} {}
+{6891} {NPC_6891_m_G_DeadWoman.tga}
+{6892} {NPC_6892_s_G_DeadWoman.tga}
+{6893} {NPC_6893_s_G_DeadWoman_grey.tga}
+{6894} {NPC_6894_m_G_DeadWoman_grey.tga}
+
+{6900} {}
+{6901} {NPC_6901_m_BurneBadger.tga}
+{6902} {NPC_6902_s_BurneBadger.tga}
+{6903} {NPC_6903_s_BurneBadger_grey.tga}
+{6904} {NPC_6904_m_BurneBadger_grey.tga}
+
+{6910} {}
+{6911} {NPC_6911_m_Brigand_Lieutenant.tga}
+{6912} {NPC_6912_s_Brigand_Lieutenant.tga}
+{6913} {NPC_6913_s_Brigand_Lieutenant_grey.tga}
+{6914} {NPC_6914_m_Brigand_Lieutenant_grey.tga}
+
+{6920} {}
+{6921} {NPC_6921_m_Barkinar_Replacement.tga}
+{6922} {NPC_6922_s_Barkinar_Replacement.tga}
+{6923} {NPC_6923_s_Barkinar_Replacement_grey.tga}
+{6924} {NPC_6924_m_Barkinar_Replacement_grey.tga}
+
+{6930} {}
+{6931} {NPC_6931_m_Madam_Ophelia.tga}
+{6932} {NPC_6932_s_Madam_Ophelia.tga}
+{6933} {NPC_6933_s_Madam_Ophelia_grey.tga}
+{6934} {NPC_6934_m_Madam_Ophelia_grey.tga}
+
+{6940} {}
+{6941} {NPC_6941_m_Jenelda.tga}
+{6942} {NPC_6942_s_Jenelda.tga}
+{6943} {NPC_6943_s_Jenelda_grey.tga}
+{6944} {NPC_6944_m_Jenelda_grey.tga}
+
+{6950} {}
+{6951} {NPC_6951_m_Riana.tga}
+{6952} {NPC_6952_s_Riana.tga}
+{6953} {NPC_6953_s_Riana_grey.tga}
+{6954} {NPC_6954_m_Riana_grey.tga}
+
+{6960} {}
+{6961} {NPC_6961_m_Fuga.tga}
+{6962} {NPC_6962_s_Fuga.tga}
+{6963} {NPC_6963_s_Fuga_grey.tga}
+{6964} {NPC_6964_m_Fuga_grey.tga}
+
+{6970} {}
+{6971} {NPC_6971_m_Homa.tga}
+{6972} {NPC_6972_s_Homa.tga}
+{6973} {NPC_6973_s_Homa_grey.tga}
+{6974} {NPC_6974_m_Homa_grey.tga}
+
+{6980} {}
+{6981} {NPC_6981_m_Charlotte.tga}
+{6982} {NPC_6982_s_Charlotte.tga}
+{6983} {NPC_6983_s_Charlotte_grey.tga}
+{6984} {NPC_6984_m_Charlotte_grey.tga}
+
+{6990} {}
+{6991} {NPC_6991_m_Mary.tga}
+{6992} {NPC_6992_s_Mary.tga}
+{6993} {NPC_6993_s_Mary_grey.tga}
+{6994} {NPC_6994_m_Mary_grey.tga}
+
+{7000} {}
+{7001} {NPC_7001_m_Hartsch.tga}
+{7002} {NPC_7002_s_Hartsch.tga}
+{7003} {NPC_7003_s_Hartsch_grey.tga}
+{7004} {NPC_7004_m_Hartsch_grey.tga}
+
+{7010} {}
+{7011} {NPC_7011_m_Mirror.tga}
+{7012} {NPC_7012_s_Mirror.tga}
+{7013} {NPC_7013_s_Mirror_grey.tga}
+{7014} {NPC_7014_m_Mirror_grey.tga}
+
+{7020} {}
+{7021} {NPC_7021_m_PeasantLaborer.tga}
+{7022} {NPC_7022_s_PeasantLaborer.tga}
+{7023} {NPC_7023_s_PeasantLaborer_grey.tga}
+{7024} {NPC_7024_m_PeasantLaborer_grey.tga}
+
+{7030} {}
+{7031} {NPC_7031_m_Tillahi.tga}
+{7032} {NPC_7032_s_Tillahi.tga}
+{7033} {NPC_7033_s_Tillahi_grey.tga}
+{7034} {NPC_7034_m_Tillahi_grey.tga}
+
+{7040} {}
+{7041} {NPC_7041_m_Valden.tga}
+{7042} {NPC_7042_s_Valden.tga}
+{7043} {NPC_7043_s_Valden_grey.tga}
+{7044} {NPC_7044_m_Valden_grey.tga}
+
+{7050} {}
+{7051} {NPC_7051_m_Mytch.tga}
+{7052} {NPC_7052_s_Mytch.tga}
+{7053} {NPC_7053_s_Mytch_grey.tga}
+{7054} {NPC_7054_m_Mytch_grey.tga}
+
+{7060} {}
+{7061} {NPC_7061_m_JarvisHann.tga}
+{7062} {NPC_7062_s_JarvisHann.tga}
+{7063} {NPC_7063_s_JarvisHann_grey.tga}
+{7064} {NPC_7064_m_JarvisHann_grey.tga}
+
+{7070} {}
+{7071} {NPC_7071_m_Tubal.tga}
+{7072} {NPC_7072_s_Tubal.tga}
+{7073} {NPC_7073_s_Tubal_grey.tga}
+{7074} {NPC_7074_m_Tubal_grey.tga}
+
+{7080} {}
+{7081} {NPC_7081_m_BelsornigPriest1.tga}
+{7082} {NPC_7082_s_BelsornigPriest1.tga}
+{7083} {NPC_7083_s_BelsornigPriest1_grey.tga}
+{7084} {NPC_7084_m_BelsornigPriest1_grey.tga}
+
+{7090} {}
+{7091} {NPC_7091_m_BelsornigPriest2.tga}
+{7092} {NPC_7092_s_BelsornigPriest2.tga}
+{7093} {NPC_7093_s_BelsornigPriest2_grey.tga}
+{7094} {NPC_7094_m_BelsornigPriest2_grey.tga}
+
+{7100} {}
+{7101} {NPC_7101_m_Antonio.tga}
+{7102} {NPC_7102_s_Antonio.tga}
+{7103} {NPC_7103_s_Antonio_grey.tga}
+{7104} {NPC_7104_m_Antonio_grey.tga}
+
+{7110} {}
+{7111} {NPC_7111_m_Barkinar.tga}
+{7112} {NPC_7112_s_Barkinar.tga}
+{7113} {NPC_7113_s_Barkinar_grey.tga}
+{7114} {NPC_7114_m_Barkinar_grey.tga}
+
+{7120} {}
+{7121} {NPC_7121_m_Brunk.tga}
+{7122} {NPC_7122_s_Brunk.tga}
+{7123} {NPC_7123_s_Brunk_grey.tga}
+{7124} {NPC_7124_m_Brunk_grey.tga}
+
+{7130} {}
+{7131} {NPC_7131_m_RomagCommander.tga}
+{7132} {NPC_7132_s_RomagCommander.tga}
+{7133} {NPC_7133_s_RomagCommander_grey.tga}
+{7134} {NPC_7134_m_RomagCommander_grey.tga}
+
+{7140} {}
+{7141} {NPC_7141_m_Moneir.tga}
+{7142} {NPC_7142_s_Moneir.tga}
+{7143} {NPC_7143_s_Moneir_grey.tga}
+{7144} {NPC_7144_m_Moneir_grey.tga}
+
+{7150} {}
+{7151} {NPC_7151_m_SmigmalRedhand.tga}
+{7152} {NPC_7152_s_SmigmalRedhand.tga}
+{7153} {NPC_7153_s_SmigmalRedhand_grey.tga}
+{7154} {NPC_7154_m_SmigmalRedhand_grey.tga}
+
+{7160} {}
+{7161} {NPC_7161_m_Falrinth.tga}
+{7162} {NPC_7162_s_Falrinth.tga}
+{7163} {NPC_7163_s_Falrinth_grey.tga}
+{7164} {NPC_7164_m_Falrinth_grey.tga}
+
+{7170} {}
+{7171} {NPC_7171_m_Grank.tga}
+{7172} {NPC_7172_s_Grank.tga}
+{7173} {NPC_7173_s_Grank_grey.tga}
+{7174} {NPC_7174_m_Grank_grey.tga}
+
+{7180} {}
+{7181} {NPC_7181_m_Sunom.tga}
+{7182} {NPC_7182_s_Sunom.tga}
+{7183} {NPC_7183_s_Sunom_grey.tga}
+{7184} {NPC_7184_m_Sunom_grey.tga}
+
+{7190} {}
+{7191} {NPC_7191_m_Whitman.tga}
+{7192} {NPC_7192_s_Whitman.tga}
+{7193} {NPC_7193_s_Whitman_grey.tga}
+{7194} {NPC_7194_m_Whitman_grey.tga}
+
+{7200} {}
+{7201} {NPC_7201_m_Mandy.tga}
+{7202} {NPC_7202_s_Mandy.tga}
+{7203} {NPC_7203_s_Mandy_grey.tga}
+{7204} {NPC_7204_m_Mandy_grey.tga}
+
+{7210} {}
+{7211} {NPC_7211_m_GisterNoshim.tga}
+{7212} {NPC_7212_s_GisterNoshim.tga}
+{7213} {NPC_7213_s_GisterNoshim_grey.tga}
+{7214} {NPC_7214_m_GisterNoshim_grey.tga}
+
+{7220} {}
+{7221} {NPC_7221_m_Rocutio.tga}
+{7222} {NPC_7222_s_Rocutio.tga}
+{7223} {NPC_7223_s_Rocutio_grey.tga}
+{7224} {NPC_7224_m_Rocutio_grey.tga}
+
+{7230} {}
+{7231} {NPC_7231_m_SirJuffer.tga}
+{7232} {NPC_7232_s_SirJuffer.tga}
+{7233} {NPC_7233_s_SirJuffer_grey.tga}
+{7234} {NPC_7234_m_SirJuffer_grey.tga}
+
+{7240} {}
+{7241} {NPC_7241_m_Murraya.tga}
+{7242} {NPC_7242_s_Murraya.tga}
+{7243} {NPC_7243_s_Murraya_grey.tga}
+{7244} {NPC_7244_m_Murraya_grey.tga}
+
+{7250} {}
+{7251} {NPC_7251_m_Kella1.tga}
+{7252} {NPC_7252_s_Kella1.tga}
+{7253} {NPC_7253_s_Kella1_grey.tga}
+{7254} {NPC_7254_m_Kella1_grey.tga}
+
+{7260} {}
+{7261} {NPC_7261_m_Kella2.tga}
+{7262} {NPC_7262_s_Kella2.tga}
+{7263} {NPC_7263_s_Kella2_grey.tga}
+{7264} {NPC_7264_m_Kella2_grey.tga}
+
+{7270} {}
+{7271} {NPC_7271_m_Feldrin.tga}
+{7272} {NPC_7272_s_Feldrin.tga}
+{7273} {NPC_7273_s_Feldrin_grey.tga}
+{7274} {NPC_7274_m_Feldrin_grey.tga}
+
+{7280} {}
+{7281} {NPC_7281_m_Fruella.tga}
+{7282} {NPC_7282_s_Fruella.tga}
+{7283} {NPC_7283_s_Fruella_grey.tga}
+{7284} {NPC_7284_m_Fruella_grey.tga}
+
+{7290} {}
+{7291} {NPC_7291_m_Ted.tga}
+{7292} {NPC_7292_s_Ted.tga}
+{7293} {NPC_7293_s_Ted_grey.tga}
+{7294} {NPC_7294_m_Ted_grey.tga}
+
+{7300} {}
+{7301} {NPC_7301_m_Ed1.tga}
+{7302} {NPC_7302_s_Ed1.tga}
+{7303} {NPC_7303_s_Ed1_grey.tga}
+{7304} {NPC_7304_m_Ed1_grey.tga}
+
+{7310} {}
+{7311} {NPC_7311_m_Ed2.tga}
+{7312} {NPC_7312_s_Ed2.tga}
+{7313} {NPC_7313_s_Ed2_grey.tga}
+{7314} {NPC_7314_m_Ed2_grey.tga}
+
+{7320} {}
+{7321} {NPC_7321_m_Jinnerth.tga}
+{7322} {NPC_7322_s_Jinnerth.tga}
+{7323} {NPC_7323_s_Jinnerth_grey.tga}
+{7324} {NPC_7324_m_Jinnerth_grey.tga}
+
+{7330} {}
+{7331} {NPC_7331_m_Deggum.tga}
+{7332} {NPC_7332_s_Deggum.tga}
+{7333} {NPC_7333_s_Deggum_grey.tga}
+{7334} {NPC_7334_m_Deggum_grey.tga}
+
+{7340} {}
+{7341} {NPC_7341_m_Paida.tga}
+{7342} {NPC_7342_s_Paida.tga}
+{7343} {NPC_7343_s_Paida_grey.tga}
+{7344} {NPC_7344_m_Paida_grey.tga}
+
+{7350} {}
+{7351} {NPC_7351_m_Turnkey.tga}
+{7352} {NPC_7352_s_Turnkey.tga}
+{7353} {NPC_7353_s_Turnkey_grey.tga}
+{7354} {NPC_7354_m_Turnkey_grey.tga}
+
+{7360} {}
+{7361} {NPC_7361_m_TowerSentinel.tga}
+{7362} {NPC_7362_s_TowerSentinel.tga}
+{7363} {NPC_7363_s_TowerSentinel_grey.tga}
+{7364} {NPC_7364_m_TowerSentinel_grey.tga}
+
+{7370} {}
+{7371} {NPC_7371_m_Mathilde.tga}
+{7372} {NPC_7372_s_Mathilde.tga}
+{7373} {NPC_7373_s_Mathilde_grey.tga}
+{7374} {NPC_7374_m_Mathilde_grey.tga}
+
+{7380} {}
+{7381} {NPC_7381_m_LarethDiary.tga}
+{7382} {NPC_7382_s_LarethDiary.tga}
+{7383} {NPC_7383_s_LarethDiary_grey.tga}
+{7384} {NPC_7384_m_LarethDiary_grey.tga}
+
+{7390} {}
+{7391} {NPC_7391_m_MerchantPrisoner.tga}
+{7392} {NPC_7392_s_MerchantPrisoner.tga}
+{7393} {NPC_7393_s_MerchantPrisoner_grey.tga}
+{7394} {NPC_7394_m_MerchantPrisoner_grey.tga}
+
+{7400} {}
+{7401} {NPC_7401_m_Gleem.tga}
+{7402} {NPC_7402_s_Gleem.tga}
+{7403} {NPC_7403_s_Gleem_grey.tga}
+{7404} {NPC_7404_m_Gleem_grey.tga}
+
+{7410} {}
+{7411} {NPC_7411_m_Nybble.tga}
+{7412} {NPC_7412_s_Nybble.tga}
+{7413} {NPC_7413_s_Nybble_grey.tga}
+{7414} {NPC_7414_m_Nybble_grey.tga}
+
+{7420} {}
+{7421} {NPC_7421_m_HextorGuard.tga}
+{7422} {NPC_7422_s_HextorGuard.tga}
+{7423} {NPC_7423_s_HextorGuard_grey.tga}
+{7424} {NPC_7424_m_HextorGuard_grey.tga}
+
+{7430} {}
+{7431} {NPC_7431_m_Skole.tga}
+{7432} {NPC_7432_s_Skole.tga}
+{7433} {NPC_7433_s_Skole_grey.tga}
+{7434} {NPC_7434_m_Skole_grey.tga}
+
+{7440} {}
+{7441} {NPC_7441_m_HoltenKindlehopper.tga}
+{7442} {NPC_7442_s_HoltenKindlehopper.tga}
+{7443} {NPC_7443_s_HoltenKindlehopper_grey.tga}
+{7444} {NPC_7444_m_HoltenKindlehopper_grey.tga}
+
+{7450} {}
+{7451} {NPC_7451_m_Rentsch.tga}
+{7452} {NPC_7452_s_Rentsch.tga}
+{7453} {NPC_7453_s_Rentsch_grey.tga}
+{7454} {NPC_7454_m_Rentsch_grey.tga}
+
+{7460} {}
+{7461} {NPC_7461_m_Ploceus.tga}
+{7462} {NPC_7462_s_Ploceus.tga}
+{7463} {NPC_7463_s_Ploceus_grey.tga}
+{7464} {NPC_7464_m_Ploceus_grey.tga}
+
+{7470} {}
+{7471} {NPC_7471_m_Tarim.tga}
+{7472} {NPC_7472_s_Tarim.tga}
+{7473} {NPC_7473_s_Tarim_grey.tga}
+{7474} {NPC_7474_m_Tarim_grey.tga}
+
+{7480} {}
+{7481} {NPC_7481_m_Knight.tga}
+{7482} {NPC_7482_s_Knight.tga}
+{7483} {NPC_7483_s_Knight_grey.tga}
+{7484} {NPC_7484_m_Knight_grey.tga}
+
+{7490} {}
+{7491} {NPC_7491_m_Frederic.tga}
+{7492} {NPC_7492_s_Frederic.tga}
+{7493} {NPC_7493_s_Frederic_grey.tga}
+{7494} {NPC_7494_m_Frederic_grey.tga}
+
+{7500} {}
+{7501} {NPC_7501_m_GrudSquinteye.tga}
+{7502} {NPC_7502_s_GrudSquinteye.tga}
+{7503} {NPC_7503_s_GrudSquinteye_grey.tga}
+{7504} {NPC_7504_m_GrudSquinteye_grey.tga}
+
+{7510} {}
+{7511} {NPC_7511_m_Tolub.tga}
+{7512} {NPC_7512_s_Tolub.tga}
+{7513} {NPC_7513_s_Tolub_grey.tga}
+{7514} {NPC_7514_m_Tolub_grey.tga}
+
+{7520} {}
+{7521} {NPC_7521_m_Chanda.tga}
+{7522} {NPC_7522_s_Chanda.tga}
+{7523} {NPC_7523_s_Chanda_grey.tga}
+{7524} {NPC_7524_m_Chanda_grey.tga}
+
+{7530} {}
+{7531} {NPC_7531_m_Alira.tga}
+{7532} {NPC_7532_s_Alira.tga}
+{7533} {NPC_7533_s_Alira_grey.tga}
+{7534} {NPC_7534_m_Alira_grey.tga}
+
+{7540} {}
+{7541} {NPC_7541_m_Pearl.tga}
+{7542} {NPC_7542_s_Pearl.tga}
+{7543} {NPC_7543_s_Pearl_grey.tga}
+{7544} {NPC_7544_m_Pearl_grey.tga}
+
+{7550} {}
+{7551} {NPC_7551_m_Sammy.tga}
+{7552} {NPC_7552_s_Sammy.tga}
+{7553} {NPC_7553_s_Sammy_grey.tga}
+{7554} {NPC_7554_m_Sammy_grey.tga}
+
+{7560} {}
+{7561} {NPC_7561_m_Althea.tga}
+{7562} {NPC_7562_s_Althea.tga}
+{7563} {NPC_7563_s_Althea_grey.tga}
+{7564} {NPC_7564_m_Althea_grey.tga}
+
+{7570} {}
+{7571} {NPC_7571_m_Meleny.tga}
+{7572} {NPC_7572_s_Meleny.tga}
+{7573} {NPC_7573_s_Meleny_grey.tga}
+{7574} {NPC_7574_m_Meleny_grey.tga}
+
+{7580} {}
+{7581} {NPC_7581_m_PrestonWetz.tga}
+{7582} {NPC_7582_s_PrestonWetz.tga}
+{7583} {NPC_7583_s_PrestonWetz_grey.tga}
+{7584} {NPC_7584_m_PrestonWetz_grey.tga}
+
+{7590} {}
+{7591} {NPC_7591_m_Wat.tga}
+{7592} {NPC_7592_s_Wat.tga}
+{7593} {NPC_7593_s_Wat_grey.tga}
+{7594} {NPC_7594_m_Wat_grey.tga}
+
+{7600} {}
+{7601} {NPC_7601_m_Assassin.tga}
+{7602} {NPC_7602_s_Assassin.tga}
+{7603} {NPC_7603_s_Assassin_grey.tga}
+{7604} {NPC_7604_m_Assassin_grey.tga}
+
+{7610} {}
+{7611} {NPC_7611_m_Bing.tga}
+{7612} {NPC_7612_s_Bing.tga}
+{7613} {NPC_7613_s_Bing_grey.tga}
+{7614} {NPC_7614_m_Bing_grey.tga}
+
+{7620} {}
+{7621} {NPC_7621_m_Dala.tga}
+{7622} {NPC_7622_s_Dala.tga}
+{7623} {NPC_7623_s_Dala_grey.tga}
+{7624} {NPC_7624_m_Dala_grey.tga}
+
+{7630} {}
+{7631} {NPC_7631_m_Lodriss.tga}
+{7632} {NPC_7632_s_Lodriss.tga}
+{7633} {NPC_7633_s_Lodriss_grey.tga}
+{7634} {NPC_7634_m_Lodriss_grey.tga}
+
+{7640} {}
+{7641} {NPC_7641_m_Pirate.tga}
+{7642} {NPC_7642_s_Pirate.tga}
+{7643} {NPC_7643_s_Pirate_grey.tga}
+{7644} {NPC_7644_m_Pirate_grey.tga}
+
+{7650} {}
+{7651} {NPC_7651_m_Lisbeth.tga}
+{7652} {NPC_7652_s_Lisbeth.tga}
+{7653} {NPC_7653_s_Lisbeth_grey.tga}
+{7654} {NPC_7654_m_Lisbeth_grey.tga}
+
+{7660} {}
+{7661} {NPC_7661_m_NulbMan.tga}
+{7662} {NPC_7662_s_NulbMan.tga}
+{7663} {NPC_7663_s_NulbMan_grey.tga}
+{7664} {NPC_7664_m_NulbMan_grey.tga}
+
+{7670} {}
+{7671} {NPC_7671_m_NulbWoman.tga}
+{7672} {NPC_7672_s_NulbWoman.tga}
+{7673} {NPC_7673_s_NulbWoman_grey.tga}
+{7674} {NPC_7674_m_NulbWoman_grey.tga}
+
+{7680} {}
+{7681} {NPC_7681_m_Dex.tga}
+{7682} {NPC_7682_s_Dex.tga}
+{7683} {NPC_7683_s_Dex_grey.tga}
+{7684} {NPC_7684_m_Dex_grey.tga}
+
+{7690} {}
+{7691} {NPC_7691_m_Mona.tga}
+{7692} {NPC_7692_s_Mona.tga}
+{7693} {NPC_7693_s_Mona_grey.tga}
+{7694} {NPC_7694_m_Mona_grey.tga}
+
+{7700} {}
+{7701} {NPC_7701_m_Selena.tga}
+{7702} {NPC_7702_s_Selena.tga}
+{7703} {NPC_7703_s_Selena_grey.tga}
+{7704} {NPC_7704_m_Selena_grey.tga}
+
+{7710} {}
+{7711} {NPC_7711_m_GreaterTempleGuard.tga}
+{7712} {NPC_7712_s_GreaterTempleGuard.tga}
+{7713} {NPC_7713_s_GreaterTempleGuard_grey.tga}
+{7714} {NPC_7714_m_GreaterTempleGuard_grey.tga}
+
+{7720} {}
+{7721} {NPC_7721_m_GreaterTempleGuardLeader.tga}
+{7722} {NPC_7722_s_GreaterTempleGuardLeader.tga}
+{7723} {NPC_7723_s_GreaterTempleGuardLeader_grey.tga}
+{7724} {NPC_7724_m_GreaterTempleGuardLeader_grey.tga}
+
+{7730} {}
+{7731} {NPC_7731_m_GranksBandit.tga}
+{7732} {NPC_7732_s_GranksBandit.tga}
+{7733} {NPC_7733_s_GranksBandit_grey.tga}
+{7734} {NPC_7734_m_GranksBandit_grey.tga}
+
+{7740} {}
+{7741} {NPC_7741_m_ElvenMaiden.tga}
+{7742} {NPC_7742_s_ElvenMaiden.tga}
+{7743} {NPC_7743_s_ElvenMaiden_grey.tga}
+{7744} {NPC_7744_m_ElvenMaiden_grey.tga}
+
+{7750} {}
+{7751} {NPC_7751_m_ElvenRanger.tga}
+{7752} {NPC_7752_s_ElvenRanger.tga}
+{7753} {NPC_7753_s_ElvenRanger_grey.tga}
+{7754} {NPC_7754_m_ElvenRanger_grey.tga}
+
+{7760} {}
+{7761} {NPC_7761_m_Retainer.tga}
+{7762} {NPC_7762_s_Retainer.tga}
+{7763} {NPC_7763_s_Retainer_grey.tga}
+{7764} {NPC_7764_m_Retainer_grey.tga}
+
+{7770} {}
+{7771} {NPC_7771_m_Courier.tga}
+{7772} {NPC_7772_s_Courier.tga}
+{7773} {NPC_7773_s_Courier_grey.tga}
+{7774} {NPC_7774_m_Courier_grey.tga}
+
+{7780} {}
+{7781} {NPC_7781_m_EarthTempleLt.tga}
+{7782} {NPC_7782_s_EarthTempleLt.tga}
+{7783} {NPC_7783_s_EarthTempleLt_grey.tga}
+{7784} {NPC_7784_m_EarthTempleLt_grey.tga}
+
+{7790} {}
+{7791} {NPC_7791_m_EarthTempleGuard.tga}
+{7792} {NPC_7792_s_EarthTempleGuard.tga}
+{7793} {NPC_7793_s_EarthTempleGuard_grey.tga}
+{7794} {NPC_7794_m_EarthTempleGuard_grey.tga}
+
+{7800} {}
+{7801} {NPC_7801_m_Neukoln.tga}
+{7802} {NPC_7802_s_Neukoln.tga}
+{7803} {NPC_7803_s_Neukoln_grey.tga}
+{7804} {NPC_7804_m_Neukoln_grey.tga}
+
+{7810} {}
+{7811} {NPC_7811_m_Non.tga}
+{7812} {NPC_7812_s_Non.tga}
+{7813} {NPC_7813_s_Non_grey.tga}
+{7814} {NPC_7814_m_Non_grey.tga}
+
+{7820} {}
+{7821} {NPC_7821_m_Bassanio.tga}
+{7822} {NPC_7822_s_Bassanio.tga}
+{7823} {NPC_7823_s_Bassanio_grey.tga}
+{7824} {NPC_7824_m_Bassanio_grey.tga}
+
+{7830} {}
+{7831} {NPC_7831_m_HommletMan.tga}
+{7832} {NPC_7832_s_HommletMan.tga}
+{7833} {NPC_7833_s_HommletMan_grey.tga}
+{7834} {NPC_7834_m_HommletMan_grey.tga}
+
+{7840} {}
+{7841} {NPC_7841_m_HommletWoman.tga}
+{7842} {NPC_7842_s_HommletWoman.tga}
+{7843} {NPC_7843_s_HommletWoman_grey.tga}
+{7844} {NPC_7844_m_HommletWoman_grey.tga}
+
+{7850} {}
+{7851} {NPC_7851_m_ElfPrisoner1.tga}
+{7852} {NPC_7852_s_ElfPrisoner1.tga}
+{7853} {NPC_7853_s_ElfPrisoner1_grey.tga}
+{7854} {NPC_7854_m_ElfPrisoner1_grey.tga}
+
+{7860} {}
+{7861} {NPC_7861_m_ElfPrisoner2.tga}
+{7862} {NPC_7862_s_ElfPrisoner2.tga}
+{7863} {NPC_7863_s_ElfPrisoner2_grey.tga}
+{7864} {NPC_7864_m_ElfPrisoner2_grey.tga}
+
+{7870} {}
+{7871} {NPC_7871_m_SkoleGoon.tga}
+{7872} {NPC_7872_s_SkoleGoon.tga}
+{7873} {NPC_7873_s_SkoleGoon_grey.tga}
+{7874} {NPC_7874_m_SkoleGoon_grey.tga}
+
+{7880} {}
+{7881} {NPC_7881_m_Vincent.tga}
+{7882} {NPC_7882_s_Vincent.tga}
+{7883} {NPC_7883_s_Vincent_grey.tga}
+{7884} {NPC_7884_m_Vincent_grey.tga}
+
+{7890} {}
+{7891} {NPC_7891_m_Ogavick.tga}
+{7892} {NPC_7892_s_Ogavick.tga}
+{7893} {NPC_7893_s_Ogavick_grey.tga}
+{7894} {NPC_7894_m_Ogavick_grey.tga}
+
+{7900} {}
+{7901} {NPC_7901_m_Ikian.tga}
+{7902} {NPC_7902_s_Ikian.tga}
+{7903} {NPC_7903_s_Ikian_grey.tga}
+{7904} {NPC_7904_m_Ikian_grey.tga}
+
+{7910} {}
+{7911} {NPC_7911_m_FemalePrisoner1.tga}
+{7912} {NPC_7912_s_FemalePrisoner1.tga}
+{7913} {NPC_7913_s_FemalePrisoner1_grey.tga}
+{7914} {NPC_7914_m_FemalePrisoner1_grey.tga}
+
+{7920} {}
+{7921} {NPC_7921_m_FemalePrisoner2.tga}
+{7922} {NPC_7922_s_FemalePrisoner2.tga}
+{7923} {NPC_7923_s_FemalePrisoner2_grey.tga}
+{7924} {NPC_7924_m_FemalePrisoner2_grey.tga}
+
+{7930} {}
+{7931} {NPC_7931_m_Zaxis.tga}
+{7932} {NPC_7932_s_Zaxis.tga}
+{7933} {NPC_7933_s_Zaxis_grey.tga}
+{7934} {NPC_7934_m_Zaxis_grey.tga}
+
+{7940} {}
+{7941} {NPC_7941_m_SW_BattleAxe_Red.tga}
+{7942} {NPC_7942_s_SW_BattleAxe_Red.tga}
+{7943} {NPC_7943_s_SW_BattleAxe_Red_grey.tga}
+{7944} {NPC_7944_m_SW_BattleAxe_Red_grey.tga}
+
+{7950} {}
+{7951} {NPC_7951_m_SW_BattleAxe_Blue.tga}
+{7952} {NPC_7952_s_SW_BattleAxe_Blue.tga}
+{7953} {NPC_7953_s_SW_BattleAxe_Blue_grey.tga}
+{7954} {NPC_7954_m_SW_BattleAxe_Blue_grey.tga}
+
+{7960} {}
+{7961} {NPC_7961_m_SW_Dagger.tga}
+{7962} {NPC_7962_s_SW_Dagger.tga}
+{7963} {NPC_7963_s_SW_Dagger_grey.tga}
+{7964} {NPC_7964_m_SW_Dagger_grey.tga}
+
+{7970} {}
+{7971} {NPC_7971_m_SW_HeavyMace.tga}
+{7972} {NPC_7972_s_SW_HeavyMace.tga}
+{7973} {NPC_7973_s_SW_HeavyMace_grey.tga}
+{7974} {NPC_7974_m_SW_HeavyMace_grey.tga}
+
+{7980} {}
+{7981} {NPC_7981_m_SW_Greatsword.tga}
+{7982} {NPC_7982_s_SW_Greatsword.tga}
+{7983} {NPC_7983_s_SW_Greatsword_grey.tga}
+{7984} {NPC_7984_m_SW_Greatsword_grey.tga}
+
+{7990} {}
+{7991} {NPC_7991_m_SW_Longbow.tga}
+{7992} {NPC_7992_s_SW_Longbow.tga}
+{7993} {NPC_7993_s_SW_Longbow_grey.tga}
+{7994} {NPC_7994_m_SW_Longbow_grey.tga}
+
+{8000} {}
+{8001} {NPC_8001_m_SW_Shortsword.tga}
+{8002} {NPC_8002_s_SW_Shortsword.tga}
+{8003} {NPC_8003_s_SW_Shortsword_grey.tga}
+{8004} {NPC_8004_m_SW_Shortsword_grey.tga}
+
+{8010} {}
+{8011} {NPC_8011_m_SW_Longsword.tga}
+{8012} {NPC_8012_s_SW_Longsword.tga}
+{8013} {NPC_8013_s_SW_Longsword_grey.tga}
+{8014} {NPC_8014_m_SW_Longsword_grey.tga}
+
+{8020} {}
+{8021} {NPC_8021_m_SW_Rapier.tga}
+{8022} {NPC_8022_s_SW_Rapier.tga}
+{8023} {NPC_8023_s_SW_Rapier_grey.tga}
+{8024} {NPC_8024_m_SW_Rapier_grey.tga}
+
+{8030} {}
+{8031} {NPC_8031_m_SW_Scythe.tga}
+{8032} {NPC_8032_s_SW_Scythe.tga}
+{8033} {NPC_8033_s_SW_Scythe_grey.tga}
+{8034} {NPC_8034_m_SW_Scythe_grey.tga}
+
+{8040} {}
+{8041} {NPC_8041_m_SW_MorningStar.tga}
+{8042} {NPC_8042_s_SW_MorningStar.tga}
+{8043} {NPC_8043_s_SW_MorningStar_grey.tga}
+{8044} {NPC_8044_m_SW_MorningStar_grey.tga}
+
+{8050} {}
+{8051} {NPC_8051_m_SW_Spear.tga}
+{8052} {NPC_8052_s_SW_Spear.tga}
+{8053} {NPC_8053_s_SW_Spear_grey.tga}
+{8054} {NPC_8054_m_SW_Spear_grey.tga}
+
+{8060} {}
+{8061} {NPC_8061_m_SW_Staff.tga}
+{8062} {NPC_8062_s_SW_Staff.tga}
+{8063} {NPC_8063_s_SW_Staff_grey.tga}
+{8064} {NPC_8064_m_SW_Staff_grey.tga}
+
+{8070} {}
+{8071} {NPC_8071_m_SW_Warhammer.tga}
+{8072} {NPC_8072_s_SW_Warhammer.tga}
+{8073} {NPC_8073_s_SW_Warhammer_grey.tga}
+{8074} {NPC_8074_m_SW_Warhammer_grey.tga}
+
+{8080} {}
+{8081} {NPC_8081_m_BurneApprentice.tga}
+{8082} {NPC_8082_s_BurneApprentice.tga}
+{8083} {NPC_8083_s_BurneApprentice_grey.tga}
+{8084} {NPC_8084_m_BurneApprentice_grey.tga}
+
+{8090} {}
+{8091} {NPC_8091_m_gremlich.tga}
+{8092} {NPC_8092_s_gremlich.tga}
+{8093} {NPC_8093_s_gremlich_grey.tga}
+{8094} {NPC_8094_m_gremlich_grey.tga}
+
+{8100} {}
+{8101} {NPC_8101_m_bandit_fighter.tga}
+{8102} {NPC_8102_s_bandit_fighter.tga}
+{8103} {NPC_8103_s_bandit_fighter_grey.tga}
+{8104} {NPC_8104_m_bandit_fighter_grey.tga}
+
+{8110} {}
+{8111} {NPC_8111_m_bandit_archer.tga}
+{8112} {NPC_8112_s_bandit_archer.tga}
+{8113} {NPC_8113_s_bandit_archer_grey.tga}
+{8114} {NPC_8114_m_bandit_archer_grey.tga}
+
+{8120} {}
+{8121} {NPC_8121_m_bandit_rogue.tga}
+{8122} {NPC_8122_s_bandit_rogue.tga}
+{8123} {NPC_8123_s_bandit_rogue_grey.tga}
+{8124} {NPC_8124_m_bandit_rogue_grey.tga}
+
+{8130} {}
+{8131} {NPC_8132_m_Orb.tga}
+{8132} {NPC_8132_s_Orb.tga}
+{8133} {NPC_8133_s_Orb_grey.tga}
+{8134} {NPC_8134_m_Orb_grey.tga}
+
+{8140} {}
+{8141} {NPC_8141_m_Familiar_Bat.tga}
+{8142} {NPC_8142_s_Familiar_Bat.tga}
+{8143} {NPC_8143_s_Familiar_Bat_grey.tga}
+{8144} {NPC_8144_m_Familiar_Bat_grey.tga}
+
+{8150} {}
+{8151} {NPC_8151_m_Familiar_Cat.tga}
+{8152} {NPC_8152_s_Familiar_Cat.tga}
+{8153} {NPC_8153_s_Familiar_Cat_grey.tga}
+{8154} {NPC_8154_m_Familiar_Cat_grey.tga}
+
+{8160} {}
+{8161} {NPC_8161_m_Familiar_Frog.tga}
+{8162} {NPC_8162_s_Familiar_Frog.tga}
+{8163} {NPC_8163_s_Familiar_Frog_grey.tga}
+{8164} {NPC_8164_m_Familiar_Frog_grey.tga}
+
+{8170} {}
+{8171} {NPC_8171_m_Familiar_Hawk.tga}
+{8172} {NPC_8172_s_Familiar_Hawk.tga}
+{8173} {NPC_8173_s_Familiar_Hawk_grey.tga}
+{8174} {NPC_8174_m_Familiar_Hawk_grey.tga}
+
+{8180} {}
+{8181} {NPC_8181_m_Familiar_Lizard.tga}
+{8182} {NPC_8182_s_Familiar_Lizard.tga}
+{8183} {NPC_8183_s_Familiar_Lizard_grey.tga}
+{8184} {NPC_8184_m_Familiar_Lizard_grey.tga}
+
+{8190} {}
+{8191} {NPC_8191_m_Familiar_Owl.tga}
+{8192} {NPC_8192_s_Familiar_Owl.tga}
+{8193} {NPC_8193_s_Familiar_Owl_grey.tga}
+{8194} {NPC_8194_m_Familiar_Owl_grey.tga}
+
+{8200} {}
+{8201} {NPC_8201_m_Familiar_Rat.tga}
+{8202} {NPC_8202_s_Familiar_Rat.tga}
+{8203} {NPC_8203_s_Familiar_Rat_grey.tga}
+{8204} {NPC_8204_m_Familiar_Rat_grey.tga}
+
+{8210} {}
+{8211} {NPC_8211_m_Familiar_Raven.tga}
+{8212} {NPC_8212_s_Familiar_Raven.tga}
+{8213} {NPC_8213_s_Familiar_Raven_grey.tga}
+{8214} {NPC_8214_m_Familiar_Raven_grey.tga}
+
+{8220} {}
+{8221} {NPC_8221_m_Familiar_Snake.tga}
+{8222} {NPC_8222_s_Familiar_Snake.tga}
+{8223} {NPC_8223_s_Familiar_Snake_grey.tga}
+{8224} {NPC_8224_m_Familiar_Snake_grey.tga}
+
+{8230} {}
+{8231} {NPC_8231_m_Familiar_Weasel.tga}
+{8232} {NPC_8232_s_Familiar_Weasel.tga}
+{8233} {NPC_8233_s_Familiar_Weasel_grey.tga}
+{8234} {NPC_8234_m_Familiar_Weasel_grey.tga}
+
+{8240} {}
+{8241} {NPC_8241_m_Ivy.tga}
+{8242} {NPC_8242_s_Ivy.tga}
+{8243} {NPC_8243_s_Ivy_grey.tga}
+{8244} {NPC_8244_m_Ivy_grey.tga}
+
+{8250} {}
+{8251} {NPC_8251_m_Thug_Leader.tga}
+{8252} {NPC_8252_s_Thug_Leader.tga}
+{8253} {NPC_8253_s_Thug_Leader_grey.tga}
+{8254} {NPC_8254_m_Thug_Leader_grey.tga}
+
+{8260} {}
+{8261} {NPC_8261_m_Enchantress.tga}
+{8262} {NPC_8262_s_Enchantress.tga}
+{8263} {NPC_8263_s_Enchantress_grey.tga}
+{8264} {NPC_8264_m_Enchantress_grey.tga}
+
+{8270} {}
+{8271} {NPC_8271_m_Zuggtmoy_Priest.tga}
+{8272} {NPC_8272_s_Zuggtmoy_Priest.tga}
+{8273} {NPC_8273_s_Zuggtmoy_Priest_grey.tga}
+{8274} {NPC_8274_m_Zuggtmoy_Priest_grey.tga}
+
+{8280} {}
+{8281} {NPC_8281_m_Hired_Thug.tga}
+{8282} {NPC_8282_s_Hired_Thug.tga}
+{8283} {NPC_8283_s_Hired_Thug_grey.tga}
+{8284} {NPC_8284_m_Hired_Thug_grey.tga}
+
+{8290} {}
+{8291} {NPC_8291_m_Amii.tga}
+{8292} {NPC_8292_s_Amii.tga}
+{8293} {NPC_8293_s_Amii_grey.tga}
+{8294} {NPC_8294_m_Amii_grey.tga}
+
+{8300} {}
+{8301} {NPC_8301_m_Kent.tga}
+{8302} {NPC_8302_s_Kent.tga}
+{8303} {NPC_8303_s_Kent_grey.tga}
+{8304} {NPC_8304_m_Kent_grey.tga}
+
+{8310} {}
+{8311} {NPC_8311_m_Dying_Woman.tga}
+{8312} {NPC_8312_s_Dying_Woman.tga}
+{8313} {NPC_8313_s_Dying_Woman_grey.tga}
+{8314} {NPC_8314_m_Dying_Woman_grey.tga}
+
+{8320} {}
+{8321} {NPC_8321_m_Gadham.tga}
+{8322} {NPC_8322_s_Gadham.tga}
+{8323} {NPC_8323_s_Gadham_grey.tga}
+{8324} {NPC_8324_m_Gadham_grey.tga}
+
+{8330} {}
+{8331} {NPC_8331_m_Abaddon.tga}
+{8332} {NPC_8332_s_Abaddon.tga}
+{8333} {NPC_8333_s_Abaddon_grey.tga}
+{8334} {NPC_8334_m_Abaddon_grey.tga}
+
+{8340} {}
+{8341} {NPC_8341_m_hextor_elementalist.tga}
+{8342} {NPC_8342_s_hextor_elementalist.tga}
+{8343} {NPC_8343_s_hextor_elementalist_grey.tga}
+{8344} {NPC_8344_m_hextor_elementalist_grey.tga}
+
+{8350} {}
+{8351} {NPC_8351_m_simon.tga}
+{8352} {NPC_8352_s_simon.tga}
+{8353} {NPC_8353_s_simon_grey.tga}
+{8354} {NPC_8354_m_simon_grey.tga}
+
+{8360} {}
+{8361} {NPC_8361_m_castle_laborer.tga}
+{8362} {NPC_8362_s_castle_laborer.tga}
+{8363} {NPC_8363_s_castle_laborer_grey.tga}
+{8364} {NPC_8364_m_castle_laborer_grey.tga}
+
+{8370} {}
+{8371} {NPC_8371_m_Verbobonc_Innkeeper.tga}
+{8372} {NPC_8372_s_Verbobonc_Innkeeper.tga}
+{8373} {NPC_8373_s_Verbobonc_Innkeeper_grey.tga}
+{8374} {NPC_8374_m_Verbobonc_Innkeeper_grey.tga}
+
+{8380} {}
+{8381} {NPC_8381_m_Verbobonc_Guard.tga}
+{8382} {NPC_8382_s_Verbobonc_Guard.tga}
+{8383} {NPC_8383_s_Verbobonc_Guard_grey.tga}
+{8384} {NPC_8384_m_Verbobonc_Guard_grey.tga}
+
+{8390} {}
+{8391} {NPC_8391_m_Wilfrick.tga}
+{8392} {NPC_8392_s_Wilfrick.tga}
+{8393} {NPC_8393_s_Wilfrick_grey.tga}
+{8394} {NPC_8394_m_Wilfrick_grey.tga}
+
+{8400} {}
+{8401} {NPC_8401_m_Lerrik.tga}
+{8402} {NPC_8402_s_Lerrik.tga}
+{8403} {NPC_8403_s_Lerrik_grey.tga}
+{8404} {NPC_8404_m_Lerrik_grey.tga}
+
+{8410} {}
+{8411} {NPC_8411_m_hextor_guard.tga}
+{8412} {NPC_8412_s_hextor_guard.tga}
+{8413} {NPC_8413_s_hextor_guard_grey.tga}
+{8414} {NPC_8414_m_hextor_guard_grey.tga}
+
+{8420} {}
+{8421} {NPC_8421_m_Prince_Zook.tga}
+{8422} {NPC_8422_s_Prince_Zook.tga}
+{8423} {NPC_8423_s_Prince_Zook_grey.tga}
+{8424} {NPC_8424_m_Prince_Zook_grey.tga}
+
+{8430} {}
+{8431} {NPC_8431_m_Gnome_Guard.tga}
+{8432} {NPC_8432_s_Gnome_Guard.tga}
+{8433} {NPC_8433_s_Gnome_Guard_grey.tga}
+{8434} {NPC_8434_m_Gnome_Guard_grey.tga}
+
+{8440} {}
+{8441} {NPC_8441_m_Assassin_Leader.tga}
+{8442} {NPC_8442_s_Assassin_Leader.tga}
+{8443} {NPC_8443_s_Assassin_Leader_grey.tga}
+{8444} {NPC_8444_m_Assassin_Leader_grey.tga}
+
+{8450} {}
+{8451} {NPC_8451_m_Scarlet_Brotherhood_Nephew.tga}
+{8452} {NPC_8452_s_Scarlet_Brotherhood_Nephew.tga}
+{8453} {NPC_8453_s_Scarlet_Brotherhood_Nephew_grey.tga}
+{8454} {NPC_8454_m_Scarlet_Brotherhood_Nephew_grey.tga}
+
+{8460} {}
+{8461} {NPC_8461_m_Scarlet_Brotherhood_Brother.tga}
+{8462} {NPC_8462_s_Scarlet_Brotherhood_Brother.tga}
+{8463} {NPC_8463_s_Scarlet_Brotherhood_Brother_grey.tga}
+{8464} {NPC_8464_m_Scarlet_Brotherhood_Brother_grey.tga}
+
+{8470} {}
+{8471} {NPC_8471_m_Hextor_Priest.tga}
+{8472} {NPC_8472_s_Hextor_Priest.tga}
+{8473} {NPC_8473_s_Hextor_Priest_grey.tga}
+{8474} {NPC_8474_m_Hextor_Priest_grey.tga}
+
+{8480} {}
+{8481} {NPC_8481_m_Hextor_Acolyte.tga}
+{8482} {NPC_8482_s_Hextor_Acolyte.tga}
+{8483} {NPC_8483_s_Hextor_Acolyte_grey.tga}
+{8484} {NPC_8484_m_Hextor_Acolyte_grey.tga}
+
+{8490} {}
+{8491} {NPC_8491_m_Ariel.tga}
+{8492} {NPC_8492_s_Ariel.tga}
+{8493} {NPC_8493_s_Ariel_grey.tga}
+{8494} {NPC_8494_m_Ariel_grey.tga}
+
+{8500} {}
+{8501} {NPC_8501_m_drow_male_1.tga}
+{8502} {NPC_8502_s_drow_male_1.tga}
+{8503} {NPC_8503_s_drow_male_1_grey.tga}
+{8504} {NPC_8504_m_drow_male_1_grey.tga}
+
+{8510} {}
+{8511} {NPC_8511_m_drow_male_2.tga}
+{8512} {NPC_8512_s_drow_male_2.tga}
+{8513} {NPC_8513_s_drow_male_2_grey.tga}
+{8514} {NPC_8514_m_drow_male_2_grey.tga}
+
+{8520} {}
+{8521} {NPC_8521_m_drow_leader.tga}
+{8522} {NPC_8522_s_drow_leader.tga}
+{8523} {NPC_8523_s_drow_leader_grey.tga}
+{8524} {NPC_8524_m_drow_leader_grey.tga}
+
+{8530} {}
+{8531} {NPC_8531_m_drow_female_1.tga}
+{8532} {NPC_8532_s_drow_female_1.tga}
+{8533} {NPC_8533_s_drow_female_1_grey.tga}
+{8534} {NPC_8534_m_drow_female_1_grey.tga}
+
+{8540} {}
+{8541} {NPC_8541_m_drow_female_2.tga}
+{8542} {NPC_8542_s_drow_female_2.tga}
+{8543} {NPC_8543_s_drow_female_2_grey.tga}
+{8544} {NPC_8544_m_drow_female_2_grey.tga}
+
+{8550} {}
+{8551} {NPC_8551_m_hextor_enchantress.tga}
+{8552} {NPC_8552_s_hextor_enchantress.tga}
+{8553} {NPC_8553_s_hextor_enchantress_grey.tga}
+{8554} {NPC_8554_m_hextor_enchantress_grey.tga}
+
+{8560} {}
+{8561} {NPC_8561_m_Gnarley_Witch.tga}
+{8562} {NPC_8562_s_Gnarley_Witch.tga}
+{8563} {NPC_8563_s_Gnarley_Witch_grey.tga}
+{8564} {NPC_8564_m_Gnarley_Witch_grey.tga}
+
+{8570} {}
+{8571} {NPC_8571_m_Ronald.tga}
+{8572} {NPC_8572_s_Ronald.tga}
+{8573} {NPC_8573_s_Ronald_grey.tga}
+{8574} {NPC_8574_m_Ronald_grey.tga}
+
+{8580} {}
+{8581} {NPC_8581_m_Pishella.tga}
+{8582} {NPC_8582_s_Pishella.tga}
+{8583} {NPC_8583_s_Pishella_grey.tga}
+{8584} {NPC_8584_m_Pishella_grey.tga}
+
+{8590} {}
+{8591} {NPC_8591_m_Ah_Fong.tga}
+{8592} {NPC_8592_s_Ah_Fong.tga}
+{8593} {NPC_8593_s_Ah_Fong_grey.tga}
+{8594} {NPC_8594_m_Ah_Fong_grey.tga}
+
+{8600} {}
+{8601} {NPC_8601_m_hommlet_boy.tga}
+{8602} {NPC_8602_s_hommlet_boy.tga}
+{8603} {NPC_8603_s_hommlet_boy_grey.tga}
+{8604} {NPC_8604_m_hommlet_boy_grey.tga}
+
+{8610} {}
+{8611} {NPC_8611_m_hommlet_girl.tga}
+{8612} {NPC_8612_s_hommlet_girl.tga}
+{8613} {NPC_8613_s_hommlet_girl_grey.tga}
+{8614} {NPC_8614_m_hommlet_girl_grey.tga}
+
+{8620} {}
+{8621} {NPC_8621_m_Generic_Witch.tga}
+{8622} {NPC_8622_s_Generic_Witch.tga}
+{8623} {NPC_8623_s_Generic_Witch_grey.tga}
+{8624} {NPC_8624_m_Generic_Witch_grey.tga}
+
+{8630} {}
+{8631} {NPC_8631_m_Generic_Wizard.tga}
+{8632} {NPC_8632_s_Generic_Wizard.tga}
+{8633} {NPC_8633_s_Generic_Wizard_grey.tga}
+{8634} {NPC_8634_m_Generic_Wizard_grey.tga}
+
+{8640} {}
+{8641} {NPC_8641_m_William.tga}
+{8642} {NPC_8642_s_William.tga}
+{8643} {NPC_8643_s_William_grey.tga}
+{8644} {NPC_8644_m_William_grey.tga}
+
+{8650} {}
+{8651} {NPC_8651_m_Ariakas.tga}
+{8652} {NPC_8652_s_Ariakas.tga}
+{8653} {NPC_8653_s_Ariakas_grey.tga}
+{8654} {NPC_8654_m_Ariakas_grey.tga}
+
+{8660} {}
+{8661} {NPC_8661_m_Trail.tga}
+{8662} {NPC_8662_s_Trail.tga}
+{8663} {NPC_8663_s_Trail_grey.tga}
+{8664} {NPC_8664_m_Trail_grey.tga}
+
+{8670} {}
+{8671} {NPC_8671_m_Shopmap_Chest.tga}
+{8672} {NPC_8672_s_Shopmap_Chest.tga}
+{8673} {NPC_8673_s_Shopmap_Chest_grey.tga}
+{8674} {NPC_8674_m_Shopmap_Chest_grey.tga}
+
+{8680} {}
+{8681} {NPC_8681_m_toee_icon_generic.tga}
+{8682} {NPC_8682_s_toee_icon_generic.tga}
+{8683} {NPC_8683_s_toee_icon_generic_grey.tga}
+{8684} {NPC_8684_m_toee_icon_generic_grey.tga}
+
+{8690} {}
+{8691} {NPC_8691_m_Kenan-Be'thuel.tga}
+{8692} {NPC_8692_s_Kenan-Be'thuel.tga}
+{8693} {NPC_8693_s_Kenan-Be'thuel_grey.tga}
+{8694} {NPC_8694_m_Kenan-Be'thuel_grey.tga}
+
+{8700} {}
+{8701} {NPC_8701_m_Tarah-ka-Turah.tga}
+{8702} {NPC_8702_s_Tarah-ka-Turah.tga}
+{8703} {NPC_8703_s_Tarah-ka-Turah_grey.tga}
+{8704} {NPC_8704_m_Tarah-ka-Turah_grey.tga}
+
+{8710} {}
+{8711} {NPC_8711_m_Sharar-be-L'ial.tga}
+{8712} {NPC_8712_s_Sharar-be-L'ial.tga}
+{8713} {NPC_8713_s_Sharar-be-L'ial_grey.tga}
+{8714} {NPC_8714_m_Sharar-be-L'ial_grey.tga}
+
+{8720} {}
+{8721} {NPC_8721_m_attorney.tga}
+{8722} {NPC_8722_s_attorney.tga}
+{8723} {NPC_8723_s_attorney_grey.tga}
+{8724} {NPC_8724_m_attorney_grey.tga}
+
+{8730} {}
+{8731} {NPC_8731_m_Gershom.tga}
+{8732} {NPC_8732_s_Gershom.tga}
+{8733} {NPC_8733_s_Gershom_grey.tga}
+{8734} {NPC_8734_m_Gershom_grey.tga}
+
+{8740} {}
+{8741} {NPC_8741_m_Persis.tga}
+{8742} {NPC_8742_s_Persis.tga}
+{8743} {NPC_8743_s_Persis_grey.tga}
+{8744} {NPC_8744_m_Persis_grey.tga}
+
+{8750} {}
+{8751} {NPC_8751_m_hommlet_man_unrobed.tga}
+{8752} {NPC_8752_s_hommlet_man_unrobed.tga}
+{8753} {NPC_8753_s_hommlet_man_unrobed_grey.tga}
+{8754} {NPC_8754_m_hommlet_man_unrobed_grey.tga}
+
+{8760} {}
+{8761} {NPC_8761_m_hommlet_woman_unrobed.tga}
+{8762} {NPC_8762_s_hommlet_woman_unrobed.tga}
+{8763} {NPC_8763_s_hommlet_woman_unrobed_grey.tga}
+{8764} {NPC_8764_m_hommlet_woman_unrobed_grey.tga}
+
+{8770} {}
+{8771} {NPC_8771_m_earth_temple_robed_guard.tga}
+{8772} {NPC_8772_s_earth_temple_robed_guard.tga}
+{8773} {NPC_8773_s_earth_temple_robed_guard_grey.tga}
+{8774} {NPC_8774_m_earth_temple_robed_guard_grey.tga}
+
+{8780} {}
+{8781} {NPC_8781_m_nulb_woman_common.tga}
+{8782} {NPC_8782_s_nulb_woman_common.tga}
+{8783} {NPC_8783_s_nulb_woman_common_grey.tga}
+{8784} {NPC_8784_m_nulb_woman_common_grey.tga}
+
+{8790} {}
+{8791} {NPC_8791_m_nulb_man_common.tga}
+{8792} {NPC_8792_s_nulb_man_common.tga}
+{8793} {NPC_8793_s_nulb_man_common_grey.tga}
+{8794} {NPC_8794_m_nulb_man_common_grey.tga}
+
+{8800} {}
+{8801} {NPC_8801_m_smigmal_assassin_1.tga}
+{8802} {NPC_8802_s_smigmal_assassin_1.tga}
+{8803} {NPC_8803_s_smigmal_assassin_1_grey.tga}
+{8804} {NPC_8804_m_smigmal_assassin_1_grey.tga}
+
+{8810} {}
+{8811} {NPC_8811_m_smigmal_assassin_2.tga}
+{8812} {NPC_8812_s_smigmal_assassin_2.tga}
+{8813} {NPC_8813_s_smigmal_assassin_2_grey.tga}
+{8814} {NPC_8814_m_smigmal_assassin_2_grey.tga}
+
+{8820} {}
+{8821} {NPC_8821_m_fireforge.tga}
+{8822} {NPC_8822_s_fireforge.tga}
+{8823} {NPC_8823_s_fireforge_grey.tga}
+{8824} {NPC_8824_m_fireforge_grey.tga}
+
+{8830} {}
+{8831} {NPC_8831_m_NulbStreetWalker.tga}
+{8832} {NPC_8832_s_NulbStreetWalker.tga}
+{8833} {NPC_8833_s_NulbStreetWalker_grey.tga}
+{8834} {NPC_8834_m_NulbStreetWalker_grey.tga}
+
+{8840} {}
+{8841} {NPC_8841_m_book_of_heroes.tga}
+{8842} {NPC_8842_s_book_of_heroes.tga}
+{8843} {NPC_8843_s_book_of_heroes_grey.tga}
+{8844} {NPC_8844_m_book_of_heroes_grey.tga}
+
+{8850} {}
+{8851} {NPC_8851_m_master_of_the_arena.tga}
+{8852} {NPC_8852_s_master_of_the_arena.tga}
+{8853} {NPC_8853_s_master_of_the_arena_grey.tga}
+{8854} {NPC_8854_m_master_of_the_arena_grey.tga}
+
+{8860} {}
+{8861} {NPC_8861_m_hextor_mage.tga}
+{8862} {NPC_8862_s_hextor_mage.tga}
+{8863} {NPC_8863_s_hextor_mage_grey.tga}
+{8864} {NPC_8864_m_hextor_mage_grey.tga}
+
+{8870} {}
+{8871} {NPC_8871_m_robin_of_locksley.tga}
+{8872} {NPC_8872_s_robin_of_locksley.tga}
+{8873} {NPC_8873_s_robin_of_locksley_grey.tga}
+{8874} {NPC_8874_m_robin_of_locksley_grey.tga}
+
+{8880} {}
+{8881} {NPC_8881_m_tiny_john.tga}
+{8882} {NPC_8882_s_tiny_john.tga}
+{8883} {NPC_8883_s_tiny_john_grey.tga}
+{8884} {NPC_8884_m_tiny_john_grey.tga}
+
+{8890} {}
+{8891} {NPC_8891_m_friar_tack.tga}
+{8892} {NPC_8892_s_friar_tack.tga}
+{8893} {NPC_8893_s_friar_tack_grey.tga}
+{8894} {NPC_8894_m_friar_tack_grey.tga}
+
+{8900} {}
+{8901} {NPC_8901_m_drow_ranger.tga}
+{8902} {NPC_8902_s_drow_ranger.tga}
+{8903} {NPC_8903_s_drow_ranger_grey.tga}
+{8904} {NPC_8904_m_drow_ranger_grey.tga}
+
+{8910} {}
+{8911} {NPC_8911_m_verbobonc_man.tga}
+{8912} {NPC_8912_s_verbobonc_man.tga}
+{8913} {NPC_8913_s_verbobonc_man_grey.tga}
+{8914} {NPC_8914_m_verbobonc_man_grey.tga}
+
+{8920} {}
+{8921} {NPC_8921_m_verbobonc_woman.tga}
+{8922} {NPC_8922_s_verbobonc_woman.tga}
+{8923} {NPC_8923_s_verbobonc_woman_grey.tga}
+{8924} {NPC_8924_m_verbobonc_woman_grey.tga}
+
+{8930} {}
+{8931} {NPC_8931_m_pelor_cleric.tga}
+{8932} {NPC_8932_s_pelor_cleric.tga}
+{8933} {NPC_8933_s_pelor_cleric_grey.tga}
+{8934} {NPC_8934_m_pelor_cleric_grey.tga}
+
+{8940} {}
+{8941} {NPC_8941_m_jylee.tga}
+{8942} {NPC_8942_s_jylee.tga}
+{8943} {NPC_8943_s_jylee_grey.tga}
+{8944} {NPC_8944_m_jylee_grey.tga}
+
+{8950} {}
+{8951} {NPC_8951_m_ramses.tga}
+{8952} {NPC_8952_s_ramses.tga}
+{8953} {NPC_8953_s_ramses_grey.tga}
+{8954} {NPC_8954_m_ramses_grey.tga}
+
+{8960} {}
+{8961} {NPC_8961_m_maurice.tga}
+{8962} {NPC_8962_s_maurice.tga}
+{8963} {NPC_8963_s_maurice_grey.tga}
+{8964} {NPC_8964_m_maurice_grey.tga}
+
+{8970} {}
+{8971} {NPC_8971_m_armor_merchant.tga}
+{8972} {NPC_8972_s_armor_merchant.tga}
+{8973} {NPC_8973_s_armor_merchant_grey.tga}
+{8974} {NPC_8974_m_armor_merchant_grey.tga}
+
+{8980} {}
+{8981} {NPC_8981_m_weapons_merchant.tga}
+{8982} {NPC_8982_s_weapons_merchant.tga}
+{8983} {NPC_8983_s_weapons_merchant_grey.tga}
+{8984} {NPC_8984_m_weapons_merchant_grey.tga}
+
+{8990} {}
+{8991} {NPC_8991_m_bella.tga}
+{8992} {NPC_8992_s_bella.tga}
+{8993} {NPC_8993_s_bella_grey.tga}
+{8994} {NPC_8994_m_bella_grey.tga}
+
+{9000} {}
+{9001} {NPC_9001_m_merchant_bodyguard.tga}
+{9002} {NPC_9002_s_merchant_bodyguard.tga}
+{9003} {NPC_9003_s_merchant_bodyguard_grey.tga}
+{9004} {NPC_9004_m_merchant_bodyguard_grey.tga}
+
+{9010} {}
+{9011} {NPC_9011_m_jewel_merchant.tga}
+{9012} {NPC_9012_s_jewel_merchant.tga}
+{9013} {NPC_9013_s_jewel_merchant_grey.tga}
+{9014} {NPC_9014_m_jewel_merchant_grey.tga}
+
+{9020} {}
+{9021} {NPC_9021_m_holly.tga}
+{9022} {NPC_9022_s_holly.tga}
+{9023} {NPC_9023_s_holly_grey.tga}
+{9024} {NPC_9024_m_holly_grey.tga}
+
+{9030} {}
+{9031} {NPC_9031_m_mother.tga}
+{9032} {NPC_9032_s_mother.tga}
+{9033} {NPC_9033_s_mother_grey.tga}
+{9034} {NPC_9034_m_mother_grey.tga}
+
+{9040} {}
+{9041} {NPC_9041_m_drow_matriarch.tga}
+{9042} {NPC_9042_s_drow_matriarch.tga}
+{9043} {NPC_9043_s_drow_matriarch_grey.tga}
+{9044} {NPC_9044_m_drow_matriarch_grey.tga}
+
+{9050} {}
+{9051} {NPC_9051_m_verbobonc_mage.tga}
+{9052} {NPC_9052_s_verbobonc_mage.tga}
+{9053} {NPC_9053_s_verbobonc_mage_grey.tga}
+{9054} {NPC_9054_m_verbobonc_mage_grey.tga}
+
+{9060} {}
+{9061} {NPC_9061_m_kendrew_commonworth.tga}
+{9062} {NPC_9062_s_kendrew_commonworth.tga}
+{9063} {NPC_9063_s_kendrew_commonworth_grey.tga}
+{9064} {NPC_9064_m_kendrew_commonworth_grey.tga}
+
+{9070} {}
+{9071} {NPC_9071_m_quintus_corpus.tga}
+{9072} {NPC_9072_s_quintus_corpus.tga}
+{9073} {NPC_9073_s_quintus_corpus_grey.tga}
+{9074} {NPC_9074_m_quintus_corpus_grey.tga}
+
+{9080} {}
+{9081} {NPC_9081_m_guntur_gladstone.tga}
+{9082} {NPC_9082_s_guntur_gladstone.tga}
+{9083} {NPC_9083_s_guntur_gladstone_grey.tga}
+{9084} {NPC_9084_m_guntur_gladstone_grey.tga}
+
+{9090} {}
+{9091} {NPC_9091_m_slave_boy.tga}
+{9092} {NPC_9092_s_slave_boy.tga}
+{9093} {NPC_9093_s_slave_boy_grey.tga}
+{9094} {NPC_9094_m_slave_boy_grey.tga}
+
+{9100} {}
+{9101} {NPC_9101_m_slave_girl.tga}
+{9102} {NPC_9102_s_slave_girl.tga}
+{9103} {NPC_9103_s_slave_girl_grey.tga}
+{9104} {NPC_9104_m_slave_girl_grey.tga}
+
+{9110} {}
+{9111} {NPC_9111_m_canon_thaddeus.tga}
+{9112} {NPC_9112_s_canon_thaddeus.tga}
+{9113} {NPC_9113_s_canon_thaddeus_grey.tga}
+{9114} {NPC_9114_m_canon_thaddeus_grey.tga}
+
+{9120} {}
+{9121} {NPC_9121_m_samson.tga}
+{9122} {NPC_9122_s_samson.tga}
+{9123} {NPC_9123_s_samson_grey.tga}
+{9124} {NPC_9124_m_samson_grey.tga}
+
+{9130} {}
+{9131} {NPC_9131_m_goliath.tga}
+{9132} {NPC_9132_s_goliath.tga}
+{9133} {NPC_9133_s_goliath_grey.tga}
+{9134} {NPC_9134_m_goliath_grey.tga}
+
+{9140} {}
+{9141} {NPC_9141_m_bathsheba.tga}
+{9142} {NPC_9142_s_bathsheba.tga}
+{9143} {NPC_9143_s_bathsheba_grey.tga}
+{9144} {NPC_9144_m_bathsheba_grey.tga}
+
+{9150} {}
+{9151} {NPC_9151_m_drow_female_3.tga}
+{9152} {NPC_9152_s_drow_female_3.tga}
+{9153} {NPC_9153_s_drow_female_3_grey.tga}
+{9154} {NPC_9154_m_drow_female_3_grey.tga}
+
+{9160} {}
+{9161} {NPC_9161_m_drow_female_4.tga}
+{9162} {NPC_9162_s_drow_female_4.tga}
+{9163} {NPC_9163_s_drow_female_4_grey.tga}
+{9164} {NPC_9164_m_drow_female_4_grey.tga}
+
+{9170} {}
+{9171} {NPC_9171_m_drow_male_3.tga}
+{9172} {NPC_9172_s_drow_male_3.tga}
+{9173} {NPC_9173_s_drow_male_3_grey.tga}
+{9174} {NPC_9174_m_drow_male_3_grey.tga}
+
+{9180} {}
+{9181} {NPC_9181_m_drow_male_4.tga}
+{9182} {NPC_9182_s_drow_male_4.tga}
+{9183} {NPC_9183_s_drow_male_4_grey.tga}
+{9184} {NPC_9184_m_drow_male_4_grey.tga}
+
+{9190} {}
+{9191} {NPC_9191_m_hextor_cleric.tga}
+{9192} {NPC_9192_s_hextor_cleric.tga}
+{9193} {NPC_9193_s_hextor_cleric_grey.tga}
+{9194} {NPC_9194_m_hextor_cleric_grey.tga}
+
+{9200} {}
+{9201} {NPC_9201_m_hextor_priest.tga}
+{9202} {NPC_9202_s_hextor_priest.tga}
+{9203} {NPC_9203_s_hextor_priest_grey.tga}
+{9204} {NPC_9204_m_hextor_priest_grey.tga}
+
+{9210} {}
+{9211} {NPC_9211_m_orrengaard.tga}
+{9212} {NPC_9212_s_orrengaard.tga}
+{9213} {NPC_9213_s_orrengaard_grey.tga}
+{9214} {NPC_9214_m_orrengaard_grey.tga}
+
+{9220} {}
+{9221} {NPC_9221_m_king_battlehammer.tga}
+{9222} {NPC_9222_s_king_battlehammer.tga}
+{9223} {NPC_9223_s_king_battlehammer_grey.tga}
+{9224} {NPC_9224_m_king_battlehammer_grey.tga}
+
+{9230} {}
+{9231} {NPC_9231_m_battlehammer_warrior.tga}
+{9232} {NPC_9232_s_battlehammer_warrior.tga}
+{9233} {NPC_9233_s_battlehammer_warrior_grey.tga}
+{9234} {NPC_9234_m_battlehammer_warrior_grey.tga}
+
+{9240} {}
+{9241} {NPC_9241_m_wakefield.tga}
+{9242} {NPC_9242_s_wakefield.tga}
+{9243} {NPC_9243_s_wakefield_grey.tga}
+{9244} {NPC_9244_m_wakefield_grey.tga}
+
+{9250} {}
+{9251} {NPC_9251_m_hextor_cleric.tga}
+{9252} {NPC_9252_s_hextor_cleric.tga}
+{9253} {NPC_9253_s_hextor_cleric_grey.tga}
+{9254} {NPC_9254_m_hextor_cleric_grey.tga}
+
+{9260} {}
+{9261} {NPC_9261_m_hextor_assassin.tga}
+{9262} {NPC_9262_s_hextor_assassin.tga}
+{9263} {NPC_9263_s_hextor_assassin_grey.tga}
+{9264} {NPC_9264_m_hextor_assassin_grey.tga}
+
+{9270} {}
+{9271} {NPC_9271_m_cuthbert_cleric.tga}
+{9272} {NPC_9272_s_cuthbert_cleric.tga}
+{9273} {NPC_9273_s_cuthbert_cleric_grey.tga}
+{9274} {NPC_9274_m_cuthbert_cleric_grey.tga}
+
+{9280} {}
+{9281} {NPC_9281_m_lady_asherah.tga}
+{9282} {NPC_9282_s_lady_asherah.tga}
+{9283} {NPC_9283_s_lady_asherah_grey.tga}
+{9284} {NPC_9284_m_lady_asherah_grey.tga}
+
+{9290} {}
+{9291} {NPC_9291_m_rakham.tga}
+{9292} {NPC_9292_s_rakham.tga}
+{9293} {NPC_9293_s_rakham_grey.tga}
+{9294} {NPC_9294_m_rakham_grey.tga}
+
+{9300} {}
+{9301} {NPC_9301_m_boroquin.tga}
+{9302} {NPC_9302_s_boroquin.tga}
+{9303} {NPC_9303_s_boroquin_grey.tga}
+{9304} {NPC_9304_m_boroquin_grey.tga}
+
+{9310} {}
+{9311} {NPC_9311_m_panathaes.tga}
+{9312} {NPC_9312_s_panathaes.tga}
+{9313} {NPC_9313_s_panathaes_grey.tga}
+{9314} {NPC_9314_m_panathaes_grey.tga}
+
+{9320} {}
+{9321} {NPC_9321_m_ganna.tga}
+{9322} {NPC_9322_s_ganna.tga}
+{9323} {NPC_9323_s_ganna_grey.tga}
+{9324} {NPC_9324_m_ganna_grey.tga}
+
+{9330} {}
+{9331} {NPC_9331_m_hextor_archer.tga}
+{9332} {NPC_9332_s_hextor_archer.tga}
+{9333} {NPC_9333_s_hextor_archer_grey.tga}
+{9334} {NPC_9334_m_hextor_archer_grey.tga}
+
+{9340} {}
+{9341} {NPC_9341_m_hextor_soldier.tga}
+{9342} {NPC_9342_s_hextor_soldier.tga}
+{9343} {NPC_9343_s_hextor_soldier_grey.tga}
+{9344} {NPC_9344_m_hextor_soldier_grey.tga}
+
+{9350} {}
+{9351} {NPC_9351_m_screng_assistant.tga}
+{9352} {NPC_9352_s_screng_assistant.tga}
+{9353} {NPC_9353_s_screng_assistant_grey.tga}
+{9354} {NPC_9354_m_screng_assistant_grey.tga}
+
+{9360} {}
+{9361} {NPC_9361_m_hired_thug.tga}
+{9362} {NPC_9362_s_hired_thug.tga}
+{9363} {NPC_9363_s_hired_thug_grey.tga}
+{9364} {NPC_9364_m_hired_thug_grey.tga}
+
+{9370} {}
+{9371} {NPC_9371_m_hextor_monk.tga}
+{9372} {NPC_9372_s_hextor_monk.tga}
+{9373} {NPC_9373_s_hextor_monk_grey.tga}
+{9374} {NPC_9374_m_hextor_monk_grey.tga}
+
+{9380} {}
+{9381} {NPC_9381_m_narwell_archer.tga}
+{9382} {NPC_9382_s_narwell_archer.tga}
+{9383} {NPC_9383_s_narwell_archer_grey.tga}
+{9384} {NPC_9384_m_narwell_archer_grey.tga}
+
+{9390} {}
+{9391} {NPC_9391_m_narwell_guard.tga}
+{9392} {NPC_9392_s_narwell_guard.tga}
+{9393} {NPC_9393_s_narwell_guard_grey.tga}
+{9394} {NPC_9394_m_narwell_guard_grey.tga}
+
+{9400} {}
+{9401} {NPC_9401_m_private_guard.tga}
+{9402} {NPC_9402_s_private_guard.tga}
+{9403} {NPC_9403_s_private_guard_grey.tga}
+{9404} {NPC_9404_m_private_guard_grey.tga}
+
+{9410} {}
+{9411} {NPC_9411_m_moathouse_witch.tga}
+{9412} {NPC_9412_s_moathouse_witch.tga}
+{9413} {NPC_9413_s_moathouse_witch_grey.tga}
+{9414} {NPC_9414_m_moathouse_witch_grey.tga}
+
+{9420} {}
+{9421} {NPC_9421_m_carl.tga}
+{9422} {NPC_9422_s_carl.tga}
+{9423} {NPC_9423_s_carl_grey.tga}
+{9424} {NPC_9424_m_carl_grey.tga}
+
+{9430} {}
+{9431} {NPC_9431_m_dame_nelly.tga}
+{9432} {NPC_9432_s_dame_nelly.tga}
+{9433} {NPC_9433_s_dame_nelly_grey.tga}
+{9434} {NPC_9434_m_dame_nelly_grey.tga}
+
+{9440} {}
+{9441} {NPC_9441_m_anom.tga}
+{9442} {NPC_9442_s_anom.tga}
+{9443} {NPC_9443_s_anom_grey.tga}
+{9444} {NPC_9444_m_anom_grey.tga}
+
+{9450} {}
+{9451} {NPC_9451_m_abiram.tga}
+{9452} {NPC_9452_s_abiram.tga}
+{9453} {NPC_9453_s_abiram_grey.tga}
+{9454} {NPC_9454_m_abiram_grey.tga}
+
+{9460} {}
+{9461} {NPC_9461_m_asaph.tga}
+{9462} {NPC_9462_s_asaph.tga}
+{9463} {NPC_9463_s_asaph_grey.tga}
+{9464} {NPC_9464_m_asaph_grey.tga}
+
+{9470} {}
+{9471} {NPC_9471_m_absalom.tga}
+{9472} {NPC_9472_s_absalom.tga}
+{9473} {NPC_9473_s_absalom_grey.tga}
+{9474} {NPC_9474_m_absalom_grey.tga}
+
+{9480} {}
+{9481} {NPC_9481_m_achan.tga}
+{9482} {NPC_9482_s_achan.tga}
+{9483} {NPC_9483_s_achan_grey.tga}
+{9484} {NPC_9484_m_achan_grey.tga}
+
+{9490} {}
+{9491} {NPC_9491_m_cleric_rastes.tga}
+{9492} {NPC_9492_s_cleric_rastes.tga}
+{9493} {NPC_9493_s_cleric_rastes_grey.tga}
+{9494} {NPC_9494_m_cleric_rastes_grey.tga}
+
+{9500} {}
+{9501} {NPC_9501_m_verbobonc_boy.tga}
+{9502} {NPC_9502_s_verbobonc_boy.tga}
+{9503} {NPC_9503_s_verbobonc_boy_grey.tga}
+{9504} {NPC_9504_m_verbobonc_boy_grey.tga}
+
+{9510} {}
+{9511} {NPC_9511_m_verbobonc_girl.tga}
+{9512} {NPC_9512_s_verbobonc_girl.tga}
+{9513} {NPC_9513_s_verbobonc_girl_grey.tga}
+{9514} {NPC_9514_m_verbobonc_girl_grey.tga}
+
+{9520} {}
+{9521} {NPC_9521_m_burne_assistant.tga}
+{9522} {NPC_9522_s_burne_assistant.tga}
+{9523} {NPC_9523_s_burne_assistant_grey.tga}
+{9524} {NPC_9524_m_burne_assistant_grey.tga}
+
+{9530} {}
+{9531} {NPC_9531_m_otis_assistant.tga}
+{9532} {NPC_9532_s_otis_assistant.tga}
+{9533} {NPC_9533_s_otis_assistant_grey.tga}
+{9534} {NPC_9534_m_otis_assistant_grey.tga}
+
+{9540} {}
+{9541} {NPC_9541_m_bethany.tga}
+{9542} {NPC_9542_s_bethany.tga}
+{9543} {NPC_9543_s_bethany_grey.tga}
+{9544} {NPC_9544_m_bethany_grey.tga}
+
+{9550} {}
+{9551} {NPC_9551_m_cyn.tga}
+{9552} {NPC_9552_s_cyn.tga}
+{9553} {NPC_9553_s_cyn_grey.tga}
+{9554} {NPC_9554_m_cyn_grey.tga}
+
+{9560} {}
+{9561} {NPC_9561_m_veenah_glavrol.tga}
+{9562} {NPC_9562_s_veenah_glavrol.tga}
+{9563} {NPC_9563_s_veenah_glavrol_grey.tga}
+{9564} {NPC_9564_m_veenah_glavrol_grey.tga}
+
+{9570} {}
+{9571} {NPC_9571_m_heather.tga}
+{9572} {NPC_9572_s_heather.tga}
+{9573} {NPC_9573_s_heather_grey.tga}
+{9574} {NPC_9574_m_heather_grey.tga}
+
+{9580} {}
+{9581} {NPC_9581_m_aerich_dragonsbane.tga}
+{9582} {NPC_9582_s_aerich_dragonsbane.tga}
+{9583} {NPC_9583_s_aerich_dragonsbane_grey.tga}
+{9584} {NPC_9584_m_aerich_dragonsbane_grey.tga}
+
+{9590} {}
+{9591} {NPC_9591_m_jesus staccatori.tga}
+{9592} {NPC_9592_s_jesus staccatori.tga}
+{9593} {NPC_9593_s_jesus staccatori_grey.tga}
+{9594} {NPC_9594_m_jesus staccatori_grey.tga}
+
+{9600} {}
+{9601} {NPC_9601_m_paulo.tga}
+{9602} {NPC_9602_s_paulo.tga}
+{9603} {NPC_9603_s_paulo_grey.tga}
+{9604} {NPC_9604_m_paulo_grey.tga}
+
+{9610} {}
+{9611} {NPC_9611_m_richard_blade.tga}
+{9612} {NPC_9612_s_richard_blade.tga}
+{9613} {NPC_9613_s_richard_blade_grey.tga}
+{9614} {NPC_9614_m_richard_blade_grey.tga}
+
+{9620} {}
+{9621} {NPC_9621_m_verbobonc_laborer.tga}
+{9622} {NPC_9622_s_verbobonc_laborer.tga}
+{9623} {NPC_9623_s_verbobonc_laborer_grey.tga}
+{9624} {NPC_9624_m_verbobonc_laborer_grey.tga}
+
+{9630} {}
+{9631} {NPC_9631_m_slave_boy.tga}
+{9632} {NPC_9632_s_slave_boy.tga}
+{9633} {NPC_9633_s_slave_boy_grey.tga}
+{9634} {NPC_9634_m_slave_boy_grey.tga}
+
+{9640} {}
+{9641} {NPC_9641_m_rothbert.tga}
+{9642} {NPC_9642_s_rothbert.tga}
+{9643} {NPC_9643_s_rothbert_grey.tga}
+{9644} {NPC_9644_m_rothbert_grey.tga}
+
+{9650} {}
+{9651} {NPC_9651_m_becka.tga}
+{9652} {NPC_9652_s_becka.tga}
+{9653} {NPC_9653_s_becka_grey.tga}
+{9654} {NPC_9654_m_becka_grey.tga}
+
+{9660} {}
+{9661} {NPC_9661_m_hextor_assassin_m.tga}
+{9662} {NPC_9662_s_hextor_assassin_m.tga}
+{9663} {NPC_9663_s_hextor_assassin_m_grey.tga}
+{9664} {NPC_9664_m_hextor_assassin_m_grey.tga}
+
+{9670} {}
+{9671} {NPC_9671_m_hextor_fighter_f.tga}
+{9672} {NPC_9672_s_hextor_fighter_f.tga}
+{9673} {NPC_9673_s_hextor_fighter_f_grey.tga}
+{9674} {NPC_9674_m_hextor_fighter_f_grey.tga}
+
+{9680} {}
+{9681} {NPC_9681_m_mal.tga}
+{9682} {NPC_9682_s_mal.tga}
+{9683} {NPC_9683_s_mal_grey.tga}
+{9684} {NPC_9684_m_mal_grey.tga}
+
+{9690} {}
+{9691} {NPC_9691_m_knoll.tga}
+{9692} {NPC_9692_s_knoll.tga}
+{9693} {NPC_9693_s_knoll_grey.tga}
+{9694} {NPC_9694_m_knoll_grey.tga}
+
+{9700} {}
+{9701} {NPC_9701_m_delilah.tga}
+{9702} {NPC_9702_s_delilah.tga}
+{9703} {NPC_9703_s_delilah_grey.tga}
+{9704} {NPC_9704_m_delilah_grey.tga}
+
+{9710} {}
+{9711} {NPC_9711_m_donovan.tga}
+{9712} {NPC_9712_s_donovan.tga}
+{9713} {NPC_9713_s_donovan_grey.tga}
+{9714} {NPC_9714_m_donovan_grey.tga}
+
+{9720} {}
+{9721} {NPC_9721_m_knight.tga}
+{9722} {NPC_9722_s_knight.tga}
+{9723} {NPC_9723_s_knight_grey.tga}
+{9724} {NPC_9724_m_knight_grey.tga}
+
+{9730} {}
+{9731} {NPC_9731_m_retainer.tga}
+{9732} {NPC_9732_s_retainer.tga}
+{9733} {NPC_9733_s_retainer_grey.tga}
+{9734} {NPC_9734_m_retainer_grey.tga}
+
+{9740} {}
+{9741} {NPC_9741_m_cleric.tga}
+{9742} {NPC_9742_s_cleric.tga}
+{9743} {NPC_9743_s_cleric_grey.tga}
+{9744} {NPC_9744_m_cleric_grey.tga}
+
+{9750} {}
+{9751} {NPC_9751_m_siren.tga}
+{9752} {NPC_9752_s_siren.tga}
+{9753} {NPC_9753_s_siren_grey.tga}
+{9754} {NPC_9754_m_siren_grey.tga}
+
+{9760} {}
+{9761} {NPC_9751_m_siren.tga}
+{9762} {NPC_9752_s_siren.tga}
+{9763} {NPC_9753_s_siren_grey.tga}
+{9764} {NPC_9754_m_siren_grey.tga}
+
+{10000}{}
+{10001}{npc_wight_42x37.tga}
+{10002}{npc_wight_53x47.tga}
+{10003}{npc_wight_53x47_grey.tga}
+{10004}{npc_wight_42x37_grey.tga}
+

@@ -950,3 +950,23 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 		self.spells.add_spell(toee.spell_cure_light_wounds, toee.stat_level_cleric, caster_level_cleric)
 		self.spells.add_spell(toee.spell_inflict_light_wounds, toee.stat_level_cleric, caster_level_cleric, 2) # due to supposed pearl of power
 		return toee.RUN_DEFAULT
+
+class CtrlWight(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14929
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlWight, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		utils_npc.npc_skill_ensure(npc, toee.skill_hide, 8)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		#debug.breakp("enter_combat")
+		utils_sneak.npc_make_hide_and_surprise(attachee)
+		return toee.RUN_DEFAULT

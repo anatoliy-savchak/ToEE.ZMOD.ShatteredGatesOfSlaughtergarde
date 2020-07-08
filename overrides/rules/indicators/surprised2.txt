@@ -1,0 +1,5 @@
+ID_string: SURPRISED2
+effect_type: 2
+texture_file: art\interface\player_conditions\Conditions\Suprised.tga
+help_topic: TAG_ROOT
+tooltip_base_text:Surprised
