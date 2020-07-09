@@ -52,7 +52,7 @@ def Surprised2_OnGetEffectTooltip(attachee, args, evt_obj):
 
 modObj1 = templeplus.pymod.PythonModifier(GetConditionName(), 2) #
 modObj1.AddHook(toee.ET_OnTurnBasedStatusInit, toee.EK_NONE, TurnBasedStatusInitNoActions, ())
-modObj1.AddHook(toee.ET_OnBeginRound, toee.EK_NONE, Surprised2_OnBeginRound, ())
-modObj1.AddHook(toee.ET_OnD20Signal, toee.EK_S_BeginTurn, Surprised2_S_BeginTurn, ())
+#modObj1.AddHook(toee.ET_OnBeginRound, toee.EK_NONE, Surprised2_OnBeginRound, ())
+#modObj1.AddHook(toee.ET_OnD20Signal, toee.EK_S_BeginTurn, Surprised2_S_BeginTurn, ())
 modObj1.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, Surprised2_OnGetTooltip, ())
 modObj1.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, Surprised2_OnGetEffectTooltip, ())
