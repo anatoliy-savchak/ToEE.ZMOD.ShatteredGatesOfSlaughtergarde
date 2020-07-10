@@ -1,0 +1,46 @@
+{1}{[You see a man surrounded by manuals, tomes, folios and books of every kind.] Welcome, sir, welcome. How may I help you?}{[You see a man surrounded by texts, tomes, folios and books of every kind.] Welcome, madam, welcome. How may I help you?}{}{}{}{}
+{2}{@pcname@ at your service.}{}{1}{}{10}{}
+{3}{So you sell books? Anything an adventurer might find useful?}{}{1}{}{20}{}
+{4}{No, never mind.}{}{1}{}{0}{}
+
+{10}{Artemis Tendricho at your service, sir. [You shake hands formally, then informally.]}{Artemis Tendricho at your service, madam. [You both curtsey, tittering.]}{}{}{}{}
+{11}{Books, eh? Anything I might have need of?}{}{1}{}{20}{}
+{12}{Let's leave it there.}{}{1}{}{0}{}
+
+{20}{Let me see... the only thing I currently have that might interest someone in your profession is a book on the various inhabited areas of the Valley. Doubtless you know some of them - you look like a local - but few people have visited them all.}{Let me see... the only thing I currently have that might interest someone in your profession is a book on the various inhabited areas of the Valley. Doubtless you know some of them - you look like a local - but few people have visited them all.}{}{}{}{npc_1(npc)}
+{21}{Yes, I can see the value in that. How much?}{}{1}{}{30}{}
+{22}{Not today.}{}{1}{}{0}{}
+{23}{I'll think about it. But while I am here, may I ask - do you buy second hand books? Should I find any on my adventures...?}{}{1}{}{50}{}
+
+{30}{Just 10 gold pieces. Bound in leather, parchment folios, coloured plates - a real bargain!}{Just 10 gold pieces. Bound in leather, parchment folios, coloured plates - a real bargain!}{}{}{}{}
+{31}{Sold!}{}{1}{pc.money_get() >= 1000}{35}{pc.money_adj(-1000)}
+{32}{I'll think about it.}{}{1}{}{40}{}
+{33}{Too pricey.}{}{1}{}{40}{}
+
+{35}{[He takes your money and hands you a leather-clad volume.]}{[He takes your money and hands you a leather-clad volume.]}{}{}{}{create_item_in_inventory(11001,pc)}
+{36}{Thanks.}{}{1}{}{0}{}
+
+
+{40}{I'll be here if you change your mind.}{I'll be here if you change your mind.}{}{}{}{}
+{41}{Of course.}{}{1}{}{0}{}
+{42}{F:}{}{1}{}{0}{}
+{43}{While I am here, may I ask, do you buy second hand books?}{}{1}{}{50}{}
+
+{50}{Of course! Reading a page does not lessen its value to the next reader. Though the works must be of a reasonable quality - not dripping in monster guts, as it were. And [he coughs politely] of an appropriate nature, if you take my understanding.}{Of course! Reading a page does not lessen its value to the next reader. Though the works must be of a reasonable quality - not dripping in monster guts, as it were. And [he coughs politely] of an appropriate nature, if you take my understanding.}{}{}{}{}
+{51}{Yes I do. Fair enough.}{}{1}{}{0}{}
+{52}{Well, a little bit of blood is to be expected, and we certainly try to wipe it of...}{}{1}{}{0}{}
+{53}{Is this about my hentai collection? It is ART, sir. I will not stand here and listen to this! [Storm off.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+
+
+
+// return
+
+{100}{Welcome back, sir. How may I serve?}{Welcome back, madam. How may I serve?}{}{}{}{}
+{101}{That book on the local settlements - how much was it?}{}{1}{get_1(npc)}{30}{}
+{102}{Do you have anything to suit an adventurer?}{}{1}{not get_1(npc)}{20}{}
+{103}{Do you have anything new in?}{}{1}{}{110}{}
+{104}{What was your position on buying second hand books?}{}{1}{}{50}{}
+{105}{E:}{}{1}{}{0}{}
+
+{110}{No, not at the moment. Just the classics!}{No, not at the moment. Just the classics!}{}{}{}{}
+{111}{E:}{}{1}{}{0}{}

@@ -1,0 +1,70 @@
+{1}{[You see a scroll seller.] Get your scrolls! Scrolls here!}{[You see a scroll seller.] Get your scrolls! Scrolls here!}{}{}{}{}
+{2}{Scrolls you say?}{}{1}{}{10}{}
+
+{10}{Yes, I say 'scrolls'. Because I am selling scrolls. It's called advertising. I thought this was generally understood.}{Yes, I say 'scrolls'. Because I am selling scrolls. It's called advertising. I thought this was generally understood.}{}{}{}{}
+{11}{Cheeky. What sort of scrolls?}{}{1}{}{20}{}
+{12}{B:Just show me your stock.}{}{1}{}{0}{pc.barter(npc)}
+{13}{You must know what is going on around here, where would I find adventure?}{}{1}{game.quests[1].state == qs_unknown}{15}{}
+
+{15}{[He shrugs.] I get plenty of adventurers in here, of course, but they tend to keep their opportunities to themselves. Prefer to boast after the fact, know what I mean? [Strokes his chin.] I reckon you should try a tavern, maybe the Sly Wink. A lot of adventurers head there. It's right outside the main doors to this market, you can't miss it.}{[He shrugs.] I get plenty of adventurers in here, of course, but they tend to keep their opportunities to themselves. Prefer to boast after the fact, know what I mean? [Strokes his chin.] I reckon you should try a tavern, maybe the Sly Wink. A lot of adventurers head there. It's right outside the main doors to this market, you can't miss it.}{}{}{}{}
+{16}{B: Thanks. Before I go, show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+{17}{Thanks, I'll just go back to browsing.}{}{1}{}{0}{}
+{18}{[Follow his directions and go straight there.]}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5007,497,441 )}
+
+{20}{Oh, just low level stuff. Nothing powerful... if I could get my hands on powerful scrolls, I'd summon a balor and turn everyone who ever wronged me into... well, never mind. Let's just say I wouldn't be working here! So, low level arcane and divine scrolls only.}{Oh, just low level stuff. Nothing powerful... if I could get my hands on powerful scrolls, I'd summon a balor and turn everyone who ever wronged me into... well, never mind. Let's just say I wouldn't be working here! So, low level arcane and divine scrolls only.}{}{}{}{}
+{21}{B:Of course. Please show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+{22}{I'm after power, you understand? Real power. So where do I go?}{}{1}{pc.stat_level_get(stat_level_wizard) >= 1 or pc.stat_level_get(stat_level_sorcerer) >= 1}{26}{}
+{23}{And did you scribe them yourself?}{}{1}{}{40}{}
+{24}{E:}{}{1}{}{0}{}
+
+{26}{[He blinks.] I believe the traditional manner is to adventure and quest for it?}{[He blinks.] I believe the traditional manner is to adventure and quest for it?}{}{}{}{}
+{27}{Oh, son, if I had a balor right now...}{}{1}{}{0}{}
+{28}{B:Fine, show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+{29}{E:}{}{1}{}{0}{}
+
+{40}{Me? No, I'm not a spell caster. Just a merchant. I get them from a wholesaler, no idea where she gets them from. Supply and demand, you know. I happen to sell scrolls, but really, I would sell whatever there was a need for. It's just business.}{Me? No, I'm not a spell caster. Just a merchant. I get them from a wholesaler, not sure where she gets them from. Supply and demand, you know. I happen to sell scrolls, but really, I would sell whatever there was a need for. It's just business.}{}{}{}{}
+{41}{And could you introduce me to this wholesaler?}{}{1}{}{46}{}
+{42}{But as someone in the industry, you must know of local arcane schools, that sort of thing?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 5}{50}{}
+{43}{B:Well, you have the supply and I have the demand, show me your wares.}{}{1}{}{0}{pc.barter(npc)}
+{44}{E:}{}{1}{}{0}{}
+
+{46}{So you can cut out the middle man, who in this case is me? Absolutely not.}{So you can cut out the middle man, who in this case is me? Absolutely not.}{}{}{}{}
+{47}{Dagnabit! [Storm off in disgust.]}{}{1}{}{0}{}
+{48}{A:}{}{1}{}{0}{}
+
+{50}{Well... [he lowers his voice] there is a group some speak of, wizards mostly, who live in a black tower to the north. So they say, I've never seen the place and I don't know anyone who has been there... but the rumours persist.}{Well... [he lowers his voice] there is a group some speak of, wizards mostly, who live in a black tower to the north. So they say, I've never seen the place and I don't know anyone who has been there... but the rumours persist.}{}{}{}{game.global_flags[4] = 1}
+{51}{And their name...?}{}{1}{}{55}{}
+
+{55}{The Ebon Cabal, they're called. Lots of people know that name, they think they are a fairy tale or myth, but I dunno, the rumours persist. They can't all be made up, can they?}{The Ebon Cabal, they're called. Lots of people know that name, they think they are a fairy tale or myth, but I dunno, the rumours persist. They can't all be made up, can they?}{}{}{}{}
+{56}{Well, maybe, but many a rumour has its seed in truth. And where is this tower?}{}{8}{}{60}{}
+{57}{No, guess not. How do I find them?}{}{-7}{}{60}{}
+
+{60}{I don't know exactly where the tower is, if we had coordinates you could just check and prove or disprove it all. But here's the thing... if they think you're worthy, powerful enough, THEY come to YOU. All the stories agree on that.}{I don't know exactly where the tower is, if we had coordinates you could just check and prove or disprove it all. But here's the thing... if they think you're worthy, powerful enough, THEY come to YOU. All the stories agree on that.}{}{}{}{}
+{61}{I'll keep my eye out then.}{}{1}{}{65}{}
+
+{65}{Look, I've said enough. Now do you want to buy something or not?}{Look, I've said enough. Now do you want to buy something or not?}{}{}{}{}
+{66}{B:Yes.}{}{1}{}{0}{pc.barter(npc)}
+{67}{No.}{}{1}{}{0}{}
+
+
+// returning chatter
+
+{100}{Welcome back. Need some more firepower, do you?}{Welcome back. Need some more firepower, do you?}{}{}{}{}
+{101}{B:Absolutely! Sell me you wares.}{}{1}{}{0}{pc.barter(npc)}
+{102}{Do you have anything new?}}{}{1}{}{110}{}
+{103}{Do you buy scrolls?}{}{1}{}{120}{}
+{104}{No, just browsing.}{}{1}{}{0}{}
+
+{110}{I don't remember what I was selling last time, so I'm not sure if my stock is new or not, but I can say that I get regular deliveries. So I'll go with probably.}{I don't remember what I was selling last time, so I'm not sure if my stock is new or not, but I can say that I get regular deliveries. So I'll go with probably.}{}{}{}{}
+{111}{B:Great, I'll take a look.}{}{1}{}{0}{pc.barter(npc)}
+{112}{F:}{}{1}{}{0}{}
+{113}{These deliveries, where did you say they come from?}{}{1}{}{46}{}
+{115}{Deliveries, eh? You must be well connected, and know of local arcane schools. What can you tell me?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 6 and game.global_flags[4] == 0}{50}{}
+
+{120}{Of course!}{Of course!}{}{}{}{}
+{121}{B:Great! Let's do this!}{}{1}{}{0}{pc.barter(npc)}
+{122}{E:}{}{1}{}{0}{}
+
+{900}{Made it!}{Made it}{}{}{}{}
+{901}{Yay!}{}{1}{}{0}{{}
+{902}{Start over.}{}{1}{}{1}{}

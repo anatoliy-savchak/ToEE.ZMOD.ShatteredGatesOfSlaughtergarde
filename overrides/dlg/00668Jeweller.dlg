@@ -1,0 +1,25 @@
+{1}{[You see an Elf.] Welcome to Oakleaf Jeweller. Are you buying or selling?}{[You see an Elf.] Welcome to Oakleaf Jeweller. Are you buying or selling?}{}{}{}{}
+{2}{B:Buying.}{}{1}{}{0}{pc.barter(npc)}
+{3}{B:Selling.}{}{1}{}{0}{pc.barter(npc)}
+{4}{Just browsing.}{}{1}{}{10}{}
+{5}{Introductions, perhaps? I am @pcname@.}{}{1}{}{20}{}
+
+{10}{Of course, let me know if you need anything.}{Of course, let me know if you need anything.}{}{}{}{}
+{11}{Will do.}{}{1}{}{0}{}
+{12}{B:Actually, I would like to trade.}{}{1}{}{0}{pc.barter(npc)}
+
+{20}{I would prefer to keep things professional. Let me know if you need anything. [She turns away!]}{I would prefer to keep things professional. Let me know if you need anything. [She turns away!]}{}{}{}{away(npc)}
+{21}{A:}{}{1}{}{0}{}
+{22}{F:}{}{1}{}{0}{}
+{23}{B:No, wait, I want to trade!}{}{1}{}{0}{pc.barter(npc)}
+{24}{What is it with jewellers? Sheesh, you're all so secretive!}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+
+
+
+// return
+
+{100}{Welcome back, will you be buying or selling?}{Welcome back, ma'am, will you be buying or selling?}{}{}{}{}
+{101}{B:Buying.}{}{1}{}{0}{pc.barter(npc)}
+{102}{B:Selling}{}{1}{}{0}{pc.barter(npc)}
+{103}{B:A little of both, actually.}{}{1}{}{0}{pc.barter(npc)}
+{104}{Just passing.}{}{1}{}{0}{}

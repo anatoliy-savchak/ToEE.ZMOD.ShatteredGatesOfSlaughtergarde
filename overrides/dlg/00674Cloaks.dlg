@@ -1,0 +1,14 @@
+{1}{[You see a human vendor wearing several cloaks, one on top of each other, all slightly different sizes and very different colours. When he stands still only the top-most cloak is visible, but as he moves the others swirl around him, creating a 'coat-of-many-colours' effect. He smiles as he sees you watching him.}{[You see a human vendor wearing several cloaks, one on top of each other, all slightly different sizes and very different colours. When he stands still only the top-most cloak is visible, but as he moves the others swirl around him, creating a 'coat-of-many-colours' effect. He smiles as he sees you watching him.}{}{}{}{}
+{2}{I'm @pcname@, who might you be?}{}{1}{}{10}{}
+
+{10}{Greetings, @pcname@. [He bows and his cloaks make their obeisance with a cascading flourish.] My name is Joseph.}{Greetings, @pcname@. [He bows and his cloaks make their obeisance with a cascading flourish.] My name is Joseph.}{}{}{}{}
+{11}{Of course it is. So I take it you sell cloaks?}{}{1}{}{20}{}
+
+{20}{Indeed I do, the best in Sumberton, and in a range of sizes too. Shall I show you my stock?}{Indeed I do, the best in Sumberton, and in a range of sizes too. Shall I show you my stock?}{}{}{}{}
+{21}{B:Please do.}{}{1}{}{0}{pc.barter(npc)}
+{22}{Not today.}{}{1}{}{0}{}
+
+
+{100}{Welcome back, can I interest you in a new cloak? Something festive, or something warm? Mayhap even something magical?}{Welcome back, can I interest you in a new cloak? Something festive, or something warm? Mayhap even something magical?}{}{}{}{}
+{101}{B:}{}{1}{}{0}{pc.barter(npc)}
+{102}{Just browsing.}{}{1}{}{0}{}

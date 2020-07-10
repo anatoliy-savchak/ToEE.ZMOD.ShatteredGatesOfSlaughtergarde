@@ -1,0 +1,174 @@
+//
+// category.mes
+// message number / 1000 == obj_t_* type
+//
+
+{0000}{unassigned portals}
+{0001}{Generic Doors}
+
+
+{1000}{unassigned containers}
+{1001}{Empty Chest}
+{1002}{Empty Barrel}
+{1003}{Empty Safe}
+{1004}{Magic Chest}
+{1005}{Mystic Chest}
+{1006}{Arcane Chest}
+{1007}{Factory Discards}
+{1008}{Parts Crate}
+{1009}{Shipping Crate}
+{1010}{Storage Crate}
+{1011}{Packaged Components}
+{1012}{Industrial Salvage}
+{1013}{Rubbish Bin}
+{1014}{Dead Body}
+{1015}{Plant}
+{1021}{Slaughtergardians}
+
+{2000}{unassigned scenery}
+{2001}{Tree}
+{2002}{Tree Small}
+{2003}{Tree Large}
+{2004}{Tree Dead}
+{2005}{Plants}
+{2006}{Wood}
+{2007}{Wood Small}
+{2008}{Wood Large}
+{2009}{Stone}
+{2010}{Stone Small}
+{2011}{Stone Large}
+{2012}{Metal}
+{2013}{Metal Small}
+{2014}{Metal Large}
+{2015}{Machine}
+{2016}{Misc.}
+{2017}{Misc. Small}
+{2018}{Misc. Large}
+{2019}{Passage}
+{2020}{Bed}
+{2021}{Light}
+
+
+{3000}{unassigned projectiles}
+
+
+// WEAPON CATEGORIES CANNOT BE CHANGED THEY CORRESPOND TO THE
+// ANIMATIONS ASSOCIATED FOR THAT WEAPON, THUS IF YOU ADD OR
+// DELETE A WEAPON CATEGORY THE ANIMATION SYSTEM WILL HUNT YOU DOWN
+// AND KILL YOUR PETS!
+{4000}{unassigned weapons}
+{4001}{Daggers}
+{4002}{Swords}
+{4003}{Maces}
+{4004}{Hammers}
+{4005}{Axes}
+{4006}{Clubs}
+{4007}{BattleAxes}
+{4008}{Greatswords}
+{4009}{Spears}
+{4010}{Staffs}
+{4011}{Polearms}
+{4012}{Bows}
+{4013}{Crossbows}
+{4014}{Slings}
+{4015}{Darts}
+
+
+{5000}{unassigned ammo}
+{5001}{Arrows}
+{5002}{Bullets}
+{5003}{Charges}
+{5004}{Fuel}
+{5005}{Bolts}
+
+
+{6000}{unassigned armor}
+{6001}{Clothes}
+{6002}{Robes}
+{6003}{Leather}
+{6004}{Chain}
+{6005}{Plate}
+{6006}{Tech Plate}
+{6007}{Barbarian}
+{6008}{Helmets}
+{6009}{Rings}
+{6010}{Medallions}
+{6011}{Boots}
+{6012}{Gauntlets}
+{6013}{Shields}
+{6014}{Cloaks}
+{6015}{Bracers}
+{6016}{Banded}
+{6017}{Stackable jewelry}
+
+
+{7000}{unassigned gold}
+{7001}{Coins}
+
+
+{8000}{unassigned food}
+{8001}{Food}
+{8002}{Non-alcoholic drink}
+{8003}{Alcoholic drink}
+{8004}{Potions}
+
+
+{9000}{unassigned scrolls}
+{9001}{Scrolls}
+
+
+{10000}{unassigned keys}
+{10001}{Key}
+
+
+{11000}{unassigned written items}
+{11001}{Book}
+{11002}{Schematic}
+{11003}{Note}
+{11004}{Telegraph}
+
+
+{12000}{unassigned generic items}
+{12001}{General Items}
+{12002}{Miscellaneous Magic Items}
+{12003}{Magic Wands}
+{12004}{Magic Rods}
+{12005}{Gems}
+{12006}{Bardic instruments}
+{12007}{Familiars}
+
+
+{13000}{unassigned pcs}
+{13001}{Pregenerated players}
+
+
+{14000}{unassigned npcs}
+{14001}{Hommlet}
+{14002}{Moathouse}
+{14003}{Nulb}
+{14004}{Temple}
+{14005}{Animals}
+{14006}{Elementals}
+{14007}{General monsters}
+{14008}{Humanoids}
+{14009}{Outsiders}
+{14010}{Plant creatures}
+{14011}{Undead}
+{14012}{Encounters}
+{14013}{Vignettes}
+{14014}{Generic}
+{14015}{Welkwood Bog}
+{14016}{Hickory Branch}
+{14017}{Moathouse Respawn}
+{14018}{Verbobonc}
+{14019}{Arena of Heroes}
+{14020}{War of the Golden Skull}
+{14021}{Slaughtergardians}
+
+
+{15000}{unassigned traps}
+{15001}{Traps}
+{15002}{TrapSource}
+
+
+{16000}{unassigned bags}

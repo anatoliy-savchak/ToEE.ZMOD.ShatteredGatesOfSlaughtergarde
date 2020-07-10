@@ -1,0 +1,44 @@
+{1}{[You see a surprisingly slim dwarf with a salt-and-pepper beard.] Fine day to you, sirrah. Be ye needing th' gear of war?}{[You see a surprisingly slim dwarf with a salt-and-pepper beard.] Fine day to you, missy. Be ye needing th' gear of war?}{}{}{}{}
+{2}{Introductions, perhaps? I am @pcname@.}{}{1}{}{10}{}
+{3}{B: Just show me your wares.}{}{1}{}{0}{pc.barter(npc)}
+{4}{No thank you.}{}{1}{}{0}{}
+{5}{How I do hate Dwarves. Bye bye now.}{}{1}{pc.stat_level_get(stat_race) == race_elf}{0}{npc.reaction_adj( pc, -20 )}
+{6}{A fellow Dwarf, in these stinkin' human wastelands! Gah, but it makes my heart burn hot t' see ye! Ale, for Moradin's sake we must have ale!}{}{1}{pc.stat_level_get(stat_race) == race_dwarf}{30}{}
+
+{10}{A pleasure. [You shake hands.] I be Durrik of Clan Greyhearth, merchant o' th' fine wares o' me clan.}{A pleasure. [You shake hands.] I be Durrik of Clan Greyhearth, merchant o' th' fine wares o' me clan.}{}{}{}{}
+{11}{Well met, Durrik. [You shake hands.] May I ask a little about yourself?}{}{1}{}{20}{}
+{12}{B: Do show me your wares.}{}{1}{}{0}{pc.barter(npc)}
+{13}{Now that we've been properly introduced, it's socially acceptable for me to move on. Goodbye.}{}{1}{}{0}{}
+
+{20}{Ye wanna ken ol' Durrik, eh? That'd be bonnie! [You shake hands.] Me clan hail from the highlands of Krokarr. While many o' the town be miners, me blood were always weaponsmiths. But alas, these scrawny arms have no strength t' swing a hammer, so I be th' one what sells our gear.}{Ye wanna ken ol' Durrik, eh? That'd be bonnie! [You shake hands.] Me clan hail from the highlands of Krokarr. While many o' the town be miners, me blood were always weaponsmiths. But alas, these scrawny arms have no strength t' swing a hammer, so I be th' one what sells our gear.}{}{}{}{npc_1(npc)}
+{21}{B: And a fine job you're doing. [You shake hands.] Please show me your goods.}{}{1}{}{0}{pc.barter(npc)}
+{22}{I'll take my leave, but if I need weapons I know where to come. Thank you. [You shake hands.]}{}{1}{}{0}{}
+
+{30}{[...9 pints later] so he says, "ahh, but your faerie dun been a male!" And I says, "do you hear me complaining?"}{[...9 pints later] and she says, "what, am I supposed to pick my teeth with that?"}{}{}{}{}
+{31}{B: Ha ha ha ha ha!!! [You both laugh for eleven minutes, then shake hands.] Now sell me something.}{}{1}{}{0}{pc.barter(npc)}
+{32}{[End the conversation in the traditional Dwarven manner - vomit and pass out.]}{}{1}{}{0}{game.fade( 600,0,0,1 )}
+
+// normal return chatter
+
+{100}{Ahh, @pcname@! It be good t' see ye. Be ye looking t' trade?}{Ahh, @pcname@! It be good t' see ye. Be ye looking t' trade?}{}{}{}{}
+{101}{B: Yes please!}{}{1}{}{0}{}
+{102}{No thank you.}{}{1}{}{0}{}
+{103}{Tell me something of yourself?}{}{1}{not get_1(npc)}{20}{}
+{105}{Actually, you must know somewhat of the happenings around here. I'm an adventurer, obviously - where might I find adventure?}{}{1}{game.quests[1].state == qs_unknown}{110}{}
+
+{110}{[He scratches his sparse beard then says] well, most adventurers seem t' haunt th' taverns, and adventure finds them readily enough. Try the Sly Wink, straight outside the marketplace}{[He scratches his sparse beard then says] well, most adventurers seem t' haunt th' taverns, and adventure finds them readily enough. Try the Sly Wink, straight outside the marketplace}{}{}{}{}
+{111}{Thanks, I will! [Go straight there now.]}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5007,497,441 )}
+{112}{B: Thanks, let us trade before I go.}{}{1}{}{0}{pc.barter(npc)}
+{113}{I'll look into it.}{}{1}{}{0}{}
+
+// unimpressed chatter
+
+{150}{Oh, it's you. [He unzips his pants and urinates on your boots for what seems like an eternity, then says] whaddya want?}{Oh, it's you. [He unzips his pants and urinates on your boots for what seems like an eternity, then says] whaddya want?}{}{}{}{}
+{151}{[Knowledge check - that's not traditional behaviour for Dwarves! He doesn't like you!] Never mind.}{}{1}{bard_know(pc, 5)}{0}{}
+{152}{B: Let's trade.}{}{1}{}{0}{pc.barter(npc)}
+{153}{Just dropped by to say hi.}{}{1}{}{0}{}
+
+
+{900}{Made it!}{Made it}{}{}{}{}
+{901}{Yay!}{}{1}{}{0}{{}
+{902}{Start over.}{}{1}{}{1}{}

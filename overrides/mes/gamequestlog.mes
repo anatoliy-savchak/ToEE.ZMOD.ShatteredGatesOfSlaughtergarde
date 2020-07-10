@@ -6,9 +6,9 @@
 
 // Quest Titles 000 - 199
 {0} {Dominate Counter-Strike for 15 Consecutive Days}
-{1} {Unhappy Tailor}
-{2} {Woodcutter's Problem}
-{3} {Black Jay's Dead Sheep}
+{1} {Spicy Chicanery}
+{2} {Slaughtergarde Temple - Luminous Order}
+{3} {Slaughtergarde Temple - Ebon Cabal}
 {4} {A Ring For Black Jay}
 {5} {Carpenter's Dilemma}
 {6} {Cupid's Arrow}
@@ -118,14 +118,13 @@
 {110} {Notice: Captain Abiram}				//co8 - verbobonc
 {111} {Notice: Lord Viscount Wilfrick}			//co8 - verbobonc
 {112} {Notice: Lord Viscount Wilfrick}			//co8 - verbobonc
-{113} {Vintra: Recover spices shipment}
 
 
 // Quest Descriptions 200 - 399
 {200} {For this quest, you can't be killed, ever. If you are, then you lose the quest coz you suck.  Oh, and this has to last for 15 days.}
-{201} {Jinnerth, the tailor of Hommlet, has asked you to speak with the captain of the militia about allowing him to join the town militia.}
-{202} {Tarim has asked you to kill some spiders in a deklo grove so that he can get access to the wood there.}
-{203} {Black Jay has asked you to find out why his sheep are all dying.}
+{201} {The Chicane Guild will pay you 200gp to rescue a shipment of spices and fruits from goblin bandits. Take the west road out of town.}
+{202} {[Quest that gives you the location for the Slaughtergarde Temple if you do it for the Luminous Order]}
+{203} {[Quest that gives you the location for the Slaughtergarde Temple if you do it for the Ebon Cabal]}
 {204} {Black Jay is looking for his wife's wedding ring.}
 {205} {The town carpenter would like his brother Marek to convert to Old Faith so that the villagers might better accept his family.}
 {206} {Gwynneth has asked you to try to pair up her brother-in-law Filliken with the widow Mathilde.}
@@ -235,4 +234,3 @@
 {310} {Captain Abiram has given notice requesting your presence at his desk in Verbobonc City Hall.}
 {311} {Lord Viscount Wilfrick has given notice requesting your presence in his chambers in Verbobonc City Hall.}
 {312} {Lord Viscount Wilfrick has given emergency notice requesting your presence in his chambers in Verbobonc City Hall.}
-{312} {Vintra Marktunsel has asked you to retrieve stolen shipment of spices.}

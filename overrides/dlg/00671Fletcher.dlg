@@ -1,0 +1,88 @@
+{1}{[You see a bowyer.] Greetings, I am Stuart, bowyer and fletcher. Will it be bows or ammunition?}{[You see a bowyer.] Greetings, I am Stuart, bowyer and fletcher. Will it be bows or ammunition?}{}{}{}{}
+{2}{Bows.}{}{1}{}{10}{}
+{3}{Ammunition.}{}{1}{}{20}{}
+{4}{Neither. Goodbye.}{}{1}{}{0}{}
+
+{10}{Very good, very good. And will it be normal bows or cross-bows?}{Very good, very good. And will it be normal bows or cross-bows?}{}{}{}{npc_1(npc)}
+{11}{Normal bows.}{}{1}{}{30}{}
+{12}{Crossbows.}{}{1}{}{40}{}
+{13}{Slings? Javelins? Throwing stars?}{}{1}{}{15}{}
+
+{15}{We do have some throwing stars, in our ammunition range, but may I suggest the leather worker for a sling? And as for javelins, just throw sticks at the enemy, why don't you? [He doesn't turn away but he looks like he just might!]}{We do have some throwing stars, in our ammunition range, but may I suggest the leather worker for a sling? And as for javelins, just throw sticks at the enemy, why don't you? [He doesn't turn away but he looks like he just might!]}{}{}{}{}
+{16}{Fine, I'll speak to the leather worker.}{}{1}{}{0}{}
+{17}{Ammunition then, I guess?}{}{1}{}{20}{npc_2(npc)}
+{18}{Just a bow.}{}{1}{}{30}{}
+{19}{Tell me about your crossbows.}{}{1}{}{40}{}
+
+{20}{Very good, very good. Arrows or bolts?}{Very good, very good. Arrows or bolts?}{}{}{}{}
+{21}{I very clearly said throwing stars.}{}{1}{get_2(npc)}{25}{}
+{22}{Arrows.}{}{1}{}{25}{}
+{23}{Bolts.}{}{1}{}{25}{}
+
+{25}{Very good, very good. [He spreads a selection of his wares in front of you.]}{Very good, very good. [He spreads a selection of his wares in front of you.]}{}{}{}{}
+{26}{B:[Trade.]}{}{1}{}{0}{}
+{27}{Changed my mind. [Exeunt.]}{}{1}{}{0}{}
+
+{30}{Very good, very good. And will it be short bows, or long bows?}{Very good, very good. And will it be short bows, or long bows?}{}{}{}{}
+{31}{Short bows.}{}{1}{}{50}{}
+{32}{Long bows.}{}{1}{}{50}{}
+
+{40}{Very good, very good. Will that be a light crossbow, heavy crossbow or repeater?}{Very good, very good. Will that be a light crossbow, heavy crossbow or repeater?}{}{}{}{}
+{41}{Light?}{}{1}{}{25}{}
+{42}{Heavy?}{}{1}{}{25}{}
+{43}{Repeater?}{}{1}{}{25}{}
+{44}{Hand crossbow?}{}{1}{}{45}{}
+
+{45}{[Stuart chortles.] You've been listening to too many faery tales about the drow. There's no such thing as a hand crossbow. Don't believe everything your wet-nurse tells you!}{[Stuart chortles.] You've been listening to too many faery tales about the drow. There's no such thing as a hand crossbow. Don't believe everything your wet-nurse tells you!}{}{}{}{}
+{46}{Dang. Just a light crossbow then.}{}{1}{}{25}{}
+{47}{Dang. Just a heavy crossbow then.}{}{1}{}{25}{}
+{48}{Dang. Just a repeating crossbow then.}{}{1}{}{25}{}
+{49}{Don't you be talking about nursey like that!}{}{1}{}{0}{}
+
+{50}{Very good, very good. And will it be standard, recurve or composite?}{And will it be standard, recurve or composite?}{}{}{}{}
+{51}{Standard.}{}{1}{}{60}{}
+{52}{Recurve.}{}{1}{}{60}{}
+{53}{Composite.}{}{1}{}{60}{}
+
+{55}{No made up words please sir. Ash, maple or yew?}{That language is not fitting for a young lady. Now ash, maple or yew?}{}{}{}{}
+{56}{Ash?}{}{1}{}{70}{}
+{57}{Maple?}{}{1}{}{70}{}
+{58}{Yew?}{}{1}{}{70}{}
+
+{60}{Very good, very good. And will it be ash, maple or yew?}{Very good, very good. And will it be ash, maple or yew?}{}{}{}{}
+{61}{Ash?}{}{1}{}{70}{}
+{62}{Maple?}{}{1}{}{70}{}
+{63}{Yew?}{}{1}{}{70}{}
+{64}{Deklo?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{55}{}
+
+{70}{Very good, very good. Now the string, will it be cat-gut or wire?}{Very good, very good. Now the string, will it be cat-gut or wire?}{}{}{}{}
+{71}{Cat-gut.}{}{1}{}{75}{}
+{72}{Wire.}{}{1}{}{75}{}
+{73}{I believe the traditional medium is hemp, and will stick with that for a variety of personal reasons I don't intend to go into.}{}{14}{}{75}{}
+
+{75}{Very good, very good. And will you need the serving reinforced?}{Very good, very good. And will you need the serving reinforced?}{}{}{}{}
+{76}{Of course.}{}{1}{}{80}{}
+{77}{No need.}{}{1}{}{80}{}
+{78}{I don't know what that is.}{}{-10}{}{80}{}
+
+{80}{Very good, very good. Now will you be using a traditional 3-fingered drawing technique or perhaps thumb rings...?}{Very good, very good. Now will you be using a traditional 3-fingered drawing technique or perhaps thumb rings...?}{}{}{}{}
+{81}{Traditional.}{}{1}{}{85}{}
+{82}{Thumb ring.}{}{1}{}{85}{}
+{83}{I have this complex Gnomish release mechanism, I won't go into it because it is not relevant to my purchase today.}{}{1}{pc.has_feat(feat_weapon_focus_shortbow) or pc.has_feat(feat_weapon_focus_longbow)}{85}{}
+
+{85}{Very good, very good. I have just what you want. [He starts rummaging around.]}{Very good, very good. I have just what you want. [He starts rummaging around.]}{}{}{}{}
+{86}{Very good.}{}{1}{}{90}{}
+{87}{Take your time.}{}{1}{}{90}{}
+
+{90}{[He comes up empty.] I'm sorry, I've forgotten some of the specifications you mentioned. Were you after a long bow or short bow?}{[He comes up empty.] I'm sorry, I've forgotten some of the specifications you mentioned. Were you after a long bow or short bow?}{}{}{}{}
+{91}{Long bow.}{}{1}{}{50}{}
+{92}{Short bow.}{}{1}{}{50}{}
+{93}{B:Just show me your damned stock!}{}{1}{}{0}{pc.barter(npc)}
+{94}{E:}{}{1}{}{0}{}
+
+
+{100}{Welcome back, what will it be today? Bows or ammunition?}{Welcome back, what will it be today? Bows or ammunition?}{}{}{}{}
+{102}{Bows.}{}{1}{}{10}{}
+{103}{Ammunition.}{}{1}{}{20}{}
+{104}{Neither. Goodbye.}{}{1}{}{0}{}
+{105}{B:Don't go starting that again, just show me your stock.}{}{1}{get_1(npc)}{0}{pc.barter(npc)}

@@ -1,0 +1,39 @@
+{1}{[You see a cheerful little halfling with a shield, surrounded by shields. You wonder what she sells.]}{[You see a cheerful little halfling with a shield, surrounded by shields. You wonder what she sells.]}{}{}{}{}
+{2}{Shields?}{}{1}{}{10}{}
+{3}{[This little runt isn't from your clan! Blow pipeweed smoke in her face, stomp the dust off your hairy feet and walk away.]}{}{1}{pc.stat_level_get(stat_race) == race_halfling}{0}{}
+{7}{Testing!}{}{1}{}{0}{}
+
+{10}{Yes!}{Yes!}{}{}{}{}
+{11}{B:}{}{1}{}{0}{pc.barter(npc)}
+{12}{Just browsing.}{}{1}{}{0}{}
+{13}{If I may be so forward, would you be a member of the local Guildhouse? I ask because I am told much of the trade is run by halflings such as your good self.}{}{1}{game.global_flags[9] == 1}{20}{}
+
+{20}{[The lass nods happily.] Indeed I am, I'm with the Chicane Guildhouse. What can we do for you? Though I am not a master to be making promises, we're always interested in opportunity.}{[The lass nods happily.] Indeed I am, I'm with the Chicane Guildhouse. What can we do for you? Though I am not a master to be making promises, we're always interested in opportunity.}{}{}{}{}
+{21}{I was just wondering where the Guild is, who to speak to?}{}{1}{}{30}{}
+{22}{[Make an Anakin joke about not being a master.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{27}{}
+{23}{[Make a Ferenghi joke about opportunity.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{27}{}
+
+{27}{[She blinks at you.]}{[She blinks at you.]}{}{}{}{}
+{28}{I'm sorry. Truly, I am so, so sorry. That wasn't funny, and I don't know what came over me. Please, just tell me about contacting the Guild?}{}{1}{}{30}{}
+
+{30}{Well the Guild is in the middle of town, a little north of where we are now. But you can't just stroll in, you'll need an invitation or a contract of business. If you really want to make contact with a master, Vintra is usually hanging around the Sly Wink tavern, chat to her. Don't tell her I said so though. [She winks.]}{Well the Guild is in the middle of town, a little north of where we are now. But you can't just stroll in, you'll need an invitation or a contract of business. If you really want to make contact with a master, Vintra is usually hanging around the Sly Wink tavern, chat to her. Don't tell her I said so though. [She winks.]}{}{}{}{}
+{31}{Thank you, I'll head to the Tavern. [Go straight there.]}{}{1}{}{0}{}	// tp into tavern
+{32}{B:Before I go, please show me your shields.}{}{1}{}{0}{pc.barter(npc)}
+{33}{E:}{}{1}{}{0}{}
+{34}{Do you buy second hand shields?}{}{1}{}{40}{}
+
+{40}{Certainly. I know some carpenters who can repair wooden shields - swap out the damaged slats - so I'll give you a good price on anything wooden.}{Certainly. I know some carpenters who can repair wooden shields - swap out the damaged slats - so I'll give you a good price on anything wooden.}{}{}{}{}
+{41}{B:Thanks. Let's trade.}{}{1}{}{0}{}
+{42}{E:}{}{1}{}{0}{}
+
+// return
+
+{100}{Shields!}{Shields!}{}{}{}{}
+{101}{B:Yes!}{}{1}{}{0}{pc.barter(npc)}
+{102}{No.}{}{1}{}{0}{}
+{103}{Are you be a member of the local Guildhouse? I'm told much of the local trade is run by halflings such as your good self.}{}{1}{game.global_flags[9] == 1}{20}{}
+
+
+{900}{Made it!}{Made it}{}{}{}{}
+{901}{Yay!}{}{1}{}{0}{{}
+{902}{Start over.}{}{1}{}{1}{}

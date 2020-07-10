@@ -1,0 +1,30 @@
+{1}{[You see a Gnomish woman surrounded by hats.] Well?}{[You see a Gnomish woman surrounded by hats.] Well?}{}{}{}{}
+{2}{Hats?}{}{1}{}{10}{}
+{3}{Names, perhaps? I am @pcname@.}{}{1}{}{20}{}
+{4}{Never mind.}{}{1}{}{0}{}
+
+{10}{With brains like that you must be an arch-magus. Yes, hats. Do you wish to buy one?}{With brains like that you must be an arch-magus. Yes, hats. Do you wish to buy one?}{}{}{}{}
+{11}{B:Yes.}{}{1}{}{0}{pc.barter(npc)}
+{12}{No, thank you.}{}{1}{}{40}{}
+{13}{Not from you, ugly.}{}{1}{}{0}{}
+
+{20}{Maude.}{Maude.}{}{}{}{}
+{21}{B:Shall we barter?}{}{1}{}{0}{pc.barter(npc)}
+{22}{And you sell hat, is it?}{}{1}{}{10}{}
+{24}{Maude, you say? Do I know you?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{30}{}
+
+{30}{[She yawns.] I'm sure I would remember meeting someone so, *fascinating* as you. But perhaps you met my sister. Look just like me, and was also named Maude in my honour. Trades the occasional hat, too.}{[She yawns.] I'm sure I would remember meeting someone so, *fascinating* as you. But perhaps you met my sister. Look just like me, and was also named Maude in my honour. Trades the occasional hat, too.}{}{}{}{}
+{31}{Yes, perhaps.}{}{1}{}{0}{}
+{32}{B:}{}{1}{}{0}{pc.barter(npc)}
+{33}{F:}{}{1}{}{0}{}
+
+{40}{[She snorts.] Timewaster.}{[She snorts.] Timewaster.}{}{}{}{}
+{41}{A:}{}{1}{}{0}{}
+{42}{F:}{}{1}{}{0}{}
+{43}{E:}{}{1}{}{0}{}
+
+
+
+{100}{Finally come back to find something to cover that head, eh? I don't sell great-helms, you understand?}{Finally come back to find something to cover that rats' nest you call hair? Very sensible.}{}{}{}{}
+{101}{B:Charming. Let's trade.}{}{1}{}{0}{pc.barter(npc)}
+{102}{Just browsing.}{}{1}{}{40}{}
