@@ -12,10 +12,25 @@ def netted_OnAdd(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 
+	has_web_on = attachee.d20_query_has_spell_condition("sp-Web On")
+	if (has_web_on): 
+		args.condition_remove()
+		return 0
+
 	attachee.float_text_line("Entangled!", toee.tf_red)
 	print("netted_OnAdd")
 	partid = toee.game.particles("sp-Web Hit", attachee)
 	args.set_arg(3, partid)
+	return 0
+
+def netted_OnAddPre(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjModifier)
+
+	if (evt_obj.is_modifier("sp-Web On")):
+		evt_obj.return_val = 0
+
 	return 0
 
 def netted_remove(args, cr = 0):
@@ -41,14 +56,18 @@ def netted_OnD20Query_CritterHasCondition(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjD20Query)
-	# does not work
-	#condHash = args.get_param(0)
-	condHash = evt_obj.data1
-	arg0 = args.get_arg(0)
-	h = tpdp.hash(GetConditionName())
-	print("condHash: {}, h: {}, arg0: {}".format(condHash, h, arg0))
-	if (h == condHash):
+
+	if (not "get_condition_ref" in dir(tpdp)): return 0
+
+	cond_netted = tpdp.get_condition_ref(GetConditionName())
+	print("cond_netted: {}, data1: {}, data2: {}".format(cond_netted, evt_obj.data1, evt_obj.data2))
+	if (cond_netted == evt_obj.data1):
 		evt_obj.return_val = 1
+
+	#cond_web_on = tpdp.get_condition_ref("sp-Web On")
+	#print("cond_web_on: {}, data1: {}, data2: {}".format(cond_web_on, evt_obj.data1, evt_obj.data2))
+	#if (cond_netted == evt_obj.data1):
+		#evt_obj.return_val = 1
 	return 0
 
 def netted_OnD20PythonQuery(attachee, args, evt_obj):
@@ -187,6 +206,7 @@ def netted_remove_check(attachee, args, evt_obj):
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 4, 1) # 0 - dc break free, dc escape artist, partId, reserved
 modObj.AddHook(toee.ET_OnConditionAdd, toee.EK_NONE, netted_OnAdd, ())
+modObj.AddHook(toee.ET_OnConditionAddPre, toee.EK_NONE, netted_OnAddPre, ())
 modObj.AddHook(toee.ET_OnConditionRemove, toee.EK_NONE, netted_OnRemove, ())
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Critter_Has_Condition, netted_OnD20Query_CritterHasCondition, ())
 modObj.AddHook(toee.ET_OnD20PythonQuery, "Is Netted", netted_OnD20PythonQuery, ())

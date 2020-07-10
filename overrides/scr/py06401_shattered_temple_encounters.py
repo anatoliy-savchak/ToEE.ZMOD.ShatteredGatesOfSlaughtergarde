@@ -1106,13 +1106,14 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 
 		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
 		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		npc.condition_add_with_args("Caster_Level_Add", 7, 0)
 		return
 
-	def enter_combat(self, attachee, triggerer):
-		#debug.breakp("enter_combat")
-		#utils_sneak.npc_make_hide_and_surprise(attachee)
-		return toee.RUN_DEFAULT
-
+	def revealed(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_npc.npc_spell_ensure(npc, toee.spell_web, toee.stat_level_wizard, 3)
+		npc.cast_spell(toee.spell_web, npc)
+		return
 
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)

@@ -61,3 +61,4 @@
 {58}{[ACTOR] strikes ~Mirror Image~[TAG_SPELLS_MIRROR_IMAGE]!}
 {60}{[ACTOR] strikes with ~energy drain~[TAG_ENERGY_DRAINED] on [TARGET]!}
 {61}{[ACTOR] recieves 5 ~temporary hit points~[TAG_TEMPORARY_HIT_POINTS].}
+{62}{[ACTOR] spits ~Web(Ex)~[TAG_ENTANGLED] on [TARGET]!}

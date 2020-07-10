@@ -20,10 +20,12 @@ def Net_Throw_OnD20PythonActionPerform(attachee, args, evt_obj):
 	try:
 		print("Net_Throw_OnD20PythonActionPerform")
 		#debug.breakp("Net_Throw_OnD20PythonActionPerform")
+		histid = toee.game.create_history_from_pattern(62, attachee, evt_obj.d20a.target)
 		evt_obj.d20a.flags |= toee.D20CAF_RANGED | toee.D20CAF_TOUCH_ATTACK #| toee.D20CAF_THROWN_GRENADE
 		evt_obj.d20a.to_hit_processing()
 		hit = evt_obj.d20a.flags & toee.D20CAF_HIT
 		print("hit: ".format(hit))
+		if (not evt_obj.d20a.roll_id_1): evt_obj.d20a.roll_id_1 = histid
 
 		if attachee.anim_goal_push_attack(evt_obj.d20a.target, toee.game.random_range(0,2), 0, 0):
 			new_anim_id = attachee.anim_goal_get_new_id()
