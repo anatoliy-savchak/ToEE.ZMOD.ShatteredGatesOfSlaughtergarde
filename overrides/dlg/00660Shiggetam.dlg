@@ -1,0 +1,116 @@
+{1}{[You see an elderly gent who looks fit, spry and composed. He observes you without speaking.]}{[You see an elderly gent who looks fit, spry and composed. He observes you without speaking.]}{}{}{}{}
+{2}{Hello, I'm @pcname@.}{}{1}{}{10}{}
+{3}{[Not speak right back at him.]}{}{1}{}{20}{}
+
+{10}{Greetings @pcname@, I'm Shiggetam. Or, 'the Old Man' as they call me around here. Do try the ale, the spices are a family recipe and it's certainly the best in town.}{Greetings @pcname@, I'm Shiggetam. Or, 'the Old Man' as they call me around here. Do try the ale, the spices are a family recipe and it's certainly the best in town.}{}{}{}{}
+{11}{Do I take it you're the owner, then?}{}{1}{}{30}{}
+{12}{You are quite old, but there's a spring in your step... tell me a little about yourself, 'Old Man'.}{}{1}{}{25}{}
+{13}{Draw me a beer then!}{}{1}{}{35}{}
+{14}{And they have rooms to rent here, do they?}{}{1}{}{110}{}
+{15}{E:}{}{1}{}{0}{}
+
+
+{20}{[You spend several moments not speaking to each other then he says] this is amusing, but please don't do it to my barkeep. You'll distract him, and that's bad for business.}{[You spend several moments not speaking to each other then he says] this is amusing, but please don't do it to my barkeep. You'll distract him, and that's bad for business.}{}{}{}{}
+{21}{Your barkeep? You're the proprietor?}{}{1}{}{30}{}
+{22}{Yeah, I learned that the annoying way.}{}{1}{game.global_flags[5] == 1}{40}{}
+{23}{I'll play childish games with whomever I like! [Storm off in petty protest.]}{}{1}{}{0}{}
+
+{25}{[He chuckles.] No, I'm the owner here, that's all you need know about me. Anyway, you're the adventurer who should be full of tales! Come, let's talk about something else.}{[He chuckles.] No, I'm the owner here, that's all you need know about me. Anyway, you're the adventurer who should be full of tales! Come, let's talk about something else.}{}{}{}{}
+{26}{Well, what does the tavern sell?}{}{1}{}{60}{}
+{27}{Tell me the rates for your rooms.}{}{1}{}{110}{}
+{28}{You would know what's going on, tell me a little about Sumberton.}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 4}{70}{}
+
+{30}{Yes, this is my tavern. I also take care of bookings for the inn upstairs. Were you after a room?}{Yes, this is my tavern. I also take care of bookings for the inn upstairs. Were you after a room?}{}{}{}{}
+{31}{Actually, I am. What are your rates?}{}{1}{}{110}{}
+{32}{I just said that, didn't I? I'm so confused. Yes, room please.}{}{1}{}{110}{}
+{33}{Not right now, no. How about a beer?}{}{1}{}{35}{}
+{34}{E:}{}{1}{}{0}{}
+
+{35}{As you can see, I am not working behind the bar today. Try the barkeep over there [he points to the surly-faced chap tending bar].}{As you can see, I am not working behind the bar today. Try the barkeep over there [he points to the surly-faced chap tending bar].}{}{}{}{}
+{36}{I will. [Bid him good day.]}{}{1}{}{0}{}
+{37}{Fine. [Turn your back and walk away.]}{}{1}{}{0}{}
+{38}{But you are involved with this place? So who do I speak to about a room?}{}{1}{}{30}{}
+
+{40}{[He laughs for forty seven seconds then says] yes, he is most annoying. But annoying people have families to feed too, so as long as he still does his job, he keeps it.}{[He laughs for forty seven seconds then says] yes, he is most annoying. But annoying people have families to feed too, so as long as he still does his job, he keeps it.}{}{}{}{}
+{41}{Of course. Can I ask you something else?}{}{1}{}{50}{}
+{42}{Wait, he has a family? What are they like?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{45}{}
+
+
+
+{45}{Annoying, only smaller. Except for his wife.}{Annoying, only smaller. Except for his wife.}{}{}{}{}
+{46}{Ewww. I must go throw up now.}{}{1}{}{0}{}
+{47}{Maybe we can change the subject?}{}{1}{}{50}{}
+
+
+
+
+// questions
+
+{50}{What would you like to know?}{What would you like to know?}{}{}{}{}
+{51}{What do you sell?}{}{1}{}{60}{}
+{52}{Tell me the rates for your rooms.}{}{1}{}{110}{}
+{53}{You would know what's going on, tell me a little about Sumberton.}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 4}{70}{}
+{54}{So how did you end up owning a tavern? You seem more mellow than the average businessman.}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 5 and get_1(npc) == 0}{80}{npc_1(npc)}
+{55}{You never did tell me how you got into the tavern business?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 6 and get_1(npc) == 1 and get_2(npc) == 0}{85}{npc_2(npc)}
+{56}{Shiggetam, what's that, Bakluni?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 6 and get_1(npc) == 1 and get_2(npc) == 1}{160}{}
+
+{60}{Oh, ale, meat, bread, hippogras, mead, uisce beatha, wine, brandy, pasties. Good food, better drink. In fact, our spiced ale is considered the best in Sumberton, I can assure you of that. And of course we have rooms upstairs.}{Oh, ale, meat, bread, hippogras, mead, uisce beatha, wine, brandy, pasties. Good food, better drink. In fact, our spiced ale is considered the best in Sumberton, I can assure you of that. And of course we have rooms upstairs.}{}{}{}{}
+{61}{I'll take something to eat.}{}{1}{}{35}{}
+{62}{I'll have a drink then.}{}{1}{}{35}{}
+{63}{How much for a room?}{}{1}{}{110}{}
+{64}{K:}{}{1}{}{50}{}
+{65}{E:}{}{1}{}{0}{}
+
+{70}{Well, if you are after adventure, you have come to the right place. A variety of adventurers frequent the tavern. Otherwise, the main attraction for newcomers is probably the market. Turn right outside our doors and you can't miss it. Everything you could want to buy in Sumberton under one roof.}{Well, if you are after adventure, you have come to the right place. A variety of adventurers frequent the tavern. Otherwise, the main attraction for newcomers is probably the market. Turn right outside our doors and you can't miss it. Everything you could want to buy in Sumberton under one roof.}{}{}{}{}
+{71}{A:}{}{1}{}{0}{}
+{72}{E:}{}{1}{}{0}{}
+{73}{K:}{}{1}{}{50}{}
+
+{80}{That's a long story, you don't need to hear it and I'm not one to tell it. Run along and have a pint of ale, you won't regret it.}{That's a long story, you don't need to hear it and I'm not one to tell it. Run along and have a pint of ale, you won't regret it.}{}{}{}{}
+{81}{A:}{}{1}{}{0}{}
+{82}{E:}{}{1}{}{0}{}
+{83}{K:}{}{1}{}{50}{}
+
+{85}{No, I didn't, and I don't plan to! [He laughs.] Away with you! Go and have a drink and leave an old man's past where it belongs.}{No, I didn't, and I don't plan to! [He laughs.] Away with you! Go and have a drink and leave an old man's past where it belongs.}{}{}{}{}
+{86}{A:}{}{1}{}{0}{}
+{87}{E:}{}{1}{}{0}{}
+{88}{K:}{}{1}{}{50}{}
+
+// return
+
+{100}{Welcome back. How has your adventuring been?}{Welcome back. How has your adventuring been?}{}{}{}{}
+{101}{I'm alive, aren't I?}{}{1}{}{120}{}
+{102}{Very successful.}{}{1}{}{120}{}
+{103}{Meh. Can't complain.}{}{1}{}{120}{}
+{104}{Poor. We were outmatched and took heavy losses.}{}{1}{}{120}{}
+{105}{None of your business.}{}{1}{}{120}{}
+
+{110}{A room upstairs will be five silver for 24 hours.}{A room upstairs will be five silver for 24 hours.}{}{}{}{}
+{111}{I'll take it.}{}{1}{pc.money_get() >= 50}{130}{pc.money_adj(-50); create_item_in_inventory(7001,npc)}
+{112}{Never mind.}{}{1}{}{0}{}
+{113}{I'll think about it. For now, can I ask you a couple questions?}{}{1}{}{50}{}
+
+
+{120}{Of course, I undertsand. It's all to be expected in the grand scheme. One minute you're up, and then... so what can I do for you?}{Of course, I understand. It's all to be expected in the grand scheme. One minute you're up, and then... so what can I do for you?}{}{}{}{}
+{121}{K:}{}{1}{}{50}{}
+{122}{I'm looking for a room.}{}{1}{}{110}{}
+{123}{Just passing.}{}{1}{}{0}{}
+{124}{I was wondering about adventure opportunities around here, and the tavern owner is always the best informed person in town...?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 3 and game.quests[1].state == qs_unknown}{130}{}
+
+{130}{[He takes your money.] The rooms upstairs are mostly free at the moment so use any room you like, but only one - I don't want to be changing every bed in the place.}{[He takes your money.] The rooms upstairs are mostly free at the moment so use any room you like, but only one - I don't want to be changing every bed in the place.}{}{}{}{set_room_flag( npc,pc )}
+{131}{Thanks.}{}{1}{}{0}{}
+{132}{But bed-hopping is the best part of adventuring!}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+
+
+{160}{[He laughs good-naturedly.] You are persistent, aren't you? Yes, it's Bakluni originally, though my family have lived in the Valley for generations. Still, my Bakluni blood comes out. I was a monk for a while there, did I tell you that? No, of course I didn't. Did you want to hear the tale?}{[He laughs good-naturedly.] You are persistent, aren't you? Yes, it's Bakluni originally, though my family have lived in the Valley for generations. Still, my Bakluni blood comes out. I was a monk for a while there, did I tell you that? No, of course I didn't. Did you want to hear the tale?}{}{}{}{}
+{161}{Yes.}{}{1}{}{165}{}
+{162}{Also yes.}{}{1}{}{165}{}
+
+{165}{Well, it was one of the religious orders that has a house up the Pious Way. We prayed, we sang, we meditated, but mostly, we brewed ale. We brewed REALLY good ale. And when it came to our ale, I was devout - heck, I was down right beatific!}{Well, it was one of the religious orders that has a house up the Pious Way. We prayed, we sang, we meditated, but mostly, we brewed ale. We brewed REALLY good ale. And when it came to our ale, I was devout - heck, I was down right beatific!}{}{}{}{}
+{166}{So you went from an ale-brewing monastery to a tavern-owner. I can see the connection, but is there a step missing there somewhere?}{}{1}{}{170}{}
+
+{170}{No, not really, it's as it sounds. I left the monastery, started this place, and bought my ale from my former brothers. The only thing that needs adding is that I include some secret spices - a genuine Bakluni family recipe - to the ale, and that's what makes it distinct. And no, you won't be hearing what those spices are, no one has!}{No, not really, it's as it sounds. I left the monastery, started this place, and bought my ale from my former brothers. The only thing that needs adding is that I include some secret spices - a genuine Bakluni family recipe - to the ale, and that's what makes it distinct. And no, you won't be hearing what those spices are, no one has!}{}{}{}{}
+{171}{A:}{}{1}{}{0}{}
+{172}{E:}{}{1}{}{0}{}
+{173}{K:}{}{1}{}{50}{}
+

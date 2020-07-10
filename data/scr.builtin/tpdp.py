@@ -1,4 +1,4 @@
-﻿import toee
+﻿fimport toee
 
 def hash(text):
 	"""hash(str: text) -> int"""
@@ -314,7 +314,7 @@ class ModifierSpec:
 #ET_OnD20Signal = 28
 #ET_OnD20Query = 29
 #ET_OnGetSkillLevel = 30
-#ET_OnBuildRadialMenuEntry = 31
+#ET_OnBuildRadialMenuEntry = 31 # null
 #ET_OnGetTooltip = 32
 #ET_OnDispelCheck = 33
 #ET_OnGetDefenderConcealmentMissChance = EventObjAttack
@@ -460,7 +460,7 @@ class EventObjEffectTooltip(EventObj):
 
 class EventObjD20Signal(EventObj):
     def __init__(self):
-        self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain
+        self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal
         self.return_val = 0
         self.data1 = 0
         self.data2 = 0
@@ -523,6 +523,13 @@ class EventObjImmunityQuery(EventObj):
         self.spell_entry = SpellEntry()
         self.spell_packet = SpellPacket()
         self.return_val = 0
+        return
+
+class EventObjMoveSpeed(EventObj):
+    def __init__(self):
+        self.evt_obj_type = toee.ET_OnGetMoveSpeedBase # dispTypeGetMoveSpeedBase, dispTypeGetMoveSpeed, dispTypeGetModelScale
+        self.factor = 1.0
+        self.bonus_list = BonusList()
         return
 
 class D20SpellData:

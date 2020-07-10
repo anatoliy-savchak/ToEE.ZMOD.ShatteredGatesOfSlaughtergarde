@@ -182,7 +182,7 @@ class PyObjHandle(object):
 		return 0
 
 	def can_find_path_to_obj(self, target, flags):
-		"""npc.can_find_path_to_obj(PyObjHandle: target, int: flags) -> int"""
+		"""npc.can_find_path_to_obj(PyObjHandle: target, int: flags) -> int[ft]"""
 		return
 	
 	def critter_flags_get(self):
@@ -379,7 +379,7 @@ class PyObjHandle(object):
 
 	def leader_get(self):
 		"""npc.leader_get() -> PyObjHandle"""
-		return 1
+		return PyObjHandle()
 
 	def has_los(self, target):
 		"""npc.faction_add(PyObjHandle: target) -> int"""
@@ -596,6 +596,11 @@ class game(object):
 	@staticmethod
 	def create_history_from_id(histId):
 		""" game.create_history_from_id(int: histId) -> None"""
+		return
+
+	@staticmethod
+	def create_history_from_pattern(pattern_id, actor, target):
+		""" game.create_history_from_pattern(int[history.mes]: pattern_id, PyObjHandle: actor, PyObjHandle: target) -> None"""
 		return
 
 	@staticmethod
@@ -3951,3 +3956,22 @@ Q_Weapon_Get_Keen_Bonus = 113
 Q_Weapon_Is_Mighty_Cleaving = 78
 Q_Wearing_Ring_of_Change = 108
 Q_WieldedTwoHanded = 83
+
+PQF_10 = 16
+PQF_ADJUST_RADIUS = 8192
+PQF_ADJ_RADIUS_REQUIRE_LOS = 131072
+PQF_ALLOW_ALTERNATIVE_TARGET_TILE = 262144
+PQF_AVOID_AOOS = 16777216
+PQF_A_STAR_TIME_CAPPED = 524288
+PQF_DONT_USE_PATHNODES = 16384
+PQF_DONT_USE_STRAIGHT_LINE = 32768
+PQF_DOORS_ARE_BLOCKING = 1024
+PQF_FORCED_STRAIGHT_LINE = 65536
+PQF_HAS_CRITTER = 2
+PQF_IGNORE_CRITTERS = 128
+PQF_IGNORE_CRITTERS_ON_DESTINATION = 8388608
+PQF_MAX_PF_LENGTH_STHG = 4
+PQF_STRAIGHT_LINE = 8
+PQF_STRAIGHT_LINE_ONLY_FOR_SANS_NODE = 512
+PQF_TARGET_OBJ = 4096
+PQF_TO_EXACT = 1

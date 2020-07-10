@@ -1,0 +1,23 @@
+{1}{Groceries, get your groceries here!}{Groceries, get your groceries here!}{}{}{}{}
+{2}{Fresh produce, best prices!}{Fresh produce, best prices!}{}{}{}{}
+{3}{Get your produce here!}{Get your produce here!}{}{}{}{}
+{4}{Bananas, apples, gooseberries, snozzberries...}{Bananas, apples, gooseberries, snozzberries...}{}{}{}{}
+{5}{Produce! You won't find cheaper!}{Produce! You won't find cheaper!}{}{}{}{}
+{6}{Groceries, get 'em while they're fresh.}{Groceries, get 'em while they're fresh.}{}{}{}{}
+{7}{Ask about today's specials!}{Ask about today's specials!}{}{}{}{}
+{8}{Step right up, bargains galore!}{Step right up, bargains galore!}{}{}{}{}
+
+
+// return
+
+{100}{Move along please sir.}{Move along please ma'am.}{}{}{}{}
+{101}{Please, you're blocking the customers.}{Please, you're blocking the customers.}{}{}{}{}
+{102}{Sorry, we don't sell rations.}{Sorry, we don't sell rations.}{}{}{}{}
+{103}{No I don't want to buy your loot!}{No I don't want to buy your loot!}{}{}{}{}
+{104}{Please step back.}{Please step back.}{}{}{}{}
+{105}{Sir, this is a place of business.}{Madam, this is a place of business.}{}{}{}{}
+{106}{I don't even know what 'magic produce' is, I certainly don't sell it.}{I don't even know what 'magic produce' is, I certainly don't sell it.}{}{}{}{}
+{107}{I don't take electrum.}{I don't know what 'electrum' is, silver only.}{}{}{}{}
+
+
+

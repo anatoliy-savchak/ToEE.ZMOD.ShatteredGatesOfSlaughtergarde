@@ -1,0 +1,194 @@
+
+//
+// Answers from npcs
+//
+
+// Spell effects etc
+
+//
+// Narration
+//
+
+// Combat voices
+
+//
+// Rumours
+//
+
+
+{1}{Yes, sir!}
+{2}{Nice one!}
+{3}{Take that!}
+{4}{Ooo, close!}
+{5}{Ha, missed!}
+{6}{Gotcha!}
+
+{8}{O dear.}
+{9}{I'm here!}
+{10}{Hey, watch it dad!}
+
+{12}{Hey, wait up!}
+{13}{Take your time...}
+
+{15}{Excuse me miss.}
+{16}{Not at all.}
+
+{18}{I'm blind!}
+{19}{You dropped the scales on your eyeglasses - they broke!}
+{20}{Hey, do you mind?}
+{21}{Hey!}
+{22}{Hey stop that!}
+{23}{I saw that!}
+{24}{I'm right here watching!}
+
+{25}{Thief!}
+{26}{That does it!}
+{27}{I'll teach you to steal!}
+{28}{We've got a right to defend our property!}
+{29}{This'll learn you!}
+
+{30}{[Hic!]}
+{31}{[Burp!]}
+
+{33}{Step right up!}
+{34}{Everyone's a winner!}
+{35}{Bargains galore!}
+{36}{Potions, heal-alls, charms!}
+{37}{Patented medicines!}
+{38}{Lowest prices in town!}
+
+{40}{Fortunes told!}
+{41}{Palms read!}
+
+{45}{This isn't what I signed up for!}
+{46}{Some leader you are.}
+{47}{O dear...}
+{48}{Thats pretty ordinary.}
+{49}{Disgraceful!}
+
+
+{100}{Fell safely due to Monk abilities!}
+{101}{Fell 10 feet, taking damage!}
+{102}{Climbed the rope but fell, taking damage!}
+{103}{Climbed the rope safely!}
+{104}{Climbed safely!}
+{105}{Use Rope check successful - rope slips free!}
+{106}{Use Rope check unsuccessful - rope still attached.}
+{107}{Flew down safely!}
+{108}{Fell but unharmed due to Monk abilities!}
+{109}{Fell but unharmed due to Ring of Feather Fall!}
+{110}{Fell while climbing, taking damage!}
+{111}{The rope slipped free and came back to you!}
+{112}{The rope stayed where it is!}
+{113}{You weren't strong enough to control the descent, something shattered inside!}
+{114}{You failed to lassoo the chest!}
+{115}{Nothing to lassoo!}
+
+{150}{Animal trained!}
+{151}{Your animal balked - training failed!}
+{152}{You can't try again yet!}
+
+{153}{Play dead!}
+{154}{Ooo, life-like...}
+{155}{Put out your paw and shake.}
+{156}{Hey, I never taught you that!}
+{157}{Walk in a perfect circle.}
+{158}{Show me what you got.}
+
+{160}{There is an anti-magic power here!}
+{161}{No target in range.}
+
+{200}{Succeeded through Sleight of Hand!}
+{201}{Failed!}
+
+{300}{Not a rogue!}
+{301}{Not a valid target for sneak attack!}
+{302}{That rogue is a higher level!}
+{303}{Out of range!}
+{304}{Uncanny dodge!}
+
+// Movement
+
+{1000}{This appears to be a false door, bolted to the wall.}
+{1001}{Not here!}
+{1002}{Move closer!}
+{1004}{This door is locked, chained and barred.}
+{1005}{The door is open!}
+{1006}{Using rope!}
+{1007}{Needs grappling hook!}
+{1008}{Your key unlocks the door!}
+{1009}{Climbing the rope tied here!}
+{1010}{XP +100!}
+{1011}{Climbing the rockface!}
+{1012}{That rockface is unstable right now!}
+{1013}{An invisible barrier keeps you out!}
+
+{1015}{What have I done!?!}
+{1016}{Look, coming out of the ground!}
+{1017}{What have you done?}
+{1018}{Time to go...}
+
+{1020}{The party is not all present.}
+
+{1025}{A!}
+
+{1030}{Animal skinned successfully!}
+{1031}{You ruined the pelt skinning the animal!}
+{1032}{The dragon's gall bladder burst while being removed, drenching you in acid!}
+{1033}{Dragon skinned successfully!}
+{1034}{Dragon's gall bladder removed successfully!}
+{1035}{You ruined the dragon scales skinning the carcass!}
+{1036}{You ruined the horn removing it! Good thing he has two!}
+{1037}{Horn removed successfully!}
+
+{1040}{Item fetched!}
+{1041}{Item dropped!}
+{1042}{Nothing to fetch!}
+{1043}{Your pet's saliva ruined the scroll!}
+{1044}{Your pet fetches what it might regard as food - now that's well trained!}
+{1045}{Your pet swallows the coins trying to carry them!}
+{1046}{Your pet only has one mouth to carry things!}
+{1047}{Item dragged!}
+{1048}{Nothing to drop!}
+
+{1050}{A key appears in your possession!}
+
+{1060}{Success! New crossbow acquired!}
+{1061}{Failure! Everything is ruined in the attempt!}
+{1062}{You don't have the required crossbow!}
+{1063}{Not enough money for components!}
+
+{1065}{The opening door dislodges some coins!}
+
+{1070}{Alchemical item created!}
+{1071}{Failure! Half your materials ruined!}
+
+{1080}{This road leads west then south. You have no reason to use it.}
+{1081}{This road loops back to the south-east. You have no reason to use it.}
+{1082}{This road leads south. You have no reason to use it.}
+
+{1100}{Brains, brains!}
+{1101}{Brains...}
+{1102}{Mmm, brains...}
+
+{1110}{To be diligent in seeking your destruction!}
+{1111}{To be passionate about killing you!}
+{1112}{To persevere until you are dead!}
+{1113}{To regard you as inferior, wingless filth!}
+{1114}{To focus on your death with singularity!}
+
+{1117}{To regard your wings as inferior to mine!}
+
+
+
+{2000}{A merchant, imprisoned in the Caves, will reward his rescuers.}
+{2001}{They say there is a dragon's egg in the area. If its already hatched, I'd hate to be around when the parents show up.}
+{2002}{That Flay character has been seen sneaking down to the Graveyard at all hours: now I hear there are undead down there.}
+{2003}{A powerful wizard will destroy any intruder who goes near the Caves.}
+{2004}{Tribes of different creatures live in the different Caves.}
+{2005}{The Ogre in the Caves can be placated with shiny copper coins.}
+{2006}{An Ogre sometimes helps the Caves' dwellers.}
+{2007}{The Castellan has a dark secret: the Guildmaster knows what it is, and thats why he is so powerful - blackmail.}
+{2008}{A magic wand was lost in the Caves area.}
+{2009}{All of the Cave entrances are trapped.}
+{2010}{If you get lost, beware the eater of men!}

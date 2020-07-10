@@ -137,6 +137,20 @@ Adds saving throw resistance bonus.
 Damage resistance.
 temple.dll::aMonsterDrSilve
 
+### Temp Negative Level
+**Args**
+* Arg0: ? use 0
+* Arg1: use 0. but checks if alignment coinicde otherwise
+Adds temporary negative level
+temple.dll::aMonsterDrSilve
+
+### Temporary_Hit_Points
+**Args**
+* Arg0: use 0. countdown
+* Arg1: number of rounds lasting
+* Arg3: hp
+Adds temporary hit points.
+temple.dll::Condition_Temporary_Hit_Points
 
 todo:
 pCondition_Monster_Banshee_Charisma_Drain

@@ -1,0 +1,94 @@
+{1}{[You see an Elf.] Welcome to SylvanStyle, can I help you?}{[You see an Elf.] Welcome to SylvanStyle, can I help you?}{}{}{}{}
+{2}{Hi, I'm @pcname@.}{}{1}{}{10}{}
+{3}{B:You sell garments? Please show me your stock.}{}{1}{}{0}{pc.barter(npc)}
+{4}{A fellow Elf! What a delight. Where do you hail from?}{}{1}{pc.stat_level_get(stat_race) == race_elf}{20}{}
+{5}{No thank you.}{}{1}{}{0}{}
+{6}{F:}{}{1}{}{0}{}
+{7}{Gah - an Elf! Keep away from me, ya pointy-eared freak.}{}{1}{pc.stat_level_get(stat_race) == race_dwarf}{16}{}
+
+{10}{Alannah Aylslie, at your service. [She curtsies.] You have the look of a newcomer, so I welcome you to Sumberton.}{Alannah Aylslie, at your service. [She curtsies.] You have the look of a newcomer, so I welcome you to Sumberton.}{}{}{}{}
+{11}{Thank you. I am indeed recently come to this city, though I grew up in the Valley. May I ask where you are from?}{}{1}{}{20}{}
+{12}{B:Thank you. Could I see your wares?}{}{1}{}{0}{pc.barter(npc)}
+{13}{May I ask what it is you sell?}{}{1}{pc.stat_level_get(stat_level_bard) == 0}{60}{}
+{14}{May I ask what it is you sell?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{40}{}
+
+{16}{[She turns away!]}{[She turns away!]}{}{}{}{away(npc)}
+{17}{Something I said?}{}{1}{}{0}{}
+
+{20}{I am from Shul Shennek, in the Oakwood, a few days south-east from here. A beautiful little town built high in the trees - please do visit if you have a chance.}{I am from Shul Shennek, in the Oakwood, a few days south-east from here. A beautiful little town built high in the trees - please do visit if you have a chance.}{}{}{}{}
+{21}{Would they mind? I have found Elves tend to value their privacy...}{}{1}{pc.stat_level_get(stat_race) != race_elf}{30}{}
+{22}{I know of it, of course. And what is the word from Shul Shennek these days?}{}{1}{pc.stat_level_get(stat_race) == race_elf}{120}{}
+{23}{B:I will. For now, shall we trade?}{}{1}{}{0}{pc.barter(npc)}
+{24}{Tell me of your wares.}{}{1}{pc.stat_level_get(stat_level_bard) == 0}{60}{}
+{25}{Tell me of your wares.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{40}{}
+{26}{E:}{}{1}{}{0}{}
+
+{30}{This is true. I would give the Vaathwood a wide berth, if I were you - the Elves of Shul Vaath do not take kindly to strangers. But we of Shul Shennek are more welcoming - there is much to be gained by having dealings with others, and not just in commerce.}{This is true. I would give the Vaathwood a wide berth, if I were you - the Elves of Shul Vaath do not take kindly to strangers. But we of Shul Shennek are more welcoming - there is much to be gained by having dealings with others, and not just in commerce.}{}{}{}{}
+{31}{B:Very true. On that note, let us trade.}{}{1}{}{0}{pc.barter(npc)}
+{32}{Excuse me.}{}{1}{}{0}{}
+{34}{Wow, thank you for your wisdom - that was a good wisdom. Now I must go.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+
+{40}{Garments! All sorts of shirts, pants and dresses.}{Garments! All sorts of shirts, pants and dresses.}{}{}{}{npc_1(npc)}
+{41}{Cloaks and capes, that sort of thing?}{}{1}{}{43}{}
+
+{43}{No, just shirts, pants and dresses. The very finest.}{No, just shirts, pants and dresses. The very finest.}{}{}{}{}
+{44}{What about hats, surely you sell hats? What's a stylish outfit without a nice hat?}{}{1}{}{46}{}
+
+{46}{Shirts, pants and dresses, friend. Quality shirts, pants and dresses, that's all.}{Shirts, pants and dresses, friend. Quality shirts, pants and dresses, that's all.}{}{}{}{}
+{47}{But you must have shoes? No outfit is complete without a matching pair of shoes. You wouldn't put a princess in a ball-gown and not give her some lovely slippers to finish it off? Or some sturdy work boots to go with overalls or dungarees?}{}{1}{}{50}{}
+
+{50}{I sell shirts, I sell pants, and I sell dresses. Garments. Stylish garments. That's all. No capes. No cowls. No accessories. No slippers, loafers, mittens, muffs or scarves. Now do you want to buy or not?}{I sell shirts, I sell pants, and I sell dresses. Garments. Stylish garments. That's all. No capes. No cowls. No accessories. No slippers, loafers, mittens, muffs or scarves. Now do you want to buy or not?}{}{}{}{}
+{51}{B:I guess so.}{}{1}{}{0}{pc.barter(npc)}
+{52}{Not with that attitude.}{}{1}{}{16}{}
+{53}{What do you sell again?}{}{1}{}{16}{}
+{54}{But do you sell...}{}{1}{}{57}{}
+
+{57}{NO!}{NO!}{}{}{}{}
+{58}{Fine, I'll take my business elsewhere. Could you direct me to another garment seller?}{}{1}{}{16}{}
+
+{60}{Garments! All sorts of shirts, pants and dresses.}{Garments! All sorts of shirts, pants and dresses.}{}{}{}{}
+{61}{B:Please show me your stock.}{}{1}{}{0}{pc.barter(npc)}
+{62}{No thank you, I am already well dressed. But I'll keep you in mind.}{}{1}{}{0}{}
+{63}{And do you buy second hand clothes?}{}{1}{}{70}{}
+
+{70}{[Her dainty nose crinkles slightly and she says] of course not.}{[Her dainty nose crinkles slightly and she says] of course not.}{}{}{}{npc_2(npc)}
+{71}{I don't blame you.}{}{1}{}{0}{}
+{72}{But I wash it first...?}{}{1}{}{0}{}
+{73}{B:Then please show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+
+
+// return
+
+{100}{Welcome back, how can I help?}{Welcome back, how can I help?}{}{}{}{}
+{101}{B:Sell me garments, please!}{}{1}{}{0}{pc.barter(npc)}
+{102}{Could you tell me again what you sell?}{}{1}{get_1(npc)}{16}{}
+{103}{So what's the news from Shul Shennek?}{}{1}{}{120}{}
+{104}{Just browsing.}{}{1}{}{0}{}
+
+
+
+{120}{Not the best, actually. There was recently a Drow attack. I mean a SECOND Drow attack.}{Not the best, actually. There was recently a Drow attack. Sorry, a SECOND Drow attack.}{}{}{}{}
+{121}{Hah! Now this sounds like a job for adventurers. How recently?}{}{1}{}{130}{}
+
+
+{130}{The last attack was not long ago at all, barely a couple of years back. That's two in a decade!}{The last attack was not long ago at all, barely a couple of years back. That's two in a decade!}{}{}{}{}
+{131}{Ahhh, recently in Elven time... good, good.}{}{1}{pc.stat_level_get(stat_race) != race_elf}{140}{}
+{132}{Those darn Dark Elves!}{}{1}{pc.stat_level_get(stat_race) == race_elf}{140}{}
+{133}{Tell me more about the Drow presence in the Valley.}{}{1}{}{200}{}
+
+{140}{Can I interest you in some garments?}{Can I interest you in some garments?}{}{}{}{}
+{141}{B:Yes.}{}{1}{}{0}{pc.barter(npc)}
+{142}{No thank you.}{}{1}{}{0}{}
+{143}{Do you buy second hand or looted clothes?}{}{1}{not get_2(npc)}{70}{}
+
+{200}{Well, they do nothing openly, of course... but I have heard rumours of other attacks, to the north. And the raiders who hit us certainly came from the north, the direction of the Tangletuft Mountains.}{Well, they do nothing openly, of course... but I have heard rumours of other attacks, to the north. And the raiders who hit us certainly came from the north, the direction of the Tangletuft Mountains.}{}{}{}{}
+{201}{Drows in the mountains? Somewhere subterranean seems more likely...}{}{1}{game.quests[2].state == qs_unknown and game.quests[3].state == qs_unknown}{205}{}	// not been to Temple
+{202}{Yes, we found a nest of them in an old Temple, a remnant of Slaughtergarde.}{}{1}{game.quests[2].state != qs_unknown or game.quests[3].state != qs_unknown}{220}{}	// Temple marked
+
+{205}{Yes, but the lower parts of the mountains are well patrolled by the Surrinak mountaineers. So I hear - they don't allow intruders. But there shouldn't be Drow under those mountains. It is strange, troubling...}{Yes, but the lower parts of the mountains are well patrolled by the Surrinak mountaineers. So I hear - they don't allow intruders. But there shouldn't be Drow under those mountains. It is strange, troubling...}{}{}{}{}
+{206}{Agreed.}{}{1}{}{0}{}
+
+{220}{[She looks horrified at this news and turns away!]}{[She looks horrified at this news and turns away!]}{}{}{}{away(npc)}
+{221}{I'm sorry to trouble you so, my lady.}{}{1}{}{0}{}
+{222}{Something I said?}{}{1}{}{0}{}
+

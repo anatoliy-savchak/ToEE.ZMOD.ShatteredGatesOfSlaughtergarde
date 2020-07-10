@@ -1,0 +1,22 @@
+{1}{[You see an artisan, surrounded by pots.] Good morning sir.}{[You see an artisan, surrounded by pots.] Good morning madam.}{}{}{}{}
+{2}{@pcname@ at your service, you are..?}{}{1}{}{10}{}
+{3}{Can I buy some pots?}{}{1}{}{20}{}
+{4}{Just browsing.}{}{1}{}{0}{}
+
+{10}{Nice to meet you, I'm Harry.}{Nice to meet you, I'm Harry.}{}{}{}{}
+{11}{Of course you are. Can I please peruse your pots?}{}{1}{}{20}{}
+{12}{E:}{}{1}{}{0}{}
+
+{20}{Well, no. You look like violent adventuring types, and I'm not spreading my delicate and fragile wares in front of someone who doesn't look like they will buy anything, but does look like they could easily break something.}{Well, no. You look like violent adventuring types, and I'm not spreading my delicate and fragile wares in front of someone who doesn't look like they will buy anything, but does look like they could easily break something.}{}{}{}{}
+{21}{Well I never.}{}{1}{}{0}{}
+{22}{A:}{}{1}{}{0}{}
+{23}{F:}{}{1}{}{0}{}
+{24}{Do you seriously take me for some sort of clumsy clown who can't look at a clay jar without knocking over everything? Well good day to you sir! [Put your spear on your shoulder, turn around and storm off.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+
+
+{100}{Hello again.}{Hello again.}{}{}{}{}
+{101}{Just passing.}{}{1}{}{0}{}
+{102}{Can I buy some pots this time?}{}{1}{}{20}{}
+
+
+// this character is there for a quest thing later

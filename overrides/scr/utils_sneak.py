@@ -160,3 +160,76 @@ def npc_make_hide(npc, ignore_observed):
 	npc.anim_goal_interrupt()
 	npc.critter_flag_set(toee.OCF_MOVING_SILENTLY)
 	return 1
+
+def npc_make_hide_and_surprise(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	print("npc_make_hide_and_surprise: {}".format(npc))
+
+	dice20 = toee.dice_new("1d20")
+
+	npc_bonus_list = tpdp.BonusList()
+	npc_roll = dice20.roll()
+	npc_score = tpdp.dispatch_skill(npc, toee.skill_hide, npc_bonus_list, toee.OBJ_HANDLE_NULL, 1)
+	npc_score_total = npc_score + npc_roll
+	print("npc hide roll: {}, skill: {}, total: {}".format(npc_roll, npc_score, npc_score_total))
+
+	hidden_not_from_count = 0
+	hidden_from_count = 0
+	objects = toee.game.obj_list_vicinity(npc.location, toee.OLC_PC | toee.OLC_NPC)
+	if (objects):
+		suprised_list = list()
+		notsuprised_list = list()
+		foes = []
+		for obj in objects:
+			if (obj == npc): continue
+			f = obj.object_flags_get()
+			if ((f & toee.OF_OFF) or (f & toee.OF_DESTROYED) or (f & toee.OF_DONTDRAW)): continue
+			if (obj.allegiance_shared(npc)): continue
+			if (not obj.can_see(npc)): 
+				suprised_list.append(obj)
+				continue
+			foes.append(obj)
+		if (foes):
+			for target in foes:
+				target_bonus_list = tpdp.BonusList()
+				target_roll = dice20.roll()
+				target_score = tpdp.dispatch_skill(target, toee.skill_spot, target_bonus_list, toee.OBJ_HANDLE_NULL, 1)
+				target_score_total = target_score + target_roll
+				print("target hide roll: {}, skill: {}, total: {}".format(target_roll, target_score, target_score_total))
+				success = npc_score_total > target_score_total
+				hist_id = tpdp.create_history_type6_opposed_check(npc, target, npc_roll, target_roll, npc_bonus_list, target_bonus_list, 5126, 103 - success, 1) # \overrides\tpmes\combat.mes" 
+				toee.game.create_history_from_id(hist_id)
+				if (not success):
+					hidden_not_from_count += 1
+					notsuprised_list.append(target)
+				else:
+					suprised_list.append(target)
+					hidden_from_count += 1
+
+	if (hidden_from_count == 0): 
+		print("no suprise round")
+		npc.critter_flag_unset(toee.OCF_MOVING_SILENTLY)
+		# no suprise round
+		return 0
+
+	if (hidden_not_from_count == 0):
+		npc.float_text_line("Hidden!", toee.tf_blue)
+		print("HIDDEN!")
+		npc.anim_goal_interrupt()
+		npc.critter_flag_set(toee.OCF_MOVING_SILENTLY)
+	else:
+		print("Failed to Hide")
+
+	#npc.float_text_line("Surprise!", toee.tf_light_blue)
+
+	for target in suprised_list:
+		print("Surprised: {}".format(target))
+		target.condition_add("Surprised2")
+		target.float_text_line("Surprised!", toee.tf_red)
+
+	for target in notsuprised_list:
+		print("Not Surprised: {}".format(target))
+		target.condition_add("SurpriseRound2")
+
+	npc.condition_add("SurpriseRound2")
+	return 1

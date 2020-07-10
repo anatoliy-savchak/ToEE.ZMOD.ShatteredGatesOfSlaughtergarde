@@ -1,0 +1,42 @@
+{1}{[You see a bored barkeep slowly polishing a glass in a disinterested, half-hearted way. He ignores you.]}{[You see a bored barkeep slowly polishing a glass in a disinterested, half-hearted way. He ignores you.]}{}{}{}{game.global_flags[5] = 1}
+{2}{[Ignore him right back.]}{}{1}{}{10}{}
+{3}{Errr, hello?}{}{1}{}{20}{}
+{4}{Sorry to bother you, could I get some service?}{}{1}{}{20}{}
+{5}{Get your lazy ass over here and serve me NOW or I am going to insert that glass so far into you it will need Darkvision to find its way out.}{}{1}{game.party_alignment == NEUTRAL_EVIL or game.party_alignment == CHAOTIC_EVIL or game.party_alignment == CHAOTIC_NEUTRAL or game.party_alignment == LAWFUL_EVIL}{20}{}
+
+{10}{[Although he does not acknowledge your presence in any way, he seems to have noticed you ignoring him, since he now ignores you AND yawns.]}{[Although he does not acknowledge your presence in any way, he seems to have noticed you ignoring him, since he now ignores you AND yawns.]}{}{}{}{}
+{11}{[Oh it is ON. Ignore him, yawn, AND scratch your head in a completely unengaged manner.]}{}{1}{}{15}{}
+{12}{[Stop the childishness and walk away.]}{}{1}{}{0}{}
+
+{15}{[Without any indication of having noticed you, he puts down the glass, slowly moves as if to pick up another one, yawns, doesn't pick anything up, scracthes his head then groans while performing a long stretch.]}{[Without any indication of having noticed you, he puts down the glass, slowly moves as if to pick up another one, yawns, doesn't pick anything up, scracthes his head then groans while performing a long stretch.]}{}{}{}{}
+{16}{[Time to ramp things up. Yawn, scratch, stretch and sigh in a loud and exaggerated manner.]}{}{1}{}{30}{}
+{17}{[How old are you? Just walk away.]}{}{1}{}{0}{}
+
+{20}{[He doesn't look at you but ambles in your general direction, as though by coincidence, and says] well?}{[He doesn't look at you but ambles in your general direction, as though by coincidence, and says] well?}{}{}{}{}
+{21}{B:A drink. Please.}{}{1}{}{0}{pc.barter(npc)}
+{22}{B:A drink. NOW.}{}{1}{}{0}{pc.barter(npc)}
+{23}{I'm looking for adventure, what can you tell me?}{}{1}{}{25}{}
+{24}{[Just leave, this is pointless.]}{}{1}{}{0}{}
+
+{25}{[He utters a strangled chortle, as though a contemptuousness snort was about to turn into a gale of laughter but got bored and wandered off. It almost sounded like he was choking.]}{[He utters a strangled chortle, as though a contemptuousness snort was about to turn into a gale of laughter but got bored and wandered off. It almost sounded like he was choking.]}{}{}{}{}
+{26}{B:Fine, just give me a beer.}{}{1}{}{0}{pc.barter(npc)}
+{27}{F:}{}{1}{}{0}{}
+{28}{Come come, friend, is that any way to treat a customer with gold to spend? This is a tavern, we are adventurers, and you are the wise and knowledgable barkeep who points us in the right direction. At which point we buy many ales. Surely you want to play this time-honoured game?}{}{1}{pc.skill_level_get(npc, skill_diplomacy) >= 4}{40}{}
+
+{30}{[He also appears intent on escalating this, as without acknowledging your existance in any way, he yawns, stretches, scratches his head, sighs even louder than you did and then begins to clean his nails.]}{[He also appears intent on escalating this, as without acknowledging your existance in any way, he yawns, stretches, scratches his head, sighs even louder than you did and then begins to clean his nails.]}{}{}{}{}
+{31}{[Stop it. Just stop it and walk away. You're an adult, act like one.]}{}{1}{}{0}{}
+{32}{[FALL ASLEEP. LAY DOWN AND GO TO SLEEP RIGHT IN FRONT OF THE BAR. HE'S NOT WINNING THIS.]}{}{1}{}{0}{game.fade( 600,0,0,1 )}
+
+{40}{[He rolls his eyes and with a final dismissive yawn, he turns away.]}{[He rolls his eyes and with a final dismissive yawn, he turns away.]}{}{}{}{}
+{41}{Fine. No tip for you! [That's mean, tip him a couple of coppers.]}{}{1}{pc.money_get() >= 2}{0}{pc.money_adj(-2)}
+{42}{[Leave.]}{}{1}{}{0}{}
+{43}{B:All right, I'll buy something!}{}{1}{}{0}{pc.barter(npc)}
+{44}{[Ahhh, you saw that... when he rolled his eyes, they ever-so-subtly fell on a well-dressed halfling drinking at one of the tables. The game is afoot! Go talk to her.]}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 5}{0}{}
+
+{100}{[The bartender does not acknowledge your return.]}{[The bartender does not acknowledge your return.]}{}{}{}{}
+{101}{B:The usual.}{}{1}{}{0}{pc.barter(npc)}
+{102}{[Don't bother.]}{}{1}{}{0}{}
+
+{900}{Made it!}{Made it}{}{}{}{}
+{901}{Yay!}{}{1}{}{0}{{}
+{902}{Start over.}{}{1}{}{1}{}

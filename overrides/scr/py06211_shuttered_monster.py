@@ -22,6 +22,8 @@ class MonsterInfo:
 		self.id = None
 		self.cr = 0
 		self.name = None
+		self.activated = 0
+		self.revealed = 0
 		return
 
 	@classmethod

@@ -11,12 +11,12 @@
 {7}{Greater temple}
 {8}{Non-affiliated temple}
 {9}{Hommlet villager}	// this faction will only dislike you if you have the Butcher of Hommlet rep and includes generic citizens and anyone else unqualified to fight
-{10}{Nulb villager}
-{11}{St. Cuthbert member}
-{12}{Old Faith believer}
-{13}{Brothel Member}
-{14}{Pirate}
-{15}{Forces of Lareth}
+{10}{Sumberton citizens}
+{11}{Military}
+{12}{Chicane Guild}
+{13}{Militia}
+{14}{Ebon Cabal}
+{15}{Luminous Order}
 {16}{Men-at-arms captives}
 {17}{Farmer captives}
 {18}{Elven consortium prisoners}

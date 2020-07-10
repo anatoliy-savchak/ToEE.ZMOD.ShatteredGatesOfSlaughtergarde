@@ -1,0 +1,63 @@
+
+
+{0}{[ACTOR] out of ammo.}
+{1}{[ACTOR] makes ~attack of opportunity~[TAG_AOO] on [TARGET].}
+{2}{[ACTOR] reloads.}
+{3}{[ACTOR] counters spell cast by [TARGET]!}
+{4}{[ACTOR] readies ~counterspell~[TAG_RADIAL_MENU_READY_COUNTERSPELL].}
+{5}{[ACTOR] fails to ~counterspell~[TAG_RADIAL_MENU_READY_COUNTERSPELL].}
+{6}{[ACTOR] fails to ~counterspell~[TAG_RADIAL_MENU_READY_COUNTESPELL]: spell unknown.}
+{7}{[ACTOR] performs ~readied action~[TAG_RADIAL_MENU_READY], interrupting [TARGET].}
+{8}{[ACTOR] ~feints~[TAG_FEINT] [TARGET]!}
+{9}{[ACTOR] fails to ~Feint~[TAG_FEINT] [TARGET]!}
+{10}{[ACTOR] strikes ~Mirror Image~[TAG_SPELLS_MIRROR_IMAGE] of [TARGET]!}
+{11}{[ACTOR] misses [TARGET] due to concealment!}
+{12}{[ACTOR] ~deflects arrows~[TAG_DEFLECT_ARROWS]!}
+{13}{[ACTOR] ~dies~[TAG_DEAD]!}
+{14}{[ACTOR] is ~dying~[TAG_DYING]!}
+{15}{[ACTOR] ~stabilizes~[TAG_DYING]!}
+{16}{[ACTOR] falls ~unconscious~[TAG_UNCONSCIOUS]!}
+{17}{[ACTOR] is bleeding!}
+{18}{[ACTOR] takes damage due to ~exertion~[TAG_DISABLED]!}
+{19}{[ACTOR] is ~interrupted~[TAG_RADIAL_MENU_READY]!}
+{20}{[ACTOR] is ~poisoned~[TAG_POISON]!}
+{21}{[ACTOR] takes ~poison~[TAG_POISON] damage!}
+{22}{[ACTOR] ~loses a level permanently~[TAG_LEVEL_LOSS]!}
+{23}{[ACTOR] performs ~Cleave~[TAG_CLEAVE]!}
+{24}{[ACTOR] performs ~Great Cleave~[TAG_GREAT_CLEAVE]!}
+{25}{[ACTOR] loses spell due to failed ~defensive casting~[TAG_RADIAL_MENU_CAST_DEFENSIVELY]!}
+{26}{[ACTOR] ~sneak attacks~[TAG_CLASS_FEATURES_ROGUE_SNEAK_ATTACK] [TARGET]!}
+{27}{[ACTOR] ~lays hands on~[TAG_CLASS_FEATURES_PALADIN_LAY_ON_HANDS] [TARGET]!}
+{28}{[ACTOR] uses ~wholeness of body~[TAG_CLASS_FEATURES_MONK_WHOLENESS_OF_BODY]!}
+{29}{[ACTOR] ~loses spell~[TAG_ARCANE_SPELL_FAILURE] due to armor.}
+{30}{[ACTOR] drains blood.}
+{31}{[ACTOR] is immune to ~sleep~[TAG_SPELLS_SLEEP].}
+{32}{[ACTOR] miscasts spell.}
+{33}{[ACTOR] ~stunned~[TAG_STUNNED].}
+{34}{[ACTOR] ~held~[TAG_HELD].}
+{35}{[ACTOR] miscasts spell due to ~deafness~[TAG_SPELLS_DEAFNESS].}
+{36}{[ACTOR] miscasts spell due to ~blink~[TAG_SPELLS_BLINK].}
+{37}{[ACTOR] miscasts spell due to ~entanglement~[TAG_SPELLS_ENTANGLEMENT].}
+{38}{[ACTOR] miscasts spell due to ~gaseous form~[TAG_SPELLS_GASEOUS_FORM].}
+{39}{[ACTOR] miscasts spell due to ~silence~[TAG_SPELLS_SILENCE].}
+{40}{[ACTOR] immune to ~Death Touch~[TAG_DEATH_D].}
+{41}{[ACTOR] kills [TARGET] with ~Death Touch~[TAG_DEATH_D]!}
+{42}{[ACTOR] fails to kill [TARGET] with ~Death Touch~[TAG_DEATH_D].}
+{43}{[ACTOR] fails to ~track~[TAG_TRACK].}
+{44}{[ACTOR] trips [TARGET].}
+{45}{[ACTOR] ~readies an action~[TAG_RADIAL_MENU_READY].}
+{46}{[ACTOR] ~diseased~[TAG_DISEASED]!}
+{47}{[ACTOR] performs ~crippling strike~[TAG_CLASS_FEATURES_ROGUE_CRIPPLING_STRIKE] on [TARGET]!}
+{48}{[ACTOR] slips due to ~grease~[TAG_SPELLS_GREASE]!}
+{49}{[ACTOR] casts [SPELL]!}
+{50}{[ACTOR] casts unknown spell!}
+{51}{[ACTOR] is destroyed!}
+{52}{[ACTOR] is ~compelled to obey~[TAG_CLASS_FEATURES_CLERIC_TURN_REBUKE_UNDEAD]!}
+{53}{[ACTOR] ~cowers~[TAG_COWERING]!}
+{54}{[ACTOR] is ~turned~[TAG_TURNED]!}
+{55}{[ACTOR] uses item!}
+{56}{[ACTOR] ~regenerates~[TAG_REGENERATION]!}
+{57}{[ACTOR] ~uses fast healing~[TAG_SPECIAL_ABILITIES_FAST_HEALING]!}
+{58}{[ACTOR] strikes ~Mirror Image~[TAG_SPELLS_MIRROR_IMAGE]!}
+{60}{[ACTOR] strikes with ~energy drain~[TAG_ENERGY_DRAINED] on [TARGET]!}
+{61}{[ACTOR] recieves 5 ~temporary hit points~[TAG_TEMPORARY_HIT_POINTS].}

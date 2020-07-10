@@ -1,0 +1,61 @@
+{1}{[You see a huge metal construct, which appears to be walking a patrol around the room. It looks at you without breaking stride, but then continues walking without saying anything.]}{[You see a huge metal construct, which appears to be walking a patrol around the room. It looks at you without breaking stride, but then continues walking without saying anything.]}{}{}{}{}
+{2}{Hello?}{}{1}{}{0}{}	// dipl
+{3]{[Feat Tracking - the construct has worn a groove in the floor with its walking, but you see no sign of any other tracks in the room. Perhaps the goblinoids avoid this thing? Click here to speak to it.]}{}{1}{pc.has_feat(feat_track)}{0}{}	// dipl
+{4}{[Detect Evil - this thing has no taint of evil on it! Click here to speak to it.]}{}{1}{game.global_flags[2] == 1 or pc.stat_level_get(stat_level_paladin) >= 1}{0}{}	// dipl
+{5}{[Knowledge Check - this construct appears to be a maug: made in Acheron in the distant past, they are Law-abiding constructs that exist for battle against Chaos. Click here to speak to it - or slink away if you prefer.]}{}{1}{bard_know(triggerer, 5)}{0}{}	// dipl
+{6}{Quietly slink away.}{}{1}{}{0}{}
+
+// dipl 1 or less (hostile)
+
+{10}{[He does not look at you or stop walking as he says] Leave this chamber IMMEDIATELY or suffer the consequences.}{[He does not look at you or stop walking as he says] Leave this chamber IMMEDIATELY or suffer the consequences.}{}{}{}{}
+{11}{[Looks like you have about 10 seconds.]}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 3}{0}{}	// set KOS flag in 10
+{12}{A:}{}{1}{}{0}{}	// set KOS flag in 10
+{13}{[Sneak attack!]}{}{1}{}{0}{npc.attack(pc)}
+
+// dipl 2-14 (indifferent)
+
+{20}{Do not interfere with my mission. Your presence will be reported. [He does not look at you or stop walking as he says this.]}{Do not interfere with my mission. Your presence will be reported. [He does not look at you or stop walking as he says this.]}{}{}{}{}
+{21}{I won't cause any trouble.}{}{1}{}{0}{}
+{22}{Reported to whom? What mission?}{}{1}{}{0}{}	// to floatline
+{26}{[Spot check! The groove he has worn in the floor, the dust on his shoulders, the creak of his joints... they all suggest he has been at this a long time, probably longer than the goblins have been here. His 'mission' may be long since over.] Hey, this mission of yours - are you sure it's still going? Maybe it's time to move on?}{}{1}{pc.skill_level_get(npc, skill_spot) >= 4 or pc.skill_level_get(npc, skill_sense_motive) >= 3}{0}{npc_1(npc)}		// dipl again at -2 due to trying to subvert his mission, floatline 30 if not hostile
+
+{30}{[He does not respond but continues his patrol.]}{[He does not respond but continues his patrol.]}{}{}{}{}
+
+// Friendly
+
+{40}{You may pass, but please do not interfere with my mission.}{You may pass, but please do not interfere with my mission.}{}{}{}{}
+{41}{And what mission is that?}{}{1}{}{43}{}
+
+{43}{I was ordered by the Thulkarr to guard this chamber against intrusion during the battle that destroyed most of Slaughtergarde. I remain here until the Thulkarr orders me otherwise.}{I was ordered by the Thulkarr to guard this chamber against intrusion during the battle that destroyed most of Slaughtergarde. I remain here until the Thulkarr orders me otherwise.}{}{}{}{}
+{44}{[Knowledge Check - a Thulkarr is a first-generation Maug spellcaster, one of those who created the other Maugs.] And what happened to the Thulkarr? Can I meet them?}{}{1}{bard_know(triggerer, 10)}{50}{}
+{45}{Slaughtergarde? What's that?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 3}{100}{}
+{46}{What sort of intrusion? Why here?}{}{1}{}{70}{}
+
+{50}{I have not seen anyone else from the army in many years.}{I have not seen anyone else from the army in many years.}{}{}{}{}
+{51}{Errr... is it possible the war is over?}{}{1}{}{60}{}
+{52}{So what precisely was your mission?}{}{1}{}{65}{}
+{53}{I'll move on now, thanks.}{}{1}{}{0}{}
+{54}{I think your war is over... surely it's time to go home? You've earned it.}{}{1}{}{56}{npc_1(npc)}		// dipl again at -2 due to trying to subvert his mission, floatline 30 if not hostile
+
+{56}{You will not deter me from my mission. [He continues to walk his patrol.]}{You will not deter me from my mission. [He continues to walk his patrol.]}{}{}{}{}
+{57}{Hey, it's your life.}{}{1}{}{0}{}
+{58}{Something I said?}{}{1}{}{0}{}
+
+{60}{Possible? Yes. I certainly have seen and heard no indication of battle these many centuries... but my orders remain. And I take the recent presence of these goblinoids as a reminder of the importance of those orders. With goblins and hobgoblins comes clerics and wizards who would love to have access to these summoning sigils.}{Possible? Yes. I certainly have seen and heard no indication of battle these many centuries... but my orders remain. And I take the recent presence of these goblinoids as a reminder of the importance of those orders. With goblins and hobgoblins comes clerics and wizards who would love to have access to these summoning sigils.}{}{}{}{}
+{61}{Dare I ask your specific orders?}{}{1}{}{65}{}
+{62}{Summoning sigils?}{}{1}{}{70}{}
+{63}{But surely you can go home now, you don't have to waste your life here for no reason?}{}{1}{}{56}{npc_1(npc)}		// dipl again at -2 due to trying to subvert his mission, floatline 30 if not hostile
+
+
+{65}{I told you what I was ordered by the Thulkarr, but I will add - the war was against demons, so my orders include defeating the demons who come here and preventing their conquest.}{I told you what I was ordered by the Thulkarr, but I will add - the war was against demons, so my orders include defeating the demons who come here and preventing their conquest.}{}{}{}{}
+{66}{We are here to combat demons - why don't you help us?}{}{1}{}{200}{}
+
+{70}{These circles on the floor could be used to summon demons. I will not allow that to happen.}{These circles on the floor could be used to summon demons. I will not allow that to happen.}{}{}{}{}
+{71}{Well now, that IS interesting... I might have to try that.}{}{1}{game.party_alignment == NEUTRAL_EVIL or game.party_alignment == CHAOTIC_EVIL or game.party_alignment == CHAOTIC_NEUTRAL or game.party_alignment == LAWFUL_EVIL}{75}{}
+{72}{I should hope not. Well, I must be going.}{}{1}{}{0}{}
+
+
+{75}{[The maug moves to attack.]}{[The maug moves to attack.]}{}{}{}{}
+{76}{Bring it on.}{}{1}{}{0}{npc.attack(pc)}
+{77}{I was just kidding!}}{}{1}{}{0}{npc.attack(pc)}
+{78}{[RUN!]}{}{1}{}{0}{}

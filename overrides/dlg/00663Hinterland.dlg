@@ -1,0 +1,9 @@
+{1}{[You see an halfling merchant, surrounded by a huge assortment of wares for adventuring, exploring or just camping out.] Please feel free to browse, and let me know if you need anything.}{You see an halfling merchant, surrounded by a huge assortment of wares for adventuring, exploring or just camping out.] Please feel free to browse, and let me know if you need anything.}{}{}{}{}
+{2}{B:}{}{1}{}{0}{pc.barter(npc)}
+{3}{E:}{}{1}{}{0}{}
+
+// return
+
+{100}{What did you find?}{What did you find?}{}{}{}{}
+{101}{B:I'll take these...}{}{1}{}{0}{pc.barter(npc)}
+{103}{F:}{}{1}{}{0}{}

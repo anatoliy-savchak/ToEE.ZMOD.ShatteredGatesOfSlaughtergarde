@@ -106,7 +106,7 @@ def exEntangled_OnD20PythonActionPerform_BreakFree(attachee, args, evt_obj):
 		attachee.float_text_line('Breake Free failed!', tf_red)
 	return 0
 
-modObj = PythonModifier(GetConditionName(), 4)
+modObj = PythonModifier(GetConditionName(), 4) # 0 - ?, 1 - dc
 modObj.AddHook(ET_OnConditionAddPre, EK_NONE, exEntangled_OnPreAdd, ())
 modObj.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Condition, exEntangled_OnD20Query_CritterHasCondition, ())
 modObj.AddHook(ET_OnConditionAdd, EK_NONE, exEntangled_OnAdd, ())

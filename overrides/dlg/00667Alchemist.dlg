@@ -1,0 +1,25 @@
+{1}{[You see an Alchemist, whose bearing and garb suggests he is not from the Valley of Obelisks. He nods at you solemnly.]}{[You see an Alchemist, whose bearing and garb suggests he is not from the Valley of Obelisks. He nods at you solemnly.]}{}{}{}{}
+{2}{@pcname@ at your service.}{}{1}{}{10}{}
+{3}{B:Let's just trade.}{}{1}{}{0}{pc.barter(npc)}
+
+
+{10}{Seven blessings upon you, @pcname@. I am Qyaixozh - it's spelt like it sounds, should you care. May I interest you in my wares? I have acids from Lyr, herbal balms from the Summer Isles, adventuring aids from Braavos, even cunning weapons of Asshai.}{Seven blessings upon you, @pcname@. I am Qyaixozh - it's spelt like it sounds, should you care. May I interest you in my wares? I have acids from Lyr, herbal balms from the Summer Isles, adventuring aids from Braavos, even cunning weapons of Asshai.}{}{}{}{}
+{11}{B:Please show me.}{}{1}{}{0}{pc.barter(npc)}
+{12}{Are you interested in buying similar items?}{}{1}{}{20}{}
+{13}{[Bardic knowledge check - you have no idea where any of those places are. Just run away.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+{14}{No thank you?}{}{1}{}{30}{}
+
+{20}{I do, and I will pay well for genuinely magical items, but I warn you, I have a good eye for the counterfeit. Shall we trade?}{I do, and I will pay well for genuinely magical items, but I warn you, I have a good eye for the counterfeit. Shall we trade?}{}{}{}{}
+{21}{No?}{}{1}{}{30}{}
+{22}{B:Sure, let's trade.}{}{1}{}{0}{pc.barter(npc)}
+{23}{There goes my entire business model.}{}{1}{}{0}{}
+
+{30}{[He smiles and says] may the Others eat your entrails and end your bloodline screaming.}{[He smiles and says] may the Others eat your entrails and end your bloodline screaming.}{}{}{}{}
+{31}{I get that a lot.}{}{1}{}{0}{}
+{32}{F:}{}{1}{}{0}{}
+
+
+
+{100}{Welcome back Ser, what can Qyaixozh do for you?}{Welcome back Khaleesi, what can Qyaixozh do for you?}{}{}{}{}
+{101}{B:}{}{1}{}{0}{pc.barter(npc)}
+{102}{Just passing.}{}{1}{}{0}{}

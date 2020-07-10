@@ -1,0 +1,83 @@
+{1}{Greetings, stranger, and welcome to Sumberton. I am Norbert, town greeter. And you are...?}{Greetings, stranger, and welcome to Sumberton. I am Norbert, town greeter. And you are...?}{}{}{}{}
+{2}{@pcname@.}{}{1}{}{20}{}
+{3}{I'm not telling you.}{}{1}{}{5}{}
+
+{5}{Pardon, what was that name?}{Pardon, what was that name?}{}{}{}{}
+{6}{@pcname@.}{}{1}{}{20}{}
+{7}{I said - quite clearly - that I'm not telling you.}{}{1}{}{9}{}
+
+{9}{I'm sorry, I'm a little hard of hearing, and you seem to have an accent. Your name is...?}{I'm sorry, I'm a little hard of hearing, and you seem to have an accent. Your name is...?}{}{}{}{}
+{10}{@pcname@.}{}{1}{}{20}{}
+{11}{I refuse to tell you my name. It's none of your business.}{}{1}{}{13}{}
+
+{13}{Oh, this is embarrassing... I find I must ask once more. I do apologise. Now, what was your name?}{Oh, this is embarrassing... I find I must ask once more. I do apologise. Now, what was your name?}{}{}{}{}
+{14}{@pcname@.}{}{1}{}{20}{}
+{15}{Listen to me very carefully. I will not tell you my name, I will never tell you my name, and there is no power on this Oerth, no Gods on the farthest planes, no magic and no force that will ever make me tell you my name. YOU WILL NEVER KNOW MY NAME. Do you understand?}{}{1}{}{20}{}
+
+{20}{Ahh, @pcname@ was it? Welcome, welcome to Sumberton. Let me tell you about our fair city.}{Ahh, @pcname@ was it? Welcome, welcome to Sumberton. Let me tell you about our fair city.}{}{}{}{}
+{21}{Please do so.}{}{1}{}{25}{}
+{22}{As an inhabitant of the Valley of Obelsisks, I know this place well. Can we skip the description and get down to brass tacks?}{}{1}{}{40}{}
+{23}{Wait - how did you know my name?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{25}{}
+
+{25}{If you walk around the statue you will find a main thoroughfare, follow that to get to the town square. Directly off the square you will find a number of places of interest, including a huge covered marketplace with many merchants, and the Sly Wink tavern.}{If you walk around the statue you will find a main thoroughfare, follow that to get to the town square. Directly off the square you will find a number of places of interest, including a huge covered marketplace with many merchants, and the Sly Wink tavern.}{}{}{}{}
+{26}{Go on.}{}{1}{}{30}{}
+
+{30}{Elsewhere in the city you can find Sumberton Keep, the local military headquarters: Chicane Guildhouse, who control much of the local trade: the manor of my employer Lord Carstellan who takes care of official business; and a number of places of worship.}{Elsewhere in the city you can find Sumberton Keep, the local military headquarters: Chicane Guildhouse, who control much of the local trade: the manor of my employer Lord Carstellan who takes care of official business; and a number of places of worship.}{}{}{}{}
+{31}{So I can just go to these places? Great.}{}{1}{}{35}{}
+
+{35}{Well, you can't just go strolling into people's manor houses or the Keep... as newcomers I would stick to the marketplace and taverns.}{Well, you can't just go strolling into people's manor houses or the Keep... as newcomers I would stick to the marketplace and taverns.}{}{}{}{}
+{36}{I understand completely, and look forward to the day I can indeed explore those areas. For now, in we go!}{}{1}{}{40}{}
+
+{40}{Where can I direct you?}{Where can I direct you?}{}{}{}{}
+{41}{The town square.}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5122,482,506 )}
+{42}{The marketplace.}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5020,424,437 )}
+{43}{The tavern.}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5007,497,441 )}
+{44}{I'll just find my own way around, thanks.}{}{1}{}{0}{}
+{45}{No no no, this conversation is far too delightful to come to such an abrupt conclusion. You must tell me more!}{}{1}{}{50}{}
+
+{50}{And what would you like to know?}{And what would you like to know?}{}{}{}{}
+{51}{Tell me more of Lord Carstellan.}{}{1}{}{80}{}
+{52}{Tell me more of the military.}{}{1}{}{85}{}
+{53}{Tell me more of the history of this place.}{}{1}{}{90}{}
+{54}{I seek arcane knowledge, where would I go?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1 or pc.stat_level_get(stat_level_wizard) >= 1 or pc.stat_level_get(stat_level_sorcerer) >= 1}{60}{}
+{55}{Tell me of the inhabitants of this fair city.}{}{1}{}{70}{}
+{56}{Tell me of the Valley of Obelisks.}{}{1}{}{75}{}
+
+{60}{Well, the main purveyor of the arcane is Chendrea the White. She runs the Sumberton Scriveners, whose guildhose is across the city on the far easter side. She knows a lot about the history of this place, too, particularly about Slaughtergarde. Otherwise, the are sellers of simple scrolls and such in the markeplace.}{Well, the main purveyor of the arcane is Chendrea the White. She runs the Sumberton Scriveners, whose guildhose is across the city on the far easter side. She knows a lot about the history of this place, too, particularly about Slaughtergarde. Otherwise, the are sellers of simple scrolls and such in the markeplace.}{}{}{}{game.global_flags[7] = 1}
+{61}{K:}{}{1}{}{50}{}
+{63}{I must move on.}{}{1}{}{40}{}
+{64}{Slaughtergarde?}{}{1}{}{65}{}
+
+{65}{[He chuckles.] You're locals, you know as much about that as me. You'll have to ask eslewhere for better information.}{[He chuckles.] You're locals, you know as much about that as me. You'll have to ask eslewhere for better information.}{}{}{}{}
+{66}{A:}{}{1}{}{0}{}
+{67}{K:}{}{1}{}{50}{}
+{68}{E:}{}{1}{}{0}{}
+
+{70}{Let me see... About half are humans like myself, about 1 in 6 is halfling - there are 3 main clans who control much trade - and about 1 in 10 is a dwarf from the edges of the Valley. Then there are smatterings of elves, half-elves and half-orcs in roughly equal numbers.}{Let me see... About half are humans like myself, about 1 in 6 is halfling - there are 3 main clans who control much trade - and about 1 in 10 is a dwarf from the edges of the Valley. Then there are smatterings of elves, half-elves and half-orcs in roughly equal numbers.}{}{}{}{game.global_flags[9] = 1}
+{71}{So tell me of the Valley of Obelisks?}{}{1}{}{75}{}
+{72}{K:}{}{1}{}{50}{}
+{73}{I must move on.}{}{1}{}{40}{}
+
+{75}{[He chuckles.] You have me at a disadvantage there, I am afraid... I am very much an urban dweller, and have rarely left the city. But there are many living here from all parts of the Valley - ask around and I am sure you will learn much!}{[He chuckles.] You have me at a disadvantage there, I am afraid... I am very much an urban dweller, and have rarely left the city. But there are many living here from all parts of the Valley - ask around and I am sure you will learn much!}{}{}{}{}
+{76}{Then tell me of the inhabitants of the city.}{}{1}{}{70}{}
+{77}{K:}{}{1}{}{50}{}
+{78}{I must move on.}{}{1}{}{40}{}
+
+{80}{His Lordship has taxing priveleges over the city - he levies the taxes, and in turn provides many of the services. Such as myself. [He bows]. He also controls the city guard, who are a militia seperate to the military and who keep the peace.}{His Lordship has taxing priveleges over the city - he levies the taxes, and in turn provides many of the services. Such as myself. [He bows]. He also controls the city guard, who are a militia seperate to the military and who keep the peace.}{}{}{}{}
+{81}{So tell me of the military?}{}{1}{}{85}{}
+{82}{K:}{}{1}{}{50}{}
+{83}{I must move on.}{}{1}{}{40}{}
+
+{85}{They are headquartered in the Keep, as I said - the highest point in town. Five-score are usually there, with another ten-score out training and patrolling the Valley. Their leader is Captain Donellgan, who answers to the national government.}{They are headquartered in the Keep, as I said - the highest point in town. Five-score are usually there, with another ten-score out training and patrolling the Valley. Their leader is Captain Donellgan, who answers to the national government.}{}{}{}{}
+{86}{K:}{}{1}{}{50}{}
+{87}{I must move on.}{}{1}{}{40}{}
+
+{90}{Sumberton began with the Keep, which was built generations ago to control and tax the trade along the Marrilach River. In time a town grew up around it, thrived, and now the people of the town control the trade, as it were. It is the only city in the Valley.}{Sumberton began with the Keep, which was built generations ago to control and tax the trade along the Marrilach River. In time a town grew up around it, thrived, and now the people of the town control the trade, as it were. It is the only city in the Valley.}{}{}{}{}
+{91}{Tell me of the Valley of Obelisks?}{}{1}{}{0}{}
+{92}{K:}{}{1}{}{50}{}
+{93}{I must move on.}{}{1}{}{40}{}
+
+{100}{Hello again, @pcname@. How may I help you?}{Hello again, @pcname@. How may I help you?}{}{}{}{}
+{101}{Could you direct me to a certain part of the city?}{}{1}{}{40}{}
+{102}{K:}{}{1}{}{0}{}
+{103}{Just passing.}{}{1}{}{0}{}
