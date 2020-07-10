@@ -125,8 +125,9 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t16()
 		#self.place_encounter_t17()
 		#self.place_encounter_t18()
-		self.place_encounter_t19()
-		self.place_encounter_t20()
+		#self.place_encounter_t19()
+		#self.place_encounter_t20()
+		self.place_encounter_t21()
 		self.print_monsters()
 
 		# debug
@@ -149,7 +150,8 @@ class CtrlShatteredTemple(object):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 449) #t16
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 471) #t18
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 533, 462) #t21
 		utils_obj.scroll_to_leader()
 		return
 
@@ -549,6 +551,21 @@ class CtrlShatteredTemple(object):
 		result.append(monster)
 		return tuple(result)
 
+	def place_encounter_t21(self):
+		self.create_promter_at(utils_obj.sec2loc(533, 476), 6400, 210, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Death-Dealer", const_toee.rotation_1100_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(529, 487), py06401_shattered_temple_encounters.CtrlHugeFiendishSpider, const_toee.rotation_0900_oclock, "t21", "fiendish_spider")
+		return
+
+	def display_encounter_t21(self):
+		self.reveal_monster("t21", "fiendish_spider")
+		return
+
+	def activate_encounter_t21(self):
+		print("activate_encounter_t21")
+		self.activate_monster("t21", "fiendish_spider")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -643,7 +660,8 @@ class CtrlShatteredTemple(object):
 
 	def create_npc_at(self, npc_loc, ctrl_class, rot, encounter, code_name):
 		npc, ctrl = ctrl_class.create_obj_and_class(npc_loc)
-		print("create_npc_at npc: {}, ctrl: {}, id: {}".format(npc, ctrl, npc.id))
+		x, y = utils_obj.loc2sec(npc.location)
+		print("create_npc_at npc: {}, ctrl: {}, id: {}, coord: {},{}".format(npc, ctrl, npc.id, x, y))
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot

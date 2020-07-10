@@ -1092,3 +1092,53 @@ class CtrlWebSpinningSpider(ctrl_behaviour.CtrlBehaviour):
 				break
 			break
 		return tac
+
+class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14933
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlHugeFiendishSpider, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		#debug.breakp("enter_combat")
+		#utils_sneak.npc_make_hide_and_surprise(attachee)
+		return toee.RUN_DEFAULT
+
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		target = None
+		if (toee.game.combat_turn == 1):
+			foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+			for foe in sorted(foes.list, utils_target_list._AITargetList_cmp_closest):
+				assert isinstance(foe, utils_target_list.AITarget)
+				is_netted1 = foe.target.d20_query_has_condition("netted")
+				is_netted2 = foe.target.d20_query("Is Netted")
+				print("netted: {}, netted1: {}, foe: {}".format(is_netted2, is_netted1, foe.target))
+				if (not target and not is_netted2):
+					target = foe.target
+					break
+
+		while (not tac):
+			if (target): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(target.id)
+				tac.add_python_action(3014)
+				tac.add_approach_single()
+				tac.add_python_action(3014)
+				tac.add_attack()
+				tac.add_total_defence()
+				break
+			break
+		return tac

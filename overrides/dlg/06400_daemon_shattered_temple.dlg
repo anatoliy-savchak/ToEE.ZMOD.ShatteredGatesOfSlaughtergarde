@@ -101,3 +101,10 @@
 {201}{Continue}{}{1}{}{202}{}
 {202}{To the east are pews running north-south. Despite the webbing, you can see that mosaic footprints continue south through this room to a set of copper doors.}{To the east are pews running north-south. Despite the webbing, you can see that mosaic footprints continue south through this room to a set of copper doors.}{}{}{}{}
 {209}{Close}{}{1}{}{0}{cst().activate_encounter_t20()}
+
+{210}{A red-eyed spider the size of a small hut crouches to the south. Beyond it, upon a black altar, an idol of a hulking figure wearing spiked armor and wielding a halberd glows with baleful green light.}{A red-eyed spider the size of a small hut crouches to the south. Beyond it, upon a black altar, an idol of a hulking figure wearing spiked armor and wielding a halberd glows with baleful green light.}{}{}{}{cst().display_encounter_t21()}
+{211}{Continue}{}{1}{}{212}{}
+{212}{The western wall of the room is an avalanche of stone and dirt, and this cavernous chamber might be natural. It’s hard to make out details.}{The western wall of the room is an avalanche of stone and dirt, and this cavernous chamber might be natural. It’s hard to make out details.}{}{}{}{}
+{213}{Continue}{}{1}{}{214}{}
+{214}{Thick webs that have bones among them enshroud the room and obscure the floor, but it seems like something on the altar is glittering in the green light.}{Thick webs that have bones among them enshroud the room and obscure the floor, but it seems like something on the altar is glittering in the green light.}{}{}{}{}
+{219}{Close}{}{1}{}{0}{cst().activate_encounter_t21()}

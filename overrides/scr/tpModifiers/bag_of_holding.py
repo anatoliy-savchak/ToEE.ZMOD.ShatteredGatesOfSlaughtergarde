@@ -8,6 +8,8 @@ def GetConditionName():
 print("Registering " + GetConditionName())
 ###################################################
 
+PROTO_CONTAINER_BAG_OF_HOLDING = 1400
+
 def items_get(npc, unwield_all = 1):
 	assert isinstance(npc, toee.PyObjHandle)
 	otype = npc.type
@@ -119,7 +121,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_inventory(attachee, args, evt_obj):
 
 		prev_chest = FindChest()
 		if (prev_chest): prev_chest.destroy()
-		bag = toee.game.obj_create(1300, attachee.location)
+		bag = toee.game.obj_create(PROTO_CONTAINER_BAG_OF_HOLDING, attachee.location)
 		do_invisible = "anim_goal_use_object" in dir(attachee)
 		#do_invisible = 0
 		if (do_invisible):
@@ -183,7 +185,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 		#debug.breakp("Bag_Of_Holding_OnD20PythonActionPerform")
 		prev_chest = FindChest()
 		if (prev_chest): prev_chest.destroy()
-		bag = toee.game.obj_create(1300, attachee.location)
+		bag = toee.game.obj_create(PROTO_CONTAINER_BAG_OF_HOLDING, attachee.location)
 		do_invisible = "anim_goal_use_object" in dir(attachee)
 		#do_invisible = 0
 		if (do_invisible):
@@ -277,7 +279,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_autosell(attachee, args, evt_obj):
 		#debug.breakp("Bag_Of_Holding_OnD20PythonActionPerform")
 		prev_chest = FindChest()
 		if (prev_chest): prev_chest.destroy()
-		bag = toee.game.obj_create(1300, attachee.location)
+		bag = toee.game.obj_create(PROTO_CONTAINER_BAG_OF_HOLDING, attachee.location)
 		do_invisible = "anim_goal_use_object" in dir(attachee)
 		#do_invisible = 0
 		if (do_invisible):
@@ -335,7 +337,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
 		#debug.breakp("Bag_Of_Holding_OnD20PythonActionPerform")
 		prev_chest = FindChest()
 		if (prev_chest): prev_chest.destroy()
-		bag = toee.game.obj_create(1300, attachee.location)
+		bag = toee.game.obj_create(PROTO_CONTAINER_BAG_OF_HOLDING, attachee.location)
 		do_invisible = "anim_goal_use_object" in dir(attachee)
 		#do_invisible = 0
 		if (do_invisible):
@@ -390,7 +392,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
 
 def FindChest():
 	for obj in toee.game.obj_list_vicinity(toee.game.leader.location, toee.OLC_CONTAINER):
-		if (obj.proto == 1300 and not obj.object_flags_get() & toee.OF_DESTROYED):
+		if (obj.proto == PROTO_CONTAINER_BAG_OF_HOLDING and not obj.object_flags_get() & toee.OF_DESTROYED):
 			return obj
 	return None
 
