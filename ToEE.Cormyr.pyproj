@@ -58,10 +58,14 @@
     <Folder Include="overrides\rules\" />
     <Folder Include="overrides\rules\d20_actions\" />
     <Folder Include="overrides\scr\" />
+    <Folder Include="overrides\art\" />
+    <Folder Include="overrides\art\interface\" />
+    <Folder Include="overrides\art\interface\portraits\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\docs\portrait.md" />
     <Content Include="data\oemes\oname.mes" />
+    <Content Include="overrides\art\interface\portraits\portraits.mes" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
@@ -115,6 +119,7 @@
     <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
     <Content Include="overrides\oemes\faction.mes" />
     <Content Include="overrides\rules\combat_vars.mes" />
+    <Content Include="overrides\rules\indicators\netted.txt" />
     <Content Include="overrides\rules\indicators\surprise_round2.txt" />
     <Content Include="overrides\rules\indicators\surprised2.txt" />
     <Content Include="overrides\rules\indicators\lodged_quills.txt" />
@@ -157,6 +162,7 @@
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03014_throw_net.py" />
     <Compile Include="overrides\rules\d20_actions\action03013_bag_of_holding_lautosell.py" />
     <Compile Include="overrides\rules\d20_actions\action03012_break_object.py" />
     <Compile Include="overrides\rules\d20_actions\action03011_monster_bite.py" />
@@ -263,6 +269,8 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\netted.py" />
+    <Compile Include="overrides\scr\tpModifiers\net_throw.py" />
     <Compile Include="overrides\scr\tpModifiers\surprise_round2.py" />
     <Compile Include="overrides\scr\tpModifiers\surprised2.py" />
     <Compile Include="overrides\scr\tpModifiers\energy_drain_su.py" />

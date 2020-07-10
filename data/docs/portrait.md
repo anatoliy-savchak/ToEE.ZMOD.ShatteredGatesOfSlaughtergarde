@@ -27,3 +27,9 @@ Example for Wight:
 4. override\art\interface\portraits\portraits.mes will work.
 5. override\art\interface\portraits\ location for tga files would work.
 6. RLE compression in tga will not work.
+
+# GIMP
+1. Create 42x37 or 53x47
+2. Copy image, paste.
+3. Use Tools\Transform Tools\Scale (Shift+S)
+4. For grey - use Colors\Desaturate\Color to Grey... (Ctrl+G, reassigned)

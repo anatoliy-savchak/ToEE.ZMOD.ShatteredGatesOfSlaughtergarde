@@ -4152,3 +4152,15 @@
 {10003}{npc_wight_53x47_grey.tga}
 {10004}{npc_wight_42x37_grey.tga}
 
+{10010}{}
+{10011}{npc_drow_female1_42x37.tga}
+{10012}{npc_drow_female1_53x47.tga}
+{10013}{npc_drow_female1_53x47_grey.tga}
+{10014}{npc_drow_female1_42x37_grey.tga}
+
+
+{10020}{}
+{10021}{npc_web_spinning_spider_42x37.tga}
+{10022}{npc_web_spinning_spider_53x47.tga}
+{10023}{npc_web_spinning_spider_53x47_grey.tga}
+{10024}{npc_web_spinning_spider_42x37_grey.tga}

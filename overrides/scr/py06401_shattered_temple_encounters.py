@@ -970,3 +970,109 @@ class CtrlWight(ctrl_behaviour.CtrlBehaviour):
 		#debug.breakp("enter_combat")
 		utils_sneak.npc_make_hide_and_surprise(attachee)
 		return toee.RUN_DEFAULT
+
+class CtrlDrowAcolyte(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14930
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlDrowAcolyte, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		#npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		#npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 8)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAINMAIL_FINE_MASTERWORK, npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_MASTERWORK, npc)
+		npc.item_wield_best_all()
+
+		#TODO: smite good?
+		return
+
+	def revealed(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_npc.npc_spell_ensure(npc, toee.spell_shield_of_faith, toee.stat_level_cleric, 1)
+		npc.cast_spell(toee.spell_shield_of_faith, npc)
+		return
+
+	def trigger_step(self, npc, step):
+		assert isinstance(npc, toee.PyObjHandle)
+		assert isinstance(step, int)
+		if (step == 2):
+			utils_npc.npc_spell_ensure(npc, toee.spell_protection_from_good, toee.stat_level_cleric, 1)
+			npc.cast_spell(toee.spell_protection_from_good, npc)
+		if (step == 3):
+			utils_npc.npc_spell_ensure(npc, toee.spell_divine_favor, toee.stat_level_cleric, 1)
+			npc.cast_spell(toee.spell_divine_favor, npc)
+		return
+
+
+class CtrlHuntingSpider(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14931
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlHuntingSpider, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		#debug.breakp("enter_combat")
+		utils_sneak.npc_make_hide_and_surprise(attachee)
+		return toee.RUN_DEFAULT
+
+class CtrlWebSpinningSpider(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14932
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlWebSpinningSpider, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		#debug.breakp("enter_combat")
+		#utils_sneak.npc_make_hide_and_surprise(attachee)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		target = None
+		for foe in sorted(foes.list, utils_target_list._AITargetList_cmp_closest):
+			assert isinstance(foe, utils_target_list.AITarget)
+			is_netted1 = foe.target.d20_query_has_condition("netted")
+			is_netted2 = foe.target.d20_query("Is Netted")
+			print("netted: {}, netted1: {}, foe: {}".format(is_netted2, is_netted1, foe.target))
+			if (not target and not is_netted2):
+				target = foe.target
+				#break
+
+		while (not tac):
+			if (target): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(target.id)
+				tac.add_python_action(3014)
+				tac.add_approach_single()
+				tac.add_python_action(3014)
+				tac.add_attack()
+				tac.add_total_defence()
+				break
+			break
+		return tac

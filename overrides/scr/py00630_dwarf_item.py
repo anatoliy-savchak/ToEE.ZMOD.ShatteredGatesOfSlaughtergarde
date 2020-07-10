@@ -33,4 +33,9 @@ def on_time_do_wield_off(owner, item):
 	#print("slot_worn: {}".format(slot_worn))
 	if (not slot_worn is None):
 		owner.item_worn_unwield(slot_worn, 0)
+
+		already_has = owner.item_find_by_proto(12345)
+		if (not already_has):
+			owner.item_get(toee.game.obj_create(12345, owner.location))
+			item.destroy()
 	return

@@ -530,7 +530,7 @@ def _AITargetList_cmp_default(m1, m2):
 def _AITargetList_cmp_closest(m1, m2):
 	assert isinstance(m1, AITarget)
 	assert isinstance(m2, AITarget)
-	return m2.measures.value_distance - m1.measures.value_distance
+	return int(m1.measures.value_distance - m2.measures.value_distance)
 
 class AITargetBaddie:
 	def __init__(self):

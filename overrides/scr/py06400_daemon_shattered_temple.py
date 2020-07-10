@@ -123,7 +123,10 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t14()
 		#self.place_encounter_t15()
 		#self.place_encounter_t16()
-		self.place_encounter_t17()
+		#self.place_encounter_t17()
+		#self.place_encounter_t18()
+		#self.place_encounter_t19()
+		self.place_encounter_t20()
 		self.print_monsters()
 
 		# debug
@@ -144,7 +147,9 @@ class CtrlShatteredTemple(object):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 454) #t15
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 449) #t16
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 471) #t18
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
 		utils_obj.scroll_to_leader()
 		return
 
@@ -462,6 +467,72 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t17", "wight")
 		return
 
+	def place_encounter_t18(self):
+		self.create_promter_at(utils_obj.sec2loc(507, 475), 6400, 180, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Audience Hall", const_toee.rotation_0800_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(504, 471), py06401_shattered_temple_encounters.CtrlDrowAcolyte, const_toee.rotation_0600_oclock, "t18", "acolyte1")
+		self.create_npc_at(utils_obj.sec2loc(504, 478), py06401_shattered_temple_encounters.CtrlDrowAcolyte, const_toee.rotation_0900_oclock, "t18", "acolyte2")
+		self.create_npc_at(utils_obj.sec2loc(500, 478), py06401_shattered_temple_encounters.CtrlDrowAcolyte, const_toee.rotation_0900_oclock, "t18", "acolyte3")
+		return
+
+	def display_encounter_t18(self, step = None):
+		self.reveal_monster("t18", "acolyte1")
+		self.reveal_monster("t18", "acolyte2")
+		self.reveal_monster("t18", "acolyte3")
+		return
+
+	def trigger_monster_step_t18(self, step):
+		self.trigger_monster_step("t18", "acolyte1", step)
+		self.trigger_monster_step("t18", "acolyte2", step)
+		self.trigger_monster_step("t18", "acolyte3", step)
+		return
+
+	def activate_encounter_t18(self):
+		self.activate_monster("t18", "acolyte1")
+		self.activate_monster("t18", "acolyte2")
+		self.activate_monster("t18", "acolyte3")
+		return
+
+	def place_encounter_t19(self):
+		self.create_promter_at(utils_obj.sec2loc(532, 441), 6400, 190, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Collapsed Room", const_toee.rotation_0800_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(538, 438), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0300_oclock, "t19", "hunting_spider1")
+		self.create_npc_at(utils_obj.sec2loc(536, 440), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0300_oclock, "t19", "hunting_spider2")
+		self.create_npc_at(utils_obj.sec2loc(527, 439), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0800_oclock, "t19", "hunting_spider3")
+		return
+
+	def display_encounter_t19(self, step = None):
+		self.reveal_monster("t19", "hunting_spider1")
+		self.reveal_monster("t19", "hunting_spider2")
+		self.reveal_monster("t19", "hunting_spider3")
+		return
+
+	def activate_encounter_t19(self):
+		self.activate_monster("t19", "hunting_spider1")
+		self.activate_monster("t19", "hunting_spider2")
+		self.activate_monster("t19", "hunting_spider3")
+		return
+
+	def place_encounter_t20(self):
+		self.create_promter_at(utils_obj.sec2loc(533, 461), 6400, 200, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Sanctuary", const_toee.rotation_1100_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(528, 459), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_0900_oclock, "t20", "spinning_spider1")
+		#self.create_npc_at(utils_obj.sec2loc(539, 459), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_0100_oclock, "t20", "spinning_spider2")
+		#self.create_npc_at(utils_obj.sec2loc(530, 467), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_1000_oclock, "t20", "spinning_spider3")
+		return
+
+	def display_encounter_t20(self, step = None):
+		self.reveal_monster("t20", "spinning_spider1")
+		#self.reveal_monster("t20", "spinning_spider2")
+		#self.reveal_monster("t20", "spinning_spider3")
+		return
+
+	def activate_encounter_t20(self):
+		self.activate_monster("t20", "spinning_spider1")
+		#self.activate_monster("t20", "spinning_spider2")
+		#self.activate_monster("t20", "spinning_spider3")
+		return
+
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
@@ -632,6 +703,17 @@ class CtrlShatteredTemple(object):
 			debugg.breakp("Monster not found")
 		return npc, info
 
+	def trigger_monster_step(self, encounter_name, monster_code_name, step):
+		info = self.get_monsterinfo(encounter_name, monster_code_name)
+		if (info):
+			npc = toee.game.get_obj_by_id(info.id)
+			if (npc):
+				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
+				if (ctrl and ("trigger_step" in dir(ctrl))):
+					result = ctrl.trigger_step(npc, step)
+					return result
+		return
+
 	def print_monsters(self):
 		exptotal = 0
 		exptotal1 = 0
@@ -674,8 +756,10 @@ class CtrlShatteredTemple(object):
 				npc2.add_to_initiative()
 		return
 
-	def create_promter_at(self, loc, dialog_script_id, line_id, radar_radius_ft, method, new_name):
+	def create_promter_at(self, loc, dialog_script_id, line_id, radar_radius_ft, method, new_name, rotation = None):
 		npc = py06122_cormyr_prompter.create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, method, new_name)
+		if (rotation):
+			npc.rotation = rotation
 		return npc
 
 	def destroy_all_npc(self):

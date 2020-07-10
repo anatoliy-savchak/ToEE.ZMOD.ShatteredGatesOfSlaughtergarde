@@ -84,3 +84,20 @@
 {171}{Continue}{}{1}{}{172}{}
 {172}{A demon arch filled with violet energy thrums in the wall to the east. Clawed mosaic footprints run down the hall's center.}{A demon arch filled with violet energy thrums in the wall to the east. Clawed mosaic footprints run down the hall's center.}{}{}{}{}
 {179}{Close}{}{1}{}{0}{cst().activate_encounter_t17()}
+
+{180}{Three female drow in robes and chainmail stand before the racks of scrolls that line the walls of this room.}{Three female drow in robes and chainmail stand before the racks of scrolls that line the walls of this room.}{}{}{}{cst().display_encounter_t18()}
+{181}{Continue}{}{1}{}{182}{}
+{182}{On the eastern wall is a massive iron chair, bolted to the floor and buttressed with thick beams.}{On the eastern wall is a massive iron chair, bolted to the floor and buttressed with thick beams.}{}{}{}{cst().trigger_monster_step_t18(2)}
+{183}{Continue}{}{1}{}{184}{}
+{184}{Loose pieces of parchment litter the floor.}{Loose pieces of parchment litter the floor.}{}{}{}{cst().trigger_monster_step_t18(3)}
+{189}{Close}{}{1}{}{0}{cst().activate_encounter_t18()}
+
+{190}{Three spiders the size of wolves creep along the floor of this chamber, the northern end of which has clearly collapsed.}{Three spiders the size of wolves creep along the floor of this chamber, the northern end of which has clearly collapsed.}{}{}{}{cst().display_encounter_t19()}
+{191}{Continue}{}{1}{}{192}{}
+{192}{Marble debris litters the southwestern corner, and a statue of a robed human male sitting cross-legged is in the southeastern corner. Carved into the southern wall are inscriptions in a strange language.}{Marble debris litters the southwestern corner, and a statue of a robed human male sitting cross-legged is in the southeastern corner. Carved into the southern wall are inscriptions in a strange language.}{}{}{}{}
+{199}{Close}{}{1}{}{0}{cst().activate_encounter_t19()}
+
+{200}{The hallway widens to reveal a room where cobwebs hang from the ceiling, and slightly sticky webbing blankets the floor.}{The hallway widens to reveal a room where cobwebs hang from the ceiling, and slightly sticky webbing blankets the floor.}{}{}{}{cst().display_encounter_t20()}
+{201}{Continue}{}{1}{}{202}{}
+{202}{To the east are pews running north-south. Despite the webbing, you can see that mosaic footprints continue south through this room to a set of copper doors.}{To the east are pews running north-south. Despite the webbing, you can see that mosaic footprints continue south through this room to a set of copper doors.}{}{}{}{}
+{209}{Close}{}{1}{}{0}{cst().activate_encounter_t20()}

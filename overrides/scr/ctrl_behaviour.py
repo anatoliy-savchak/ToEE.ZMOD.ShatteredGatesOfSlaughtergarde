@@ -110,3 +110,8 @@ class CtrlBehaviour(object):
 	def activating(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		return
+
+	def trigger_step(self, npc, step):
+		assert isinstance(npc, toee.PyObjHandle)
+		assert isinstance(step, int)
+		return
