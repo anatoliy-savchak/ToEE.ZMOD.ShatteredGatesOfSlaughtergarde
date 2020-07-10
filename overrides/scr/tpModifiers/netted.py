@@ -22,14 +22,18 @@ def netted_remove(args, cr = 0):
 	assert isinstance(args, tpdp.EventArgs)
 	partId = args.get_arg(3)
 	if (partId > 0):
+		print("netted_remove, partId: {}".format(partId))
 		toee.game.particles_kill(partId)
 	args.set_arg(3, 0)
-	args.condition_remove()
+	if (cr):
+		print("condition_remove")
+		args.condition_remove()
 	return 0
 
 def netted_OnRemove(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
+	print("netted_OnRemove, attachee: {}".format(attachee))
 	netted_remove(args, 0)
 	return 0
 
@@ -169,7 +173,16 @@ def netted_S_BreakFree(attachee, args, evt_obj):
 def netted_do_remove(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
+	print("netted_do_remove, attachee: {}".format(attachee))
 	netted_remove(args, 1)
+	return 0
+
+def netted_remove_check(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	print("netted_remove_check, attachee: {}".format(attachee))
+	if (not toee.game.combat_is_active()):
+		netted_remove(args, 1)
 	return 0
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 4, 1) # 0 - dc break free, dc escape artist, partId, reserved
@@ -185,6 +198,7 @@ modObj.AddHook(toee.ET_OnGetMoveSpeed, toee.EK_NONE, netted_OnGetMoveSpeed, ())
 modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Combat_End, netted_do_remove, ())
 modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Killed, netted_do_remove, ())
 modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_BreakFree, netted_S_BreakFree, ())
+modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_BeginTurn, netted_remove_check, ())
 modObj.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, netted_OnGetEffectTooltip, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, netted_OnGetTooltip, ())
 modObj.AddHook(toee.ET_OnBuildRadialMenuEntry, toee.EK_NONE, netted_OnBuildRadialMenuEntry, ())

@@ -1014,6 +1014,12 @@ class CtrlHuntingSpider(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14931
 
+	def __init__(self):
+		super(CtrlHuntingSpider, self).__init__()
+		self.notify_start_combat_npcid = None
+		self.notify_start_combat_ctrlname = None
+		return
+
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlHuntingSpider, self).created(npc)
@@ -1029,6 +1035,16 @@ class CtrlHuntingSpider(ctrl_behaviour.CtrlBehaviour):
 		#debug.breakp("enter_combat")
 		utils_sneak.npc_make_hide_and_surprise(attachee)
 		return toee.RUN_DEFAULT
+
+	def start_combat(self, attachee, triggerer):
+		super(CtrlHuntingSpider, self).start_combat(attachee, triggerer)
+		if (self.notify_start_combat_ctrlname and self.notify_start_combat_npcid):
+			storage = utils_storage.obj_storage_by_id(self.notify_start_combat_npcid)
+			if (storage and storage.data and self.notify_start_combat_ctrlname in storage.data):
+				ctrl = storage.data[self.notify_start_combat_ctrlname]
+				if (ctrl and "on_notify_combat_start" in dir(ctrl)):
+					ctrl.on_notify_combat_start(self, attachee)
+		return
 
 class CtrlWebSpinningSpider(ctrl_behaviour.CtrlBehaviour):
 	@classmethod

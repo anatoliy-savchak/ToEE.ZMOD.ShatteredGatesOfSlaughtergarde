@@ -67,7 +67,7 @@ def npc_skill_ensure(npc, skill_id, target_skill_value):
 	npc.skill_ranks_set(skill_id, ranks)
 	return delta
 
-def npc_is_alive(npc):
+def npc_is_alive(npc, dead_when_negative_hp = 0):
 	assert isinstance(npc, PyObjHandle)
 	object_flags = npc.object_flags_get()
 	if ((object_flags & OF_DESTROYED) or (object_flags & OF_OFF)): return 0
@@ -76,6 +76,8 @@ def npc_is_alive(npc):
 	result = npc.d20_query(Q_Dying)
 	if (result): return 0
 	hp = npc.stat_level_get(stat_hp_current)
+	if (dead_when_negative_hp and hp < 0):
+		return0
 	if (hp <= -10): return 0
 	return 1
 
@@ -143,3 +145,18 @@ def npc_get_cr_exp(pc, cr):
 		if (cr == 8): return 5400
 		if (cr == 9): return 7200
 	return 0
+
+def find_pc_closest_to_origin(loc):
+	f = None
+	fdist = 0.0
+	for obj in game.party:
+		assert isinstance(obj, PyObjHandle)
+		if (f is None): 
+			f = obj
+			fdist = obj.distance_to(loc)
+			continue
+		dist = obj.distance_to(loc)
+		if (dist < fdist):
+			f = obj
+			fdist = dist
+	return f, fdist

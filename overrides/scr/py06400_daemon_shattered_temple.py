@@ -125,7 +125,7 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t16()
 		#self.place_encounter_t17()
 		#self.place_encounter_t18()
-		#self.place_encounter_t19()
+		self.place_encounter_t19()
 		self.place_encounter_t20()
 		self.print_monsters()
 
@@ -496,42 +496,58 @@ class CtrlShatteredTemple(object):
 	def place_encounter_t19(self):
 		self.create_promter_at(utils_obj.sec2loc(532, 441), 6400, 190, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Collapsed Room", const_toee.rotation_0800_oclock)
 
-		self.create_npc_at(utils_obj.sec2loc(538, 438), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0300_oclock, "t19", "hunting_spider1")
-		self.create_npc_at(utils_obj.sec2loc(536, 440), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0300_oclock, "t19", "hunting_spider2")
-		self.create_npc_at(utils_obj.sec2loc(527, 439), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0800_oclock, "t19", "hunting_spider3")
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(538, 438), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0300_oclock, "t19", "hunting_spider1")
+		ctrl.notify_start_combat_npcid = self.id
+		ctrl.notify_start_combat_ctrlname = self.get_name()
+
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(536, 440), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0300_oclock, "t19", "hunting_spider2")
+		ctrl.notify_start_combat_npcid = self.id
+		ctrl.notify_start_combat_ctrlname = self.get_name()
+
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(527, 439), py06401_shattered_temple_encounters.CtrlHuntingSpider, const_toee.rotation_0800_oclock, "t19", "hunting_spider3")
+		ctrl.notify_start_combat_npcid = self.id
+		ctrl.notify_start_combat_ctrlname = self.get_name()
 		return
 
-	def display_encounter_t19(self, step = None):
+	def display_encounter_t19(self):
 		self.reveal_monster("t19", "hunting_spider1")
 		self.reveal_monster("t19", "hunting_spider2")
 		self.reveal_monster("t19", "hunting_spider3")
 		return
 
 	def activate_encounter_t19(self):
-		self.activate_monster("t19", "hunting_spider1")
-		self.activate_monster("t19", "hunting_spider2")
-		self.activate_monster("t19", "hunting_spider3")
-		return
+		result = list()
+		monster = self.activate_monster("t19", "hunting_spider1")
+		result.append(monster)
+		monster = self.activate_monster("t19", "hunting_spider2")
+		result.append(monster)
+		monster = self.activate_monster("t19", "hunting_spider3")
+		result.append(monster)
+		return tuple(result)
 
 	def place_encounter_t20(self):
 		self.create_promter_at(utils_obj.sec2loc(533, 461), 6400, 200, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Sanctuary", const_toee.rotation_1100_oclock)
 
 		self.create_npc_at(utils_obj.sec2loc(528, 459), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_0900_oclock, "t20", "spinning_spider1")
-		#self.create_npc_at(utils_obj.sec2loc(539, 459), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_0100_oclock, "t20", "spinning_spider2")
-		#self.create_npc_at(utils_obj.sec2loc(530, 467), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_1000_oclock, "t20", "spinning_spider3")
+		self.create_npc_at(utils_obj.sec2loc(539, 459), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_0100_oclock, "t20", "spinning_spider2")
+		self.create_npc_at(utils_obj.sec2loc(530, 467), py06401_shattered_temple_encounters.CtrlWebSpinningSpider, const_toee.rotation_1000_oclock, "t20", "spinning_spider3")
 		return
 
-	def display_encounter_t20(self, step = None):
-		self.reveal_monster("t20", "spinning_spider1")
-		#self.reveal_monster("t20", "spinning_spider2")
-		#self.reveal_monster("t20", "spinning_spider3")
+	def display_encounter_t20(self):
+		self.reveal_monster("t20", "spinning_spider1", 1)
+		self.reveal_monster("t20", "spinning_spider2", 1)
+		self.reveal_monster("t20", "spinning_spider3", 1)
 		return
 
 	def activate_encounter_t20(self):
-		self.activate_monster("t20", "spinning_spider1")
-		#self.activate_monster("t20", "spinning_spider2")
-		#self.activate_monster("t20", "spinning_spider3")
-		return
+		result = list()
+		monster = self.activate_monster("t20", "spinning_spider1", 1, 1, 1)
+		result.append(monster)
+		monster = self.activate_monster("t20", "spinning_spider2", 1, 1, 1)
+		result.append(monster)
+		monster = self.activate_monster("t20", "spinning_spider3", 1, 1, 1)
+		result.append(monster)
+		return tuple(result)
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):
 		PROTO_NPC_SURRINAK_HOUSE_GUARD = 14900
@@ -671,17 +687,18 @@ class CtrlShatteredTemple(object):
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
 			npc = toee.game.get_obj_by_id(info.id)
-			if (npc):
+			if (npc and not info.revealed):
 				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
 				if (ctrl and ("revealing" in dir(ctrl))):
 					ctrl.revealing(npc)
+				info.revealed = 1
 				npc.object_flag_unset(toee.OF_DONTDRAW)
 				if (ctrl and ("revealed" in dir(ctrl))):
 					ctrl.revealed(npc)
-		if (not npc and not no_error):
+		if (not npc and not no_error and (not info or not info.revealed)):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")
-		return
+		return npc, info
 
 	def activate_monster(self, encounter_name, monster_code_name, remove_no_attack = 1, remove_no_kos = 1, no_error = 0):
 		npc = None
@@ -689,15 +706,19 @@ class CtrlShatteredTemple(object):
 		if (info):
 			npc = toee.game.get_obj_by_id(info.id)
 			if (npc):
-				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
-				if (ctrl and ("activating" in dir(ctrl))):
-					ctrl.activating(npc)
-				if (remove_no_attack):
-					npc.npc_flag_unset(toee.ONF_NO_ATTACK)
-				if (remove_no_kos):
-					npc.npc_flag_set(toee.ONF_KOS)
-				if (ctrl and ("activated" in dir(ctrl))):
-					ctrl.activated(npc)
+				if (not info.activated):
+					ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
+					if (ctrl and ("activating" in dir(ctrl))):
+						ctrl.activating(npc)
+					if (remove_no_attack):
+						npc.npc_flag_unset(toee.ONF_NO_ATTACK)
+					info.activated = 1
+					print("ACTIVATED: {}".format(npc))
+					if (remove_no_kos):
+						npc.npc_flag_set(toee.ONF_KOS)
+					if (ctrl and ("activated" in dir(ctrl))):
+						ctrl.activated(npc)
+				else: info.activated +=1
 		if (not npc and not no_error):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debugg.breakp("Monster not found")
@@ -754,6 +775,32 @@ class CtrlShatteredTemple(object):
 			else:
 				npc2.attack(closest)
 				npc2.add_to_initiative()
+		elif (type(ctrl) is py06401_shattered_temple_encounters.CtrlHuntingSpider and toee.game.combat_turn == 3):
+			#debugg.breakp("on_notify_combat_start3")
+			self.display_encounter_t20()
+			monsters = self.activate_encounter_t20()
+			print("monsters: {}".format(monsters))
+			closest_pc_tuple = utils_npc.find_pc_closest_to_origin(utils_obj.sec2loc(533, 442))
+			print("closest_pc: {}".format(closest_pc_tuple))
+			if (monsters):
+				startx = 534
+				for m in monsters:
+					obj = m[0]
+					objinfo = m[1]
+					assert isinstance(objinfo, py06211_shuttered_monster.MonsterInfo)
+					assert isinstance(obj, toee.PyObjHandle)
+					if (objinfo.activated > 1):
+						print("already activated: {}".format(objinfo.activated))
+						break
+					alive = utils_npc.npc_is_alive(obj, 0)
+					print("obj: {}, alive: {}".format(obj, alive))
+					if (not alive): continue
+					print("moving to: {}, 448".format(startx))
+					obj.move(utils_obj.sec2loc(startx, 448))
+					obj.rotation = const_toee.rotation_1100_oclock
+					startx -= 2
+					if (closest_pc_tuple):
+						obj.attack(closest_pc_tuple[0])
 		return
 
 	def create_promter_at(self, loc, dialog_script_id, line_id, radar_radius_ft, method, new_name, rotation = None):
