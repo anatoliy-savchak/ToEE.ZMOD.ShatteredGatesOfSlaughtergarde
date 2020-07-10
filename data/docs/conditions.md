@@ -134,8 +134,14 @@ Adds saving throw resistance bonus.
 ### Monster DR Silver
 **Args**
 * Arg0: DR
-Damage resistance.
+Damage resistance / silver.
 temple.dll::aMonsterDrSilve
+
+### Monster DR Magic
+**Args**
+* Arg0: DR
+Damage resistance / magic.
+temple.dll::aMonsterDrMagic
 
 ### Temp Negative Level
 **Args**

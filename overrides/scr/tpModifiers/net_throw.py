@@ -105,7 +105,9 @@ def Net_Throw_OnDealingDamage(attachee, args, evt_obj):
 		print("hit: {}, flags: {}".format(hit, flags))
 		if (hit and tgt):
 			print("adding condition netted to {}".format(tgt))
-			tgt.condition_add_with_args("netted", 16, 12)
+			dc_BreakFree = args.get_arg(0)
+			dc_EscapeArtist = args.get_arg(1)
+			tgt.condition_add_with_args("netted", dc_BreakFree, dc_EscapeArtist)
 		else: print("missed")
 		evt_obj.damage_packet.final_damage = 0
 	except Exception, e:
@@ -116,7 +118,7 @@ def Net_Throw_OnDealingDamage(attachee, args, evt_obj):
 		debugg.breakp("error")
 	return 0
 
-modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - distance, 1 - 
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - dc break free, 1 - dc escape artist
 modObj.AddHook(toee.ET_OnBuildRadialMenuEntry, toee.EK_NONE, Net_Throw_OnBuildRadialMenuEntry, ())
 modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3014, Net_Throw_OnD20PythonActionPerform, ())
 modObj.AddHook(toee.ET_OnD20PythonActionFrame, 3014, Net_Throw_OnD20PythonActionFrame, ())
