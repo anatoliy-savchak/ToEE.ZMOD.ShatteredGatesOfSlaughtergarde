@@ -318,7 +318,7 @@ class PyObjHandle(object):
 		return
 
 	def item_wield(self, item, equipSlot):
-		"""npc.item_wield(item: PyObjHandle, int[item_wear_helmet...]: index) -> None"""
+		"""npc.item_wield(item: PyObjHandle, int[item_wear_weapon_primary...]: index) -> None"""
 		return 
 
 	def item_wield_best_all(self):

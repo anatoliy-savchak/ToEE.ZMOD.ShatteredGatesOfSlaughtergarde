@@ -158,6 +158,12 @@ temple.dll::aMonsterDrSilve
 Adds temporary hit points.
 temple.dll::Condition_Temporary_Hit_Points
 
+### Monster Smiting
+**Args**
+* Arg0: number of usage per day
+Adds additional damage (Monster Level) to opposed alignment creatures (evil vs good).
+temple.dll::ConditionMonsterSmiting
+
 todo:
 pCondition_Monster_Banshee_Charisma_Drain
 .data:102EC724 30 B7 2E 10      dd offset ConditionMonsterStirge

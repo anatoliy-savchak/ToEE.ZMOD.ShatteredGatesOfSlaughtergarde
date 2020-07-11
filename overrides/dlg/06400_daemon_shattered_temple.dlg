@@ -108,3 +108,10 @@
 {213}{Continue}{}{1}{}{214}{}
 {214}{Thick webs that have bones among them enshroud the room and obscure the floor, but it seems like something on the altar is glittering in the green light.}{Thick webs that have bones among them enshroud the room and obscure the floor, but it seems like something on the altar is glittering in the green light.}{}{}{}{}
 {219}{Close}{}{1}{}{0}{cst().activate_encounter_t21()}
+
+{220}{A figure made entirely out of molten lava strides among the statues in this room, leaving a pall of smoke behind it. In the northern section is a massive sarcophagus with a marble statue atop it of a cloaked figure wielding a scythe and riding a horse that has fiery hooves.}{A figure made entirely out of molten lava strides among the statues in this room, leaving a pall of smoke behind it. In the northern section is a massive sarcophagus with a marble statue atop it of a cloaked figure wielding a scythe and riding a horse that has fiery hooves.}{}{}{}{cst().display_encounter_t22()}
+{221}{Continue}{}{1}{}{222}{}
+{222}{In the southern part is a collection of macabre statues, most depicting fiends. Two fiery demon arches are in the southwestern corner. Near these appear to be chests and scattered coins}{In the southern part is a collection of macabre statues, most depicting fiends. Two fiery demon arches are in the southwestern corner. Near these appear to be chests and scattered coins}{}{}{}{}
+{223}{Continue}{}{1}{}{224}{}
+{224}{The mosaic footprints lead from the double doors in the east past the sarcophagus and up the northern corridor.}{The mosaic footprints lead from the double doors in the east past the sarcophagus and up the northern corridor.}{}{}{}{}
+{229}{Close}{}{1}{}{0}{cst().activate_encounter_t22()}

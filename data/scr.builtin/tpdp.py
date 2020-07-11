@@ -1,4 +1,4 @@
-﻿fimport toee
+﻿import toee
 
 def hash(text):
 	"""hash(str: text) -> int"""
