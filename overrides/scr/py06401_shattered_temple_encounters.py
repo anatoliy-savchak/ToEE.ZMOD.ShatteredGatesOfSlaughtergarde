@@ -1195,3 +1195,8 @@ class CtrlAdvancedMagmaHurler(ctrl_behaviour.CtrlBehaviour):
 				break
 			break
 		return tac
+
+
+class CtrlStirge(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14834

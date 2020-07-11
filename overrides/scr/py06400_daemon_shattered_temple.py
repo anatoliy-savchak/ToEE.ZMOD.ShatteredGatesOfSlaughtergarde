@@ -127,8 +127,9 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t18()
 		#self.place_encounter_t19()
 		#self.place_encounter_t20()
-		self.place_encounter_t21()
-		self.place_encounter_t22()
+		#self.place_encounter_t21()
+		#self.place_encounter_t22()
+		self.place_encounter_t23()
 		self.print_monsters()
 
 		# debug
@@ -153,7 +154,8 @@ class CtrlShatteredTemple(object):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 471) #t18
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 533, 462) #t21
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 514, 474) #t22
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 514, 474) #t22
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 499) #t23
 		utils_obj.scroll_to_leader()
 		return
 
@@ -569,8 +571,8 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t22(self):
-		p1 = self.create_promter_at(utils_obj.sec2loc(512, 485), 6400, 220, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Death-Dealer", const_toee.rotation_1100_oclock)
-		p2 = self.create_promter_at(utils_obj.sec2loc(506, 492), 6400, 220, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Death-Dealer", const_toee.rotation_1100_oclock)
+		p1 = self.create_promter_at(utils_obj.sec2loc(512, 485), 6400, 220, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Statue Hall", const_toee.rotation_1100_oclock)
+		p2 = self.create_promter_at(utils_obj.sec2loc(506, 492), 6400, 220, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Statue Hall", const_toee.rotation_1100_oclock)
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
@@ -584,6 +586,36 @@ class CtrlShatteredTemple(object):
 	def activate_encounter_t22(self):
 		print("activate_encounter_t22")
 		self.activate_monster("t22", "hurler")
+		return
+
+	def place_encounter_t23(self):
+		self.create_promter_at(utils_obj.sec2loc(532, 502), 6400, 230, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Sacrifice Quarters", const_toee.rotation_0200_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(540, 497), py06401_shattered_temple_encounters.CtrlStirge, const_toee.rotation_0100_oclock, "t23", "stirge1")
+		self.create_npc_at(utils_obj.sec2loc(540, 499), py06401_shattered_temple_encounters.CtrlStirge, const_toee.rotation_0100_oclock, "t23", "stirge2")
+		self.create_npc_at(utils_obj.sec2loc(540, 501), py06401_shattered_temple_encounters.CtrlStirge, const_toee.rotation_0100_oclock, "t23", "stirge3")
+		self.create_npc_at(utils_obj.sec2loc(540, 503), py06401_shattered_temple_encounters.CtrlStirge, const_toee.rotation_0100_oclock, "t23", "stirge4")
+		self.create_npc_at(utils_obj.sec2loc(540, 505), py06401_shattered_temple_encounters.CtrlStirge, const_toee.rotation_0100_oclock, "t23", "stirge5")
+		self.create_npc_at(utils_obj.sec2loc(540, 507), py06401_shattered_temple_encounters.CtrlStirge, const_toee.rotation_0100_oclock, "t23", "stirge6")
+		return
+
+	def display_encounter_t23(self):
+		self.reveal_monster("t23", "stirge1")
+		self.reveal_monster("t23", "stirge2")
+		self.reveal_monster("t23", "stirge3")
+		self.reveal_monster("t23", "stirge4")
+		self.reveal_monster("t23", "stirge5")
+		self.reveal_monster("t23", "stirge6")
+		return
+
+	def activate_encounter_t23(self):
+		print("activate_encounter_t23")
+		self.activate_monster("t23", "stirge1")
+		self.activate_monster("t23", "stirge2")
+		self.activate_monster("t23", "stirge3")
+		self.activate_monster("t23", "stirge4")
+		self.activate_monster("t23", "stirge5")
+		self.activate_monster("t23", "stirge6")
 		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):

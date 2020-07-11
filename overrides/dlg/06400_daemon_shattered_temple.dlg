@@ -115,3 +115,10 @@
 {223}{Continue}{}{1}{}{224}{}
 {224}{The mosaic footprints lead from the double doors in the east past the sarcophagus and up the northern corridor.}{The mosaic footprints lead from the double doors in the east past the sarcophagus and up the northern corridor.}{}{}{}{}
 {229}{Close}{}{1}{}{0}{cst().activate_encounter_t22()}
+
+{230}{Neatly made beds line this room's northern and southern walls. A padded manacle with a four-foot chain bolted to the floor is at the foot of each bed.}{Neatly made beds line this room's northern and southern walls. A padded manacle with a four-foot chain bolted to the floor is at the foot of each bed.}{}{}{}{cst().display_encounter_t23()}
+{231}{Continue}{}{1}{}{232}{}
+{232}{The western wall is an avalanche of rock and dirt unlike the masonry on the other walls.}{The western wall is an avalanche of rock and dirt unlike the masonry on the other walls.}{}{}{}{}
+{233}{Continue}{}{1}{}{234}{}
+{234}{Strange creatures that look like bats with needlelike snouts suddenly fly from a crevice there.}{Strange creatures that look like bats with needlelike snouts suddenly fly from a crevice there.}{}{}{}{}
+{239}{Close}{}{1}{}{0}{cst().activate_encounter_t23()}
