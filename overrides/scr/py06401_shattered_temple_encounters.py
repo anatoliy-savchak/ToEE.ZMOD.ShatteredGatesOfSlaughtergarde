@@ -1236,3 +1236,7 @@ class CtrlWhitespawnHordeling(ctrl_behaviour.CtrlBehaviour):
 			self.next_breath_weapon_2_skip = toee.game.random_range(1, 4)
 			print("next_breath_weapon_2_skip: {}".format(self.next_breath_weapon_2_skip))
 		return tac
+
+class CtrlElectrumClockworkHorror(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14936

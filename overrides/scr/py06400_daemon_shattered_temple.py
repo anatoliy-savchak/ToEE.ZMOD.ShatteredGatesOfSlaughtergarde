@@ -130,7 +130,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t21()
 		#self.place_encounter_t22()
 		#self.place_encounter_t23()
-		self.place_encounter_t24()
+		#self.place_encounter_t24()
+		self.place_encounter_t25()
 		self.print_monsters()
 
 		# debug
@@ -642,6 +643,21 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t24", "whitespawn2")
 		self.activate_monster("t24", "whitespawn3")
 		self.activate_monster("t24", "whitespawn4")
+		return
+
+	def place_encounter_t25(self):
+		self.create_promter_at(utils_obj.sec2loc(513, 511), 6400, 250, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Mirror Hall", const_toee.rotation_1100_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(513, 517), py06401_shattered_temple_encounters.CtrlElectrumClockworkHorror, const_toee.rotation_1100_oclock, "t25", "clockwork")
+		return
+
+	def display_encounter_t25(self):
+		self.reveal_monster("t25", "clockwork")
+		return
+
+	def activate_encounter_t25(self):
+		print("activate_encounter_t25")
+		self.activate_monster("t25", "clockwork")
 		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):

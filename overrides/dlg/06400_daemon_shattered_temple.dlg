@@ -129,3 +129,8 @@
 {243}{Continue}{}{1}{}{244}{}
 {244}{The floor is littered with crumbling skeletons.}{The floor is littered with crumbling skeletons.}{}{}{}{}
 {249}{Close}{}{1}{}{0}{cst().activate_encounter_t24()}
+
+{250}{In the center of the room is a metallic scarablike creature the size of a dog. It squats among several piles of metal. With a whir, it lurches to life, a blade buzzing where its mouth should be.}{In the center of the room is a metallic scarablike creature the size of a dog. It squats among several piles of metal. With a whir, it lurches to life, a blade buzzing where its mouth should be.}{}{}{}{cst().display_encounter_t25()}
+{251}{Continue}{}{1}{}{252}{}
+{252}{The corpse of a drow female in studded leather armor lies at your feet. Mirrors that have green glowing frames hang from the walls.}{The corpse of a drow female in studded leather armor lies at your feet. Mirrors that have green glowing frames hang from the walls.}{}{}{}{}
+{259}{Close}{}{1}{}{0}{cst().activate_encounter_t25()}
