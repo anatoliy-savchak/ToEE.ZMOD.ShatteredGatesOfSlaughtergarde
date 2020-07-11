@@ -122,3 +122,10 @@
 {233}{Continue}{}{1}{}{234}{}
 {234}{Strange creatures that look like bats with needlelike snouts suddenly fly from a crevice there.}{Strange creatures that look like bats with needlelike snouts suddenly fly from a crevice there.}{}{}{}{}
 {239}{Close}{}{1}{}{0}{cst().activate_encounter_t23()}
+
+{240}{A massive stone gate, like the one you found among the goblins, dominates the western end of this room. Parts of the arch have sagged and crumbled, and entire blocks are missing. This gate has a shimmering gray field. Black cracks radiate out from the center, making it look like an immense shattered mirror.}{A massive stone gate, like the one you found among the goblins, dominates the western end of this room. Parts of the arch have sagged and crumbled, and entire blocks are missing. This gate has a shimmering gray field. Black cracks radiate out from the center, making it look like an immense shattered mirror.}{}{}{}{cst().display_encounter_t24()}
+{241}{Continue}{}{1}{}{242}{}
+{242}{Four small figures have emerged halfway from whatever lies beyond the gray field. They have dragonlike heads, white scaly skin, and stubby wings.}{Four small figures have emerged halfway from whatever lies beyond the gray field. They have dragonlike heads, white scaly skin, and stubby wings.}{}{}{}{}
+{243}{Continue}{}{1}{}{244}{}
+{244}{The floor is littered with crumbling skeletons.}{The floor is littered with crumbling skeletons.}{}{}{}{}
+{249}{Close}{}{1}{}{0}{cst().activate_encounter_t24()}

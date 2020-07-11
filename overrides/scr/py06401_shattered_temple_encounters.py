@@ -1200,3 +1200,39 @@ class CtrlAdvancedMagmaHurler(ctrl_behaviour.CtrlBehaviour):
 class CtrlStirge(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14834
+
+class CtrlWhitespawnHordeling(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14935
+
+	def __init__(self):
+		super(CtrlWhitespawnHordeling, self).__init__()
+		self.next_breath_weapon_2_skip = 0
+		return
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		#npc.condition_add_with_args("Caster_Level_Add", 7, 0)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		self.next_breath_weapon_2_skip -= 1
+		if (self.next_breath_weapon_2_skip <= 0):
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_clear_target()
+			tac.add_target_closest()
+			tac.add_approach_single()
+			tac.add_halt()
+			tac.add_python_action(3010)
+			tac.add_ready_vs_approach()
+			self.next_breath_weapon_2_skip = toee.game.random_range(1, 4)
+			print("next_breath_weapon_2_skip: {}".format(self.next_breath_weapon_2_skip))
+		return tac

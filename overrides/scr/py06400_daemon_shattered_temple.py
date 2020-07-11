@@ -129,7 +129,8 @@ class CtrlShatteredTemple(object):
 		#self.place_encounter_t20()
 		#self.place_encounter_t21()
 		#self.place_encounter_t22()
-		self.place_encounter_t23()
+		#self.place_encounter_t23()
+		self.place_encounter_t24()
 		self.print_monsters()
 
 		# debug
@@ -616,6 +617,31 @@ class CtrlShatteredTemple(object):
 		self.activate_monster("t23", "stirge4")
 		self.activate_monster("t23", "stirge5")
 		self.activate_monster("t23", "stirge6")
+		return
+
+	def place_encounter_t24(self):
+		self.create_promter_at(utils_obj.sec2loc(531, 515), 6400, 240, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Sacrifice Quarters", const_toee.rotation_0200_oclock)
+
+		dy = 2
+		self.create_npc_at(utils_obj.sec2loc(541, 512), py06401_shattered_temple_encounters.CtrlWhitespawnHordeling, const_toee.rotation_0100_oclock, "t24", "whitespawn1")
+		self.create_npc_at(utils_obj.sec2loc(541, 512 + dy), py06401_shattered_temple_encounters.CtrlWhitespawnHordeling, const_toee.rotation_0100_oclock, "t24", "whitespawn2")
+		self.create_npc_at(utils_obj.sec2loc(541, 512 + dy*2), py06401_shattered_temple_encounters.CtrlWhitespawnHordeling, const_toee.rotation_0100_oclock, "t24", "whitespawn3")
+		self.create_npc_at(utils_obj.sec2loc(541, 512 + dy*3), py06401_shattered_temple_encounters.CtrlWhitespawnHordeling, const_toee.rotation_0100_oclock, "t24", "whitespawn4")
+		return
+
+	def display_encounter_t24(self):
+		self.reveal_monster("t24", "whitespawn1")
+		self.reveal_monster("t24", "whitespawn2")
+		self.reveal_monster("t24", "whitespawn3")
+		self.reveal_monster("t24", "whitespawn4")
+		return
+
+	def activate_encounter_t24(self):
+		print("activate_encounter_t24")
+		self.activate_monster("t24", "whitespawn1")
+		self.activate_monster("t24", "whitespawn2")
+		self.activate_monster("t24", "whitespawn3")
+		self.activate_monster("t24", "whitespawn4")
 		return
 
 	def create_surrinak_house_guard_at(self, npc_loc, rot, encounter, code_name, skip_longbow = 0):

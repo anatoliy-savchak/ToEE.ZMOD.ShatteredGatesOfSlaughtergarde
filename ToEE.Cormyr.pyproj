@@ -269,6 +269,7 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\cone_of_cold.py" />
     <Compile Include="overrides\scr\tpModifiers\vulnurability_cold.py" />
     <Compile Include="overrides\scr\tpModifiers\immunity_critical_hits.py" />
     <Compile Include="overrides\scr\tpModifiers\immunity_paralysis.py" />

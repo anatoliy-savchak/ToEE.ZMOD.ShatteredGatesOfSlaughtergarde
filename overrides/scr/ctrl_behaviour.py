@@ -11,6 +11,11 @@ class CtrlBehaviour(object):
 		# assign scripts
 		#npc.scripts[const_toee.sn_start_combat] = 6213
 		# create inventory
+		self.after_created(npc)
+		return
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
 		return
 
 	@classmethod
