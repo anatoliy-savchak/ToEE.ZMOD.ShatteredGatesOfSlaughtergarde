@@ -1,0 +1,15 @@
+skeleton "8_31s_idle.mae"
+
+animation "item_idle" "8_31s_idle.mae"
+			
+animation "close" "8_31s_close.mae"
+{
+event 1 "script" "game.sound_local_obj ( 4061, anim_obj )"
+}
+
+animation "open" "8_31s_open.mae"
+{
+event 1 "script" "game.sound_local_obj ( 4061, anim_obj )"
+}
+
+animation "open_idle" "8_31s_open_idle.mae"

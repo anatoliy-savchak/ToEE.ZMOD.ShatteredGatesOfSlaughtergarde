@@ -1,0 +1,7 @@
+skeleton "13_201_idle.mae"
+
+animation "item_idle" "13_201_idle.mae"
+
+animation "close" "13_201_close.mae"
+animation "open" "13_201_open.mae"
+animation "open_idle" "13_201_open_idle.mae"

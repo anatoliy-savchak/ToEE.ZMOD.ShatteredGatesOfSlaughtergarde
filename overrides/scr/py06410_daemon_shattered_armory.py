@@ -12,6 +12,12 @@ def san_first_heartbeat(attachee, triggerer):
 	ctrl.place_encounters()
 	return toee.RUN_DEFAULT
 
+def san_use(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	print(attachee.id)
+	debugg.breakp("san_use")
+	return toee.RUN_DEFAULT
+
 def csa():
 	#print("CtrlShatteredLab.get_name(): {}".format(CtrlShatteredLab.get_name()))
 	o = utils_storage.obj_storage_by_id(shattered_consts.SHATERRED_ARMORY_DAEMON_ID)
@@ -105,6 +111,15 @@ class CtrlShatteredArmory(object):
 		#wizard.identify_all()
 		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
 		#self.remove_trap_doors()
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 474, 518)
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 450, 445)
 		utils_obj.scroll_to_leader()
+
+		obj = toee.game.obj_create(130, utils_obj.sec2loc(478, 495))
+		obj.rotation = 6.2831
+
+		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL ):
+			assert isinstance(obj, toee.PyObjHandle)
+			x, y = utils_obj.loc2sec(obj.location)
+			print("Name: {}, Proto: {}, id: {}, x:{}, y: {}, rot: {}, obj: {}".format(obj.name, obj.proto, obj.id, x, y, obj.rotation, obj))
 		return

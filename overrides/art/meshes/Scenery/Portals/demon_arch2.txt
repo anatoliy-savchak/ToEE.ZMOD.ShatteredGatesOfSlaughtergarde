@@ -1,0 +1,15 @@
+skeleton "moathouse07_idle.mae"
+
+animation "item_idle" "moathouse07_idle.mae"
+
+animation "close" "moathouse07_close.mae"
+{
+event 1 "script" "game.sound_local_obj ( 4052, anim_obj )"
+}
+
+animation "open" "moathouse07_open.mae"
+{
+event 1 "script" "game.sound_local_obj ( 4053, anim_obj )"
+}
+
+animation "open_idle" "moathouse07_open_idle.mae"

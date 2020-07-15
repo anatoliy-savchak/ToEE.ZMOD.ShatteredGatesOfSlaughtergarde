@@ -1,0 +1,3692 @@
+// Unless you are adding a prototype, DO NOT PLACE NEW MESSAGES IN THIS FILE
+// New descriptions and such go in a module-based file called gamedesc.mes
+// The HIGHEST description number you can use is: 1073741822
+
+
+
+// 0 - 999: Portals
+
+
+{0}{Door}
+{1}{Door}
+{2}{Door}
+{3}{Door}
+{4}{Door}
+{5}{Door}
+{6}{Door}
+{7}{Door}
+{8}{Door}
+{9}{Door}
+{10}{Door}
+{11}{Door}
+{12}{Door}
+{13}{Door}
+{14}{Door}
+{15}{Door}
+{16}{Door}
+{17}{Door}
+{18}{Door}
+{19}{Door}
+{20}{Door}
+{21}{Door}
+{22}{Door}
+{23}{Door}
+{24}{Door}
+{25}{Door}
+{26}{Door}
+{27}{Door}
+{28}{Door}
+{29}{Door}
+{30}{Door}
+{31}{Door}
+{32}{Door}
+{33}{Door}
+{34}{Door}
+{35}{Door}
+{36}{Door}
+{37}{Door}
+{38}{Door}
+{40}{Door}
+{41}{Door}
+{42}{Door}
+{43}{Door}
+{44}{Door}
+{45}{Door}
+{46}{Door}
+{48}{Door}
+{49}{Door}
+{50}{Door}
+{51}{Door}
+{54}{Door}
+{55}{Door}
+{57}{Door}
+{58}{Door}
+{59}{Door}
+{60}{Door}
+{61}{Door}
+{62}{Door}
+{64}{Door}
+{65}{Door}
+{66}{Door}
+{67}{Door}
+{68}{Door}
+{72}{Door}
+{73}{Door}
+{74}{Door}
+{75}{Door}
+{77}{Door}
+{78}{Door}
+{79}{Door}
+{80}{Door}
+{81}{Door}
+{82}{Door}
+{83}{Door}
+{84}{Door}
+{85}{Door}
+{86}{Door}
+{87}{Door}
+{88}{Curtain}
+{89}{Door}
+{90}{Door}
+{91}{Door}
+{92}{Door}
+{94}{Door}
+{95}{Door}
+{97}{Door}
+{98}{Door}
+{105}{Door}
+{120}{Grate}
+{121}{Barrier}
+{130}{Portcullis 10 ft}
+{131}{Demon Arch 15 ft}
+{132}{Demon Arch 10 ft}
+{133}{Demon Arch 2}
+{134}{Fiery Demon Arch 5ft}
+{135}{Fiery Demon Arch 15ft}
+{136}{Fiery Demon Arch 10ft}
+// 1000 - 1999: Containers
+
+
+{1000}{Junk Pile}
+{1001}{Treasure Chest}
+{1002}{Gold Chest}
+{1003}{Footlocker}
+{1004}{Chest}
+{1005}{Large Chest}
+{1006}{Fine Chest}
+{1007}{Nira's Chest}
+{1008}{Jaroo's Chest}
+{1009}{Rentsch's Chest}
+{1010}{Tower Brigand Leader's Chest}
+{1011}{Romag's Chest}
+{1012}{Alrrem's Chest}
+{1013}{Belsornig's Chest}
+{1014}{Kelno's Chest}
+{1015}{Feldrin's Chest}
+{1016}{Smigmal's Chest}
+{1017}{Falrinth's Chest}
+{1018}{Senshock's Chest}
+{1019}{Ettin's Treasure Chest}
+{1020}{Ettin's Chest A}
+{1021}{Ettin's Chest B}
+{1022}{Hedrack's Greater Temple Chest 1}
+{1023}{Hedrack's Greater Temple Chest 2}
+{1024}{Hedrack's Greater Temple Chest 3}
+{1025}{Hedrack's Greater Temple Chest 4}
+{1026}{Spore Chest}
+{1027}{Chest}
+{1028}{Well}
+{1029}{Book}
+{1030}{Anvil}
+{1031}{Rainbow Rock}
+{1032}{Banshee Chest}
+{1033}{Falrinth's Second Chest}
+{1034}{Werewolves' Chest}
+{1035}{Minotaur's Chest}
+{1036}{Shadows' Chest}
+{1037}{Violet Fungi Chest}
+{1038}{Crayfish Loot}
+{1039}{Ghouls' Chest}
+{1040}{Ghasts' Chest}
+{1041}{Earth Temple Chest 1}
+{1042}{Earth Temple Chest 2}
+{1043}{Earth Temple Chest 3}
+{1044}{Earth Temple Chest 4}
+{1045}{Lareth's Dresser}
+{1046}{Ivory Chest}
+{1047}{Earth Temple Altar}
+{1048}{Tutorial Chest}
+{1049}{Barrel}
+{1050}{Throne of Gems}
+{1051}{Throne of Gems (Gems Removed)}
+{1052}{Anvil}	// Otis' Secret Stash Anvil
+{1053}{Treasure Chest}
+{1054}{Bazaar Items Chest}
+{1055}{Bazaar Scrolls Chest}
+{1056}{Fire Temple Chest}
+{1057}{The Post}
+{1058}{The Post}
+{1059}{Shop Map Weapons Chest 1}
+{1060}{Shop Map Weapons Chest 2}
+{1061}{Shop Map Armor Chest 1}
+{1062}{Shop Map Armor Chest 2}
+{1063}{Shop Map Clothing Chest 1}
+{1064}{Bazaar Wands Chest}
+{1065}{Shop Map Supplies Chest}
+{1066}{Shop Map Scrolls Chest}
+{1067}{Shop Map Clothing Chest 2}
+{1068}{Mathel's Chest}
+{1069}{Shop Map Clothing Chest 3}
+{1070}{Major Tremolo Chest}
+{1071}{Cyn Silks Chest}
+{1072}{Bear Essentials Chest}
+{1073}{Touching Cloth Chest}
+{1074}{Liberty Emporium Chest}
+{1075}{Golden Bullseye Chest}
+{1076}{Dragonsbane Chest}
+{1077}{Silver Consortium Chest}
+{1078}{Alchemist Chest}
+{1079}{Wonderworld Chest}
+{1080}{Veenah Fashion Chest}
+{1081}{Mal Wares Chest}
+{1082}{7 Elven Chest}
+{1100}{Extraplanar Chest}
+{1200}{Shelf}
+{1204}{Trader's chest} // not a prototype - the name used by this item!
+
+
+
+// 2000 - 2999: Scenery
+
+
+{2000}{Blood Pool}
+{2001}{Tree}
+{2002}{Fog}
+{2003}{Grass}
+{2004}{SecretDoor}
+{2005}{SparklesTest}
+{2006}{WallTest}
+{2007}{Swamp Tree}
+{2008}{Medium Swamp Tree}
+{2009}{Small SwampTree}
+{2010}{Bush}
+{2011}{Door Icon}
+{2012}{Ladder Down Icon}
+{2013}{Ladder Up Icon}
+{2014}{Stairs Down Icon}
+{2015}{Stairs Up Icon}
+{2016}{Mill Wheel}
+{2017}{Oak Tree}
+{2018}{Moathouse-Ext-pool1}
+{2019}{Moathouse-Ext-pool2}
+{2020}{Moat}
+{2021}{Moathouse-Ext-pool3}
+{2022}{Moathouse-Ext-pool4}
+{2023}{Fern}
+{2024}{Bush2}
+{2025}{SmallTree1}
+{2026}{SIGN_#}
+{2027}{SIGN_#}
+{2028}{SIGN_#}
+{2029}{SIGN_#}
+{2030}{SIGN_#}
+{2031}{SIGN_#}
+{2032}{SIGN_#}
+{2033}{SIGN_#}
+{2034}{SIGN_#}
+{2035}{Secret Door Icon}
+{2036}{Secret Ladder Down Icon}
+{2037}{Secret Ladder Up Icon}
+{2038}{Secret Stairs Down Icon}
+{2039}{Secret Stairs Up Icon}
+{2040}{mirror}
+{2041}{cypress_tree}
+{2042}{deklo_tree}
+{2043}{beholder}
+{2044}{dragon}
+{2045}{manticore}
+{2046}{usk_tree}
+{2047}{firegiant}
+{2048}{medusa}
+{2049}{mummy}
+{2050}{wight}
+{2051}{rakshasa}
+{2052}{deklobush}
+{2053}{deklobush}
+{2054}{deklograss}
+{2055}{templebush}
+{2056}{templebush}
+{2057}{usk_tree01}
+{2058}{templebush01}
+{2059}{templebush01}
+{2060}{hommlet_tree}
+{2061}{nulbtree}
+{2062}{nulb_bush}
+{2063}{nulb_bush}
+{2064}{Guest Book}
+{2065}{Corn}
+{2066}{Corn_patch}
+{2067}{Corn_patch_a}
+{2068}{Cabbage}
+{2069}{Cabbage}
+{2070}{Corn}
+{2071}{Pumpkin}
+{2072}{Minotaur statue}
+{2073}{MD_water}
+{2074}{Fire_node01}
+{2075}{Fire_node02}
+{2076}{Fire_node03}
+{2077}{Fire_node04}
+{2078}{Fire_node05}
+{2079}{Fire_node06}
+{2080}{Fire_node07}
+{2081}{Fire_node08}
+{2082}{Fire_node09}
+{2083}{Fire_node10}
+{2084}{Fire_node11}
+{2085}{Fire_node12}
+{2086}{Fire_node12a}
+{2087}{Fire_node13}
+{2088}{Fire_node14}
+{2089}{floor_dropping}
+{2090}{TI_Throne}
+{2091}{Fire_node15}
+{2092}{Fire_node16}
+{2093}{Fire_node17}
+{2094}{Fire_node18}
+{2095}{Fire_node19}
+{2096}{Fire_node20}
+{2097}{Fire_node21}
+{2098}{Fire_node22}
+{2099}{Fire_node23}
+{2100}{Fire_node24}
+{2101}{temple_small_bush}
+{2102}{MM-TestPiece}
+{2103}{MM-Window-01}
+{2104}{Gargoyle-Climb2Fly}
+{2105}{MM-Window-02}
+{2106}{MM-Window-03}
+{2107}{MM-Window-04}
+{2108}{MM-Window-05}
+{2109}{MM-Window-06}
+{2110}{Juggernaut Statue}
+{2111}{RTweed}
+{2112}{Dead_man}
+{2113}{Platinum Pillar}
+{2114}{Fire_node04a}
+{2115}{Fire_node05a}
+{2116}{Fire_node07a}
+{2117}{Fire_node07b}
+{2118}{Dead_dwarf_male}
+{2119}{Cistern_Chamber}
+{2120}{Fire_node16a}
+{2121}{Colosseum_cheer1}
+{2122}{Colosseum_cheer2}
+{2123}{Colosseum_cheer3}
+{2124}{Colosseum_cheer4}
+{2125}{female_dead}
+{2126}{goblin_01_dead}
+{2127}{goblin_02_dead}
+{2128}{goblin_03_dead}
+{2129}{DO NOT USE Zugg_throne_encrusted}
+{2130}{DO NOT USE Zugg_throne}
+{2131}{Gargoyle-ClimbFromTop}
+{2132}{Gargoyle-ClimbFromBottom}
+{2133}{Gargoyle-Climb2Dive}
+{2134}{jaroos_tree}
+{2135}{The Post}
+{2136}{beholder BIG}
+{2138}{manticore BIG}
+{2139}{firegiant BIG}
+{2140}{medusa BIG}
+{2141}{mummy BIG}
+{2142}{wight BIG}
+{2143}{rakshasa BIG}
+{2144}{Cabbage_rain_sfx}
+{2145}{Cabbage_wind_sfx}
+{2146}{Cabbage_gremlich_scream_1}
+{2147}{Cabbage_gremlich_scream_2}
+{2148}{Cabbage_gremlich_scream_3}
+{2149}{Cabbage_gremlich_scream_4}
+{2150}{Spruce Goose Sign}
+{2151}{Jylee Inn Sign}
+{2152}{Bazaar Bizarre Sign}
+{2153}{Archer Eye Sign}
+{2154}{Maroon Moon Sign}
+{2155}{Silver Consortium Sign}
+{2156}{Verbobonc Signpost}
+{2157}{Verbobonc East Bridge Sign}
+{2158}{Verbobonc West Bridge Sign}
+{2159}{Verbobonc Center Bridge Sign}
+{2160}{Gnome Quarter Sign}
+{2161}{Constabulary Sign}
+{2162}{City Hall Sign}
+{2163}{Simon Wonderworld Sign}
+{2164}{Golden Bullseye Sign}
+{2165}{Mal Wares Sign}
+{2166}{Major Tremolo Sign}
+{2167}{Dragonsbane Sign}
+{2168}{Cyn Silks Sign}
+{2169}{Touching Cloth Sign}
+{2170}{Mystic Services Sign}
+{2171}{Alchemist Sign}
+{2172}{Liberty Emporium Sign}
+{2173}{Bear Essentials Sign}
+{2174}{Veenah Fashion Sign}
+{2175}{Gnoll Bail Bonds Sign}
+{2176}{7 Elven Sign}
+{2177}{Woodchuck Lodge Sign}
+{2178}{Chipmunk Lodge Sign}
+{2179}{Porcupine Lodge Sign}
+{2180}{Camp Opossum Sign}
+{2197}{Statue}
+{2198}{Statue}
+{2199}{Statue}
+{2200}{Demon Arch 4}
+
+
+// 3000 - 3999: Projectiles
+
+
+{3000}{bp_projectile_standard}
+{3001}{Arrow}
+{3002}{Bolt}
+{3003}{Bullet}
+{3004}{Magic Missile}
+{3005}{Throwing Dagger}
+{3006}{Club}
+{3007}{Shortspear}
+{3008}{Spear}
+{3009}{Dart}
+{3010}{Javelin}
+{3011}{Throwing Axe}
+{3012}{Light Hammer}
+{3013}{Trident}
+{3014}{Halfling Sai}
+{3015}{Sai}
+{3016}{Shuriken}
+{3017}{Ball of Fire}
+{3018}{Bottle}
+
+
+
+// 4000 - 4999: Weapons
+
+
+{4000}{bp_weapon_start}
+{4001}{SwordTest}
+{4002}{Gnoll Double Axe}
+{4003}{Gnoll Single Axe}
+{4004}{Gnoll Heavy Mace}
+{4005}{Gnoll Morningstar}
+{4006}{Gnoll Shortsword}
+{4007}{Lizardman Greatclub}
+{4008}{Lizardman Club}
+{4009}{Rapier}
+{4010}{Greatsword}
+{4011}{Rusty Greatsword}
+{4012}{Masterwork Greatsword}
+{4013}{Barbarian Sword}
+{4014}{Rusty Barbarian Sword}
+{4015}{Bastard Sword}
+{4016}{Scather}
+{4017}{Fragarach}
+{4018}{Celtic Shortsword}
+{4019}{Greatsword}
+{4020}{Rusty Celtic Shortsword}
+{4021}{Cutlass}
+{4022}{Rusty Cutlass}
+{4023}{Egyptian Longsword}
+{4024}{Rusty Egyptian Longsword}
+{4025}{Excalibur}
+{4026}{Falchion}
+{4027}{Rusty Falchion}
+{4028}{Flaming Longsword +1}
+{4029}{Rusty Fantasy Longsword}
+{4030}{Fantasy Longsword}
+{4031}{Rusty Fantasy Longsword}
+{4032}{Fantasy Longsword}
+{4033}{Fantasy Longsword}
+{4034}{Katana}
+{4035}{Masterwork Katana}
+{4036}{Longsword}
+{4037}{Rusty Longsword}
+{4038}{Longsword}
+{4039}{Rusty Longsword}
+{4040}{Longsword}
+{4041}{Rusty Longsword}
+{4042}{Rusty Rapier}
+{4043}{Gladius}
+{4044}{Rusty Gladius}
+{4045}{Scimitar}
+{4046}{Rusty Scimitar}
+{4047}{Scimitar +1}
+{4048}{Masterwork Scimitar}
+{4049}{Shortsword}
+{4050}{Rusty Shortsword}
+{4051}{Longsword}
+{4052}{Rusty Longsword}
+{4053}{Longsword}
+{4054}{Longsword}
+{4055}{Longsword}
+{4056}{Longsword}
+{4057}{Dagger +2}
+{4058}{Dagger +1}
+{4059}{Throwing Dagger}
+{4060}{Dagger}
+{4061}{Rusty Dagger}
+{4062}{Battleaxe}
+{4063}{Dwarven War Axe}
+{4064}{Greataxe}
+{4065}{Masterwork Greataxe}
+{4066}{Greatclub}
+{4067}{Handaxe}
+{4068}{Heavy Mace}
+{4069}{Heavy Pick}
+{4070}{Morningstar}
+{4071}{Light Mace}
+{4072}{Scythe}
+{4073}{Single Axe}
+{4074}{Club}
+{4075}{Gnome Hooked Hammer}
+{4076}{Light Hammer}
+{4077}{Warhammer}
+{4078}{Warhammer +1}
+{4079}{Warhammer +2}
+{4080}{Rusty Warhammer}
+{4081}{Longsword +1}
+{4082}{Longsword +2}
+{4083}{Longsword +3}
+{4084}{Longsword +4}
+{4085}{Longsword +5}
+{4086}{Unholy Orc Double Axe +3}
+{4087}{Longbow}
+{4088}{Bugbear Longbow}
+{4089}{Bugbear Sword}
+{4090}{Bugbear Morningstar}
+{4091}{Bugbear Double Axe}
+{4092}{Bugbear Greatclub}
+{4093}{Bugbear Double Axe}
+{4094}{Bugbear Bardiche}
+{4095}{Bugbear Spear}
+{4096}{Light Crossbow}
+{4097}{Heavy Crossbow}
+{4098}{Battleaxe +1}
+{4099}{Hill Giant Club}
+{4100}{Hill Giant Club}
+{4101}{Hill Giant Spiked Club}
+{4102}{Hill Giant Rock}
+{4103}{Hill Giant Tetsubo}
+{4104}{Hill Giant Maul}
+{4105}{Troll Military Fork}
+{4106}{Flaming Greataxe}
+{4107}{Traders' Shortsword +1}
+{4108}{Longbow of Frost}
+{4109}{Light Mace +1}
+{4110}{Quarterstaff}
+{4111}{Rod of the Python}
+{4112}{Dagger of Venom}
+{4113}{Guisarme}
+{4114}{Battleaxe}
+{4115}{Sling}
+{4116}{Shortspear}
+{4117}{Spear}
+{4118}{Glaive}
+{4119}{Ranseur}
+{4120}{Lareth's Club of Striking}
+{4121}{Spear +1}
+{4122}{Otis' Longsword +2}
+{4123}{Javelin}
+{4124}{Light Mace of Smiting}
+{4125}{Staff of Striking}
+{4126}{Shortsword +1}
+{4127}{Dart}
+{4128}{Hedrack's Greathammer +2}
+{4129}{Wonnilon's Dagger +2}
+{4130}{Wonnilon's Repeating Light Crossbow +1}
+{4131}{Antonio's Light Mace}
+{4132}{Masterwork Longsword}
+{4133}{Balor Vorpal Sword}
+{4134}{Javelin of Lightning}
+{4135}{Flame Tongue}
+{4136}{Frost Brand}
+{4137}{Staff of Fire}
+{4138}{Staff of Life}
+{4139}{Rod of the Viper}
+{4140}{Spiritual Weapon Battleaxe Blue}
+{4141}{Spiritual Weapon Battleaxe Red}
+{4142}{Spiritual Weapon Dagger}
+{4143}{Spiritual Weapon Greatsword}
+{4144}{Spiritual Weapon Heavy Mace}
+{4145}{Spiritual Weapon Longbow}
+{4146}{Spiritual Weapon Longsword}
+{4147}{Spiritual Weapon Morningstar}
+{4148}{Spiritual Weapon Rapier}
+{4149}{Spiritual Weapon Scythe}
+{4150}{Spiritual Weapon Shortsword}
+{4151}{Spiritual Weapon Spear}
+{4152}{Spiritual Weapon Staff}
+{4153}{Spiritual Weapon Warhammer}
+{4154}{Greatsword of Life Stealing}
+{4155}{Masterwork Dagger}
+{4156}{Masterwork Rapier}
+{4157}{Masterwork Bastard Sword}
+{4158}{Masterwork Falchion}
+{4159}{Masterwork Shortsword}
+{4160}{Masterwork Throwing Dagger}
+{4161}{Shortsword +2}
+{4163}{Masterwork Dwarven War Axe}
+{4164}{Masterwork Greatclub}
+{4165}{Masterwork Handaxe}
+{4166}{Masterwork Heavy Mace}
+{4167}{Masterwork Heavy Pick}
+{4168}{Masterwork Morningstar}
+{4169}{Masterwork Light Mace}
+{4170}{Masterwork Scythe}
+{4171}{Masterwork Single Axe}
+{4172}{Masterwork Club}
+{4173}{Masterwork Gnome Hooked Hammer}
+{4174}{Masterwork Light Hammer}
+{4175}{Masterwork Warhammer}
+{4176}{Masterwork Longbow}
+{4177}{Masterwork Light Crossbow}
+{4178}{Masterwork Heavy Crossbow}
+{4179}{Masterwork Quarterstaff}
+{4180}{Masterwork Guisarme}
+{4181}{Masterwork Battleaxe}
+{4182}{Masterwork Sling}
+{4183}{Masterwork Shortspear}
+{4184}{Masterwork Spear}
+{4185}{Masterwork Glaive}
+{4186}{Masterwork Ranseur}
+{4187}{Masterwork Javelin}
+{4188}{Masterwork Dart}
+{4189}{Masterwork Cutlass}
+{4190}{Ogre Shaman Club}
+{4191}{Longbow +1}
+{4192}{Bugbear Greatsword}
+{4193}{Morningstar +1}
+{4194}{Longspear}
+{4195}{Composite Longbow, Str 14}
+{4196}{Masterwork Longspear}
+{4197}{Jaer's Spheres of Fire}
+{4198}{Ogre Club}
+{4199}{Ogre Club}
+{4200}{Ogre Spiked Club}
+{4201}{Shortbow}
+{4202}{Masterwork Shortbow}
+{4203}{Greathammer}
+{4204}{Masterwork Greathammer}
+{4205}{Maul}
+{4206}{Masterwork Maul}
+{4207}{Heavy Flail}
+{4208}{Masterwork Heavy Flail}
+{4209}{Spiked Chain}
+{4210}{Masterwork Spiked Chain}
+{4211}{Shuriken}
+{4212}{Masterwork Shuriken}
+{4213}{Masterwork Great Cleaver}
+{4214}{Masterwork Small Quarterstaff}
+{4215}{Masterwork Halfling Siangham}
+{4216}{Masterwork Kukri}
+{4217}{Moradin's Soul Hammer +1}
+{4218}{Thorned Chains of Love +1}
+{4219}{Holy Ranseur +1}
+{4220}{Holy Heavy Mace +1}
+{4221}{Holy Greataxe +1}
+{4222}{Holy Longsword +1}
+{4223}{Shillelagh}
+{4224}{Holy Water}
+{4225}{Kelno's Vial of Unholy Water}
+{4226}{Unholy Water}
+{4227}{White Rod, Minor}
+{4228}{White Rod}
+{4229}{Grey Rod, Minor}
+{4230}{Grey Rod}
+{4231}{Black Rod, Minor}
+{4232}{Black Rod}
+{4233}{Staff of Defense}
+{4234}{Staff of the Transmuter}
+{4235}{David's Sling}
+{4236}{Sickle}
+{4237}{Masterwork Sickle}
+{4238}{Silver Sword of Chaos}
+{4239}{Heavy Saber}
+{4240}{Masterwork Heavy Saber}
+{4241}{Quarterstaff}
+{4242}{Quarterstaff}
+{4243}{Quarterstaff}
+{4244}{Watch Captain's Dagger}
+{4245}{Kukri +2}
+{4246}{Frozen Longbow}
+{4247}{Voltaic Battleaxe}
+{4248}{Smelted Longsword}
+{4249}{Scalded Spiked Chain}
+{4250}{Conductive Bastard Sword}
+{4251}{Chilled Light Mace}
+{4252}{Longspear +2}
+{4253}{Halberd +2}
+{4254}{Greataxe +2}
+{4255}{Flail +2}
+{4256}{Scimitar +2}
+{4257}{Bastard Sword +2}
+{4258}{Dwarven War Axe +2}
+{4259}{Gnome Hooked Hammer +2}
+{4260}{Abbathor's Greed Hammer +1}
+{4261}{Lighted Greataxe}
+{4262}{Axiomatic Warhammer +2}
+{4263}{Spiked Chain +2}
+{4264}{Unholy Quarterstaff +5}
+{4299}{Longbow +2}
+{4300}{Composite Longbow, Str 12}
+{4301}{Composite Longbow, Str 16}
+{4302}{Composite Shortbow, Str 12}
+{4303}{Composite Shortbow, Str 14}
+{4304}{Masterwork Composite Longbow, Str 12}
+{4305}{Masterwork Composite Longbow, Str 14}
+{4306}{Masterwork Composite Longbow, Str 16}
+{4307}{Masterwork Composite Shortbow, Str 12}
+{4308}{Masterwork Composite Shortbow, Str 14}
+{4309}{Staff of Size Alteration}
+{4310}{Staff of Charming}
+{4311}{Staff of Frost}
+{4312}{Staff of the Woodlands}
+{4313}{Staff of Healing}
+{4314}{Rod of Alertness}
+{4315}{Rod of Negation}
+{4316}{Rod of Thunder and Lightning}
+{4317}{Staff of Elemental Control, Air}
+{4318}{Staff of Elemental Control, Earth}
+{4319}{Staff of Elemental Control, Fire}
+{4320}{Staff of Elemental Control, Water}
+{4321}{Staff of Boccob}
+{4322}{Sahandrian}
+{4323}{Jenevier}
+{4324}{Agony}
+{4325}{Traveler's Friend}
+{4326}{Arumdina}
+{4327}{Blood Spear}
+{4328}{Justicebringer}
+{4329}{Pain's Memory}
+{4330}{Kelmar}
+{4331}{Soulhammer}
+{4332}{Lifecutter}
+{4333}{Stormstouch}
+{4334}{Swiftstrike}
+{4335}{Sunsceptre}
+{4336}{Mace of St. Cuthbert}
+{4337}{Afterthought}
+{4338}{Discretion}
+{4339}{Hornblade}
+{4340}{Wakizashi}
+{4341}{Masterwork Wakizashi}
+{4342}{Composite Longbow, Str 18}
+{4343}{Masterwork Composite Longbow, Str 18}
+{4344}{Orc Double Axe}
+{4345}{Masterwork Orc Double Axe}
+{4346}{Stone Giant Club}
+{4347}{Stone Giant Club}
+{4348}{Longbow of Flame +1}
+{4349}{Longbow of Frost +2}
+{4350}{Unholy Longbow of Electricity +2}
+{4400}{Smyth & Westrealm .50}
+{4401}{Double Greataxe}
+{4402}{Large Axe}
+{4403}{Great Mace}
+{4404}{Masterwork Nodachi}
+{4405}{Single Greataxe}
+{4406}{Sword of Cahoem}
+{4407}{Tetsubo}
+{4408}{Flail}
+{4409}{Darkblade}
+{4410}{Hatori Hanzo Steel}
+{4411}{Military Fork}
+{4412}{Halberd}
+{4413}{Trident}
+{4414}{Masterwork Scimitar}
+{4415}{Silver Nodachi +5}
+{4416}{Poisoned Composite Shortbow, Str 16}
+{4417}{Shadowblade} 
+{4418}{Thyrshadi} 
+{4419}{Shashka}
+{4420}{Sky} 
+{4421}{Sea}
+{4422}{Dante's Saber}
+{4423}{Jian}
+{4424}{Broom}
+{4425}{Exotic Dwarven War Axe}
+{4426}{Masterwork Naginata}
+{4427}{Monk Spade}
+{4428}{Masterwork Monk Spade}
+{4429}{Rake}
+{4430}{Masterwork Rake}
+{4431}{Shovel}
+{4432}{Masterwork Shovel}
+{4433}{War Fan}
+{4434}{Masterwork War Fan}
+{4435}{Tonfa}
+{4436}{Masterwork Tonfa}
+{4437}{Dao}
+{4438}{Masterwork Dao}
+{4439}{Butterfly Sword}
+{4440}{Masterwork Butterfly Sword}
+{4441}{Katar}
+{4442}{Masterwork Katar}
+{4443}{Bastard Sword + 1}
+{4444}{Masterwork Flail}
+{4446}{Heavy Saber +2}
+{4447}{Falchion +1}
+{4448}{Falchion +2}
+{4449}{Unholy Heavy Mace}
+{4450}{Mace of Midnight}
+{4451}{Twinkle}
+{4452}{Icing Death}
+{4461}{Shortbow +1}
+{4462}{Axiomatic Light Crossbow +1}
+{4463}{Anarchic Light Crossbow +1}
+{4464}{Holy Light Crossbow +1}
+{4465}{Holy Heavy Crossbow +1}
+{4466}{Unholy Light Crossbow +1}
+{4467}{Unholy Heavy Crossbow +1}
+{4468}{Light Crossbow of Frost +1}
+{4469}{Light Crossbow of Fire +1}
+{4470}{Light Crossbow of Shock +1}
+{4471}{Troubadour's Ally}	// light
+{4472}{Troubadour's Ally}	// heavy
+{4473}{Troubadour's Ally}	// repeating
+{4474}{Light Crossbow of Distance}
+{4475}{Heavy Crossbow of Distance}
+{4476}{Repeating Light Crossbow of Distance}
+{4477}{Light Crossbow of Accuracy}
+{4478}{Heavy Crossbow of Accuracy}
+{4479}{Repeating Light Crossbow of Accuracy}
+{4480}{Masterwork Bludgeoning Light Crossbow}
+{4481}{Bludgeoning Light Crossbow}
+{4482}{Unholy Longbow +2}
+{4489}{Masterwork Repeating Light Crossbow}
+{4490}{Masterwork Spear of Keoland}
+{4491}{Spear of Keoland}
+{4492}{Masterwork Zweihander}
+{4493}{Zweihander}
+{4494}{Repeating Light Crossbow}
+{4495}{Blade of Fury}
+{4496}{Masterwork Silver Light Mace}
+{4497}{Unholy Heavy Mace +1}
+{4498}{Iolo's Joy}
+{4499}{Blade of Spite}
+{4500}{Rapier +2}
+{4501}{Ettin Club, Primary}
+{4502}{Ettin Club, Off-Hand}
+{4503}{Iuz's Greatsword}
+{4504}{St. Cuthbert's Cudgel}
+{4597}{Cerulean's Rod}
+{4598}{Holy Bastard Sword}
+{4599}{Sword of Katara}
+{4600}{Smyth & Westrealm .30-.06 Bolt Action Rifle w/Scope}
+{4601}{Wakizashi}
+{4602}{Tanto}
+{4603}{Masterwork Tanto}
+{4604}{Kama}
+{4605}{Masterwork Kama}
+{4606}{Main Gauche}
+{4607}{Masterwork Main Gauche}
+{4608}{Bolo}
+{4609}{Masterwork Bolo}
+{4610}{Guillotine Blade}
+{4611}{Masterwork Guillotine Blade}
+{4612}{Tiny Rapier}
+{4613}{Masterwork Tiny Rapier}
+{4620}{Bearded Devil Glaive}
+{4621}{Bralani Holy Scimitar +1}
+{4622}{Bralani Holy Composite Longbow +1, Str 18}
+{4623}{Halfling Siangham}
+{4624}{Kukri}
+{4625}{Masterwork Siangham}
+{4626}{Siangham}
+{4627}{Rolling Pin}
+{4645}{Flask of Oil}
+{4646}{Bottle of Eruptive Acid}
+{4647}{Bottle of Acid}
+{4648}{Bottle of Distilled Acid}
+{4649}{Bottle of Purified Acid}
+{4650}{Cleaver}
+{4700}{Katana +1}
+{4701}{Wakizashi +1}
+{4703}{Boxing Gloves}
+{4704}{Masterwork Spiked Gauntlets}
+{4705}{Spiked Gauntlets}
+{4706}{Masterwork Trident}
+{4707}{Masterwork Halberd}
+{4999}{Paladin Holy Sword}
+
+
+
+// 5000 - 5999: Ammo
+
+
+{5000}{DO NOT USE bp_ammo_arrow}
+{5001}{DO NOT USE arrow}
+{5002}{DO NOT USE bolt}
+{5003}{DO NOT USE bullet}
+{5004}{Quiver of Arrows}
+{5005}{Quarrel of Bolts}
+{5006}{Quiver of Arrows +1}
+{5007}{Pouch of Bullets}
+{5008}{Quiver of Silver Arrows}
+{5009}{Quiver of Arrows +2}
+{5010}{Quiver of Arrows +3}
+{5011}{Quarrel of Bolts +1}
+{5012}{Quarrel of Bolts +2}
+{5013}{Quarrel of Bolts +3}
+{5021}{Quiver of Pixie Sleep Arrows}
+{5022}{Quiver of Pixie Forget Arrows}
+{5023}{Quarrel of Drow Sleep Bolts}
+{5098}{Quarrel of Silver Bolts}
+{5099}{Quarrel of Silver Bolts +1}
+
+
+
+// 6000 - 6999: Armor
+
+
+{6000}{bp_armor_start}
+{6001}{Gnoll Helmet}
+{6002}{Gnoll Helmet 2}
+{6003}{Gnoll Sergeant's Helmet}
+{6004}{Gnoll Shield 1}
+{6005}{Gnoll Shield 2}
+{6006}{Gnoll Shield 3}
+{6007}{Gnoll Shield 4}
+{6008}{Battered Gnoll Shield}
+{6009}{Druid Hide}
+{6010}{Leather Helm}
+{6011}{Brown Leather Boots}
+{6012}{Brown Leather Gloves}
+{6013}{Brown Leather Armor}
+{6014}{Lizardman Shield}
+{6015}{Eye of Flame Cloak}
+{6016}{Cloth Armor}
+{6017}{Gnome Ring}
+{6018}{Chain Helmet}
+{6019}{Red Chainmail}
+{6020}{Chainmail Boots}
+{6021}{Chainmail Gloves}
+{6022}{Tan Padded Armor}
+{6023}{Tan Padded Boots}
+{6024}{Tan Padded Gloves}
+{6025}{Coolie Hat}
+{6026}{Barbarian Helm}
+{6027}{Nice Circlet}
+{6028}{Simple Circlet}
+{6029}{Basic Crown}
+{6030}{Jeweled Crown}
+{6031}{Eyeglasses}
+{6032}{Generic Helm}
+{6033}{Great Helm}
+{6034}{Leather Cap}
+{6035}{Silver Plumed Helm}
+{6036}{Rogue's Helm}
+{6037}{Straw Cap}
+{6038}{Black Wizard Hat}
+{6039}{Full Plate Armor}
+{6040}{Silver Plate Boots}
+{6041}{Silver Plate Gloves}
+{6042}{Black Leather Armor}
+{6043}{Tan Leather Armor}
+{6044}{Grey Leather Armor}
+{6045}{Black Leather Boots}
+{6046}{Black Leather Gloves}
+{6047}{Scale Mail}
+{6048}{Prince Thrommel's Plate Armor}
+{6049}{Red Chainmail +1}
+{6050}{Steel Shield +1}
+{6051}{Steel Shield +2}
+{6052}{Steel Shield +3}
+{6053}{Wooden Shield +4}
+{6054}{Steel Shield +5}
+{6055}{Barbarian Armor}
+{6056}{Studded Leather Armor}
+{6057}{Boots of Elvenkind}
+{6058}{Cloak of Elvenkind}
+{6059}{Buckler}
+{6060}{Large Steel Shield}
+{6061}{Prince Thrommel's Large Steel Shield}
+{6062}{Large Steel Shield}
+{6063}{Large Masterwork Steel Shield}
+{6064}{Large Wooden Shield}
+{6065}{Large Masterwork Wooden Shield}
+{6066}{Metal Orcish Shield}
+{6067}{Wooden Orcish Shield}
+{6068}{Large Steel Shield}
+{6069}{Large Steel Shield}
+{6070}{Large Wooden Shield}
+{6071}{Large Wooden Shield}
+{6072}{Large Wooden Shield}
+{6073}{Wooden Elvish Shield}
+{6074}{Small Steel Shield}
+{6075}{Small Masterwork Steel Shield}
+{6076}{Small Wooden Shield}
+{6077}{Small Steel Shield}
+{6078}{Metal Tower Shield}
+{6079}{Masterwork Metal Tower Shield}
+{6080}{Wooden Tower Shield}
+{6081}{Light Blue Robes}
+{6082}{Ring of Protection +1}
+{6083}{Ring of Protection +2}
+{6084}{Ring of Protection +3}
+{6085}{Cloak of Resistance +1, Light Blue}
+{6086}{Cloak of Resistance +2, Light Blue}
+{6087}{Cloak of Resistance +3, Light Blue}
+{6088}{Ring of Invisibility}
+{6089}{Ring of Mammal Control}
+{6090}{Scarab of Proof against Poison}
+{6091}{Brown Leather Armor +1}
+{6092}{Amulet of Proof against Detection and Location}
+{6093}{Chain Shirt}
+{6094}{Red Chainmail +2}
+{6095}{Red Chainmail +3}
+{6096}{Splint Mail}
+{6097}{Lareth's Breastplate +1}
+{6098}{Lareth's Plate Boots}
+{6099}{Lareth's Ring of Freedom of Movement}
+{6100}{Lareth's Gold Chain}
+{6101}{Ring of Fire Resistance, Minor}
+{6102}{Otis' Red Chainmail +2}
+{6103}{Silver Breastplate}
+{6104}{Full Plate +1}
+{6105}{Ring of Freedom of Movement}
+{6106}{Troll Bone Armor}
+{6107}{Necklace of Adaptation}
+{6108}{Oohlgrist's Ruby Necklace}
+{6109}{Air Temple Ivory Robes}
+{6110}{Earth Temple Brown Robes}
+{6111}{Fire Temple Crimson Robes}
+{6112}{Water Temple Moss-Green Robes}
+{6113}{Greater Temple Black Robes}
+{6114}{Black TZGY Scarab}
+{6115}{Bracers of Armor +5}
+{6116}{Prince Thrommel's Golden Amulet}
+{6117}{Prince Thrommel's Golden Ring}
+{6118}{Ring of Change}
+{6119}{Bracers of Armor +3}
+{6120}{Silver Banded Mail}
+{6121}{Silver Banded Mail +1}
+{6122}{Full Plate Armor +3}
+{6123}{Ragged Clothes}
+{6124}{Red Cloak}
+{6125}{Blue Elven Chain}
+{6126}{Unicorn Ring}
+{6127}{Necklace of Prayer Beads, Karma}
+{6128}{Silver Star Badge of Veluna}
+{6129}{Gold Crown Badge of Furyondy}
+{6130}{Light Blue Wizard Robes}
+{6131}{Hedrack's Full Plate Armor +3}
+{6132}{Hedrack's Plate Boots}
+{6133}{Hedrack's Plate Gloves}
+{6134}{Hedrack's Plate Helmet}
+{6135}{Hedrack's Shield +3}
+{6136}{Spiked Wooden Shield}
+{6137}{Boots of Speed}
+{6138}{Wonnilon's Leather Armor}
+{6139}{Copper Starburst Pendant}
+{6140}{Eight-Pointed Amulet}
+{6141}{Masterwork Full Plate Armor}
+{6142}{Brown Farmer Garb}
+{6143}{Black Farmer Garb}
+{6144}{Blue Farmer Garb}
+{6145}{Green Farmer Garb}
+{6146}{Grey Farmer Garb}
+{6147}{Blue Villager Garb}
+{6148}{Green Villager Garb}
+{6149}{Ochre Villager Garb}
+{6150}{Red Villager Garb}
+{6151}{Red Noble Garb}
+{6152}{Red Padded Armor}
+{6153}{Fine Scale Mail}
+{6154}{Masterwork Scale Mail}
+{6155}{Black Breastplate}
+{6156}{Earth Temple Ring}
+{6157}{Gold Chain}
+{6158}{Half-Plate}
+{6159}{Gilded Full Plate Armor}
+{6160}{Gilded Plate Boots}
+{6161}{Gilded Plate Gloves}
+{6162}{Cloak of Resistance +4}
+{6163}{Bugbear Spiked Temple Shield}
+{6164}{Bugbear Spiked Earth Shield}
+{6165}{Bugbear Spiked Water Shield}
+{6166}{Bugbear Spiked Air Shield}
+{6167}{Bugbear Spiked Fire Shield}
+{6168}{Bugbear Notched Temple Shield}
+{6169}{Bugbear Notched Earth Shield}
+{6170}{Bugbear Notched Water Shield}
+{6171}{Bugbear Notched Air Shield}
+{6172}{Bugbear Notched Fire Shield}
+{6173}{Bugbear Round Temple Shield}
+{6174}{Bugbear Round Earth Shield}
+{6175}{Bugbear Round Water Shield}
+{6176}{Bugbear Round Air Shield}
+{6177}{Bugbear Round Fire Shield}
+{6178}{Bugbear-Gnoll Shield}
+{6179}{Bugbear Iuz Shield}
+{6180}{Plain Copper Ring}
+{6181}{Silver Ring}
+{6182}{Gold Ring}
+{6183}{Garnet Ring}
+{6184}{Jasper Ring}
+{6185}{Bronze Ring}
+{6186}{Platinum Ring}
+{6187}{Fancy Gold Ring}
+{6188}{Ruby Ring}
+{6189}{Sapphire Ring}
+{6190}{Tribal Necklace}
+{6191}{Heavy Gold Chain}
+{6192}{Jade Pendant}
+{6193}{Scarab Necklace}
+{6194}{Silver Necklace}
+{6195}{Fancy Gold Chain}
+{6196}{Jade Necklace}
+{6197}{Silver Medallion Necklace}
+{6198}{Ring of Animal Summoning, Dog}
+{6199}{Gloves of Dexterity +2}
+{6200}{Gloves of Dexterity +4}
+{6201}{Gloves of Dexterity +6}
+{6202}{Monk Boots}
+{6203}{Black Monk Robes}
+{6204}{Blue Monk Robes}
+{6205}{Brown Monk Robes}
+{6206}{Orange Monk Robes}
+{6207}{Red Monk Robes}
+{6208}{White Monk Robes}
+{6209}{Bone Helm}
+{6210}{Bone Armor}
+{6211}{Teal Mystic Garb}
+{6212}{Green Mystic Garb}
+{6213}{Pink Mystic Garb}
+{6214}{Green Elven Chain}
+{6215}{Purple Elven Chain}
+{6216}{Hide Armor}
+{6217}{Druidic Helm}
+{6218}{Purple Noble Garb}
+{6219}{Senshock's Robes}
+{6220}{Masterwork Padded Armor}
+{6221}{Masterwork Leather Armor}
+{6222}{Masterwork Studded Leather}
+{6223}{Masterwork Chain Shirt}
+{6224}{Masterwork Hide Armor}
+{6225}{Masterwork Red Chainmail}
+{6226}{Masterwork Silver Breastplate}
+{6227}{Masterwork Splint Mail}
+{6228}{Masterwork Silver Banded Armor}
+{6229}{Masterwork Half-Plate}
+{6230}{Masterwork Full Plate Armor}
+{6231}{Masterwork Buckler}
+{6232}{Small Masterwork Wooden Shield}
+{6233}{Black Cloak}
+{6234}{White Cloak}
+{6235}{Blue Bandana}
+{6236}{Red Bandana}
+{6237}{Bicorne}
+{6238}{Jaunty Hat}
+{6239}{Darley's Necklace}
+{6240}{Amulet of Health +2}
+{6241}{Amulet of Health +4}
+{6242}{Amulet of Health +6}
+{6243}{Belt of Giant Strength +4}
+{6244}{Belt of Giant Strength +6}
+{6245}{Gauntlets of Ogre Power}
+{6246}{Headband of Intellect +2}
+{6247}{Headband of Intellect +4}
+{6248}{Headband of Intellect +6}
+{6249}{Amulet of Wisdom +2}
+{6250}{Amulet of Wisdom +4}
+{6251}{Amulet of Wisdom +6}
+{6252}{Cloak of Charisma +2}
+{6253}{Cloak of Charisma +4}
+{6254}{Cloak of Charisma +6}
+{6255}{Circlet of Persuasion}
+{6256}{Necklace of Detection}
+{6257}{Amulet of Mighty Fists +1}
+{6258}{Amulet of Mighty Fists +2}
+{6259}{Amulet of Mighty Fists +3}
+{6260}{Amulet of Mighty Fists +4}
+{6261}{Amulet of Mighty Fists +5}
+{6262}{Amulet of Natural Armor +1}
+{6263}{Amulet of Natural Armor +2}
+{6264}{Amulet of Natural Armor +3}
+{6265}{Amulet of Natural Armor +4}
+{6266}{Amulet of Natural Armor +5}
+{6267}{Bracers of Archery, Greater}
+{6268}{Bracers of Archery, Lesser}
+{6269}{Green Cloak}
+{6270}{Lady's Ring Inscribed "From Jay"}
+{6271}{Circlet of Blasting, Minor}
+{6272}{Bracers of Armor +1}
+{6273}{Bracers of Armor +2}
+{6274}{Bracers of Armor +4}
+{6275}{Cloak of Arachnida}
+{6276}{Hands of Fire}
+{6277}{Hands of Ice}
+{6278}{Hands of Electricity}
+{6279}{Hands of Life}
+{6280}{Hands of Death}
+{6281}{Boots of Striding}
+{6282}{Small Black Cloak}
+{6283}{Simple Circlet}
+{6284}{Helm of Teleportation}
+{6285}{Vest of Escape}
+{6286}{Mantle of Spell Resistance}
+{6287}{Goggles of Minute Seeing}
+{6288}{Helm of Telepathy}
+{6289}{Boots of the Winterlands}
+{6290}{Bracers of Dawn}
+{6291}{Dwarven Forge Gauntlets}
+{6292}{Eyes of Charming}
+{6293}{Eyes of the Eagle}
+{6294}{Helm of Reading Magic}
+{6295}{Periapt of Wound Closure}
+{6296}{Black Banded Mail +1}
+{6297}{Fine Chainmail +1}
+{6298}{Barbarian Armor +1}
+{6299}{Black Leather Armor +1}
+{6300}{Small Masterwork Leather Armor}
+{6301}{Silver Banded Mail +3}
+{6302}{Small Masterwork Padded Armor}
+{6303}{Red Forge Plate}
+{6304}{Small Masterwork Studded Leather}
+{6305}{Masterwork Leather Armor}
+{6306}{Tan Leather Armor +1}
+{6307}{Black Breastplate +1}
+{6308}{Black Plate +1}
+{6309}{Yellow Mystic Garb}
+{6310}{Purple Mystic Garb}
+{6311}{Darkwood Buckler}
+{6312}{Large Darkwood Shield}
+{6313}{Large Mithral Shield}
+{6314}{Adamantium Breastplate}
+{6315}{Mithral Shirt}
+{6316}{Dragonhide Plate}
+{6317}{Dwarven Plate}
+{6318}{Gladiator Armor}
+{6319}{Black Dress}
+{6320}{Corset}
+{6321}{Marauder Armor}
+{6322}{White Robes}
+{6323}{Boots of Teleportation}
+{6324}{Cloak of Invisibility}
+{6325}{Mystical Tattoos}
+{6326}{Royal Armor}
+{6327}{Masterwork Gladiator Armor}
+{6328}{Masterwork Marauder Armor}
+{6329}{Red Robes}
+{6330}{Arcane Tattoos}
+{6331}{Black Robes}
+{6332}{Brown Robes}
+{6333}{Green Robes}
+{6334}{Black Plate}
+{6335}{Hoodless Circlet}
+{6336}{Yakuza Tattoos}
+{6337}{Ninja Tattoos}
+{6338}{Blue Cape}
+{6339}{Mithral Plate}
+{6340}{Mithral Buckler}
+{6341}{Black Banded Mail}
+{6342}{Red Long Coat}
+{6343}{Black Long Coat}
+{6344}{Leather Clothing}
+{6345}{Mantle of Spell Resistance, Green}
+{6346}{Oriental Garb}
+{6347}{Hero's Shield}
+{6348}{Red Padded Boots}
+{6349}{Red Padded Gloves}
+{6350}{Magic Dwarven Plate}
+{6395}{Brown Leather Armor +3}
+{6396}{Silver Breastplate +1}
+{6397}{Chain Shirt +3}
+{6398}{Chain Shirt +1}
+{6399}{Curved Heater +2}
+{6400}{Spell Object}
+{6401}{Robe of the Archmagi, White}
+{6402}{Robe of the Archmagi, Grey}
+{6403}{Robe of the Archmagi, Black}
+{6404}{Cape of the Mountebank}
+{6405}{Druid's Vestments}
+{6406}{Cloak of Resistance +4, Light Blue}
+{6407}{Cloak of Resistance +5, Light Blue}
+{6408}{Cloak of Displacement, Minor}
+{6409}{Cloak of Displacement, Major}
+{6410}{Robe of Eyes}
+{6411}{Robe of Blending}
+{6412}{Helm of Brilliance}
+{6413}{Moon-Ivy Armor}
+{6414}{Dwarven Stone Armor}
+{6415}{Bark Armour}
+{6416}{Leather Scale Armor}
+{6417}{Moon-Ivy Armor - Poison Ivy}
+{6418}{Masterwork Dwarven Stone Armor}
+{6419}{Masterwork Bark Armour}
+{6420}{Masterwork Leather Scale Armor}
+{6421}{Fur Cloak}
+{6422}{Bondleaf Wrap}
+{6423}{Lamellar Armor}
+{6424}{Masterwork Lamellar Armor}
+{6425}{Shell Armor}
+{6426}{Masterwork Shell Armor}
+{6427}{Orange Cloak}
+{6428}{Violet Cloak}
+{6429}{Bright Blue Robes}
+{6430}{Red Fancy Hat}
+{6431}{Blue Fancy Hat}
+{6432}{Black Fancy Hat}
+{6433}{Samurai Mask}
+{6434}{Samurai Helmet}
+{6435}{Samurai Armor}
+{6436}{Masterwork Samurai Armor}
+{6437}{Patchwork Armor}
+{6438}{Kilt}
+{6439}{Moon-Ivy Armor - Explosive Spores}
+{6440}{Moon-Ivy Armor - Pheromones}
+{6454}{Plain Chainmail}
+{6466}{Buccaneer Boots}
+{6467}{Fine Leather Boots}
+{6468}{Green Leather Boots}
+{6469}{Combat Boots}
+{6470}{White Leather Boots}
+{6474}{Masterwork Fine Chainmail}
+{6475}{Fine Chainmail}
+{6476}{Gold Chainmail}
+{6477}{Gold Breastplate}
+{6478}{Gold Plate Gloves}
+{6479}{Gold Plate Boots}
+{6480}{Mithral Garb}
+{6481}{Marauder Armor +2}
+{6482}{Circlet of Discernment}
+{6483}{Non-conductive Metal Orcish Shield +1}
+{6484}{Orange Mystic Garb}
+{6485}{Metal Orcish Shield +1}
+{6486}{Robes of Midnight}
+{6487}{Helm of Midnight}
+{6498}{Masterwork Verbobonc Shield}
+{6499}{Verbobonc Shield}
+{6500}{Drow Wig}
+{6501}{Drow Mask}
+{6502}{Drow Spidersilk Armor}
+{6503}{Drow Banded Armor}
+{6504}{Drow Elven Chain}
+{6505}{Drow Halfplate Armor}
+{6506}{Drow Gloves}
+{6520}{Black Elven Chain}
+{6560}{Major Ring of Enchanting}
+{6561}{Major Ring of Creating}
+{6562}{Major Ring of Abjuring}
+{6563}{Major Ring of Divining}
+{6564}{Major Ring of Evocating}
+{6565}{Major Ring of Illusing}
+{6566}{Major Ring of Transmuting}
+{6567}{Major Ring of Necromancing}
+{6568}{Major Ring of Summoning}
+{6569}{Major Ring of Protecting}
+{6600}{Bralani Armor}
+{6601}{Steam Mephit Wig}
+{6602}{Steam Mephit Mask}
+{6603}{Steam Mephit Skin}
+{6604}{Steam Mephit Feet}
+{6605}{Steam Mephit Hands}
+{6606}{Steam Mephit Wings}
+{6607}{Nixie Wig}
+{6608}{Nixie Mask}
+{6609}{Nixie Shawl}
+{6610}{Nixie Feet}
+{6611}{Nixie Hands}
+{6612}{Pixie Wings}
+{6613}{Chain Devil Helm}
+{6614}{Chain Devil Chains}
+{6615}{Chain Devil Boots}
+{6616}{Chain Devil Gloves}
+{6625}{White Wizard Robes}
+{6626}{Black Wizard Robes}
+{6627}{Blue Wizard Robes}
+{6628}{Red Wizard Robes}
+{6629}{Banded Black Hat}
+{6630}{Ice Wizard Hat}
+{6631}{Blue Wizard Hat}
+{6632}{Fire Wizard Hat}
+{6633}{White Wizard Hat}
+{6634}{Black Wizard Hat}
+{6635}{Brown Wizard Hat}
+{6636}{Gold Plumed Helm}
+{6637}{Red Mystic Garb}
+{6638}{Blue Mystic Garb}
+{6639}{White Mystic Garb}
+{6640}{Black Mystic Garb}
+{6652}{Amulet of Resistance to Turning}
+{6653}{Ring of Force Shield}
+{6654}{Ring of Chameleon Power}
+{6655}{Ring of Resonance}
+{6656}{Cloak of Resistance +1, Black}
+{6657}{Cloak of Resistance +2, Black}
+{6658}{Cloak of Resistance +3, Black}
+{6659}{Cloak of Resistance +4, Black}
+{6660}{Cloak of Resistance +5, Black}
+{6661}{Cloak of Resistance +1, Green}
+{6662}{Cloak of Resistance +2, Green}
+{6663}{Cloak of Resistance +3, Green}
+{6664}{Cloak of Resistance +4, Green}
+{6665}{Cloak of Resistance +5, Green}
+{6666}{Cloak of Resistance +1, Red}
+{6667}{Cloak of Resistance +2, Red}
+{6668}{Cloak of Resistance +3, Red}
+{6669}{Cloak of Resistance +4, Red}
+{6670}{Cloak of Resistance +5, Red}
+{6671}{Cloak of Resistance +1, White}
+{6672}{Cloak of Resistance +2, White}
+{6673}{Cloak of Resistance +3, White}
+{6674}{Cloak of Resistance +4, White}
+{6675}{Cloak of Resistance +5, White}
+{6676}{Cloak of Resistance +1, Blue}
+{6677}{Cloak of Resistance +2, Blue}
+{6678}{Cloak of Resistance +3, Blue}
+{6679}{Cloak of Resistance +4, Blue}
+{6680}{Cloak of Resistance +5, Blue}
+{6681}{Cloak of Resistance +1, Fur}
+{6682}{Cloak of Resistance +2, Fur}
+{6683}{Cloak of Resistance +3, Fur}
+{6684}{Cloak of Resistance +4, Fur}
+{6685}{Cloak of Resistance +5, Fur}
+{6686}{Cloak of Resistance +1, Violet}
+{6687}{Cloak of Resistance +2, Violet}
+{6688}{Cloak of Resistance +3, Violet}
+{6689}{Cloak of Resistance +4, Violet}
+{6690}{Cloak of Resistance +5, Violet}
+{6691}{Cloak of Resistance +1, Orange}
+{6692}{Cloak of Resistance +2, Orange}
+{6693}{Cloak of Resistance +3, Orange}
+{6694}{Cloak of Resistance +4, Orange}
+{6695}{Cloak of Resistance +5, Orange}
+{6696}{Cloak of Arachnida, Black}
+{6697}{Cloak of Arachnida, Red}
+{6698}{Cloak of Arachnida, Spiral}
+{6699}{Cloak of Charisma +2, White}
+{6700}{Cloak of Charisma +4, White}
+{6701}{Cloak of Charisma +6, White}
+{6702}{Cloak of Charisma +2, Black}
+{6703}{Cloak of Charisma +4, Black}
+{6704}{Cloak of Charisma +6, Black}
+{6705}{Cloak of Charisma +2, Stars}
+{6706}{Cloak of Charisma +4, Stars}
+{6707}{Cloak of Charisma +6, Stars}
+{6708}{Cloak of Charisma +2, Blue}
+{6709}{Cloak of Charisma +4, Blue}
+{6710}{Cloak of Charisma +6, Blue}
+{6711}{Cloak of Elvenkind, Green}
+{6712}{Cloak of Elvenkind, Fur}
+{6713}{Cloak of Elvenkind, Black}
+{6714}{Mantle of Spell Resistance, Black}
+{6715}{Mantle of Spell Resistance, Stars}
+{6716}{Mantle of Spell Resistance, Blue}
+{6717}{Mantle of Spell Resistance, Violet}
+{6718}{Cape of the Mountebank, Black}
+{6719}{Cape of the Mountebank, Blue}
+{6720}{Cape of the Mountebank, Green}
+
+
+// 7000 - 7999: Money
+
+
+{7000}{Copper}
+{7001}{Silver}
+{7002}{Gold}
+{7003}{Platinum}
+
+
+
+// 8000 - 8999: Food/Poison/Potions
+
+
+{8000}{Bp_Food_Poison}
+{8001}{Goodberry}
+{8002}{Green Potion}
+{8003}{Potion of Protection From Magic}
+{8004}{Ale}
+{8005}{Chunk of Meat}
+{8006}{Potion of Cure Moderate Wounds}
+{8007}{Potion of Cure Serious Wounds}
+{8008}{Potion of Haste}
+{8009}{Potion of Enlarge Person}
+{8010}{Potion of Invisibility}
+{8011}{Belsornig's Poison Vial}
+{8012}{Potion of Aid}
+{8013}{Potion of Bull's Strength}
+{8014}{Potion of Cure Light Wounds}
+{8015}{Potion of Heroism}
+{8016}{Potion of Love}
+{8017}{Potion of Neutralize Poison}
+{8018}{Potion of Control Plants}
+{8019}{Poison}
+{8020}{Potion of Protection From Energy, Fire}
+{8021}{Potion of Heroism, Greater}
+{8022}{Potion of Eagle's Splendor}
+{8023}{Potion of Glibness}
+{8024}{Potion of Hiding}
+{8025}{Potion of Reduce Person}
+{8026}{Potion of Sneaking}
+{8027}{Potion of Protection From Undead}
+{8028}{Potion of Protection From Outsiders}
+{8029}{Potion of Protection From Earth}
+{8030}{Potion of Protection From Elementals}
+{8031}{UNUSED}
+{8032}{Potion of Protection From Acid}
+{8033}{Potion of Protection From Electricity}
+{8034}{Elixir of Hiding}
+{8035}{Elixir of Sneaking}
+{8036}{Elixir of Vision}
+{8037}{Potion of Heal}
+{8040}{Vial of Orc Blood}
+{8090}{Distilled alcohol}	// Bear's Endurance
+{8091}{Quicksilver}		// Cat's Grace
+{8092}{Spore No More}
+{8093}{Ooze You Lose}
+{8100}{Potion of Freedom of Movement}
+{8101}{Potion of Cure Critical Wounds}
+{8102}{Potion of Death Ward}
+{8103}{Potion of Repel Vermin}
+{8104}{Potion of Discern Lies}
+{8105}{Potion of Lesser Globe of Invulnerability}
+{8106}{Potion of Dimension Door}
+{8107}{Potion of Fire Shield}
+{8108}{Potion of Remove Curse}
+{8109}{Potion of Restoration}
+{8110}{Potion of Protection From Arrows}
+{8111}{Potion of Barkskin}
+{8112}{Potion of Blur}
+{8113}{Potion of Cat's Grace}
+{8114}{Potion of Owl's Wisdom}
+{8115}{Potion of Delay Poison}
+{8116}{Potion of Remove Disease}
+{8117}{Potion of Greater Magic Fang}
+{8118}{Potion of Rage}
+{8119}{Potion of Displacement}
+{8120}{Potion of Stoneskin}
+{8899}{Scroll of Obscuring Mist}
+{8900}{Scroll of Stoneskin}		// This is for NPCs only!! Not for PCs!! Created by Livonya to simulate a scroll.
+{8901}{Scroll of Fireshield}		// This is for NPCs only!! Not for PCs!! Created by Livonya to simulate a scroll.
+{8902}{Scroll of Invisibility, Greater}
+{8903}{Break Free Potion}		// This is for NPCs only!! Not for PCs!! Created by Livonya to simulate a scroll.
+{8904}{Scroll of Globe of Invulnerability, Lesser}
+{8905}{Scroll of Death Knell}		// This is for NPCs only!! Not for PCs!!
+{8906}{Scroll of Silence}		// This is for NPCs only!! Not for PCs!!
+{8907}{Scroll of Animate Dead}		// This is for NPCs only!! Not for PCs!!
+{8908}{Wand of Laughter}		// This is for NPCs only!! Not for PCs!!
+{8999}{Plant}
+
+
+
+// 9000 - 9999: Scrolls
+
+
+{9000}{Red Scroll}
+{9001}{Wonnilon's Scroll of Control Plants}
+{9002}{Scroll of Aid}
+{9006}{Scroll of Animal Friendship}
+{9008}{Scroll of Animal Growth}
+{9010}{Scroll of Animal Trance}
+{9011}{Scroll of Animate Dead}
+{9025}{Scroll of Bane}
+{9027}{Scroll of Barkskin}
+{9028}{Scroll of Bestow Curse}
+{9037}{Scroll of Bless}
+{9038}{Scroll of Bless Water}
+{9040}{Scroll of Blindness/Deafness}
+{9041}{Scroll of Blink}
+{9042}{Scroll of Blur}
+{9043}{Scroll of Break Enchantment}
+{9044}{Scroll of Bull's Strength}
+{9045}{Scroll of Burning Hands}
+{9046}{Scroll of Call Lightning}
+{9047}{Scroll of Calm Animals}
+{9048}{Scroll of Calm Emotions}
+{9049}{Scroll of Cat's Grace}
+{9050}{Scroll of Cause Fear}
+{9051}{Scroll of Chain Lightning}
+{9054}{Scroll of Chaos Hammer}
+{9055}{Scroll of Charm Monster}
+{9056}{Scroll of Charm Person}
+{9057}{Scroll of Charm Animal}
+{9058}{Scroll of Chill Metal}
+{9059}{Scroll of Chill Touch}
+{9060}{Scroll of Inflict Moderate Wounds, Mass}
+{9061}{Scroll of Inflict Light Wounds, Mass}
+{9062}{Scroll of Clairaudience/Clairvoyance}
+{9063}{Scroll of Inflict Serious Wounds, Mass}
+{9064}{Scroll of Inflict Critical Wounds, Mass}
+{9065}{Scroll of Cloudkill}
+{9066}{Scroll of Color Spray}
+{9067}{Scroll of Command}
+{9072}{Scroll of Cone of Cold}
+{9073}{Scroll of Confusion}
+{9074}{Scroll of Consecrate}
+{9076}{Scroll of Contagion}
+{9079}{Scroll of Control Plants}
+{9089}{Scroll of Cure Critical Wounds}
+{9090}{Scroll of Cure Light Wounds}
+{9091}{Scroll of Cure Minor Wounds}
+{9092}{Scroll of Cure Moderate Wounds}
+{9093}{Scroll of Cure Serious Wounds}
+{9094}{Scroll of Curse Water}
+{9097}{Scroll of Darkvision}
+{9099}{Scroll of Daze}
+{9100}{Scroll of Death Knell}
+{9101}{Scroll of Death Ward}
+{9104}{Scroll of Delay Poison}
+{9107}{Scroll of Desecrate}
+{9110}{Scroll of Detect Chaos}
+{9111}{Scroll of Detect Evil}
+{9112}{Scroll of Detect Good}
+{9113}{Scroll of Detect Law}
+{9114}{Scroll of Detect Magic}
+{9117}{Scroll of Detect Secret Doors}
+{9120}{Scroll of Detect Undead}
+{9122}{Scroll of Dimensional Anchor}
+{9123}{Scroll of Dimension Door}
+{9125}{Scroll of Discern Lies}
+{9128}{Scroll of Dismissal}
+{9129}{Scroll of Dispel Chaos}
+{9130}{Scroll of Dispel Evil}
+{9131}{Scroll of Dispel Good}
+{9132}{Scroll of Dispel Law}
+{9133}{Scroll of Dispel Magic}
+{9134}{Scroll of Displacement}
+{9135}{Scroll of Disrupt Undead}
+{9137}{Scroll of Divine Favor}
+{9138}{Scroll of Divine Power}
+{9139}{Scroll of Dominate Animal}
+{9141}{Scroll of Dominate Person}
+{9142}{Scroll of Doom}
+{9147}{Scroll of Emotion}
+{9148}{Scroll of Bear's Endurance}
+{9149}{Scroll of Endure Elements}
+{9152}{Scroll of Enlarge Person}
+{9153}{Scroll of Entangle}
+{9155}{Scroll of Entropic Shield}
+{9159}{Scroll of Expeditious Retreat}
+{9163}{Scroll of Faerie Fire}
+{9165}{Scroll of Fear}
+{9167}{Scroll of Feeblemind}
+{9169}{Scroll of Find Traps}
+{9171}{Scroll of Fireball}
+{9173}{Scroll of Fire Shield}
+{9178}{Scroll of Flame Strike}
+{9180}{Scroll of Flare}
+{9183}{Scroll of Fog Cloud}
+{9188}{Scroll of Freedom of Movement}
+{9189}{Scroll of Gaseous Form}
+{9192}{Scroll of Gentle Repose}
+{9194}{Scroll of Ghoul Touch}
+{9195}{Scroll of Giant Vermin}
+{9196}{Scroll of Glitterdust}
+{9199}{Scroll of Goodberry}
+{9201}{Scroll of Command, Greater}
+{9204}{Scroll of Magic Fang,  Greater}
+{9205}{Scroll of Magic Weapon, Greater}
+{9213}{Scroll of Guidance}
+{9214}{Scroll of Gust of Wind}
+{9217}{Scroll of Halt Undead}
+{9219}{Scroll of Haste}
+{9221}{Scroll of Cure Light Wounds, Mass}
+{9223}{Scroll of Heat Metal}
+{9226}{Scroll of Hold Animal}
+{9227}{Scroll of Hold Monster}
+{9228}{Scroll of Hold Person}
+{9229}{Scroll of Grease}
+{9231}{Scroll of Holy Smite}
+{9237}{Scroll of Ice Storm}
+{9238}{Scroll of Identify}
+{9244}{Scroll of Invisibility, Greater}
+{9246}{Scroll of Inflict Critical Wounds}
+{9247}{Scroll of Inflict Light Wounds}
+{9248}{Scroll of Inflict Minor Wounds}
+{9249}{Scroll of Inflict Moderate Wounds}
+{9250}{Scroll of Inflict Serious Wounds}
+{9253}{Scroll of Invisibility}
+{9254}{Scroll of Invisibility Purge}
+{9255}{Scroll of Invisibility Sphere}
+{9256}{Scroll of Hide from Animals}
+{9257}{Scroll of Hide from Undead}
+{9261}{Scroll of Keen Edge}
+{9262}{Scroll of Knock}
+{9265}{Scroll of Extraplanar Chest}
+{9272}{Scroll of Restoration, Lesser}
+{9275}{Scroll of Lightning Bolt}
+{9280}{Scroll of Mage Armor}
+{9282}{Scroll of Magic Circle Against Chaos}
+{9283}{Scroll of Magic Circle Against Evil}
+{9284}{Scroll of Magic Circle Against Good}
+{9285}{Scroll of Magic Circle Against Law}
+{9286}{Scroll of Magic Fang}
+{9288}{Scroll of Magic Missile}
+{9290}{Scroll of Magic Stone}
+{9291}{Scroll of Magic Vestment}
+{9292}{Scroll of Magic Weapon}
+{9303}{Scroll of Meld Into Stone}
+{9304}{Scroll of Melf's Acid Arrow}
+{9309}{Scroll of Mind Fog}
+{9311}{Scroll of Globe of Invulnerability, Lesser}
+{9315}{Scroll of Mirror Image}
+{9320}{Scroll of Mordenkainen's Faithful Hound}
+{9326}{UNUSED}
+{9327}{Scroll of Neutralize Poison}
+{9333}{Scroll of Obscuring Mist}
+{9334}{Scroll of Open/Close}
+{9335}{Scroll of Order's Wrath}
+{9337}{Scroll of Otiluke's Resilient Sphere}
+{9345}{Scroll of Phantasmal Killer}
+{9352}{Scroll of Poison}
+{9359}{Scroll of Prayer}
+{9364}{Scroll of Produce Flame}
+{9367}{Scroll of Protection From Arrows}
+{9368}{Scroll of Protection From Chaos}
+{9369}{Scroll of Protection From Energy}
+{9370}{Scroll of Protection From Evil}
+{9371}{Scroll of Protection From Good}
+{9372}{Scroll of Protection From Law}
+{9373}{Scroll of Negative Energy Protection}
+{9379}{Scroll of Raise Dead}
+{9380}{Scroll of Reincarnate}
+{9383}{Scroll of Ray of Enfeeblement}
+{9384}{Scroll of Ray of Frost}
+{9385}{Scroll of Read Magic}
+{9386}{Scroll of Reduce Person}
+{9389}{Scroll of Ray of Clumsiness}
+{9390}{Scroll of Remove Blindness/Deafness}
+{9391}{Scroll of Remove Curse}
+{9392}{Scroll of Remove Disease}
+{9393}{Scroll of Remove Fear}
+{9394}{Scroll of Remove Paralysis}
+{9396}{Scroll of Repel Vermin}
+{9399}{Scroll of Resistance}
+{9400}{Scroll of Resist Energy}
+{9401}{Scroll of Restoration}
+{9404}{Scroll of Righteous Might}
+{9407}{Scroll of Sanctuary}
+{9408}{Scroll of Scare}
+{9412}{Scroll of Searing Light}
+{9414}{Scroll of See Invisibility}
+{9425}{Scroll of Shatter}
+{9426}{Scroll of Shield}
+{9427}{Scroll of Shield of Faith}
+{9430}{Scroll of Shillelagh}
+{9431}{Scroll of Shocking Grasp}
+{9432}{Scroll of Shout}
+{9434}{Scroll of Silence}
+{9437}{Scroll of Slay Living}
+{9438}{Scroll of Sleep}
+{9439}{Scroll of Sleet Storm}
+{9440}{Scroll of Slow}
+{9442}{Scroll of Soften Earth and Stone}
+{9443}{Scroll of Solid Fog}
+{9445}{Scroll of Sound Burst}
+{9451}{Scroll of Spell Resistance}
+{9455}{Scroll of Spike Growth}
+{9456}{Scroll of Spike Stones}
+{9457}{Scroll of Spiritual Weapon}
+{9460}{Scroll of Stinking Cloud}
+{9462}{Scroll of Stoneskin}
+{9466}{Scroll of Dominate Monster}
+{9467}{Scroll of Summon Monster I}
+{9468}{Scroll of Summon Monster II}
+{9469}{Scroll of Summon Monster III}
+{9470}{Scroll of Summon Monster IV}
+{9471}{Scroll of Summon Monster V}
+{9472}{Scroll of Summon Monster VI}
+{9473}{Scroll of Summon Monster VII}
+{9474}{Scroll of Summon Monster VIII}
+{9475}{Scroll of Summon Monster IX}
+{9476}{Scroll of Summon Nature's Ally I}
+{9477}{Scroll of Summon Nature's Ally II}
+{9478}{Scroll of Summon Nature's Ally III}
+{9479}{Scroll of Summon Nature's Ally IV}
+{9480}{Scroll of Summon Nature's Ally V}
+{9481}{Scroll of Summon Nature's Ally VI}
+{9482}{Scroll of Summon Nature's Ally VII}
+{9483}{Scroll of Summon Nature's Ally VIII}
+{9484}{Scroll of Summon Nature's Ally IX}
+{9485}{Scroll of Summon Swarm}
+{9490}{Scroll of Tasha's Hideous Laughter}
+{9492}{Scroll of Teleport}
+{9505}{Scroll of Tree Shape}
+{9508}{Scroll of True Seeing}
+{9509}{Scroll of True Strike}
+{9513}{Scroll of Unholy Blight}
+{9515}{Scroll of Vampiric Touch}
+{9519}{Scroll of Virtue}
+{9531}{Scroll of Web}
+{9536}{Scroll of Wind Wall}
+{9542}{Scroll of Blight}
+{9543}{Scroll of Dispel Air}
+{9544}{Scroll of Dispel Earth}
+{9545}{Scroll of Dispel Fire}
+{9546}{Scroll of Dispel Water}
+{9547}{Scroll of Rage}
+{9548}{Scroll of Heal}
+{9549}{Scroll of Acid Splash}
+{9550}{Scroll of Call Lightning Storm}
+{9551}{Scroll of Crushing Despair}
+{9552}{Scroll of Daze Monster}
+{9553}{Scroll of Deep Slumber}
+{9554}{Scroll of Eagle's Splendor}
+{9555}{Scroll of False Life}
+{9556}{Scroll of Fox's Cunning}
+{9557}{Scroll of Glibness}
+{9558}{Scroll of Good Hope}
+{9559}{Scroll of Heroism}
+{9653}{Scroll of Circle of Death}
+{9654}{Scroll of Dispel Magic, Greater}
+{9655}{Scroll of Eyebite}
+{9656}{Scroll of Undeath to Death}
+{9657}{Scroll of Hold Person, Mass}
+{9658}{Scroll of Insanity}
+{9659}{Scroll of Power Word Blind}
+{9660}{Scroll of Confusion, Lesser}
+{9661}{Scroll of Longstrider}
+{9662}{Scroll of Owl's Wisdom}
+{9663}{Scroll of Quench}
+{9664}{Scroll of Reduce Animal}
+{9665}{Scroll of Heroism, Greater}
+{9666}{Scroll of Harm}
+{9667}{Scroll of Scorching Ray}
+{9668}{Scroll of Disintegrate}
+{9669}{Scroll of Analyze Dweomer}
+{9670}{Scroll of Delayed Blast Fireball}
+{9671}{Scroll of Finger of Death}
+{9673}{Scroll of Holy Sword}
+{9674}{Scroll of Heal, Mass}
+{9675}{Scroll of Mordenkainen's Sword}
+{9676}{Scroll of Prismatic Spray}
+{9677}{Scroll of Tenser's Transformation}
+{9678}{Scroll of Weird}
+{9679}{Scroll of Bear's Endurance, Mass}
+{9680}{Scroll of Bull's Strength, Mass}
+{9681}{Scroll of Cat's Grace, Mass}
+{9682}{Scroll of Eagle's Splendor, Mass}
+{9683}{Scroll of Fox's Cunning, Mass}
+{9684}{Scroll of Owl's Wisdom, Mass}
+{9685}{Scroll of Cure Moderate Wounds, Mass}
+{9686}{Scroll of Cure Serious Wounds, Mass}
+{9687}{Scroll of Cure Critical Wounds, Mass}
+{9688}{Scroll of Charm Monster, Mass}
+{9689}{Scroll of Horrid Wilting}
+{9690}{Scroll of Polar Ray}
+{9691}{Scroll of Power Word Stun}
+{9692}{Scroll of Hold Monster, Mass}
+{9693}{Scroll of Power Word Kill}
+{9694}{Scroll of Heroes' Feast}
+{9695}{Scroll of Blasphemy}
+{9696}{Scroll of Holy Word}
+{9697}{Scroll of Miracle}
+{9698}{Scroll of Warp Wood}
+{9999}{Drow Note}
+
+
+
+// 10000 - 10999: Keys
+
+
+{10000}{Gold Key}
+{10001}{Rusty Iron Key}
+{10002}{Nira's Key}
+{10003}{Jaroo's Key}
+{10004}{Rentsch's Key}
+{10005}{Tower Brigand Leader's Key}
+{10006}{Romag's Key}
+{10007}{Alrrem's Key}
+{10008}{Belsornig's Key}
+{10009}{Kelno's Key}
+{10010}{Feldrin's Key}
+{10011}{Smigmal's Key}
+{10012}{Falrinth's Key}
+{10013}{Senshock's Key}
+{10014}{Ettin's Key}
+{10015}{Hedrack's Key}
+{10016}{Northwest Troll's Key}
+{10017}{Northeast Troll's Key}
+{10018}{Southwest Troll's Key}
+{10019}{Southeast Troll's Key}
+{10020}{Door Key}			// CN Vignette
+{10021}{Small Gold Key}
+{10022}{Gnome tunnels key}
+{10023}{Half-Orc Commander's Key}
+{10024}{Minotaur's Key}
+{10025}{Drainage tunnels key}
+
+
+
+// 11000 - 11999: Written
+
+
+{10026}{Barkinar and Deggum's Key}
+{11000}{Book}
+{11001}{Note}
+{11002}{Note from Smigmal Redhand}
+{11003}{Lareth's Diary}
+{11004}{Romag's Diary}
+{11005}{Burne's Moathouse Map}
+{11006}{Alira's Temple Map}
+{11007}{Ragged Note to Terjon}
+{11008}{Tattered Piece of Paper}
+{11009}{Panathaes' Notes}
+{11010}{Certificate from Mona}
+{11011}{Dossier on Elmo}
+{11012}{Dossier on Furnok}
+{11013}{Dossier on Spugnoir}
+{11014}{Dossier on Turuko}
+{11015}{Dossier on Kobort}
+{11016}{Dossier on Zert}
+{11017}{Dossier on Burne}
+{11018}{Dossier on Rufus}
+{11019}{Dossier on Pishella}
+{11020}{Dossier on Fruella}
+{11021}{Dossier on Meleny}
+{11022}{Dossier on Paida}
+{11023}{Dossier on Raimol}
+{11024}{Dossier on Cavanaugh}
+{11025}{Dossier on Ronald}
+{11026}{Dossier on Lareth}
+{11027}{Dossier on Zaxis}
+{11028}{Dossier on Prince Thrommel}
+{11029}{Dossier on Serena}
+{11030}{Dossier on Riana}
+{11031}{Dossier on Jaer}
+{11032}{Dossier on Bertram}
+{11033}{Dossier on Frederic Bertram}
+{11034}{Dossier on Morgan}
+{11035}{Dossier on Otis}
+{11036}{Dossier on Canoness Y'Dey}
+{11037}{Dossier on Murfles}
+{11038}{Dossier on Ted}
+{11039}{Dossier on Ed}
+{11040}{Dossier on Ed}
+{11041}{Dossier on Wonnilon}
+{11042}{Dossier on Pintark}
+{11043}{Dossier on Tuelk}
+{11044}{Dossier on Wicked}
+{11045}{Dossier on Oohlgrist}
+{11046}{Dossier on Scorpp}
+{11047}{Dossier on Kella}
+{11048}{Dossier on Darley}
+{11049}{Dossier on Sargen}
+{11050}{Book of Heroes}			// Arena Mod
+{11051}{Dossier on Taki}
+{11052}{Dossier on Ashrem}
+{11053}{Dossier on Corporal Holly}
+{11054}{Dossier on Gunter Gladstone}
+{11055}{Dossier on Kendrew Commonworth}
+{11056}{Dossier on Quintus Corpus}
+{11057}{Dossier on Ariakas}
+{11058}{Panathaes' Notes}
+{11059}{Panathaes' Emerald}
+{11060}{Child's Locket}
+{11061}{Child's Locket}
+{11062}{Child's Locket}
+{11063}{Notice from Captain Abiram}
+{11064}{Notice from anonymous writer}
+{11065}{Notice from Lord Viscount Wilfrick}
+{11066}{Notice from Lord Viscount Wilfrick}
+{11067}{Notice from Prince Zook IV}
+{11068}{Notice from Verbobonc City Council}
+{11069}{Notice from Verbobonc Constabulary}
+{11070}{Notice from Captain Asaph}
+{11071}{Notice from Captain Asaph}
+{11072}{Notice from Captain Asaph}
+{11073}{Notice from Captain Asaph}
+{11074}{Retirement Notice}
+{11097}{Otis' Letter}
+{11098}{Letter from Witch}
+{11099}{Panathaes' Notes}
+{11299}{Temple Map}
+{11300}{Cerulean's Note}
+{11301}{Ragged Parchment}
+{11302}{Ragged Parchment}
+
+
+
+// 12000 - 12999: Generic
+
+
+{12000}{Generic Item}
+{12001}{Holy Water}// DON'T USE THIS ITEM, INSTEAD USE 4224
+{12002}{Wand of Fear}
+{12003}{spell_object_cloudkill}
+{12004}{Plant}	// hemlock
+{12005}{Giant Gar Corpse}
+{12006}{Wand of Fireball, 5th}
+{12007}{Wand of Magic Missiles, 5th}
+{12008}{Chime of Opening}
+{12009}{Dust of Disappearance}
+{12010}{Emerald}
+{12011}{Rope}
+{12012}{Thieves' Tools}
+{12013}{Masterwork Thieves' Tools}
+{12014}{Oohlgrist's Emerald Belt}
+{12015}{Prince Thrommel's Golden Belt}
+{12016}{Rope of Entanglement}
+{12017}{Jaer's Spheres of Fire}
+{12018}{Orb of Golden Death}
+{12019}{Air Elemental Power Gem}
+{12020}{Earth Elemental Power Gem}
+{12021}{Fire Elemental Power Gem}
+{12022}{Water Elemental Power Gem}
+{12023}{Canoness Y'Dey's Brooch}
+{12024}{Fungus Figurine}
+{12025}{Skole's Violet Garnet}
+{12026}{Skole's Black Pearl}
+{12027}{Romag's Sealed Letter}
+{12028}{Kelno's Vial of Unholy Water}// DON'T USE THIS ITEM, INSTEAD USE 4225
+{12029}{Hay}
+{12030}{Unholy Water}// DON'T USE THIS ITEM, INSTEAD USE 4226
+{12031}{Keoghtom's Ointment}
+{12033}{UNUSED}
+{12034}{Black Pearl}
+{12035}{White Pearl}
+{12036}{Diamond}
+{12037}{Jacinth}
+{12038}{Blue Sapphire}
+{12039}{Aquamarine}
+{12040}{Amber}
+{12041}{Carnelian}
+{12042}{Blue Jasper}
+{12043}{Rhodochrosite}
+{12044}{Malachite}
+{12045}{Bat}
+{12046}{Cat}
+{12047}{Hawk}
+{12048}{Lizard}
+{12049}{Owl}
+{12050}{Rat}
+{12051}{Raven}
+{12052}{Snake}
+{12053}{Toad}
+{12054}{Weasel}
+{12055}{Wand of Charm Monster}
+{12056}{Wand of Charm Person}
+{12057}{Wand of Charm Animal}
+{12058}{Wand of Chill Metal}
+{12059}{Wand of Chill Touch}
+{12061}{UNUSED}
+{12062}{Wand of Clairaudience/Clairvoyance}
+{12063}{Wand of Holy Sword}
+{12064}{Wand of Ray of Clumsiness}
+{12065}{Wand of Cloudkill}
+{12066}{Wand of Color Spray}
+{12067}{Wand of Command}
+{12068}{Wand of Dominate Person}
+{12069}{Wand of Darkvision}
+{12072}{Wand of Cone of Cold}
+{12073}{Wand of Confusion}
+{12074}{Wand of Consecrate}
+{12076}{Wand of Contagion}
+{12079}{Wand of Control Plants}
+{12089}{Wand of Cure Critical Wounds}
+{12090}{Wand of Cure Light Wounds}
+{12091}{Wand of Cure Minor Wounds}
+{12092}{Wand of Cure Moderate Wounds}
+{12093}{Wand of Cure Serious Wounds}
+{12094}{Wand of Curse Water}
+{12097}{UNUSED}
+{12099}{Wand of Daze}
+{12100}{Wand of Death Knell}
+{12101}{Wand of Death Ward}
+{12104}{Wand of Delay Poison}
+{12105}{Extraplanar Chest Miniature}
+{12107}{Wand of Desecrate}
+{12110}{Wand of Detect Chaos}
+{12111}{Wand of Detect Evil}
+{12112}{Wand of Detect Good}
+{12113}{Wand of Detect Law}
+{12114}{Wand of Detect Magic}
+{12117}{Wand of Detect Secret Doors}
+{12120}{Wand of Detect Undead}
+{12122}{Wand of Dimensional Anchor}
+{12123}{Wand of Dimension Door}
+{12125}{Wand of Discern Lies}
+{12128}{Wand of Dismissal}
+{12129}{Wand of Dispel Chaos}
+{12130}{Wand of Dispel Evil}
+{12131}{Wand of Dispel Good}
+{12132}{Wand of Dispel Law}
+{12133}{Wand of Dispel Magic}
+{12134}{Wand of Displacement}
+{12135}{Wand of Disrupt Undead}
+{12137}{Wand of Divine Favor}
+{12138}{Wand of Divine Power}
+{12139}{Wand of Dominate Animal}
+{12141}{Wand of Dominate Person}
+{12142}{Wand of Doom}
+{12147}{Wand of Emotion}
+{12148}{Wand of Bear's Endurance}
+{12149}{Wand of Endure Elements}
+{12152}{Wand of Enlarge Person}
+{12153}{Wand of Entangle}
+{12154}{Wand of Enslavement}
+{12155}{Wand of Entropic Shield}
+{12159}{Wand of Expeditious Retreat}
+{12163}{Wand of Faerie Fire}
+{12167}{Wand of Feeblemind}
+{12169}{Wand of Find Traps}
+{12173}{Wand of Fire Shield}
+{12178}{Wand of Flame Strike}
+{12180}{Wand of Flare}
+{12183}{Wand of Fog Cloud}
+{12188}{Wand of Freedom of Movement}
+{12189}{Wand of Gaseous Form}
+{12194}{Wand of Ghoul Touch}
+{12195}{Wand of Giant Vermin}
+{12196}{Wand of Glitterdust}
+{12199}{Wand of Goodberry}
+{12200}{Wand of Grease}
+{12201}{Wand of Greater Command}
+{12204}{Wand of Magic Fang, Greater}
+{12205}{Wand of Magic Weapon, Greater}
+{12213}{Wand of Guidance}
+{12214}{Wand of Gust of Wind}
+{12217}{Wand of Halt Undead}
+{12219}{Wand of Haste}
+{12221}{UNUSED}
+{12223}{Wand of Heat Metal}
+{12226}{Wand of Hold Animal}
+{12227}{Wand of Hold Monster}
+{12228}{Wand of Hold Person}
+{12229}{Wand of Hold Portal}
+{12231}{Wand of Holy Smite}
+{12237}{Wand of Ice Storm}
+{12238}{Wand of Identify}
+{12239}{Wand of Infatuation}
+{12244}{Wand of Invisibility, Greater}
+{12246}{Wand of Inflict Critical Wounds}
+{12247}{Wand of Inflict Light Wounds}
+{12248}{Wand of Inflict Minor Wounds}
+{12249}{Wand of Inflict Moderate Wounds}
+{12250}{Wand of Inflict Serious Wounds}
+{12253}{Wand of Invisibility}
+{12254}{Wand of Invisibility Purge}
+{12255}{Wand of Invisibility Sphere}
+{12256}{Wand of Hide From Animals}
+{12257}{Wand of Hide From Undead}
+{12261}{Wand of Keen Edge}
+{12262}{Wand of Knock}
+{12265}{Wand of Extraplanar Chest}
+{12272}{Wand of Restoration, Lesser}
+{12275}{Wand of Lightning Bolt}
+{12280}{Wand of Mage Armor}
+{12282}{Wand of Magic Circle Against Chaos}
+{12283}{Wand of Magic Circle Against Evil}
+{12284}{Wand of Magic Circle Against Good}
+{12285}{Wand of Magic Circle Against Law}
+{12286}{Wand of Magic Fang}
+{12290}{Wand of Magic Stone}
+{12291}{Wand of Magic Vestment}
+{12292}{Wand of Magic Weapon}
+{12303}{Wand of Meld Into Stone}
+{12304}{Wand of Melf's Acid Arrow}
+{12309}{Wand of Mind Fog}
+{12311}{Wand of Globe of Invulnerability, Lesser}
+{12315}{Wand of Mirror Image}
+{12320}{Wand of Mordenkainen's Faithful Hound}
+{12326}{UNUSED}
+{12327}{Wand of Neutralize Poison}
+{12333}{Wand of Obscuring Mist}
+{12334}{Wand of Open/Close}
+{12335}{Wand of Order's Wrath}
+{12337}{Wand of Otiluke's Resilient Sphere}
+{12345}{Wand of Phantasmal Killer}
+{12352}{Wand of Poison}
+{12359}{Wand of Prayer}
+{12364}{Wand of Produce Flame}
+{12367}{Wand of Protection From Arrows}
+{12368}{Wand of Protection From Chaos}
+{12369}{Wand of Protection From Energy}
+{12370}{Wand of Protection From Evil}
+{12371}{Wand of Protection From Good}
+{12372}{Wand of Protection From Law}
+{12379}{Wand of Raise Dead}
+{12383}{Wand of Ray of Enfeeblement}
+{12384}{Wand of Ray of Frost}
+{12385}{Wand of Read Magic}
+{12386}{Wand of Reduce Person}
+{12390}{Wand of Remove Blindness/Deafness}
+{12391}{Wand of Remove Curse}
+{12392}{Wand of Remove Disease}
+{12393}{Wand of Remove Fear}
+{12394}{Wand of Remove Paralysis}
+{12396}{Wand of Repel Vermin}
+{12399}{Wand of Resistance}
+{12400}{Wand of Resist Energy}
+{12401}{Wand of Restoration}
+{12404}{Wand of Righteous Might}
+{12407}{Wand of Sanctuary}
+{12408}{Wand of Scare}
+{12412}{Wand of Searing Light}
+{12414}{Wand of See Invisibility}
+{12420}{Monk's Belt}
+{12425}{Wand of Shatter}
+{12426}{Wand of Shield}
+{12427}{Wand of Shield of Faith}
+{12430}{Wand of Shillelagh}
+{12431}{Wand of Shocking Grasp}
+{12432}{Wand of Shout}
+{12434}{Wand of Silence}
+{12437}{Wand of Slay Living}
+{12438}{Wand of Sleep}
+{12439}{Wand of Sleet Storm}
+{12440}{Wand of Slow}
+{12442}{Wand of Soften Earth and Stone}
+{12443}{Wand of Solid Fog}
+{12445}{Wand of Sound Burst}
+{12451}{Wand of Spell Resistance}
+{12455}{Wand of Spike Growth}
+{12456}{Wand of Spike Stones}
+{12457}{Wand of Spiritual Weapon}
+{12460}{Wand of Stinking Cloud}
+{12462}{Wand of Stoneskin}
+{12466}{Wand of Dominate Monster}
+{12467}{Wand of Summon Monster I}
+{12468}{Wand of Summon Monster II}
+{12469}{Wand of Summon Monster III}
+{12470}{Wand of Summon Monster IV}
+{12471}{Wand of Summon Monster V}
+{12476}{Wand of Summon Nature's Ally I}
+{12477}{Wand of Summon Nature's Ally II}
+{12478}{Wand of Summon Nature's Ally III}
+{12479}{Wand of Summon Nature's Ally IV}
+{12480}{Wand of Summon Nature's Ally V}
+{12485}{Wand of Summon Swarm}
+{12490}{Wand of Tasha's Hideous Laughter}
+{12492}{Wand of Teleport}
+{12505}{Wand of Tree Shape}
+{12508}{Wand of True Seeing}
+{12509}{Wand of True Strike}
+{12513}{Wand of Unholy Blight}
+{12515}{Wand of Vampiric Touch}
+{12519}{Wand of Virtue}
+{12531}{Wand of Web}
+{12532}{Wand of Acid Splash}
+{12533}{Wand of Aid}
+{12534}{Wand of Animal Growth}
+{12535}{Wand of Animal Trance}
+{12536}{Wand of Bane}
+{12537}{Wand of Barkskin}
+{12538}{Wand of Bestow Curse}
+{12539}{Wand of Bless}
+{12540}{Wand of Bless Water}
+{12541}{Wand of Blindness/Deafness}
+{12542}{Wand of Blink}
+{12543}{Wand of Blur}
+{12544}{Wand of Break Enchantment}
+{12545}{Wand of Bull's Strength}
+{12546}{Wand of Burning Hands}
+{12547}{Wand of Call Lightning}
+{12548}{Wand of Calm Animals}
+{12549}{Wand of Calm Emotions}
+{12550}{Wand of Cat's Grace}
+{12551}{Wand of Cause Fear}
+{12552}{Wand of Chaos Hammer}
+{12553}{Wand of Wind Wall}
+{12554}{Wand of Blight}
+{12555}{Wand of Dispel Air}
+{12556}{Wand of Dispel Earth}
+{12557}{Wand of Dispel Fire}
+{12558}{Wand of Dispel Water}
+{12559}{Wand of Rage}
+{12560}{Wand of Chain Lightning}
+{12561}{Flute}
+{12562}{Drum}
+{12563}{Horn}
+{12564}{Mandolin}
+{12565}{Orb of Sah}
+{12566}{Wand of Fox's Cunning}
+{12567}{Wand of Glibness}
+{12569}{Wand of Heroism}
+{12570}{Wand of Confusion, Lesser}
+{12571}{Wand of Longstrider}
+{12572}{Wand of Owl's Wisdom}
+{12573}{Wand of Quench}
+{12574}{Wand of Reduce Animal}
+{12575}{Wand of Call Lightning Storm}
+{12576}{Wand of Crushing Despair}
+{12577}{Wand of Daze Monster}
+{12578}{Wand of Deep Slumber}
+{12579}{Wand of Eagle's Splendor}
+{12580}{Wand of False Life}
+{12581}{Wand of Fireball}
+{12582}{Lamia Figurine}
+{12583}{Gem Hoard}
+{12584}{Masterwork Flute}
+{12585}{Masterwork Drum}
+{12586}{Masterwork Horn}
+{12587}{Masterwork Mandolin}
+{12588}{Horn of Blasting}
+{12589}{Horn of Fog}
+{12590}{Drums of Panic}
+{12591}{Wand of Magic Missiles, 2nd}
+{12592}{Wand of Magic Missiles, 3rd}
+{12593}{White Rod, Minor}
+{12594}{Ioun Stone, Dusty Rose}
+{12595}{Ioun Stone, Pale Blue}
+{12596}{Ioun Stone, Scarlet and Red}
+{12597}{Ioun Stone, Incandescent Blue}
+{12598}{Ioun Stone, Deep Red}
+{12599}{Ioun Stone, Pink}
+{12600}{Ioun Stone, Pink and Green}
+{12601}{Bag of Tricks, Tan}
+{12602}{Giant's Head}
+{12603}{Cape of the Mountebank}
+{12604}{Horn of Goodness}
+{12605}{Horn of Evil}
+{12606}{Wand of Magic Missiles, 1st}
+{12607}{Wand of Magic Missiles, 4th}
+{12608}{Wand of Scorching Ray, 1st}
+{12609}{Wand of Scorching Ray, 2nd}
+{12610}{Wand of Scorching Ray, 3rd}
+{12611}{Wand of Reincarnation}
+{12612}{Head}
+{12613}{Wand of Animate Dead}
+{12614}{Hands}
+{12615}{Wand of Good Hope}
+{12616}{Feet}
+{12617}{Wand of Negative Energy Protection}
+{12618}{Wand of Fireball, 7th}
+{12619}{Wand of Fireball, 9th}
+{12620}{Wand of Fireball, 10th}
+{12621}{Wand of Lightning Bolt, 7th}
+{12622}{Wand of Lightning Bolt, 9th}
+{12623}{Wand of Lightning Bolt, 10th}
+{12624}{Ring of Protection +4}
+{12625}{Ring of Protection +5}
+{12626}{Ring of Chameleon Power}
+{12627}{Ring of Electricity Resistance, Minor}
+{12628}{Ring of Sonic Resistance, Minor}
+{12629}{Ring of Cold Resistance, Minor}
+{12630}{Ring of Acid Resistance, Minor}
+{12631}{Ring of Fire Resistance, Major}
+{12632}{Ring of Electricity Resistance, Major}
+{12633}{Ring of Sonic Resistance, Major}
+{12634}{Ring of Cold Resistance, Major}
+{12635}{Ring of Acid Resistance, Major}
+{12636}{Ring of Warmth}
+{12637}{Ring of Blinking}
+{12638}{Nira Melubb's Black Pearl}
+{12639}{Nira Melubb's Flawed Diamond}
+{12640}{Mithril Tools}
+{12651}{Jaroo's Blue Sapphire}
+{12652}{Brooch of Shielding}
+{12653}{Nira Melubb's Amber}
+{12654}{Chime of Interruption}
+{12655}{Circlet of Blasting, Major}
+{12656}{Jaroo's Carnelian}
+{12657}{Jaroo's Black Pearl}
+{12658}{Jaroo's White Pearl}
+{12659}{Dust of Appearance}
+{12660}{Eyes of Doom}
+{12661}{Emerald}
+{12662}{Pearly White Ioun Stone}
+{12663}{Prayer Beads of Blessing}
+{12664}{Emerald from Moneychanger's store}
+{12665}{Prayer Beads of Healing}
+{12666}{Pipe of Pain}
+{12667}{Pipe of Haunting}
+{12669}{Scarab of Protection}
+{12673}{Mandolin of Charming}
+{12675}{Merchant's Scale}
+{12676}{Smokestick}
+{12677}{Spyglass}
+{12680}{Alchemical Capsule - Quickflame}
+{12681}{Alchemical Capsule - Quickfrost}
+{12682}{Alchemical Capsule - Quickscald}
+{12683}{Alchemical Capsule - Quickspark}
+{12684}{Alchemical Capsule - Positoxin}
+{12685}{Unholy Grace}	// Charisma +1
+{12686}{Unholy Grace}	// Charisma +2
+{12687}{Unholy Grace}	// Charisma +3
+{12688}{Unholy Grace}	// Charisma +4
+{12689}{Unholy Grace}	// Charisma +5
+{12690}{Energy Drain}	// Chaotic
+{12691}{Energy Drain}	// Profane
+{12692}{Energy Drain}	// Lawful
+{12693}{Energy Drain}	// Holy
+{12695}{Vigilant}	// +4 spot and listen
+{12696}{Cozened}	// -8 spot and listen
+{12706}{Alchemical vial}	// spell object
+{12758}{Cerulean's Bone Balm - Fire - NOT IMPLEMENTED}
+{12759}{Cerulean's Bone Balm - Ice - NOT IMPLEMENTED}
+{12760}{Cerulean's Bone Balm - Acid - NOT IMPLEMENTED}
+{12761}{Fungicide - NOT IMPLEMENTED}
+{12762}{Cerulean's Tonic - NOT IMPLEMENTED}
+{12763}{Cerulean's Barrier Balm - NOT IMPLEMENTED}
+{12764}{Flourite Cloud - NOT IMPLEMENTED}
+{12765}{Armour Oil}
+{12766}{Antitoxin}
+{12767}{Lockslip grease}
+{12845}{Thunderstone - NOT IMPLEMENTED}
+{12846}{Healer's Kit}
+{12848}{Scholar's Kit}
+{12849}{Tanglefoot bag - NOT IMPLEMENTED}
+{12889}{Orb of the Moons}
+{12890}{Sandalwood Box}
+{12891}{Rat Head}
+{12892}{Bottle of the Good Stuff} // Glora
+{12893}{Apparatus}
+{12894}{Cauldron}
+{12895}{Curette}
+{12896}{Bat Wing}
+{12897}{Eye of Newt}
+{12898}{Crystal Skull}
+{12899}{Cup of Sugar}
+{12900}{Swamp Lotus}
+
+
+
+// 13000 - 13999: PCs
+
+
+{13000}{Human Male}
+{13001}{Human Female}
+{13002}{Dwarf Male}
+{13003}{Dwarf Female}
+{13004}{Elf Male}
+{13005}{Elf Female}
+{13006}{Gnome Male}
+{13007}{Gnome Female}
+{13008}{Half-Elf Male}
+{13009}{Half-Elf Female}
+{13010}{Half-Orc Male}
+{13011}{Half-Orc Female}
+{13012}{Halfling Male}
+{13013}{Halfling Female}
+{13100}{Burl Thunderstone}
+{13101}{Loralei}
+{13102}{Malchor}
+{13103}{Kairi}
+{13104}{Abner}
+{13105}{Valkor}
+
+
+
+// 14000 - 14999: NPCs
+
+
+{14000}{Man}	
+{14001}{Woman}	
+{14002}{Boy}	
+{14003}{Girl}	
+{14004}{Wizard}					// Burne
+{14005}{Druid}					// Jaroo
+{14006}{Veteran}				// Rufus
+{14007}{Priest}					// Terjon
+{14008}{Laborer}				// Jayfie
+{14009}{Herdsman}				// Black Jay
+{14010}{Blacksmith}				// Brother Smyth
+{14011}{Cleric}					// Calmert
+{14012}{Villager}				// Captain Renton
+{14013}{Villager}				// Elmo
+{14014}{Trader}					// Gremag
+{14015}{Jeweler}				// Nira Melubb
+{14016}{Innkeeper}				// Ostler Gundigoot
+{14017}{Farmer}					// Filliken
+{14018}{Trader}					// Rannos Davl
+{14019}{Farmer}					// Otello
+{14020}{Carpenter}				// Rik Linkin
+{14021}{Assistant}				// Marek
+{14022}{Servant}				// Myella
+{14023}{Farmer}					// Percy
+{14024}{Goodwife}				// Gwynneth
+{14025}{Patron}					// Furnok
+{14026}{Teamster}				// Sef Flettner
+{14027}{Youth}					// Corl
+{14028}{Fighter}				// Kobort
+{14029}{Leatherworker}				// Jakk Borton
+{14030}{Servant}				// Erliter
+{14031}{Miller}					// Mytch
+{14032}{Laborer}	
+{14033}{Potter}					// Jarvis Hann
+{14034}{Maiden}					// Althea
+{14035}{Maiden}					// Meleny
+{14036}{Farmer}					// Holten Kindlehopper
+{14037}{Maiden}					// Fruella
+{14038}{Sage}					// Spugnoir
+{14039}{Stonemason}				// Gister Noshim
+{14040}{Tailor}					// Jinnerth
+{14041}{Monk}					// Turuko
+{14042}{Wainwright}				// Valden
+{14043}{Matron}					// Mathilde
+{14044}{Woodcutter}				// Tarim
+{14045}{Patron}					// Zert
+{14046}{Owlbear}	
+{14047}{Large Spider}	
+{14048}{Farm Dog}	
+{14049}{Attack Dog}	
+{14050}{Wolf}	
+{14051}{Jackal}	
+{14052}{Black Bear}	
+{14053}{Brown Bear}	
+{14054}{Polar Bear}	
+{14055}{Panda Bear}	
+{14056}{Dire Rat}	
+{14057}{Giant Frog}	
+{14058}{Goodwife}				// Lisbeth Borton
+{14059}{Youth}					// Bing
+{14060}{Priest}					// Lareth
+{14061}{Apprentice}				// Cavanaugh
+{14062}{Man-at-Arms}				// Raimol
+{14063}{Worker}					// Rocutio
+{14064}{Braumeister}				// Hubertus Gerstenbrenner
+{14065}{Ogre}					// Lubash
+{14066}{Gnoll Leader}	
+{14067}{Gnoll}	
+{14068}{Vapor Rat}	
+{14069}{Brigand Leader}				// Raul The Grim
+{14070}{Brigand}	
+{14071}{Captive}				// Gleem
+{14072}{Captive}				// Chanda
+{14073}{Captive}				// Nybble
+{14074}{Guardsman}	
+{14075}{Sergeant}	
+{14076}{Sergeant}	
+{14077}{Lieutenant}				// Seleucas
+{14078}{Gnoll}	
+{14079}{Gnoll}	
+{14080}{Gnoll}	
+{14081}{Skeleton Gnoll}	
+{14082}{Skeleton Gnoll}	
+{14083}{Skeleton Gnoll}	
+{14084}{Lizard Man}	
+{14085}{Lizard Man}	
+{14086}{Lizard Man}	
+{14087}{Lizard Man}	
+{14088}{Huge Viper}	
+{14089}{Giant Tick}	
+{14090}{Giant Lizard}	
+{14091}{Green Slime}	
+{14092}{Zombie}	
+{14093}{Bugbear}	
+{14094}{Giant Crayfish}	
+{14095}{Ghoul}	
+{14096}{Cowherd}				// Lowen
+{14097}{Weaver}					// Ploceus
+{14098}{Worker}					// Sunom
+{14099}{Worker}					// Moneir
+{14100}{Goodwife}				// Glora Gundigoot
+{14101}{Apprentice}				// Mickey
+{14102}{Villager}				// Kenter Nevets
+{14103}{Cabinet Maker}				// Armario
+{14104}{Herdsman}				// Laszlo
+{14105}{Apprentice}				// Tuperello
+{14106}{Boy}					// Eddie
+{14107}{Skeleton}	
+{14108}{Merrow}	
+{14109}{Ice Lizard}	
+{14110}{Quasit}	
+{14111}{Noble Salamander}	
+{14112}{Madam}					// Ophelia
+{14113}{Whore}					// Jenelda
+{14114}{Whore}					// Riana
+{14115}{Whore}					// Fuga
+{14116}{Whore}					// Homa
+{14117}{Whore}					// Charlotte
+{14118}{Whore}					// Mary
+{14119}{Villager}				// Preston Wetz
+{14120}{Pirate}					// Bertram
+{14121}{Herbmonger}				// Mother Screng
+{14122}{Worker}					// Hruda
+{14123}{Zombie}	
+{14124}{Zombie}	
+{14125}{Zombie}	
+{14126}{Zombie}	
+{14127}{Zombie}	
+{14128}{Ghoul}	
+{14129}{Ghoul}	
+{14130}{Lacedon}	
+{14131}{Lacedon}	
+{14132}{Lacedon}	
+{14133}{Barmaid}				// Lodriss
+{14134}{Proprietor}				// Skole
+{14135}{Ghast}	
+{14136}{Ghast}	
+{14137}{Ghast}	
+{14138}{Jackalwere}	
+{14139}{Gelatinous Cube}	
+{14140}{Gray Ooze}	
+{14141}{Crystal Ooze}	
+{14142}{Ochre Jelly}	
+{14143}{Black Pudding}	
+{14144}{Hostler}				// Rentsch
+{14145}{Barkeep}				// Wat
+{14146}{Barmaid}				// Pearl
+{14147}{Barmaid}				// Dala
+{14148}{Patron}					// Alira
+{14149}{Blacksmith}				// Otis
+{14150}{Apprentice}				// Sammy
+{14151}{Villager}				// Grud Squinteye
+{14152}{Pirate}					// Tolub
+{14153}{Priest}					// Romag
+{14154}{Cleric}					// Hartsch
+{14155}{Priest}					// Alrrem
+{14156}{Commander}	
+{14157}{Sentinel}	
+{14158}{Air Temple Bugbear}	
+{14159}{Air Temple Bugbear}	
+{14160}{Air Temple Bugbear}	
+{14161}{Air Temple Bugbear}	
+{14162}{Earth Temple Bugbear}	
+{14163}{Earth Temple Bugbear}	
+{14164}{Earth Temple Bugbear}	
+{14165}{Earth Temple Bugbear}	
+{14166}{Fire Temple Bugbear}	
+{14167}{Fire Temple Bugbear}	
+{14168}{Fire Temple Bugbear}	
+{14169}{Fire Temple Bugbear}	
+{14170}{Bugbear}	
+{14171}{Bugbear}	
+{14172}{Bugbear}	
+{14173}{Bugbear}	
+{14174}{Greater Temple Bugbear}	
+{14175}{Greater Temple Bugbear}	
+{14176}{Greater Temple Bugbear}	
+{14177}{Greater Temple Bugbear}	
+{14178}{Water Temple Bugbear}	
+{14179}{Water Temple Bugbear}	
+{14180}{Water Temple Bugbear}	
+{14181}{Water Temple Bugbear}	
+{14182}{Stirge}	
+{14183}{Goblin Leader}	
+{14184}{Goblin}	
+{14185}{Goblin}	
+{14186}{Goblin}	
+{14187}{Goblin}	
+{14188}{Hobgoblin}	
+{14189}{Hobgoblin}	
+{14190}{Carrion Crawler}	
+{14191}{Chaggrin}	
+{14192}{Ildriss}	
+{14193}{Priest}					// Belsornig
+{14194}{Priest}					// Kelno
+{14195}{Troll Chief}				// Oohlgrist
+{14196}{Prisoner}				// Morgan
+{14197}{Cleric}					// Merrolan
+{14198}{Cleric}					// Nalorrem
+{14199}{Mystic}					// Anom
+{14200}{Prisoner}				// Wonnilon
+{14201}{Prisoner}	
+{14202}{Prisoner}	
+{14203}{Prisoner}				// Countess Tillahi
+{14204}{Prisoner}				// Sir Juffer
+{14205}{Prisoner}				// Wicked
+{14206}{Prisoner}				// Tuelk
+{14207}{Prisoner}				// Pintark
+{14208}{Prisoner}				// Ted
+{14209}{Prisoner}				// Ed #1
+{14210}{Prisoner}				// Ed #2
+{14211}{Cleric}					// Antonio
+{14212}{Cleric}					// Tubal
+{14213}{Female Bugbear}	
+{14214}{Female Bugbear}	
+{14215}{Female Bugbear}	
+{14216}{Female Bugbear}	
+{14217}{Hill Giant}	
+{14218}{Hill Giant}	
+{14219}{Hill Giant}	
+{14220}{Hill Giant}	
+{14221}{Hill Giant}	
+{14222}{Concubine}				// Paida
+{14223}{Concubine}				// Murraya
+{14224}{Troll Hydra Keeper}			// Aern
+{14225}{Troll Owlbear Keeper}			// Kelleen
+{14226}{Priest}					// Barkinar
+{14227}{Cleric-Mage}				// Deggum
+{14228}{Prisoner}				// Whitman
+{14229}{Turnkey}	
+{14230}{Prisoner}				// Mandy
+{14231}{Bugbear Chieftain}			// Grurz
+{14232}{Woman}					// Smigmal
+{14233}{Wizard}					// Senshock
+{14234}{Vampire}
+{14235}{Hill Giant}				// Kella
+{14236}{Druid}					// Kella
+{14237}{Wizard}					// Falrinth
+{14238}{Ettin}	
+{14239}{Gargoyle}	
+{14240}{Kapoacinth}	
+{14241}{Minotaur}	
+{14242}{Stone Minotaur}	
+{14243}{Harpy}	
+{14244}{Juggernaut}	
+{14245}{Crystal Mirror}	
+{14246}{Commander}				// Bassanio
+{14247}{Bugbear}	
+{14248}{Ogre Chief}	
+{14249}{Ogre}	
+{14250}{Prisoner}				// Jenna
+{14251}{Prisoner}				// Tinafer
+{14252}{Bugbear}	
+{14253}{Commander}				// Feldrin
+{14254}{Lieutenant}				// Brunk
+{14255}{Bandit Leader}				// Grank
+{14256}{High Priest}				// Hedrack
+{14257}{Priest}					// Ashrem
+{14258}{Vrock}	
+{14259}{Hezrou}	
+{14260}{Umber Hulk}	
+{14261}{Vodyanoi}	
+{14262}{Troll}	
+{14263}{Glabrezu}	
+{14264}{Crone}					// Zuggtmoy
+{14265}{Demoness}				// Zuggtmoy
+{14266}{Iuz}
+{14267}{St. Cuthbert}
+{14268}{Sorceress}				// Darley
+{14269}{Weaver}					// Jaer
+{14270}{Veteran}				// Taki
+{14271}{Wizard}					// Sargen
+{14272}{Hill Giant}				// Scorpp
+{14273}{Violet Fungi}	
+{14274}{Hooting Fungi}	
+{14275}{Drelb}	
+{14276}{Yellow Mold}	
+{14277}{Ascomid}	
+{14278}{Mordenkainen's Faithful Hound}	
+{14279}{Sea Hag}
+{14280}{Groaning Spirit}	
+{14281}{Basidirond}	
+{14282}{Shrieker}	
+{14283}{Ustilagor}	
+{14284}{Phycomid}	
+{14285}{Beggar}					// Erliter
+{14286}{Balor}	
+{14287}{Beggar}					// Otello
+{14288}{Beggar}					// Cavanaugh
+{14289}{Shadow}	
+{14290}{Pirate}	
+{14291}{Will-o'-Wisp}	
+{14292}{Large Air Elemental}	
+{14293}{Vortex}	
+{14294}{Windwalker}	
+{14295}{Basilisk}	
+{14296}{Large Earth Elemental}	
+{14297}{Fire Bat}	
+{14298}{Large Fire Elemental}	
+{14299}{Fire Snake}	
+{14300}{Fire Toad}	
+{14301}{Ice Tyrant}	
+{14302}{Large Water Elemental}	
+{14303}{Assassin}
+{14304}{Courier}				// Sargen reward
+{14305}{Ranger}					// Princess Tilahi reward
+{14306}{Ranger}					// Princess Tilahi reward
+{14307}{Knight}					// Thrommel reward
+{14308}{Retainer}				// Thrommel reward
+{14309}{Gorgon}	
+{14310}{Brigand Leader}				// broken tower guy
+{14311}{Brigand Lieutenant}	
+{14312}{Brigand Footman}	
+{14313}{Brigand Archer}	
+{14314}{Brigand Crossbowman}	
+{14315}{Goon}					// Skole's
+{14316}{Caravan Survivor}			// LG vignette
+{14317}{Caravan Bandit}				// LG vignette
+{14318}{Elven Noble}				// CG vignette
+{14319}{Elven Retainer}				// CG vignette
+{14320}{Hextor Priest}				// LE vignette
+{14321}{Peasant}				// CE vignette
+{14322}{Archdruid}				// TN vignette
+{14323}{Thief}					// NG vignette
+{14324}{Woman}					// NG vignette
+{14325}{Acolyte}				// NE vignette
+{14326}{Lord Mayor}				// LN vignette
+{14327}{Treasure Map}				// CN vignette
+{14328}{Bodak}	
+{14329}{Giant Gar}	
+{14330}{Peasant}				// CE vignette
+{14331}{Bard}					// Zaxis
+{14332}{Cleric}					// Ikian
+{14333}{Wizard}					// Vincent Visionmaker
+{14334}{Fighter}				// Ogavik
+{14335}{Rogue}					// Non
+{14336}{Ranger}					// Neukoln
+{14337}{Earth Temple Guard}	
+{14338}{Earth Temple Fighter}	
+{14339}{Earth Temple Lieutenant}	
+{14340}{Efreeti}	
+{14341}{Galeb Duhr}	
+{14342}{Lamia}	
+{14343}{Hydra}	
+{14344}{Werewolf}	
+{14345}{Prisoner}	
+{14346}{Greater Temple Bugbear Leader}	
+{14347}{Greater Temple Bugbear Lieutenant}	
+{14348}{Greater Temple Guard}	
+{14349}{Greater Temple Guard Leader}	
+{14350}{The Littlest Troll}	
+{14351}{Leucrotta}	
+{14352}{Worg}	
+{14353}{Ogre Shaman}	
+{14354}{Greater Temple Ogre Chieftain}	
+{14355}{Greater Temple Ogre Leader}	
+{14356}{Greater Temple Ogre Shaman}	
+{14357}{Grank's Bandit}	
+{14358}{Balor Guardian}	
+{14359}{Glabrezu Guardian}	
+{14360}{Hezrou Guardian}	
+{14361}{Vrock Guardian}	
+{14362}{Chicken}	
+{14363}{Chicken}	
+{14364}{Rooster}	
+{14365}{Sheep}	
+{14366}{Sheep}	
+{14367}{Toad}	
+{14368}{Pig}	
+{14369}{Pig}	
+{14370}{Spiritual Weapon}	
+{14371}{Guard}	
+{14372}{Man}	
+{14373}{Woman}	
+{14374}{Pirate}	
+{14375}{Water Snake}	
+{14376}{Small Air Elemental}	
+{14377}{Small Earth Elemental}	
+{14378}{Small Fire Elemental}	
+{14379}{Small Water Elemental}	
+{14380}{Medium Air Elemental}	
+{14381}{Medium Earth Elemental}	
+{14382}{Medium Fire Elemental}	
+{14383}{Medium Water Elemental}	
+{14384}{Flamebrother}	
+{14385}{Small Viper}	
+{14386}{Medium Viper}	
+{14387}{Large Viper}	
+{14388}{Constrictor Snake}	
+{14389}{Giant Constrictor Snake}	
+{14390}{Dire Bat}	
+{14391}{Dire Wolf}	
+{14392}{Celestial Dog}	
+{14393}{Celestial War Dog}	
+{14394}{Celestial Black Bear}	
+{14395}{Celestial Brown Bear}	
+{14396}{Lantern Archon}	
+{14397}{Fiendish Small Monstrous Spider}	
+{14398}{Fiendish Medium Monstrous Spider}	
+{14399}{Fiendish Large Monstrous Spider}	
+{14400}{Fiendish Small Viper}	
+{14401}{Fiendish Medium Viper}	
+{14402}{Fiendish Large Viper}	
+{14403}{Fiendish Huge Viper}	
+{14404}{Fiendish Constrictor Snake}	
+{14405}{Fiendish Dire Rat}	
+{14406}{Fiendish Wolf}	
+{14407}{Fiendish Dire Bat}	
+{14408}{Fiendish Dire Wolf}	
+{14409}{Gypsy}					// Mona
+{14410}{Gypsy}					// Serena
+{14411}{Pirate}					// Frederic
+{14412}{Nulb Streetwalker}	
+{14413}{Lareth's Diary}	
+{14414}{Zuggtmoy Lair Portal Controller}	
+{14415}{Zuggtmoy Throne Controller}	
+{14416}{Minotaur Statue Controller}	
+{14417}{Black Widow Spider}	
+{14418}{Guard}					// LN vignette
+{14419}{Guard}					// LE vignette
+{14420}{Bear}					// TN vignette
+{14421}{Demon}					// Darley
+{14422}{Shopkeeper}				// Shop Map
+{14423}{Greater Temple Crossbowman}	
+{14424}{Wizard}	
+{14425}{Witch}	
+{14426}{Juggernaut Statue Controller}	
+{14427}{Romag's Diary}	
+{14428}{Lamia}	
+{14429}{Prisoner}				// Average
+{14430}{Prisoner}				// Heroic
+{14431}{Prisoner}				// Sad
+{14432}{Ariel}	
+{14433}{Giant Rat}	
+{14434}{Tutorial Room1}	
+{14435}{Tutorial Room2}	
+{14436}{Tutorial Room3}	
+{14437}{Tutorial Room4}	
+{14438}{Tutorial Room6}	
+{14439}{Tutorial Room7}	
+{14440}{Passage Icon}	
+{14441}{Tutorial Room9}	
+{14442}{Tutorial End Dude}	
+{14443}{Before Zombies}	
+{14444}{Zombie}	
+{14445}{Behemoth Kingfrog}	
+{14446}{Cook}					// Dex
+{14447}{Apprentice}				// Pishella
+{14448}{Ogre}	
+{14449}{Giant Snake}	
+{14450}{Dire Lizard}	
+{14451}{Legendary Rat}	
+{14452}{Treasure Map2}	
+{14453}{Vendor}					// Burne's assistant
+{14454}{Vendor}					// Otis' assistant
+{14455}{Priest}					// Ramses
+{14456}{Cerulean's Note}	
+{14457}{Ragged Parchment}	
+{14458}{Treasure Map2}
+{14459}{Treasure Map2}
+{14460}{G_Spawner_Agent}	
+{14461}{Orc Warlock}
+{14462}{Orc Witch}
+{14463}{Orc Captain}				// Krunch
+{14464}{Orc Commander}				// Hungous
+{14465}{Orc Murderer}	
+{14466}{Orc Trainer}	
+{14467}{Orc Bowman}
+{14468}{Orc Sergeant}	
+{14469}{Orc Rundor}	
+{14470}{Orc Dominator}	
+{14471}{Cleric}	
+{14472}{Fiendish Minotaur}	
+{14473}{Foreman}	
+{14474}{Goblin}					// Kwerd
+{14475}{Gnoll Troop}
+{14476}{Bugbear Troop}
+{14477}{Gnoll Sergeant}				// Kallop
+{14478}{Bugbear Sergeant}			// Boonthag
+{14479}{Bodyguard}	
+{14480}{Merchant}	
+{14481}{Guard}					// Holly
+{14482}{Ogre Shaman}	
+{14483}{Stone Giant}	
+{14484}{Control Box}	
+{14485}{Bandit Leader}				// Robin
+{14486}{Bandit Archer}	
+{14487}{Bandit Rogue}	
+{14488}{Bandit Fighter}	
+{14489}{Priest-Druid}				// Friar Tack
+{14490}{Barbarian-Fighter}			// Tiny John
+{14491}{Adventurer}				// Ariakas
+{14492}{Hextor Enchantress}	
+{14493}{Hextor Assassin}	
+{14494}{Hextor Priest}				// Wakefield
+{14495}{Hextor Elementalist}	
+{14496}{Old Man}	
+{14497}{Hextor Fighter}	
+{14498}{Hextor Assassin}	
+{14499}{Treasure Map Ted1}	
+{14500}{Boy}					// Kent
+{14501}{Girl}					// Amii
+{14502}{Woman}					// Ganna
+{14503}{Celestial Dire Bear}	
+{14504}{Celestial Owl}	
+{14505}{Celestial Polar Bear}	
+{14506}{Dire Bear}	
+{14507}{Dire Boar}	
+{14508}{Huge Air Elemental}	
+{14509}{Huge Earth Elemental}	
+{14510}{Huge Fire Elemental}	
+{14511}{Huge Water Elemental}	
+{14512}{Greater Air Elemental}	
+{14513}{Greater Earth Elemental}	
+{14514}{Greater Fire Elemental}	
+{14515}{Greater Water Elemental}	
+{14516}{Elder Air Elemental}	
+{14517}{Elder Earth Elemental}	
+{14518}{Elder Fire Elemental}	
+{14519}{Elder Water Elemental}	
+{14520}{Fiendish Boar}	
+{14521}{Fiendish Dire Boar}	
+{14522}{Wild Boar}	
+{14523}{Fiendish Colossal Monstrous Spider}	
+{14524}{Fiendish Gargantuan Monstrous Spider}	
+{14525}{Fiendish Giant Constrictor Snake}	
+{14526}{Fiendish Hawk}	
+{14527}{Fiendish Huge Monstrous Spider}	
+{14528}{Fiendish Raven}	
+{14529}{Avoral}	
+{14530}{Bebilith}	
+{14531}{Bralani}	
+{14532}{Celestial Bison}	
+{14533}{Celestial Eagle}	
+{14534}{Celestial Giant Eagle}	
+{14535}{Celestial Giant Owl}	
+{14536}{Celestial Roc}	
+{14537}{Djinni}	
+{14538}{Eagle}	
+{14539}{Giant Eagle}	
+{14540}{Hell Hound}	
+{14541}{Hound Archon}	
+{14542}{Invisible Stalker}	
+{14543}{Janni}	
+{14544}{Leonal}	
+{14545}{Air Mephit}	
+{14546}{Dust Mephit}	
+{14547}{Earth Mephit}	
+{14548}{Fire Mephit}	
+{14549}{Ice Mephit}	
+{14550}{Magma Mephit}	
+{14551}{Ooze Mephit}	
+{14552}{Salt Mephit}	
+{14553}{Steam Mephit}	
+{14554}{Water Mephit}	
+{14555}{Night Hag}	
+{14556}{Nixie}	
+{14557}{Owl}	
+{14558}{Giant Owl}	
+{14559}{Pixie}	
+{14560}{Pixie}					// w/sleep arrows
+{14561}{Pixie}					// w/forget arrows
+{14562}{Roc}	
+{14563}{Salamander}	
+{14564}{Shadow Mastiff}	
+{14565}{Thoqqua}	
+{14566}{Yeth Hound}	
+{14567}{Bearded Devil}	
+{14568}{Chain Devil}	
+{14569}{Fiendish Huge Viper}
+{14570}{Gnome}					// Orrengard
+{14571}{Panel}	
+{14572}{Hill Giant of Hextor}	
+{14573}{Ettin of Erythnul}	
+{14574}{Brigand}	
+{14575}{Standard Equipment Chest}	
+{14576}{ArenaSpawner}	
+{14577}{Book of Heroes}
+{14578}{Hooded Man}  				// Master of the Arena
+{14579}{Owlbear}  				// Arena
+{14580}{Hill Giant}  				// Arena
+{14581}{Red Portal}	
+{14582}{Orange Portal}	
+{14583}{Yellow Portal}	
+{14584}{Green Portal}	
+{14585}{Blue Portal}	
+{14586}{Violet Portal}	
+{14587}{Dwarf Warrior}	
+{14588}{Blacksmith}				// Fireforge
+{14589}{Dwarf King}				// Battlehammer
+{14590}{Drow Ranger}
+{14591}{Cleric}	
+{14592}{Cleric}	
+{14593}{Hextor Soldier}	
+{14594}{Hextor Archer}	
+{14595}{Vendor}					// Screng's assistant
+{14596}{Skeletal Hill Giant}	
+{14597}{Undead Wizard}	
+{14598}{Undead Wizard}	
+{14599}{Undead Wizard}	
+{14600}{Skeleton}	
+{14601}{Skeleton Priest}	
+{14602}{Skeleton Guard}	
+{14603}{Skeleton}	
+{14604}{Spiritual Weapon}
+{14605}{Electrical Trap}	
+{14606}{Hired Thug}	
+{14607}{Enchantress}	
+{14608}{Thug Leader}	
+{14609}{Zuggtmoy Priest}	
+{14610}{Fiendish Dire Wolf}
+{14611}{Rannos Davl}	
+{14612}{Gremag}	
+{14613}{Hired Thug}	
+{14614}{Priest}					//Lareth
+{14615}{Zombie}	
+{14616}{Skeleton Gnoll}	
+{14617}{Priest}					//Lareth
+{14618}{Priest}					//Lareth
+{14619}{Zombie}	
+{14620}{Fiendish Medium Monstrous Spider}	
+{14621}{Spiritual Weapon}	
+{14622}{Attack Dog}	
+{14623}{Medium Water Elemental}	
+{14624}{Large Air Elemental}	
+{14625}{Large Earth Elemental}	
+{14626}{Large Fire Elemental}	
+{14627}{Large Water Elemental}	
+{14628}{Fiendish Huge Viper}	
+{14629}{Spiritual Weapon}	
+{14630}{Huge Viper}	
+{14631}{Gnoll}	
+{14632}{Gnoll}	
+{14633}{Gnoll}	
+{14634}{Gnoll}	
+{14635}{Gnoll}	
+{14636}{Goblin}	
+{14637}{Apprentice}				// Mickey
+{14638}{Dying Woman}	
+{14639}{Bard}					// Zaxis
+{14640}{Kobold}	
+{14641}{Kobold Sergeant}	
+{14642}{Brigand Archer}	
+{14643}{Drow Note}	
+{14644}{Guard}	
+{14645}{Hextor Cleric}	
+{14646}{Hextor Mage}	
+{14647}{Hextor Fighter}	
+{14648}{Forest Tyrant}	
+{14649}{River Tyrant}	
+{14650}{Swamp Tyrant}	
+{14651}{Scarlet Brotherhood Cousin}	
+{14652}{Scarlet Brotherhood Cousin}	
+{14653}{Scarlet Brotherhood Nephew}	
+{14654}{Hextor Priest}	
+{14655}{Hextor Cleric}	
+{14656}{Hextor Monk}	
+{14657}{Cleric}	
+{14658}{Mage}	
+{14659}{Guardian}	
+{14660}{Overseer}	
+{14661}{Overseer}	
+{14662}{Ghost}	
+{14663}{Ghost}	
+{14664}{Ghost}	
+{14665}{Priest}	
+{14666}{Cabbage NPC}	
+{14667}{Guard}	
+{14668}{Guard}	
+{14669}{Guard}	
+{14670}{Fiendish Gargantuan Monstrous Spider}	
+{14671}{Fiendish Large Monstrous Spider}	
+{14672}{Fiendish Small Monstrous Spider}	
+{14673}{Creature}
+{14674}{Mohrg}
+{14675}{Woman}					//Ivy
+{14676}{Merchant}	
+{14677}{Drow Leader}	
+{14678}{Letter from Witch}	
+{14679}{Witch}					// Gnarley Forest
+{14680}{Witch}					// Moathouse
+{14681}{Cleric}					// Ronald
+{14682}{Merchant}				// Carl
+{14683}{Merchant}				// Dame Nelly
+{14684}{Shopkeeper}				// Ah Fong
+{14685}{Woman}					// Yvy
+{14686}{Bugbear}	
+{14687}{Orb of the Moons}
+{14688}{Lacedon}	
+{14689}{Ogre}	
+{14690}{Merrow}	
+{14691}{Troll}	
+{14692}{Giant Gar}	
+{14693}{Owlbear}	
+{14694}{Carrion Crawler}	
+{14695}{Stone Giant}	
+{14696}{Hill Giant}	
+{14697}{Ettin}	
+{14698}{Apparition}				// Clarisse
+{14699}{The Gremlich}	
+{14700}{Gnome Guard}	
+{14701}{Gnome Prince}				// Zook
+{14702}{Manager}				// Darlia
+{14703}{Armor Merchant}				// Gregor
+{14704}{Weapons Merchant}			// Victor
+{14705}{Proprietor}	
+{14706}{Generic Spawner}	
+{14707}{Juvenile White Dragon}	
+{14708}{Drow Cleric}	
+{14709}{Man}	
+{14710}{Advisor}				// Lerrik
+{14711}{Woman}	
+{14712}{Boy}	
+{14713}{Girl}	
+{14714}{Innkeeper}				// Lydia
+{14715}{Banker}					// Maurice
+{14716}{Guard}			
+{14717}{Priest}	
+{14718}{Lord Viscount}				// Wilfrick
+{14719}{Guard}	
+{14720}{Cleric}	
+{14721}{Merchant}				// Ariel
+{14722}{Night Watchman}	
+{14723}{Villager}				// Elmo
+{14724}{Drow Cleric}	
+{14725}{Drow Rogue}	
+{14726}{Drow Fighter}	
+{14727}{Waitress}				// Jenna
+{14728}{Maiden}					// Tinafer
+{14729}{Merchant}				// Senshock
+{14730}{Fighter}				// Gleem
+{14731}{Cleric}					// Chanda
+{14732}{Mage}					// Nybble
+{14733}{Drow Wizard}	
+{14734}{Drow Matriarch}	
+{14735}{Drow Rogue}	
+{14736}{Drow Fighter}	
+{14737}{Drow Wizard}	
+{14738}{Fiendish Huge Monstrous Spider}	
+{14739}{Maitre'd}	
+{14740}{Busboy}	
+{14741}{Phase Spider}	
+{14742}{Waiter}	
+{14743}{Orc Theurgist}
+{14744}{Orc Lieutenant}				// Ruff
+{14745}{Orc Fighter}	
+{14746}{Orc Archer}	
+{14747}{Orc Assassin}
+{14748}{Orc Sniper}
+{14749}{Orc Marksman}
+{14750}{Orc Medium}
+{14751}{Orc Shaman}
+{14752}{The Gremlich}	
+{14753}{Supplies Chest}	
+{14754}{Scrolls Chest}	
+{14755}{Weapons Chest}	
+{14756}{Armor Chest}	
+{14757}{Clothing Chest}	
+{14758}{Game Portal}	
+{14768}{Veteran}				// Kenan
+{14769}{Sorceress}				// Tarah
+{14770}{Rogue}					// Sharar
+{14771}{Veteran}				// Gadham
+{14772}{Priest}					// Abaddon
+{14773}{Ranger}					// Eran
+{14774}{Rogue}					// Gershom
+{14775}{Barbarian}				// Persis
+{14776}{Boy}	
+{14777}{Girl}	
+{14778}{Boy}	
+{14779}{Mage}	
+{14780}{Officer}				// Abiram
+{14781}{Officer}				// Asaph
+{14782}{Assassin}	
+{14783}{Assassin}	
+{14784}{Hill Giant}				// Shade
+{14785}{Lich}					// Mathel
+{14786}{Groaning Spirit}			// Shade
+{14787}{Laborer}		
+{14788}{Blockage}	
+{14789}{Officer}				// Absalom
+{14790}{Officer}				// Achan
+{14791}{Merchant}				// Bella
+{14792}{Attorney}	
+{14793}{Half Orc Rogue}				// Gladstone
+{14794}{Elven Barbarian}			// Commonworth
+{14795}{Halfling Paladin}			// Corpus
+{14796}{Cleric}	
+{14797}{Woman}	
+{14798}{Barricade}	
+{14799}{Sign Post}	
+{14800}{The Post}	
+{14801}{Badger}	
+{14802}{Merchant}				// Simon
+{14803}{Merchant}				// Jesus Staccatori
+{14804}{Merchant}				// Aerich Dragonsbane
+{14805}{Merchant}				// Cyn
+{14806}{Merchant}
+{14807}{Veteran}
+{14808}{Merchant}
+{14809}{Merchant}
+{14810}{Script Daemon}	
+
+{14812}{Boy}					// Rothbert
+{14813}{Girl}					// Becka
+{14814}{Man}					// Panathaes
+{14815}{Steward}				// Rakham
+{14816}{Steward}				// Boroquin
+{14817}{Guard}
+{14818}{Panathaes}	
+{14819}{Ghost}	
+{14820}{Wizard Zombie}	
+{14821}{Greater Temple Bugbear Zombie}	
+{14822}{Greater Temple Bugbear Zombie}	
+{14823}{Greater Temple Bugbear Zombie}	
+{14824}{Ettin Zombie}	
+{14825}{Hill Giant Zombie}	
+{14826}{Greater Temple Bugbear}	
+{14827}{Wizard}	
+{14828}{Shadow}
+{14829}{Leatherworker}				// Heather
+{14830}{Merchant}				// Veenah Glavrol
+{14888}{Siren Cultist}
+{14889}{Lizard Man Battlepriest}
+{14890}{Lizard Man Rogue}
+{14891}{Lizard Man Warrior}
+{14892}{Lizard Man Magic User}
+{14893}{Greater Shadow}
+{14894}{Cleric}
+{14895}{Retainer}
+{14896}{Knight}
+{14897}{Leucrotta}
+{14898}{Jackalwere}
+{14899}{Orc}
+{14900}{Bat Familiar}
+{14901}{Cat Familiar}
+{14902}{Hawk Familiar}
+{14903}{Lizard Familiar}
+{14904}{Owl Familiar}
+{14905}{Rat Familiar}
+{14906}{Raven Familiar}
+{14907}{Snake Familiar}
+{14908}{Toad Familiar}
+{14909}{Weasel Familiar}
+{14910}{Lady}					// Asherah
+{14911}{Hell Hound}
+{14912}{Bugbear}
+{14913}{Iron Grates}
+{14914}{Barrier}
+{14915}{Temple Sentinel}
+{14949}{Phylactery}
+{14950}{Alchemist}				// Paulo
+{14951}{Provisioner}				// Richard Blade
+{14952}{Blaspheme}
+{14953}{Mohrg}
+{14954}{Wight}
+{14955}{Blood Amniote}
+{14956}{Hulking Corpse}
+{14957}{Atropal Scion}
+{14958}{Nightwalker}
+{14977}{Pit Critter}
+{14978}{Dire Bear}
+{14979}{Dire Boar}
+{14980}{Owlbear}
+{14981}{Dire Lizard}
+{14982}{Hydra}
+{14983}{Lizard Man}
+{14984}{Lich}
+{14985}{Ettin Troop}
+{14986}{Stone Giant Troop}
+{14987}{Hill Giant Sergeant}
+{14988}{Hill Giant Troop}
+{14989}{Ogre Sergeant}
+{14990}{Ogre Troop}
+{14991}{Celestial Dire Chicken}
+{14992}{Stone Golem}
+{14993}{Greater Stone Golem}
+{14994}{Wolf}
+{14995}{Black Bear}
+{14996}{Brown Bear}
+{14997}{Polar Bear}
+{14998}{Dire Rat}
+{14999}{Old White Dragon}
+
+
+// 15000 - 15999: Traps
+
+
+{15000}{bp_trap_magical}
+{15001}{bp_trap_mechanical}
+{15002}{bp_trap_arrow}
+{15003}{bp_trap_bullet}
+{15004}{bp_trap_fire}
+{15005}{bp_trap_electrical}
+{15006}{bp_trap_poison}
+{15007}{bp_trap_source}
+
+
+
+// 16000 - 16999: Bags
+
+
+{16000}{Backpack}
+{16001}{Pouch}
+{16002}{Bag of Holding, 1000 lb}
+{16003}{Bag of Holding, 500 lb}
+{16004}{Wonnilon's Backpack}
+
+
+
+// 20000+: all unknown names and descriptions
+
+
+{20000}{Burne}
+{20001}{Jaroo Ashstaff}
+{20002}{Rufus}
+{20003}{Terjon}
+{20004}{Black Jay}
+{20005}{Brother Smyth}
+{20006}{Calmert}
+{20007}{Renton}
+{20008}{Elmo}
+{20009}{Gremag}
+{20010}{Nira Melubb}
+{20011}{Ostler Gundigoot}
+{20012}{Filliken}
+{20013}{Rannos Davl}
+{20014}{Otello}
+{20015}{Rik Linkin}
+{20016}{Marek}
+{20017}{Myella}
+{20018}{Percy}
+{20019}{Gwynneth}
+{20020}{Furnok}
+{20021}{Sef Flettner}
+{20022}{Corl}
+{20023}{Kobort}
+{20024}{Jakk Borton}
+{20025}{Erliter}
+{20026}{Mytch}
+{20027}{Jarvis Hann}
+{20028}{Althea}
+{20029}{Meleny}
+{20030}{Holten Kindlehopper}
+{20031}{Fruella}
+{20032}{Spugnoir}
+{20033}{Gister Noshim}
+{20034}{Jinnerth}
+{20035}{Turuko}
+{20036}{Valden}
+{20037}{Mathilde}
+{20038}{Tarim}
+{20039}{Zert}
+{20040}{Lisbeth}
+{20041}{Bing}
+{20042}{Lareth}
+{20043}{Cavanaugh}
+{20044}{Raimol}
+{20045}{Rocutio}
+{20046}{Hubertus Gerstenbrenner}
+{20047}{Lubash}
+{20048}{Gleem}
+{20049}{Chanda}
+{20050}{Nybble}
+{20051}{Lowen}
+{20052}{Ploceus}
+{20053}{Sunom}
+{20054}{Moneir}
+{20055}{Jayfie}
+{20056}{Glora Gundigoot}
+{20057}{Mickey}
+{20058}{Kenter Nevets}
+{20059}{Armario}
+{20060}{Laszlo}
+{20061}{Tuperello}
+{20062}{Eddie}
+{20063}{Ophelia}
+{20064}{Jenelda}
+{20065}{Riana}
+{20066}{Fuga}
+{20067}{Homa}
+{20068}{Charlotte}
+{20069}{Mary}
+{20070}{Preston Wetz}
+{20071}{Bertram}
+{20072}{Mother Screng}
+{20073}{Hruda}
+{20074}{Lodriss}
+{20075}{Skole}
+{20076}{Rentsch}
+{20077}{Wat}
+{20078}{Pearl}
+{20079}{Dala}
+{20080}{Alira}
+{20081}{Otis}
+{20082}{Sammy}
+{20083}{Grud Squinteye}
+{20084}{Tolub}
+{20085}{Romag}
+{20086}{Hartsch}
+{20087}{Alrrem}
+{20088}{Belsornig}
+{20089}{Kelno}
+{20090}{Oohlgrist}
+{20091}{Morgan}
+{20092}{Merrolan}
+{20093}{Nalorrem}
+{20094}{Wood Bugbear}
+{20095}{Cloth Bugbear}
+{20096}{Metal Bugbear}
+{20097}{Glass Bugbear}
+{20098}{Stone Bugbear}
+{20099}{Wonnilon}
+{20100}{Countess Tillahi}
+{20101}{Sir Juffer}
+{20102}{Wicked}
+{20103}{Tuelk}
+{20104}{Pintark}
+{20105}{Ted}
+{20106}{Ed}
+{20107}{Ed}
+{20108}{Antonio}
+{20109}{Tubal}
+{20110}{Scorpp}
+{20111}{Paida}
+{20112}{Murraya}
+{20113}{Aern}
+{20114}{Kelleen}
+{20115}{Barkinar}
+{20116}{Deggum}
+{20117}{Whitman}
+{20118}{Mandy}
+{20119}{Grurz}
+{20120}{Smigmal Redhand}
+{20121}{Senshock}
+{20122}{Prince Thrommel}
+{20123}{Falrinth}
+{20124}{Bassanio}
+{20125}{Jenna}
+{20126}{Tinafer}
+{20127}{Feldrin}
+{20128}{Brunk}
+{20129}{Grank}
+{20130}{Hedrack}
+{20131}{Ashrem}
+{20132}{Darley}
+{20133}{Jaer}
+{20134}{Taki}
+{20135}{Sargen}
+{20136}{Scorpp}
+{20137}{Traders' Magic Shortsword}
+{20138}{Hemlock}
+{20139}{Magic Wand}
+{20140}{Magic Scimitar}
+{20141}{Magic Battleaxe}
+{20142}{Magic Chainmail}
+{20143}{Magic Shield}
+{20144}{Magic Mace}
+{20145}{Metal Tube}
+{20146}{Magic Ring}
+{20147}{Magic Cloak}
+{20148}{Magic Boots}
+{20149}{Magic Rod}
+{20150}{Magic Staff}
+{20151}{Magic Dust}
+{20152}{Magic Scarab}
+{20153}{Magic Dagger}
+{20154}{Magic Leather Armor}
+{20155}{Magic Amulet}
+{20156}{Magic Potion}
+{20157}{Lareth's Magic Breastplate}
+{20158}{Lareth's Magic Staff}
+{20159}{Lareth's Magic Ring}
+{20160}{Magic Spear}
+{20161}{Otis' Magic Longsword}
+{20162}{Otis' Magic Chainmail}
+{20163}{Magic Warhammer}
+{20164}{Magic Necklace}
+{20165}{Magic Shortsword}
+{20166}{Magic Bracers}
+{20167}{Prince Thrommel's Magic Bastard Sword}
+{20168}{Magic Rope}
+{20169}{Magic Banded Armor}
+{20170}{Magic Longsword}
+{20171}{Magic Bag}
+{20172}{Magic Full Plate}
+{20173}{Magic Orb}
+{20174}{Magic Gem}
+{20175}{Magic Crossbow}
+{20176}{Magic Scroll}
+{20177}{Zaxis}
+{20178}{Ikian}
+{20179}{Vincent Visionmaker}
+{20180}{Ogavick}
+{20181}{Non}
+{20182}{Neukoln}
+{20183}{Magic Javelin}
+{20184}{Magic Ointment}
+{20185}{Lila Renton}
+{20186}{Burne's Badger}
+{20187}{Gunther}
+{20188}{Haydn}
+{20189}{Mona}
+{20190}{Serena}
+{20191}{Frederic Bertram}
+{20192}{Magic Longbow}
+{20193}{Magic Morningstar}
+{20194}{Figurine}
+{20195}{Child's Toy}
+{20196}{Radiant Greathammer}
+{20197}{Radiant Spiked Chain}
+{20198}{Radiant Ranseur}
+{20199}{Radiant Greataxe}
+{20200}{Radiant Mace}
+{20201}{Radiant Longsword}
+{20202}{Dex}
+{20203}{Pishella}
+{20204}{Magic Flute}
+{20205}{Magic Drum}
+{20206}{Magic Horn}
+{20207}{Magic Mandolin}
+{20208}{Magic Greatsword}
+{20209}{Magic Armor}
+{20210}{Ronald}
+{20211}{D'phaal}
+{20212}{Karynna}
+{20213}{Prince Zook IV}
+{20214}{Priest of Hextor}
+{20215}{Magic Wakizashi}
+{20216}{Wilfrick}
+{20217}{Magic Katana}
+{20218}{Ivy}
+{20219}{William}
+{20220}{Magic Miniature Chest}
+{20221}{Arcane Note}
+{20222}{Sergeant Naig Lliht}
+{20223}{Sergeant Ergo}
+{20224}{Captain Krunch}
+{20225}{Lord Hungous}
+{20226}{Magic Bastard Sword}
+{20227}{Magic Double Axe}
+{20228}{Magic Gloves}
+{20229}{Scarlet Brotherhood Nephew}
+{20230}{Darlia}
+{20231}{Mother}
+{20232}{Master of the Arena}
+{20233}{Scarlet Brotherhood Cousin}
+{20234}{Hextor Guard}
+{20235}{Hextor Acolyte}
+{20236}{Ariel}
+{20237}{Elysia}
+{20238}{Lerrik}
+{20239}{Victor}
+{20240}{Gregor}
+{20241}{Captain Abiram}
+{20242}{Captain Absalom}
+{20243}{Captain Achan}
+{20244}{Captain Asaph}
+{20245}{Jylee}
+{20246}{Maurice}
+{20247}{Canon Ramses}
+{20248}{Mathel}
+{20249}{Kenan-Be'thuel}
+{20250}{Tarah-ka-Turah}
+{20251}{Sharar-be-L'ial}
+{20252}{Gadham}
+{20253}{Abaddon}
+{20254}{Lieutenant Bethany}
+{20255}{Gershom}
+{20256}{Persis}
+{20257}{Bella}
+{20258}{Corporal Holly}
+{20259}{Servant}
+{20260}{Guntur Gladstone}
+{20261}{Kendrew Commonworth}
+{20262}{Quintus Corpus}
+{20263}{Sergeant Boonthag}
+{20264}{Sergeant Kallop}
+{20265}{Kwerd}
+{20266}{Lydia}
+{20267}{Lieutenant Ruff}
+{20268}{Cleric Rastes}
+{20269}{Magic Kukri}
+{20270}{Magic Belt}
+{20271}{Ah Fong}
+{20272}{Canon Thaddeus}
+{20273}{Narwell Mage}
+{20274}{Narwell Guard}
+{20275}{Magic Helm}
+{20276}{Magic Robes}
+{20277}{Magic Elven Chain}
+{20278}{Magic Spiked Chain}
+{20279}{Magic Headband}
+{20280}{Samson}
+{20281}{Goliath}
+{20282}{Bathsheba}
+{20283}{Oohlgrist's Emerald Belt}
+{20284}{Beholder}
+{20285}{Phantom}
+{20286}{Werewolf}
+{20287}{Ettin}
+{20288}{Uncle Orrengaard III}
+{20289}{Ariakas}
+{20290}{Fireforge}
+{20291}{King Battlehammer}
+{20292}{Wakefield}
+{20293}{Lady Asherah}
+{20294}{Alzoll}
+{20295}{Errtu}
+{20296}{Ter-Soth}
+{20297}{Wendonai}
+{20298}{Iuz's Lesser Avatar}
+{20299}{Iuz's Greater Avatar}
+{20300}{Iuz's Minor Avatar}
+{20301}{Iuz's Major Avatar}
+{20302}{St. Cuthbert's Lesser Avatar}
+{20303}{St. Cuthbert's Greater Avatar}
+{20304}{St. Cuthbert's Minor Avatar}
+{20305}{St. Cuthbert's Major Avatar}
+{20306}{Lhizeas}
+{20307}{Panathaes}
+{20308}{Rothbert}
+{20309}{Becka}
+{20310}{Rakham}
+{20311}{Boroquin}
+{20312}{Blighted Mace}
+{20313}{Seleucas}
+{20314}{Jenna}
+{20315}{Tinafer}
+{20316}{Zuggtmoy}
+{20317}{Iuz}
+{20318}{St. Cuthbert}
+{20319}{Robin of Locksley}
+{20320}{Friar Tack}
+{20321}{Tiny John}
+{20322}{Ariakas}
+{20323}{Simon}
+{20324}{Jesus Staccatori}
+{20325}{Aerich Dragonsbane}
+{20326}{Cyn}
+{20327}{Kent}
+{20328}{Amii}
+{20329}{Ganna}
+{20330}{Carl}
+{20331}{Dame Nelly}
+{20332}{Anom}
+{20333}{Yvy}
+{20334}{Clarisse}
+{20335}{Magic Brooch}
+{20336}{Magic Circlet}
+{20337}{Magic Vestments}
+{20338}{Magic Gauntlets}
+{20339}{Magic Glasses}
+{20340}{Magic Goggles}
+{20341}{Ioun Stone}
+{20342}{Magic Vest}
+{20343}{Paulo}
+{20344}{Richard Blade}
+{20345}{Heather}
+{20346}{Veenah Glavrol}
+{20347}{Magic Garb}
+{20348}{Mal}
+{20349}{Knoll}
+{20350}{Donovan}
+{20351}{Hommlet Village Boy}
+{20352}{Magic Rapier}
+{20353}{Magic Chain Shirt}
+{20354}{Hostel Patron}
+{20355}{Mordenkainen's Sword}
+{20356}{Flaming Sphere}
+{20357}{Delilah}
+{20358}{Magic Falchion}
+{20359}{Angra Mainyu}
+{20360}{Magic Shortbow}
+{20361}{Noostoron}
+{20362}{Magic Quarterstaff}
+{20363}{Magic Saber}

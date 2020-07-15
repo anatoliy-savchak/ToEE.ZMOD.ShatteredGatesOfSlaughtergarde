@@ -37,6 +37,9 @@
     <Folder Include="data\mes\" />
     <Folder Include="data\oemes\" />
     <Folder Include="data\rules\" />
+    <Folder Include="overrides\art\meshes\" />
+    <Folder Include="overrides\art\meshes\Scenery\" />
+    <Folder Include="overrides\art\meshes\Scenery\Portals\" />
     <Folder Include="overrides\mes\" />
     <Folder Include="overrides\dlg\" />
     <Folder Include="overrides\rules\feats\" />
@@ -66,6 +69,7 @@
     <Content Include="data\docs\portrait.md" />
     <Content Include="data\oemes\oname.mes" />
     <Content Include="overrides\art\interface\portraits\portraits.mes" />
+    <Content Include="overrides\art\meshes\meshes_save.mes" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
@@ -79,6 +83,7 @@
     <Content Include="data\docs\dialog.md" />
     <Content Include="data\docs\trap.md" />
     <Content Include="overrides\dlg\00406Game_Portal.dlg" />
+    <Content Include="overrides\mes\description_save.mes" />
     <Content Include="overrides\mes\description\cormyr_names.mes" />
     <Content Include="overrides\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
     <Content Include="overrides\mes\description\obj_t_armor_6726_studded_leather_plus_1.mes" />
@@ -125,6 +130,7 @@
     <Content Include="overrides\rules\indicators\lodged_quills.txt" />
     <Content Include="overrides\rules\MapLimits.mes" />
     <Content Include="overrides\rules\poisons.json" />
+    <Content Include="overrides\rules\protos_save.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
     <Content Include="overrides\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
