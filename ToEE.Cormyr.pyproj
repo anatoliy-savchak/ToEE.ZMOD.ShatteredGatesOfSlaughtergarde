@@ -72,6 +72,7 @@
     <Content Include="overrides\art\meshes\meshes_save.mes" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="overrides\dlg\06410_daemon_shattered_armory.dlg" />
     <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
     <Content Include="overrides\dlg\06210_daemon_shattered_lab.dlg" />
     <Content Include="overrides\dlg\06201_daemon_adask.dlg" />
@@ -168,6 +169,8 @@
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03016_bar_door.py" />
+    <Compile Include="overrides\rules\d20_actions\action03015_close_door.py" />
     <Compile Include="overrides\rules\d20_actions\action03014_throw_net.py" />
     <Compile Include="overrides\rules\d20_actions\action03013_bag_of_holding_lautosell.py" />
     <Compile Include="overrides\rules\d20_actions\action03012_break_object.py" />
@@ -204,6 +207,9 @@
     </Compile>
     <Compile Include="overrides\scr\cormyr_config.py" />
     <Compile Include="overrides\scr\cormyr_pc.py" />
+    <Compile Include="overrides\scr\ctrl_daemon.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\data_critter.py">
       <SubType>Code</SubType>
     </Compile>
@@ -213,6 +219,7 @@
     <Compile Include="overrides\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\py00334generic_spawner.py" />
     <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
     <Compile Include="overrides\scr\py05000_knowstone.py">
       <SubType>Code</SubType>
@@ -251,17 +258,19 @@
     <Compile Include="overrides\scr\py00630_dwarf_item.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\py06401_shattered_temple_encounters.py" />
     <Compile Include="overrides\scr\py06410_daemon_shattered_armory.py" />
     <Compile Include="overrides\scr\py06400_daemon_shattered_temple.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06401_shattered_temple_encounters.py" />
+    <Compile Include="overrides\scr\py06411_shattered_armory_encounters.py" />
     <Compile Include="overrides\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\Spell076 - Contagion.py" />
     <Compile Include="overrides\scr\Spell090 - Cure Light Wounds.py" />
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
+    <Compile Include="overrides\scr\Spell280 - Mage Armor.py" />
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
     <Compile Include="overrides\scr\Spell469 - Summon Monster III.py" />
@@ -276,7 +285,9 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\close_door.py" />
     <Compile Include="overrides\scr\tpModifiers\cone_of_cold.py" />
+    <Compile Include="overrides\scr\tpModifiers\transferrence.py" />
     <Compile Include="overrides\scr\tpModifiers\critter_no_con.py" />
     <Compile Include="overrides\scr\tpModifiers\construct_max_hp.py" />
     <Compile Include="overrides\scr\tpModifiers\vulnurability_cold.py" />

@@ -1,49 +1,3 @@
-class PyDice(object):
-	def __init__(self):
-		self.number = 1	#	GetCount
-		self.size = 1		#	GetSides
-		self.bonus = 1	#	GetModifier
-		self.packed = 1
-		return
-
-	def roll(self):
-		return 1
-
-def dice_new(dice_str):
-	"""dice_new(str: dice_str) -> PyDice"""
-	return PyDice()
-
-class PySpell(object):
-	def __init__(self, spellEnum = 0):
-		self.spell = PySpell()
-		self.begin_round_obj = PyObjHandle()
-		self.caster = PyObjHandle()
-		self.caster_class = stat_level_wizard
-		self.spell_level = 0
-		self.range_exact = 0
-		self.id = 0
-		# todo
-		return
-
-class PyTrapDamage(object):
-	def __init__(self):
-		self.damage = PyDice()
-		self.type = D20DT_BLUDGEONING
-		return
-
-class PyTrap(object):
-	def __init__(self):
-		self.obj = PyObjHandle()
-		self.id = 1
-		self.san = 1
-		self.partsys = 1
-		self.damage = [PyTrapDamage(), PyTrapDamage()]
-		return
-
-	def attack(self, target, attack_bonus, crit_hit_range_start, is_ranged):
-		""" trap.attack(PyObjHandle: target, int: attack_bonus, int: crit_hit_range_start, int: is_ranged) -> int"""
-		return D20CAF_HIT
-
 class PyObjHandle(object):
 	"""Mobile object"""
 
@@ -125,8 +79,8 @@ class PyObjHandle(object):
 		""" Stop attacking?"""
 		return
 
-	def ai_strategy_set_custom(self, triplets):
-		""" npc.ai_strategy_set_custom(tuple: triplets) -> none"""
+	def ai_strategy_set_custom(self, triplets, save = 1):
+		""" npc.ai_strategy_set_custom(tuple: triplets, int: save = 1) -> none"""
 		return
 
 	def allegiance_shared(self, target):
@@ -753,6 +707,110 @@ class PyQuest:
 
 	def unbotch(self):
 		return qs_accepted
+
+class PyDice(object):
+	def __init__(self):
+		self.number = 1	#	GetCount
+		self.size = 1		#	GetSides
+		self.bonus = 1	#	GetModifier
+		self.packed = 1
+		return
+
+	def roll(self):
+		return 1
+
+def dice_new(dice_str):
+	"""dice_new(str: dice_str) -> PyDice"""
+	return PyDice()
+
+class PySpell(object):
+	def __init__(self, spellEnum = 0):
+		self.spell = PySpell()
+		self.begin_round_obj = PyObjHandle()
+		self.caster = PyObjHandle()
+		self.caster_class = stat_level_wizard
+		self.spell_level = 0
+		self.range_exact = 0
+		self.id = 0
+		self.duration = 1
+		self.duration_remaining = 1
+		self.num_of_targets = 1
+		self.num_of_projectiles = 1
+		self.caster_partsys_id = 1
+		self.target_list = PySpellTargets()
+		self.spell_radius = 1
+		self.spell = spell_aid
+		# todo
+		return
+
+	def spell_end(self, spell_id, endDespiteTargetList = 0):
+		return
+
+	def spell_remove(self, unk1):
+		return
+
+	def spell_target_list_sort(self, criteria, descending):
+		criteria = SORT_TARGET_LIST_BY_OBJ_HANDLE
+		return
+
+	def spell_get_menu_arg(self, setting):
+		setting = RADIAL_MENU_PARAM_MIN_SETTING
+		return 1
+
+	def spell_get_picker_end_point(self):
+		return object()
+
+	def is_object_selected(self):
+		return 1
+
+	def summon_monsters(self, isAiFollower, protoId = 17000):
+		return 1
+
+class PySpellTargets(object):
+	def __init__(self):
+		return
+
+	def __getitem__(self, index):
+		return PySpellTargetsEntry()
+
+	def __setitem__(self, index, data):
+		assert isinstance(data, PySpellTargetsEntry)
+		return
+
+	def remove_target(self, target):
+		assert isinstance(target, PyObjHandle)
+		return
+
+	def remove_list(self, alist):
+		assert isinstance(alist, list)
+		return
+
+class PySpellTargetsEntry(object):
+	def __init__(self):
+		self.obj = PyObjHandle()
+		self.partsys_id = 1
+		return
+
+
+class PyTrapDamage(object):
+	def __init__(self):
+		self.damage = PyDice()
+		self.type = D20DT_BLUDGEONING
+		return
+
+class PyTrap(object):
+	def __init__(self):
+		self.obj = PyObjHandle()
+		self.id = 1
+		self.san = 1
+		self.partsys = 1
+		self.damage = [PyTrapDamage(), PyTrapDamage()]
+		return
+
+	def attack(self, target, attack_bonus, crit_hit_range_start, is_ranged):
+		""" trap.attack(PyObjHandle: target, int: attack_bonus, int: crit_hit_range_start, int: is_ranged) -> int"""
+		return D20CAF_HIT
+
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
@@ -3987,3 +4045,15 @@ STAT_SIZE_LARGE = 6
 STAT_SIZE_HUGE = 7
 STAT_SIZE_GARGANTUAN = 8
 STAT_SIZE_COLOSSAL = 9
+
+SORT_TARGET_LIST_BY_OBJ_HANDLE = 0
+SORT_TARGET_LIST_ORDER_ASCENDING = 0
+SORT_TARGET_LIST_BY_HIT_DICE = 1
+SORT_TARGET_LIST_ORDER_DESCENDING = 1
+SORT_TARGET_LIST_BY_HIT_DICE_THEN_DIST = 2
+SORT_TARGET_LIST_BY_DIST = 3
+SORT_TARGET_LIST_BY_DIST_FROM_CASTER = 4
+
+RADIAL_MENU_PARAM_MIN_SETTING = 1
+RADIAL_MENU_PARAM_MAX_SETTING = 2
+RADIAL_MENU_PARAM_ACTUAL_SETTING = 3

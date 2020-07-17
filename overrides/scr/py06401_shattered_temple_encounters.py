@@ -430,7 +430,7 @@ class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		tac = None
-		is_raged = npc.d20_query(toee.EK_Q_Barbarian_Raged - toee.EK_Q_Helpless)
+		is_raged = npc.d20_query(toee.Q_Barbarian_Raged)
 		go_rage = 0
 		if (not is_raged):
 			if (toee.game.random_range(1, 6) == 1):

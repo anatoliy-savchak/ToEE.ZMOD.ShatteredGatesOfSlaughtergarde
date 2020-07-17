@@ -1,10 +1,11 @@
-import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc
+import toee, debug, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon
+import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, const_proto_wands, utils_npc
+import py06411_shattered_armory_encounters
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	print(attachee.id)
-	#debugg.breakp("san_first_heartbeat")
+	#print(attachee.id)
+	#debug.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
 	for pc in toee.game.party:
 		pc.condition_add("Inspect")
@@ -15,7 +16,7 @@ def san_first_heartbeat(attachee, triggerer):
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
-	debugg.breakp("san_use")
+	#debug.breakp("san_use")
 	return toee.RUN_DEFAULT
 
 def csa():
@@ -23,103 +24,70 @@ def csa():
 	o = utils_storage.obj_storage_by_id(shattered_consts.SHATERRED_ARMORY_DAEMON_ID)
 	#print("utils_storage.obj_storage(): {}".format(o))
 	if (not o): return None
-	if (CtrlShatteredTemple.get_name() in o.data):
-		result = o.data[CtrlShatteredTemple.get_name()]
+	if (CtrlShatteredArmory.get_name() in o.data):
+		result = o.data[CtrlShatteredArmory.get_name()]
 	else: return None
 	#print("data: {}".format(result))
 	#debugg.breakp("csl")
 	return result
 
-class CtrlShatteredArmory(object):
+class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def __init__(self):
-		self.encounters_placed = 0
-		self.monsters = dict()
-		self.m2 = list()
-		self.id = None
-		self.haertbeats_since_sleep_status_update = 0
+		super(CtrlShatteredArmory, self).__init__()
 		return
 
 	def created(self, npc):
-		self.id = npc.id
-		npc.scripts[const_toee.sn_dialog] = 6410
+		super(CtrlShatteredArmory, self).created(npc)
+		npc.scripts[const_toee.sn_dialog] = shattered_consts.SHATERRED_ARMORY_DAEMON_SCRIPT
 		return
 
 	@staticmethod
 	def get_name():
 		return "CtrlShatteredArmory"
 
-	@classmethod
-	def ensure(cls, npc):
-		data = utils_storage.obj_storage(npc).data
-		ctrl = None
-		if (cls.get_name() in data):
-			ctrl = data[cls.get_name()]
-		else:
-			ctrl = cls()
-			ctrl.created(npc)
-			utils_storage.obj_storage(npc).data[cls.get_name()] = ctrl
-		return ctrl
-
-	@classmethod
-	def get_from_obj(cls, npc):
-		data = utils_storage.obj_storage(npc).data
-		if (cls.get_name() in data):
-			return data[cls.get_name()]
-		return None
-
 	def place_encounters(self):
 		#if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
+		if (not self.encounters_placed):
+			self.place_encounter_a1()
+			self.place_encounter_a2()
+
 		self.encounters_placed = 1
-		#self.place_encounter_t1()
-		#self.place_encounter_t2()
-		#self.place_encounter_t3()
-		#self.place_encounter_t4()
-		#self.place_encounter_t5()
-		#self.place_encounter_t6()
-		#self.place_encounter_t7()
-		#self.place_encounter_t8()
-		#self.place_encounter_t9()
-		#self.place_encounter_t10()
-		#self.place_encounter_t11()
-		#self.place_encounter_t12()
-		#self.place_encounter_t13()
-		#self.place_encounter_t14()
-		#self.place_encounter_t15()
-		#self.place_encounter_t16()
-		#self.place_encounter_t17()
-		#self.place_encounter_t18()
-		#self.place_encounter_t19()
-		#self.place_encounter_t20()
-		#self.place_encounter_t21()
-		#self.place_encounter_t22()
-		#self.place_encounter_t23()
-		#self.place_encounter_t24()
-		#self.place_encounter_t25()
 		#self.print_monsters()
 
-		# debug
-		#wizard = toee.game.party[4]
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_COLOR_SPRAY, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_OBSCURING_MIST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_INVISIBILITY, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BLUR, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, wizard)
-		#utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_MAGIC_MISSILES_1ST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_ACID_SPLASH, wizard)
-		#wizard.identify_all()
-		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
-		#self.remove_trap_doors()
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 450, 445)
 		utils_obj.scroll_to_leader()
+		return
 
-		obj = toee.game.obj_create(130, utils_obj.sec2loc(478, 495))
-		obj.rotation = 6.2831
+	def get_dialogid_default(self):
+		return shattered_consts.SHATERRED_ARMORY_DAEMON_DIALOG
 
-		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL ):
-			assert isinstance(obj, toee.PyObjHandle)
-			x, y = utils_obj.loc2sec(obj.location)
-			print("Name: {}, Proto: {}, id: {}, x:{}, y: {}, rot: {}, obj: {}".format(obj.name, obj.proto, obj.id, x, y, obj.rotation, obj))
+	def place_encounter_a1(self):
+		self.create_promter_at(utils_obj.sec2loc(415, 520), self.get_dialogid_default(), 10, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Audience Hall", const_toee.rotation_0000_oclock)
+
+		ctrl = self.create_npc_at(utils_obj.sec2loc(419, 518), py06411_shattered_armory_encounters.CtrlGnollBarbarian2, const_toee.rotation_0100_oclock, "a1", "gnoll1")[1]
+		ctrl.vars["tag"] = 1
+		ctrl = self.create_npc_at(utils_obj.sec2loc(419, 521), py06411_shattered_armory_encounters.CtrlGnollBarbarian2, const_toee.rotation_0100_oclock, "a1", "gnoll2")[1]
+		ctrl.vars["tag"] = 2
+		ctrl = self.create_npc_at(utils_obj.sec2loc(419, 525), py06411_shattered_armory_encounters.CtrlGnollBarbarian2, const_toee.rotation_0000_oclock, "a1", "gnoll3")[1]
+		ctrl.vars["tag"] = 3
+		return
+
+	def display_encounter_a1(self):
+		print("display_encounter_a1")
+		self.reveal_monster("a1", "gnoll1")
+		self.reveal_monster("a1", "gnoll2")
+		self.reveal_monster("a1", "gnoll3")
+		return
+
+	def activate_encounter_a1(self):
+		print("activate_encounter_a1")
+		self.activate_monster("a1", "gnoll1")
+		self.activate_monster("a1", "gnoll2")
+		self.activate_monster("a1", "gnoll3")
+		return
+
+	def place_encounter_a2(self):
+		self.create_promter_at(utils_obj.sec2loc(453, 521), self.get_dialogid_default(), 20, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Audience Hall", const_toee.rotation_0000_oclock)
 		return

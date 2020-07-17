@@ -97,10 +97,8 @@ class CtrlHobgoblinCleric(object):
 
 		if (not attachee.item_worn_at(toee.item_wear_weapon_primary)):
 			attachee.item_wield_best_all()
-		print(tac.custom_tactics)
 		if (tac.count > 0):
-			tac.make_name()
-			attachee.ai_strategy_set_custom(tac.custom_tactics)
+			tac.set_strategy(attachee)
 		return toee.RUN_DEFAULT
 
 	def enter_combat(self, attachee, triggerer):

@@ -3,6 +3,7 @@ import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics,
 class CtrlBehaviour(object):
 	def __init__(self):
 		self.spells = utils_npc_spells.NPCSpells()
+		self.vars = dict()
 		#self.items = dict()
 		return
 
@@ -70,9 +71,7 @@ class CtrlBehaviour(object):
 			tac = self.create_tactics_default(attachee)
 
 		if (tac and tac.count > 0):
-			tac.make_name()
-			print(tac.custom_tactics)
-			attachee.ai_strategy_set_custom(tac.custom_tactics)
+			tac.set_strategy(attachee)
 		return toee.RUN_DEFAULT
 
 	def exit_combat(self, attachee, triggerer):
@@ -120,3 +119,8 @@ class CtrlBehaviour(object):
 		assert isinstance(npc, toee.PyObjHandle)
 		assert isinstance(step, int)
 		return
+
+	def get_var(self, name):
+		if (self.vars and name in self.vars):
+			return self.vars[name]
+		return None

@@ -164,6 +164,14 @@ temple.dll::Condition_Temporary_Hit_Points
 Adds additional damage (Monster Level) to opposed alignment creatures (evil vs good).
 temple.dll::ConditionMonsterSmiting
 
+### Shield Bonus
+**Args**
+* Arg0: enchantment bonus
+* Arg1: ?
+* Arg2: ?
+Adds additional AC to shield.
+temple.dll::stru_102F1650
+
 todo:
 pCondition_Monster_Banshee_Charisma_Drain
 .data:102EC724 30 B7 2E 10      dd offset ConditionMonsterStirge
