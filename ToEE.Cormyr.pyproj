@@ -110,6 +110,7 @@
     <Content Include="overrides\mes\gamekeylog.mes" />
     <Content Include="overrides\mes\gamequestlog.mes" />
     <Content Include="overrides\mes\history.mes" />
+    <Content Include="overrides\mes\intgame.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
     <Content Include="overrides\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
