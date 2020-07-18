@@ -9,6 +9,7 @@ def san_first_heartbeat(attachee, triggerer):
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
 	for pc in toee.game.party:
 		pc.condition_add("Inspect")
+		pc.condition_add("Smash_Object")
 	ctrl = CtrlShatteredArmory.ensure(attachee)
 	ctrl.place_encounters()
 	return toee.RUN_DEFAULT
@@ -49,7 +50,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
 		if (not self.encounters_placed):
-			self.place_encounter_a1()
+			#self.place_encounter_a1()
 			self.place_encounter_a2()
 
 		self.encounters_placed = 1
@@ -57,6 +58,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 450, 445)
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 437, 522) #a2
 		utils_obj.scroll_to_leader()
 		return
 
@@ -90,4 +92,20 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 	def place_encounter_a2(self):
 		self.create_promter_at(utils_obj.sec2loc(453, 521), self.get_dialogid_default(), 20, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Audience Hall", const_toee.rotation_0000_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(463, 518), py06411_shattered_armory_encounters.CtrlGnollArcher, const_toee.rotation_0100_oclock, "a2", "gnoll1")
+		self.create_npc_at(utils_obj.sec2loc(463, 525), py06411_shattered_armory_encounters.CtrlGnollArcher, const_toee.rotation_0100_oclock, "a2", "gnoll2")
+		return
+
+
+	def display_encounter_a2(self):
+		print("display_encounter_a2")
+		self.reveal_monster("a2", "gnoll1")
+		self.reveal_monster("a2", "gnoll2")
+		return
+
+	def activate_encounter_a2(self):
+		print("activate_encounter_a2")
+		#self.activate_monster("a2", "gnoll1")
+		#self.activate_monster("a2", "gnoll2")
 		return
