@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<object xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="generic">
+  <type>obj_t_armor</type>
+  <id subtype="Permanent" asGuid="A8E9A4B3-29A2-4B3B-A597-45F87A443853" />
+  <protoId subtype="Prototype" align="8713" unk="112" asPrototype="6035">
+    <asBytes>kxcAAAIAAAAAAAAABj53Pg==</asBytes>
+  </protoId>
+  <protoHandle />
+  <field40>6</field40>
+  <typeGroup>Item</typeGroup>
+  <typeGroupParent>Common</typeGroupParent>
+  <Props>
+    <prop field="obj_f_location" fieldType="Int64" asLoc="525,518" />
+    <prop field="obj_f_flags" fieldType="Int32">
+      <asObjectFlags>
+        <ObjectFlag>OF_FLAT</ObjectFlag>
+        <ObjectFlag>OF_SEE_THROUGH</ObjectFlag>
+        <ObjectFlag>OF_SHOOT_THROUGH</ObjectFlag>
+        <ObjectFlag>OF_NO_BLOCK</ObjectFlag>
+        <ObjectFlag>OF_INVENTORY</ObjectFlag>
+        <ObjectFlag>OF_HEIGHT_SET</ObjectFlag>
+        <ObjectFlag>OF_RADIUS_SET</ObjectFlag>
+      </asObjectFlags>
+    </prop>
+    <prop field="obj_f_radius" fieldType="Float32" asFloat="28.73211" />
+    <prop field="obj_f_3d_render_height" fieldType="Float32" asFloat="14.0905218" />
+    <prop field="obj_f_item_parent" fieldType="Obj">
+      <value xsi:type="ObjectId" subtype="Permanent" asGuid="9AB950F6-67D1-4C57-B52F-958559D868B5" />
+    </prop>
+    <prop field="obj_f_item_inv_location" fieldType="Int32" asInt="200" />
+  </Props>
+  <Location x="525" y="518" />
+</object>

@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<object xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="generic">
+  <type>obj_t_npc</type>
+  <id subtype="Permanent" asGuid="0762EB53-DD1F-4CDB-8223-CD61D630B637" />
+  <protoId subtype="Prototype" unk="571057138" asPrototype="14029">
+    <asBytes>zTYAAAIAAAAAAAAAV9PVKg==</asBytes>
+  </protoId>
+  <protoHandle />
+  <field40>17</field40>
+  <typeGroup>Critter</typeGroup>
+  <typeGroupParent>Common</typeGroupParent>
+  <Props>
+    <prop field="obj_f_location" fieldType="Int64" asLoc="472,490" />
+    <prop field="obj_f_offset_x" fieldType="Float32" asFloat="-4.242641" />
+    <prop field="obj_f_offset_y" fieldType="Float32" asFloat="7.071068" />
+    <prop field="obj_f_flags" fieldType="Int32">
+      <asObjectFlags>
+        <ObjectFlag>OF_SEE_THROUGH</ObjectFlag>
+        <ObjectFlag>OF_SHOOT_THROUGH</ObjectFlag>
+        <ObjectFlag>OF_PROVIDES_COVER</ObjectFlag>
+        <ObjectFlag>OF_HEIGHT_SET</ObjectFlag>
+        <ObjectFlag>OF_RADIUS_SET</ObjectFlag>
+      </asObjectFlags>
+    </prop>
+    <prop field="obj_f_radius" fieldType="Float32" asFloat="25" />
+    <prop field="obj_f_3d_render_height" fieldType="Float32" asFloat="75.92965" />
+    <prop field="obj_f_permanent_mods" fieldType="Int32Array">
+      <array count="15" idxBitmapId="11130" field="obj_f_permanent_mods" fieldType="Int32Array">
+        <asCondArray>
+          <cond name="Fighter">182180066</cond>
+          <cond name="Human">5087582</cond>
+          <cond name="Alertness">175729795</cond>
+          <cond name="Cleave">75536037</cond>
+          <cond name="Power Attack">20791099</cond>
+          <cond name="AOO">17983</cond>
+          <cond name="Cast_Defensively">155338297</cond>
+          <cond name="Deal_Subdual_Damage">41658197</cond>
+          <cond name="Deal_Normal_Damage">72773077</cond>
+          <cond name="Fighting Defensively">126597689</cond>
+          <cond name="Armor Bonus">67195363</cond>
+          <cond name="Armor Bonus">67195363</cond>
+          <cond name="Armor Bonus">67195363</cond>
+          <cond name="Armor Bonus">67195363</cond>
+          <cond name="Armor Bonus">67195363</cond>
+        </asCondArray>
+      </array>
+    </prop>
+    <prop field="obj_f_dispatcher" fieldType="Int32" asInt="-1" />
+    <prop field="obj_f_permanent_mod_data" fieldType="Int32Array">
+      <array count="31" idxBitmapId="11129" field="obj_f_permanent_mod_data" fieldType="Int32Array">
+        <asUInt32Array>
+          <uint>2</uint>
+          <uint>11</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>1</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>200</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>202</uint>
+          <uint>2</uint>
+          <uint>0</uint>
+          <uint>205</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>208</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>210</uint>
+        </asUInt32Array>
+      </array>
+    </prop>
+    <prop field="obj_f_critter_money_idx" fieldType="Int32Array">
+      <array count="4" idxBitmapId="11131" field="obj_f_critter_money_idx" fieldType="Int32Array">
+        <asUInt32Array>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+          <uint>0</uint>
+        </asUInt32Array>
+      </array>
+    </prop>
+    <prop field="obj_f_critter_inventory_num" fieldType="Int32" asInt="11" />
+    <prop field="obj_f_critter_inventory_list_idx" fieldType="ObjArray">
+      <array count="11" idxBitmapId="11132" fieldType="ObjArray">
+        <bBitmapBlock>/wcAAAAAAAA=</bBitmapBlock>
+        <asObjectIdArray>
+          <ObjectId subtype="Permanent" asGuid="01B4221C-A8B5-4EB4-8154-0CE19B437991" />
+          <ObjectId subtype="Permanent" asGuid="1A7FAF87-7191-44D8-8EA6-9CD6CB996A0A" />
+          <ObjectId subtype="Permanent" asGuid="7AEDC987-E804-4D95-AA10-A7E933172F18" />
+          <ObjectId subtype="Permanent" asGuid="0F955843-1AAD-4437-A580-E595720C7A21" />
+          <ObjectId subtype="Permanent" asGuid="A526DC11-C537-4A59-8843-E71C872697F8" />
+          <ObjectId subtype="Permanent" asGuid="50F089AD-DF81-420D-AA54-0485481B6B5C" />
+          <ObjectId subtype="Permanent" asGuid="72C57308-221A-48F7-AA67-9EA66527A577" />
+          <ObjectId subtype="Permanent" asGuid="1175BC1B-BD04-4D0E-953C-5F0DB5C39560" />
+          <ObjectId subtype="Permanent" asGuid="D1BB4BCF-13C2-416E-A709-B9A56579068A" />
+          <ObjectId subtype="Permanent" asGuid="15FF30D3-D40E-4E2F-94B5-02D44434C1A0" />
+          <ObjectId subtype="Permanent" asGuid="DADCFFDC-4C32-4BC7-8C0B-A77D2DA6AE23" />
+        </asObjectIdArray>
+      </array>
+    </prop>
+    <prop field="obj_f_critter_teleport_dest" fieldType="Int64" asLoc="472,490" />
+    <prop field="obj_f_npc_flags" fieldType="Int32" asInt="2" />
+    <prop field="obj_f_npc_waypoints_idx" fieldType="Int64Array">
+      <array count="34" idxBitmapId="11133" fieldType="Int64Array">
+        <asInt64Array>
+          <long>53891153686167556</long>
+          <long>60129542144</long>
+          <long>2027224563712</long>
+          <long>490</long>
+          <long>0</long>
+          <long>42221422449262615</long>
+          <long>4294967296</long>
+          <long>4294967702</long>
+          <long>-2158983294086020423</long>
+          <long>-2158983294081476197</long>
+          <long>2027224563712</long>
+          <long>524</long>
+          <long>0</long>
+          <long>7696610267256</long>
+          <long>4294967296</long>
+          <long>4294967702</long>
+          <long>-2158983294086021120</long>
+          <long>-2158983294081476197</long>
+          <long>2070174236672</long>
+          <long>525</long>
+          <long>0</long>
+          <long>7696610267256</long>
+          <long>4294967296</long>
+          <long>4294967702</long>
+          <long>-2158983294086021120</long>
+          <long>-2158983294081476197</long>
+          <long>2074469203968</long>
+          <long>490</long>
+          <long>0</long>
+          <long>7696610267256</long>
+          <long>4294967296</long>
+          <long>4294967702</long>
+          <long>-2158983294086021120</long>
+          <long>-2158983294081476197</long>
+        </asInt64Array>
+      </array>
+    </prop>
+    <prop field="obj_f_npc_ai_flags64" fieldType="Int64" asLoc="64,0" />
+    <prop field="obj_f_npc_standpoints" fieldType="Int64Array">
+      <array count="20" idxBitmapId="11134" fieldType="Int64Array">
+        <asInt64Array>
+          <long>151252186771231746</long>
+          <long>2104533975512</long>
+          <long>0</long>
+          <long>7306533939445759</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>151252186771231746</long>
+          <long>2104533975512</long>
+          <long>0</long>
+          <long>7306533939445759</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+          <long>0</long>
+        </asInt64Array>
+      </array>
+    </prop>
+  </Props>
+  <Location x="472" y="490" />
+</object>

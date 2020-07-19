@@ -53,6 +53,7 @@
 {54}{So how did you end up owning a tavern? You seem more mellow than the average businessman.}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 5 and get_1(npc) == 0}{80}{npc_1(npc)}
 {55}{You never did tell me how you got into the tavern business?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 6 and get_1(npc) == 1 and get_2(npc) == 0}{85}{npc_2(npc)}
 {56}{Shiggetam, what's that, Bakluni?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 6 and get_1(npc) == 1 and get_2(npc) == 1}{160}{}
+{57}{I was thinking about recruiting some replacements, could you help with that?}{}{1}{}{0}{game.party_pool()}
 
 {60}{Oh, ale, meat, bread, hippogras, mead, uisce beatha, wine, brandy, pasties. Good food, better drink. In fact, our spiced ale is considered the best in Sumberton, I can assure you of that. And of course we have rooms upstairs.}{Oh, ale, meat, bread, hippogras, mead, uisce beatha, wine, brandy, pasties. Good food, better drink. In fact, our spiced ale is considered the best in Sumberton, I can assure you of that. And of course we have rooms upstairs.}{}{}{}{}
 {61}{I'll take something to eat.}{}{1}{}{35}{}
