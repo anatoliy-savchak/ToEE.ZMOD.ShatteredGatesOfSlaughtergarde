@@ -43,8 +43,8 @@ temple.dll::ConditionMonsterBonusDamage
 
 ### Monster Energy Resistance
 **Args**
-* Arg0: damage_amount
-* Arg1: damage_type, like D20DT_BLUDGEONING etc
+* Arg0: Fire, Electricity, Cold, Acid
+* Arg1: damage_amount
 
 ### Monster Energy Immunity
 **Args**
@@ -140,7 +140,7 @@ temple.dll::aMonsterDrSilve
 ### Monster DR Magic
 **Args**
 * Arg0: DR
-Damage resistance / magic.
+Damage resistance (reduction)/ magic.
 temple.dll::aMonsterDrMagic
 
 ### Temp Negative Level

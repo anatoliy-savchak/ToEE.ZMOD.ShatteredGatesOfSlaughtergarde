@@ -16,6 +16,14 @@ def san_first_heartbeat(attachee, triggerer):
 	ctrl.place_encounters()
 	return toee.RUN_DEFAULT
 
+def san_heartbeat(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	#debug.breakp("san_heartbeat")
+	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
+	ctrl = CtrlShatteredArmory.ensure(attachee)
+	ctrl.heartbeat()
+	return toee.RUN_DEFAULT
+
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
@@ -55,6 +63,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")
 
+		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
 		if (not self.encounters_placed):
 			self.place_encounter_a1()
@@ -62,6 +71,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a3()
 		elif(self.encounters_placed == 1):
 			self.place_encounter_a0()
+		else:
+			self.place_encounter_a4()
 
 		self.encounters_placed += 1
 		#self.print_monsters()
@@ -69,7 +80,16 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 450, 445)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 437, 522) #a2
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 484, 504) #a4
 		utils_obj.scroll_to_leader()
+		return
+
+	def heartbeat(self):
+		#self.remove_door_by_name(921) #{921}{Portcullis A2}
+		return
+
+	def debug_fix(self):
+		toee.game.get_obj_by_id(self.id).scripts[const_toee.sn_heartbeat] = shattered_consts.SHATERRED_ARMORY_DAEMON_SCRIPT
 		return
 
 	def get_dialogid_default(self):
@@ -150,4 +170,20 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def activate_encounter_a3(self):
 		print("activate_encounter_a3")
 		self.activate_monster("a3", "troll")
+		return
+
+	def place_encounter_a4(self):
+		self.create_promter_at(utils_obj.sec2loc(479, 490), self.get_dialogid_default(), 40, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Elevator Room", const_toee.rotation_0600_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(485, 476), py06411_shattered_armory_encounters.CtrlHillGiant, const_toee.rotation_0500_oclock, "a4", "giant")
+		return
+
+	def display_encounter_a4(self):
+		print("display_encounter_a4")
+		self.reveal_monster("a4", "giant")
+		return
+
+	def activate_encounter_a4(self):
+		print("activate_encounter_a4")
+		self.activate_monster("a4", "giant")
 		return
