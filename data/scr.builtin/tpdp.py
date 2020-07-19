@@ -96,12 +96,12 @@ class BonusList:
 		""" bonus_list.modify(int: value, int: bonType, int: meslineIdentifier) -> int """
 		return 0
 
-	def get_sum(self, mesline):
+	def get_sum(self):
 		""" bonus_list.get_sum() -> int """
 		return 0
 
-	def get_total(self, mesline):
-		""" bonus_list.get_sum() -> int """
+	def get_total(self):
+		""" bonus_list.get_total() -> int """
 		return 0
 
 	def add_cap(self, bonType, value, mesline):
@@ -296,7 +296,7 @@ class ModifierSpec:
 #ET_OnD20AdvanceTime = 6
 #ET_OnTurnBasedStatusInit = 7
 #ET_OnInitiative = 8
-#ET_OnNewDay = 9
+#ET_OnNewDay = 9 | None
 #ET_OnAbilityScoreLevel = EventObjBonusList
 #ET_OnGetAC = EventObjAttack
 #ET_OnGetACBonus2 = 12
@@ -543,6 +543,17 @@ class EventObjMoveSpeed(EventObj):
 	def __init__(self):
 		self.evt_obj_type = toee.ET_OnGetMoveSpeedBase # dispTypeGetMoveSpeedBase, dispTypeGetMoveSpeed, dispTypeGetModelScale
 		self.factor = 1.0
+		self.bonus_list = BonusList()
+		return
+
+class EventObjObjectBonus(EventObj):
+	def __init__(self):
+		#dispTypeInitiativeMod, dispTypeSkillLevel, dispTypeAbilityCheckModifier, dispTypeGetAttackerConcealmentMissChance
+		#dispTypeGetLevel, dispTypeMaxDexAcBonus
+		self.evt_obj_type = toee.ET_OnGetAttackerConcealmentMissChance
+		self.flags = 1
+		self.return_val = 1
+		self.obj = 1
 		self.bonus_list = BonusList()
 		return
 

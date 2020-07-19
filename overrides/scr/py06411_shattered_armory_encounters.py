@@ -1,5 +1,6 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
 import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, utils_npc
+import py06401_shattered_temple_encounters
 
 shattered_armory_encounters = 6411
 
@@ -35,6 +36,15 @@ def san_exit_combat(attachee, triggerer):
 		return ctrl.exit_combat(attachee, triggerer)
 	return toee.RUN_DEFAULT
 
+def san_will_kos(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	print("will_kos({}, {})".format(attachee, triggerer))
+	ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(attachee)
+	if (ctrl):
+		return ctrl.will_kos(attachee, triggerer)
+	else: print("san_will_kos ctrl not found")
+	return toee.RUN_DEFAULT
 
 class CtrlGnollBarbarian2(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
@@ -88,6 +98,7 @@ class CtrlGnollArcher(ctrl_behaviour.CtrlBehaviour):
 		utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_will_kos] = shattered_armory_encounters
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc)
@@ -117,6 +128,78 @@ class CtrlGnollArcher(ctrl_behaviour.CtrlBehaviour):
 			tac.add_attack()
 			tac.add_target_closest()
 			tac.add_attack()
+			tac.add_total_defence()
+			tac.add_halt()
+			break
+		return tac
+
+	def will_kos(self, attachee, triggerer):
+		#print("will_kos({}, {})".format(attachee, triggerer))
+		if (triggerer.proto == 14939): #troll
+			return 0
+		return toee.RUN_DEFAULT
+
+class CtrlBlindTroll(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14939
+
+class CtrlFlindSoldier(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14940
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		#npc.scripts[const_toee.sn_will_kos] = shattered_armory_encounters
+
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_FLIND_PLUS1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_LARGE_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_MASTERWORK, npc)
+		npc.item_wield_best_all()
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		assert isinstance(attachee, toee.PyObjHandle)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		primary_weapon = npc.item_worn_at(toee.item_wear_weapon_primary)
+		skip_disarm = 0
+		while (not tac):
+			if (not skip_disarm and primary_weapon and utils_npc.npc_hp_current_percent(npc) <= 50):
+				skip_disarm = 1
+				melees = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_melee()).rescan()
+				if (not melees.list): continue
+				list2 = sorted(melees.list, cmp = py06401_shattered_temple_encounters.CtrlArcaneGuard_measures_cmp, reverse = True)
+				if (not list2): continue
+				atarget = list2[0]
+				assert isinstance(atarget, utils_target_list.AITarget)
+				print("found atarget: {}".format(atarget))
+				print("found target: {}".format(atarget.target))
+
+				if (not atarget.measures.value_weapon_melee): continue
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				#tac.add_target_closest()
+				tac.add_target_obj(atarget.target.id)
+				#tac.add_approach_single()
+				tac.add_d20_action(toee.D20A_DISARM, 0)
+				tac.add_attack()
+				tac.add_total_defence()
+				tac.add_halt()
+				break
+
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_target_closest()
+			tac.add_approach_single()
+			tac.add_attack()
+			tac.add_ready_vs_approach()
 			tac.add_total_defence()
 			tac.add_halt()
 			break

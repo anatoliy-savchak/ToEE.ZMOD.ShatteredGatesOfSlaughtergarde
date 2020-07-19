@@ -27,26 +27,37 @@ def Smash_Object_Perform(attachee, args, evt_obj):
 			#toee.game.alert_show(message, "Close")
 			return 0
 
+		ac = 5
+		if (1):
+			bonlistTarget = tpdp.BonusList()
+			bonlistTarget.add(10, 0, 102) #{102}{Initial Value}
+			bonlistTarget.add(-5, 0, 104) #{104}{~Dexterity~[TAG_DEXTERITY] Bonus}
+			bonlistTarget.add(-2, 0, "Inanimate object")
+			ac = bonlistTarget.get_total()
+
 		atkBon = tpdp.EventObjAttack()
 		bonus = atkBon.dispatch(attachee, target, toee.ET_OnToHitBonus2, toee.EK_D20A_UNSPECIFIED_ATTACK)
-		print("res: {}".format(bonus))
+		flags = atkBon.attack_packet.get_flags()
 
-		text = "Bash {}".format(target.description)
-		ac = 5
 		dice = toee.dice_new("1d20")
 		roll = dice.roll()
 		check = roll + bonus >= ac 
-		#hist_id = tpdp.create_history_dc_roll(attachee, ac, dice, roll, text, atkBon.bonus_list)
-		bonlistTarget = tpdp.BonusList()
-		bonlistTarget.add(10, 0, 102) #{102}{Initial Value}
-		bonlistTarget.add(-5, 0, 104) #{104}{~Dexterity~[TAG_DEXTERITY] Bonus}
-		bonlistTarget.add(-2, 0, "Inanimate object")
-		#bonlistTarget.add(5, 0, "Inanimate object")
-		flags = atkBon.attack_packet.get_flags()
+
+		crit_hist_id = None
 		if (check):
 			flags |= toee.D20CAF_HIT
+			critThreatRange = 21 - tpdp.EventObjAttack().dispatch(attachee, toee.OBJ_HANDLE_NULL, toee.ET_OnGetCriticalHitRange, toee.EK_D20A_UNSPECIFIED_ATTACK);
+			if (roll >= critThreatRange):
+				critroll = dice.roll()
+				#critroll = 15
+				crit_hist_id = tpdp.create_history_attack_roll(attachee, target, critroll, atkBon.bonus_list, bonlistTarget, flags)
+				if (critroll + bonus >= ac):
+					flags |= toee.D20CAF_CRITICAL
+
 		hist_id = tpdp.create_history_attack_roll(attachee, target, roll, atkBon.bonus_list, bonlistTarget, flags)
 		toee.game.create_history_from_id(hist_id)
+		if (crit_hist_id):
+			toee.game.create_history_from_id(crit_hist_id)
 
 		reduction = target.obj_get_int(toee.obj_f_hp_adj)
 		hp0 = target.stat_level_get(toee.stat_hp_current)
@@ -56,13 +67,6 @@ def Smash_Object_Perform(attachee, args, evt_obj):
 		args.set_arg(2, 0)
 		hp = target.stat_level_get(toee.stat_hp_current)
 		print("HP changed from {} to {}".format(hp0, hp))
-
-		# does not work
-		do_anim_crit = (hp < 0)
-		if (attachee.anim_goal_push_attack(target, toee.game.random_range(0, 2), do_anim_crit, 0)):
-			new_anim_id = attachee.anim_goal_get_new_id()
-			evt_obj.d20a.flags |= toee.D20CAF_NEED_ANIM_COMPLETED
-			evt_obj.d20a.anim_id = new_anim_id
 
 		if (hp > 0):
 			target.float_text_line("{} hp left".format(hp), toee.tf_yellow)

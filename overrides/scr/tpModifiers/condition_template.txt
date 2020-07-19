@@ -1,0 +1,72 @@
+import toee, templeplus.pymod, sys, tpdp, traceback, debug
+
+###################################################
+def GetConditionName():
+	return "Template"
+
+print("Registering " + GetConditionName())
+###################################################
+
+def OnQueryReturnTrue(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Query)
+	
+	evt_obj.return_val = 1
+	return 0
+
+def OnQueryReturnFalse(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjD20Query)
+	
+	evt_obj.return_val = 0
+	return 0
+
+def OnGetMoveSpeed(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjMoveSpeed)
+	return 0
+
+def OnGetAttackerConcealmentMissChance(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjObjectBonus)
+
+	evt_obj.bonus_list.add(50, 0, 189) #{189}{~Blinded~[TAG_BLINDED]}
+	return 0
+
+def OnGetEffectTooltip(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjEffectTooltip)
+
+	evt_obj.append(tpdp.hash("NETTED"), -1, "")
+	return 0
+
+def OnGetTooltip(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjTooltip)
+
+	evt_obj.append("Entanged")
+	return 0
+
+def OnToHitBonusFromDefenderCondition(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
+
+	evt_obj.bonus_list.add(2, 0, 161) #{161}{Attacker is not Visible}
+	return 0
+
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 3) # reserved
+modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Critter_Is_Blinded, OnQueryReturnTrue, ())
+modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_AOOPossible, OnQueryReturnFalse, ())
+modObj.AddHook(toee.ET_OnGetMoveSpeed, toee.EK_NONE, OnGetMoveSpeed, ())
+modObj.AddHook(toee.ET_OnGetAttackerConcealmentMissChance, toee.EK_NONE, OnGetAttackerConcealmentMissChance, ())
+modObj.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, netted_OnGetEffectTooltip, ())
+modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, netted_OnGetTooltip, ())
+modObj.AddHook(toee.ET_OnToHitBonusFromDefenderCondition, toee.EK_NONE, OnToHitBonusFromDefenderCondition, ())
+

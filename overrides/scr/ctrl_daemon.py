@@ -89,14 +89,14 @@ class CtrlDaemon(object):
 		return
 
 
-	def create_npc_at(self, npc_loc, ctrl_class, rot, encounter, code_name):
+	def create_npc_at(self, npc_loc, ctrl_class, rot, encounter, code_name, faction = None):
 		npc, ctrl = ctrl_class.create_obj_and_class(npc_loc)
 		x, y = utils_obj.loc2sec(npc.location)
 		print("create_npc_at npc: {}, ctrl: {}, id: {}, coord: {},{}".format(npc, ctrl, npc.id, x, y))
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			self.monster_setup(npc, encounter, code_name, None, 1, 1, faction)
 		return npc, ctrl
 
 	def reveal_monster(self, encounter_name, monster_code_name, no_error = 0):
@@ -140,3 +140,10 @@ class CtrlDaemon(object):
 			print("Monster {} {} not found!".format(encounter_name, monster_code_name))
 			debug.breakp("Monster not found")
 		return npc, info
+
+	def remove_door_by_name(self, door_name_id):
+		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL):
+			assert isinstance(obj, toee.PyObjHandle)
+			if (obj.name == door_name_id):
+				utils_obj.obj_timed_destroy(obj, 500, 1)
+		return
