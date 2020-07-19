@@ -1,4 +1,4 @@
-﻿fimport toee
+﻿import toee
 
 def hash(text):
 	"""hash(str: text) -> int"""
@@ -18,6 +18,11 @@ def dispatch_stat(obj, stat, bonlist):
 
 def create_history_type4(performer, dc, dice, roll, text, bonlist):
 	""" create_history_type4(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
+	return 0
+
+def create_history_attack_roll(performer, target, roll, bonlistAttacker, bonlistTarget, flags):
+	""" create_history_attack_roll(toee.PyObjHandle: performer, toee.PyObjHandle: target, int: roll, BonusList: bonlistAttacker, BonusList: bonlistTarget, int: flags) -> int: rollHistId"""
+	flags = toee.D20CAF_HIT
 	return 0
 
 class TurnBasedStatus:
@@ -91,12 +96,12 @@ class BonusList:
 		""" bonus_list.modify(int: value, int: bonType, int: meslineIdentifier) -> int """
 		return 0
 
-	def get_sum(self, mesline):
+	def get_sum(self):
 		""" bonus_list.get_sum() -> int """
 		return 0
 
-	def get_total(self, mesline):
-		""" bonus_list.get_sum() -> int """
+	def get_total(self):
+		""" bonus_list.get_total() -> int """
 		return 0
 
 	def add_cap(self, bonType, value, mesline):
@@ -291,7 +296,7 @@ class ModifierSpec:
 #ET_OnD20AdvanceTime = 6
 #ET_OnTurnBasedStatusInit = 7
 #ET_OnInitiative = 8
-#ET_OnNewDay = 9
+#ET_OnNewDay = 9 | None
 #ET_OnAbilityScoreLevel = EventObjBonusList
 #ET_OnGetAC = EventObjAttack
 #ET_OnGetACBonus2 = 12
@@ -379,158 +384,178 @@ class ModifierSpec:
 #ET_OnMetaMagicMod = 93
 
 class EventObj(object):
-    def __init__(self):
-        self.evt_obj_type = 0 # enum_dispIO_type
-        return
+	def __init__(self):
+		self.evt_obj_type = 0 # enum_dispIO_type
+		return
 
 class EventArgs(object):
-    def __init__(self):
-        self.evt_obj = EventObj()
-        return
-    def get_arg(self, arg_idx):
-        return 1
-    def set_arg(self, arg_idx, value):
-        """ args.set_arg(int: arg_idx, int: value) -> None """
-        return
-    def get_obj_from_args(self, arg_idx):
-        return toee.PyObjHandle()
-    def set_args_from_obj(self, arg_idx, handle):
-        """ args.set_arg(int: arg_idx, PyObjHandle: handle) -> None """
-        return
-    def get_param(self, param_idx):
-        return 1
-    def condition_remove(self):
-        return
-    def remove_spell_mod(self):
-        return
-    def remove_spell(self):
-        return
+	def __init__(self):
+		self.evt_obj = EventObj()
+		return
+	def get_arg(self, arg_idx):
+		return 1
+	def set_arg(self, arg_idx, value):
+		""" args.set_arg(int: arg_idx, int: value) -> None """
+		return
+	def get_obj_from_args(self, arg_idx):
+		return toee.PyObjHandle()
+	def set_args_from_obj(self, arg_idx, handle):
+		""" args.set_arg(int: arg_idx, PyObjHandle: handle) -> None """
+		return
+	def get_param(self, param_idx):
+		return 1
+	def condition_remove(self):
+		return
+	def remove_spell_mod(self):
+		return
+	def remove_spell(self):
+		return
 
 class EventObjModifier(EventObj):
-    def __init__(self):
-        self.evt_obj_type = 3 # dispTypeConditionAddPre
-        self.return_val = 0
-        self.arg1 = 0
-        self.arg2 = 0
-        self.modifier_spec = ModifierSpec() # CondStruct, foreign
-        return
+	def __init__(self):
+		self.evt_obj_type = 3 # dispTypeConditionAddPre
+		self.return_val = 0
+		self.arg1 = 0
+		self.arg2 = 0
+		self.modifier_spec = ModifierSpec() # CondStruct, foreign
+		return
 
-    def is_modifier(self, s): # foreign
-        return 0
+	def is_modifier(self, s): # foreign
+		return 0
 
 class EventObjD20Query(EventObj):
-    def __init__(self):
-        self.evt_obj_type = 29 # dispTypeD20Query
-        self.return_val = 0
-        self.data1 = 0
-        self.data2 = 0
-        return
+	def __init__(self):
+		self.evt_obj_type = 29 # dispTypeD20Query
+		self.return_val = 0
+		self.data1 = 0
+		self.data2 = 0
+		return
 
-    def get_spell_packet(self): 
-        return object() # SpellPacketBody
+	def get_spell_packet(self): 
+		return object() # SpellPacketBody
 
-    def get_d20_action(self): 
-        return D20Action()
+	def get_d20_action(self): 
+		return D20Action()
 
-    def get_obj(self):
-        return toee.PyObjHandle()
+	def get_obj(self):
+		return toee.PyObjHandle()
 
 class EventObjTooltip(EventObj):
-    """ Tooltip event for mouse-overed objects. """
-    def __init__(self):
-        self.evt_obj_type = 32 # dispTypeTooltip
-        self.num_strings = 0
-        return
+	""" Tooltip event for mouse-overed objects. """
+	def __init__(self):
+		self.evt_obj_type = 32 # dispTypeTooltip
+		self.num_strings = 0
+		return
 
-    def append(self, cs): 
-        """ evt_obj.append(str: cs) -> None """
-        return
+	def append(self, cs): 
+		""" evt_obj.append(str: cs) -> None """
+		return
 
 class EventObjEffectTooltip(EventObj):
-    """ Used for tooltips when hovering over the status effect indicators in the party portrait row """
-    def __init__(self):
-        self.evt_obj_type = 65 # dispTypeEffectTooltip
-        return
+	""" Used for tooltips when hovering over the status effect indicators in the party portrait row """
+	def __init__(self):
+		self.evt_obj_type = 65 # dispTypeEffectTooltip
+		return
 
-    def append(self, effectTypeId, spellEnum, text): 
-        """ evt_obj.append(int: effectTypeId, int: spellEnum, str: text) -> None 
-        effectTypeId: art\\interface\\player_conditions\\
-        """
-        return
+	def append(self, effectTypeId, spellEnum, text): 
+		""" evt_obj.append(int: effectTypeId, int: spellEnum, str: text) -> None 
+		effectTypeId: art\\interface\\player_conditions\\
+		"""
+		return
 
 class EventObjD20Signal(EventObj):
-    def __init__(self):
-        self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal
-        self.return_val = 0
-        self.data1 = 0
-        self.data2 = 0
-        return
+	def __init__(self):
+		self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal
+		self.return_val = 0
+		self.data1 = 0
+		self.data2 = 0
+		return
 
-    def get_d20_action(self):
-        return D20Action()
+	def get_d20_action(self):
+		return D20Action()
 
 class EventObjTurnBasedStatus(EventObj):
-    def __init__(self):
-        self.evt_obj_type = 7 # dispTypeTurnBasedStatusInit
-        self.tb_status = TurnBasedStatus()
-        return
+	def __init__(self):
+		self.evt_obj_type = 7 # dispTypeTurnBasedStatusInit
+		self.tb_status = TurnBasedStatus()
+		return
 
 class EventObjAttack(EventObj):
-    """ Used for fetching attack or AC bonuses """
-    def __init__(self):
-        #  dispConfirmCriticalBonus, dispTypeGetAC, dispTypeAcModifyByAttacker, dispTypeToHitBonusBase, dispTypeToHitBonus2
-        #, dispTypeToHitBonusFromDefenderCondition, dispTypeGetCriticalHitRange, dispTypeGetCriticalHitExtraDice
-        #, dispTypeGetDefenderConcealmentMissChance, dispTypeDeflectArrows, dispTypeProjectileCreated, dispTypeProjectileDestroyed, dispTypeBucklerAcPenalty:
-        self.bonus_list = BonusList()
-        self.attack_packet = AttackPacket()
-        return
+	""" Used for fetching attack or AC bonuses """
+	def __init__(self):
+		#  dispConfirmCriticalBonus, dispTypeGetAC, dispTypeAcModifyByAttacker, dispTypeToHitBonusBase, dispTypeToHitBonus2
+		#, dispTypeToHitBonusFromDefenderCondition, dispTypeGetCriticalHitRange, dispTypeGetCriticalHitExtraDice
+		#, dispTypeGetDefenderConcealmentMissChance, dispTypeDeflectArrows, dispTypeProjectileCreated, dispTypeProjectileDestroyed, dispTypeBucklerAcPenalty:
+		self.bonus_list = BonusList()
+		self.attack_packet = AttackPacket()
+		return
+
+	def dispatch(self, attacker, target, disp_type, disp_key):
+		assert isinstance(attacker, toee.PyObjHandle)
+		assert isinstance(target, toee.PyObjHandle)
+		assert isinstance(disp_type, int)
+		assert isinstance(disp_key, int)
+		disp_type = toee.ET_OnToHitBonus2
+		disp_key = toee.EK_D20A_UNSPECIFIED_ATTACK
+		return 1
 
 class EventObjD20Action(EventObj):
-    def __init__(self):
-        self.evt_obj_type = 36 # dispTypeD20ActionCheck,dispTypeD20ActionPerform, dispTypeD20ActionOnActionFrame,dispTypeGetNumAttacksBase, dispTypeGetBonusAttacks, dispTypeGetCritterNaturalAttacksNum,dispTypePythonActionPerform,dispTypePythonActionAdd ,dispTypePythonActionCheck ,dispTypePythonActionFrame
-        self.return_val = 0
-        self.d20a = D20Action()
-        self.turnbased_status = EventObjTurnBasedStatus()
-        self.bonus_list = BonusList()
-        return
+	def __init__(self):
+		self.evt_obj_type = 36 # dispTypeD20ActionCheck,dispTypeD20ActionPerform, dispTypeD20ActionOnActionFrame,dispTypeGetNumAttacksBase, dispTypeGetBonusAttacks, dispTypeGetCritterNaturalAttacksNum,dispTypePythonActionPerform,dispTypePythonActionAdd ,dispTypePythonActionCheck ,dispTypePythonActionFrame
+		self.return_val = 0
+		self.d20a = D20Action()
+		self.turnbased_status = EventObjTurnBasedStatus()
+		self.bonus_list = BonusList()
+		return
 
 class EventObjDamage(EventObj):
-    def __init__(self):
-        self.evt_obj_type = 91 # dispTypeDealingDamageWeaponlikeSpell, dispTypeDealingDamage, dispTypeTakingDamage, dispTypeDealingDamage2, dispTypeTakingDamage2
-        self.attack_packet = AttackPacket()
-        self.damage_packet = DamagePacket()
-        return
+	def __init__(self):
+		self.evt_obj_type = 91 # dispTypeDealingDamageWeaponlikeSpell, dispTypeDealingDamage, dispTypeTakingDamage, dispTypeDealingDamage2, dispTypeTakingDamage2
+		self.attack_packet = AttackPacket()
+		self.damage_packet = DamagePacket()
+		return
 
 class EventObjBonusList(EventObj):
-    def __init__(self):
-        self.evt_obj_type = toee.ET_OnAbilityScoreLevel # dispTypeAbilityScoreLevel, dispTypeCurrentHP, dispTypeMaxHP, dispTypeStatBaseGet
-        self.flags = 0
-        self.bonus_list = BonusList()
-        return
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnAbilityScoreLevel # dispTypeAbilityScoreLevel, dispTypeCurrentHP, dispTypeMaxHP, dispTypeStatBaseGet
+		self.flags = 0
+		self.bonus_list = BonusList()
+		return
 
 class EventObjSavingThrow(EventObj):
-    def __init__(self):
-        self.evt_obj_type = toee.ET_OnSaveThrowLevel # dispTypeSaveThrowLevel, dispTypeSaveThrowSpellResistanceBonus, dispTypeCountersongSaveThrow
-        self.bonus_list = BonusList()
-        self.return_val = 0
-        self.obj = toee.PyObjHandle()
-        self.flags = 0
-        return
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnSaveThrowLevel # dispTypeSaveThrowLevel, dispTypeSaveThrowSpellResistanceBonus, dispTypeCountersongSaveThrow
+		self.bonus_list = BonusList()
+		self.return_val = 0
+		self.obj = toee.PyObjHandle()
+		self.flags = 0
+		return
 
 class EventObjImmunityQuery(EventObj):
-    def __init__(self):
-        self.evt_obj_type = toee.ET_OnSpellImmunityCheck # dispTypeSpellImmunityCheck
-        self.spell_entry = SpellEntry()
-        self.spell_packet = SpellPacket()
-        self.return_val = 0
-        return
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnSpellImmunityCheck # dispTypeSpellImmunityCheck
+		self.spell_entry = SpellEntry()
+		self.spell_packet = SpellPacket()
+		self.return_val = 0
+		return
 
 class EventObjMoveSpeed(EventObj):
-    def __init__(self):
-        self.evt_obj_type = toee.ET_OnGetMoveSpeedBase # dispTypeGetMoveSpeedBase, dispTypeGetMoveSpeed, dispTypeGetModelScale
-        self.factor = 1.0
-        self.bonus_list = BonusList()
-        return
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnGetMoveSpeedBase # dispTypeGetMoveSpeedBase, dispTypeGetMoveSpeed, dispTypeGetModelScale
+		self.factor = 1.0
+		self.bonus_list = BonusList()
+		return
+
+class EventObjObjectBonus(EventObj):
+	def __init__(self):
+		#dispTypeInitiativeMod, dispTypeSkillLevel, dispTypeAbilityCheckModifier, dispTypeGetAttackerConcealmentMissChance
+		#dispTypeGetLevel, dispTypeMaxDexAcBonus
+		self.evt_obj_type = toee.ET_OnGetAttackerConcealmentMissChance
+		self.flags = 1
+		self.return_val = 1
+		self.obj = 1
+		self.bonus_list = BonusList()
+		return
 
 class D20SpellData:
 	def __init__(self, spell_enum = 0):

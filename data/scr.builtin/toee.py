@@ -1,49 +1,3 @@
-class PyDice(object):
-	def __init__(self):
-		self.number = 1	#	GetCount
-		self.size = 1		#	GetSides
-		self.bonus = 1	#	GetModifier
-		self.packed = 1
-		return
-
-	def roll(self):
-		return 1
-
-def dice_new(dice_str):
-	"""dice_new(str: dice_str) -> PyDice"""
-	return PyDice()
-
-class PySpell(object):
-	def __init__(self, spellEnum = 0):
-		self.spell = PySpell()
-		self.begin_round_obj = PyObjHandle()
-		self.caster = PyObjHandle()
-		self.caster_class = stat_level_wizard
-		self.spell_level = 0
-		self.range_exact = 0
-		self.id = 0
-		# todo
-		return
-
-class PyTrapDamage(object):
-	def __init__(self):
-		self.damage = PyDice()
-		self.type = D20DT_BLUDGEONING
-		return
-
-class PyTrap(object):
-	def __init__(self):
-		self.obj = PyObjHandle()
-		self.id = 1
-		self.san = 1
-		self.partsys = 1
-		self.damage = [PyTrapDamage(), PyTrapDamage()]
-		return
-
-	def attack(self, target, attack_bonus, crit_hit_range_start, is_ranged):
-		""" trap.attack(PyObjHandle: target, int: attack_bonus, int: crit_hit_range_start, int: is_ranged) -> int"""
-		return D20CAF_HIT
-
 class PyObjHandle(object):
 	"""Mobile object"""
 
@@ -125,8 +79,8 @@ class PyObjHandle(object):
 		""" Stop attacking?"""
 		return
 
-	def ai_strategy_set_custom(self, triplets):
-		""" npc.ai_strategy_set_custom(tuple: triplets) -> none"""
+	def ai_strategy_set_custom(self, triplets, save = 1):
+		""" npc.ai_strategy_set_custom(tuple: triplets, int: save = 1) -> none"""
 		return
 
 	def allegiance_shared(self, target):
@@ -318,7 +272,7 @@ class PyObjHandle(object):
 		return
 
 	def item_wield(self, item, equipSlot):
-		"""npc.item_wield(item: PyObjHandle, int[item_wear_helmet...]: index) -> None"""
+		"""npc.item_wield(item: PyObjHandle, int[item_wear_weapon_primary...]: index) -> None"""
 		return 
 
 	def item_wield_best_all(self):
@@ -753,6 +707,110 @@ class PyQuest:
 
 	def unbotch(self):
 		return qs_accepted
+
+class PyDice(object):
+	def __init__(self):
+		self.number = 1	#	GetCount
+		self.size = 1		#	GetSides
+		self.bonus = 1	#	GetModifier
+		self.packed = 1
+		return
+
+	def roll(self):
+		return 1
+
+def dice_new(dice_str):
+	"""dice_new(str: dice_str) -> PyDice"""
+	return PyDice()
+
+class PySpell(object):
+	def __init__(self, spellEnum = 0):
+		self.spell = PySpell()
+		self.begin_round_obj = PyObjHandle()
+		self.caster = PyObjHandle()
+		self.caster_class = stat_level_wizard
+		self.spell_level = 0
+		self.range_exact = 0
+		self.id = 0
+		self.duration = 1
+		self.duration_remaining = 1
+		self.num_of_targets = 1
+		self.num_of_projectiles = 1
+		self.caster_partsys_id = 1
+		self.target_list = PySpellTargets()
+		self.spell_radius = 1
+		self.spell = spell_aid
+		# todo
+		return
+
+	def spell_end(self, spell_id, endDespiteTargetList = 0):
+		return
+
+	def spell_remove(self, unk1):
+		return
+
+	def spell_target_list_sort(self, criteria, descending):
+		criteria = SORT_TARGET_LIST_BY_OBJ_HANDLE
+		return
+
+	def spell_get_menu_arg(self, setting):
+		setting = RADIAL_MENU_PARAM_MIN_SETTING
+		return 1
+
+	def spell_get_picker_end_point(self):
+		return object()
+
+	def is_object_selected(self):
+		return 1
+
+	def summon_monsters(self, isAiFollower, protoId = 17000):
+		return 1
+
+class PySpellTargets(object):
+	def __init__(self):
+		return
+
+	def __getitem__(self, index):
+		return PySpellTargetsEntry()
+
+	def __setitem__(self, index, data):
+		assert isinstance(data, PySpellTargetsEntry)
+		return
+
+	def remove_target(self, target):
+		assert isinstance(target, PyObjHandle)
+		return
+
+	def remove_list(self, alist):
+		assert isinstance(alist, list)
+		return
+
+class PySpellTargetsEntry(object):
+	def __init__(self):
+		self.obj = PyObjHandle()
+		self.partsys_id = 1
+		return
+
+
+class PyTrapDamage(object):
+	def __init__(self):
+		self.damage = PyDice()
+		self.type = D20DT_BLUDGEONING
+		return
+
+class PyTrap(object):
+	def __init__(self):
+		self.obj = PyObjHandle()
+		self.id = 1
+		self.san = 1
+		self.partsys = 1
+		self.damage = [PyTrapDamage(), PyTrapDamage()]
+		return
+
+	def attack(self, target, attack_bonus, crit_hit_range_start, is_ranged):
+		""" trap.attack(PyObjHandle: target, int: attack_bonus, int: crit_hit_range_start, int: is_ranged) -> int"""
+		return D20CAF_HIT
+
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
@@ -2181,7 +2239,82 @@ OCF_MECHANICAL = 536870912
 OCF_UNUSED_40000000 = 1073741824
 OCF_FATIGUE_LIMITING = 2147483648
 
-# Disp Type
+
+# D20ActionType
+EK_D20A_UNSPECIFIED_MOVE = 75
+EK_D20A_UNSPECIFIED_ATTACK = 76
+EK_D20A_STANDARD_ATTACK = 77
+EK_D20A_FULL_ATTACK = 78
+EK_D20A_STANDARD_RANGED_ATTACK = 79
+EK_D20A_RELOAD = 80
+EK_D20A_5FOOTSTEP = 81
+EK_D20A_MOVE = 82
+EK_D20A_DOUBLE_MOVE = 83
+EK_D20A_RUN = 84
+EK_D20A_CAST_SPELL = 85
+EK_D20A_HEAL = 86
+EK_D20A_CLEAVE = 87
+EK_D20A_ATTACK_OF_OPPORTUNITY = 88
+EK_D20A_WHIRLWIND_ATTACK = 89
+EK_D20A_TOUCH_ATTACK = 90
+EK_D20A_TOTAL_DEFENSE = 91
+EK_D20A_CHARGE = 92
+EK_D20A_FALL_TO_PRONE = 93
+EK_D20A_STAND_UP = 94
+EK_D20A_TURN_UNDEAD = 95
+EK_D20A_DEATH_TOUCH = 96
+EK_D20A_PROTECTIVE_WARD = 97
+EK_D20A_FEAT_OF_STRENGTH = 98
+EK_D20A_BARDIC_MUSIC = 99
+EK_D20A_PICKUP_OBJECT = 100
+EK_D20A_COUP_DE_GRACE = 101
+EK_D20A_USE_ITEM = 102
+EK_D20A_BARBARIAN_RAGE = 103
+EK_D20A_STUNNING_FIST = 104
+EK_D20A_SMITE_EVIL = 105
+EK_D20A_LAY_ON_HANDS_SET = 106
+EK_D20A_DETECT_EVIL = 107
+EK_D20A_STOP_CONCENTRATION = 108
+EK_D20A_BREAK_FREE = 109
+EK_D20A_TRIP = 110
+EK_D20A_REMOVE_DISEASE = 111
+EK_D20A_ITEM_CREATION = 112
+EK_D20A_WHOLENESS_OF_BODY_SET = 113
+EK_D20A_USE_MAGIC_DEVICE_DECIPHER_WRITTEN_SPELL = 114
+EK_D20A_TRACK = 115
+EK_D20A_ACTIVATE_DEVICE_STANDARD = 116
+EK_D20A_SPELL_CALL_LIGHTNING = 117
+EK_D20A_AOO_MOVEMENT = 118
+EK_D20A_CLASS_ABILITY_SA = 119
+EK_D20A_ACTIVATE_DEVICE_FREE = 120
+EK_D20A_OPEN_INVENTORY = 121
+EK_D20A_ACTIVATE_DEVICE_SPELL = 122
+EK_D20A_DISABLE_DEVICE = 123
+EK_D20A_SEARCH = 124
+EK_D20A_SNEAK = 125
+EK_D20A_TALK = 126
+EK_D20A_OPEN_LOCK = 127
+EK_D20A_SLEIGHT_OF_HAND = 128
+EK_D20A_OPEN_CONTAINER = 129
+EK_D20A_THROW = 130
+EK_D20A_THROW_GRENADE = 131
+EK_D20A_FEINT = 132
+EK_D20A_READY_SPELL = 133
+EK_D20A_READY_COUNTERSPELL = 134
+EK_D20A_READY_ENTER = 135
+EK_D20A_READY_EXIT = 136
+EK_D20A_COPY_SCROLL = 137
+EK_D20A_READIED_INTERRUPT = 138
+EK_D20A_LAY_ON_HANDS_USE = 139
+EK_D20A_WHOLENESS_OF_BODY_USE = 140
+EK_D20A_DISMISS_SPELLS = 141
+EK_D20A_FLEE_COMBAT = 142
+EK_D20A_USE_POTION = 143
+EK_D20A_DIVINE_MIGHT = 144
+EK_D20A_EMPTY_BODY = 145
+EK_D20A_QUIVERING_PALM = 146
+
+# Disp Type | dispType
 ET_On0 = 0
 ET_OnConditionAdd = 1
 ET_OnConditionRemove = 2
@@ -2277,80 +2410,6 @@ ET_OnLevelupSystemEvent = 90
 ET_OnDealingDamageWeaponlikeSpell = 91
 ET_OnActionCostMod = 92
 ET_OnMetaMagicMod = 93
-
-# D20ActionType
-EK_D20A_UNSPECIFIED_MOVE = 75
-EK_D20A_UNSPECIFIED_ATTACK = 76
-EK_D20A_STANDARD_ATTACK = 77
-EK_D20A_FULL_ATTACK = 78
-EK_D20A_STANDARD_RANGED_ATTACK = 79
-EK_D20A_RELOAD = 80
-EK_D20A_5FOOTSTEP = 81
-EK_D20A_MOVE = 82
-EK_D20A_DOUBLE_MOVE = 83
-EK_D20A_RUN = 84
-EK_D20A_CAST_SPELL = 85
-EK_D20A_HEAL = 86
-EK_D20A_CLEAVE = 87
-EK_D20A_ATTACK_OF_OPPORTUNITY = 88
-EK_D20A_WHIRLWIND_ATTACK = 89
-EK_D20A_TOUCH_ATTACK = 90
-EK_D20A_TOTAL_DEFENSE = 91
-EK_D20A_CHARGE = 92
-EK_D20A_FALL_TO_PRONE = 93
-EK_D20A_STAND_UP = 94
-EK_D20A_TURN_UNDEAD = 95
-EK_D20A_DEATH_TOUCH = 96
-EK_D20A_PROTECTIVE_WARD = 97
-EK_D20A_FEAT_OF_STRENGTH = 98
-EK_D20A_BARDIC_MUSIC = 99
-EK_D20A_PICKUP_OBJECT = 100
-EK_D20A_COUP_DE_GRACE = 101
-EK_D20A_USE_ITEM = 102
-EK_D20A_BARBARIAN_RAGE = 103
-EK_D20A_STUNNING_FIST = 104
-EK_D20A_SMITE_EVIL = 105
-EK_D20A_LAY_ON_HANDS_SET = 106
-EK_D20A_DETECT_EVIL = 107
-EK_D20A_STOP_CONCENTRATION = 108
-EK_D20A_BREAK_FREE = 109
-EK_D20A_TRIP = 110
-EK_D20A_REMOVE_DISEASE = 111
-EK_D20A_ITEM_CREATION = 112
-EK_D20A_WHOLENESS_OF_BODY_SET = 113
-EK_D20A_USE_MAGIC_DEVICE_DECIPHER_WRITTEN_SPELL = 114
-EK_D20A_TRACK = 115
-EK_D20A_ACTIVATE_DEVICE_STANDARD = 116
-EK_D20A_SPELL_CALL_LIGHTNING = 117
-EK_D20A_AOO_MOVEMENT = 118
-EK_D20A_CLASS_ABILITY_SA = 119
-EK_D20A_ACTIVATE_DEVICE_FREE = 120
-EK_D20A_OPEN_INVENTORY = 121
-EK_D20A_ACTIVATE_DEVICE_SPELL = 122
-EK_D20A_DISABLE_DEVICE = 123
-EK_D20A_SEARCH = 124
-EK_D20A_SNEAK = 125
-EK_D20A_TALK = 126
-EK_D20A_OPEN_LOCK = 127
-EK_D20A_SLEIGHT_OF_HAND = 128
-EK_D20A_OPEN_CONTAINER = 129
-EK_D20A_THROW = 130
-EK_D20A_THROW_GRENADE = 131
-EK_D20A_FEINT = 132
-EK_D20A_READY_SPELL = 133
-EK_D20A_READY_COUNTERSPELL = 134
-EK_D20A_READY_ENTER = 135
-EK_D20A_READY_EXIT = 136
-EK_D20A_COPY_SCROLL = 137
-EK_D20A_READIED_INTERRUPT = 138
-EK_D20A_LAY_ON_HANDS_USE = 139
-EK_D20A_WHOLENESS_OF_BODY_USE = 140
-EK_D20A_DISMISS_SPELLS = 141
-EK_D20A_FLEE_COMBAT = 142
-EK_D20A_USE_POTION = 143
-EK_D20A_DIVINE_MIGHT = 144
-EK_D20A_EMPTY_BODY = 145
-EK_D20A_QUIVERING_PALM = 146
 
 # D20DispatcherKey
 EK_NONE = 0
@@ -3975,3 +4034,27 @@ PQF_STRAIGHT_LINE = 8
 PQF_STRAIGHT_LINE_ONLY_FOR_SANS_NODE = 512
 PQF_TARGET_OBJ = 4096
 PQF_TO_EXACT = 1
+
+# Size
+STAT_SIZE_NONE = 0
+STAT_SIZE_FINE = 1
+STAT_SIZE_DIMINUTIVE = 2
+STAT_SIZE_TINY = 3
+STAT_SIZE_SMALL = 4
+STAT_SIZE_MEDIUM = 5
+STAT_SIZE_LARGE = 6
+STAT_SIZE_HUGE = 7
+STAT_SIZE_GARGANTUAN = 8
+STAT_SIZE_COLOSSAL = 9
+
+SORT_TARGET_LIST_BY_OBJ_HANDLE = 0
+SORT_TARGET_LIST_ORDER_ASCENDING = 0
+SORT_TARGET_LIST_BY_HIT_DICE = 1
+SORT_TARGET_LIST_ORDER_DESCENDING = 1
+SORT_TARGET_LIST_BY_HIT_DICE_THEN_DIST = 2
+SORT_TARGET_LIST_BY_DIST = 3
+SORT_TARGET_LIST_BY_DIST_FROM_CASTER = 4
+
+RADIAL_MENU_PARAM_MIN_SETTING = 1
+RADIAL_MENU_PARAM_MAX_SETTING = 2
+RADIAL_MENU_PARAM_ACTUAL_SETTING = 3

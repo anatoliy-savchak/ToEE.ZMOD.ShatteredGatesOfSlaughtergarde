@@ -27,7 +27,7 @@
 {31}{[Stop it. Just stop it and walk away. You're an adult, act like one.]}{}{1}{}{0}{}
 {32}{[FALL ASLEEP. LAY DOWN AND GO TO SLEEP RIGHT IN FRONT OF THE BAR. HE'S NOT WINNING THIS.]}{}{1}{}{0}{game.fade( 600,0,0,1 )}
 
-{40}{[He rolls his eyes and with a final dismissive yawn, he turns away.]}{[He rolls his eyes and with a final dismissive yawn, he turns away.]}{}{}{}{}
+{40}{[He rolls his eyes and with a final dismissive yawn, he turns away.]}{[He rolls his eyes and with a final dismissive yawn, he turns away.]}{}{}{}{away(npc)}
 {41}{Fine. No tip for you! [That's mean, tip him a couple of coppers.]}{}{1}{pc.money_get() >= 2}{0}{pc.money_adj(-2)}
 {42}{[Leave.]}{}{1}{}{0}{}
 {43}{B:All right, I'll buy something!}{}{1}{}{0}{pc.barter(npc)}
@@ -36,7 +36,14 @@
 {100}{[The bartender does not acknowledge your return.]}{[The bartender does not acknowledge your return.]}{}{}{}{}
 {101}{B:The usual.}{}{1}{}{0}{pc.barter(npc)}
 {102}{[Don't bother.]}{}{1}{}{0}{}
+{103}{What about a room, this place is two storeys? Can I get a room?}{}{1}{not get_1(npc)}{110}{npc_1(npc)}
+
+{110}{[He polishes the bar in a slow, slovenly and disinterested way, before finally saying] Shiggetam. [He jerks his head to the right, behind him.]}{[He polishes the bar in a slow, slovenly and disinterested way, before finally saying] Shiggetam. [He jerks his head to the right, behind him.]}{}{}{}{}
+{111}{What was that? Shibboleth? Shigawire? I'm so confused.}{}{1}{}{0}{}
+{112}{A:}{}{1}{}{0}{}
 
 {900}{Made it!}{Made it}{}{}{}{}
 {901}{Yay!}{}{1}{}{0}{{}
 {902}{Start over.}{}{1}{}{1}{}
+
+// npc_1: if he has told you where the proprietor is

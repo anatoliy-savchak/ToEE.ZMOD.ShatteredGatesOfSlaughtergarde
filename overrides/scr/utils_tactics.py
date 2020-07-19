@@ -226,3 +226,13 @@ class TacticsHelper(object):
 	def add_approach_single(self):
 		self.add_simple("approach single")
 		return
+
+	def add_flank(self):
+		self.add_simple("flank")
+		return
+
+	def set_strategy(self, npc):
+		self.make_name()
+		print(self.custom_tactics)
+		npc.ai_strategy_set_custom(self.custom_tactics, 0)
+		return

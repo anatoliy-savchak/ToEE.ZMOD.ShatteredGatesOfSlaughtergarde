@@ -20,7 +20,36 @@
 {908}{Door T10-T11}
 {909}{Door T16-T17}
 {910}{Door T16-T19}
-
+{920}{Door A1}
+{921}{Portcullis A2}
+{922}{Demon Arch A4}
+{923}{Demon Arch A5}
+{924}{Door A5}
+{925}{Door A5}
+{926}{Demon Arch A7}
+{927}{Demon Arch 2}
+{927}{Demon Arch 2}
+{928}{Fiery Demon Arch 5ft}
+{929}{Fiery Demon Arch 10ft}
+{930}{A4 SE1 Fiery Demon Arch}
+{931}{A4 SE2 Fiery Demon Arch}
+{932}{A4 NE1 Fiery Demon Arch}
+{933}{A4 NE2 Fiery Demon Arch}
+{934}{A4 SW1 Fiery Demon Arch}
+{935}{A4 SW2 Fiery Demon Arch}
+{936}{A4 NW1 Fiery Demon Arch}
+{937}{A4 NW2 Fiery Demon Arch}
+{938}{A5 Fiery Demon Arch}
+{939}{A6 Door}
+{940}{A7 Fiery Demon Arch}
+{941}{A8 Fiery Demon Arch}
+{942}{A10 Fiery Demon Arch}
+{943}{A11 Door}
+{944}{A12 Fiery Demon Arch}
+{945}{A13 Fiery Demon Arch}
+{946}{A16 Door}
+{947}{A19 Door}
+{948}{A20 Shattered Gates}
 
 // Container ranges from 1200 - 1599
 {1200}{Container}
@@ -60,6 +89,7 @@
 {1621}{Castle of Lords outside Security Barricade portal}
 {1622}{Verbobonc City Hall doors to tunnels portal}
 {1623}{Castle of Lords inside Security Barricade portal}
+{1643}{Shattered Armory Exit}
 
 {1701}{Homm door 01 prosperous farmer}
 {1702}{Homm door 02 modest farmhouse}

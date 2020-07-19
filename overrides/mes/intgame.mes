@@ -1,0 +1,98 @@
+{0}{Level}
+{1}{Reaction}
+{2}{Magic power available}
+{3}{Aptitude adj to chance of critical failure}
+{4}{Weight}
+{5}{stone}
+{6}{Quantity}
+{7}{Keys}
+{8}{Speed}
+{9}{Locked}
+{10}{Unlocked}
+{11}{Congratulations! You are now level %d.}
+{12}{You now have %d character point(s) to spend.}
+{13}{You have absorbed %d unit(s) of poison.}
+{14}{You have an auto-level scheme active.}
+{15}{Cost}
+{16}{Dead}
+{17}{Minimum IN}
+{18}{Minimum Level}
+{19}{Uses}
+{20}{To Hit:}
+{21}{Level Up}
+{22}{Current Time}
+{23}{Current Date}
+{24}{You cannot exit combat-mode when under attack.}
+{25}{You cannot attack in this form.}
+{26}{Barred}
+{27}{Magically held}
+{28}{Minimum ST to raise}
+{29}{Minimum DX to raise}
+{30}{Minimum CN to raise}
+{31}{Minimum BE to raise}
+{32}{Minimum IN to raise}
+{33}{Minimum PE to raise}
+{34}{Minimum WP to raise}
+{35}{Minimum CH to raise}
+{36}{Alignment}
+{37}{Prowling state}
+{38}{Safe}
+{39}{Risky}
+{40}{Dangerous}
+{41}{Perilous!}
+{42}{Aware!!!}
+{43}{D}
+{44}{FT}
+{45}{TH}
+{46}{RNG}
+{47}{PD}
+{48}{FD}
+{49}{ED}
+{50}{AC}
+{51}{DR}
+{52}{PR}
+{53}{FR}
+{54}{ER}
+{55}{MR}
+{56}{NP}
+{57}{Total Attack}
+{58}{Damage}
+{59}{Fatigue}
+{60}{Electrical Damage}
+{61}{Fire Damage}
+{62}{Poison}
+{63}{Total Defense}
+{64}{Damage Resistance}
+{65}{Magic Resistance}
+{66}{Electrical Resistance}
+{67}{Fire Resistance}
+{68}{Poison Resistance}
+{69}{Base To Hit}
+{70}{Total AC}
+{71}{Bonus to Pick Locks skill}
+{72}{Bonus to Heal skill}
+{73}{Minimum WP}
+{74}{second}
+{75}{seconds}
+
+// button hover messages here
+{1000}{Spells}
+{1001}{Skills}
+{1002}{Combat Toggle}
+{1003}{Schematics}
+{1004}{Log Book}
+{1005}{Character Editor}
+{1006}{Inventory}
+{1007}{Maps}
+{1008}{Fate Points}
+{1009}{Sleep}
+{1010}{Multiplayer Control}
+
+// Looting stuff:
+{2000}{There is nothing to loot.}
+
+// Dragging stuff:
+{3000}{You are too far away to drag that.}
+
+// stuff:
+{4000}{You already have a duplicate item on the hotkey bank.}

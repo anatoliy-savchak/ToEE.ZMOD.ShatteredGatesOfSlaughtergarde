@@ -97,12 +97,8 @@ def san_start_combat(attachee, triggerer):
 		tac.add_attack()
 		break
 	
-	print(tac)
 	if (tac.count > 0):
-		tac.make_name()
-		strat = tac.custom_tactics
-		print("set strategy: {}".format(strat))
-		attachee.ai_strategy_set_custom(strat)
+		tac.set_strategy(attachee)
 
 	#debugg.breakp("san_start_combat chief end")
 	return toee.RUN_DEFAULT

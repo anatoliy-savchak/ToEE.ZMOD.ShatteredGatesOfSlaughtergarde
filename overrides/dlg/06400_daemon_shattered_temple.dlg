@@ -108,3 +108,29 @@
 {213}{Continue}{}{1}{}{214}{}
 {214}{Thick webs that have bones among them enshroud the room and obscure the floor, but it seems like something on the altar is glittering in the green light.}{Thick webs that have bones among them enshroud the room and obscure the floor, but it seems like something on the altar is glittering in the green light.}{}{}{}{}
 {219}{Close}{}{1}{}{0}{cst().activate_encounter_t21()}
+
+{220}{A figure made entirely out of molten lava strides among the statues in this room, leaving a pall of smoke behind it. In the northern section is a massive sarcophagus with a marble statue atop it of a cloaked figure wielding a scythe and riding a horse that has fiery hooves.}{A figure made entirely out of molten lava strides among the statues in this room, leaving a pall of smoke behind it. In the northern section is a massive sarcophagus with a marble statue atop it of a cloaked figure wielding a scythe and riding a horse that has fiery hooves.}{}{}{}{cst().display_encounter_t22()}
+{221}{Continue}{}{1}{}{222}{}
+{222}{In the southern part is a collection of macabre statues, most depicting fiends. Two fiery demon arches are in the southwestern corner. Near these appear to be chests and scattered coins}{In the southern part is a collection of macabre statues, most depicting fiends. Two fiery demon arches are in the southwestern corner. Near these appear to be chests and scattered coins}{}{}{}{}
+{223}{Continue}{}{1}{}{224}{}
+{224}{The mosaic footprints lead from the double doors in the east past the sarcophagus and up the northern corridor.}{The mosaic footprints lead from the double doors in the east past the sarcophagus and up the northern corridor.}{}{}{}{}
+{229}{Close}{}{1}{}{0}{cst().activate_encounter_t22()}
+
+{230}{Neatly made beds line this room's northern and southern walls. A padded manacle with a four-foot chain bolted to the floor is at the foot of each bed.}{Neatly made beds line this room's northern and southern walls. A padded manacle with a four-foot chain bolted to the floor is at the foot of each bed.}{}{}{}{cst().display_encounter_t23()}
+{231}{Continue}{}{1}{}{232}{}
+{232}{The western wall is an avalanche of rock and dirt unlike the masonry on the other walls.}{The western wall is an avalanche of rock and dirt unlike the masonry on the other walls.}{}{}{}{}
+{233}{Continue}{}{1}{}{234}{}
+{234}{Strange creatures that look like bats with needlelike snouts suddenly fly from a crevice there.}{Strange creatures that look like bats with needlelike snouts suddenly fly from a crevice there.}{}{}{}{}
+{239}{Close}{}{1}{}{0}{cst().activate_encounter_t23()}
+
+{240}{A massive stone gate, like the one you found among the goblins, dominates the western end of this room. Parts of the arch have sagged and crumbled, and entire blocks are missing. This gate has a shimmering gray field. Black cracks radiate out from the center, making it look like an immense shattered mirror.}{A massive stone gate, like the one you found among the goblins, dominates the western end of this room. Parts of the arch have sagged and crumbled, and entire blocks are missing. This gate has a shimmering gray field. Black cracks radiate out from the center, making it look like an immense shattered mirror.}{}{}{}{cst().display_encounter_t24()}
+{241}{Continue}{}{1}{}{242}{}
+{242}{Four small figures have emerged halfway from whatever lies beyond the gray field. They have dragonlike heads, white scaly skin, and stubby wings.}{Four small figures have emerged halfway from whatever lies beyond the gray field. They have dragonlike heads, white scaly skin, and stubby wings.}{}{}{}{}
+{243}{Continue}{}{1}{}{244}{}
+{244}{The floor is littered with crumbling skeletons.}{The floor is littered with crumbling skeletons.}{}{}{}{}
+{249}{Close}{}{1}{}{0}{cst().activate_encounter_t24()}
+
+{250}{In the center of the room is a metallic scarablike creature the size of a dog. It squats among several piles of metal. With a whir, it lurches to life, a blade buzzing where its mouth should be.}{In the center of the room is a metallic scarablike creature the size of a dog. It squats among several piles of metal. With a whir, it lurches to life, a blade buzzing where its mouth should be.}{}{}{}{cst().display_encounter_t25()}
+{251}{Continue}{}{1}{}{252}{}
+{252}{The corpse of a drow female in studded leather armor lies at your feet. Mirrors that have green glowing frames hang from the walls.}{The corpse of a drow female in studded leather armor lies at your feet. Mirrors that have green glowing frames hang from the walls.}{}{}{}{}
+{259}{Close}{}{1}{}{0}{cst().activate_encounter_t25()}

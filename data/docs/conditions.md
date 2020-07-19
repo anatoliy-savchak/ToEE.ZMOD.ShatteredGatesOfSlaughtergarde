@@ -43,8 +43,8 @@ temple.dll::ConditionMonsterBonusDamage
 
 ### Monster Energy Resistance
 **Args**
-* Arg0: damage_amount
-* Arg1: damage_type, like D20DT_BLUDGEONING etc
+* Arg0: Fire, Electricity, Cold, Acid
+* Arg1: damage_amount
 
 ### Monster Energy Immunity
 **Args**
@@ -140,7 +140,7 @@ temple.dll::aMonsterDrSilve
 ### Monster DR Magic
 **Args**
 * Arg0: DR
-Damage resistance / magic.
+Damage resistance (reduction)/ magic.
 temple.dll::aMonsterDrMagic
 
 ### Temp Negative Level
@@ -157,6 +157,20 @@ temple.dll::aMonsterDrSilve
 * Arg3: hp
 Adds temporary hit points.
 temple.dll::Condition_Temporary_Hit_Points
+
+### Monster Smiting
+**Args**
+* Arg0: number of usage per day
+Adds additional damage (Monster Level) to opposed alignment creatures (evil vs good).
+temple.dll::ConditionMonsterSmiting
+
+### Shield Bonus
+**Args**
+* Arg0: enchantment bonus
+* Arg1: ?
+* Arg2: ?
+Adds additional AC to shield.
+temple.dll::stru_102F1650
 
 todo:
 pCondition_Monster_Banshee_Charisma_Drain

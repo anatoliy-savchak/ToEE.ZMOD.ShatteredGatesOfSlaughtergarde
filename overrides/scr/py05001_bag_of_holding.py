@@ -59,6 +59,10 @@ def _Bag_Of_Holding_elicit_on_timeevent(bag, chest):
 	assert isinstance(bag, toee.PyObjHandle)
 	assert isinstance(chest, toee.PyObjHandle)
 	#print("_Bag_Of_Holding_elicit_on_timeevent")
+	if (not bag or bag.object_flags_get() & toee.OF_DESTROYED or not chest or chest.object_flags_get() & toee.OF_DESTROYED): 
+		#print("_Bag_Of_Holding_elicit_on_timeevent::san_transfer bag is none, exit")
+		return 1
+
 	CtrlBagOfHolding.eject_incompatible(chest)
 	max_weight = 0
 	if (bag.proto == 12501):
@@ -70,13 +74,11 @@ def _Bag_Of_Holding_elicit_on_timeevent(bag, chest):
 	elif (bag.proto == 12504):
 		max_weight = 1500
 	CtrlBagOfHolding.eject_overweight(chest, max_weight)
-	if (not bag or bag.object_flags_get() & toee.OF_DESTROYED or not chest or chest.object_flags_get() & toee.OF_DESTROYED): 
-		#print("_Bag_Of_Holding_elicit_on_timeevent::san_transfer bag is none, exit")
-		return 1
 
 	ctrl = CtrlBagOfHolding.ensure(bag)
 	assert isinstance(ctrl, CtrlBagOfHolding)
 	ctrl.elicit(chest)
+	print("BAG OF HOLDING SAVED!")
 	#print(ctrl.items)
 	return 1
 

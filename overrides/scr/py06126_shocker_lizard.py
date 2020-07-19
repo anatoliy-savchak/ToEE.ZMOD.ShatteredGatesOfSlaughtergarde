@@ -98,8 +98,7 @@ class CtrlShockerLizard(object):
 		tac.add_attack()
 		print(tac.custom_tactics)
 		if (tac.count > 0):
-			tac.make_name()
-			attachee.ai_strategy_set_custom(tac.custom_tactics)
+			tac.set_strategy(attachee)
 		return toee.RUN_DEFAULT
 
 	def enter_combat(self, attachee, triggerer):

@@ -4,7 +4,8 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 	assert isinstance(item_proto_num, int)
 	assert isinstance(npc, toee.PyObjHandle)
 	item = toee.game.obj_create(item_proto_num, npc.location)
-	item.item_flag_set(toee.OIF_IDENTIFIED)
+	if (npc.type == toee.obj_t_pc):
+		item.item_flag_set(toee.OIF_IDENTIFIED)
 	if (item != toee.OBJ_HANDLE_NULL):
 		npc.item_get(item)
 	if (quantity > 1):
@@ -18,7 +19,8 @@ def item_create_in_inventory_buy(item_proto_num, npc, price_override = None, wor
 	assert isinstance(item_proto_num, int)
 	assert isinstance(npc, toee.PyObjHandle)
 	item = toee.game.obj_create(item_proto_num, npc.location)
-	item.item_flag_set(toee.OIF_IDENTIFIED)
+	if (npc.type == toee.obj_t_pc):
+		item.item_flag_set(toee.OIF_IDENTIFIED)
 	if (item != toee.OBJ_HANDLE_NULL):
 		worth = item.obj_get_int(toee.obj_f_item_worth)
 		if (worth_mult): worth = int(worth * worth_mult)

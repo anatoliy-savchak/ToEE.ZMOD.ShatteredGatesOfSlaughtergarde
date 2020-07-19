@@ -1,0 +1,15 @@
+skeleton "cn_large_idle.mae"
+
+animation "item_idle" "cn_large_idle.mae"
+
+animation "close" "cn_large_close.mae"
+{
+event 1 "script" "game.sound_local_obj ( 4054, anim_obj )"
+}
+
+animation "open" "cn_large_open.mae"
+{
+event 1 "script" "game.sound_local_obj ( 4055, anim_obj )"
+}
+
+animation "open_idle" "cn_large_open_idle.mae"

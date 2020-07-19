@@ -1,0 +1,203 @@
+// map_names.mes
+// this file lists the text name of the maps 
+
+{5000}{}
+{5001}{Hommlet}
+{5002}{Ruins of the Moathouse}
+{5003}{Moathouse Tower}
+{5004}{Moathouse Ruins}
+{5005}{Moathouse Dungeon}
+{5006}{Welcome Wench, Cellar}
+{5007}{Sumberton Inn}
+{5008}{Sumberton Inn, 2nd}
+{5009}{Traders' Barn}
+{5010}{Traders' Store}
+{5011}{St. Cuthbert, Upper}
+{5012}{St. Cuthbert, Main}
+{5013}{St. Cuthbert, Lower}
+{5014}{Guard Tower, Cellar}
+{5015}{Guard Tower, Lower}
+{5016}{Guard Tower, Main Hall}
+{5017}{Guard Tower, Parapet}
+{5018}{Guard Tower, Upper Hall}
+{5019}{Guard Tower, Parapet}
+{5020}{Sumberton Market}
+{5021}{Prosperous Cottage}
+{5022}{Woodcutter's Cottage}
+{5023}{Well-kept Farmhouse}
+{5024}{Well-kept Farmhouse}
+{5025}{Prosperous Farmhouse}
+{5026}{Leatherworker's House}
+{5027}{Blacksmith's House}
+{5028}{Weaver's House}
+{5029}{Weaver's House}
+{5030}{Tailor's Cottage}
+{5031}{Average Farm Building}
+{5032}{Teamster's Building}
+{5033}{Moneychanger's Shop} 
+{5034}{Cabinet Maker}
+{5035}{Cabinet Maker}
+{5036}{Potter's Cottage}
+{5037}{Brewhouse}
+{5038}{Modest Cottage}
+{5039}{Cheesemaker's Cottage}
+{5040}{Mill}
+{5041}{Reclusive Cottage}
+{5042}{The Grove}
+{5043}{Herdsman's Barn}
+{5044}{Wainwright's Shop}
+{5045}{Walled Manor House}
+{5046}{Walled Manor House}
+{5047}{Carpenter's House}
+{5048}{Town Hall}
+{5049}{Stone House}
+{5050}{Herdsman House}
+{5051}{Nulb}
+{5052}{Boatmens' Tavern}
+{5053}{Mother Screng's}
+{5054}{Mother Screng's}
+{5055}{Mother Screng's}
+{5056}{Smithy}
+{5057}{Snake Pit, 1st Floor}
+{5058}{Snake Pit, 2nd Floor}
+{5059}{Snake Pit, 3rd Floor}
+{5060}{Waterside Hostel, 1st}
+{5061}{Waterside Hostel, 2nd}
+{5062}{Temple Courtyard}
+{5063}{Modest Farmhouse}
+{5064}{Temple, Main Floor}
+{5065}{Tower Ruins}
+{5066}{Temple Dungeon 1}
+{5067}{Temple Dungeon 2}
+{5068}{Imeryds Run}
+{5069}{Deklo Grove}
+{5070}{Scrub}
+{5071}{Forest}
+{5072}{Swamp}
+{5073}{Riverside}
+{5074}{Scrub Road}
+{5075}{Forest Road}
+{5076}{Swamp Road}
+{5077}{Riverside Road}
+{5078}{Road}
+{5079}{Temple Locked Level}
+{5080}{Temple Dungeon 4}
+{5081}{Air Node}
+{5082}{Earth Node}
+{5083}{Fire Node}
+{5084}{Water Node}
+{5085}{Nulb House}
+{5086}{Nulb House}
+{5087}{Nulb House}
+{5088}{Ah Fong's Emporium}
+{5089}{Mona's Store}
+{5090}{Blun Esuoh}
+{5091}{Moathouse Cave Exit}
+{5092}{Temple Escape Tunnel}
+{5093}{Welkwood Bog}
+{5094}{Emridy Meadows}
+{5095}{Hickory Branch}
+{5096}{Countryside}
+{5097}{Celine}
+{5098}{Temple of Hextor}
+{5099}{Peasant Slum}
+{5100}{Hrudek's Grove}
+{5101}{Mitrik}
+{5102}{St. Cuthbert Church}
+{5103}{Lord Mayor's Office}
+{5104}{Unexplored Dungeon}
+{5105}{Temple Dungeon 3}
+{5106}{Circular Shaft}
+{5107}{Shop Map}
+{5108}{Quarry}
+{5109}{Quarry}
+{5110}{Temple House}
+{5111}{Temple Tower}
+{5112}{Ramshackle Farm}
+{5113}{Ogre Cave}
+{5114}{Ogre Cave Interior}
+{5115}{Hickory Branch Cave}
+{5116}{Tutorial}
+{5117}{Tutorial}
+{5118}{Tutorial}
+{5119}{Colloseum}
+{5120}{A Dark and Stormy Knight}
+{5121}{Slaughtergarde Laboratory}
+{5122}{Slaughtergarde Temple}
+{5123}{Slaughtergarde Armory}
+{5124}{Gnome Quarter House}
+{5125}{Gnome Quarter House}
+{5126}{Gnome Quarter House}
+{5127}{Gnome Tunnels}
+{5128}{Gnome Tunnels}
+{5129}{Gnome Tunnels}
+{5130}{Gnome Tunnels}
+{5131}{Gnome Tunnels}
+{5132}{Verbobonc Cave Exit}
+{5133}{Gnome Quarter House}
+{5134}{Gnome Quarter House}
+{5135}{Lord Viscount}
+{5136}{Placeholder}
+{5137}{Church of Pelor, Main}
+{5138}{Church of Pelor, Upper}
+{5139}{Pelor Ruins, Main}
+{5140}{Pelor Ruins, Lower}
+{5141}{Drainage Tunnels}
+{5142}{Rabbit Hole}
+{5143}{Castle Basement}
+{5144}{Castle Dormitories}
+{5145}{Castle Main Hall}
+{5146}{Castle Upper Hall}
+{5147}{Castle Parapet}
+{5148}{Castle Outbuilding}
+{5149}{Castle Outbuilding}
+{5150}{Castle Outbuilding}
+{5151}{Spruce Goose, 1st}
+{5152}{Spruce Goose, 2nd}
+{5153}{Coliseum Tower}
+{5154}{Coliseum Tower}
+{5155}{Warehouse Office}
+{5156}{Warehouse}
+{5157}{Warehouse}
+{5158}{Maroon Moon, 1st}
+{5159}{Maroon Moon, 2nd}
+{5160}{Maroon Moon, 3rd}
+{5161}{Archer's Eye Store}
+{5162}{Archer's Eye Shop}
+{5163}{Archer's Eye Foundry}
+{5164}{Archer's Eye Warehouse}
+{5165}{Private Residence}
+{5166}{Private Residence}
+{5167}{Private Residence}
+{5168}{Private Residence}
+{5169}{City Hall}
+{5170}{Lord Viscount Chambers}
+{5171}{Watch Post, Main}
+{5172}{Watch Post, Lower}
+{5173}{Jylee's Inn, 1st}
+{5174}{Jylee's Inn, 2nd}
+{5175}{Wharves}
+{5176}{Wharves}
+{5177}{Wharves}
+{5178}{Merchant's Row}
+{5179}{Merchant's Row}
+{5180}{Merchant's Row}
+{5181}{Merchant's Row}
+{5182}{City Block}
+{5183}{City Block}
+{5184}{City Block}
+{5185}{City Block}
+{5186}{Apartments}
+{5187}{Tenements}
+{5188}{Courtyard}
+{5189}{Hommlet}
+{5190}{Placeholder}
+{5191}{Hickory Branch Crypt}
+{5192}{Welkwood Run}
+{5193}{Welkwood Crypt}
+{5194}{Placeholder}
+{5195}{Placeholder}
+{5196}{Placeholder}
+{5197}{Placeholder}
+{5198}{Placeholder}
+{5199}{Placeholder}

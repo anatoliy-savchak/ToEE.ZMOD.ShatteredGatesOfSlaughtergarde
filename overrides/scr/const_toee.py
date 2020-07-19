@@ -69,3 +69,5 @@ rotation_0800_oclock = 4.18879
 rotation_0900_oclock = 4.71239
 rotation_1000_oclock = 5.23599
 rotation_1100_oclock = 5.75959
+
+ROTATAION_01_DOOR = 0.785398185253

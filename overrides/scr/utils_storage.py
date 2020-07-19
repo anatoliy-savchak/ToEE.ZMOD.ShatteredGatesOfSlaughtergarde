@@ -6,7 +6,7 @@ import json
 from json import JSONEncoder
 import utils_obj
 import inspect
-import imp
+import imp, traceback
 
 def obj_storage(obj):
 	assert isinstance(obj, PyObjHandle)
@@ -20,6 +20,7 @@ class ObjectStorage(object):
 	def __init__(self, aname):
 		self.name = aname
 		self.data = dict()
+		self.origin = None
 		return
 
 class MyEncoder(JSONEncoder):
@@ -97,6 +98,7 @@ class Storage(object):
 		if (name in oo):
 			return oo[name]
 		objStorage = ObjectStorage(name)
+		objStorage.origin = obj.origin
 		oo[name] = objStorage
 		return objStorage
 
@@ -170,14 +172,29 @@ class Storage(object):
 			print("loadObjectStorage: json.load o = {}".format(o))
 			#breakp("loadObjectStorage o")
 			o = Storage.makeObjects(o, loaded_modules)
-			ostorage = ObjectStorage(o["name"])
+			name = o["name"]
+			ostorage = ObjectStorage(name)
+			if (not "origin" in o):
+				o["origin"] = None
 			ostorage.__dict__ = o
+			if (not name):
+				print("ostorage no name!")
+				breakp("ostorage no name!")
+				return None
+			if (ostorage.origin):
+				obj = game.get_obj_by_id(name)
+				if (not obj):
+					print("ostorage no obj!")
+					breakp("ostorage no obj!")
+					return None
 			return ostorage
 		except Exception, e:
-			print "Storage.loadObjectStorage error:", sys.exc_info()[0]
-			print(str(e))
+			print "loadObjectStorage error:"
+			print '-'*60
 			f.close()
-		#breakp("loadObjectStorage end")
+			traceback.print_exc(file=sys.stdout)
+			print '-'*60		
+			breakp("error")
 		return
 
 	@staticmethod
@@ -212,7 +229,7 @@ class Storage(object):
 							if (isofmodule):
 								modlename = os.path.basename(isofmodule)
 								if (modlename): modlename = modlename.split('.')[0]
-							print(modlename)
+							print("modlename: {}".format(modlename))
 							#breakp("makeObjects isofmodule")
 							if (modlename):
 								isofmoduledir = os.path.join(os.getcwd(), "overrides", "scr")
@@ -224,20 +241,23 @@ class Storage(object):
 									try:
 										try:
 											found = imp.find_module(modlename)
+											print("imp.find_module(modlename): {}".format(found))
 										except Exception, e:
 											print "imp.find_module(modlename) error1:", sys.exc_info()[0]
 											print(str(e))
 										if (not found):
 											found = imp.find_module(modlename, isofmoduledir)
+											print("imp.find_module(modlename, isofmoduledir): {}".format(found))
 										if (found):
-											print(found)
+											print("found: {}".format(found))
 											fullname = modlename + "." + isofclass
-											print(fullname)
+											print("fullname: {}".format(fullname))
 											#breakp("makeObjects find_module")
 											try:
 												inst2 = eval(fullname)()
 												inst = inst2
 												inst_loaded = 1
+												print("inst2: {}, type: {}".format(inst2, type(inst2).__name__))
 											except Exception, e:
 												print "makeObjects inst eval error:", sys.exc_info()[0]
 												print(str(e))
@@ -274,13 +294,24 @@ class Storage(object):
 										inst2 = c()
 										if (inst2): 
 											inst = inst2
+											print("before Storage.makeObjects inst: {}, class: {}".format(inst, type(inst).__name__))
 											inst.__dict__ = Storage.makeObjects(propval, loaded_modules)
 											inst_loaded = 1
 					except Exception, e:
-						print "!!!!!!!!!!!!! makeObjects error:", sys.exc_info()[0]
-						print(str(e))
+						print "!!!!!!!!!!!!! makeObjects error:"
+						print '-'*60
+						traceback.print_exc(file=sys.stdout)
+						print '-'*60		
+						breakp("error")
+
 					if (inst_loaded == 0):
-						inst.__dict__ = Storage.makeObjects(propval, loaded_modules)
+						oooo = Storage.makeObjects(propval, loaded_modules)
+						if (oooo):
+							if ("__dict__" in dir(inst)):
+								inst.__dict__ = oooo
+							else:
+								print("inst: {}, class: {}".format(inst, type(inst).__name__))
+								breakp("inst")
 					r[k] = inst
 				else:
 					r[k] = Storage.makeObjects(propval, loaded_modules)

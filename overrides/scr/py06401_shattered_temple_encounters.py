@@ -430,7 +430,7 @@ class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		tac = None
-		is_raged = npc.d20_query(toee.EK_Q_Barbarian_Raged - toee.EK_Q_Helpless)
+		is_raged = npc.d20_query(toee.Q_Barbarian_Raged)
 		go_rage = 0
 		if (not is_raged):
 			if (toee.game.random_range(1, 6) == 1):
@@ -1106,13 +1106,14 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 
 		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
 		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		npc.condition_add_with_args("Caster_Level_Add", 7, 0)
 		return
 
-	def enter_combat(self, attachee, triggerer):
-		#debug.breakp("enter_combat")
-		#utils_sneak.npc_make_hide_and_surprise(attachee)
-		return toee.RUN_DEFAULT
-
+	def revealed(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_npc.npc_spell_ensure(npc, toee.spell_web, toee.stat_level_wizard, 3)
+		npc.cast_spell(toee.spell_web, npc)
+		return
 
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
@@ -1142,3 +1143,100 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 				break
 			break
 		return tac
+
+class CtrlAdvancedMagmaHurler(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14934
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlAdvancedMagmaHurler, self).created(npc)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		#npc.condition_add_with_args("Caster_Level_Add", 7, 0)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		threats = foes.get_threats()
+		do_ball = 1
+		if (threats):
+			if (not toee.game.random_range(0, 1)):
+				do_ball = 0
+
+		#if (threats):
+		#	target = threats[0].target
+		while (not tac):
+			if (do_ball): 
+				ball = toee.game.obj_create(4712, npc.location)
+				print("ball createed: {}".format(ball))
+				if (ball):
+					if (not npc.item_get(ball)):
+						print("cannot get ball")
+						ball = None
+						do_ball = 0
+						continue
+				npc.item_wield(ball, toee.item_wear_weapon_primary)
+
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_five_foot_step()
+				else:
+					tac.add_halt()
+				tac.add_attack()
+				tac.add_total_defence()
+				break
+			break
+		return tac
+
+
+class CtrlStirge(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14834
+
+class CtrlWhitespawnHordeling(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14935
+
+	def __init__(self):
+		super(CtrlWhitespawnHordeling, self).__init__()
+		self.next_breath_weapon_2_skip = 0
+		return
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
+
+		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
+		#npc.condition_add_with_args("Caster_Level_Add", 7, 0)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		self.next_breath_weapon_2_skip -= 1
+		if (self.next_breath_weapon_2_skip <= 0):
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_clear_target()
+			tac.add_target_closest()
+			tac.add_approach_single()
+			tac.add_halt()
+			tac.add_python_action(3010)
+			tac.add_ready_vs_approach()
+			self.next_breath_weapon_2_skip = toee.game.random_range(1, 4)
+			print("next_breath_weapon_2_skip: {}".format(self.next_breath_weapon_2_skip))
+		return tac
+
+class CtrlElectrumClockworkHorror(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14936

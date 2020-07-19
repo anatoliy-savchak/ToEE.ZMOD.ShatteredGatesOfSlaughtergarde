@@ -27,7 +27,7 @@ def san_start_combat(attachee, triggerer):
 		  , "attack", "", "" \
 		  ]
 
-	attachee.ai_strategy_set_custom(strat)
+	strat.set_strategy(attachee)
 	return RUN_DEFAULT
 
 def san_end_combat(attachee, triggerer):

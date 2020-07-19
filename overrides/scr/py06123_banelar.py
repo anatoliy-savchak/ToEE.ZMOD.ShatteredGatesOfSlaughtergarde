@@ -176,10 +176,7 @@ def san_start_combat(attachee, triggerer):
 		break
 
 	if (tac.count > 0):
-		tac.make_name()
-		strat = tac.custom_tactics
-		print("set strategy: {}".format(strat))
-		attachee.ai_strategy_set_custom(strat)
+		tac.set_strategy(attachee)
 	return RUN_DEFAULT
 
 def san_spell_cast(attachee, triggerer, spell):

@@ -81,8 +81,7 @@ class CtrlVargouilleLesser(object):
 		print(tac.custom_tactics)
 		#debugg.breakp("CtrlKnellBeetleLesser::start_combat")
 		if (tac.count > 0):
-			tac.make_name()
-			attachee.ai_strategy_set_custom(tac.custom_tactics)
+			tac.set_strategy(attachee)
 		return toee.RUN_DEFAULT
 
 	def enter_combat(self, attachee, triggerer):

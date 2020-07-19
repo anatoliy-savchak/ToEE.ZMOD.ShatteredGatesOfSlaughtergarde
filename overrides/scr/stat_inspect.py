@@ -625,10 +625,12 @@ class StatInspect:
 		if (not hasattr(self.npc, 'conditions_get')): return None
 		conds = list()
 		conds_0 = self.npc.conditions_get(0)
+		print(conds_0)
 		if (conds_0):
 			for i in conds_0:
 				conds.append(i)
 		conds_1 = self.npc.conditions_get(1)
+		print(conds_1)
 		if (conds_1):
 			for i in conds_1:
 				conds.append(i)

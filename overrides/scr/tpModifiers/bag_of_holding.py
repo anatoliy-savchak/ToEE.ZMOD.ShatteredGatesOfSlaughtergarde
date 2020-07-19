@@ -240,15 +240,22 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 
 def sell_modifier():
 	highest_appraise = -999
+	highest_obj = None
 	for obj in toee.game.party:
-		if obj.skill_level_get(toee.skill_appraise) > highest_appraise:
-			highest_appraise = obj.skill_level_get(toee.skill_appraise)
+		appr = obj.skill_level_get(toee.skill_appraise)
+		if appr > highest_appraise:
+			highest_appraise = appr
+			highest_obj = obj
+
+	result = 0.0
 	if highest_appraise > 19:
-		return 0.97
+		result = 0.97
 	elif highest_appraise < -13:
-		return 0
+		result = 0
 	else:
-		return 0.4 + float(highest_appraise)*0.03
+		result = 0.4 + float(highest_appraise)*0.03
+	print("sell_modifier = {}, highest_appraise: {}, highest_obj: {}".format(result, highest_appraise, highest_obj))
+	return result
 
 class ItemInfo:
 	def __init__(self, item, worth, weight, text = None):
@@ -317,8 +324,11 @@ def Bag_Of_Holding_OnD20PythonActionPerform_autosell(attachee, args, evt_obj):
 
 		for item in items:
 			item.destroy()
-		attachee.money_adj(int(total_sell))
-
+		total_sell_adj = int(total_sell)
+		attachee.money_adj(total_sell_adj)
+		print("attachee.money_adj: {}".format(total_sell_adj))
+		# push fake event to let bag saving
+		bag.object_script_execute(attachee, 0x20) #sn_transfer
 		attachee.anim_goal_use_object(bag)
 		#attachee.container_open_ui(bag)
 	except Exception, e:
