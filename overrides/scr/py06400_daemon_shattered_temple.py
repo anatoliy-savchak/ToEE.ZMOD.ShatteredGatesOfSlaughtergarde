@@ -99,38 +99,39 @@ class CtrlShatteredTemple(object):
 		return None
 
 	def place_encounters(self):
-		#if (self.encounters_placed): return
+		if (self.encounters_placed): return
+		self.encounters_placed = 1
 		#debugg.breakp("place_encounters")
 
 		self.monsters = dict()
 		self.m2 = list()
-		self.destroy_all_npc()
+		#self.destroy_all_npc()
 
 		self.encounters_placed = 1
-		#self.place_encounter_t1()
-		#self.place_encounter_t2()
-		#self.place_encounter_t3()
-		#self.place_encounter_t4()
-		#self.place_encounter_t5()
-		#self.place_encounter_t6()
-		#self.place_encounter_t7()
-		#self.place_encounter_t8()
-		#self.place_encounter_t9()
-		#self.place_encounter_t10()
-		#self.place_encounter_t11()
-		#self.place_encounter_t12()
-		#self.place_encounter_t13()
-		#self.place_encounter_t14()
-		#self.place_encounter_t15()
-		#self.place_encounter_t16()
-		#self.place_encounter_t17()
-		#self.place_encounter_t18()
-		#self.place_encounter_t19()
-		#self.place_encounter_t20()
-		#self.place_encounter_t21()
-		#self.place_encounter_t22()
-		#self.place_encounter_t23()
-		#self.place_encounter_t24()
+		self.place_encounter_t1()
+		self.place_encounter_t2()
+		self.place_encounter_t3()
+		self.place_encounter_t4()
+		self.place_encounter_t5()
+		self.place_encounter_t6()
+		self.place_encounter_t7()
+		self.place_encounter_t8()
+		self.place_encounter_t9()
+		self.place_encounter_t10()
+		self.place_encounter_t11()
+		self.place_encounter_t12()
+		self.place_encounter_t13()
+		self.place_encounter_t14()
+		self.place_encounter_t15()
+		self.place_encounter_t16()
+		self.place_encounter_t17()
+		self.place_encounter_t18()
+		self.place_encounter_t19()
+		self.place_encounter_t20()
+		self.place_encounter_t21()
+		self.place_encounter_t22()
+		self.place_encounter_t23()
+		self.place_encounter_t24()
 		self.place_encounter_t25()
 		self.print_monsters()
 
@@ -157,7 +158,7 @@ class CtrlShatteredTemple(object):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 533, 462) #t21
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 514, 474) #t22
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 499) #t23
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 499) #t23
 		utils_obj.scroll_to_leader()
 		return
 

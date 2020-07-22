@@ -125,7 +125,7 @@ def post_ensure_trapsarency(attachee, args):
 	return
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2, 1)
-modObj.MapToFeat(toee.feat_sneak_attack)
+#modObj.MapToFeat(toee.feat_sneak_attack)
 modObj.AddHook(toee.ET_OnGetAcModifierFromAttacker, toee.EK_NONE, Hide_Ex_OnGetAcModifierFromAttacker, ())
 modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, Hide_Ex_OnGetToHitBonusBase, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, Hide_Ex_OnGetTooltip, ())

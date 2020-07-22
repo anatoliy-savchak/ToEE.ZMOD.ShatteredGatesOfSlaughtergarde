@@ -76,7 +76,7 @@ def SneakAttackEx_OnGetTooltip(attachee, args, evt_obj):
 	return 0
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2)
-modObj.MapToFeat(toee.feat_sneak_attack)
-#modObj.AddHook(toee.ET_OnGetAcModifierFromAttacker, toee.EK_NONE, SneakAttackEx_OnGetAcModifierFromAttacker, ())
-#modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, SneakAttackEx_OnGetToHitBonusBase, ())
-#modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, SneakAttackEx_OnGetTooltip, ())
+#modObj.MapToFeat(toee.feat_sneak_attack)
+modObj.AddHook(toee.ET_OnGetAcModifierFromAttacker, toee.EK_NONE, SneakAttackEx_OnGetAcModifierFromAttacker, ())
+modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, SneakAttackEx_OnGetToHitBonusBase, ())
+modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, SneakAttackEx_OnGetTooltip, ())

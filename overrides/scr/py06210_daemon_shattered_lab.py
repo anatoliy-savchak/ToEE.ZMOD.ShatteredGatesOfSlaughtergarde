@@ -47,6 +47,17 @@ def san_true_seeing(attachee, triggerer):
 			return c.can_sleep()
 	return toee.SLEEP_SAFE
 
+def san_use(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	#print(attachee.id)
+
+	if (attachee.name == 1641): #{1641}{Shattered Lab Exit}
+		toee.game.fade_and_teleport( 0, 0, 0, 5122, 491, 480 ) #sumberton
+	#else:
+	#	attachee.object_flag_set(toee.OF_DONTDRAW)
+	#debug.breakp("san_use")
+	return toee.RUN_DEFAULT
+
 def csl():
 	#print("CtrlShatteredLab.get_name(): {}".format(CtrlShatteredLab.get_name()))
 	o = utils_storage.obj_storage_by_id(SHATERRED_LAB_DAEMON_ID)

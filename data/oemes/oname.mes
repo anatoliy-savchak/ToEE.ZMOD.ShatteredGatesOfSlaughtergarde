@@ -89,6 +89,7 @@
 {1621}{Castle of Lords outside Security Barricade portal}
 {1622}{Verbobonc City Hall doors to tunnels portal}
 {1623}{Castle of Lords inside Security Barricade portal}
+{1641}{Shattered Lab Exit}
 {1643}{Shattered Armory Exit}
 
 {1701}{Homm door 01 prosperous farmer}
@@ -250,7 +251,7 @@
 {5814}{Thrommel's gold belt}
 {5815}{Orb of Sah}
 {5816}{Hoard of gems from Zuggtmoy's throne}
-
+{5710}{Barrel of Spice}
 
 // PC ranges from 6000 - 6399
 {6000}{PC}
