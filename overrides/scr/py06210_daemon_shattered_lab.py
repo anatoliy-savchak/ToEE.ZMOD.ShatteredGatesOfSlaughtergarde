@@ -1,5 +1,6 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric, const_proto_rings
+import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric, const_proto_rings, shattered_consts
+import py00677FarSouthDoor
 
 MAP_ID_SHATERRED_LAB = 5121
 SHATERRED_LAB = "shattered_lab"
@@ -52,7 +53,9 @@ def san_use(attachee, triggerer):
 	#print(attachee.id)
 
 	if (attachee.name == 1641): #{1641}{Shattered Lab Exit}
-		toee.game.fade_and_teleport( 0, 0, 0, 5122, 491, 480 ) #sumberton
+		total_seconds = py00677FarSouthDoor.distance_sumbertone_to_shattered_lab_sec()
+		print("fade_and_teleport total_seconds: {}".format(total_seconds))
+		toee.game.fade_and_teleport(total_seconds, 0, 0, 5122, 538, 510 ) #sumberton
 	#else:
 	#	attachee.object_flag_set(toee.OF_DONTDRAW)
 	#debug.breakp("san_use")
@@ -75,9 +78,11 @@ class CtrlShatteredLab(object):
 		self.encounters_placed = 0
 		self.monsters = dict()
 		self.m2 = list()
-		self.promters = []
 		self.id = None
 		self.haertbeats_since_sleep_status_update = 0
+		self.first_entered_shrs = 0
+		self.alive_monster_count = 0
+		self.patrol_spawned_count = 0
 		return
 
 	def created(self, npc):
@@ -109,36 +114,48 @@ class CtrlShatteredLab(object):
 		return None
 
 	def place_encounters(self):
-		if (self.encounters_placed): return
-		#debugg.breakp("place_encounters")
-		self.encounters_placed = 1
-		self.place_encounter_l1()
-		self.place_encounter_l2()
-		self.place_encounter_l3()
-		self.place_encounter_l4()
-		self.place_encounter_l5()
-		self.place_encounter_l6()
-		self.place_encounter_l7()
-		self.place_encounter_l8()
-		self.place_encounter_l9()
-		self.place_encounter_l10()
-		self.place_encounter_l11()
-		self.place_encounter_l12()
-		self.place_encounter_l13()
-		self.place_encounter_l15()
-		self.place_encounter_l16()
-		self.place_encounter_l17()
-		self.place_encounter_l18()
-		self.place_chests()
+		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
+
+		if (toee.game.quests[shattered_consts.QUERST_SPICY_CHICANERY].state == toee.qs_unknown):
+			print("QUERST_SPICY_CHICANERY => qs_mentioned")
+			toee.game.quests[shattered_consts.QUERST_SPICY_CHICANERY].state = toee.qs_mentioned
+
+		this_entrance_time = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("this_entrance_time == {}".format(this_entrance_time))
+		if (not self.encounters_placed):
+			self.first_entered_shrs = this_entrance_time
+
+		if (not self.encounters_placed and 1):
+			self.place_encounter_l1()
+			self.place_encounter_l2()
+			self.place_encounter_l3()
+			self.place_encounter_l4()
+			self.place_encounter_l5()
+			self.place_encounter_l6()
+			self.place_encounter_l7()
+			self.place_encounter_l8()
+			self.place_encounter_l9()
+			self.place_encounter_l10()
+			self.place_encounter_l11()
+			self.place_encounter_l12()
+			self.place_encounter_l13()
+			self.place_encounter_l15()
+			self.place_encounter_l16()
+			self.place_encounter_l17()
+			self.place_encounter_l18()
+
+		if (not self.encounters_placed and 1):
+			self.place_chests()
+
+		self.encounters_placed += 1
 		self.print_monsters()
 
 		# debug
 		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
-		#toee.game.fade_and_teleport(0, 0, 0, 5121, 466, 476)
+		#toee.game.fade_and_teleport(0, 0, 0, 5121, 466, 476) # Balcony
+		#toee.game.fade_and_teleport(0, 0, 0, 5121, 508, 511) # Library
 		utils_obj.scroll_to_leader()
-		for pc in toee.game.party:
-			pc.condition_add("Break_Object")
 		return
 
 	def place_encounter_l1(self):
@@ -572,28 +589,6 @@ class CtrlShatteredLab(object):
 			f.close()
 		return
 
-	def process_promters(self):
-		#debugg.breakp("process_promters")
-		party = None
-		found = None
-		found_pc = None
-		for info in self.promters:
-			assert isinstance(info, PromterInfo)
-			if (info.displayed_times): continue
-			if (not party): party = toee.game.party
-			for pc in party:
-				dist = pc.distance_to(info.loc)
-				if (dist <= info.distance_trigger):
-					found = info
-					found_pc = pc
-					break
-		if (found):
-			print("found found_pc:{}, with:{}, dialog_line:{}".format(found_pc, toee.game.get_obj_by_id(self.id), found.dialog_line))
-			debugg.breakp("process_promters")
-			found_pc.begin_dialog(toee.game.get_obj_by_id(self.id), found.dialog_line)
-			found.displayed_times += 1
-		return
-
 	def get_monsterinfo(self, encounter_name, monster_code_name):
 		key = "{}_{}_{}".format(SHATERRED_LAB, encounter_name, monster_code_name)
 		if (key in self.monsters):
@@ -789,12 +784,18 @@ class CtrlShatteredLab(object):
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_key_id, 31)
 				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
+				obj.obj_set_int(toee.obj_f_secretdoor_dc, 17) # Break DC 2
+				obj.obj_set_int(toee.obj_f_hp_pts, 20) # Smash HP
+				obj.obj_set_int(toee.obj_f_hp_adj, 5) # Smash Hardeness
 				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_JASPER_BLUE, obj) # Originally ivory figurine
 			elif (nameid == 1302):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_key_id, 32)
 				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
+				obj.obj_set_int(toee.obj_f_secretdoor_dc, 17) # Break DC 2
+				obj.obj_set_int(toee.obj_f_hp_pts, 20) # Smash HP
+				obj.obj_set_int(toee.obj_f_hp_adj, 5) # Smash Hardeness
 				utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_WHITE, obj) # Originally opal earrings
 				utils_item.item_money_create_in_inventory(obj, 0, 12)
 			elif (nameid == 1303):
@@ -802,11 +803,17 @@ class CtrlShatteredLab(object):
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_key_id, 33)
 				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
+				obj.obj_set_int(toee.obj_f_secretdoor_dc, 17) # Break DC 2
+				obj.obj_set_int(toee.obj_f_hp_pts, 20) # Smash HP
+				obj.obj_set_int(toee.obj_f_hp_adj, 5) # Smash Hardeness
 				utils_item.item_money_create_in_inventory(obj, 0, 350) # Originally porcelain plate
 			elif (nameid == 1304):
 				obj.container_flag_set(toee.OCOF_LOCKED)
 				obj.obj_set_int(toee.obj_f_container_lock_dc, 15) 
 				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
+				obj.obj_set_int(toee.obj_f_secretdoor_dc, 17) # Break DC 2
+				obj.obj_set_int(toee.obj_f_hp_pts, 20) # Smash HP
+				obj.obj_set_int(toee.obj_f_hp_adj, 5) # Smash Hardeness
 				utils_item.item_money_create_in_inventory(obj, 0, 33)
 			elif (no == 151):
 				obj.obj_set_int(toee.obj_f_container_pad_i_1, 17) # Break DC
@@ -822,6 +829,10 @@ class CtrlShatteredLab(object):
 					, const_proto_scrolls.PROTO_SCROLL_OF_RAY_OF_ENFEEBLEMENT \
 					, const_proto_scrolls.PROTO_SCROLL_OF_SUMMON_MONSTER_I \
 					, const_proto_scrolls.PROTO_SCROLL_OF_CHARM_PERSON])
+
+				utils_item.item_create_in_inventory(shattered_consts.PROTO_QUEST_ITEM_BARREL_OF_SPICE, obj)
+				#item.scripts[const_toee.sn_insert_item] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
+				#item.scripts[const_toee.sn_remove_item] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
 		return
 	
 	def check_sleep_status_update(self):
@@ -832,14 +843,13 @@ class CtrlShatteredLab(object):
 		return
 
 	def can_sleep(self):
-		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 20):
+		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 40):
 			return toee.SLEEP_SAFE
 
 		alive = 0
 		for info in self.m2:
 			assert isinstance(info, MonsterInfo)
 			if (not info): continue
-			if ("cr" in dir(info) and not info.cr): continue
 			npc = toee.game.get_obj_by_id(info.id)
 			if (not npc): continue
 			if (npc.proto == 14895): continue
@@ -861,6 +871,13 @@ class CtrlShatteredLab(object):
 			exptotal1 += exp // per
 			exptotal += exp
 			print("{}, cr: {}, exp: {}, total: {}, total per one: {}, id: {}".format(info.name, info.cr, exp, exptotal, exptotal1, info.id))
+		return
+
+	def kill_monsters(self):
+		for info in self.m2:
+			assert isinstance(info, MonsterInfo)
+			npc = toee.game.get_obj_by_id(info.id)
+			if (not npc): continue
 		return
 
 

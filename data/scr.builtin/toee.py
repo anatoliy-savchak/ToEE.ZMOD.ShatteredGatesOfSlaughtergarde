@@ -151,6 +151,14 @@ class PyObjHandle(object):
 		"""npc.critter_flag_unset(int[OCF_IS_CONCEALED...]: flag) -> None"""
 		return
 	
+	def critter_kill(self):
+		""" killed by no one """
+		return
+	
+	def critter_kill_by_effect(self, killer = None):
+		"""npc.critter_kill_by_effect(PyObjHandle: killer = None) -> None"""
+		return
+
 	def concealed_set(self, concealed):
 		"""npc.concealed_set(int: concealed) -> None"""
 		return
@@ -561,6 +569,11 @@ class game(object):
 	def create_history_type6_opposed_check(performer, combatant, performer_bonus_list, combatant_bonus_list, performer_roll, combatant_roll, combat_mesline_title, combat_mesline_result, flags):
 		""" game.create_history_type6_opposed_check(PyObjHandle: performer, PyObjHandle: combatant, PyBonusList: performer_bonus_list, PyBonusList: combatant_bonus_list, int: performer_roll, int: combatant_roll, int: combat_mesline_title, int: combat_mesline_result, int: flags) -> int: rollHistId"""
 		return 0
+
+	@staticmethod
+	def fade_and_teleport(time_to_advance, sound_id, movie_id, dest_map, dest_loc_x, dest_loc_y):
+		""" game.fade_and_teleport(int[seconds]: time_to_advance, int: sound_id, int: movie_id, int: dest_map, int: dest_loc_x, int: dest_loc_y) -> int: result"""
+		return
 	
 	@staticmethod
 	def obj_list_range(location, radius, flags):

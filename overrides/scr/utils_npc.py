@@ -172,3 +172,45 @@ def find_pc_closest_to_origin(loc):
 			f = obj
 			fdist = dist
 	return f, fdist
+
+def pc_travel_time_calc_hours(miles):
+	assert isinstance(miles, int)
+	# see PH 162, Table: Movement and Distance
+
+	min_speed = None
+	for pc in toee.game.party:
+		if (not npc_is_alive(pc)): continue
+		speed = pc.stat_level_get(toee.stat_movement_speed)
+		if (min_speed is None): min_speed = speed
+		elif(min_speed > speed): min_speed = speed
+	
+	if (min_speed is None): 
+		print("pc_travel_time_calc_hours => None")
+		return
+
+	print("min_speed raw: {}".format(min_speed))
+	if (min_speed < 15): min_speed = 15
+	elif (min_speed > 40): min_speed = 40
+	print("min_speed: {}".format(min_speed))
+
+	minute_speed = min_speed * 10
+	hour_speed = minute_speed * 60
+	if (min_speed <= 15): hour_speed = 1.5
+	elif (min_speed < 20): hour_speed = 2
+	elif (min_speed <= 30): hour_speed = 3
+	else: hour_speed = 4
+
+	#len_feet = miles * 5280.00
+	#result = len_feet / hour_speed
+	result = miles / hour_speed
+	print("minute_speed: {}, hour_speed: {}, result(hours): {}".format(minute_speed, hour_speed, result))
+	return result
+
+def travel_hours_to_day_hours(travel_hours):
+	assert isinstance(travel_hours, float)
+	max_traveling_time_per_day_in_hours = 8
+	days = (int)(travel_hours / max_traveling_time_per_day_in_hours)
+	leftover = travel_hours - days * max_traveling_time_per_day_in_hours
+	result = days * 24 + leftover
+	print("travel_hours: {}, days: {}, leftover: {}, result: {}".format(travel_hours, days, leftover, result))
+	return result

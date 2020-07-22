@@ -1,5 +1,5 @@
 {1}{[You see a stone manticore, rampant to the dexter. It marks the end point of the roads leading into Sumberton. One leads out west then south-west, one leads south along the river, and one heads north to an east-west highway beyond the city.]}{[You see a stone manticore, rampant to the dexter. It marks the end point of the roads leading into Sumberton. One leads out west then south-west, one leads south along the river, and one heads north to an east-west highway beyond the city.]}{}{}{}{}
-{2}{[Take the west road.]}{}{1}{game.quests[1].state != qs_unknown}{0}{npc.destroy(); game.fade_and_teleport( 0,0,0,5121,518,454 )}
+{2}{[Take the west road.]}{}{1}{game.quests[1].state != qs_unknown}{0}{npc.destroy(); game.fade_and_teleport(distance_sumbertone_to_shattered_lab_sec(),0,0,5121,518,454 )}
 {3}{[Take the north road.]}{}{1}{game.quests[2].state != qs_unknown or game.quests[3].state != qs_unknown}{0}{npc.destroy(); game.fade_and_teleport( 0,0,0,5123,486,475 )}
 {4}{[Take the south road.]}{}{1}{}{0}{npc.destroy()}
 {5}{[No need to leave Sumberton right now.]}{}{1}{}{0}{npc.destroy()}
