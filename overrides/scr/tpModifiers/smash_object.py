@@ -76,12 +76,14 @@ def Smash_Object_Perform(attachee, args, evt_obj):
 			target.portal_flag_unset(toee.OPF_LOCKED)
 			target.portal_flag_unset(toee.OPF_JAMMED)
 			target.object_flag_set(toee.OF_DONTDRAW)
+			target.object_flag_set(toee.OF_EXTINCT)
 			#target.portal_flag_set(toee.OPF_OPEN)
 			portal_open_and_destroy(target)
 		elif (target_type == toee.obj_t_container):
 			target.container_flag_unset(toee.OCOF_LOCKED)
 			target.container_flag_unset(toee.OCOF_JAMMED)
 			target.container_flag_set(toee.OCOF_BUSTED)
+			attachee.anim_goal_use_object(target)
 	except Exception, e:
 		args.set_arg(2, 0)
 		print "Smash_Object_Perform:"

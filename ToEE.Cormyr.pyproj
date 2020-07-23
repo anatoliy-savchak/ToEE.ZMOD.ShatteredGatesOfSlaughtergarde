@@ -70,6 +70,8 @@
     <Content Include="data\oemes\oname.mes" />
     <Content Include="overrides\art\interface\portraits\portraits.mes" />
     <Content Include="overrides\art\meshes\meshes_save.mes" />
+    <Content Include="overrides\dlg\00651Vintra.dlg" />
+    <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="overrides\dlg\06410_daemon_shattered_armory.dlg" />
@@ -223,6 +225,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\py00334generic_spawner.py" />
+    <Compile Include="overrides\scr\py00406Game_Portal.py" />
+    <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
     <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
     <Compile Include="overrides\scr\py05000_knowstone.py">
       <SubType>Code</SubType>
@@ -277,6 +281,9 @@
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
     <Compile Include="overrides\scr\Spell469 - Summon Monster III.py" />
+    <Compile Include="overrides\scr\startup_zmod.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\stat_generator.py">
       <SubType>Code</SubType>
     </Compile>

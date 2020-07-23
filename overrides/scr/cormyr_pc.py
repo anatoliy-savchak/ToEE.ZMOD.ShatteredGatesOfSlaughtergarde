@@ -650,3 +650,64 @@ def c7():
 		npc.identify_all()
 		npc.item_wield_best_all()
 	return
+
+def d():
+	fighter_bard = game.party[0]
+	paladin = game.party[1]
+	monk = game.party[2]
+	rogue_wizard = game.party[3]
+
+	npc = fighter_bard
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
+		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		item_create_in_inventory(PROTO_BOOTS_LEATHER_BOOTS_FINE, npc)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = paladin
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
+		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_GREATSWORD, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = monk
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory_buy(const_proto_cloth.PROTO_CLOTH_MONK_OUTFIT, npc)
+		item_create_in_inventory_buy(const_proto_cloth.PROTO_BOOTS_MONK, npc)
+		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
+		#item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = rogue_wizard
+	if (1==1):
+		item_clear_all(npc)
+		item_create_in_inventory(PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
+		item_create_in_inventory(PROTO_BOOTS_LEATHER_BOOTS_GREEN, npc)
+		item_create_in_inventory(PROTO_WEAPON_SHORTSWORD, npc)
+		#item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory(PROTO_WEAPON_SHORTBOW, npc)
+		item = item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		item_create_in_inventory(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		item_create_in_inventory(PROTO_GENERIC_TOOLS_THIEVES, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+	return

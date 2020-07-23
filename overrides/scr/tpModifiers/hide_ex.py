@@ -54,7 +54,7 @@ def Hide_Ex_OnGetAcModifierFromAttacker(attachee, args, evt_obj):
 def Hide_Ex_OnGetToHitBonusBase(attachee, args, evt_obj):
 	EnsureTransparency(attachee, args)
 	if (not (attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY)): 
-		print("Hide_Ex_OnGetToHitBonusBase not OCF_MOVING_SILENTLY {}".format(attachee))
+		#print("Hide_Ex_OnGetToHitBonusBase not OCF_MOVING_SILENTLY {}".format(attachee))
 		return 0
 
 	if (evt_obj.attack_packet.target != toee.OBJ_HANDLE_NULL):
@@ -125,7 +125,7 @@ def post_ensure_trapsarency(attachee, args):
 	return
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2, 1)
-modObj.MapToFeat(toee.feat_sneak_attack)
+#modObj.MapToFeat(toee.feat_sneak_attack)
 modObj.AddHook(toee.ET_OnGetAcModifierFromAttacker, toee.EK_NONE, Hide_Ex_OnGetAcModifierFromAttacker, ())
 modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, Hide_Ex_OnGetToHitBonusBase, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, Hide_Ex_OnGetTooltip, ())

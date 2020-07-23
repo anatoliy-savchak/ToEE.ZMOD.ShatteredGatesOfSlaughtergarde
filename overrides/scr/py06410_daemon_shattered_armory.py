@@ -30,6 +30,8 @@ def san_use(attachee, triggerer):
 
 	if (attachee.name == 1643): #{1643}{Shattered Armory Exit}
 		toee.game.fade_and_teleport( 0, 0, 0, 5107, 491, 480 ) #shopmap
+	else:
+		attachee.object_flag_set(toee.OF_DONTDRAW)
 	#debug.breakp("san_use")
 	return toee.RUN_DEFAULT
 
@@ -69,10 +71,11 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a1()
 			self.place_encounter_a2()
 			self.place_encounter_a3()
+			self.place_encounter_a4()
 		elif(self.encounters_placed == 1):
 			self.place_encounter_a0()
 		else:
-			self.place_encounter_a4()
+			self.place_encounter_a5()
 
 		self.encounters_placed += 1
 		#self.print_monsters()
@@ -80,7 +83,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 450, 445)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 437, 522) #a2
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 484, 504) #a4
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 484, 504) #a4
 		utils_obj.scroll_to_leader()
 		return
 
@@ -186,4 +189,20 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def activate_encounter_a4(self):
 		print("activate_encounter_a4")
 		self.activate_monster("a4", "giant")
+		return
+
+	def place_encounter_a5(self):
+		self.create_promter_at(utils_obj.sec2loc(453, 503), self.get_dialogid_default(), 50, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Room", const_toee.rotation_0800_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(450, 503), py06411_shattered_armory_encounters.CtrlHalfFiendOgre, const_toee.rotation_0800_oclock, "a5", "ogre")
+		return
+
+	def display_encounter_a5(self):
+		print("display_encounter_a5")
+		self.reveal_monster("a5", "ogre")
+		return
+
+	def activate_encounter_a5(self):
+		print("activate_encounter_a5")
+		self.activate_monster("a5", "ogre")
 		return

@@ -198,3 +198,60 @@ def items_get(npc, unwield_all = 1):
 			if (numItems <=0): break
 	print(result)
 	return result
+
+def acquire_sell_modifier_once():
+	highest_appraise = -999
+	highest_obj = None
+	for obj in toee.game.party:
+		appr = obj.skill_level_get(toee.skill_appraise)
+		if appr > highest_appraise:
+			highest_appraise = appr
+			highest_obj = obj
+
+	result = 0.0
+	if highest_appraise > 19:
+		result = 0.97
+	elif highest_appraise < -13:
+		result = 0
+	else:
+		result = 0.4 + float(highest_appraise)*0.03
+	print("sell_modifier = {}, highest_appraise: {}, highest_obj: {}".format(result, highest_appraise, highest_obj))
+	return result
+
+def autosell(sell_modifier, items):
+	assert isinstance(sell_modifier, float)
+	assert isinstance(items, list)
+	
+	#items = items_get(bag, 0)
+	num = 0
+	total_lb = 0
+	total_gp = 0
+	total_sell = 0.0
+	for item in items:
+		assert isinstance(item, toee.PyObjHandle)
+		num +=1
+		text = item.description
+		worth0 = item.obj_get_int(toee.obj_f_item_worth)
+		worth_gp = worth0 // 100
+		total_gp += worth_gp
+		total_sell += worth0 * sell_modifier
+		worth_gp_sell = worth_gp * sell_modifier
+		x2 = ""
+		x = item.obj_get_int(toee.obj_f_item_quantity)
+		if (x > 1): x2 = " x{}".format(x)
+		text = "{:02d}. {}{}.\n {} gp\n".format(num, text, x2, int(worth_gp_sell))
+		toee.game.create_history_freeform(text)
+
+	if (num):
+		toee.game.create_history_freeform("---------\n")
+		text = "Total sold: {} gp\n".format(int(total_sell / 100))
+		toee.game.create_history_freeform(text)
+	toee.game.create_history_freeform("\n")
+
+	for item in items:
+		item.destroy()
+
+	total_sell_adj = int(total_sell)
+	toee.game.leader.money_adj(total_sell_adj)
+	print("attachee.money_adj: {}".format(total_sell_adj))
+	return

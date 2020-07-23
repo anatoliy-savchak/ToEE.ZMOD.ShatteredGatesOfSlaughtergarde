@@ -223,3 +223,20 @@ class CtrlHillGiant(ctrl_behaviour.CtrlBehaviour):
 
 		npc.feat_add(toee.feat_sunder, 1)
 		return
+
+class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14941
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_obj.obj_scripts_clear(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		#npc.scripts[const_toee.sn_will_kos] = shattered_armory_encounters
+
+		## create inventory
+		#utils_item.item_create_in_inventory(4090, npc) # Hill Giant Club
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_PLUS_1_BLACK, npc)
+		npc.item_wield_best_all()
+		return

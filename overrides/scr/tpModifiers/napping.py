@@ -255,7 +255,7 @@ def Napping_Broadcast_Action(attachee, args, evt_obj):
 
 	return 0
 
-modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - check Listen: 1
+modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 0 - enabled, 1 - listen_distance
 modObj.AddHook(toee.ET_OnConditionAdd, toee.EK_NONE, Napping_OnConditionAdd, ())
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Unconscious, Napping_OnD20Query_Q_Unconscious, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, Napping_OnGetTooltip, ())

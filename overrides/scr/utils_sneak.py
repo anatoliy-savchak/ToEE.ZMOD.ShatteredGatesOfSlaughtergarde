@@ -155,7 +155,8 @@ def npc_make_hide(npc, ignore_observed):
 					break
 
 	if (hidden_not_from_count): return 0
-	npc.float_text_line("Hidden!", toee.tf_blue)
+	if (foes): # make sure chars even see him
+		npc.float_text_line("Hidden!", toee.tf_blue)
 	print("HIDDEN!")
 	npc.anim_goal_interrupt()
 	npc.critter_flag_set(toee.OCF_MOVING_SILENTLY)

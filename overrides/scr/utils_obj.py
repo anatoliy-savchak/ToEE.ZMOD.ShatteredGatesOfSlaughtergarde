@@ -98,7 +98,7 @@ def pop_up_box(message_id):
 
 def obj_float_line_dialog(obj, method, lineId, npc):
 	assert isinstance(obj, toee.PyObjHandle)
-	scriptId = obj.scripts[toee.sn_dialog]
+	scriptId = obj.scripts[const_toee.sn_dialog]
 	if (scriptId <=0): return 0
 	if (method == 0): 
 		obj.float_line(lineId, npc)

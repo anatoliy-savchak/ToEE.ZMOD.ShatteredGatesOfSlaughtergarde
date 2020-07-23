@@ -17,3 +17,9 @@
 {43}{Continue}{}{1}{}{44}{}
 {44}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{}{}{}{csa().display_encounter_a4()}
 {49}{Close}{}{1}{}{0}{csa().activate_encounter_a4()}
+
+
+{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5()}
+{51}{Continue}{}{1}{}{52}{}
+{52}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{}{}{}{}
+{59}{Close}{}{1}{}{0}{csa().activate_encounter_a5()}
