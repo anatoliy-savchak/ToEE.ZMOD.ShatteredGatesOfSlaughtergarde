@@ -298,6 +298,10 @@ class PyObjHandle(object):
 	def get_weapon_type(self):
 		return wt_gauntlet
 	
+	def faction_has(self, faction_num):
+		"""npc.faction_has(int: faction_num) -> int"""
+		return 1
+
 	def faction_add(self, faction_num):
 		"""npc.faction_add(int: faction_num) -> int"""
 		return 1
