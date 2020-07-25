@@ -20,4 +20,4 @@ def distance_sumbertone_to_shattered_lab_sec():
 	miles = 50
 	total_hours = utils_npc.travel_hours_to_day_hours(utils_npc.pc_travel_time_calc_hours(miles))
 	total_seconds = (int)(total_hours * 60*60)
-	return total_hours
+	return total_seconds

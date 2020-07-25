@@ -61,6 +61,11 @@ def OnToHitBonusFromDefenderCondition(attachee, args, evt_obj):
 	evt_obj.bonus_list.add(2, 0, 161) #{161}{Attacker is not Visible}
 	return 0
 
+def S_Killed(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	return 0
+
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 3) # reserved
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Critter_Is_Blinded, OnQueryReturnTrue, ())
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_AOOPossible, OnQueryReturnFalse, ())
@@ -69,4 +74,4 @@ modObj.AddHook(toee.ET_OnGetAttackerConcealmentMissChance, toee.EK_NONE, OnGetAt
 modObj.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, netted_OnGetEffectTooltip, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, netted_OnGetTooltip, ())
 modObj.AddHook(toee.ET_OnToHitBonusFromDefenderCondition, toee.EK_NONE, OnToHitBonusFromDefenderCondition, ())
-
+modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Killed, S_Killed, ())

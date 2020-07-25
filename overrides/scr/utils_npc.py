@@ -66,14 +66,16 @@ def npc_skill_ensure(npc, skill_id, target_skill_value):
 def npc_is_alive(npc, dead_when_negative_hp = 0):
 	assert isinstance(npc, toee.PyObjHandle)
 	object_flags = npc.object_flags_get()
-	if ((object_flags & toee.OF_DESTROYED) or (object_flags & toee.OF_OFF)): return 0
+	if ((object_flags & toee.OF_DESTROYED) or (object_flags & toee.OF_OFF)): 
+		#print("destroyed: {}".format(npc))
+		return 0
 	result = npc.d20_query(toee.Q_Dead)
 	if (result): return 0
 	result = npc.d20_query(toee.Q_Dying)
 	if (result): return 0
 	hp = npc.stat_level_get(toee.stat_hp_current)
 	if (dead_when_negative_hp and hp < 0):
-		return0
+		return 0
 	if (hp <= -10): return 0
 	return 1
 
@@ -214,3 +216,8 @@ def travel_hours_to_day_hours(travel_hours):
 	result = days * 24 + leftover
 	print("travel_hours: {}, days: {}, leftover: {}, result: {}".format(travel_hours, days, leftover, result))
 	return result
+
+def pc_turn_all(rotation):
+	for pc in toee.game.party:
+		pc.rotation = rotation
+	return

@@ -71,6 +71,7 @@
     <Content Include="overrides\art\interface\portraits\portraits.mes" />
     <Content Include="overrides\art\meshes\meshes_save.mes" />
     <Content Include="overrides\dlg\00651Vintra.dlg" />
+    <Content Include="overrides\dlg\00652Maug.dlg" />
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
@@ -224,6 +225,9 @@
     <Compile Include="overrides\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\monster_info.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\py00334generic_spawner.py" />
     <Compile Include="overrides\scr\py00406Game_Portal.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
@@ -271,6 +275,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\py06411_shattered_armory_encounters.py" />
+    <Compile Include="overrides\scr\py32004Trap3_poison_needle.py" />
     <Compile Include="overrides\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>

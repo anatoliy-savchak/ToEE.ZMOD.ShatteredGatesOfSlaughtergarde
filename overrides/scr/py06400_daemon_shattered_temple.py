@@ -1,5 +1,5 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc
+import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc, monster_info
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -778,7 +778,7 @@ class CtrlShatteredTemple(object):
 			if (nameid):
 				npc.obj_set_int(toee.obj_f_critter_description_unknown, nameid)
 				npc.obj_set_int(const_toee.obj_f_description_correct, nameid)
-		info = py06211_shuttered_monster.MonsterInfo()
+		info = monster_info.MonsterInfo()
 		info.id = npc.id
 		info.proto = npc.proto
 		info.cr = utils_npc.npc_get_cr(npc)
@@ -791,7 +791,7 @@ class CtrlShatteredTemple(object):
 		key = "{}_{}_{}".format(shattered_consts.SHATERRED_TEMPLE, encounter_name, monster_code_name)
 		if (key in self.monsters):
 			info = self.monsters[key]
-			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			assert isinstance(info, monster_info.MonsterInfo)
 			return info
 		return None
 
@@ -853,7 +853,7 @@ class CtrlShatteredTemple(object):
 		exptotal1 = 0
 		per = len(toee.game.party)
 		for info in self.m2:
-			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			assert isinstance(info, monster_info.MonsterInfo)
 			#npc = toee.game.get_obj_by_id(info.id)
 			exp = utils_npc.npc_get_cr_exp(toee.game.leader, info.cr)
 			exptotal1 += exp // per
@@ -900,7 +900,7 @@ class CtrlShatteredTemple(object):
 				for m in monsters:
 					obj = m[0]
 					objinfo = m[1]
-					assert isinstance(objinfo, py06211_shuttered_monster.MonsterInfo)
+					assert isinstance(objinfo, monster_info.MonsterInfo)
 					assert isinstance(obj, toee.PyObjHandle)
 					if (objinfo.activated > 1):
 						print("already activated: {}".format(objinfo.activated))

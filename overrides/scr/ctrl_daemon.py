@@ -1,4 +1,4 @@
-import toee, py06122_cormyr_prompter, shattered_consts, utils_toee, const_toee, py06211_shuttered_monster, utils_storage, debug, utils_obj, utils_npc, ctrl_behaviour
+import toee, py06122_cormyr_prompter, shattered_consts, utils_toee, const_toee, utils_storage, debug, utils_obj, utils_npc, ctrl_behaviour, monster_info
 
 class CtrlDaemon(object):
 	def __init__(self):
@@ -64,7 +64,7 @@ class CtrlDaemon(object):
 			if (nameid):
 				npc.obj_set_int(toee.obj_f_critter_description_unknown, nameid)
 				npc.obj_set_int(const_toee.obj_f_description_correct, nameid)
-		info = py06211_shuttered_monster.MonsterInfo()
+		info = monster_info.MonsterInfo()
 		info.id = npc.id
 		info.proto = npc.proto
 		info.cr = utils_npc.npc_get_cr(npc)
@@ -77,7 +77,7 @@ class CtrlDaemon(object):
 		key = "{}_{}_{}".format(self.get_monster_prefix_default(), encounter_name, monster_code_name)
 		if (key in self.monsters):
 			info = self.monsters[key]
-			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			assert isinstance(info, monster_info.MonsterInfo)
 			return info
 		return None
 

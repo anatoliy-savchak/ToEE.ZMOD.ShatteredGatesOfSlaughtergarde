@@ -681,8 +681,8 @@ class PyRandomEncounter(object):
 
 class PyRandomEncounterSetup(object):
 	def __init__(self):
-		self.terrain = 0
-		self.flags = 0
+		self.terrain = TERRAIN_SCRUB
+		self.flags = ES_F_NONE
 		return
 
 class PyBonusList(object):
@@ -4075,3 +4075,12 @@ SORT_TARGET_LIST_BY_DIST_FROM_CASTER = 4
 RADIAL_MENU_PARAM_MIN_SETTING = 1
 RADIAL_MENU_PARAM_MAX_SETTING = 2
 RADIAL_MENU_PARAM_ACTUAL_SETTING = 3
+
+# PyRandomEncounterSetup
+TERRAIN_SCRUB = 0
+TERRAIN_F_ROAD = 1
+TERRAIN_FOREST = 2
+TERRAIN_SWAMP = 4
+TERRAIN_RIVERSIDE = 6
+ES_F_NONE = 0
+ES_F_SLEEP_ENCOUNTER = 1
