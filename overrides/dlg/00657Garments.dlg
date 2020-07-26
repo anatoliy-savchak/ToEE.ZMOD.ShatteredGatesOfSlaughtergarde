@@ -62,9 +62,9 @@
 {100}{Welcome back, how can I help?}{Welcome back, how can I help?}{}{}{}{}
 {101}{B:Sell me garments, please!}{}{1}{}{0}{pc.barter(npc)}
 {102}{Could you tell me again what you sell?}{}{1}{get_1(npc)}{16}{}
-{103}{So what's the news from Shul Shennek?}{}{1}{}{120}{}
+{103}{So what's the news from Shul Shennek?}{}{1}{not get_2(npc)}{120}{npc_2(npc)}
 {104}{Just browsing.}{}{1}{}{0}{}
-
+{105}{I have a some documents here that are in an unknown language and I know Elves are good with languages, would you mind taking a look?}{}{1}{anyone( pc.group_list(), "has_item", 11400) or anyone( pc.group_list(), "has_item", 11401)}{150}{}
 
 
 {120}{Not the best, actually. There was recently a Drow attack. I mean a SECOND Drow attack.}{Not the best, actually. There was recently a Drow attack. Sorry, a SECOND Drow attack.}{}{}{}{}
@@ -80,6 +80,45 @@
 {141}{B:Yes.}{}{1}{}{0}{pc.barter(npc)}
 {142}{No thank you.}{}{1}{}{0}{}
 {143}{Do you buy second hand or looted clothes?}{}{1}{not get_2(npc)}{70}{}
+
+{150}{[She gives a barely audible sigh and says] I guess so, what do you have?}{[She gives a barely audible sigh and says] I guess so, what do you have?}{}{}{}{}
+{151}{[Show her the drawing.]}{}{1}{anyone( pc.group_list(), "has_item", 11400)}{160}{}
+{152}{[Show her the map.]}{}{1}{anyone( pc.group_list(), "has_item", 11401)}{170}{}
+{153}{Never mind.}{}{1}{}{0}{}
+
+{160}{[She holds the parchment carefully.] It appears to be a drawing of a Gate of some sort. [The blood drains from her face.] The language is Undercommon... it says, "Ruined! No salvageable sigils." [She thrusts it back to you.] I do not know where you got this but I advise you to tread carefully.}{[She holds the parchment carefully.] It appears to be a drawing of a Gate of some sort. [The blood drains from her face.] The language is Undercommon... it says, "Ruined! No salvageable sigils." [She thrusts it back to you.] I do not know where you got this but I advise you to tread carefully.}{}{}{}{}
+{162}{[Show her the map.]}{}{1}{anyone( pc.group_list(), "has_item", 11401)}{165}{}
+{163}{E:}{}{1}{}{0}{}
+
+{165}{If I must. [She takes the parchment gingerly.] It says, "Surrinak Hunting Lodge", and seems to be a map through the Redbark Forest. This [she points] is marked as "cabin", and these stairs are marked "trapdoor hearthstone". And there is a demonic arch. You seem to have found a path down to the Deep Realm. Get it away from me.}{If I must. [She takes the parchment gingerly.] It says, "Surrinak Hunting Lodge", and seems to be a map through the Redbark Forest. This [she points] is marked as "cabin", and these stairs are marked "trapdoor hearthstone". And there is a demonic arch. You seem to have found a path down to the Deep Realm. Get it away from me.}{}{}{}{game.global_flags[12] = 1}
+{166}{Why, what is wrong?}{}{1}{}{180}{}
+{167}{I will follow this map to Surrinak and get to the bottom of this.}{}{1}{}{0}{}
+{168}{You said the Drow that plague Shel Shennek came from the direction of Surrinak, could this be related?}{}{1}{get_2(npc)}{190}{}
+{169}{E:}{}{1}{}{0}{}
+
+
+{170}{[She takes the parchment gingerly.] The language is Undercommon. [She appears to hesitate.] The title says, "Surrinak Hunting Lodge". It seems to be a map through the Redbark Forest. This word is "cabin", and these stairs are marked "trapdoor hearthstone". And there is a demonic arch. [She thrusts it back to you.]}{[She takes the parchment gingerly.] The language is Undercommon. [She appears to hesitate.] The title says, "Surrinak Hunting Lodge". It seems to be a map through the Redbark Forest. This word is "cabin", and these stairs are marked "trapdoor hearthstone". And there is a demonic arch. [She thrusts it back to you.]}{}{}{}{game.global_flags[12] = 1}
+{171}{[Show her the drawings.]}{}{1}{anyone( pc.group_list(), "has_item", 11400)}{175}{}
+{172}{I will follow this map to Surrinak and get to the bottom of this.}{}{1}{}{0}{}
+{173}{What is this all about?}{}{1}{not anyone( pc.group_list(), "has_item", 11400)}{180}{}
+{174}{E:}{}{1}{}{0}{}
+
+{175}{[She holds the parchment carefully.] There appears to be a drawing of a Gate of some sort. The language is again Undercommon... it says, "Ruined! No salvageable sigils." [She thrusts it back to you.] I do not know where you got this but I advise you to tread carefully.}{[She holds the parchment carefully.] There appears to be a drawing of a Gate of some sort. The language is again Undercommon... it says, "Ruined! No salvageable sigils." [She thrusts it back to you.] I do not know where you got this but I advise you to tread carefully.}{}{}{}{}
+{176}{Why, what is wrong?}{}{1}{}{180}{}
+{177}{E:}{}{1}{}{0}{}
+
+{180}{Undercommon is the language of the Deep Realms - those creatures that live in the deep places of the world. Illithids, Drow, snyads, beholders... I want nothing to do with any of it. Please take yourself from my sight.}{Undercommon is the language of the Deep Realms - those creatures that live in the deep places of the world. Illithids, Drow, snyads, beholders... I want nothing to do with any of it. Please take yourself from my sight.}{}{}{}{}
+{181}{Wait... you said the Drow that plague Shul Shennek came from the direction of Surrinak, couldn't this be related?}{}{1}{get_2(npc)}{190}{}
+{182}{My apologies.}{}{1}{}{0}{}
+{183}{F:}{}{1}{}{0}{}
+
+
+{190}{Other Deep races besides the Drow use Undercommon, but yes, there could be something there. I suspect you will find nothing good when you investigate this. [She turns away!]}{Other Deep races besides the Drow use Undercommon, but yes, there could be something there. I suspect you will find nothing good when you investigate this. [She turns away!]}{}{}{}{away(npc)}
+{191}{I will get to the bottom of this.}{}{1}{}{0}{}
+{192}{Whatever.}{}{1}{}{0}{}
+{193}{But I came here to shop!}{}{1}{}{0}{}
+
+
 
 {200}{Well, they do nothing openly, of course... but I have heard rumours of other attacks, to the north. And the raiders who hit us certainly came from the north, the direction of the Tangletuft Mountains.}{Well, they do nothing openly, of course... but I have heard rumours of other attacks, to the north. And the raiders who hit us certainly came from the north, the direction of the Tangletuft Mountains.}{}{}{}{}
 {201}{Drows in the mountains? Somewhere subterranean seems more likely...}{}{1}{game.quests[2].state == qs_unknown and game.quests[3].state == qs_unknown}{205}{}	// not been to Temple

@@ -1,4 +1,4 @@
-import toee, py06122_cormyr_prompter, shattered_consts, utils_toee, const_toee, utils_storage, debug, utils_obj, utils_npc, ctrl_behaviour, monster_info
+import toee, py06122_cormyr_prompter, shattered_consts, utils_toee, const_toee, utils_storage, debug, utils_obj, utils_npc, ctrl_behaviour, monster_info, utils_item
 
 class CtrlDaemon(object):
 	def __init__(self):
@@ -7,6 +7,12 @@ class CtrlDaemon(object):
 		self.m2 = list()
 		self.id = None
 		self.haertbeats_since_sleep_status_update = 0
+		self.first_entered_shrs = 0
+		self.last_entered_shrs = 0
+		self.last_leave_shrs = 0
+		self.last_patrol_spawned_shrs = 0
+		self.patrol_spawned_count = 0
+		self.factions_existance = dict()
 		return
 
 	@classmethod
@@ -19,10 +25,25 @@ class CtrlDaemon(object):
 			ctrl = cls()
 			ctrl.created(npc)
 			utils_storage.obj_storage(npc).data[cls.get_name()] = ctrl
+			map_default = ctrl.get_map_default()
+			if (map_default):
+				CtrlDaemon.set_daemon(npc.id, map_default)
 		return ctrl
+
+	@classmethod
+	def get_from_obj(cls, npc):
+		data = utils_storage.obj_storage(npc).data
+		if (cls.get_name() in data):
+			return data[cls.get_name()]
+		return None
 
 	def created(self, npc):
 		self.id = npc.id
+		npc.origin = self.get_map_default()
+		nameid = utils_toee.make_custom_name("Daemon-{}".format(npc.origin))
+		if (nameid):
+			npc.obj_set_int(toee.obj_f_critter_description_unknown, nameid)
+			npc.obj_set_int(const_toee.obj_f_description_correct, nameid)
 		return
 
 	@classmethod
@@ -36,6 +57,20 @@ class CtrlDaemon(object):
 			return data[cls.get_name()]
 		return None
 
+	def do_enter(self):
+		this_entrance_time = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("this_entrance_time == {}".format(this_entrance_time))
+		if (not self.encounters_placed):
+			self.first_entered_shrs = this_entrance_time
+		self.last_entered_shrs = this_entrance_time
+		if (not self.last_leave_shrs):
+			self.last_leave_shrs = this_entrance_time
+		return
+
+	def do_leave(self):
+		self.last_leave_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		return
+
 	def create_promter_at(self, loc, dialog_script_id, line_id, radar_radius_ft, method, new_name, rotation = None):
 		npc = py06122_cormyr_prompter.create_promter_at(loc, dialog_script_id, line_id, radar_radius_ft, method, new_name)
 		print("promter {}:{} placed {} {}".format(line_id, new_name, npc.id, npc))
@@ -44,10 +79,13 @@ class CtrlDaemon(object):
 		return npc
 
 	def get_monster_faction_default(self, npc):
-		return shattered_consts.FACTION_SLAUGHTERGARDE_LABORATORY
+		return shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN
 
 	def get_monster_prefix_default(self):
-		return shattered_consts.SHATERRED_TEMPLE
+		return None
+
+	def get_map_default(self, npc):
+		return 0
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		assert isinstance(npc, toee.PyObjHandle)
@@ -148,6 +186,53 @@ class CtrlDaemon(object):
 				utils_obj.obj_timed_destroy(obj, 500, 1)
 		return
 
+	def check_npc_enemy(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		result = npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE)
+		return result
+
+	def kill_enemy_all(self):
+		sm = 0.0
+		killer = toee.game.leader
+		for info in self.m2:
+			assert isinstance(info, monster_info.MonsterInfo)
+			npc = toee.game.get_obj_by_id(info.id)
+			if (not npc): continue
+			villian = self.check_npc_enemy(npc)
+			if (not villian): continue
+			if (not sm):
+				sm = utils_item.acquire_sell_modifier_once()
+			print("Killing {}, {}".format(info.name, npc))
+
+			items = utils_item.items_get(npc, 1)
+			if (items):
+				recieve_items = list()
+				i = len(items)
+				while i > 0:
+					i -= 1
+					item = items[i]
+					assert isinstance(item, toee.PyObjHandle)
+					if (not item.type in [toee.obj_t_weapon, toee.obj_t_ammo, toee.obj_t_armor, toee.obj_t_money, toee.obj_t_food]): 
+						recieve_items.append(item)
+						continue
+					item_flags = item.item_flags_get()
+					if (item_flags & toee.OIF_IS_MAGICAL):
+						recieve_items.append(item)
+
+				for item in recieve_items:
+					items.remove(item)
+					if (not killer.item_get(item)):
+						for npc in toee.game.party:
+							if (npc != killer):
+								if (killer.item_get(item)):
+									break
+
+				if (items):
+					utils_item.autosell(sm, items)
+
+			npc.critter_kill_by_effect(killer)
+		return
+
 	@staticmethod
 	def get_current_daemon():
 		sglobal = utils_storage.obj_storage_by_id("global")
@@ -167,3 +252,84 @@ class CtrlDaemon(object):
 		if (sglobal):
 			sglobal.data["daemon-{}".format(map_id)] = deamon_id
 		return None
+
+	def destroy_all_npc(self):
+		myself = toee.game.get_obj_by_id(self.id)
+		for npc in toee.game.obj_list_range(myself.location, 200, toee.OLC_NPC):
+			if (npc.id == self.id): continue
+			npc.destroy()
+		return
+
+	# Sleep interface
+	def can_sleep(self):
+		for npc in toee.game.obj_list_vicinity(toee.game.leader.location, toee.OLC_NPC):
+			if (utils_npc.npc_is_alive(npc, 1) and (npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE))): 
+				return toee.SLEEP_IMPOSSIBLE
+
+		spawn_left = 0
+		if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+			spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+		if (spawn_left):
+			return toee.SLEEP_DANGEROUS
+
+		return toee.SLEEP_SAFE
+
+	# Sleep interface
+	def encounter_exists(self, setup, encounter):
+		assert isinstance(setup, toee.PyRandomEncounterSetup)
+		assert isinstance(encounter, toee.PyRandomEncounter)
+		return 0
+
+	# Sleep interface
+	def encounter_create(self, encounter):
+		assert isinstance(encounter, toee.PyRandomEncounter)
+		return
+
+	# Storage events
+	def storage_skip_load(self, key, val):
+		if (key == "m2"): return 1
+		return 0
+
+	# Storage events
+	def storage_data_loaded(self):
+		self.m2 = list()
+		if (self.monsters):
+			for val in self.monsters.itervalues():
+				if (val and not val in self.m2):
+					self.m2.append(val)
+		return
+
+	# Storage events
+	def storage_data_loaded_all(self):
+		print("storage_data_loaded_all map: {}".format(toee.game.leader.map))
+		if (toee.game.leader.map != self.get_map_default()): return
+		to_del = list()
+		objs = utils_storage.Storage().objs
+		assert isinstance(objs, dict)
+		for o in objs.itervalues():
+			assert isinstance(o, utils_storage.ObjectStorage)
+			if (o.name.startswith("G_") and o.origin == self.get_map_default()):
+				npc = toee.game.get_obj_by_id(o.name)
+				#if (npc):print("npc hp: {}, npc: {}".format(utils_npc.npc_hp_current(npc), npc))
+				if (not npc or (npc.object_flags_get() & toee.OF_DESTROYED) or utils_npc.npc_hp_current(npc) < 0):
+					to_del.append(o)
+		print("drop objects, count: {}".format(len(to_del)))
+		for o in to_del:
+			del objs[o.name]
+		return
+
+	def factions_existance_refresh(self):
+		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		return
+
+	def critter_dying(self, attachee, triggerer):
+		self.factions_existance_refresh()
+		return
+
+	def check_sleep_status_update(self, force = 0):
+		self.haertbeats_since_sleep_status_update +=1
+		if (force or self.haertbeats_since_sleep_status_update > 5):
+			self.haertbeats_since_sleep_status_update = 0
+			toee.game.sleep_status_update()
+		return

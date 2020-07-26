@@ -122,23 +122,23 @@ class CtrlShatteredLab(object):
 			self.last_leave_shrs = this_entrance_time
 
 		if (not self.encounters_placed and 1):
-			#self.place_encounter_l1()
+			self.place_encounter_l1()
 			self.place_encounter_l2()
-			#self.place_encounter_l3()
-			#self.place_encounter_l4()
-			#self.place_encounter_l5()
-			#self.place_encounter_l6()
-			#self.place_encounter_l7()
-			#self.place_encounter_l8()
-			#self.place_encounter_l9()
-			#self.place_encounter_l10()
-			#self.place_encounter_l11()
-			#self.place_encounter_l12()
-			#self.place_encounter_l13()
-			#self.place_encounter_l15()
-			#self.place_encounter_l16()
-			#self.place_encounter_l17()
-			#self.place_encounter_l18()
+			self.place_encounter_l3()
+			self.place_encounter_l4()
+			self.place_encounter_l5()
+			self.place_encounter_l6()
+			self.place_encounter_l7()
+			self.place_encounter_l8()
+			self.place_encounter_l9()
+			self.place_encounter_l10()
+			self.place_encounter_l11()
+			self.place_encounter_l12()
+			self.place_encounter_l13()
+			self.place_encounter_l15()
+			self.place_encounter_l16()
+			self.place_encounter_l17()
+			self.place_encounter_l18()
 
 		if (not self.encounters_placed and 1):
 			self.place_chests()
@@ -157,6 +157,9 @@ class CtrlShatteredLab(object):
 
 		self.check_sleep_status_update(1)
 		self.check_entrance_patrol()
+
+		self.kill_enemy_all()
+		self.remove_promters_all()
 		return
 
 	def place_encounter_patrol(self, near_pc):
@@ -167,9 +170,9 @@ class CtrlShatteredLab(object):
 		loc2 = utils_obj.sec2loc(517, 467)
 		loc3 = utils_obj.sec2loc(519, 470)
 		if (near_pc):
-			loc1 = toee.game.leader.location - 6
-			loc2 = loc1 - 6
-			loc4 = loc2 - 6
+			loc1 = toee.game.leader.location - 2
+			loc2 = loc1
+			loc4 = loc2
 
 		self.create_goblin_scrounger_at(loc1, const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
 		self.create_goblin_scrounger_at(loc2, const_toee.rotation_1100_oclock, "l_patrol", "goblin2", 0, 1)
@@ -832,20 +835,52 @@ class CtrlShatteredLab(object):
 			print("{}, cr: {}, exp: {}, total: {}, total per one: {}, id: {}".format(info.name, info.cr, exp, exptotal, exptotal1, info.id))
 		return
 
-	def kill_monsters(self):
+	def kill_enemy_all(self):
 		sm = 0.0
 		killer = toee.game.leader
 		for info in self.m2:
 			assert isinstance(info, monster_info.MonsterInfo)
 			npc = toee.game.get_obj_by_id(info.id)
 			if (not npc): continue
-			villian = npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN)
+			villian = self.check_npc_enemy(npc)
 			if (not villian): continue
 			if (not sm):
 				sm = utils_item.acquire_sell_modifier_once()
 			print("Killing {}, {}".format(info.name, npc))
-			utils_item.autosell(sm, utils_item.items_get(npc, 1))
+
+			items = utils_item.items_get(npc, 1)
+			if (items):
+				recieve_items = list()
+				i = len(items)
+				while i > 0:
+					i -= 1
+					item = items[i]
+					assert isinstance(item, toee.PyObjHandle)
+					if (not item.type in [toee.obj_t_weapon, toee.obj_t_ammo, toee.obj_t_armor, toee.obj_t_money, toee.obj_t_food]): 
+						recieve_items.append(item)
+						continue
+					item_flags = item.item_flags_get()
+					if (item_flags & toee.OIF_IS_MAGICAL):
+						recieve_items.append(item)
+
+				for item in recieve_items:
+					items.remove(item)
+					if (not killer.item_get(item)):
+						for npc in toee.game.party:
+							if (npc != killer):
+								if (killer.item_get(item)):
+									break
+
+				if (items):
+					utils_item.autosell(sm, items)
+
 			npc.critter_kill_by_effect(killer)
+		return
+
+	def remove_promters_all(self):
+		for npc in toee.game.obj_list_range(toee.game.leader.location, 200, toee.OLC_NPC):
+			if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER):
+				npc.destroy()
 		return
 
 	def check_entrance_patrol(self):
@@ -913,6 +948,7 @@ class CtrlShatteredLab(object):
 			if (past_since < 20): return 0
 
 		encounter.id = 6210
+		encounter.flags |= toee.ES_F_SLEEP_ENCOUNTER
 		return 1
 
 	# Sleep interface
@@ -944,11 +980,15 @@ class CtrlShatteredLab(object):
 			assert isinstance(o, utils_storage.ObjectStorage)
 			if (o.name.startswith("G_") and o.origin == shattered_consts.MAP_ID_SHATERRED_LAB):
 				npc = toee.game.get_obj_by_id(o.name)
-				if (npc):
-					print("npc hp: {}, npc: {}".format(utils_npc.npc_hp_current(npc), npc))
+				#if (npc):print("npc hp: {}, npc: {}".format(utils_npc.npc_hp_current(npc), npc))
 				if (not npc or (npc.object_flags_get() & toee.OF_DESTROYED) or utils_npc.npc_hp_current(npc) < 0):
 					to_del.append(o)
-		print("drop objects, count: {}, list: {}".format(len(to_del), to_del))
+		print("drop objects, count: {}".format(len(to_del)))
 		for o in to_del:
 			del objs[o.name]
 		return
+
+	def check_npc_enemy(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		result = npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE)
+		return result

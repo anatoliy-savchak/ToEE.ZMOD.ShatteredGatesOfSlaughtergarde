@@ -7,3 +7,30 @@
 {100}{What did you find?}{What did you find?}{}{}{}{}
 {101}{B:I'll take these...}{}{1}{}{0}{pc.barter(npc)}
 {103}{F:}{}{1}{}{0}{}
+{105}{I have a map here, would you mind taking a look and see if you recognise any of the landmarks?}{}{1}{anyone( pc.group_list(), "has_item", 11401)}{150}{}
+
+{150}{May I ask why me?}{May I ask why me?}{}{}{}{}
+{151}{The official at the Gate recommended you, said you were well travelled.}{}{1}{game.global_flags[13] == 1}{160}{}
+{152}{The goods you sell are ideal for those who travel, among other things. You seem the logical person to ask about maps.}{}{12}{}{170}{}
+{153}{I'm pretty much asking everyone.}{}{1}{}{170}{}
+
+{160}{Norbert? Yes, I guess he would know, he makes it his business to keep up with what is going on. I was a traveller in my youth, saw much and more of the Valley, then 'retired' to run this shop. But enough about me, show me this map!}{Norbert? Yes, I guess he would know, he makes it his business to keep up with what is going on. I was a traveller in my youth, saw much and more of the Valley, then 'retired' to run this shop. But enough about me, show me this map!}{}{}{}{}
+{161}{Indeed I shall.}{}{1}{}{170}{}
+
+
+
+{170}{Fair enough then. [He looks closely at the map for several minutes.] It's very crudely drawn, but the forest here seems to match the Redbark Grove. See, the long side of the forest is against the mountains - in the Valley, only the Redbark Grove and the Grove of Icicles have that. I can't read the writing, though.}{Fair enough then. [He looks closely at the map for several minutes.] It's very crudely drawn, but the forest here seems to match the Redbark Grove. See, the long side of the forest is against the mountains - in the Valley, only the Redbark Grove and the Grove of Icicles have that. I can't read the writing, though.}{}{}{}{}
+{171}{It's Undercommon, it identifies the area as Surrinak.}{}{1}{game.global_flags[12] == 1}{180}{}
+{172}{That's fine, I will head for the Redbark Grove and investigate.}{}{1}{}{185}{}
+
+{175}{[He turns away!]}{[He turns away!]}{}{}{}{away(npc)}
+{176}{I'm childish, I know.}{}{1}{}{0}{npc.reaction_adj( pc, -5 )}
+{177}{A:}{}{1}{}{0}{}
+
+{180}{You know this is the forest around Surrinak? Then why waste my time?}{You know this is the forest around Surrinak? Then why waste my time?}{}{}{}{}
+{181}{Scat and giggles?}{}{1}{}{175}{}
+{182}{I just wanted confirmation from someone knowledgable.}{}{1}{pc.skill_level_get(npc, skill_diplomacy) >= 5}{185}{}
+{183}{F:}{}{1}{}{0}{}
+
+{185}{Sure. Take the north road out of town, and head east for Surrinak. You pass through the Grove to get there. But beware - the Surrinaks do not approve of outsiders and patrol their lands vigorously.}{Sure. Take the north road out of town, and head east for Surrinak. You pass through the Grove to get there. But beware - the Surrinaks do not approve of outsiders and patrol their lands vigorously.}{}{}{}{game.global_flags[12] = 1}
+{186}{Thanks.}{}{1}{}{0}{game.global_flags[12] = 1}

@@ -1,4 +1,4 @@
-import toee, const_toee, debug, utils_storage, ctrl_daemon
+import toee, const_toee, debug, utils_storage, ctrl_daemon, traceback, sys
 
 # Sleep interface
 def can_sleep():
@@ -16,6 +16,7 @@ def can_sleep():
 def encounter_exists(setup, encounter):
 	assert isinstance(setup, toee.PyRandomEncounterSetup)
 	assert isinstance(encounter, toee.PyRandomEncounter)
+	#print("encounter_exists setup: {}, encounter: {}".format(setup, encounter))
 
 	if (setup.flags & toee.ES_F_SLEEP_ENCOUNTER):
 		daemon_ctrl = ctrl_daemon.CtrlDaemon.get_current_daemon()
@@ -28,9 +29,16 @@ def encounter_exists(setup, encounter):
 # Sleep interface
 def encounter_create(encounter):
 	assert isinstance(encounter, toee.PyRandomEncounter)
-
-	if (setup.flags & toee.ES_F_SLEEP_ENCOUNTER):
-		daemon_ctrl = ctrl_daemon.CtrlDaemon.get_current_daemon()
-		if (daemon_ctrl and ("encounter_create" in dir(daemon_ctrl))):
-			daemon_ctrl.encounter_create(encounter)
+	print("encounter_create encounter.flage: {}".format(encounter.flags))
+	try:
+		if (encounter.flags & toee.ES_F_SLEEP_ENCOUNTER):
+			daemon_ctrl = ctrl_daemon.CtrlDaemon.get_current_daemon()
+			if (daemon_ctrl and ("encounter_create" in dir(daemon_ctrl))):
+				daemon_ctrl.encounter_create(encounter)
+	except Exception, e:
+		print "!!!!!!!!!!!!! encounter_create error:"
+		print '-'*60
+		traceback.print_exc(file=sys.stdout)
+		print '-'*60		
+		debug.breakp("error")
 	return
