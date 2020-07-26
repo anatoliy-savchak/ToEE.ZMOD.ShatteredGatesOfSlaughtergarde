@@ -1,6 +1,6 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
 import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric, const_proto_rings, shattered_consts
-import py00677FarSouthDoor, monster_info
+import py00677FarSouthDoor, monster_info, ctrl_daemon
 
 DEBUG_WRITE_MONSTERS_PATH = None #"d:\\temp\\monsters.txt"
 
@@ -18,26 +18,10 @@ def san_heartbeat(attachee, triggerer):
 	leader = toee.game.leader
 	lscripts = leader.scripts
 	if (leader.map == shattered_consts.MAP_ID_SHATERRED_LAB):
-		if (lscripts[const_toee.sn_true_seeing] != 6210):
-			lscripts[const_toee.sn_true_seeing] = 6210
-			print("lscripts[const_toee.sn_true_seeing] = 6210")
 		c = csl()
 		if (c):
 			c.check_sleep_status_update()
-	else:
-		if (lscripts[const_toee.sn_true_seeing] == 6210):
-			lscripts[const_toee.sn_true_seeing] = 0
-			print("lscripts[const_toee.sn_true_seeing] = 0")
 	return toee.RUN_DEFAULT
-
-def san_true_seeing(attachee, triggerer):
-	assert isinstance(attachee, toee.PyObjHandle)
-	leader = toee.game.leader
-	if (leader.map == shattered_consts.MAP_ID_SHATERRED_LAB):
-		c = csl()
-		if (c):
-			return c.can_sleep()
-	return toee.SLEEP_SAFE
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -79,10 +63,11 @@ class CtrlShatteredLab(object):
 		self.monsters = dict()
 		self.m2 = list()
 		self.id = None
-		self.haertbeats_since_sleep_status_update = 0
+		self.haertbeats_since_sleep_status_update = -1
 		self.first_entered_shrs = 0
 		self.last_entered_shrs = 0
 		self.last_leave_shrs = 0
+		self.last_patrol_spawned_shrs = 0
 		self.patrol_spawned_count = 0
 		self.factions_existance = dict()
 		return
@@ -90,6 +75,11 @@ class CtrlShatteredLab(object):
 	def created(self, npc):
 		self.id = npc.id
 		npc.scripts[const_toee.sn_dialog] = 6210
+		npc.origin = shattered_consts.MAP_ID_SHATERRED_LAB
+		nameid = utils_toee.make_custom_name("Daemon-{}".format(shattered_consts.SHATERRED_LAB))
+		if (nameid):
+			npc.obj_set_int(toee.obj_f_critter_description_unknown, nameid)
+			npc.obj_set_int(const_toee.obj_f_description_correct, nameid)
 		return
 
 	@staticmethod
@@ -104,8 +94,9 @@ class CtrlShatteredLab(object):
 			ctrl = data[cls.get_name()]
 		else:
 			ctrl = cls()
-			ctrl.created(npc)
 			utils_storage.obj_storage(npc).data[cls.get_name()] = ctrl
+			ctrl_daemon.CtrlDaemon.set_daemon(npc.id, shattered_consts.MAP_ID_SHATERRED_LAB)
+			ctrl.created(npc)
 		return ctrl
 
 	@classmethod
@@ -138,7 +129,7 @@ class CtrlShatteredLab(object):
 			#self.place_encounter_l5()
 			#self.place_encounter_l6()
 			#self.place_encounter_l7()
-			self.place_encounter_l8()
+			#self.place_encounter_l8()
 			#self.place_encounter_l9()
 			#self.place_encounter_l10()
 			#self.place_encounter_l11()
@@ -155,7 +146,7 @@ class CtrlShatteredLab(object):
 		self.encounters_placed += 1
 		utils_npc.pc_turn_all(const_toee.rotation_0400_oclock)
 		#self.print_monsters()
-		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		self.factions_existance_refresh()
 		# debug
 		self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
@@ -164,15 +155,25 @@ class CtrlShatteredLab(object):
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 461, 449) # Maug
 		utils_obj.scroll_to_leader()
 
+		self.check_sleep_status_update(1)
 		self.check_entrance_patrol()
 		return
 
 	def place_encounter_patrol(self, near_pc):
 		self.patrol_spawned_count += 1
+		self.last_patrol_spawned_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
 		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
-		self.create_goblin_scrounger_at(utils_obj.sec2loc(519, 467), const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
-		self.create_goblin_scrounger_at(utils_obj.sec2loc(517, 467), const_toee.rotation_1100_oclock, "l_patrol", "goblin2", 0, 1)
-		self.create_goblin_scrounger_at(utils_obj.sec2loc(519, 470), const_toee.rotation_1100_oclock, "l_patrol", "goblin3", 0, 1)
+		loc1 = utils_obj.sec2loc(519, 467)
+		loc2 = utils_obj.sec2loc(517, 467)
+		loc3 = utils_obj.sec2loc(519, 470)
+		if (near_pc):
+			loc1 = toee.game.leader.location - 6
+			loc2 = loc1 - 6
+			loc4 = loc2 - 6
+
+		self.create_goblin_scrounger_at(loc1, const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
+		self.create_goblin_scrounger_at(loc2, const_toee.rotation_1100_oclock, "l_patrol", "goblin2", 0, 1)
+		self.create_goblin_scrounger_at(loc3, const_toee.rotation_1100_oclock, "l_patrol", "goblin3", 0, 1)
 		return
 
 	def place_encounter_l1(self):
@@ -395,7 +396,7 @@ class CtrlShatteredLab(object):
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = const_toee.rotation_0500_oclock
-			info = self.monster_setup(npc, "l13", "lizard", None, 0, 1)
+			info = self.monster_setup(npc, "l13", "lizard", None, 0, 1, shattered_consts.FACTION_WILDERNESS_HOSTILE)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 		return
 
@@ -487,6 +488,7 @@ class CtrlShatteredLab(object):
 		self.m2.append(info)
 		self.monsters[info.name] = info
 		npc.scripts[const_toee.sn_dying] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
+		npc.origin = shattered_consts.MAP_ID_SHATERRED_LAB
 		return info
 
 	def create_dire_rat_at(self, npc_loc, rot, encounter, code_name):
@@ -812,28 +814,8 @@ class CtrlShatteredLab(object):
 				#item.scripts[const_toee.sn_insert_item] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
 				#item.scripts[const_toee.sn_remove_item] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
 		return
-	
-	def check_sleep_status_update(self):
-		self.haertbeats_since_sleep_status_update +=1
-		if (self.haertbeats_since_sleep_status_update > 10):
-			self.haertbeats_since_sleep_status_update = 0
-			toee.game.sleep_status_update()
-		return
 
 	def can_sleep(self):
-		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 40):
-			return toee.SLEEP_SAFE
-
-		spawn_left = 0
-		if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
-			spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
-
-		if (not spawn_left):
-			return toee.SLEEP_SAFE
-
-		for npc in toee.game.obj_list_vicinity(toee.game.leader.location, toee.OLC_NPC):
-			if (utils_npc.npc_is_alive(npc, 1) and (npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE))): 
-				return toee.SLEEP_IMPOSSIBLE
 
 		return toee.SLEEP_DANGEROUS
 
@@ -867,7 +849,7 @@ class CtrlShatteredLab(object):
 		return
 
 	def check_entrance_patrol(self):
-		threshhold_hours_passed = 4*24 -1 #+ 16 + 1
+		threshhold_hours_passed = 4*24 + 16 + 1
 		left_for = self.last_entered_shrs - self.last_leave_shrs
 		print("check_entrance_patrol left_for: {}, last_leave_shrs: {}, last_entered_shrs: {}".format(left_for, self.last_leave_shrs, self.last_entered_shrs))
 		if (left_for < threshhold_hours_passed): return 0
@@ -884,6 +866,89 @@ class CtrlShatteredLab(object):
 		self.place_encounter_patrol(0)
 		return 1
 
-	def critter_dying(self, attachee, triggerer):
+	def factions_existance_refresh(self):
 		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		return
+
+	def critter_dying(self, attachee, triggerer):
+		self.factions_existance_refresh()
+		return
+
+	def check_sleep_status_update(self, force = 0):
+		self.haertbeats_since_sleep_status_update +=1
+		if (force or self.haertbeats_since_sleep_status_update > 5):
+			self.haertbeats_since_sleep_status_update = 0
+			toee.game.sleep_status_update()
+		return
+
+	# Sleep interface
+	def can_sleep(self):
+		for npc in toee.game.obj_list_vicinity(toee.game.leader.location, toee.OLC_NPC):
+			if (utils_npc.npc_is_alive(npc, 1) and (npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE))): 
+				return toee.SLEEP_IMPOSSIBLE
+
+		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 40):
+			return toee.SLEEP_SAFE
+
+		spawn_left = 0
+		if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+			spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+		if (spawn_left):
+			return toee.SLEEP_DANGEROUS
+
+		return toee.SLEEP_SAFE
+
+	# Sleep interface
+	def encounter_exists(self, setup, encounter):
+		assert isinstance(setup, toee.PyRandomEncounterSetup)
+		assert isinstance(encounter, toee.PyRandomEncounter)
+
+		will_not_happen = toee.game.random_range(0, 9)
+		if (will_not_happen): return 0
+
+		if (self.last_patrol_spawned_shrs):
+			current = toee.game.time.time_game_in_hours2(toee.game.time)
+			past_since = current - self.last_patrol_spawned_shrs
+			if (past_since < 20): return 0
+
+		encounter.id = 6210
+		return 1
+
+	# Sleep interface
+	def encounter_create(self, encounter):
+		assert isinstance(encounter, toee.PyRandomEncounter)
+		if (encounter.id != 6210): return
+		self.place_encounter_patrol(1)
+		return
+
+	def storage_skip_load(self, key, val):
+		if (key == "m2"): return 1
+		return 0
+
+	def storage_data_loaded(self):
+		self.m2 = list()
+		if (self.monsters):
+			for val in self.monsters.itervalues():
+				if (val and not val in self.m2):
+					self.m2.append(val)
+		return
+
+	def storage_data_loaded_all(self):
+		print("storage_data_loaded_all map: {}".format(toee.game.leader.map))
+		if (toee.game.leader.map != shattered_consts.MAP_ID_SHATERRED_LAB): return
+		to_del = list()
+		objs = utils_storage.Storage().objs
+		assert isinstance(objs, dict)
+		for o in objs.itervalues():
+			assert isinstance(o, utils_storage.ObjectStorage)
+			if (o.name.startswith("G_") and o.origin == shattered_consts.MAP_ID_SHATERRED_LAB):
+				npc = toee.game.get_obj_by_id(o.name)
+				if (npc):
+					print("npc hp: {}, npc: {}".format(utils_npc.npc_hp_current(npc), npc))
+				if (not npc or (npc.object_flags_get() & toee.OF_DESTROYED) or utils_npc.npc_hp_current(npc) < 0):
+					to_del.append(o)
+		print("drop objects, count: {}, list: {}".format(len(to_del), to_del))
+		for o in to_del:
+			del objs[o.name]
 		return

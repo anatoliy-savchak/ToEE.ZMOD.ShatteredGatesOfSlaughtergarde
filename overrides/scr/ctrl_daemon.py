@@ -147,3 +147,23 @@ class CtrlDaemon(object):
 			if (obj.name == door_name_id):
 				utils_obj.obj_timed_destroy(obj, 500, 1)
 		return
+
+	@staticmethod
+	def get_current_daemon():
+		sglobal = utils_storage.obj_storage_by_id("global")
+		if (sglobal):
+			daemon_id = sglobal.get_data("daemon-{}".format(toee.game.leader.map))
+			if (daemon_id):
+				daemon_storage = utils_storage.obj_storage_by_id(daemon_id)
+				if (daemon_storage and daemon_storage.data):
+					for ctrl in daemon_storage.data.itervalues():
+						if ("can_sleep" in dir(ctrl)):
+							return ctrl
+		return None
+
+	@staticmethod
+	def set_daemon(deamon_id, map_id):
+		sglobal = utils_storage.obj_storage_by_id("global")
+		if (sglobal):
+			sglobal.data["daemon-{}".format(map_id)] = deamon_id
+		return None

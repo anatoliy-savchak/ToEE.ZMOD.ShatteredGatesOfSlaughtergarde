@@ -1,19 +1,11 @@
-from toee import *
-from debugg import *
-import os
-import sys
-import json
-from json import JSONEncoder
-import utils_obj
-import inspect
-import imp, traceback
+import toee, json, os, sys, inspect, imp, traceback, debug
 
 def obj_storage(obj):
-	assert isinstance(obj, PyObjHandle)
+	assert isinstance(obj, toee.PyObjHandle)
 	return Storage.getObjectStorage(obj)
 
 def obj_storage_by_id(id):
-	assert isinstance(obj, PyObjHandle)
+	assert isinstance(obj, toee.PyObjHandle)
 	return Storage.getObjectStorageByName(id)
 
 class ObjectStorage(object):
@@ -23,7 +15,18 @@ class ObjectStorage(object):
 		self.origin = None
 		return
 
-class MyEncoder(JSONEncoder):
+	def get_data(self, name):
+		if (name in self.data):
+			return self.data[name]
+		return None
+
+	def storage_data_loaded_all(self):
+		for o in self.data.itervalues():
+			if ("storage_data_loaded_all" in dir(o)):
+				o.storage_data_loaded_all()
+		return
+
+class MyEncoder(json.JSONEncoder):
 	def default(self, o):
 		o.__dict__["_isofclass"] = o.__class__.__name__
 		#breakp("MyEncoder start")
@@ -85,9 +88,9 @@ class Storage(object):
 
 	@staticmethod
 	def getObjectStorage(obj):
-		assert isinstance(obj, PyObjHandle)
+		assert isinstance(obj, toee.PyObjHandle)
 		#breakp("obj.__getstate__({})".format(obj))
-		name = utils_obj.obj_get_id(obj)
+		name = obj.id
 		#print(name)
 		#breakp("getObjectStorage({})".format(obj))
 		ss = Storage()
@@ -133,6 +136,12 @@ class Storage(object):
 		try:
 			#print("saveObjectStorage: v {}".format(v))
 			assert isinstance(v, ObjectStorage)
+			if (v.name.startswith("G_")):
+				npc = toee.game.get_obj_by_id(v.name)
+				if (npc):
+					v.origin = npc.origin
+					print("set v.origin = {}, npc: {}".format(npc.origin, npc))
+
 			dm = json.dumps(v, cls=MyEncoder, indent = 2)
 			#dm = json.dumps(v.__dict__, indent = 2)
 			#print("saveObjectStorage: json.dumps(v) {}".format(dm))
@@ -149,29 +158,44 @@ class Storage(object):
 	@staticmethod
 	def loadObjects(dirname):
 		#breakp("Storage.loadObjects({})".format(dirname))
-		ss = Storage()
-		oo = ss.objs
-		oo.clear()
-		files = os.listdir(dirname)
-		loaded_modules = dict()
-		for fileName in files:
-			o = Storage.loadObjectStorage(dirname, fileName, loaded_modules)
-			if (not (o is None)):
-				oo[o.name] = o
+		try:
+			ss = Storage()
+			oo = ss.objs
+			assert isinstance(oo, dict)
+			oo.clear()
+			files = os.listdir(dirname)
+			mod_cache = dict()
+			local_objects = list()
+			for fileName in files:
+				o = Storage.loadObjectStorage(dirname, fileName, mod_cache)
+				if (not (o is None)):
+					oo[o.name] = o
+					local_objects.append(o)
+
+			for o in local_objects:
+				if ("storage_data_loaded_all" in dir(o)):
+					o.storage_data_loaded_all()
+		except Exception, e:
+			print "!!!!!!!!!!!!! loadObjects error:"
+			print '-'*60
+			traceback.print_exc(file=sys.stdout)
+			print '-'*60		
+			debug.breakp("error")
 		return
 
 	@staticmethod
-	def loadObjectStorage(dirname, fileName, loaded_modules):
+	def loadObjectStorage(dirname, fileName, mod_cache):
 		filePath = os.path.join(dirname, fileName)
-		print("loadObjectStorage: filePath {}".format(filePath))
+		#print("loadObjectStorage: filePath {}".format(filePath))
 		#breakp("loadObjectStorage")
 		try:
 			f = open(filePath, "r")
 			o = json.load(f)
 			f.close()
-			print("loadObjectStorage: json.load o = {}".format(o))
+			#print("loadObjectStorage: json.load o = {}".format(o))
 			#breakp("loadObjectStorage o")
-			o = Storage.makeObjects(o, loaded_modules)
+			#o = Storage.makeObjects(o, loaded_modules)
+			o = Storage.make_data(o, None, mod_cache)
 			name = o["name"]
 			ostorage = ObjectStorage(name)
 			if (not "origin" in o):
@@ -179,14 +203,8 @@ class Storage(object):
 			ostorage.__dict__ = o
 			if (not name):
 				print("ostorage no name!")
-				breakp("ostorage no name!")
+				debug.breakp("ostorage no name!")
 				return None
-			if (ostorage.origin):
-				obj = game.get_obj_by_id(name)
-				if (not obj):
-					print("ostorage no obj!")
-					breakp("ostorage no obj!")
-					return None
 			return ostorage
 		except Exception, e:
 			print "loadObjectStorage error:"
@@ -194,136 +212,106 @@ class Storage(object):
 			f.close()
 			traceback.print_exc(file=sys.stdout)
 			print '-'*60		
-			breakp("error")
+			debug.breakp("error")
 		return
 
 	@staticmethod
-	def makeObjects(odict, loaded_modules):
-		#breakp("makeObjects 0")
+	def make_data(odict, parent, mod_cache):
 		assert isinstance(odict, dict)
-		r = dict()
-		for k in odict.iterkeys():
-			propval = odict[k]
-			print("{}({}): {}".format(k, type(propval), propval))
-			#breakp("makeObjects item")
+		result = dict()
+		#print("make_data start {}".format(odict))
+		has_member_check = 0
+		if (parent and "storage_skip_load" in dir(parent)):
+			has_member_check = 1
+
+		for key in odict.iterkeys():
+			propval = odict[key]
+			#print("make_data {} \ {} : {}".format(key, type(propval).__name__, propval))
+			if (has_member_check and parent.storage_skip_load(key, propval)): 
+				result[key] = None
+				continue
+
 			if (isinstance(propval, dict)):
-				#breakp("makeObjects is dict")
-				if ("_isofclass" in propval):
-					isofclass = propval["_isofclass"]
-					print(isofclass)
-					#breakp("makeObjects isofclass")
-					inst = object()
-					inst_loaded = 0
-					try:
-						try:
-							inst2 = eval(isofclass)()
-							inst = inst2
-							inst_loaded = 1
-						except Exception, e:
-							print "makeObjects inst eval error:", sys.exc_info()[0]
-							print(str(e))
-						if (not inst_loaded and "_isofmodule" in propval):
-							isofmodule = propval["_isofmodule"]
-							print(isofmodule)
-							modlename = None
-							if (isofmodule):
-								modlename = os.path.basename(isofmodule)
-								if (modlename): modlename = modlename.split('.')[0]
-							print("modlename: {}".format(modlename))
-							#breakp("makeObjects isofmodule")
-							if (modlename):
-								isofmoduledir = os.path.join(os.getcwd(), "overrides", "scr")
-								found = None
-								md = None
-								if (not loaded_modules is None and modlename in loaded_modules):
-									md = loaded_modules[modlename]
-								if (not md):
-									try:
-										try:
-											found = imp.find_module(modlename)
-											print("imp.find_module(modlename): {}".format(found))
-										except Exception, e:
-											print "imp.find_module(modlename) error1:", sys.exc_info()[0]
-											print(str(e))
-										if (not found):
-											found = imp.find_module(modlename, isofmoduledir)
-											print("imp.find_module(modlename, isofmoduledir): {}".format(found))
-										if (found):
-											print("found: {}".format(found))
-											fullname = modlename + "." + isofclass
-											print("fullname: {}".format(fullname))
-											#breakp("makeObjects find_module")
-											try:
-												inst2 = eval(fullname)()
-												inst = inst2
-												inst_loaded = 1
-												print("inst2: {}, type: {}".format(inst2, type(inst2).__name__))
-											except Exception, e:
-												print "makeObjects inst eval error:", sys.exc_info()[0]
-												print(str(e))
+				result[key] = Storage.make_instance_from_dic(propval, mod_cache)
+			elif (isinstance(propval, list)):
+				result[key] = Storage.make_list(propval, mod_cache)
+			else:
+				result[key] = propval
+		return result
 
-											if (not inst_loaded):
-												print("len of found: {}".format(len(found)))
-												#breakp("makeObjects load_module")
-												md = imp.load_module(modlename, found[0], found[1], found[2])
-									except Exception, e:
-										print "imp.find_module(modlename):", sys.exc_info()[0]
-										print(str(e))
-									if (not found):
-										print("imp.load_source")
-										print(isofmodule)
-										#dir_path = os.path.dirname(os.path.realpath(__file__))
-										#isofmodulefull = os.path.join(dir_path, modlename +".py")
-										isofmodulefull = os.path.join(isofmoduledir, modlename +".py")
-										print(isofmodulefull)
-										#breakp("makeObjects load_source")
-										#isofmodule = "D:\\Temple\\Temple of Elemental Evil\\overrides\\scr\\py06211_shuttered_monster.py" 
-										md = imp.load_source(modlename, isofmodulefull)
-								print(md)
-								#breakp("makeObjects inst2")
-								if (md):
-									if (not loaded_modules is None and not modlename in loaded_modules):
-										print("caching...: {} ({})".format(modlename, md))
-										#breakp("loaded_modules[modlename] = md")
-										loaded_modules[modlename] = md
-										print("cached: {} ({})".format(modlename, md))
-									c = getattr(md, isofclass)
-									print(c)
-									#breakp("makeObjects class")
-									if (c):
-										inst2 = c()
-										if (inst2): 
-											inst = inst2
-											print("before Storage.makeObjects inst: {}, class: {}".format(inst, type(inst).__name__))
-											inst.__dict__ = Storage.makeObjects(propval, loaded_modules)
-											inst_loaded = 1
-					except Exception, e:
-						print "!!!!!!!!!!!!! makeObjects error:"
-						print '-'*60
-						traceback.print_exc(file=sys.stdout)
-						print '-'*60		
-						breakp("error")
+	@staticmethod
+	def make_list(olist, mod_cache):
+		assert isinstance(olist, list)
+		result = list()
+		#print("make_list start {}".format(olist))
+		for propval in olist:
+			#print("make_list {} : {}".format(type(propval).__name__, propval))
+			if (isinstance(propval, dict)):
+				result.append(Storage.make_instance_from_dic(propval, mod_cache))
+			elif (isinstance(propval, list)):
+				result.append(Storage.make_list(propval, mod_cache))
+			else:
+				result.append(propval)
+		return result
 
-					if (inst_loaded == 0):
-						oooo = Storage.makeObjects(propval, loaded_modules)
-						if (oooo):
-							if ("__dict__" in dir(inst)):
-								inst.__dict__ = oooo
-							else:
-								print("inst: {}, class: {}".format(inst, type(inst).__name__))
-								breakp("inst")
-					r[k] = inst
+	@staticmethod
+	def make_instance_from_dic(propval, mod_cache):
+		try:
+			assert isinstance(propval, dict)
+
+			#print("Contents of propval: ".format(propval))
+			#for key in propval.iterkeys():
+			#	print("{} : {}".format(key, propval[key]))
+
+			isofclass = None
+			if ("_isofclass" in propval):
+				isofclass = propval[u'_isofclass']
+			isofmodule = None
+			if ("_isofmodule" in propval):
+				isofmodule = propval[u'_isofmodule']
+
+			#print("make_instance_from_dic isofclass: {}, isofmodule: {}".format(isofclass, isofmodule))
+			if (not isofclass): 
+				return Storage.make_data(propval, None, mod_cache)
+
+			result = None
+			if (isofmodule is None):
+				result = instantinate_by_eval(isofclass)
+			else:
+				mod_name = os.path.basename(isofmodule).split('.')[0]
+				if (not (mod_cache and isofmodule in mod_cache)):
+					mod_path = os.path.join(os.getcwd(), "overrides", "scr", mod_name +".py")
+					mod_object = imp.load_source(mod_name, mod_path)
+					mod_cache[isofmodule] = mod_object
 				else:
-					r[k] = Storage.makeObjects(propval, loaded_modules)
-			else: 
-				r[k] = propval
-		return r
+					mod_object = mod_cache[isofmodule]
 
-def getIDfromObjHandle(objhandle):
-	string = str(objhandle)
-	print("getIDfromObjHandle: {} from {}".format(string, objhandle))
-	ID = string.split("(")[1][:-1]
-	return ID
+				mod_class = getattr(mod_object, isofclass)
+				result = mod_class()
+				#print("make_instance_from_dic result: {}, mod_class: {}, mod_object: {}".format(result, mod_class, mod_object))
+
+			sub_data = Storage.make_data(propval, result, mod_cache)
+			result.__dict__ = sub_data
+			if ("storage_data_loaded" in dir(result)):
+				result.storage_data_loaded()
+		except Exception, e:
+			print "!!!!!!!!!!!!! make_instance_from_dic error:"
+			print '-'*60
+			traceback.print_exc(file=sys.stdout)
+			print '-'*60		
+			debug.breakp("error")
+		return result
+
+	@staticmethod
+	def instantinate_by_eval(isofclass):
+		result = None
+		try:
+			result = eval(isofclass)()
+		except Exception, e:
+			#print "makeObjects inst eval error:", sys.exc_info()[0]
+			#print(str(e))
+			pass
+		return result
 
 def get_subclass(module, base_class):
 	for name in dir(module):
