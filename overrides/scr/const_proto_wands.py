@@ -1,3 +1,12 @@
+# Craft Price = 375 * level of the spell * level of the caster
+# Base Price = Craft Price * 2
+# Wands Base Prices
+# 0      375	  187 +  15 XP
+# 1      750	  375 +  30 XP
+# 2    4 500	 2250 + 180 XP
+# 3   11 250	 5625 + 450 XP
+# 4   21 000	10500 + 840 XP
+
 PROTO_WAND_OF_ACID_SPLASH = 12532 # Price: 375 gp
 PROTO_WAND_OF_AID = 12533 # Price: 4500 gp
 PROTO_WAND_OF_ANIMAL_GROWTH = 12534 # Price: 6750 gp

@@ -221,3 +221,8 @@ def pc_turn_all(rotation):
 	for pc in toee.game.party:
 		pc.rotation = rotation
 	return
+
+def pc_award_experience_all(xp_awarded_each):
+	for pc in toee.game.party:
+		pc.award_experience(xp_awarded_each)
+	return

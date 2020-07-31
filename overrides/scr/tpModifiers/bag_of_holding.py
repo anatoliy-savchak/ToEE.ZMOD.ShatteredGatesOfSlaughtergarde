@@ -147,7 +147,9 @@ def Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies(attachee, args, evt_o
 			hp = body.stat_level_get(toee.stat_hp_current)
 			print("{} hp in {}".format(hp, body))
 			if (hp >= 0): continue
-			if (not attachee.can_see(body)): continue
+			if (not attachee.can_see(body)): 
+				if (attachee.distance_to(body) > 15):
+					continue
 			items = items_get(body)
 			#items = body.inventory_items()
 			print("items: {}".format(len(items)))

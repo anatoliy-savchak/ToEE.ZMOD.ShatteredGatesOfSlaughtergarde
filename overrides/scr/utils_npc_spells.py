@@ -55,7 +55,7 @@ class NPCSpells(object):
 		return
 
 class NPCSpell(object):
-	def __init__(self, spell_num, spell_class_stat, spell_level, count = 1):
+	def __init__(self, spell_num = None, spell_class_stat = None, spell_level = None, count = 1):
 		self.spell_num = spell_num
 		self.count = count
 		self.spell_class_stat = spell_class_stat

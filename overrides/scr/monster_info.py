@@ -8,6 +8,8 @@ class MonsterInfo:
 		self.name = None
 		self.activated = 0
 		self.revealed = 0
+		self.encounter_code = None
+		self.monster_code_name = None
 		return
 
 	def get_npc(self):

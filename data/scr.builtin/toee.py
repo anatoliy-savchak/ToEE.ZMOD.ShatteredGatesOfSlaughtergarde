@@ -110,6 +110,10 @@ class PyObjHandle(object):
 		""" npc.attack(PyObjHandle: target) -> None"""
 		return
 
+	def award_experience(self, xp_awarded):
+		""" pc.award_experience(int: xp_awarded) -> None"""
+		return
+
 	def begin_dialog(self, target, line):
 		"""Schedules a Python dialog time event in 1ms. pc.begin_dialog(PyObjHandle: target, int: line) -> none"""
 		return

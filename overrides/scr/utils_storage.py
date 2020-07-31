@@ -256,6 +256,7 @@ class Storage(object):
 
 	@staticmethod
 	def make_instance_from_dic(propval, mod_cache):
+		mod_class = None
 		try:
 			assert isinstance(propval, dict)
 
@@ -297,6 +298,7 @@ class Storage(object):
 		except Exception, e:
 			print "!!!!!!!!!!!!! make_instance_from_dic error:"
 			print '-'*60
+			print("mod_class: {}, isofclass: {}, mod_object: {}, ".format(mod_class, isofclass, mod_object))
 			traceback.print_exc(file=sys.stdout)
 			print '-'*60		
 			debug.breakp("error")

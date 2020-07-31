@@ -50,6 +50,7 @@
 {946}{A16 Door}
 {947}{A19 Door}
 {948}{A20 Shattered Gates}
+{950}{Door T2-T22}
 
 // Container ranges from 1200 - 1599
 {1200}{Container}
@@ -90,6 +91,7 @@
 {1622}{Verbobonc City Hall doors to tunnels portal}
 {1623}{Castle of Lords inside Security Barricade portal}
 {1641}{Shattered Lab Exit}
+{1642}{Shattered Temple Exit}
 {1643}{Shattered Armory Exit}
 
 {1701}{Homm door 01 prosperous farmer}

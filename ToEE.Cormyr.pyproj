@@ -170,6 +170,7 @@
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
     <Content Include="overrides\rules\traps.tab" />
+    <Content Include="overrides\scr\tpModifiers\condition_template.txt" />
     <Content Include="overrides\sound\schemeindex.mes" />
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
@@ -354,6 +355,9 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\spell_quicken.py" />
     <Compile Include="overrides\scr\tpModifiers\spell_quicken_all.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\tpModifiers\wand_attack.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\utils_conds.py">

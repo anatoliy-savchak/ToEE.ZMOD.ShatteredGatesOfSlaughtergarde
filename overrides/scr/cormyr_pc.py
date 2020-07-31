@@ -711,3 +711,105 @@ def d():
 		npc.identify_all()
 		npc.item_wield_best_all()
 	return
+
+def del2():
+	fighter_bard = game.party[0]
+	paladin = game.party[1]
+	monk = game.party[2]
+	rogue_wizard = game.party[3]
+
+	npc = fighter_bard
+	if (1==1):
+		#item_clear_all(npc)
+		item_create_in_inventory_buy(PROTO_ARMOR_LEATHER_ARMOR_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_WAND_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = paladin
+	if (1==1):
+		item_create_in_inventory_buy(PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = monk
+	if (1==1):
+		npc.identify_all()
+
+	npc = rogue_wizard
+	if (1==1):
+		wand = item_create_in_inventory_buy(PROTO_WAND_OF_MAGIC_MISSILES_1ST, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+	return
+
+def elv2():
+	wizard = game.party[0]
+	barbarian = game.party[1]
+	fighter = game.party[2]
+	cleric = game.party[3]
+
+	npc = wizard
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory_buy(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_LEATHER_BOOTS_GREEN, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 100)
+		wand = item_create_in_inventory_buy(PROTO_WAND_OF_MAGIC_MISSILES_1ST, npc)
+		
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = barbarian
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_GREATAXE_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW_COMPOSITE_16_MASTERWORK, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 100)
+		item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = fighter
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory(PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		item_create_in_inventory_buy(PROTO_LONGSWORD_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_SHORTSWORD_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		item_create_in_inventory_buy(PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+
+	npc = cleric
+	if (1==1):
+		#item_clear_all(npc)
+		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
+		item_create_in_inventory(PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
+		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
+		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
+		if (item):
+			item.obj_set_int(obj_f_ammo_quantity, 50)
+		item_create_in_inventory_buy(PROTO_WAND_OF_CURE_LIGHT_WOUNDS, npc)
+		item_create_in_inventory_buy(PROTO_WAND_OF_INFLICT_LIGHT_WOUNDS, npc)
+		npc.identify_all()
+		npc.item_wield_best_all()
+	return

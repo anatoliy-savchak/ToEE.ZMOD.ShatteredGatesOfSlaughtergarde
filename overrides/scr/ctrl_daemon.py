@@ -84,7 +84,7 @@ class CtrlDaemon(object):
 	def get_monster_prefix_default(self):
 		return None
 
-	def get_map_default(self, npc):
+	def get_map_default(self):
 		return 0
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
@@ -92,11 +92,13 @@ class CtrlDaemon(object):
 		if (not faction): faction = self.get_monster_faction_default(npc)
 		if (faction and faction != -1):
 			npc.faction_add(faction)
-		#npc.npc_flag_set(toee.ONF_NO_ATTACK)
 		if (no_kos):
 			npc.npc_flag_unset(toee.ONF_KOS)
 		if (no_draw):
 			npc.object_flag_set(toee.OF_DONTDRAW)
+		if (no_draw and no_kos):
+			npc.npc_flag_set(toee.ONF_NO_ATTACK)
+
 		if (monster_name):
 			nameid = utils_toee.make_custom_name(monster_name)
 			if (nameid):
@@ -106,6 +108,8 @@ class CtrlDaemon(object):
 		info.id = npc.id
 		info.proto = npc.proto
 		info.cr = utils_npc.npc_get_cr(npc)
+		info.encounter_code = encounter_name
+		info.monster_code_name = monster_code_name
 		info.name = "{}_{}_{}".format(self.get_monster_prefix_default(), encounter_name, monster_code_name)
 		self.m2.append(info)
 		self.monsters[info.name] = info
@@ -196,6 +200,49 @@ class CtrlDaemon(object):
 		killer = toee.game.leader
 		for info in self.m2:
 			assert isinstance(info, monster_info.MonsterInfo)
+			npc = toee.game.get_obj_by_id(info.id)
+			if (not npc): continue
+			villian = self.check_npc_enemy(npc)
+			if (not villian): continue
+			if (not sm):
+				sm = utils_item.acquire_sell_modifier_once()
+			print("Killing {}, {}".format(info.name, npc))
+
+			items = utils_item.items_get(npc, 1)
+			if (items):
+				recieve_items = list()
+				i = len(items)
+				while i > 0:
+					i -= 1
+					item = items[i]
+					assert isinstance(item, toee.PyObjHandle)
+					if (not item.type in [toee.obj_t_weapon, toee.obj_t_ammo, toee.obj_t_armor, toee.obj_t_money, toee.obj_t_food]): 
+						recieve_items.append(item)
+						continue
+					item_flags = item.item_flags_get()
+					if (item_flags & toee.OIF_IS_MAGICAL):
+						recieve_items.append(item)
+
+				for item in recieve_items:
+					items.remove(item)
+					if (not killer.item_get(item)):
+						for npc in toee.game.party:
+							if (npc != killer):
+								if (killer.item_get(item)):
+									break
+
+				if (items):
+					utils_item.autosell(sm, items)
+
+			npc.critter_kill_by_effect(killer)
+		return
+
+	def kill_enemy_by_encounter(self, encounter_code):
+		sm = 0.0
+		killer = toee.game.leader
+		for info in self.m2:
+			assert isinstance(info, monster_info.MonsterInfo)
+			if (info.encounter_code != encounter_code): continue
 			npc = toee.game.get_obj_by_id(info.id)
 			if (not npc): continue
 			villian = self.check_npc_enemy(npc)
@@ -332,4 +379,16 @@ class CtrlDaemon(object):
 		if (force or self.haertbeats_since_sleep_status_update > 5):
 			self.haertbeats_since_sleep_status_update = 0
 			toee.game.sleep_status_update()
+		return
+
+	def remove_promters_all(self):
+		for npc in toee.game.obj_list_range(toee.game.leader.location, 200, toee.OLC_NPC):
+			if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER):
+				npc.destroy()
+		return
+
+	def print_promters_names(self):
+		for npc in toee.game.obj_list_range(toee.game.leader.location, 200, toee.OLC_NPC):
+			if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER):
+				print(npc.description)
 		return
