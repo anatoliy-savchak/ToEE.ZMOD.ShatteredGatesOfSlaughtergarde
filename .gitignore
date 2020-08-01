@@ -265,6 +265,7 @@ docs_Co8 8.1.0 Standard/
 miles/
 
 # root
+v2config.cfg
 _sre.pyd
 _sre_d.pyd
 anim_goal_setup.cpp
