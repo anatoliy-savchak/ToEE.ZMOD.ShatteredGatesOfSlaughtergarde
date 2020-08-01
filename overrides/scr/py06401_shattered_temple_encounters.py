@@ -1106,8 +1106,8 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 
 		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
 		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
-		npc.condition_add_with_args("Caster_Level_Add", 7, 0)
-		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_web, 20)
+		#npc.condition_add_with_args("Caster_Level_Add", 7, 0)
+		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_web, 14)
 		return
 
 	def revealed(self, npc):

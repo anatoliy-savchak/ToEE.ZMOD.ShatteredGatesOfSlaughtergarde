@@ -529,8 +529,8 @@ class game(object):
 	char_ui_display_type = 0
 
 	@staticmethod
-	def obj_create(protoId, loc):
-		""" Will create PyObjHandle based on protoId and place it on location. game.obj_create(int: protoId, int64: loc) -> PyObjHandle"""
+	def obj_create(protoId, loc, offset_x = None, offset_y = None):
+		""" Will create PyObjHandle based on protoId and place it on location. game.obj_create(int: protoId, int64: loc, int: offset_x = None, int: offset_y = None) -> PyObjHandle"""
 		return PyObjHandle()
 
 	@staticmethod

@@ -63,7 +63,13 @@
 {1302}{Laboratory Footlocker 2}
 {1303}{Laboratory Footlocker 3}
 {1304}{Laboratory Footlocker 4}
-
+{1400}{Bag of Holding}
+{1401}{Generic Footlocker Crappy}
+{1402}{Generic Chest}
+{1403}{Generic Treasure Chest}
+{1404}{Generic Small Gold Chest}
+{1405}{Generic Giant Chest}
+{1406}{Generic Nice Chest}
 
 // Scenery ranges from 1600 - 1799
 {1600}{Scenery}

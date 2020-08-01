@@ -212,6 +212,9 @@
     <Compile Include="overrides\scr\const_proto_wands.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_traps.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\cormyr_config.py" />
     <Compile Include="overrides\scr\cormyr_pc.py" />
     <Compile Include="overrides\scr\ctrl_daemon.py">
@@ -251,6 +254,7 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />
     <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
     <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
     <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
@@ -362,6 +366,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\utils_conds.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\utils_locks.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\utils_target_list.py">
