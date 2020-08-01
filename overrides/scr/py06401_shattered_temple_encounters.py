@@ -1107,6 +1107,7 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 7)
 		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
 		npc.condition_add_with_args("Caster_Level_Add", 7, 0)
+		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_web, 20)
 		return
 
 	def revealed(self, npc):
@@ -1126,7 +1127,10 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 				is_netted1 = foe.target.d20_query_has_condition("netted")
 				is_netted2 = foe.target.d20_query("Is Netted")
 				print("netted: {}, netted1: {}, foe: {}".format(is_netted2, is_netted1, foe.target))
-				if (not target and not is_netted2):
+				is_webbed1 = foe.target.d20_query_has_condition("sp-Web On")
+				is_webbed2 = foe.target.d20_query_has_spell_condition(toee.spell_web)
+				print("is_webbed2: {}, webbed1: {}, foe: {}".format(is_webbed2, is_webbed1, foe.target))
+				if (not target and not is_netted2 and not is_webbed1):
 					target = foe.target
 					break
 
