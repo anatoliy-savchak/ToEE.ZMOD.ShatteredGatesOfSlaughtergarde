@@ -81,15 +81,15 @@
 {217}{That's it? No back and forth? No cunning linguistic interplay? No cut and thrust of witty banter? Fine, I'll do it for 200 then.}{}{12}{}{220}{}
 {218}{Whatever.}{}{1}{}{0}{npc.reaction_adj( pc, -5 )}
 
-{220}{Excellent! The spices are in crates marked with the Sumberton sigil. Those crates are bulky, so you'll need a pack animal or wagon to bring them back. Other than that, you'll be going underground after those goblins, and I expect you're the expert on that subject.}{Excellent! The spices are in crates marked with the Sumberton sigil. Those crates are bulky, so you'll need a pack animal or wagon to bring them back. Other than that, you'll be going underground after those goblins, and I expect you're the expert on that subject.}{}{}{}{game.quests[1].state = qs_accepted; npc.reaction_adj( pc, 5 )}
-{221}{[Knowledge Check - the Sumberton sigil is a crescent moon and a sheaf of wheat]. And where might we find these goblins?}{}{12}{}{250}{}
-{223}{[Bardic Knowledge Check - the Sumberton sigil is a crescent moon and a sheaf of wheat]. And where might we find these goblins?}{}{-11}{pc.stat_level_get(stat_level_bard) >= 1}{250}{}
+{220}{Excellent! The spices are in barrels marked with the Sumberton sigil. Those barrels are bulky, so you'll need a pack animal or wagon to bring them back. Other than that, you'll be going underground after those goblins, and I expect you're the expert on that subject.}{Excellent! The spices are in barrels marked with the Sumberton sigil. Those barrels are bulky, so you'll need a pack animal or wagon to bring them back. Other than that, you'll be going underground after those goblins, and I expect you're the expert on that subject.}{}{}{}{game.quests[1].state = qs_accepted; npc.reaction_adj( pc, 5 )}
+{221}{[Knowledge Check - the Sumberton sigil is a crescent moon and a sheaf of wheat]. And where might we find these goblins?}{}{12}{}{245}{}
+{223}{[Bardic Knowledge Check - the Sumberton sigil is a crescent moon and a sheaf of wheat]. And where might we find these goblins?}{}{-11}{pc.stat_level_get(stat_level_bard) >= 1}{245}{}
 {223}{Pack animal? You mean like a tame gorgon or something? Can't you just provide me with some sort of extraplanar chest?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{227}{}
-{224}{Sure. What's next?}{}{1}{}{250}{}
+{224}{Sure. What's next?}{}{1}{}{245}{}
 
 {227}{[She blinks at you.] Do you have any idea how much an extraplanar chest costs? Why not ask for a riding dragon?}{[She blinks at you.] Do you have any idea how much an extraplanar chest costs? Why not ask for a riding dragon?}{}{}{}{}
-{228}{Could you?}{}{1}{}{250}{}
-{229}{I guess I could get some chickens, and some small harnesses...}{}{1}{}{250}{}
+{228}{Could you?}{}{1}{}{245}{}
+{229}{I guess I could get some chickens, and some small harnesses...}{}{1}{}{245}{}
 
 {230}{Lord Carstellan says the robbery happened under the jurisdiction of Tulvercross. And the Entrighan and the Perdekark families in Tulvercross say it happened in Sumberton territory. I usually just bribe one of the lords to take care of the problem. But I'm tired of that, so I'm spending the bribe money on you instead.}{Lord Carstellan says the robbery happened under the jurisdiction of Tulvercross. And the Entrighan and the Perdekark families in Tulvercross say it happened in Sumberton territory. I usually just bribe one of the lords to take care of the problem. But I'm tired of that, so I'm spending the bribe money on you instead.}{}{}{}{}
 {231}{Fine, I'll do it.}{}{1}{}{220}{}
@@ -101,6 +101,9 @@
 {240}{[She looks you over more closely then says] Agreed. So we have a deal? [She hands you a pouch.]}{[She looks you over more closely then says] Agreed. So we have a deal? [She hands you a pouch.]}{}{}{}{game.global_flags[1] = 1}
 {241}{Yes, let's do this.}{}{1}{}{220}{pay_the_man(pc)}
 
+{245}{[She hesitates then says] look, I'll tell you what I will do for you. I have a bag of holding in my pocket from a previous shipment. Take it, and use it to bring back the barrels.}{[She hesitates then says] look, I'll tell you what I will do for you. I have a bag of holding in my pocket from a previous shipment. Take it, and use it to bring back the barrels.}{}{}{}{create_item_in_inventory(12501,pc)}
+{246}{Wow thanks! So, tell me more about what we'll face.}{}{1}{}{250}{}
+
 {250}{So, one of the caravan's teamsters managed to escape shortly before the goblins descended into their warren. I'll show you where it is. [Without even asking, she snatches your map off you and begins to scribble on it.]}{So, one of the caravan's teamsters managed to escape shortly before the goblins descended into their warren. I'll show you where it is. [Without even asking, she snatches your map off you and begins to scribble on it.]}{}{}{}{}	// game.area[x] = 1
 {251}{Cheeky!}{}{1}{}{260}{}
 {252}{What happened to him? Can we question him?}{}{1}{}{255}{}
@@ -110,19 +113,15 @@
 {256}{I guess.}{}{1}{}{260}{}
 {257}{More information is always better...}{}{12}{}{260}{}
 
-{260}{Have at it, then! When you recover the crates, bring them to the Chicane Guildhouse. It's east of the middle bridge in town, or, just follow the road north of here. As I said, we'll also be able to trade for any other loot you recover.}{Have at it, then! When you recover the crates, bring them to the Chicane Guildhouse. It's east of the middle bridge in town, or, just follow the road north of here. As I said, we'll also be able to trade for any other loot you recover.}{}{}{}{}
+{260}{Have at it, then! Take the west road out of town - the WEST road - and when you recover the barrels, bring them either here - I'm in here most nights - or to the Chicane Guildhouse. It's east of the middle bridge in town, or, just follow the road north of here. As I said, I'll be able to trade for any other loot you recover.}{Have at it, then! Take the west road out of town - the WEST road - and when you recover the barrels, bring them either here - I'm in here most nights - or to the Chicane Guildhouse. It's east of the middle bridge in town, or, just follow the road north of here. As I said, I'll be able to trade for any other loot you recover.}{}{}{}{}
 {261}{Til then.}{}{1}{}{0}{}
 
 
 // has_met, quest accepted
 
-{300}{Back already? Do you have the crates?}{Back already? Do you have the crates?}{}{}{}{}
+{300}{Back already? Do you have the barrels?}{Back already? Do you have the barrels?}{}{}{}{}
 {301}{So quickly? No, we've been getting ready. We're off now, though.}{}{1}{}{310}{}
-{302}{Oh, you mean these crate-shaped things we are lugging? Yes we do. [You hand them over.]}{}{1}{anyone( pc.group_list(), "has_item", 12900)}{320}{party_transfer_to( npc, 12900 )}
-{303}{[Alternate dialogue, needs a global flag.] We left them down by the docks - this place is a bit of a labyrinth and we didn't want to try to drag them in here.}{}{1}{}{305}{}
-
-{305}{Of course, just let me verify that. [She fiddles with some sort of gnomish device on her desk, gets a result, then smiles at you.] All there!}{Of course, just let me verify that. [She fiddles with some sort of gnomish device on her desk, gets a result, then smiles at you.] All there!}{}{}{}{}
-{306}{So now what?}{}{1}{}{320}{}
+{302}{Oh, you mean these barrels-shaped things we are lugging? Yes we do. [You hand them over.]}{}{1}{anyone( pc.group_list(), "has_item", 5710)}{320}{party_transfer_to( npc, 5710 )}
 
 {310}{Well, don't take too long. Our buyers won't wait for ever. [She turns away, apparently put out by your lack of action.]}{Well, don't take too long. Our buyers won't wait for ever. [She turns away, apparently put out by your lack of action.]}{}{}{}{npc.reaction_adj( pc, -5 )}
 {311}{Sure, we'll get right on it.}{}{1}{}{0}{}
@@ -136,7 +135,7 @@
 {327}{Actually, I seem to recall an offer to buy our loot. I'd like to redeem that offer.}{}{1}{}{330}{}
 
 {330}{Of course, I'll handle that personally. Show me what you have.}{Of course, I'll handle that personally. Show me what you have.}{}{}{}{}
-{331}{B: [You show her.]}{}{1}{}{0}{pc.barter(npc)}
+{331}{B:[You show her.]}{}{1}{}{0}{pc.barter(npc)}
 
 // has_met, qu_completed
 
