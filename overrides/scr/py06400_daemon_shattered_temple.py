@@ -1,6 +1,6 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc, monster_info
-import py00677FarSouthDoor
+import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, const_proto_items
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -87,6 +87,8 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		self.encounters_placed = 1
 		#debugg.breakp("place_encounters")
 
+		startup_zmod.zmod_templeplus_config_apply()
+
 		self.monsters = dict()
 		self.m2 = list()
 		#self.destroy_all_npc()
@@ -119,6 +121,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_t24()
 			self.place_encounter_t25()
 		
+		self.place_chests()
 		#self.kill_enemy_by_encounter("t1")
 		#self.kill_enemy_by_encounter("t4")
 		#self.print_monsters()
@@ -877,3 +880,22 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 
 	def get_map_default(self):
 		return shattered_consts.MAP_ID_SHATERRED_TEMPLE
+
+	def place_chests(self):
+		#Ironbound Chest
+		if (1):
+			loc = utils_obj.sec2loc(494, 517)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_GENERIC, loc)
+			chest.move(loc)
+
+			chest.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_CR4_GLYPH_OF_WARDING_BLAST
+			chest.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_GLYPH_SDC28_DDC_28_CR4)
+
+			nameid = utils_toee.make_custom_name("Ironbound Chest")
+			if (nameid):
+				chest.obj_set_int(const_toee.obj_f_description_correct, nameid)
+
+			utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_RESTORATION, chest)
+			utils_item.item_create_in_inventory(const_proto_items.PROTO_ARMOR_NECKLACE_SCARAB, chest) # 750 gp
+			utils_item.item_money_create_in_inventory(chest, 20)
+		return
