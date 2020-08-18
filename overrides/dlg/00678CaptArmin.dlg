@@ -5,7 +5,6 @@
 {3}{Who's asking?}{}{1}{}{10}{}
 {4}{No. [Keep walking.]}{}{1}{}{20}{}
 {5}{Get out of my way.}{}{1}{}{20}{}
-{6}{Testing!}{}{1}{}{500}{}
 
 {10}{My name is Captain Armin Harrack. I am an officer of the Luminous Order - doubtless you know we occupy the Shining Citadel to the west of the Slaughterscar - and your name, and more besides, have come to my attention. Specifically, your recent adventures. Can you describe the dungeon to me?}{My name is Captain Armin Harrack. I am an officer of the Luminous Order - doubtless you know we occupy the Shining Citadel to the west of the Slaughterscar - and your name, and more besides, have come to my attention. Specifically, your recent adventures. Can you describe the dungeon to me?}{}{}{}{}
 {11}{It was an old leftover part of Slaughtergarde.}{}{1}{game.global_flags[3] == 1}{15}{}
@@ -30,6 +29,7 @@
 {40}{[You describe the tunnels, the areas with markings on the floor, and the strange demonic faces over the arches. He nods and says] thank you. But I fear you have brought grave news. It sounds like you have stumbled upon a piece of Slaughtergarde that has survived since the invasion. This is troubling, very much so.}{[You describe the tunnels, the areas with markings on the floor, and the strange demonic faces over the arches. He nods and says] thank you. But I fear you have brought grave news. It sounds like you have stumbled upon a piece of Slaughtergarde that has survived since the invasion. This is troubling, very much so.}{}{}{}{}
 {42}{[Show him the drawing and explain where it came from.]}{}{1}{anyone( pc.group_list(), "has_item", 11400)}{35}{}
 {43}{That's rather far fetched, surely? We find a creepy dungeon and you jump to a conclusion like that? Either you are guessing, or there must be more you are not telling us.}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 5}{55}{}
+{44}{I didn't see any working gates or sigils or such, everything seemed long dead, and the monsters there very recent.}{}{1}{}{50}{}
 
 {45}{[Surprisingly, he laughs.] Of course, I understand that a total stranger accosting you in a public square with such questions requires some defence. But we have been searching for such places as the dungeon you discovered, and it is vitally important I know if our suspicions are correct. Is there nothing you can tell me?}{[Surprisingly, he laughs.] Of course, I understand that a total stranger accosting you in a public square with such questions requires some defence. But we have been searching for such places as the dungeon you discovered, and it is vitally important I know if our suspicions are correct. Is there nothing you can tell me?}{}{}{}{}
 {46}{[Just tell him a little about the floors and walls, to get rid of him.]}{}{1}{}{40}{}
@@ -37,6 +37,9 @@
 
 {50}{Yet we now have to ask, is this the only one? What if there are other parts of Slaughtergarde hidden away in the Valley, and what if their magicks are still functioning? That question worries me. And who else might want to use them - from either end? That question requires an answer, urgently.}{Yet we now have to ask, is this the only one? What if there are other parts of Slaughtergarde hidden away in the Valley, and what if their magicks are still functioning? That question worries me. And who else might want to use them - from either end? That question requires an answer, urgently.}{}{}{}{}
 {51}{No doubt, but could you first tell us more about what Slaughtergarde is?}{}{1}{}{60}{}
+
+{55}{Well, you must understand that the clerics of my order spend a lot of time communing with their gods and divining threats such as this. We had long feared, based on their insights, that pieces of Slaughtergarde remained, and you seem to have confirmed that. There is really nothing else of such design and antiquity that it could be.}{Well, you must understand that the clerics of my order spend a lot of time communing with their gods and divining threats such as this. We had long feared, based on their insights, that pieces of Slaughtergarde remained, and you seem to have confirmed that. There is really nothing else of such design and antiquity that it could be.}{}{}{}{}
+{56}{All right, then what is Slaughtergarde? Can you tell me that?}{}{1}{}{60}{}
 
 {60}{Of course. The oldest Elves of the Valley remember, but we humans forget... some eight centuries past, a demonic prince - there is no need to speak his name - attempted to invade the Prime Material Plane from his home in the Abyss. To achieve this, he tried nothing less than the transposing of a part of the Abyss to our plane.}{Of course. The oldest Elves of the Valley remember, but we humans forget... some eight centuries past, a demonic prince - there is no need to speak his name - attempted to invade the Prime Material Plane from his home in the Abyss. To achieve this, he tried nothing less than the transposing of a part of the Abyss to our plane.}{}{}{}{}
 {61}{You humans may forget, but we don't... but go on.}{}{1}{pc.stat_level_get(stat_race) == race_halfling or pc.stat_level_get(stat_race) == race_dwarf or pc.stat_level_get(stat_race) == race_gnome}{65}{}
@@ -61,7 +64,7 @@
 {86}{Cultists seems strong language, an hobgoblin cleric worshipping his goblin god could be as mundane as it sounds. But I will tell you what I saw. [Do so.]}{}{14}{}{90}{}
 {87}{[Just tell him.]}{}{1}{}{90}{}
 
-{90}{[You tell him of the dark creeper and the map, while he looks thoughtful.] This creature sounds like some sort of emissary, seeking functioning sigils or quite possibly even a working gate. This is what we feared. So now the question becomes, emissary from where? The map says Surrinak, it would seem your path leads there next.}{[You tell him of the dark creeper and the map, while he looks thoughtful.] This creature sounds like some sort of emissary, seeking functioning sigils or quite possibly even a working gate. This is what we feared. So now the question becomes, emissary from where? The map says Surrinak, it would seem your path leads there next.}{}{}{}{game.quests[3].state = qs_mentioned}
+{90}{[You tell him of the dark creeper and the map, while he looks thoughtful.] This creature sounds like some sort of emissary, seeking functioning sigils or quite possibly even a working gate. This is what we feared. So now the question becomes, emissary from where? The map says Surrinak, it would seem your path leads there next.}{[You tell him of the dark creeper and the map, while he looks thoughtful.] This creature sounds like some sort of emissary, seeking functioning sigils or quite possibly even a working gate. This is what we feared. So now the question becomes, emissary from where? The map says Surrinak, it would seem your path leads there next.}{}{}{}{game.quests[2].state = qs_mentioned}
 {91}{Indeed it does.}{}{1}{}{95}{}
 {92}{Whoa there. Why would we endanger ourselves dealing with such evil when your Order exists specifically to handle such things?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 5}{110}{}
 {93}{Nope, this sounds dangerous. It would seem my path leads elsewhere.}{}{1}{}{135}{}
@@ -100,7 +103,7 @@
 {124}{But I'm a fellow paladin!}{}{1}{pc.stat_level_get(stat_level_paladin) >= 1}{130}{}
 {125}{All right, never mind, we'll just go.}{}{1}{}{127}{}
 
-{127}{Excellent, I'll be waiting here.}{Excellent, I'll be waiting here.}{}{}{}{game.quests[3].state = qs_accepted}
+{127}{Excellent, I'll be waiting here.}{Excellent, I'll be waiting here.}{}{}{}{game.quests[2].state = qs_accepted}
 {128}{E:}{}{1}{}{0}{}
 
 {130}{The answer is no.}{The answer is no.}{}{}{}{}
@@ -128,7 +131,7 @@
 {161}{Can't complain. Well, bye.}{}{1}{}{0}{}
 
 {170}{So it was indeed another part of Slaughtergarde? It is as we feared... but at least you have neutralised it. Well done! [He hands you each 800gp and a mark of commendation from the Luminous Order.]}{So it was indeed another part of Slaughtergarde? It is as we feared... but at least you have neutralised it. Well done! [He hands you each 800gp and a mark of commendation from the Luminous Order.]}{}{}{}{pc.money_adj(80000 * len(game.party))}
-{171}{Thank you. Thank you very much.}{}{1}{}{220}{game.quests[3].state = qs_completed}
+{171}{Thank you. Thank you very much.}{}{1}{}{220}{game.quests[2].state = qs_completed}
 
 {175}{This involvement of the Drow is troubling, I will not deny, but something worse has come to our attention. The clerics of the Order have used some quite powerful magicks to commune with the Blessed Ones of the higher realms, and have affirmed that yet another remnant of Slaughtergarde remains - under the Scar itself.}{This involvement of the Drow is troubling, I will not deny, but something worse has come to our attention. The clerics of the Order have used some quite powerful magicks to commune with the Blessed Ones of the higher realms, and have affirmed that yet another remnant of Slaughtergarde remains - under the Scar itself.}{}{}{}{}
 {176}{Shocking. Truly shocking.}{}{1}{}{180}{}
@@ -142,11 +145,11 @@
 {185}{We need you to go to the SlaughterScar and investigate this evil. The most powerful clerics in my Order have already gone ahead of you and ensured there are no undead lingering in the vicinity of the entrance. Our cavalry have swept the roads ahead of you - nothing will stand in your way.}{We need you to go to the SlaughterScar and investigate this evil. The most powerful clerics in my Order have already gone ahead of you and ensured there are no undead lingering in the vicinity of the entrance. Our cavalry have swept the roads ahead of you - nothing will stand in your way.}{}{}{}{}
 {186}{And when we get there?}{}{1}{}{190}{}
 
-{190}{Destroy that Gate! Do not let it be opened, do not let it be used! We will pay you no less than 1500gp to each of you for this achievement, and you will have the unending thanks of the Luminous Order - no small thing for any associated with us.}{Destroy that Gate! Do not let it be opened, do not let it be used! We will pay you no less than 1500gp to each of you for this achievement, and you will have the unending thanks of the Luminous Order - no small thing for any associated with us.}{}{}{}{game.quests[4].state = qs_mentioned}
+{190}{Destroy that Gate! Do not let it be opened, do not let it be used! We will pay you no less than 1500gp to each of you for this achievement, and you will have the unending thanks of the Luminous Order - no small thing for any associated with us.}{Destroy that Gate! Do not let it be opened, do not let it be used! We will pay you no less than 1500gp to each of you for this achievement, and you will have the unending thanks of the Luminous Order - no small thing for any associated with us.}{}{}{}{game.quests[3].state = qs_mentioned}
 {191}{It's a deal.}{}{1}{}{195}{}
 {192}{Fine, for that much money I'll make it my problem.}{}{1}{}{195}{}
 
-{195}{Very good. Prepare yourselves but do not be too long about leaving, and when you are ready take the south road out of town.}{Very good. Prepare yourselves but do not be too long about leaving, and when you are ready take the south road out of town.}{}{}{}{game.quests[4].state = qs_accepted}
+{195}{Very good. Prepare yourselves but do not be too long about leaving, and when you are ready take the south road out of town.}{Very good. Prepare yourselves but do not be too long about leaving, and when you are ready take the south road out of town.}{}{}{}{game.quests[3].state = qs_accepted}
 {196}{Will do.}{}{1}{}{0}{}
 
 // Accepted qs_4

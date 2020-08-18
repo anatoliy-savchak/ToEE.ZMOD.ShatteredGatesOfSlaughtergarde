@@ -1,23 +1,24 @@
 {1}{[You see a huge metal construct, which appears to be walking a patrol around the room. It looks at you without breaking stride, but then continues walking without saying anything.]}{[You see a huge metal construct, which appears to be walking a patrol around the room. It looks at you without breaking stride, but then continues walking without saying anything.]}{}{}{}{}
-{2}{Hello?}{}{1}{}{0}{}	// dipl
-{3]{[Feat Tracking - the construct has worn a groove in the floor with its walking, but you see no sign of any other tracks in the room. Perhaps the goblinoids avoid this thing? Click here to speak to it.]}{}{1}{pc.has_feat(feat_track)}{0}{}	// dipl
-{4}{[Detect Evil - this thing has no taint of evil on it! Click here to speak to it.]}{}{1}{game.global_flags[2] == 1 or pc.stat_level_get(stat_level_paladin) >= 1}{0}{}	// dipl
-{5}{[Knowledge Check - this construct appears to be a maug: made in Acheron in the distant past, they are Law-abiding constructs that exist for battle against Chaos. Click here to speak to it - or slink away if you prefer.]}{}{1}{bard_know(triggerer, 5)}{0}{}	// dipl
+{2}{Hello?}{}{1}{}{0}{maug_dipl(npc, pc)}	// dipl
+{3}{[Feat Tracking - the construct has worn a groove in the floor with its walking, but you see no sign of any other tracks in the room. Perhaps the goblinoids avoid this thing? Click here to speak to it.]}{}{1}{pc.has_feat(feat_track)}{0}{maug_dipl(npc, pc)}	// dipl
+{4}{[Detect Evil - this thing has no taint of evil on it! Click here to speak to it.]}{}{1}{game.global_flags[2] == 1 or pc.stat_level_get(stat_level_paladin) >= 1}{0}{maug_dipl(npc, pc)}	// dipl
+{5}{[Knowledge Check - this construct appears to be a maug: made in Acheron in the distant past, they are Law-abiding constructs that exist for battle against Chaos. Click here to speak to it - or slink away if you prefer.]}{}{1}{bard_know(triggerer, 5)}{0}{maug_dipl(npc, pc)}	// dipl
 {6}{Quietly slink away.}{}{1}{}{0}{}
 
 // dipl 1 or less (hostile)
 
 {10}{[He does not look at you or stop walking as he says] Leave this chamber IMMEDIATELY or suffer the consequences.}{[He does not look at you or stop walking as he says] Leave this chamber IMMEDIATELY or suffer the consequences.}{}{}{}{}
-{11}{[Looks like you have about 10 seconds.]}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 3}{0}{}	// set KOS flag in 10
-{12}{A:}{}{1}{}{0}{}	// set KOS flag in 10
+{11}{[Looks like you have about 10 seconds.]}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 3}{0}{set_KOS_flag1(npc)}
+{12}{A:}{}{1}{}{0}{set_KOS_flag1(npc)}
 {13}{[Sneak attack!]}{}{1}{}{0}{npc.attack(pc)}
 
 // dipl 2-14 (indifferent)
 
 {20}{Do not interfere with my mission. Your presence will be reported. [He does not look at you or stop walking as he says this.]}{Do not interfere with my mission. Your presence will be reported. [He does not look at you or stop walking as he says this.]}{}{}{}{}
 {21}{I won't cause any trouble.}{}{1}{}{0}{}
-{22}{Reported to whom? What mission?}{}{1}{}{0}{}	// to floatline
-{26}{[Spot check! The groove he has worn in the floor, the dust on his shoulders, the creak of his joints... they all suggest he has been at this a long time, probably longer than the goblins have been here. His 'mission' may be long since over.] Hey, this mission of yours - are you sure it's still going? Maybe it's time to move on?}{}{1}{pc.skill_level_get(npc, skill_spot) >= 4 or pc.skill_level_get(npc, skill_sense_motive) >= 3}{0}{npc_1(npc)}		// dipl again at -2 due to trying to subvert his mission, floatline 30 if not hostile
+{22}{Reported to whom? What mission?}{}{1}{}{0}{just_floatin(npc, pc)}
+{23}{Just get out of the way, ugly. You don't want to make me angry.}{}{1}{pc.skill_level_get(npc, skill_intimidate) >= 4}{0}{npc_2(npc); just_floatin(npc, pc)}
+{26}{[Spot check! The groove he has worn in the floor, the dust on his shoulders, the creak of his joints... they all suggest he has been at this a long time, probably longer than the goblins have been here. His 'mission' may be long since over.] Hey, this mission of yours - are you sure it's still going? Maybe it's time to move on?}{}{1}{pc.skill_level_get(npc, skill_spot) >= 4 or pc.skill_level_get(npc, skill_sense_motive) >= 3}{56}{npc_1(npc)}
 
 {30}{[He does not respond but continues his patrol.]}{[He does not respond but continues his patrol.]}{}{}{}{}
 
@@ -28,23 +29,23 @@
 
 {43}{I was ordered by the Thulkarr to guard this chamber against intrusion during the battle that destroyed most of Slaughtergarde. I remain here until the Thulkarr orders me otherwise.}{I was ordered by the Thulkarr to guard this chamber against intrusion during the battle that destroyed most of Slaughtergarde. I remain here until the Thulkarr orders me otherwise.}{}{}{}{}
 {44}{[Knowledge Check - a Thulkarr is a first-generation Maug spellcaster, one of those who created the other Maugs.] And what happened to the Thulkarr? Can I meet them?}{}{1}{bard_know(triggerer, 10)}{50}{}
-{45}{Slaughtergarde? What's that?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 3}{100}{}
+{45}{Slaughtergarde? What's that?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 4}{100}{}
 {46}{What sort of intrusion? Why here?}{}{1}{}{70}{}
 
 {50}{I have not seen anyone else from the army in many years.}{I have not seen anyone else from the army in many years.}{}{}{}{}
 {51}{Errr... is it possible the war is over?}{}{1}{}{60}{}
 {52}{So what precisely was your mission?}{}{1}{}{65}{}
 {53}{I'll move on now, thanks.}{}{1}{}{0}{}
-{54}{I think your war is over... surely it's time to go home? You've earned it.}{}{1}{}{56}{npc_1(npc)}		// dipl again at -2 due to trying to subvert his mission, floatline 30 if not hostile
+{54}{I think your war is over... surely it's time to go home? You've earned it.}{}{1}{}{56}{npc_1(npc)}
 
 {56}{You will not deter me from my mission. [He continues to walk his patrol.]}{You will not deter me from my mission. [He continues to walk his patrol.]}{}{}{}{}
 {57}{Hey, it's your life.}{}{1}{}{0}{}
 {58}{Something I said?}{}{1}{}{0}{}
 
-{60}{Possible? Yes. I certainly have seen and heard no indication of battle these many centuries... but my orders remain. And I take the recent presence of these goblinoids as a reminder of the importance of those orders. With goblins and hobgoblins comes clerics and wizards who would love to have access to these summoning sigils.}{Possible? Yes. I certainly have seen and heard no indication of battle these many centuries... but my orders remain. And I take the recent presence of these goblinoids as a reminder of the importance of those orders. With goblins and hobgoblins comes clerics and wizards who would love to have access to these summoning sigils.}{}{}{}{}
+{60}{Possible? Yes. I certainly have seen and heard no indication of battle these many centuries... but my orders remain. And I take the recent presence of these goblinoids as a reminder of the importance of those orders. With goblins and hobgoblins comes clerics and wizards who would love to have access to these summoning circles.}{Possible? Yes. I certainly have seen and heard no indication of battle these many centuries... but my orders remain. And I take the recent presence of these goblinoids as a reminder of the importance of those orders. With goblins and hobgoblins comes clerics and wizards who would love to have access to these summoning circles.}{}{}{}{}
 {61}{Dare I ask your specific orders?}{}{1}{}{65}{}
-{62}{Summoning sigils?}{}{1}{}{70}{}
-{63}{But surely you can go home now, you don't have to waste your life here for no reason?}{}{1}{}{56}{npc_1(npc)}		// dipl again at -2 due to trying to subvert his mission, floatline 30 if not hostile
+{62}{Summoning circles?}{}{1}{}{70}{}
+{63}{But surely you can go home now, you don't have to waste your life here for no reason?}{}{1}{}{56}{npc_1(npc)}
 
 
 {65}{I told you what I was ordered by the Thulkarr, but I will add - the war was against demons, so my orders include defeating the demons who come here and preventing their conquest.}{I told you what I was ordered by the Thulkarr, but I will add - the war was against demons, so my orders include defeating the demons who come here and preventing their conquest.}{}{}{}{}
@@ -53,9 +54,83 @@
 {70}{These circles on the floor could be used to summon demons. I will not allow that to happen.}{These circles on the floor could be used to summon demons. I will not allow that to happen.}{}{}{}{}
 {71}{Well now, that IS interesting... I might have to try that.}{}{1}{game.party_alignment == NEUTRAL_EVIL or game.party_alignment == CHAOTIC_EVIL or game.party_alignment == CHAOTIC_NEUTRAL or game.party_alignment == LAWFUL_EVIL}{75}{}
 {72}{I should hope not. Well, I must be going.}{}{1}{}{0}{}
-
+{73}{They look inoperative... would you like us to cast Detect Magic and see if they still function?}{}{1}{anyone( pc.group_list(), "has_item", 9114) or game.global_flags[15] == 1}{80}{}
+{74}{These old things? They are harmless! [Jump on the circles.]}{}{1}{}{10}{npc_2(npc)}
 
 {75}{[The maug moves to attack.]}{[The maug moves to attack.]}{}{}{}{}
 {76}{Bring it on.}{}{1}{}{0}{npc.attack(pc)}
-{77}{I was just kidding!}}{}{1}{}{0}{npc.attack(pc)}
-{78}{[RUN!]}{}{1}{}{0}{}
+{77}{I was just kidding!}{}{1}{}{0}{npc.attack(pc)}
+{78}{[RUN!]}{}{1}{}{0}{set_KOS_flag1(npc)}
+
+{80}{[He thinks then says] yes, I see no harm and some benefit.}{[He thinks then says] yes, I see no harm and some benefit.}{}{}{}{}
+{81}{[You use the scroll in your inventory to cast the spell.]}{}{1}{anyone( pc.group_list(), "has_item", 9114)}{85}{det_mag(npc, pc)}
+{82}{On second thoughts, I really don't want to waste this scroll.}{}{1}{anyone( pc.group_list(), "has_item", 9114)}{56}{npc_1(npc)}
+{83}{Ummm, I already did, and, well, they're you go.}{}{1}{game.global_flags[15] == 1}{85}{}
+
+{85}{[The glow of the spell reveals no magic properties from the circles.] I must needs continue my patroling as per my orders, but it is reassuring to know that it is unlikely anything will travel through those circles to attack me or unleash evil in this place. You have proven useful - perhaps you would be prepared to further assist?}{[The glow of the spell reveals no magic properties from the circles.] I must needs continue my patroling as per my orders, but it is reassuring to know that it is unlikely anything will travel through those circles to attack me or unleash evil in this place. You have proven useful - perhaps you would be prepared to further assist?}{}{}{}{}
+{86}{What did you have in mind?}{}{1}{}{250}{}
+
+{90}{I must return to my patrol. You may continue with your own objectives, but please do not interfere with mine.}{I must return to my patrol. You may continue with your own objectives, but please do not interfere with mine.}{}{}{}{}
+{91}{Understood.}{}{1}{}{0}{}
+
+{100}{Slaughtergarde was the name of a mountain that was transposed here from the Abyss by a demon prince, attempting to open a permanent gateway between his realm and the Prime Material plane. The force I was part of was one of many assembled to prevent this great evil.}{Slaughtergarde was the name of a mountain that was transposed here from the Abyss by a demon prince, attempting to open a permanent gateway between his realm and the Prime Material plane. The force I was part of was one of many assembled to prevent this great evil.}{}{}{}{game.global_flags[3] = 1}
+{101}{And did you win?}{}{1}{}{110}{}
+
+{110}{I do not know, though I have every reason to believe that the bulk of the mountain, and the demon's army, was thrown back into the Abyss. Certainly the area we currently are - you might call it a dungeon - is only a fraction of Slaughtergarde. A fragment, as it were. The rest seems gone, though other 'fragments' may remain, elsewhere in this Valley.}{I do not know, though I have every reason to believe that the bulk of the mountain, and the demon's army, was thrown back into the Abyss. Certainly the area we currently are - you might call it a dungeon - is only a fraction of Slaughtergarde. A fragment, as it were. The rest seems gone, though other 'fragments' may remain, elsewhere in this Valley.}{}{}{}{}
+{111}{Well I'm glad the demon's plans were thwarted.}{}{1}{}{90}{}
+{112}{Is there some way we could help each other? I mean, we are also here to fight evil, perhaps if we team up...?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 4 and  game.quests[4].state == qs_unknown}{200}{}
+{113}{Demon, shmemon. That all happened centuries ago, this is a waste of your time and ours.}{}{1}{}{56}{npc_2(npc)}
+
+
+// returning, under quest
+
+{150}{[The Maug actually stops to speak to you.] I have heard some screaming and less goblin chatter, have you completed your mission to eradicate evil from the dugeon?}{[The Maug actually stops to speak to you.] I have heard some screaming and less goblin chatter, have you completed your mission to eradicate evil from the dugeon?}{}{}{}{}
+{151}{Yes?}{}{1}{}{160}{game.quests[4].state = qs_completed}	// global_var says yes
+{152}{No? Just passing through.}{}{1}{}{90}{}	// global_var says no
+{153}{Maybe? I think so? I am not sure?}{}{1}{}{170}{}	// global_var says no
+
+{160}{Excellent. Here is your reward. [He hands you a suit of masterwork plate. Surprisingly, it seems to fit.] I must continue my patrol, but if you are intent on continuing the war against evil, may I suggest you ensure there are no other remnants of Slaughtergarde remaining? My senses suggest a presence of demonic power, probably a Temple, to the north-east.}{Excellent. Here is your reward. [He hands you a suit of masterwork plate. Surprisingly, it seems to fit.] I must continue my patrol, but if you are intent on continuing the war against evil, may I suggest you ensure there are no other remnants of Slaughtergarde remaining? My senses suggest a presence of demonic power, probably a Temple, to the north-east.}{}{}{}{create_item_in_inventory(6141,pc)}
+{161}{I'll see what I can do.}{}{1}{}{0}{}
+{162}{What can you tell me about Slaughtergarde?}{}{1}{game.global_flags[3] == 0}{100}{}
+
+{170}{[He pauses, listening and possibly sensing in other ways, then says] no, evil remains. Please return to me when this mission is completed.}{[He pauses, listening and possibly sensing in other ways, then says] no, evil remains. Please return to me when this mission is completed.}{}{}{}{}
+{171}{A:}{}{1}{}{0}{}
+{172}{S:}{}{1}{}{0}{}
+
+
+
+
+
+{200}{I cannot leave this area as it would violate my orders. But if you intend to combat the evil in this place, then I have a task you could do - a 'quest' as adventurers call it, I believe. And I can give you information regarding what you might face elsewhere in the dungeon.}{I cannot leave this area as it would violate my orders. But if you intend to combat the evil in this place, then I have a task you could do - a 'quest' as adventurers call it, I believe. And I can give you information regarding what you might face elsewhere in the dungeon.}{}{}{}{}
+{201}{I'm listening.}{}{1}{}{250}{}
+
+
+// returning, indifferent
+
+{220}{Do not interfere with my mission. Your presence will be reported. [He does not look at you or stop walking as he says this.]}{Do not interfere with my mission. Your presence will be reported. [He does not look at you or stop walking as he says this.]}{}{}{}{}
+{221}{I won't cause any trouble.}{}{1}{}{0}{}
+{222}{Reported to whom? What mission?}{}{1}{}{0}{just_floatin(npc, pc)}
+
+
+// the quest
+
+{250}{I would like the evil beings of this dungeon to be neutralized. I can warn you that there is a howler nearby - I suggest that you attack it only with ranged weapons, but be aware it will respond with quills. Otherwise, I have seen goblins and hobgoblins, though there are also traces of the undead suggesting a cleric may be about. Please dispose of all such evil creatures in this environ.}{I would like the evil beings of this dungeon to be neutralized. I can warn you that there is a howler nearby - I suggest that you attack it only with ranged weapons, but be aware it will respond with quills. Otherwise, I have seen goblins and hobgoblins, though there are also traces of the undead suggesting a cleric may be about. Please dispose of all such evil creatures in this environ.}{}{}{}{game.quests[4].state = qs_mentioned}
+{251}{I had only come here to recover some barrels. Is there a reward for this service?}{}{1}{}{255}{}
+
+{255}{I have a suit of plate armour, of superb craftsmanship, that I am prepared to give you in return for this service.}{I have a suit of plate armour, of superb craftsmanship, that I am prepared to give you in return for this service.}{}{}{}{}
+{256}{Will do!}{}{1}{}{90}{game.quests[4].state = qs_accepted}
+{257}{No, I don't think it's worth it.}{}{1}{}{0}{npc_1(npc); just_floatin(npc, pc)}
+
+
+
+
+
+
+// post quest completed (in time, add chatter about the Temple and Armoury)
+
+{300}{Please let me continue my mission.}{Please let me continue my mission.}{}{}{}{}
+{301}{A:}{}{1}{}{0}{}
+
+
+// npc_1: -2 on check, eg suggested he abandon his post
+// npc_2: -4 on check, eg defaced the circles
