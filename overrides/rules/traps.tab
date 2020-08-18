@@ -20,3 +20,5 @@ TRAP_SCYTHE	san_use		Trap-Scythe	24	23	TRAP_NONE	Slashing 4d4					1	18
 TRAP_20	san_use		Trap-poisonGas	20	20	TRAP_NONE	poison 0d0+1	piercing 1d2	poison 0d0+31			1	19
 TRAP_21_20	san_use		Trap-poisonGas	20	20	TRAP_NONE	poison 0d0+1	piercing 1d2	poison 0d0+31			1	20
 TRAP_SPEC_GLYPH_SDC28_DDC_28_CR4	san_use		Trap-glyph	28	28	TRAP_NONE	poison 0d0+1	piercing 1d2	poison 0d0+31			4	21
+TRAP_SPEC_FIRE_SDC16_DDC_16_CR3	san_use		Trap-Fire	16	16	TRAP_NONE	fire 3d6	piercing 1d2	poison 0d0+31			3	22
+TRAP_SPEC_POISON_GAS_SDC15_DDC_15_CR1	san_use		Trap-poisonGas	15	15	TRAP_NONE	poison 0d0+31					1	23

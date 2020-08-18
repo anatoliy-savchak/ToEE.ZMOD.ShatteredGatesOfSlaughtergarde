@@ -135,7 +135,6 @@
     <Content Include="overrides\rules\indicators\surprised2.txt" />
     <Content Include="overrides\rules\indicators\lodged_quills.txt" />
     <Content Include="overrides\rules\MapLimits.mes" />
-    <Content Include="overrides\rules\poisons.json" />
     <Content Include="overrides\rules\protos_save.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
@@ -217,6 +216,7 @@
     </Compile>
     <Compile Include="overrides\scr\cormyr_config.py" />
     <Compile Include="overrides\scr\cormyr_pc.py" />
+    <Compile Include="overrides\scr\ctrl_behaviour.py" />
     <Compile Include="overrides\scr\ctrl_daemon.py">
       <SubType>Code</SubType>
     </Compile>
@@ -254,6 +254,8 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
+    <Compile Include="overrides\scr\py06402_trap_fiery_demon_arch.py" />
     <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />
     <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
     <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
@@ -291,6 +293,7 @@
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
     <Compile Include="overrides\scr\Spell469 - Summon Monster III.py" />
+    <Compile Include="overrides\scr\Spell566 - Harm.py" />
     <Compile Include="overrides\scr\startup_zmod.py">
       <SubType>Code</SubType>
     </Compile>

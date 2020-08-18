@@ -146,3 +146,6 @@ class CtrlMonster(object):
 			#debugg.breakp("option_starts_combat_sneaked")
 			attachee.critter_flag_set(OCF_MOVING_SILENTLY)
 		return toee.RUN_DEFAULT
+
+	def dying(self, attachee, triggerer):
+		return toee.RUN_DEFAULT

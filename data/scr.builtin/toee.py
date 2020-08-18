@@ -750,8 +750,10 @@ class PySpell(object):
 		self.begin_round_obj = PyObjHandle()
 		self.caster = PyObjHandle()
 		self.caster_class = stat_level_wizard
+		self.caster_level = 1
 		self.spell_level = 0
 		self.range_exact = 0
+		self.dc = 1
 		self.id = 0
 		self.duration = 1
 		self.duration_remaining = 1

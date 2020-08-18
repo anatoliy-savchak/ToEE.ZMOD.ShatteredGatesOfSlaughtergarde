@@ -45,7 +45,7 @@ class CtrlDoomFistMonk(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		# assign scripts
-		utils_obj.obj_scripts_clear(npc)
+		##utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		# create inventory
@@ -193,7 +193,7 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		# assign scripts
-		utils_obj.obj_scripts_clear(npc)
+		##utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		# create inventory
@@ -214,6 +214,9 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 			utils_item.item_create_in_inventory(ARCANE_GUARD_SLEEP_SCROLL_PROTO, npc)
 
 		npc.item_wield_best_all()
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_EXPEDITIOUS_RETREAT, npc)
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_RAY_OF_ENFEEBLEMENT, npc)
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_CAUSE_FEAR, npc)
 		npc.condition_add_with_args("AI_Improved_Trip_Aoo", 0, 0)
 
 		# attempt to disable combat casting, unsuccessful
@@ -402,7 +405,7 @@ class CtrlQuaggoth(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		# assign scripts
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		#npc.scripts[const_toee.sn_hit] = shattered_temple_encounters
@@ -462,7 +465,7 @@ class CtrlDrowZombie(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		# assign scripts
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		# create inventory
@@ -529,7 +532,7 @@ class CtrlGaranaach(ctrl_behaviour.CtrlBehaviour):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlGaranaach, self).created(npc)
 		# assign scripts
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -569,13 +572,16 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlShenn, self).created(npc)
 		# assign scripts
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_end_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_exit_combat] = shattered_temple_encounters
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_LARGE, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_MASTERWORK, npc)
+		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_SCIMITAR_MASTERWORK, npc)
+		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_12_MASTERWORK, npc)
 		npc.item_wield_best_all()
 
 		npc.condition_add_with_args("Caster_Level_Add", 7, 0)
@@ -596,6 +602,10 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
+
+		#if (toee.game.combat_turn > 2 and npc.critter_flags_get() & toee.OCF_MOVING_SILENTLY):
+		#	npc.critter_flag_unset(toee.OCF_MOVING_SILENTLY)
+
 		tac = None
 		skip_cause_fear = 0
 		while (not tac):
@@ -629,12 +639,19 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 
 	def end_combat(self, attachee, triggerer):
 		print("end_combat")
+		debug.breakp("end_combat")
 		#utils_sneak.npc_make_hide(attachee, 1)
 		return toee.RUN_DEFAULT
 
 	def start_combat(self, attachee, triggerer):
 		super(CtrlShenn, self).start_combat(attachee, triggerer)
 		return
+
+	def dying(self, attachee, triggerer):
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_SCIMITAR_MASTERWORK, attachee)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_12_MASTERWORK, attachee)
+		return toee.RUN_DEFAULT
+
 
 class CtrlLolthSting(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
@@ -643,7 +660,7 @@ class CtrlLolthSting(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlLolthSting, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -664,7 +681,7 @@ class CtrlGrimlock(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlGrimlock, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -728,7 +745,7 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlLanthurrae, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -958,7 +975,7 @@ class CtrlWight(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlWight, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -978,7 +995,7 @@ class CtrlDrowAcolyte(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlDrowAcolyte, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		#npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		#npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -1023,7 +1040,7 @@ class CtrlHuntingSpider(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlHuntingSpider, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -1053,7 +1070,7 @@ class CtrlWebSpinningSpider(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlWebSpinningSpider, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -1100,7 +1117,7 @@ class CtrlHugeFiendishSpider(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlHugeFiendishSpider, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -1155,7 +1172,7 @@ class CtrlAdvancedMagmaHurler(ctrl_behaviour.CtrlBehaviour):
 	def created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlAdvancedMagmaHurler, self).created(npc)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
@@ -1216,7 +1233,7 @@ class CtrlWhitespawnHordeling(ctrl_behaviour.CtrlBehaviour):
 
 	def after_created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
-		utils_obj.obj_scripts_clear(npc)
+		#utils_obj.obj_scripts_clear(npc)
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 

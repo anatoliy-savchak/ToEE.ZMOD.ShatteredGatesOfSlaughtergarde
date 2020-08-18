@@ -43,6 +43,9 @@ def san_dying(attachee, triggerer):
 	c = csl()
 	if (c):
 		c.critter_dying(attachee, triggerer)
+	storage = utils_storage.obj_storage_by_id(attachee.id)
+	if (storage and dying in dir(storage.get_data("CtrlBehaviour"))):
+		storage.get_data("CtrlBehaviour").dying(attachee, triggerer)
 	return toee.RUN_DEFAULT
 
 def csl():
@@ -158,8 +161,8 @@ class CtrlShatteredLab(object):
 		self.check_sleep_status_update(1)
 		self.check_entrance_patrol()
 
-		self.kill_enemy_all()
-		self.remove_promters_all()
+		#self.kill_enemy_all()
+		#self.remove_promters_all()
 		return
 
 	def place_encounter_patrol(self, near_pc):
