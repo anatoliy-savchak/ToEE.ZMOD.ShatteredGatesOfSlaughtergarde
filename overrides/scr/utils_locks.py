@@ -26,5 +26,5 @@ def container_setup_dc(obj, locked_dc, key_id, hp, hardeness, break_dc):
 		obj.obj_set_int(toee.obj_f_hp_pts, hp)
 
 	if (hardeness):
-		obj.obj_set_int(toee.obj_f_hp_adj, hp)
+		obj.obj_set_int(toee.obj_f_hp_adj, hardeness)
 	return obj

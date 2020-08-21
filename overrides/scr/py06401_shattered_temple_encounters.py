@@ -1,5 +1,5 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
-import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells
+import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, shattered_consts
 
 shattered_temple_encounters = 6401
 
@@ -1261,3 +1261,8 @@ class CtrlWhitespawnHordeling(ctrl_behaviour.CtrlBehaviour):
 class CtrlElectrumClockworkHorror(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14936
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_item.item_create_in_inventory(shattered_consts.PROTO_QUEST_ITEM_MEDALLION, npc)
+		return

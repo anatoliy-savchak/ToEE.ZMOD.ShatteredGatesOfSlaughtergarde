@@ -16,6 +16,7 @@ def san_first_heartbeat(attachee, triggerer):
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(triggerer, toee.PyObjHandle)
+	print("san_use name: {}, obj: {}".format(attachee.name, attachee))
 
 	if (attachee.name == shattered_consts.NAMEID_DOOR_T7):
 		toee.game.timevent_add(_t7_after, (attachee, triggerer), 300, 1) # 1000 = 1 second
@@ -38,9 +39,20 @@ def san_use(attachee, triggerer):
 			attachee.float_text_line("Barred!", toee.tf_blue)
 			return toee.SKIP_DEFAULT
 
-	elif (attachee.proto == 136):
+	elif (attachee.proto == shattered_consts.PROTO_DEMON_ARCH_10FT):
 		attachee.object_flag_set(toee.OF_DONTDRAW)
 		utils_obj.obj_timed_destroy(attachee, 2000, 1)
+
+	elif (attachee.name == shattered_consts.NAMEID_DOOR_T21):
+		print("NAMEID_DOOR_T21 clicked: {}".format(attachee))
+		if (not (attachee.object_flags_get() & toee.OF_DONTDRAW)):
+			attachee.object_flag_set(toee.OF_DONTDRAW)
+			utils_obj.obj_timed_destroy(attachee, 2000, 1)
+			sibling = utils_obj.get_sibling_door(attachee)
+			if (sibling and not (sibling.object_flags_get() & toee.OF_DONTDRAW)):
+				sibling.object_flag_set(toee.OF_DONTDRAW)
+				sibling.portal_toggle_open()
+				utils_obj.obj_timed_destroy(sibling, 2000, 1)
 
 	return toee.RUN_DEFAULT
 
@@ -100,7 +112,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		#self.destroy_all_npc()
 
 		self.encounters_placed = 1
-		if (0):
+		if (1):
 			self.place_encounter_t1()
 			self.place_encounter_t2()
 			self.place_encounter_t3()
@@ -157,7 +169,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 480, 462) #t14
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 454) #t15
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 449) #t16
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 471) #t18
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 533, 462) #t21
@@ -985,13 +997,37 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 			chest.rotation = math.radians(270) # pointing west
 
 			utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_BLACK, chest) # 500 gp
+
+		#T21
+		if (1):
+			loc = utils_obj.sec2loc(537,493)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(90+45) # pointing north
+
+			utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_BLACK, chest) # 500 gp
+
+		#T22
+		if (1):
+			loc = utils_obj.sec2loc(506,487)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_GIANT, loc)
+			chest.move(loc, 8.485282, -14.1421356)
+			chest.rotation = math.radians(45) # pointing bottom left
+
+			nameid = utils_toee.make_custom_name("Sarcophagus")
+			if (nameid):
+				chest.obj_set_int(const_toee.obj_f_description_correct, nameid)
+
+			utils_locks.container_setup_dc(chest, -30, 0, 120, 8, 30)
+			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_PLUS_1, chest)
+			utils_item.item_create_in_inventory(shattered_consts.PROTO_ARMOR_SHIELD_OF_DRAGONRIDER, chest)
 		return
 
 	def place_demon_archs(self):
 		#T10
 		if (1):
 			loc = utils_obj.sec2loc(435, 460)
-			arch = toee.game.obj_create(136, loc)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
 			arch.move(loc, 0, 0)
 			arch.rotation = 2.3561945
 
@@ -1003,9 +1039,9 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		#T14
 		if (1):
 			loc = utils_obj.sec2loc(478,457)
-			arch = toee.game.obj_create(136, loc)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
 			arch.move(loc, 0, 0)
-			arch.rotation = 3.926991
+			arch.rotation = math.radians(180+45) #3.926991
 
 			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
 			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
@@ -1015,9 +1051,32 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		#T15
 		if (1):
 			loc = utils_obj.sec2loc(504,449)
-			arch = toee.game.obj_create(136, loc)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
 			arch.move(loc, 0, 0)
-			arch.rotation = 2.3561945
+			arch.rotation = math.radians(90+45) #2.3561945 poiting top-right
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+
+		#T22
+		if (1): # to T23
+			loc = utils_obj.sec2loc(522,503)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = math.radians(90+45) #2.3561945 poiting top-right
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+
+		if (1): # to T25
+			loc = utils_obj.sec2loc(514,508)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = math.radians(180+45) #3.926991 poiting top-left
 
 			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
 			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
