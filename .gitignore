@@ -1641,6 +1641,7 @@ modules/ToEE.dat
 modules/ToEE/mes
 modules/ToEE/movies
 modules/ToEE/players
+modules/ToEE/TIGCache
 modules/ToEE/Bag_of_Holding.mes
 modules/ToEE/Co8_config.ini
 modules/ToEE/delayed_blast_fireball.txt

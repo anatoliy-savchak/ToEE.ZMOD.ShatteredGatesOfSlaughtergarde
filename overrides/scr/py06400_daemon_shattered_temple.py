@@ -7,8 +7,6 @@ def san_first_heartbeat(attachee, triggerer):
 	#print(attachee.id)
 	#debugg.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
-	for pc in toee.game.party:
-		pc.condition_add("Inspect")
 	ctrl = CtrlShatteredTemple.ensure(attachee)
 	ctrl.place_encounters()
 	return toee.RUN_DEFAULT
@@ -91,6 +89,7 @@ def cst():
 	return result
 
 class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
+
 	def created(self, npc):
 		super(CtrlShatteredTemple, self).created(npc)
 		npc.scripts[const_toee.sn_dialog] = 6400
@@ -101,9 +100,15 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return "CtrlShatteredTemple"
 
 	def place_encounters(self):
-		if (self.encounters_placed): return
-		self.encounters_placed = 1
-		#debugg.breakp("place_encounters")
+		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
+
+		this_entrance_time = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("this_entrance_time == {}".format(this_entrance_time))
+		if (not self.encounters_placed):
+			self.first_entered_shrs = this_entrance_time
+		self.last_entered_shrs = this_entrance_time
+		if (not self.last_leave_shrs):
+			self.last_leave_shrs = this_entrance_time
 
 		startup_zmod.zmod_templeplus_config_apply()
 
@@ -111,8 +116,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		self.m2 = list()
 		#self.destroy_all_npc()
 
-		self.encounters_placed = 1
-		if (1):
+		if (not self.encounters_placed and 1):
 			self.place_encounter_t1()
 			self.place_encounter_t2()
 			self.place_encounter_t3()
@@ -139,43 +143,34 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_t24()
 			self.place_encounter_t25()
 		
-		self.place_chests()
-		self.place_demon_archs()
-		#self.place_encounter_t12()
-		#self.place_encounter_t13()
-		#self.kill_enemy_by_encounter("t1")
-		#self.kill_enemy_by_encounter("t4")
-		#self.print_monsters()
-		#self.print_promters_names()
-		# debug
-		#wizard = toee.game.party[4]
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_COLOR_SPRAY, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_OBSCURING_MIST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_INVISIBILITY, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BLUR, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, wizard)
-		#utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_MAGIC_MISSILES_1ST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_ACID_SPLASH, wizard)
-		#wizard.identify_all()
-		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
-		#self.remove_trap_doors()
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 476, 498) # t2
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 465, 477) # t4 stable
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 463, 496) # t6
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 435, 495) # t7
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 441, 465) #t10
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 480, 462) #t14
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 454) #t15
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 449) #t16
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 471) #t18
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 533, 462) #t21
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 514, 474) #t22
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 499) #t23
+		if (not self.encounters_placed and 1):
+			self.place_chests()
+			self.place_demon_archs()
+
+		self.encounters_placed += 1
+		utils_npc.pc_turn_all(const_toee.rotation_0200_oclock)
+
+		self.factions_existance_refresh()
+
 		utils_obj.scroll_to_leader()
+
+		self.check_sleep_status_update(1)
+		self.check_entrance_patrol()
+
+		return
+
+	def place_encounter_patrol(self, near_pc):
+		self.patrol_spawned_count += 1
+		self.last_patrol_spawned_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
+		loc1 = utils_obj.sec2loc(480, 473)
+		loc2 = utils_obj.sec2loc(480, 476)
+		if (near_pc):
+			loc1 = toee.game.leader.location - 2
+			loc2 = loc1
+
+		self.create_arcane_guard_at(loc1, const_toee.rotation_0800_oclock, "t0", "aguard1", 0, 0, 0)
+		self.create_arcane_guard_at(loc2, const_toee.rotation_0800_oclock, "t0", "aguard2", 0, 0, 0)
 		return
 
 	def place_encounter_t1(self):
@@ -754,7 +749,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 		return npc
 
-	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name, guard_ai_type = 0):
+	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name, guard_ai_type = 0, no_draw = 1, no_kos = 1):
 		npc, ctrl = py06401_shattered_temple_encounters.CtrlArcaneGuard.create_obj_and_class(npc_loc, 0)
 		if (ctrl):
 			ctrl.guard_ai_type = guard_ai_type
@@ -762,7 +757,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			self.monster_setup(npc, encounter, code_name, None, no_draw, no_kos)
 		return npc, ctrl
 
 	def create_quaggoth_at(self, npc_loc, rot, encounter, code_name):
@@ -1092,3 +1087,21 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		super(CtrlShatteredTemple, self).monster_setup(npc, encounter_name, monster_code_name, monster_name, no_draw, no_kos, faction)
 		npc.scripts[const_toee.sn_dying] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
 		return
+
+	def check_entrance_patrol(self):
+		threshhold_hours_passed = 4*24 + 16 + 1
+		left_for = self.last_entered_shrs - self.last_leave_shrs
+		print("check_entrance_patrol left_for: {}, last_leave_shrs: {}, last_entered_shrs: {}".format(left_for, self.last_leave_shrs, self.last_entered_shrs))
+		if (left_for < threshhold_hours_passed): return 0
+
+		#print(self.factions_existance)
+		spawn_left = 0
+		if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+			spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+		print("spawn_left: {}".format(spawn_left))
+		if (spawn_left == 0): 
+			return 0
+
+		self.place_encounter_patrol(0)
+		return 1

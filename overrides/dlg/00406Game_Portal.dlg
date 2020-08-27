@@ -1,20 +1,10 @@
 {1}{The portal opens before you...}{The portal opens before you...}{}{}{}{game.particles( 'ef-NODE-Air portal', npc ); game.sound( 4008 ); game.global_flags[601] = 1; zmod_startup()}
-{2}{Begin adventuring A Dark and Stormy Knight.}{}{1}{}{0}{game.leader.scripts[38] = 6201; game.fade_and_teleport( 0, 0, 0, 5120, 564, 477 )}
-{3}{Begin adventuring Shattered Lab.}{Begin adventuring Shattered Lab.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5121, 518, 454 )}
-{4}{Begin adventuring Shattered City.}{Begin adventuring Shattered City.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5122, 538, 510 )}
-{5}{Begin adventuring Shattered Temple.}{Begin adventuring Temple.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5123, 493, 475 )}
-{6}{Begin adventuring Shattered Armory.}{Begin adventuring Temple.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5124, 407, 516)}
+{2}{Begin adventuring Shattered Gates of Slaughtergarde.}{Begin adventuring Shattered Gates of Slaughtergarde.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5122, 538, 510 )}
 {11}{Return to shopmap.}{}{1}{}{0}{}
 
-
 {20}{The portal is open...}{The portal is open...}{}{}{}{}
-{21}{Begin adventuring A Dark and Stormy Knight.}{}{1}{}{0}{game.leader.scripts[38] = 6201; game.fade_and_teleport( 0, 0, 0, 5120, 564, 477 )}
-{22}{Begin adventuring Shattered.}{}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5121, 518, 454 )}
-{24}{Begin adventuring Shattered City.}{Begin adventuring Shattered City.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5122, 538, 510 )}
-{25}{Begin adventuring Shattered Temple.}{Begin adventuring Temple.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5123, 493, 475 )}
-{26}{Begin adventuring Shattered Armory.}{Begin adventuring Temple.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5124, 407, 516)}
+{21}{Begin adventuring Shattered Gates of Slaughtergarde.}{Begin adventuring Shattered Gates of Slaughtergarde.}{1}{}{0}{game.fade_and_teleport( 0, 0, 0, 5122, 538, 510 )}
 {30}{Return to shopmap.}{}{1}{}{0}{}
-
 
 {4000}{There's little to be gained by attacking the game portal.}{There's little to be gained by attacking the game portal.}{}{}{}{}
 {4001}{[exit]}{}{1}{}{0}{}

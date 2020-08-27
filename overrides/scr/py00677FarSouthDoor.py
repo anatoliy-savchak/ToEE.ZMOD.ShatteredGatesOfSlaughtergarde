@@ -1,4 +1,4 @@
-import toee, utils_npc
+import toee, utils_npc, shattered_consts
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)

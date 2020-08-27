@@ -527,6 +527,7 @@ class game(object):
 	combat_turn = 0
 	quests = PyQuests()
 	char_ui_display_type = 0
+	global_flags = PyGlobalFlags()
 
 	@staticmethod
 	def obj_create(protoId, loc, offset_x = None, offset_y = None):
@@ -660,6 +661,7 @@ class game(object):
 	def is_ranged_weapon(weapon_type):
 		""" game.is_ranged_weapon(weapon_type[wt_gauntlet]: int) -> int"""
 		return 1
+
 
 def anyone(targetObjs, methodName, methodArg):
 	return PyObjHandle()
@@ -834,6 +836,16 @@ class PyTrap(object):
 		""" trap.attack(PyObjHandle: target, int: attack_bonus, int: crit_hit_range_start, int: is_ranged) -> int"""
 		return D20CAF_HIT
 
+class PyGlobalFlags(object):
+	def __init__(self):
+		return
+
+	def __getitem__(self, index):
+		return 1
+
+	def __setitem__(self, index, data):
+		assert isinstance(data, int)
+		return
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0

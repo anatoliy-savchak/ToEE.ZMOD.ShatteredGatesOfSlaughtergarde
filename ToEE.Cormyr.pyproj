@@ -234,6 +234,7 @@
     </Compile>
     <Compile Include="overrides\scr\py00334generic_spawner.py" />
     <Compile Include="overrides\scr\py00406Game_Portal.py" />
+    <Compile Include="overrides\scr\py00652Maug.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
     <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
     <Compile Include="overrides\scr\py05000_knowstone.py">
@@ -254,6 +255,12 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06330_daemon_sumberton_inn2.py" />
+    <Compile Include="overrides\scr\py06320_daemon_sumberton_inn1.py" />
+    <Compile Include="overrides\scr\py06310_daemon_sumberton_market.py" />
+    <Compile Include="overrides\scr\py06300_daemon_sumberton.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
     <Compile Include="overrides\scr\py06402_trap_fiery_demon_arch.py" />
     <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />

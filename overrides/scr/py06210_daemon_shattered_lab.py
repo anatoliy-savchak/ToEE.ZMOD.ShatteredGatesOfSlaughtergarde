@@ -44,7 +44,7 @@ def san_dying(attachee, triggerer):
 	if (c):
 		c.critter_dying(attachee, triggerer)
 	storage = utils_storage.obj_storage_by_id(attachee.id)
-	if (storage and dying in dir(storage.get_data("CtrlBehaviour"))):
+	if (storage and "dying" in dir(storage.get_data("CtrlBehaviour"))):
 		storage.get_data("CtrlBehaviour").dying(attachee, triggerer)
 	return toee.RUN_DEFAULT
 
@@ -151,7 +151,7 @@ class CtrlShatteredLab(object):
 		#self.print_monsters()
 		self.factions_existance_refresh()
 		# debug
-		self.remove_trap_doors()
+		#self.remove_trap_doors()
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 475, 510)
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 466, 476) # Balcony
 		#toee.game.fade_and_teleport(0, 0, 0, 5121, 508, 511) # Library
@@ -175,7 +175,7 @@ class CtrlShatteredLab(object):
 		if (near_pc):
 			loc1 = toee.game.leader.location - 2
 			loc2 = loc1
-			loc4 = loc2
+			loc3 = loc2
 
 		self.create_goblin_scrounger_at(loc1, const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
 		self.create_goblin_scrounger_at(loc2, const_toee.rotation_1100_oclock, "l_patrol", "goblin2", 0, 1)
