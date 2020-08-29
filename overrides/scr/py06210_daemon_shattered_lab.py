@@ -910,6 +910,16 @@ class CtrlShatteredLab(object):
 
 	def critter_dying(self, attachee, triggerer):
 		self.factions_existance_refresh()
+
+		maug_quest_state = toee.game.quests[shattered_consts.QUEST_MAUG].state
+		if (maug_quest_state >= toee.qs_mentioned and maug_quest_state < toee.qs_completed):
+			spawn_left = 0
+			if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+				spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+			if (spawn_left == 0):
+				toee.game.quests[shattered_consts.QUEST_MAUG].state = toee.qs_completed
+
 		return
 
 	def check_sleep_status_update(self, force = 0):

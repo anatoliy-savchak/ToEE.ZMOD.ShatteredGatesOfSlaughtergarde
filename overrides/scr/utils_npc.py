@@ -226,3 +226,7 @@ def pc_award_experience_all(xp_awarded_each):
 	for pc in toee.game.party:
 		pc.award_experience(xp_awarded_each)
 	return
+
+def npc_kill_foes():
+	# placeholder
+	return

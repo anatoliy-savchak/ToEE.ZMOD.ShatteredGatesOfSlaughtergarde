@@ -77,6 +77,13 @@ class Storage(object):
 			Storage.loadObjects(saveDir)
 		return
 
+	@staticmethod
+	def reset():
+		ss = Storage()
+		oo = ss.objs
+		oo.clear()
+		return
+
 	@property
 	def objs(self):
 		return type(self)._objs

@@ -102,7 +102,7 @@ def Bag_Of_Holding_OnBuildRadialMenuEntry(attachee, args, evt_obj):
 	#radial_action.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Items)
 	radial_action.add_as_child(attachee, radial_parent_id)
 
-	if (1):
+	if (0):
 		radial_action = tpdp.RadialMenuEntryPythonAction("Autosell", toee.D20A_PYTHON_ACTION, 3013, 0, "TAG_INTERFACE_HELP")
 		#assert isinstance(radial_action, tpdp.RadialMenuEntryParent)
 		#radial_action.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Items)
