@@ -1,6 +1,6 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
 import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric, const_proto_rings, shattered_consts
-import py00677FarSouthDoor, monster_info, ctrl_daemon
+import py00677FarSouthDoor, monster_info, ctrl_daemon, startup_zmod
 
 DEBUG_WRITE_MONSTERS_PATH = None #"d:\\temp\\monsters.txt"
 
@@ -10,7 +10,16 @@ def san_first_heartbeat(attachee, triggerer):
 	#debugg.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_LAB): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredLab.ensure(attachee)
-	ctrl.place_encounters()
+	ctrl.place_encounters(0)
+	return toee.RUN_DEFAULT
+
+def san_new_map(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	print(attachee.id)
+	#debugg.breakp("san_new_map")
+	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_LAB): toee.RUN_DEFAULT
+	ctrl = CtrlShatteredLab.ensure(attachee)
+	ctrl.place_encounters(1)
 	return toee.RUN_DEFAULT
 
 def san_heartbeat(attachee, triggerer):
@@ -28,9 +37,12 @@ def san_use(attachee, triggerer):
 	#print(attachee.id)
 
 	if (attachee.name == 1641): #{1641}{Shattered Lab Exit}
-		csl().last_leave_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		last_leave_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		csl().last_leave_shrs = last_leave_shrs
+		print("last_leave_shrs: {}".format(last_leave_shrs))
 		total_seconds = py00677FarSouthDoor.distance_sumbertone_to_shattered_lab_sec()
-		print("fade_and_teleport total_seconds: {}".format(total_seconds))
+		total_hours = total_seconds / (60 * 60)
+		print("fade_and_teleport -  total_seconds: {}, total_hours: {}".format(total_seconds, total_hours))
 		toee.game.fade_and_teleport(total_seconds, 0, 0, 5122, 538, 510 ) #sumberton
 	#else:
 	#	attachee.object_flag_set(toee.OF_DONTDRAW)
@@ -109,8 +121,13 @@ class CtrlShatteredLab(object):
 			return data[cls.get_name()]
 		return None
 
-	def place_encounters(self):
+	def place_encounters(self, new_map):
+		print("new_map: {}".format(new_map))
 		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
+
+		startup_zmod.zmod_templeplus_config_apply()
+
+		if (self.encounters_placed and new_map == 0): return
 
 		if (toee.game.quests[shattered_consts.QUEST_SPICY_CHICANERY].state == toee.qs_unknown):
 			print("QUEST_SPICY_CHICANERY => qs_mentioned")
@@ -146,8 +163,11 @@ class CtrlShatteredLab(object):
 		if (not self.encounters_placed and 1):
 			self.place_chests()
 
+		if (not self.encounters_placed):
+			utils_npc.pc_turn_all(const_toee.rotation_0400_oclock)
+
 		self.encounters_placed += 1
-		utils_npc.pc_turn_all(const_toee.rotation_0400_oclock)
+		
 		#self.print_monsters()
 		self.factions_existance_refresh()
 		# debug
@@ -169,6 +189,7 @@ class CtrlShatteredLab(object):
 		self.patrol_spawned_count += 1
 		self.last_patrol_spawned_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
 		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
+		debugg.breakp("place_encounter_patrol")
 		loc1 = utils_obj.sec2loc(519, 467)
 		loc2 = utils_obj.sec2loc(517, 467)
 		loc3 = utils_obj.sec2loc(519, 470)
@@ -887,7 +908,7 @@ class CtrlShatteredLab(object):
 		return
 
 	def check_entrance_patrol(self):
-		threshhold_hours_passed = 4*24 + 16 + 1
+		threshhold_hours_passed = 4*24 + 16 + 1 # 113
 		left_for = self.last_entered_shrs - self.last_leave_shrs
 		print("check_entrance_patrol left_for: {}, last_leave_shrs: {}, last_entered_shrs: {}".format(left_for, self.last_leave_shrs, self.last_entered_shrs))
 		if (left_for < threshhold_hours_passed): return 0
@@ -905,7 +926,9 @@ class CtrlShatteredLab(object):
 		return 1
 
 	def factions_existance_refresh(self):
+		print("factions_existance_refresh")
 		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		print(self.factions_existance)
 		return
 
 	def critter_dying(self, attachee, triggerer):
@@ -931,12 +954,20 @@ class CtrlShatteredLab(object):
 
 	# Sleep interface
 	def can_sleep(self):
+		if (1):
+			safe_loc = utils_obj.sec2loc(484, 436)
+			safe_dist = 40
+			safe_place = 1
+			for pc in toee.game.party:
+				if (pc.distance_to(safe_loc) > safe_dist):
+					safe_place = 0
+					break
+			if (safe_place):
+				return toee.SLEEP_SAFE
+
 		for npc in toee.game.obj_list_vicinity(toee.game.leader.location, toee.OLC_NPC):
 			if (utils_npc.npc_is_alive(npc, 1) and (npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE))): 
 				return toee.SLEEP_IMPOSSIBLE
-
-		if (toee.game.leader.distance_to(utils_obj.sec2loc(484, 436)) <= 40):
-			return toee.SLEEP_SAFE
 
 		spawn_left = 0
 		if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
@@ -953,6 +984,7 @@ class CtrlShatteredLab(object):
 		assert isinstance(encounter, toee.PyRandomEncounter)
 
 		will_not_happen = toee.game.random_range(0, 9)
+		print("Sleep random: {}".format(will_not_happen))
 		if (will_not_happen): return 0
 
 		if (self.last_patrol_spawned_shrs):
@@ -997,8 +1029,11 @@ class CtrlShatteredLab(object):
 				if (not npc or (npc.object_flags_get() & toee.OF_DESTROYED) or utils_npc.npc_hp_current(npc) < 0):
 					to_del.append(o)
 		print("drop objects, count: {}".format(len(to_del)))
+		#debugg.breakp("drop")
 		for o in to_del:
 			del objs[o.name]
+		self.factions_existance_refresh()
+		self.check_sleep_status_update(1)
 		return
 
 	def check_npc_enemy(self, npc):

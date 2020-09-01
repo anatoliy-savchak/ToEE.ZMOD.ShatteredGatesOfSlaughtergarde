@@ -148,8 +148,10 @@ def Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies(attachee, args, evt_o
 			print("{} hp in {}".format(hp, body))
 			if (hp >= 0): continue
 			if (not attachee.can_see(body)): 
-				if (attachee.distance_to(body) > 15):
-					continue
+				attachee.turn_towards(body)
+				if (not attachee.can_see(body)):
+					if (attachee.distance_to(body) > 15):
+						continue
 			items = items_get(body)
 			#items = body.inventory_items()
 			print("items: {}".format(len(items)))
@@ -201,13 +203,19 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 			hp = body.stat_level_get(toee.stat_hp_current)
 			print("{} hp in {}".format(hp, body))
 			if (hp >= 0): continue
-			if (not attachee.can_see(body)): continue
+			if (not attachee.can_see(body)): 
+				attachee.turn_towards(body)
+				if (not attachee.can_see(body)):
+					if (attachee.distance_to(body) > 15):
+						continue
 			items = items_get(body)
 			#items = body.inventory_items()
+			transfer_to_self = 0
 			print("items: {}".format(len(items)))
 			if (items):
 				for item in items:
 					assert isinstance(item, toee.PyObjHandle)
+					transfer_to_self = 0
 					text = item.description
 					print("{}: {}".format(text, body))
 					color = toee.tf_yellow
@@ -218,6 +226,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 					elif ((tpe == toee.obj_t_food) or (tpe == toee.obj_t_scroll) or (tpe == toee.obj_t_generic)):
 						color = toee.tf_green
 					elif ((tpe == toee.obj_t_key) or (tpe == toee.obj_t_written)):
+						transfer_to_self = 1
 						color = toee.tf_light_blue
 					if (not modified):
 						toee.game.create_history_freeform("Transferred:\n")
@@ -225,7 +234,10 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 					weight = item.obj_get_int(toee.obj_f_item_weight)
 					text = "*. {}. {} lb\n".format(text, weight)
 					toee.game.create_history_freeform(text)
-					bag.item_get(item)
+					if (transfer_to_self):
+						attachee.item_get(item)
+					else:
+						bag.item_get(item)
 					modified = 1
 		if (modified):
 			toee.game.create_history_freeform("\n")
