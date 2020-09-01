@@ -76,10 +76,10 @@ def get_ddc(attachee, triggerer):
 	dip_start = 0
 	ddc = 0
 	## are they a chaotic cleric?
-	if (triggerer.stat_level_get(stat_alignment) == CHAOTIC_NEUTRAL or triggerer.stat_level_get(stat_alignment) == NEUTRAL_EVIL or triggerer.stat_level_get(stat_alignment) == CHAOTIC_EVIL) and pc.stat_level_get(stat_level_cleric) >= 1:
+	if (triggerer.stat_level_get(stat_alignment) == CHAOTIC_NEUTRAL or triggerer.stat_level_get(stat_alignment) == NEUTRAL_EVIL or triggerer.stat_level_get(stat_alignment) == CHAOTIC_EVIL) and triggerer.stat_level_get(stat_level_cleric) >= 1:
 		dip_start -= 4
 	## are they a lawful cleric?
-	if (triggerer.stat_level_get(stat_alignment) == LAWFUL_NEUTRAL or triggerer.stat_level_get(stat_alignment) == NEUTRAL_GOOD or triggerer.stat_level_get(stat_alignment) == LAWFUL_GOOD) and pc.stat_level_get(stat_level_cleric) >= 1:
+	if (triggerer.stat_level_get(stat_alignment) == LAWFUL_NEUTRAL or triggerer.stat_level_get(stat_alignment) == NEUTRAL_GOOD or triggerer.stat_level_get(stat_alignment) == LAWFUL_GOOD) and triggerer.stat_level_get(stat_level_cleric) >= 1:
 		dip_start += 2
 	## are they a paladin?
 	if triggerer.stat_level_get(stat_level_paladin) >= 1:

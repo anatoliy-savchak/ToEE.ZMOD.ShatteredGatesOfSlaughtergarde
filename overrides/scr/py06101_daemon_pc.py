@@ -1,12 +1,15 @@
-from toee import *
-from debugg import *
+import toee, ctrl_daemon, utils_toee, const_toee, debug
 
-def san_new_map( attachee, triggerer ):
-	#breakp("py06101_daemon_pc::san_new_map")
-	if (attachee.map == 5195): #CORMYR_LOST_REFUGE
-		from py06110_daemon_cormyr_lor import cormyr_lor_san_new_map
-		return cormyr_lor_san_new_map(attachee, triggerer)
-	if (attachee.map == 5196): #CORMYR_LOST_REFUGE
-		from py06120_cormyr_sw_daemon import cormyr_sw_init
-		return cormyr_sw_init()
-	return SKIP_DEFAULT
+def san_new_map(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	#debug.breakp("pc san_new_map")
+	daemon = ctrl_daemon.CtrlDaemon.get_current_daemon()
+	print(daemon)
+	if (daemon):
+		daemon_obj = utils_toee.get_obj_by_id(daemon.id)
+		print(daemon_obj)
+		if (daemon_obj):
+			daemon_obj.object_script_execute(attachee, const_toee.sn_new_map)
+		
+	return toee.RUN_DEFAULT
+

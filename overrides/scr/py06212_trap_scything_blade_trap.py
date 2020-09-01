@@ -1,4 +1,4 @@
-import toee, debugg
+import toee, debugg, utils_obj, const_toee
 
 def san_trap(trap, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -19,4 +19,10 @@ def san_trap(trap, triggerer):
 		dce = dice
 		if (caf & toee.D20CAF_CRITICAL): dce = dice_crit
 		obj.damage(trap.obj, toee.D20DT_SLASHING, dce, toee.D20DAP_NORMAL, toee.D20A_UNSPECIFIED_ATTACK)
+
+	print("untrap sibling")
+	sibling = utils_obj.get_sibling_door(trap.obj)
+	if (sibling):
+		sibling.scripts[const_toee.sn_trap] = 0
+		print("sibling untrapped")
 	return toee.SKIP_DEFAULT

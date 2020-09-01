@@ -364,6 +364,8 @@ class CtrlDaemon(object):
 		print("drop objects, count: {}".format(len(to_del)))
 		for o in to_del:
 			del objs[o.name]
+
+		self.check_sleep_status_update(1)
 		return
 
 	def factions_existance_refresh(self):

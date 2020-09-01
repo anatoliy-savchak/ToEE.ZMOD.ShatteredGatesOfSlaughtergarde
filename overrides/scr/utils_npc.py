@@ -229,4 +229,30 @@ def pc_award_experience_all(xp_awarded_each):
 
 def npc_kill_foes():
 	# placeholder
+	killer = toee.game.leader
+	for npc in toee.game.obj_list_vicinity(killer.location, toee.OLC_NPC):
+		print("Check {}".format(npc))
+		if (npc.type == toee.obj_t_pc): continue
+		if (not npc.is_active_combatant(killer)): 
+			print("skip, is not is_active_combatant")
+			continue
+		if (npc.allegiance_shared(toee.game.leader)): 
+			print("skip, allegiance_shared")
+			continue
+		npcleader = npc.leader_get()
+		if (npcleader and (npcleader.type == toee.obj_t_pc)): 
+			print("skip, leader is pc")
+			continue
+		#if (npc.reaction_get(killer) > 0): 
+		#	print("skip, reaction is >0")
+		#	continue
+		if (npc.is_friendly(killer)): 
+			print("skip, is friendly")
+			continue
+		if (npc.object_flags_get() & toee.OF_DONTDRAW): 
+			print("skip, OF_DONTDRAW")
+			continue
+
+		print("killing: {}".format(npc))
+		npc.critter_kill_by_effect(killer)
 	return

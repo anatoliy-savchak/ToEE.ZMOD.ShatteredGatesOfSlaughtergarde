@@ -98,10 +98,10 @@ def EnsureTransparency(attachee, args):
 	assert isinstance(args, tpdp.EventArgs)
 	is_hidden = attachee.critter_flags_get() & toee.OCF_MOVING_SILENTLY
 	if (is_hidden and not args.get_arg(0)):
-		attachee.obj_set_int(toee.obj_f_transparency, 128)
+		attachee.obj_set_int(obj_f_transparency, 128)
 		args.set_arg(0, 1)
 	elif(not is_hidden and args.get_arg(0)):
-		attachee.obj_set_int(toee.obj_f_transparency, 256)
+		attachee.obj_set_int(obj_f_transparency, 256)
 		args.set_arg(0, 0)
 	return
 
@@ -113,7 +113,7 @@ def Hide_Ex_Killed(attachee, args, evt_obj):
 	if (attachee == toee.OBJ_HANDLE_NULL): return 0
 	oflags = attachee.object_flags_get()
 	if ((oflags & toee.OF_OFF) or (oflags & toee.OF_DESTROYED) or (oflags & toee.OF_DONTDRAW)): return 0
-	attachee.obj_set_int(toee.obj_f_transparency, 256)
+	attachee.obj_set_int(obj_f_transparency, 256)
 	return 0
 
 def post_ensure_trapsarency(attachee, args):

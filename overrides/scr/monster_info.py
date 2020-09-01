@@ -1,4 +1,4 @@
-import toee, utils_npc
+import toee, utils_npc, debug, utils_toee
 
 class MonsterInfo:
 	def __init__(self):
@@ -13,7 +13,10 @@ class MonsterInfo:
 		return
 
 	def get_npc(self):
-		npc = toee.game.get_obj_by_id(self.id)
+		npc = toee.OBJ_HANDLE_NULL
+		if (self.id and self.id != ""):
+			npc = utils_toee.get_obj_by_id(self.id)
+		else: print("null get_npc {}".format(self.id))
 		return npc
 
 	@staticmethod
@@ -24,7 +27,11 @@ class MonsterInfo:
 		for monster in monsters:
 			assert isinstance(monster, MonsterInfo)
 			npc = monster.get_npc()
-			if (not npc): continue
+			if (not npc): 
+				#print("monster {} not found!".format(monster.id))
+				#debug.breakp("wtf")
+				#npc = monster.get_npc()
+				continue
 			alive = utils_npc.npc_is_alive(npc, 1)
 			#print("alive: {}, npc: {}".format(alive, npc))
 			dead = alive == 0

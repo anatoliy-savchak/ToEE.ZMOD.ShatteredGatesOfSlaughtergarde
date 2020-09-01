@@ -259,6 +259,14 @@ class PyObjHandle(object):
 		"""npc.is_spell_known(self, spellEnum) -> int"""
 		return 1
 
+	def is_friendly(self, npc):
+		"""npc.is_friendly(PyObjHandle: npc) -> int"""
+		return 1
+
+	def is_active_combatant(self):
+		"""npc.is_active_combatant() -> int"""
+		return 1
+
 	def inventory_item(self, index):
 		"""npc.inventory_item(int: index) -> PyObjHandle"""
 		return PyObjHandle()
@@ -342,6 +350,9 @@ class PyObjHandle(object):
 	def get_initiative(self):
 		"""npc.get_initiative() -> int"""
 		return
+
+	def group_list(self):
+		return (PyObjHandle(), PyObjHandle())
 	
 	def set_initiative(self, initiative):
 		"""npc.set_initiative(int: initiative) -> None"""

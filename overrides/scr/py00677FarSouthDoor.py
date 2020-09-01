@@ -1,4 +1,4 @@
-import toee, utils_npc, shattered_consts
+import toee, utils_npc, shattered_consts, startup_zmod
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -13,6 +13,7 @@ def san_dialog( attachee, triggerer ):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(triggerer, toee.PyObjHandle)
 
+	startup_zmod.zmod_templeplus_config_apply()
 	triggerer.begin_dialog(npc, 1)
 	return toee.SKIP_DEFAULT
 

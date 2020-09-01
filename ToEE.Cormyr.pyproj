@@ -263,6 +263,7 @@
     </Compile>
     <Compile Include="overrides\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
     <Compile Include="overrides\scr\py06402_trap_fiery_demon_arch.py" />
+    <Compile Include="overrides\scr\py32007Trap8_scythe.py" />
     <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />
     <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
     <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />

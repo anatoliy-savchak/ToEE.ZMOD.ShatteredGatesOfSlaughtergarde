@@ -160,3 +160,11 @@ def find_dialog_file_name(scriptId):
 	for fileName in files:
 		if (starts in fileName): return fileName
 	return None
+
+def get_obj_by_id(id):
+	result = OBJ_HANDLE_NULL
+	try:
+		result = game.get_obj_by_id(id)
+	except:
+		result = OBJ_HANDLE_NULL
+	return result
