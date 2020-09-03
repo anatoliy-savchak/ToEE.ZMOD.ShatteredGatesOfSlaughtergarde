@@ -440,10 +440,10 @@ class CtrlShatteredLab(object):
 			npc.move(npc_loc)
 			npc.rotation = const_toee.rotation_1100_oclock
 			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAIN_SHIRT_MASTERWORK, npc)
-			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
-			npc.item_wield(item, toee.item_wear_shield)
 			item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_SCIMITAR_MASTERWORK, npc)
-			npc.item_wield(item, toee.item_wear_weapon_primary)
+			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_SMALL, npc)
+			npc.item_wield_best_all()
+			#utils_npc.npc_print_wears(utils_npc.npc_get_wears(npc))
 			self.monster_setup(npc, "l15", "goblin_underboss", None, 1, 1)
 			ctrl = py06211_shuttered_monster.CtrlMonster.ensure(npc)
 
@@ -841,10 +841,6 @@ class CtrlShatteredLab(object):
 				#item.scripts[const_toee.sn_insert_item] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
 				#item.scripts[const_toee.sn_remove_item] = shattered_consts.SHATERRED_LAB_DAEMON_SCRIPT
 		return
-
-	def can_sleep(self):
-
-		return toee.SLEEP_DANGEROUS
 
 	def print_monsters(self):
 		exptotal = 0

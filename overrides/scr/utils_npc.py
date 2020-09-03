@@ -256,3 +256,31 @@ def npc_kill_foes():
 		print("killing: {}".format(npc))
 		npc.critter_kill_by_effect(killer)
 	return
+
+def npc_get_wears(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	result = dict()
+	result["item_wear_helmet"] = npc.item_worn_at(toee.item_wear_helmet)
+	result["item_wear_necklace"] = npc.item_worn_at(toee.item_wear_necklace)
+	result["item_wear_gloves"] = npc.item_worn_at(toee.item_wear_gloves)
+	result["item_wear_weapon_primary"] = npc.item_worn_at(toee.item_wear_weapon_primary)
+	result["item_wear_weapon_secondary"] = npc.item_worn_at(toee.item_wear_weapon_secondary)
+	result["item_wear_armor"] = npc.item_worn_at(toee.item_wear_armor)
+	result["item_wear_ring_primary"] = npc.item_worn_at(toee.item_wear_ring_primary)
+	result["item_wear_ring_secondary"] = npc.item_worn_at(toee.item_wear_ring_secondary)
+	result["item_wear_boots"] = npc.item_worn_at(toee.item_wear_boots)
+	result["item_wear_ammo"] = npc.item_worn_at(toee.item_wear_ammo)
+	result["item_wear_cloak"] = npc.item_worn_at(toee.item_wear_cloak)
+	result["item_wear_shield"] = npc.item_worn_at(toee.item_wear_shield)
+	result["item_wear_robes"] = npc.item_worn_at(toee.item_wear_robes)
+	result["item_wear_bracers"] = npc.item_worn_at(toee.item_wear_bracers)
+	result["item_wear_bardic_item"] = npc.item_worn_at(toee.item_wear_bardic_item)
+	result["item_wear_lockpicks"] = npc.item_worn_at(toee.item_wear_lockpicks)
+	return result
+
+def npc_print_wears(dic):
+	assert isinstance(dic, dict)
+	for key, value in dic.iteritems():
+		if (value):
+			print("{} = {}".format(key, value))
+	return
