@@ -51,6 +51,7 @@ def just_floatin(attachee, triggerer):
 def maug_dipl(attachee, triggerer):
 	ddc = get_ddc(attachee, triggerer)
 	o = game.random_range(1,20)
+	if (o < 10): o = 10 # take 10
 	skill_modd = triggerer.skill_level_get(attachee, skill_diplomacy)
 	p = o + skill_modd
 	if p >= ddc:    ## friednly

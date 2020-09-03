@@ -29,7 +29,7 @@
 
 {43}{I was ordered by the Thulkarr to guard this chamber against intrusion during the battle that destroyed most of Slaughtergarde. I remain here until the Thulkarr orders me otherwise.}{I was ordered by the Thulkarr to guard this chamber against intrusion during the battle that destroyed most of Slaughtergarde. I remain here until the Thulkarr orders me otherwise.}{}{}{}{}
 {44}{[Knowledge Check - a Thulkarr is a first-generation Maug spellcaster, one of those who created the other Maugs.] And what happened to the Thulkarr? Can I meet them?}{}{1}{bard_know(pc, 10)}{50}{}
-{45}{Slaughtergarde? What's that?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 4}{100}{}
+{45}{Slaughtergarde? What's that?}{}{1}{}{100}{}
 {46}{What sort of intrusion? Why here?}{}{1}{}{70}{}
 
 {50}{I have not seen anyone else from the army in many years.}{I have not seen anyone else from the army in many years.}{}{}{}{}
@@ -78,7 +78,7 @@
 
 {110}{I do not know, though I have every reason to believe that the bulk of the mountain, and the demon's army, was thrown back into the Abyss. Certainly the area we currently are - you might call it a dungeon - is only a fraction of Slaughtergarde. A fragment, as it were. The rest seems gone, though other 'fragments' may remain, elsewhere in this Valley.}{I do not know, though I have every reason to believe that the bulk of the mountain, and the demon's army, was thrown back into the Abyss. Certainly the area we currently are - you might call it a dungeon - is only a fraction of Slaughtergarde. A fragment, as it were. The rest seems gone, though other 'fragments' may remain, elsewhere in this Valley.}{}{}{}{}
 {111}{Well I'm glad the demon's plans were thwarted.}{}{1}{}{90}{}
-{112}{Is there some way we could help each other? I mean, we are also here to fight evil, perhaps if we team up...?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 4 and  game.quests[4].state == qs_unknown}{200}{}
+{112}{Is there some way we could help each other? I mean, we are also here to fight evil, perhaps if we team up...?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 1 and  game.quests[4].state == qs_unknown}{200}{}
 {113}{Demon, shmemon. That all happened centuries ago, this is a waste of your time and ours.}{}{1}{}{56}{npc_2(npc)}
 
 
