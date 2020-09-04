@@ -496,12 +496,12 @@ class CtrlShatteredLab(object):
 		if (not faction): faction = shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN
 		if (faction and faction != -1):
 			npc.faction_add(faction)
-		#npc.npc_flag_set(toee.ONF_NO_ATTACK)
 		if (no_kos):
 			npc.npc_flag_unset(toee.ONF_KOS)
 		if (no_draw):
 			npc.object_flag_set(toee.OF_DONTDRAW)
-			#npc.object_flag_set(toee.OF_OFF)
+		if (no_draw and no_kos):
+			npc.npc_flag_set(toee.ONF_NO_ATTACK)
 		if (monster_name):
 			nameid = utils_toee.make_custom_name(monster_name)
 			if (nameid):
@@ -1036,3 +1036,17 @@ class CtrlShatteredLab(object):
 		assert isinstance(npc, toee.PyObjHandle)
 		result = npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE)
 		return result
+
+	def fix_noattack(self):
+		for info in self.m2:
+			assert isinstance(info, monster_info.MonsterInfo)
+			npc = toee.game.get_obj_by_id(info.id)
+			if (not npc): continue
+			villian = self.check_npc_enemy(npc)
+			if (not villian): continue
+			of = npc.object_flags_get()
+			if (of & toee.ONF_NO_ATTACK): continue
+			if ((of & toee.ONF_KOS) and (of & toee.OF_DONTDRAW)): 
+				npc.npc_flag_set(toee.ONF_NO_ATTACK)
+				print("ONF_NO_ATTACK fixed for {}".format(npc))
+		return

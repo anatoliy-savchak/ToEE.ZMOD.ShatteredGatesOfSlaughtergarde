@@ -76,9 +76,9 @@ def Smash_Object_Perform(attachee, args, evt_obj):
 			target.portal_flag_unset(toee.OPF_LOCKED)
 			target.portal_flag_unset(toee.OPF_JAMMED)
 			target.object_flag_set(toee.OF_DONTDRAW)
-			target.object_flag_set(toee.OF_EXTINCT)
+			#target.object_flag_set(toee.OF_EXTINCT)
 			#target.portal_flag_set(toee.OPF_OPEN)
-			portal_open_and_destroy(target)
+			portal_open_and_off(target)
 		elif (target_type == toee.obj_t_container):
 			target.container_flag_unset(toee.OCOF_LOCKED)
 			target.container_flag_unset(toee.OCOF_JAMMED)
@@ -108,15 +108,16 @@ def Smash_Object_OnDealingDamage(attachee, args, evt_obj):
 	evt_obj.damage_packet.add_physical_damage_res(reduction, toee.D20DAP_NORMAL, 126) #{126}{~Damage Reduction~[TAG_SPECIAL_ABILITIES_DAMAGE_REDUCTION]}
 	return 0
 
-def portal_open_and_destroy(portal):
+def portal_open_and_off(portal):
 	assert isinstance(portal, toee.PyObjHandle)
 	portal.portal_toggle_open()
-	toee.game.timevent_add(timevent_portal_destroy, (portal), 500, 1) # 1000 = 1 second
+	toee.game.timevent_add(timevent_portal_off, (portal), 500, 1) # 1000 = 1 second
 	return
 
-def timevent_portal_destroy(obj):
+def timevent_portal_off(obj):
 	assert isinstance(obj, toee.PyObjHandle)
-	obj.destroy()
+	#obj.destroy()
+	obj.object_flag_set(toee.OF_OFF)
 	return 1
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 3) # reserved, reserved, damage_reduction for target
