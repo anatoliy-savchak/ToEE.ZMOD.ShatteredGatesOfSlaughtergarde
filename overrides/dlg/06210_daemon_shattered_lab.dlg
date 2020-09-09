@@ -35,7 +35,7 @@
 {54}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{Similarly armed, another goblin stands near crates and barrels on the southem wall. A row of four tripple-bunk lines the northern wall.}{}{}{}{}
 {59}{Close}{}{1}{}{0}{csl().activate_encounter_l5()}
 
-{60}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{}{}{}{}
+{60}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{Two hobgoblins, each wearing half-plate and carrying a shield and pick, occupy this torch lit room.}{}{}{}{csl().display_encounter_l6()}
 {61}{Continue}{}{1}{}{62}{}
 {62}{A table here has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{A table here has a stool at either end, as well as a pile of arrows atop it. Uusual tools are mounted on the walls, a bloodstain running from each to the floor.}{}{}{}{}
 {63}{Continue}{}{1}{}{64}{}

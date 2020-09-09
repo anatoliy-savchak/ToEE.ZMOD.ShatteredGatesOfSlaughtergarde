@@ -3,7 +3,6 @@
 {3}{Of course. @pcname@ at your service.}{}{1}{}{20}{}
 {4}{I'm just looking to drink. Barmaid! Another round here.}{}{1}{pc.money_get() >= 200}{30}{pc.money_adj(-200)}
 {8}{BWAHAHAHA!!! Look how little you are! Be careful I don't just step on you!}{}{-12}{pc.stat_level_get(stat_race) == race_halforc}{15}{}
-{9}{Testing.}{}{1}{}{500}{}
 
 {10}{Because I am busy enjoying Sumberton's best ale, that's why. [She drinks deeply but her eyes never leave you.]}{Because I am busy enjoying Sumberton's best ale, that's why. [She drinks deeply but her eyes never leave you.]}{}{}{}{}
 {11}{Of course. I'll have one with you. Bar maid!}{}{1}{pc.money_get() >= 200}{30}{pc.money_adj(-200)}
@@ -76,6 +75,8 @@
 {211}{No, that's not nearly enough. 400 each or no deal.}{}{1}{pc.skill_level_get(npc, skill_intimidate) >= 4}{216}{}
 {212}{Why are you asking us, and not the local militia?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 3}{230}{}
 {213}{I'll need half up front, to equip. A small price to pay to guarantee my success.}{}{1}{pc.skill_level_get(npc, skill_diplomacy) >= 4}{240}{}
+{214}{Fair and reasonable, I'll do it.}{}{1}{}{220}{}
+{215}{I must decline.}{}{1}{}{0}{npc.reaction_adj( pc, -5 )}
 
 {216}{Then it's no deal. There are plenty of adventurers around here. [She turns away.]}{Then it's no deal. There are plenty of adventurers around here. [She turns away.]}{}{}{}{}
 {217}{That's it? No back and forth? No cunning linguistic interplay? No cut and thrust of witty banter? Fine, I'll do it for 200 then.}{}{12}{}{220}{}

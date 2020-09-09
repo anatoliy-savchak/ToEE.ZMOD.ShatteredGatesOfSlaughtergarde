@@ -363,7 +363,11 @@ class PyObjHandle(object):
 		return PyObjHandle()
 
 	def has_los(self, target):
-		"""npc.faction_add(PyObjHandle: target) -> int"""
+		"""npc.has_los(PyObjHandle: target) -> int"""
+		return 1
+
+	def has_met(self, target):
+		"""npc.has_met(PyObjHandle: target) -> int"""
 		return 1
 
 	def make_class(self, stat_class, level):

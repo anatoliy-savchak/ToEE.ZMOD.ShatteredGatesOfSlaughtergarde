@@ -1,7 +1,6 @@
 {1}{[You see a cheerful little halfling with a shield, surrounded by shields. You wonder what she sells.]}{[You see a cheerful little halfling with a shield, surrounded by shields. You wonder what she sells.]}{}{}{}{}
 {2}{Shields?}{}{1}{}{10}{}
 {3}{[This little runt isn't from your clan! Blow pipeweed smoke in her face, stomp the dust off your hairy feet and walk away.]}{}{1}{pc.stat_level_get(stat_race) == race_halfling}{0}{}
-{7}{Testing!}{}{1}{}{0}{}
 
 {10}{Yes!}{Yes!}{}{}{}{}
 {11}{B:}{}{1}{}{0}{pc.barter(npc)}

@@ -62,4 +62,23 @@ PROTO_DEMON_ARCH_10FT = 136
 
 PROTO_ARMOR_SHIELD_OF_DRAGONRIDER = 6731
 
-GLOBAL_FLAG_MAY_SLEEP_INN = 56
+GLOBAL_FLAG_VINTRA_ADVANCE = 1 # been paid 100gp up front by Vintra
+GLOBAL_FLAG_MAUG_DETECT_EVIL = 2 # cast Detect Evil on maug
+GLOBAL_FLAG_MAUG_TOLD_OF_SLAUGHTERGARDE_EXISTS = 3 # Maug tells PCs they are 'in Slaughtergarde', that a piece still exists
+GLOBAL_FLAG_LEARNED_OF_EBON_CABAL = 4 # learns of the Ebon Cabal
+GLOBAL_FLAG_DEALT_WITH_THE_BARKEEP = 5 # dealt with the barkeep
+GLOBAL_FLAG_LEARNED_OF_SLAUGHTERSCAR = 6 # learned of Slaughterscar
+GLOBAL_FLAG_TOLD_TO_SPEAK_TO_CHENDREA_ABOUT_SLAUGHTERGARDE = 7 # told to speak to Chendrea about Slaughtergarde
+GLOBAL_FLAG_LOOKING_FOR_VINTRA = 8 # looking for Vintra (unused so far)
+GLOBAL_FLAG_LEARNED_OF_THE_VARIOUS_RACES = 9 # learned of the various races
+GLOBAL_FLAG_QUEST_PROVISIONERS_PAULDRONS = 10 # quest - provisioner's pauldrons
+GLOBAL_FLAG_QUEST_ARMOURERS_SAND = 11 # quest - armourer's sand
+GLOBAL_FLAG_HAD_THE_MAP_TRANSLATED = 12 # had the map translated
+GLOBAL_FLAG_NORBERT_SAYS_TO_SPEAK_TO_THE_HINTERLANDIER = 13 # Norbert says to speak to the Hinterlandier
+GLOBAL_FLAG_TEMPLE_COMPLETED = 14 # whatever you need to do in the Temple to win
+GLOBAL_FLAG_MAUG_DETECT_MAGIC = 15 # cast Detect Magic on maug
+GLOBAL_FLAG_LAB_CLEARED = 16 # killed every Slaughtergarde spawn and friends
+
+GLOBAL_FLAG_MAY_SLEEP_INN = 56 # room flag at Inn (same one as ToEE)
+
+GLOBAL_FLAG_HOWLER_KILLED = 103

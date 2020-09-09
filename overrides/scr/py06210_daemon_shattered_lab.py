@@ -3,6 +3,7 @@ import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_np
 import py00677FarSouthDoor, monster_info, ctrl_daemon, startup_zmod
 
 DEBUG_WRITE_MONSTERS_PATH = None #"d:\\temp\\monsters.txt"
+PROTO_NPC_HOWLER = 14893
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -189,7 +190,7 @@ class CtrlShatteredLab(object):
 		self.patrol_spawned_count += 1
 		self.last_patrol_spawned_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
 		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
-		debugg.breakp("place_encounter_patrol")
+		#debugg.breakp("place_encounter_patrol")
 		loc1 = utils_obj.sec2loc(519, 467)
 		loc2 = utils_obj.sec2loc(517, 467)
 		loc3 = utils_obj.sec2loc(519, 470)
@@ -297,10 +298,15 @@ class CtrlShatteredLab(object):
 		return npc
 
 	def place_encounter_l6(self):
-		py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(477, 478), 6210, 60, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Operating Room")
+		p1 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(477, 478), 6210, 60, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Operating Room")
+		p1.rotation = const_toee.rotation_1000_oclock
+		p2 = py06122_cormyr_prompter.create_promter_at(utils_obj.sec2loc(470, 483), 6210, 60, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Operating Room")
+		p2.rotation = const_toee.rotation_0200_oclock
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
-		self.create_hobgoblin_impaler_at(utils_obj.sec2loc(479, 482), const_toee.rotation_1100_oclock, "l6", "hobgoblin1", 0)
-		self.create_hobgoblin_impaler_at(utils_obj.sec2loc(475, 482), const_toee.rotation_0800_oclock, "l6", "hobgoblin2", 0)
+		self.create_hobgoblin_impaler_at(utils_obj.sec2loc(479, 482), const_toee.rotation_1100_oclock, "l6", "hobgoblin1", 1)
+		self.create_hobgoblin_impaler_at(utils_obj.sec2loc(475, 482), const_toee.rotation_0800_oclock, "l6", "hobgoblin2", 1)
 		return
 
 	def create_goblin_scrounger_at(self, npc_loc, rot, encounter, code_name, is_napping, activated = None):
@@ -351,7 +357,6 @@ class CtrlShatteredLab(object):
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
-		PROTO_NPC_HOWLER = 14893
 		npc_loc = utils_obj.sec2loc(459, 466)
 		npc = toee.game.obj_create(PROTO_NPC_HOWLER, npc_loc)
 		if (npc):
@@ -623,6 +628,11 @@ class CtrlShatteredLab(object):
 		self.reveal_monster("l5", "trooper2")
 		return
 	
+	def display_encounter_l6(self):
+		self.reveal_monster("l6", "hobgoblin1")
+		self.reveal_monster("l6", "hobgoblin2")
+		return
+
 	def display_encounter_l10(self):
 		self.reveal_monster("l10", "ankheg")
 		return
@@ -928,16 +938,20 @@ class CtrlShatteredLab(object):
 		return
 
 	def critter_dying(self, attachee, triggerer):
+		assert isinstance(attachee, toee.PyObjHandle)
 		self.factions_existance_refresh()
 
+		if (attachee.proto == PROTO_NPC_HOWLER and not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_HOWLER_KILLED]):
+			toee.game.global_flags[shattered_consts.GLOBAL_FLAG_HOWLER_KILLED] = 1
+
 		maug_quest_state = toee.game.quests[shattered_consts.QUEST_MAUG].state
-		if (maug_quest_state >= toee.qs_mentioned and maug_quest_state < toee.qs_completed):
+		if (maug_quest_state >= toee.qs_mentioned and maug_quest_state < toee.qs_completed and not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]):
 			spawn_left = 0
 			if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
 				spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
 
 			if (spawn_left == 0):
-				toee.game.quests[shattered_consts.QUEST_MAUG].state = toee.qs_completed
+				toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED] = 1
 
 		return
 

@@ -85,7 +85,7 @@
 // returning, under quest
 
 {150}{[The Maug actually stops to speak to you.] I have heard some screaming and less goblin chatter, have you completed your mission to eradicate evil from the dugeon?}{[The Maug actually stops to speak to you.] I have heard some screaming and less goblin chatter, have you completed your mission to eradicate evil from the dugeon?}{}{}{}{}
-{151}{Yes?}{}{1}{}{160}{game.quests[4].state = qs_completed}	// global_var says yes
+{151}{Yes?}{}{1}{toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]}{160}{game.quests[4].state = qs_completed}	// global_var says yes
 {152}{No? Just passing through.}{}{1}{}{90}{}	// global_var says no
 {153}{Maybe? I think so? I am not sure?}{}{1}{}{170}{}	// global_var says no
 
