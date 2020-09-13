@@ -120,8 +120,10 @@ def item_clear_by_proto(npc, proto_id):
 
 def item_unwield_all(npc):
 	assert isinstance(npc, toee.PyObjHandle)
-	for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
-		npc.item_worn_unwield(i, 0)
+	if (not npc): return
+	if (npc.type == toee.obj_t_npc or npc.type == toee.obj_t_pc):
+		for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+			npc.item_worn_unwield(i, 0)
 	return
 
 def item_unwield_by_proto(npc, proto_id):
