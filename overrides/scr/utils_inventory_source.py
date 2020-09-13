@@ -47,7 +47,7 @@ def inventory_source_parse(file_path = None):
 			result[id] = item
 	return result
 
-def inventory_source_respwan(obj, num = None, file_path = None):
+def inventory_source_respawn(obj, num = None, file_path = None):
 	assert isinstance(obj, toee.PyObjHandle)
 
 	inventory_obj = obj.substitute_inventory
