@@ -17,7 +17,7 @@ def san_first_heartbeat(attachee, triggerer):
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
-	#debugg.breakp("san_new_map")
+	debugg.breakp("san_new_map")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_LAB): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredLab.ensure(attachee)
 	ctrl.place_encounters(1)
@@ -872,6 +872,7 @@ class CtrlShatteredLab(object):
 			assert isinstance(info, monster_info.MonsterInfo)
 			npc = toee.game.get_obj_by_id(info.id)
 			if (not npc): continue
+			if (not utils_npc.npc_is_alive(npc)): continue
 			villian = self.check_npc_enemy(npc)
 			if (not villian): continue
 			if (not sm):

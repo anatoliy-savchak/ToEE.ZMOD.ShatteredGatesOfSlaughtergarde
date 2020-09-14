@@ -236,6 +236,7 @@
     <Compile Include="overrides\scr\py00406Game_Portal.py" />
     <Compile Include="overrides\scr\py00652Maug.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
+    <Compile Include="overrides\scr\py00679WandyMcWand.py" />
     <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
     <Compile Include="overrides\scr\py05000_knowstone.py">
       <SubType>Code</SubType>
@@ -316,6 +317,7 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\skill_appraise_bonus.py" />
     <Compile Include="overrides\scr\tpModifiers\spell_dc_mod.py" />
     <Compile Include="overrides\scr\tpModifiers\mage_armor_auto.py" />
     <Compile Include="overrides\scr\tpModifiers\smash_object.py" />
@@ -377,6 +379,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\utils_conds.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\utils_inventory_source.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\utils_locks.py">

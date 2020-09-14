@@ -20,7 +20,7 @@ class MonsterInfo:
 		return npc
 
 	@staticmethod
-	def get_factions_existance(monsters):
+	def get_factions_existance(monsters, debug = 0):
 		assert isinstance(monsters, list)
 		result = dict() # of tuple(alive, dead)
 		notfound = list()
@@ -28,12 +28,14 @@ class MonsterInfo:
 			assert isinstance(monster, MonsterInfo)
 			npc = monster.get_npc()
 			if (not npc): 
-				#print("monster {} not found!".format(monster.id))
+				if (debug):
+					print("monster {} not found!".format(monster.id))
 				#debug.breakp("wtf")
 				#npc = monster.get_npc()
 				continue
 			alive = utils_npc.npc_is_alive(npc, 1)
-			#print("alive: {}, npc: {}".format(alive, npc))
+			if (debug):
+				print("alive: {}, npc: {}".format(alive, npc))
 			dead = alive == 0
 			if (npc): 
 				for faction in npc.factions:

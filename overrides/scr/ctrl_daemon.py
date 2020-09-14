@@ -369,7 +369,9 @@ class CtrlDaemon(object):
 		return
 
 	def factions_existance_refresh(self):
+		print("factions_existance_refresh")
 		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		print(self.factions_existance)
 		return
 
 	def critter_dying(self, attachee, triggerer):

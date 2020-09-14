@@ -2,13 +2,30 @@ import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_pro
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc, monster_info
 import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, const_proto_items, math, utils_locks
 
+def san_new_map(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	print(attachee.id)
+	debugg.breakp("san_new_map")
+	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
+	ctrl = CtrlShatteredTemple.ensure(attachee)
+	ctrl.place_encounters(1)
+	return toee.RUN_DEFAULT
+
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#print(attachee.id)
 	#debugg.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredTemple.ensure(attachee)
-	ctrl.place_encounters()
+	ctrl.place_encounters(0)
+	return toee.RUN_DEFAULT
+
+def san_heartbeat(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	if (attachee.map == shattered_consts.MAP_ID_SHATERRED_TEMPLE):
+		c = cst()
+		if (c):
+			c.check_sleep_status_update()
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):
@@ -99,8 +116,13 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 	def get_name():
 		return "CtrlShatteredTemple"
 
-	def place_encounters(self):
+	def place_encounters(self, new_map):
+		print("new_map: {}".format(new_map))
 		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
+
+		startup_zmod.zmod_templeplus_config_apply()
+
+		if (self.encounters_placed and new_map == 0): return
 
 		this_entrance_time = toee.game.time.time_game_in_hours2(toee.game.time)
 		print("this_entrance_time == {}".format(this_entrance_time))
@@ -174,7 +196,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_t1(self):
-		self.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall").rotation = const_toee.rotation_0800_oclock
+		self.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall").rotation = const_toee.rotation_0800_oclock
 
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 472), const_toee.rotation_0800_oclock, "t1", "guard1")
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 478), const_toee.rotation_0800_oclock, "t1", "guard2")

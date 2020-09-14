@@ -18,3 +18,11 @@ def debug_save_conds(file_name):
 	f.write(dm)
 	f.close()
 	return
+
+def debug_save_spells(file_name):
+	f = open(file_name, "w")
+	o = debug.dump_spells()
+	dm = json.dumps(o, indent = 2)
+	f.write(dm)
+	f.close()
+	return
