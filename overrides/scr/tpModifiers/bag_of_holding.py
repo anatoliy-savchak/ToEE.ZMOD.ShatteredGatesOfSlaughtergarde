@@ -162,11 +162,19 @@ def Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies(attachee, args, evt_o
 					print("{}: {}".format(text, body))
 					color = toee.tf_yellow
 					tpe = item.type
+					is_idenified = item.item_flags_get() & toee.OIF_IDENTIFIED
 					if ((tpe >= toee.obj_t_weapon) and (tpe <= toee.obj_t_armor)):
 						if (item.item_flags_get() & toee.OIF_IS_MAGICAL): 
 							color = toee.tf_blue
+							if (not is_idenified):
+								if (tpe == toee.obj_t_weapon): text = "Magic Weapon"
+								elif (tpe == toee.obj_t_armor): text = "Magic Armor"
+								else: text = "Magic Item"
 					elif ((tpe == toee.obj_t_food) or (tpe == toee.obj_t_scroll) or (tpe == toee.obj_t_generic)):
 						color = toee.tf_green
+						if (not is_idenified):
+							if (tpe == toee.obj_t_scroll): text = "Magic Scroll"
+							elif (tpe == toee.obj_t_food and item.obj_get_int(toee.obj_f_category) == 4): text = "Magic Potion"
 					elif ((tpe == toee.obj_t_key) or (tpe == toee.obj_t_written)):
 						color = toee.tf_light_blue
 					body.float_text_line(text, color)
@@ -220,11 +228,19 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 					print("{}: {}".format(text, body))
 					color = toee.tf_yellow
 					tpe = item.type
+					is_idenified = item.item_flags_get() & toee.OIF_IDENTIFIED
 					if ((tpe >= toee.obj_t_weapon) and (tpe <= toee.obj_t_armor)):
 						if (item.item_flags_get() & toee.OIF_IS_MAGICAL): 
 							color = toee.tf_blue
+							if (not is_idenified):
+								if (tpe == toee.obj_t_weapon): text = "Magic Weapon"
+								elif (tpe == toee.obj_t_armor): text = "Magic Armor"
+								else: text = "Magic Item"
 					elif ((tpe == toee.obj_t_food) or (tpe == toee.obj_t_scroll) or (tpe == toee.obj_t_generic)):
 						color = toee.tf_green
+						if (not is_idenified):
+							if (tpe == toee.obj_t_scroll): text = "Magic Scroll"
+							elif (tpe == toee.obj_t_food and item.obj_get_int(toee.obj_f_category) == 4): text = "Magic Potion"
 					elif ((tpe == toee.obj_t_key) or (tpe == toee.obj_t_written)):
 						transfer_to_self = 1
 						color = toee.tf_light_blue

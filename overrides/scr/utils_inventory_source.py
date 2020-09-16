@@ -82,7 +82,7 @@ class InventorySourceItem:
 		self.money_platinum = (0,0)
 		self.money_gems = (0,0)
 		self.one_of_entries = list() # (123,456) (789,0)
-		self.items = dict() # [proto] = percentage, buy_list_num,X percentage,proto percentage,proto
+		self.items = list() # (proto, percentage), buy_list_num,X percentage,proto percentage,proto
 		self.buy_list_num = 0
 		return
 
@@ -145,8 +145,8 @@ class InventorySourceItem:
 				if (not percentage): 
 					print("Token parse failed item entry percentage: {}".format(token))
 					continue
-				#self.items.append((percentage, proto))
-				self.items[proto] = percentage
+				subitems = (proto, percentage)
+				self.items.append(subitems)
 		return 1
 
 	@staticmethod
@@ -187,12 +187,37 @@ class InventorySourceItem:
 				utils_item.item_create_in_inventory(proto, inventory_obj)
 
 		if (self.items):
-			for proto in self.items.iterkeys():
-				percent = self.items[proto]
+			for protoPercent in self.items:
+				proto = protoPercent[0]
+				percent = protoPercent[1]
 				if (not percent or percent < 1): continue
 				roll = toee.game.random_range(1, 100)
 				if (roll > percent): continue
 				utils_item.item_create_in_inventory(proto, inventory_obj)
+		return
+
+	def print_items(self):
+		print("InventorySourceItem id: {}, platinum ({}, {}), gold ({}, {}), silver ({}, {}), copper ({}, {})".format(self.id, self.money_platinum[0], self.money_platinum[1], self.money_gold[0], self.money_gold[1], self.money_silver[0], self.money_silver[1], self.money_copper[0], self.money_copper[1]))
+
+		if (self.one_of_entries):
+			print("one_of_entries: {}".format(len(entry)))
+			for entry in self.one_of_entries:
+				if (not entry): continue
+				random_index = toee.game.random_range(0, len(entry)-1)
+				proto = entry[random_index]
+				if (not proto): continue
+				item = toee.game.obj_create(proto, toee.game.leader.location)
+				print("{}/{}: {}: {}".format(random_index, len(entry)-1, proto, item))
+				item.destroy()
+
+		if (self.items):
+			for protoPercent in self.items:
+				proto = protoPercent[0]
+				percent = protoPercent[1]
+				if (not percent or percent < 1): continue
+				item = toee.game.obj_create(proto, toee.game.leader.location)
+				print("{}%: {}: {}".format(percent, proto, item))
+				item.destroy()
 		return
 
 def try_int(s, default = None):

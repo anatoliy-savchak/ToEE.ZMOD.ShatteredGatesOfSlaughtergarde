@@ -17,7 +17,7 @@ def san_first_heartbeat(attachee, triggerer):
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
-	debugg.breakp("san_new_map")
+	#debugg.breakp("san_new_map")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_LAB): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredLab.ensure(attachee)
 	ctrl.place_encounters(1)
@@ -942,11 +942,14 @@ class CtrlShatteredLab(object):
 		assert isinstance(attachee, toee.PyObjHandle)
 		self.factions_existance_refresh()
 
+		if (attachee):
+			print("Critter dying, proto: {}, id: {}".format(attachee.proto, attachee.id))
+
 		if (attachee.proto == PROTO_NPC_HOWLER and not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_HOWLER_KILLED]):
 			toee.game.global_flags[shattered_consts.GLOBAL_FLAG_HOWLER_KILLED] = 1
 
 		maug_quest_state = toee.game.quests[shattered_consts.QUEST_MAUG].state
-		if (maug_quest_state >= toee.qs_mentioned and maug_quest_state < toee.qs_completed and not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]):
+		if (not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]):
 			spawn_left = 0
 			if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
 				spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
@@ -954,6 +957,7 @@ class CtrlShatteredLab(object):
 			if (spawn_left == 0):
 				toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED] = 1
 
+		self.check_sleep_status_update(1)
 		return
 
 	def check_sleep_status_update(self, force = 0):

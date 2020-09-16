@@ -197,6 +197,7 @@ class HoldingItem(object):
 		self.proto = 0
 		self.item_flags = 0
 		self.ammo_quantity = 0
+		self.worth = 0
 		return
 
 	def assign(self, obj):
@@ -208,6 +209,7 @@ class HoldingItem(object):
 		# IsEquipment
 		if (otype >= toee.obj_t_weapon and otype <= toee.obj_t_generic or otype <= toee.obj_t_bag):
 			self.item_flags = obj.obj_get_int(toee.obj_f_item_flags)
+			self.worth = obj.obj_get_int(toee.obj_f_item_worth)
 		if (otype == toee.obj_t_ammo):
 			self.ammo_quantity = obj.obj_get_int(toee.obj_f_ammo_quantity)
 		return
@@ -215,10 +217,12 @@ class HoldingItem(object):
 	def spawn(self, loc):
 		obj = toee.game.obj_create(self.proto, loc)
 		if (not obj): return None
+		self.id = obj.id
 		otype = obj.type
 		# IsEquipment
 		if (otype >= toee.obj_t_weapon and otype <= toee.obj_t_generic or otype <= toee.obj_t_bag):
 			obj.obj_set_int(toee.obj_f_item_flags, self.item_flags)
+			obj.obj_set_int(toee.obj_f_item_worth, self.worth)
 		if (otype == toee.obj_t_ammo):
 			obj.obj_set_int(toee.obj_f_ammo_quantity, self.ammo_quantity)
 		return obj
