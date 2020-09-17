@@ -2,6 +2,7 @@ from toee import *
 from utilities import *
 from scripts import *
 from combat_standard_routines import *
+import shattered_consts
 
 
 def san_dialog( attachee, triggerer ):
@@ -9,13 +10,13 @@ def san_dialog( attachee, triggerer ):
 	if not attachee.has_met( triggerer ):
 		triggerer.begin_dialog( attachee, 1 )
 	else:
-		if game.quests[3].state == qs_accepted:
+		if game.quests[shattered_consts.QUEST_LUMINOSITY].state == qs_accepted:
 			triggerer.begin_dialog( attachee, 100 )
 			return SKIP_DEFAULT
-		elif game.quests[3].state == qs_mentioned:
+		elif game.quests[shattered_consts.QUEST_LUMINOSITY].state == qs_mentioned:
 			triggerer.begin_dialog( attachee, 150 )
 			return SKIP_DEFAULT
-		elif game.quests[4].state == qs_accepted:
+		elif game.quests[shattered_consts.QUEST_PICKING_AT_THE_SCAR].state == qs_accepted:
 			triggerer.begin_dialog( attachee, 200 )                 # you have to accept the next quest once 3 is completed atm
 			return SKIP_DEFAULT
 		else:

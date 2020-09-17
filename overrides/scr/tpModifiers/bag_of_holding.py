@@ -10,7 +10,7 @@ print("Registering " + GetConditionName())
 
 PROTO_CONTAINER_BAG_OF_HOLDING = 1400
 
-def items_get(npc, unwield_all = 1):
+def items_get(npc):
 	assert isinstance(npc, toee.PyObjHandle)
 	otype = npc.type
 	invenField = 0
@@ -28,14 +28,16 @@ def items_get(npc, unwield_all = 1):
 	result = list()
 	print("numItems: {}".format(numItems))
 	if (numItems > 0):
-		#debugg.breakp("numItems")
-		if (unwield_all):
+		if ((otype == toee.obj_t_npc) or (otype == toee.obj_t_pc)):
 			for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
-				npc.item_worn_unwield(i, 0)
+				item = npc.item_worn_at(i)
+				assert isinstance(item, toee.PyObjHandle)
+				if (item and not item in result and not (item.item_flags_get() & toee.OIF_NO_LOOT)):
+					result.append(item)
 
 		for i in range(0, 199):
 			item = npc.inventory_item(i)
-			if (item):
+			if (item and not item in result and not (item.item_flags_get() & toee.OIF_NO_LOOT)):
 				print(item)
 				result.append(item)
 				numItems -= 1
@@ -326,7 +328,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_autosell(attachee, args, evt_obj):
 		# force load
 		bag.object_script_execute(attachee, 0x01) #sn_use
 		toee.game.create_history_freeform("Bag of Holding contents:\n")
-		items = items_get(bag, 0)
+		items = items_get(bag)
 		num = 0
 		total_lb = 0
 		total_gp = 0
@@ -386,8 +388,8 @@ def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
 
 		# force load
 		bag.object_script_execute(attachee, 0x01) #sn_use
-		toee.game.create_history_freeform("Bag of Holding autosell:\n")
-		items = items_get(bag, 0)
+		toee.game.create_history_freeform("Bag of Holding contents:\n")
+		items = items_get(bag)
 		num = 0
 		total_lb = 0
 		total_gp = 0
@@ -408,13 +410,16 @@ def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
 			x = item.obj_get_int(toee.obj_f_item_quantity)
 			if (x > 1): x2 = " x{}".format(x)
 			info = ItemInfo(item, worth_gp, weight)
-			text = "{:02d}. {}{}.\n   {} lb. {} gp ({}), r {}\n".format(num, text, x2, weight, worth_gp, int(worth_gp_sell), int(info.ratio))
+			text = "{}{}.\n   {} lb. {} gp ({}), r {}\n".format(num, text, x2, weight, worth_gp, int(worth_gp_sell), int(info.ratio))
 			info.text = text
 			lst.append(info)
 			#toee.game.create_history_freeform(text)
 
+		num = 0
 		for info in sorted(lst, ItemInfo_compare_ratio):
-			toee.game.create_history_freeform(info.text)
+			num +=1
+			text = "{:02d}. {}".format(num, info.text)
+			toee.game.create_history_freeform(text)
 
 		if (num):
 			toee.game.create_history_freeform("---------\n")

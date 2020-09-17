@@ -1,9 +1,11 @@
 import toee, debugg, const_proto_items
 
-def item_create_in_inventory(item_proto_num, npc, quantity = 1):
+def item_create_in_inventory(item_proto_num, npc, quantity = 1, is_loot = 1):
 	assert isinstance(item_proto_num, int)
 	assert isinstance(npc, toee.PyObjHandle)
+	assert isinstance(is_loot, int)
 	item = toee.game.obj_create(item_proto_num, npc.location)
+	item_alter_worth_as_raw(item, is_loot)
 	if (npc.type == toee.obj_t_pc):
 		item.item_flag_set(toee.OIF_IDENTIFIED)
 	if (item != toee.OBJ_HANDLE_NULL):
@@ -11,6 +13,7 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1):
 	if (quantity > 1):
 		for i in range(2, quantity):
 			item = toee.game.obj_create(item_proto_num, npc.location)
+			item_alter_worth_as_raw(item, is_loot)
 			if (item != toee.OBJ_HANDLE_NULL):
 				npc.item_get(item)
 	return item
@@ -36,6 +39,18 @@ def item_create_in_inventory_buy(item_proto_num, npc, price_override = None, wor
 			item.destroy()
 			item = None
 	return item
+
+def item_alter_worth_as_raw(item, is_loot):
+	# todo - disable when T+ support will be added
+	assert isinstance(item, toee.PyObjHandle)
+	assert isinstance(is_loot, int)
+	if (not is_loot or not item): return None
+	if (item.type == toee.obj_t_generic and item.obj_get_int(toee.obj_f_category) == 5): # gems should have full price
+		return None
+	worth = item.obj_get_int(toee.obj_f_item_worth)
+	new_worh = worth // 2
+	item.obj_set_int(toee.obj_f_item_worth, new_worh)
+	return new_worh
 
 def item_place_into_inventory(item, npc):
 	assert isinstance(npc, toee.PyObjHandle)
@@ -190,10 +205,15 @@ def items_get(npc, unwield_all = 1):
 		if (unwield_all):
 			for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
 				npc.item_worn_unwield(i, 0)
+		else:
+			for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+				item = npc.item_worn_at(i)
+				if (item and not item in result):
+					result.append(item)
 
 		for i in range(0, 199):
 			item = npc.inventory_item(i)
-			if (item):
+			if (item and not item in result):
 				print(item)
 				result.append(item)
 				numItems -= 1

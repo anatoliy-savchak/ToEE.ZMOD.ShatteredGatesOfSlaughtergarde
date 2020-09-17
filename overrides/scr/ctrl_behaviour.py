@@ -2,6 +2,7 @@ import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics,
 
 class CtrlBehaviour(object):
 	def __init__(self):
+		self.id = None
 		self.spells = utils_npc_spells.NPCSpells()
 		self.vars = dict()
 		#self.items = dict()
@@ -12,6 +13,7 @@ class CtrlBehaviour(object):
 		# assign scripts
 		#npc.scripts[const_toee.sn_start_combat] = 6213
 		# create inventory
+		self.id = npc.id
 		self.after_created(npc)
 		return
 
@@ -60,6 +62,12 @@ class CtrlBehaviour(object):
 		if (cls.get_name() in data):
 			return data[cls.get_name()]
 		return
+
+	def npc_get(self):
+		npc = None
+		if (self.id):
+			npc = toee.game.get_obj_by_id(self.id)
+		return npc
 
 	def start_combat(self, attachee, triggerer):
 		print("")

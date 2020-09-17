@@ -86,8 +86,8 @@
 
 {150}{[The Maug actually stops to speak to you.] I have heard some screaming and less goblin chatter, have you completed your mission to eradicate evil from the dugeon?}{[The Maug actually stops to speak to you.] I have heard some screaming and less goblin chatter, have you completed your mission to eradicate evil from the dugeon?}{}{}{}{}
 {151}{Yes?}{}{1}{toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]}{160}{game.quests[4].state = qs_completed}	// global_var says yes
-{152}{No? Just passing through.}{}{1}{}{90}{}	// global_var says no
-{153}{Maybe? I think so? I am not sure?}{}{1}{}{170}{}	// global_var says no
+{152}{No? Just passing through.}{}{1}{not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]}{90}{}	// global_var says no
+{153}{Maybe? I think so? I am not sure?}{}{1}{not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_LAB_CLEARED]}{170}{}	// global_var says no
 
 {160}{Excellent. Here is your reward. [He hands you a suit of masterwork plate. Surprisingly, it seems to fit.] I must continue my patrol, but if you are intent on continuing the war against evil, may I suggest you ensure there are no other remnants of Slaughtergarde remaining? My senses suggest a presence of demonic power, probably a Temple, to the north-east.}{Excellent. Here is your reward. [He hands you a suit of masterwork plate. Surprisingly, it seems to fit.] I must continue my patrol, but if you are intent on continuing the war against evil, may I suggest you ensure there are no other remnants of Slaughtergarde remaining? My senses suggest a presence of demonic power, probably a Temple, to the north-east.}{}{}{}{create_item_in_inventory(6141,pc)}
 {161}{I'll see what I can do.}{}{1}{}{0}{}

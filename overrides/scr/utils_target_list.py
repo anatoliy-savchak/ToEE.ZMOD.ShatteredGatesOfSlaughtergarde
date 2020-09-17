@@ -378,6 +378,8 @@ class AITarget(object):
 			dist_to_target = self.npc.distance_to(self.target)
 			value_reach = 0.00 + self.npc.obj_get_int(toee.obj_f_critter_reach)
 			if (value_reach < 0.01): value_reach = 5.0
+			if (self.target.d20_query_has_spell_condition(toee.sp_Enlarge)):
+				value_reach = value_reach * 2
 
 			weapon_npc = self.target.item_worn_at(toee.item_wear_weapon_primary)
 			if (not weapon_npc):

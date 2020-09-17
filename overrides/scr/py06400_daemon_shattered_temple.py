@@ -5,7 +5,7 @@ import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, c
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
-	debugg.breakp("san_new_map")
+	#debugg.breakp("san_new_map")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredTemple.ensure(attachee)
 	ctrl.place_encounters(1)
@@ -134,10 +134,6 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 
 		startup_zmod.zmod_templeplus_config_apply()
 
-		self.monsters = dict()
-		self.m2 = list()
-		#self.destroy_all_npc()
-
 		if (not self.encounters_placed and 1):
 			self.place_encounter_t1()
 			self.place_encounter_t2()
@@ -191,8 +187,13 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 			loc1 = toee.game.leader.location - 2
 			loc2 = loc1
 
-		self.create_arcane_guard_at(loc1, const_toee.rotation_0800_oclock, "t0", "aguard1", 0, 0, 0)
-		self.create_arcane_guard_at(loc2, const_toee.rotation_0800_oclock, "t0", "aguard2", 0, 0, 0)
+		npc, ctrl = self.create_arcane_guard_at(loc1, const_toee.rotation_0800_oclock, "t0", "aguard1", 4, 0, 0)
+		utils_npc.npc_unexploit(npc)
+
+		npc, ctrl = self.create_arcane_guard_at(loc2, const_toee.rotation_0800_oclock, "t0", "aguard2", 5, 0, 0)
+		utils_npc.npc_unexploit(npc)
+		if (not near_pc):
+			ctrl.fire_epicenter = utils_obj.sec2loc(483, 474)
 		return
 
 	def place_encounter_t1(self):
@@ -1102,7 +1103,20 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return
 
 	def critter_dying(self, attachee, triggerer):
+		#debug.breakp("critter_dying")
 		self.factions_existance_refresh()
+
+		if (not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED]):
+			spawn_left = 0
+			if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+				spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+			print("spawn_left: {}".format(spawn_left))
+			if (spawn_left == 0):
+				toee.game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED] = 1
+				print("toee.game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED] = 1")
+
+		self.check_sleep_status_update(1)
 		return
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
@@ -1113,8 +1127,9 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 	def check_entrance_patrol(self):
 		threshhold_hours_passed = 4*24 + 16 + 1
 		left_for = self.last_entered_shrs - self.last_leave_shrs
-		print("check_entrance_patrol left_for: {}, last_leave_shrs: {}, last_entered_shrs: {}".format(left_for, self.last_leave_shrs, self.last_entered_shrs))
-		if (left_for < threshhold_hours_passed): return 0
+		passed = left_for >= threshhold_hours_passed
+		print("check_entrance_patrol left_for: {} hrs, passed: {}, treshhold: {}, last_leave_shrs: {}, last_entered_shrs: {}".format(left_for, passed, threshhold_hours_passed, self.last_leave_shrs, self.last_entered_shrs))
+		if (not passed): return 0
 
 		#print(self.factions_existance)
 		spawn_left = 0

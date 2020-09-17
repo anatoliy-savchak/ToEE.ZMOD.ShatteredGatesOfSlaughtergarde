@@ -46,6 +46,7 @@ class CtrlDaemon(object):
 			npc.obj_set_int(const_toee.obj_f_description_correct, nameid)
 		return
 
+	# abstract
 	@classmethod
 	def get_name(cls):
 		return "ABSTRACT ERROR!"
@@ -84,6 +85,7 @@ class CtrlDaemon(object):
 	def get_monster_prefix_default(self):
 		return None
 
+	# abstract
 	def get_map_default(self):
 		return 0
 

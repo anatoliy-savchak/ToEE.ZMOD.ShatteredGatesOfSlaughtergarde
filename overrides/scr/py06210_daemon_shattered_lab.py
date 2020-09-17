@@ -199,9 +199,14 @@ class CtrlShatteredLab(object):
 			loc2 = loc1
 			loc3 = loc2
 
-		self.create_goblin_scrounger_at(loc1, const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
-		self.create_goblin_scrounger_at(loc2, const_toee.rotation_1100_oclock, "l_patrol", "goblin2", 0, 1)
-		self.create_goblin_scrounger_at(loc3, const_toee.rotation_1100_oclock, "l_patrol", "goblin3", 0, 1)
+		npc = self.create_goblin_scrounger_at(loc1, const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
+		utils_npc.npc_unexploit(npc)
+
+		npc = self.create_goblin_scrounger_at(loc2, const_toee.rotation_1100_oclock, "l_patrol", "goblin2", 0, 1)
+		utils_npc.npc_unexploit(npc)
+
+		npc = self.create_goblin_scrounger_at(loc3, const_toee.rotation_1100_oclock, "l_patrol", "goblin3", 0, 1)
+		utils_npc.npc_unexploit(npc)
 		return
 
 	def place_encounter_l1(self):

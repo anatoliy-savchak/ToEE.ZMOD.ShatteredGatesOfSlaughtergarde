@@ -212,6 +212,10 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 			#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_DEEP_SLUMBER, npc)
 			#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_SLEEP, npc)
 			utils_item.item_create_in_inventory(ARCANE_GUARD_SLEEP_SCROLL_PROTO, npc)
+		elif (self.guard_ai_type == 4):
+			utils_item.item_create_in_inventory(ARCANE_GUARD_SLEEP_SCROLL_PROTO, npc)
+		elif (self.guard_ai_type == 5):
+			utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GREASE, npc)
 
 		npc.item_wield_best_all()
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_EXPEDITIOUS_RETREAT, npc)
@@ -230,6 +234,11 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 		tac = None
 		healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
 		primary_weapon = npc.item_worn_at(toee.item_wear_weapon_primary)
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		print(foes)
+		coup_de_grace_targets = foes.get_coup_de_grace_targets()
+
 		while (not tac):
 			if (not primary_weapon):
 				for obj in toee.game.obj_list_vicinity(npc.location, toee.OLC_WEAPON):
@@ -243,6 +252,17 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 					tac.add_d20_action(toee.D20A_DISARMED_WEAPON_RETRIEVE, 0)
 					tac.add_total_defence()
 					break
+
+			if (coup_de_grace_targets): 
+				#debug.breakp("coup_de_grace_targets")
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(coup_de_grace_targets[0].target.id)
+				tac.add_approach_single()
+				tac.add_d20_action(toee.D20A_COUP_DE_GRACE, 0)
+				tac.add_attack_threatened()
+				tac.add_total_defence()
+				break
 
 			if (self.spells.get_spell_count(ARCANE_GUARD_SLEEP)): 
 				#debug.breakp("spell_deep_slumber")
@@ -281,6 +301,8 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 							tac.add_target_obj(trg.id)
 					tac.add_halt()
 					tac.add_use_item(scroll.id)
+					tac.add_halt()
+					tac.add_attack_threatened()
 					break
 			
 			if (1): 
@@ -296,7 +318,33 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 						print("find_pc_closest_to_origin: {}, {}".format(trg, dist))
 						if (trg and dist <= 15):
 							tac.add_target_obj(trg.id)
+					else:
+						foes.measures.measure_affected_range = 25-5
+						foes.rescan()
+						targ = foes.find_affected_best(0, 1)
+						if (targ):
+							print("targeting {}".format(targ.target))
+							tac.add_target_obj(targ.target.id)
+
 					#tac.add_halt()
+					tac.add_use_item(scroll.id)
+					tac.add_halt()
+					tac.add_attack_threatened()
+					break
+
+			if (1): 
+				scroll = npc.item_find_by_proto(const_proto_scrolls.PROTO_SCROLL_OF_GREASE)
+				if (scroll):
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					#tac.add_five_foot_step()
+					tac.add_target_closest()
+					print("self.fire_epicenter: {}".format(self.fire_epicenter))
+					if (self.fire_epicenter):
+						trg, dist = utils_target_list.find_pc_closest_to_origin(self.fire_epicenter)
+						print("find_pc_closest_to_origin: {}, {}".format(trg, dist))
+						if (trg and dist <= 25):
+							tac.add_target_obj(trg.id)
+					tac.add_halt()
 					tac.add_use_item(scroll.id)
 					break
 
@@ -639,7 +687,7 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 
 	def end_combat(self, attachee, triggerer):
 		print("end_combat")
-		debug.breakp("end_combat")
+		#debug.breakp("end_combat")
 		#utils_sneak.npc_make_hide(attachee, 1)
 		return toee.RUN_DEFAULT
 

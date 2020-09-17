@@ -61,6 +61,9 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def get_name():
 		return "CtrlShatteredArmory"
 
+	def get_map_default(self):
+		return shattered_consts.MAP_ID_SHATERRED_ARMORY
+
 	def place_encounters(self):
 		#if (self.encounters_placed): return
 		#debugg.breakp("place_encounters")

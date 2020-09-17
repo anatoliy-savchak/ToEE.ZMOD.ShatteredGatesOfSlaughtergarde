@@ -1,4 +1,4 @@
-import toee, debug, tpdp, utils_obj, const_toee
+import toee, debug, tpdp, utils_obj, const_toee, utils_item
 
 def npc_feats_print(npc):
 	assert isinstance(npc, toee.PyObjHandle)
@@ -284,3 +284,12 @@ def npc_print_wears(dic):
 		if (value):
 			print("{} = {}".format(key, value))
 	return
+
+def npc_unexploit(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	npc.critter_flag_set(toee.OCF_EXPERIENCE_AWARDED)
+	items = utils_item.items_get(npc, 0)
+	for item in items:
+		assert isinstance(item, toee.PyObjHandle)
+		item.item_flag_set(toee.OIF_NO_LOOT)
+	return npc
