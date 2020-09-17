@@ -1,4 +1,4 @@
-import toee, debug, tpdp, utils_obj, const_toee
+import toee, debug, tpdp, utils_obj, const_toee, utils_item
 
 def npc_feats_print(npc):
 	assert isinstance(npc, toee.PyObjHandle)
@@ -66,14 +66,16 @@ def npc_skill_ensure(npc, skill_id, target_skill_value):
 def npc_is_alive(npc, dead_when_negative_hp = 0):
 	assert isinstance(npc, toee.PyObjHandle)
 	object_flags = npc.object_flags_get()
-	if ((object_flags & toee.OF_DESTROYED) or (object_flags & toee.OF_OFF)): return 0
+	if ((object_flags & toee.OF_DESTROYED) or (object_flags & toee.OF_OFF)): 
+		#print("destroyed: {}".format(npc))
+		return 0
 	result = npc.d20_query(toee.Q_Dead)
 	if (result): return 0
 	result = npc.d20_query(toee.Q_Dying)
 	if (result): return 0
 	hp = npc.stat_level_get(toee.stat_hp_current)
 	if (dead_when_negative_hp and hp < 0):
-		return0
+		return 0
 	if (hp <= -10): return 0
 	return 1
 
@@ -214,3 +216,80 @@ def travel_hours_to_day_hours(travel_hours):
 	result = days * 24 + leftover
 	print("travel_hours: {}, days: {}, leftover: {}, result: {}".format(travel_hours, days, leftover, result))
 	return result
+
+def pc_turn_all(rotation):
+	for pc in toee.game.party:
+		pc.rotation = rotation
+	return
+
+def pc_award_experience_all(xp_awarded_each):
+	for pc in toee.game.party:
+		pc.award_experience(xp_awarded_each)
+	return
+
+def npc_kill_foes():
+	# placeholder
+	killer = toee.game.leader
+	for npc in toee.game.obj_list_vicinity(killer.location, toee.OLC_NPC):
+		print("Check {}".format(npc))
+		if (npc.type == toee.obj_t_pc): continue
+		if (not npc.is_active_combatant(killer)): 
+			print("skip, is not is_active_combatant")
+			continue
+		if (npc.allegiance_shared(toee.game.leader)): 
+			print("skip, allegiance_shared")
+			continue
+		npcleader = npc.leader_get()
+		if (npcleader and (npcleader.type == toee.obj_t_pc)): 
+			print("skip, leader is pc")
+			continue
+		#if (npc.reaction_get(killer) > 0): 
+		#	print("skip, reaction is >0")
+		#	continue
+		if (npc.is_friendly(killer)): 
+			print("skip, is friendly")
+			continue
+		if (npc.object_flags_get() & toee.OF_DONTDRAW): 
+			print("skip, OF_DONTDRAW")
+			continue
+
+		print("killing: {}".format(npc))
+		npc.critter_kill_by_effect(killer)
+	return
+
+def npc_get_wears(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	result = dict()
+	result["item_wear_helmet"] = npc.item_worn_at(toee.item_wear_helmet)
+	result["item_wear_necklace"] = npc.item_worn_at(toee.item_wear_necklace)
+	result["item_wear_gloves"] = npc.item_worn_at(toee.item_wear_gloves)
+	result["item_wear_weapon_primary"] = npc.item_worn_at(toee.item_wear_weapon_primary)
+	result["item_wear_weapon_secondary"] = npc.item_worn_at(toee.item_wear_weapon_secondary)
+	result["item_wear_armor"] = npc.item_worn_at(toee.item_wear_armor)
+	result["item_wear_ring_primary"] = npc.item_worn_at(toee.item_wear_ring_primary)
+	result["item_wear_ring_secondary"] = npc.item_worn_at(toee.item_wear_ring_secondary)
+	result["item_wear_boots"] = npc.item_worn_at(toee.item_wear_boots)
+	result["item_wear_ammo"] = npc.item_worn_at(toee.item_wear_ammo)
+	result["item_wear_cloak"] = npc.item_worn_at(toee.item_wear_cloak)
+	result["item_wear_shield"] = npc.item_worn_at(toee.item_wear_shield)
+	result["item_wear_robes"] = npc.item_worn_at(toee.item_wear_robes)
+	result["item_wear_bracers"] = npc.item_worn_at(toee.item_wear_bracers)
+	result["item_wear_bardic_item"] = npc.item_worn_at(toee.item_wear_bardic_item)
+	result["item_wear_lockpicks"] = npc.item_worn_at(toee.item_wear_lockpicks)
+	return result
+
+def npc_print_wears(dic):
+	assert isinstance(dic, dict)
+	for key, value in dic.iteritems():
+		if (value):
+			print("{} = {}".format(key, value))
+	return
+
+def npc_unexploit(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	npc.critter_flag_set(toee.OCF_EXPERIENCE_AWARDED)
+	items = utils_item.items_get(npc, 0)
+	for item in items:
+		assert isinstance(item, toee.PyObjHandle)
+		item.item_flag_set(toee.OIF_NO_LOOT)
+	return npc

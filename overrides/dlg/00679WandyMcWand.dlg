@@ -1,0 +1,29 @@
+{1}{[You see a practitioner of the mystic arts. She surveys you coolley.]}{[You see a practitioner of the mystic arts. She surveys you coolley.]}{}{}{}{}
+{2}{Hello, I'm @pcname@.}{}{1}{}{10}{}
+{3}{Greetings and salutations, sorceress. I am the great and noble bard @pcname@, famed throughout the realms, singer of songs and creator of legends! Tremble before my harmonic magnificence!}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{10}{}
+
+{10}{I'm Wanda.}{I'm Wanda.}{}{}{}{}
+{11}{Of course you are. Seller of wands, no doubt.}{}{1}{}{20}{}
+
+{20}{And how, pray tell, did you figure that out?}{And how, pray tell, did you figure that out?}{}{}{}{}
+{21}{Mostly by the wand shingle outside.}{}{12}{}{30}{}
+{22}{Lucky guess?}{}{-11}{}{30}{}
+{23}{Because I'm a man of VISION. Ha ha ha, see what I did there? Ha ha.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{30}{}
+
+{30}{So, will you be buying a wand?}{So, will you be buying a wand?}{}{}{}{}
+{31}{B:Yes please.}{}{1}{}{0}{pc.barter(npc)}
+{32}{Not at this time.}{}{1}{}{0}{}
+
+
+
+
+
+{100}{Hello again.}{Hello again.}{}{}{}{}
+{101}{Hi.}{}{1}{}{30}{}
+{102}{F:}{}{1}{}{0}{}
+{103}{B:Can I buy a wand?}{}{1}{}{0}{pc.barter(npc)}
+{104}{Do you deal in second hand items?}{}{1}{not get_1(npc)}{110}{npc_1(npc)}
+
+{110}{Yes, both buying and selling. If it is magical I can do you a good deal.}{Yes, both buying and selling. If it is magical I can do you a good deal.}{}{}{}{}
+{111}{B:}{}{1}{}{0}{pc.barter(npc)}
+{112}{F:}{}{1}{}{0}{}

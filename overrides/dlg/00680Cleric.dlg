@@ -1,0 +1,111 @@
+{1}{[You see a man in the flowing robes of a religious. He nods at you solemnly.]}{[You see a man in the flowing robes of a religious. He nods at you solemnly.}{}{}{}{}
+{2}{Hello, I'm @pcname@.}{}{1}{}{10}{}
+{3}{Greetings, fellow.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{10}{}
+{4}{[Nod back and get on with your day.]}{}{1}{}{0}{}
+
+{10}{Hello there. I am Brother Antoninus. Can I help you with anything?}{Hello there. I am Brother Antoninus. Can I help you with anything?}{}{}{}{}
+{11}{Well, what exactly are you a brother of? So to speak?}{}{1}{}{20}{}
+{12}{I doubt it. [Exit.]}{}{1}{}{0}{}
+
+{20}{I am a humble friar of Pelor. I walk the streets of the Pious Way. I find in the steady rythm of walking a beat that aids my meditations.}{I am a humble friar of Pelor. I walk the streets of the Pious Way. I find in the steady rythm of walking a beat that aids my meditations.}{}{}{}{}
+{21}{I've heard something like that. So as a brother and friar, I take it you wouldn't know much in the way of powerful intercessions? True Resurrection and the like?}{}{1}{}{30}{}
+{22}{E:}{}{1}{}{35}{}
+
+{30}{Are you in need?}{Are you in need?}{}{}{}{}
+{31}{Yes.}{}{1}{}{40}{}
+{32}{No.}{}{1}{}{35}{}
+
+{35}{Then I shall leave you to your own ambulations. Pelor's blessings upon you.}{Then I shall leave you to your own ambulations. Pelor's blessings upon you.}{}{}{}{}
+{36}{And to you.}{}{1}{}{0}{}
+{37}{Bah, humbug.}{}{1}{}{0}{}
+
+{40}{I can offer the removal of curses, poisons, diseases or even the raising of the dead. Please note there is a limit to how many spells I can cast.}{I can offer the removal of curses, poisons, diseases or even the raising of the dead. Please note there is a limit to how many spells I can cast.}{}{}{}{}
+{41}{Remove Curse. Please.}{}{1}{}{70}{}
+{42}{Cure Poison.}{}{1}{}{80}{}
+{43}{Heal my diseases, if it pleases.}{}{1}{}{60}{}
+{44}{I have a dead comrade, please raise them.}{}{1}{}{50}{}
+{45}{Wow, impressive. But not what I need. Never mind.}{}{1}{}{35}{}
+
+{50}{I must charge 600 gold for Raise Dead.}{I must charge 600 gold for Raise Dead.}{}{}{}{}
+{51}{So be it.}{}{1}{pc.money_get() >= 60000}{1520}{}
+{52}{Maybe not...}{}{1}{}{0}{}
+
+{60}{I must charge 250 gold for Remove Disease.}{I must charge 250 gold for Remove Disease.}{}{}{}{}
+{61}{So be it.}{}{1}{pc.money_get() >= 25000}{1560}{}
+{62}{Maybe not...}{}{1}{}{0}{}
+
+{70}{I must charge 250 gold for Remove Curse.}{I must charge 250 gold for Remove Curse.}{}{}{}{}
+{71}{So be it.}{}{1}{pc.money_get() >= 25000}{1620}{}
+{72}{Maybe not...}{}{1}{}{0}{}
+
+{80}{I must charge 250 gold for Neutralise Poison.}{I must charge 250 gold for Neutralise Poison.}{}{}{}{}
+{81}{So be it.}{}{1}{pc.money_get() >= 25000}{1660}{}
+{82}{Maybe not...}{}{1}{}{0}{}
+
+
+{100}{[Friar Antoninus merely nods at you.]}{[Friar Antoninus merely nods at you.]}{}{}{}{}
+{102}{F:}{}{1}{}{0}{}
+{103}{[Just give him the nod.]}{}{1}{}{0}{}
+{104}{Might I trouble you for healing?}{}{1}{}{40}{}
+{105}{B:}{}{1}{get_1(npc)}{0}{pc.barter(npc)}
+{106}{B:Do you have anything to sell, may I ask? Holy things, as in?}{}{1}{pc.stat_level_get(stat_level_bard) == 0 and not get_1(npc)}{0}{pc.barter(npc)}
+{108}{I never did ask, do you have anything to sell under that cloak, perchance? A Mace of Disruption, Holy Avenger, Wand of Miracles, the usual things one might find in a church gift shop?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1 and not get_1(npc)}{110}{npc_1(npc)}
+
+{110}{You mean, like this? [He opens his robe and you behold all the wonders of creation.]}{You mean, like this? [He opens his robe and you behold all the wonders of creation.]}{}{}{}{}
+{111}{O Gods put it away, put it away!}{}{1}{}{0}{}
+{112}{B:Yes, sweet Pelor YES!!}{}{1}{}{0}{pc.barter(npc)}
+
+
+
+
+{1520}{Who is in need of Raise Dead?}{Who is in need of Raise Dead?}{}{1520}{}{game.picker( npc, spell_raise_dead, should_resurrect_on, [ 1530, 40, 1540 ] )}
+{1521}{}{}{}{}{}{}
+
+{1530}{That person does not require this healing at this time.}{That person does not require this healing at this time.}{}{1530}{}{}
+{1531}{I need other healing.}{}{1}{}{40}{}
+{1532}{F:}{}{1}{}{0}{}
+
+{1540}{Glory to the Sun God!}{Glory to Pelor!}{}{1540}{}{}
+{1541}{Let me have it.}{}{1}{}{1550}{npc.cast_spell( spell_raise_dead, picker_obj )}
+
+{1550}{By Pelor's will, it is done.}{By the Sun God's will, it is done.}{}{1550}{}{npc.spells_pending_to_memorized()}
+{1551}{We'll probably need more healing, a Cure Light Wounds at least?}{}{1}{}{1555}{pc.money_adj(-24000)}
+{1552}{A:}{}{1}{}{0}{pc.money_adj(-60000)}
+
+{1555}{Sorry, don't know that one.}{Sorry, don't know that one.}{}{}{}{}
+{1556}{Fabulous. Just give us more healing.}{}{1}{}{40}{}
+{1557}{F:}{}{1}{}{0}{}
+
+// Disease
+{1560}{Who will be in need of the Remove Disease?}{Who will be in need of the Remove Disease?}{}{1560}{}{game.picker( npc, spell_remove_disease, should_heal_disease_on, [ 1530, 40, 1570 ] )}
+{1561}{}{}{}{}{}{}
+
+{1570}{Glory to the Sun God!}{Glory to Pelor!}{}{1570}{}{}
+{1571}{Let me have it.}{}{1}{}{1650}{npc.cast_spell( spell_remove_disease, picker_obj )}
+
+{1580}{Alas, I am unable to help. I cannot cast that spell again.}{Alas, I am unable to help. I cannot cast that spell again.}{}{1580}{}{}
+{1581}{I need more healing.}{}{1}{}{40}{}
+{1582}{A:}{}{1}{}{0}{}
+
+// Remove Curse
+{1620}{Who is in need of Remove Curse?}{Who is in need of Remove Curse?}{}{1520}{}{game.picker( npc, spell_remove_curse, should_heal_hp_on, [ 1630, 40, 1640 ] )}
+{1621}{}{}{}{}{}{}
+
+{1630}{That person is dead.}{That person is dead.}{}{}{}{}
+{1631}{I need other healing.}{}{1}{}{40}{}
+{1632}{F:}{}{1}{}{0}{}
+{1633}{He's just pining for the fjords.}{}{1}{}{35}{}
+
+{1640}{Glory to the Sun God!}{Glory to Pelor!}{}{}{}{}
+{1641}{Let me have it.}{}{1}{}{1650}{npc.cast_spell( spell_remove_curse, picker_obj )}
+
+{1650}{By Pelor's will, it is done.}{By the Sun God's will, it is done.}{}{}{}{npc.spells_pending_to_memorized()}
+{1651}{I need more healing.}{}{1}{}{40}{pc.money_adj(-25000)}
+{1652}{A:}{}{1}{}{0}{pc.money_adj(-25000)}
+
+// Poison
+{1660}{Who will be in need of the Neutralise Poison?}{Who will be in need of the Neutralise Poison?}{}{1560}{}{game.picker( npc, spell_neutralize_poison, should_heal_poison_on, [ 1530, 40, 1670 ] )}
+{1661}{}{}{}{}{}{}
+
+{1670}{Glory to the Sun God!}{Glory to Pelor!}{}{1570}{}{}
+{1671}{Let me have it.}{}{1}{}{1650}{npc.cast_spell( spell_neutralize_poison, picker_obj )}

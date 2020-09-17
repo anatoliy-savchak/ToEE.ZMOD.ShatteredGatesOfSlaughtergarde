@@ -1,0 +1,177 @@
+// first contact, irrespective of san_d or heartbeat
+
+{1}{[A military figure in shining plate steps out of the crowd and into your path.] Excuse me, @pcname@, may I have a word?}{[A military figure in shining plate steps out of the crowd and into your path.] Excuse me, @pcname@, may I have a word?}{}{}{}{}
+{2}{Yes? And who might you be?}{}{1}{}{10}{}
+{3}{Who's asking?}{}{1}{}{10}{}
+{4}{No. [Keep walking.]}{}{1}{}{20}{}
+{5}{Get out of my way.}{}{1}{}{20}{}
+
+{10}{My name is Captain Armin Harrack. I am an officer of the Luminous Order - doubtless you know we occupy the Shining Citadel to the west of the Slaughterscar - and your name, and more besides, have come to my attention. Specifically, your recent adventures. Can you describe the dungeon to me?}{My name is Captain Armin Harrack. I am an officer of the Luminous Order - doubtless you know we occupy the Shining Citadel to the west of the Slaughterscar - and your name, and more besides, have come to my attention. Specifically, your recent adventures. Can you describe the dungeon to me?}{}{}{}{}
+{11}{It was an old leftover part of Slaughtergarde.}{}{1}{game.global_flags[shattered_consts.GLOBAL_FLAG_MAUG_TOLD_OF_SLAUGHTERGARDE_EXISTS] == 1}{15}{}
+{12}{[Tell him about the architecture.]}{}{1}{}{40}{}
+{14}{No, I don't think I will. I can't see how that's any of your business.}{}{1}{}{45}{}
+
+{15}{What, you know this as a fact? How? Or are you just guessing? I know every child hears stories of the Scar, but we need to be sure.}{What, you know this as a fact? How? Or are you just guessing? I know every child hears stories of the Scar, but we need to be sure.}{}{}{}{}
+{16}{[You tell him of your encounter with the Maug and what he said.]}{}{1}{}{30}{}
+
+{20}{I'm sorry, but I must insist you answer some questions. And moreover I have the authority to do so.}{I'm sorry, but I must insist you answer some questions. And moreover I have the authority to do so.}{}{}{}{}
+{21}{Just who do you think you are?}{}{1}{}{10}{}
+{22}{[Just cooperate.]}{}{1}{}{10}{}
+
+{30}{A Maug? Really? I have never encountered such a creature, though I have heard tell of them... and they are not evil. Well, this is good news... and not so good. A remnant of Slaughtergarde remains, it seems. That is good to know - but is it harmless, and is it the only one?}{A Maug? Really? I have never encountered such a creature, though I have heard tell of them... and they are not evil. Well, this is good news... and not so good. A remnant of Slaughtergarde remains, it seems. That is good to know - but is it harmless, and is it the only one?}{}{}{}{}
+{31}{Before you go on, could you explain what Slaughtergarde is? We got the Maug's version, but a more... human-centric perspective would be nice.}{}{1}{}{60}{}
+{32}{[Show him the drawing and explain where it came from.]}{}{1}{}{35}{}
+
+{35}{[He holds the drawing gingerly for a moment, concentrates, then holds it normally and reads it. Finally he says] well, this is both good and bad. The writing says, "Ruined! No salvageable sigils." If true, that is good: it means this part of Slaughtergarde is inoperative and not a threat. And yet...}{[He holds the drawing gingerly for a moment, concentrates, then holds it normally and reads it. Finally he says] well, this is both good and bad. The writing says, "Ruined! No salvageable sigils." If true, that is good: it means this part of Slaughtergarde is inoperative and not a threat. And yet...}{}{}{}{}
+{36}{[Spellcraft: He checked it out with Detect Evil before he read it. Click here to see what he says next.]}{}{1}{spell_check(pc, 16)}{50}{}
+{37}{Yes, and yet...?}{}{1}{}{50}{}
+
+{40}{[You describe the tunnels, the areas with markings on the floor, and the strange demonic faces over the arches. He nods and says] thank you. But I fear you have brought grave news. It sounds like you have stumbled upon a piece of Slaughtergarde that has survived since the invasion. This is troubling, very much so.}{[You describe the tunnels, the areas with markings on the floor, and the strange demonic faces over the arches. He nods and says] thank you. But I fear you have brought grave news. It sounds like you have stumbled upon a piece of Slaughtergarde that has survived since the invasion. This is troubling, very much so.}{}{}{}{}
+{42}{[Show him the drawing and explain where it came from.]}{}{1}{anyone( pc.group_list(), "has_item", 11400)}{35}{}
+{43}{That's rather far fetched, surely? We find a creepy dungeon and you jump to a conclusion like that? Either you are guessing, or there must be more you are not telling us.}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 5}{55}{}
+{44}{I didn't see any working gates or sigils or such, everything seemed long dead, and the monsters there very recent.}{}{1}{}{50}{}
+
+{45}{[Surprisingly, he laughs.] Of course, I understand that a total stranger accosting you in a public square with such questions requires some defence. But we have been searching for such places as the dungeon you discovered, and it is vitally important I know if our suspicions are correct. Is there nothing you can tell me?}{[Surprisingly, he laughs.] Of course, I understand that a total stranger accosting you in a public square with such questions requires some defence. But we have been searching for such places as the dungeon you discovered, and it is vitally important I know if our suspicions are correct. Is there nothing you can tell me?}{}{}{}{}
+{46}{[Just tell him a little about the floors and walls, to get rid of him.]}{}{1}{}{40}{}
+{47}{[Be cooperative.]}{}{1}{}{40}{}
+
+{50}{Yet we now have to ask, is this the only one? What if there are other parts of Slaughtergarde hidden away in the Valley, and what if their magicks are still functioning? That question worries me. And who else might want to use them - from either end? That question requires an answer, urgently.}{Yet we now have to ask, is this the only one? What if there are other parts of Slaughtergarde hidden away in the Valley, and what if their magicks are still functioning? That question worries me. And who else might want to use them - from either end? That question requires an answer, urgently.}{}{}{}{}
+{51}{No doubt, but could you first tell us more about what Slaughtergarde is?}{}{1}{}{60}{}
+
+{55}{Well, you must understand that the clerics of my order spend a lot of time communing with their gods and divining threats such as this. We had long feared, based on their insights, that pieces of Slaughtergarde remained, and you seem to have confirmed that. There is really nothing else of such design and antiquity that it could be.}{Well, you must understand that the clerics of my order spend a lot of time communing with their gods and divining threats such as this. We had long feared, based on their insights, that pieces of Slaughtergarde remained, and you seem to have confirmed that. There is really nothing else of such design and antiquity that it could be.}{}{}{}{}
+{56}{All right, then what is Slaughtergarde? Can you tell me that?}{}{1}{}{60}{}
+
+{60}{Of course. The oldest Elves of the Valley remember, but we humans forget... some eight centuries past, a demonic prince - there is no need to speak his name - attempted to invade the Prime Material Plane from his home in the Abyss. To achieve this, he tried nothing less than the transposing of a part of the Abyss to our plane.}{Of course. The oldest Elves of the Valley remember, but we humans forget... some eight centuries past, a demonic prince - there is no need to speak his name - attempted to invade the Prime Material Plane from his home in the Abyss. To achieve this, he tried nothing less than the transposing of a part of the Abyss to our plane.}{}{}{}{}
+{61}{You humans may forget, but we don't... but go on.}{}{1}{pc.stat_level_get(stat_race) == race_halfling or pc.stat_level_get(stat_race) == race_dwarf or pc.stat_level_get(stat_race) == race_gnome}{65}{}
+{62}{Damn straight we Elves remember... but go on.}{}{1}{pc.stat_level_get(stat_race) == race_elf or pc.stat_level_get(stat_race) == race_halfelf}{65}{}
+{63}{Go on.}{}{1}{}{65}{}
+
+{65}{The inhabitants of the Valley were warned by various means - the treachery of a demonic lieutenant, signs and omens, dreams and visions. Men built the Obelisks to syphon away the demon princes power, the Elves, Dwarves and the Angels themselves built armies. When the Abyss arrived, they were waiting.}{The inhabitants of the Valley were warned by various means - the treachery of a demonic lieutenant, signs and omens, dreams and visions. Men built the Obelisks to syphon away the demon princes power, the Elves, Dwarves and the Angels themselves built armies. When the Abyss arrived, they were waiting.}{}{}{}{}
+{66}{Go on.}{}{1}{}{70}{}
+{67}{You tell this story well! Go on, I can't wait to find out who won.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{70}{}
+
+{70}{A hollowed mountain, as far as we could tell, was brought from the Abyss and transposed at what is now the site of the Slaughterscar. War was joined around this mountain, and raged a day and a night. But the Obelisks did their job, and syphoned off the eldritch sorceries attempting to bind the mountain to our Plane.}{A hollowed mountain, as far as we could tell, was brought from the Abyss and transposed at what is now the site of the Slaughterscar. War was joined around this mountain, and raged a day and a night. But the Obelisks did their job, and syphoned off the eldritch sorceries attempting to bind the mountain to our Plane.}{}{}{}{}
+{71}{And then....?}{}{1}{}{75}{}
+
+{75}{Before sunrise, a critical point was passed, and the mountain exploded. The pieces were cast, not outward, but across the Void, back to the Abyss. Or so we believe. The few remaining demons were hunted down, and peace returned to the Valley, with the Obelisks and Slaughterscar to remind us of what had happened.}{Before sunrise, a critical point was passed, and the mountain exploded. The pieces were cast, not outward, but across the Void, back to the Abyss. Or so we believe. The few remaining demons were hunted down, and peace returned to the Valley, with the Obelisks and Slaughterscar to remind us of what had happened.}{}{}{}{}
+{76}{So the good guys won? Well, that's a relief.}{}{1}{}{80}{}
+{77}{So, eight long centuries later, why do we need to worry?}{}{1}{}{80}{}
+
+{80}{It has long been feared that some elements of Slaughtergarde may have remained. I will not go into the reasoning for this, but it was enough to see the creation of my Order. Doubtless you know we battle the undead that generate at the Slaughterscar site, but we also keep watch for any relics of evil that may be uncovered.}{It has long been feared that some elements of Slaughtergarde may have remained. I will not go into the reasoning for this, but it was enough to see the creation of my Order. Doubtless you know we battle the undead that generate at the Slaughterscar site, but we also keep watch for any relics of evil that may be uncovered.}{}{}{}{}
+{81}{Such as the goblin dungeon we just came from.}{}{1}{}{85}{}
+
+{85}{Exactly. And not just the dungeon, but some of the items you brought back, armours and such, are clearly antiques as you yourselves would have noticed. But moving forward, tell me more of these creatures you encountered, not the goblins but the cultists.}{Exactly. And not just the dungeon, but some of the items you brought back, armours and such, are clearly antiques as you yourselves would have noticed. But moving forward, tell me more of these creatures you encountered, not the goblins but the cultists.}{}{}{}{}
+{86}{Cultists seems strong language, an hobgoblin cleric worshipping his goblin god could be as mundane as it sounds. But I will tell you what I saw. [Do so.]}{}{14}{}{90}{}
+{87}{[Just tell him.]}{}{1}{}{90}{}
+
+{90}{[You tell him of the dark creeper and the map, while he looks thoughtful.] This creature sounds like some sort of emissary, seeking functioning sigils or quite possibly even a working gate. This is what we feared. So now the question becomes, emissary from where? The map says Surrinak, it would seem your path leads there next.}{[You tell him of the dark creeper and the map, while he looks thoughtful.] This creature sounds like some sort of emissary, seeking functioning sigils or quite possibly even a working gate. This is what we feared. So now the question becomes, emissary from where? The map says Surrinak, it would seem your path leads there next.}{}{}{}{game.quests[shattered_consts.QUEST_LUMINOSITY].state = qs_mentioned}
+{91}{Indeed it does.}{}{1}{}{95}{}
+{92}{Whoa there. Why would we endanger ourselves dealing with such evil when your Order exists specifically to handle such things?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 5}{110}{}
+{93}{Nope, this sounds dangerous. It would seem my path leads elsewhere.}{}{1}{}{135}{}
+
+{95}{Excellent. Please go to the location on your map and investigate. If you find another part of Slaughtergarde, which I suspect you will, clear it out and return. I will gladly pay you 800gp each for this service, as well as official commendations from the Order, which will be greatly respected in these parts.}{Excellent. Please go to the location on your map and investigate. If you find another part of Slaughtergarde, which I suspect you will, clear it out and return. I will gladly pay you 800gp each for this service, as well as official commendations from the Order, which will be greatly respected in these parts.}{}{}{}{}
+{96}{Sound good.}{}{1}{}{115}{}
+{97}{That's it? Just get paid to do our job? Easy money.}{}{1}{}{115}{}
+{98}{Anything else to this?}{}{1}{}{115}{}
+
+// qs_accepted
+
+{100}{Ahh, you return. Please tell me of your exploits. Is it what I feared?}{Ahh, you return. Please tell me of your exploits. Is it what I feared?}{}{}{}{}
+{101}{Slow down, I haven't had a chance to do this yet. But I will.}{}{1}{}{106}{}
+{102}{I'm just returning to re-equip, it's tougher than I thought.}{}{1}{}{106}{}
+{103}{Yes, I finished! [Explain to him what happened in the Temple.]}{}{1}{game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED] == 1}{170}{}
+{104}{Just stopping by to see how you are.}{}{1}{}{160}{}
+
+{106}{If there are active sigils or gates there, and cultists trying to operate them, the results could be dire. Catastrophic even. I must insist you make this a priority and investigate this threat as soon as possible!}{If there are active sigils or gates there, and cultists trying to operate them, the results could be dire. Catastrophic even. I must insist you make this a priority and investigate this threat as soon as possible!}{}{}{}{}
+{107}{Yes sir.}{}{1}{}{0}{}
+{108}{All in good time.}{}{1}{}{0}{}
+{109}{Don't tell me what to do.}{}{1}{}{0}{}
+
+
+{110}{Members of our order can't strike directly at the Surrinak holdings without possibly arousing other nobles against us. But if independent agents can prove something's rotten in Surrinak country, we can safely become involved and clean it up. That's why I've come to you.}{Members of our order can't strike directly at the Surrinak holdings without possibly arousing other nobles against us. But if independent agents can prove something's rotten in Surrinak country, we can safely become involved and clean it up. That's why I've come to you.}{}{}{}{}
+{111}{Politics, eh? I should have known. Very well, we will do your dirty work, for a healthy reward.}{}{1}{}{95}{}
+{112}{I'm not interested in your politics, or your eschatological concerns - if any of this is even real, you're assuming a lot - so I see no reason to get involved.}{}{1}{}{135}{}
+
+{115}{I implore you to destroy any evil or tainted objects you come across. If you find something you can't destroy yourselves, bring it back to me when you're done exploring the site. If worse comes to worst, on your return, tell me about any evil objects you had to leave at the site, and I'll make arrangements.}{I implore you to destroy any evil or tainted objects you come across. If you find something you can't destroy yourselves, bring it back to me when you're done exploring the site. If worse comes to worst, on your return, tell me about any evil objects you had to leave at the site, and I'll make arrangements.}{}{}{}{}
+{116}{We'll do our best.}{}{1}{}{127}{}
+{117}{That's all well and good, but we'll need half that money up front.}{}{1}{}{120}{}
+
+{120}{No, I'm afraid we don't work like that.}{No, I'm afraid we don't work like that.}{}{}{}{}
+{121}{You will if you know what's good for you.}{}{1}{pc.skill_level_get(npc, skill_intimidate) >= 6}{130}{}
+{122}{Come now, in this one case you can surely make an exception? The fate of the world could be at stake!}{}{1}{pc.skill_level_get(npc, skill_diplomacy) >= 4}{130}{}
+{123}{I appreciate that, but we were robbed by bandits on our way back - what you see on us now is only an illusion - so we have to re-equip.}{}{1}{pc.skill_level_get(npc, skill_bluff) >= 6}{130}{}
+{124}{But I'm a fellow paladin!}{}{1}{pc.stat_level_get(stat_level_paladin) >= 1}{130}{}
+{125}{All right, never mind, we'll just go.}{}{1}{}{127}{}
+
+{127}{Excellent, I'll be waiting here.}{Excellent, I'll be waiting here.}{}{}{}{game.quests[shattered_consts.QUEST_LUMINOSITY].state = qs_accepted}
+{128}{E:}{}{1}{}{0}{}
+
+{130}{The answer is no.}{The answer is no.}{}{}{}{}
+{131}{Well that's a fine how-do-you-do when we're off to risk our lives in your cause. We'll just crawl off and die, shall we?}{}{1}{}{127}{}
+{132}{Fine, fine, we'll go.}{}{1}{}{127}{}
+
+{135}{If the 800gp we would pay for this service - that's 800gp each - isn't enough to entice you, think of the other loot. By all accounts you brought back thousands of gold pieces worth of loot from this goblin dungeon, there will certainly be more. Plus if the Valley is in danger, it is in your own interests to protect it.}{If the 800gp we would pay for this service - that's 800gp each - isn't enough to entice you, think of the other loot. By all accounts you brought back thousands of gold pieces worth of loot from this goblin dungeon, there will certainly be more. Plus if the Valley is in danger, it is in your own interests to protect it.}{}{}{}{}
+{136}{Your shameless appeal to self-interest has convinced me. I'll do it.}{}{1}{}{127}{}
+{137}{None of this is worth the risk of tangling with demons, or even falling afoul of the Surrinak rangers. No deal.}{}{1}{}{140}{}
+
+{140}{Fine, I will not try and force you. But should you later choose to adventure there for your own sakes, I will be here should my suspicions be confirmed.}{Fine, I will not try and force you. But should you later choose to adventure there for your own sakes, I will be here should my suspicions be confirmed.}{}{}{}{}
+{141}{Of course.}{}{1}{}{0}{}
+{142}{Whatever.}{}{1}{}{0}{}
+
+// qs_mentioned
+
+{150}{You return? Have you reconsidered my offer?}{You return? Have you reconsidered my offer?}{}{}{}{}
+{151}{Yes I have. I'll do it.}{}{1}{}{127}{}
+{152}{I've been thinking about it, and I'm willing to do it if you pay me up front.}{}{1}{}{120}{}
+{153}{No, just saying hello. How are you?}{}{1}{}{160}{}
+{154}{I'll go you one better - I've been and cleared the place. [Tell him about the Temple.]}{}{1}{game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED] == 1}{170}{}
+
+
+{160}{Fine thanks, and you?}{Fine thanks, and you?}{}{}{}{}
+{161}{Can't complain. Well, bye.}{}{1}{}{0}{}
+
+{170}{So it was indeed another part of Slaughtergarde? It is as we feared... but at least you have neutralised it. Well done! [He hands you each 800gp and a mark of commendation from the Luminous Order.]}{So it was indeed another part of Slaughtergarde? It is as we feared... but at least you have neutralised it. Well done! [He hands you each 800gp and a mark of commendation from the Luminous Order.]}{}{}{}{pc.money_adj(80000 * len(game.party))}
+{171}{Thank you. Thank you very much.}{}{1}{}{220}{game.quests[shattered_consts.QUEST_LUMINOSITY].state = qs_completed}
+
+{175}{This involvement of the Drow is troubling, I will not deny, but something worse has come to our attention. The clerics of the Order have used some quite powerful magicks to commune with the Blessed Ones of the higher realms, and have affirmed that yet another remnant of Slaughtergarde remains - under the Scar itself.}{This involvement of the Drow is troubling, I will not deny, but something worse has come to our attention. The clerics of the Order have used some quite powerful magicks to commune with the Blessed Ones of the higher realms, and have affirmed that yet another remnant of Slaughtergarde remains - under the Scar itself.}{}{}{}{}
+{176}{Shocking. Truly shocking.}{}{1}{}{180}{}
+{177}{That is no concern of mine. I'm sure you'd agree.}{}{1}{}{180}{}
+{178}{What can we do to stop this evil?}{}{1}{}{180}{}
+
+{180}{It's even worse. There is an active Gate in this part of Slaughtergarde, and dark forces - at this point, we know not what - are attempting to exert control over it, and use it to bridge the gap between the Prime Material Plane and the Abyss. I need hardly emphasise how dangerous this is.}{It's even worse. There is an active Gate in this part of Slaughtergarde, and dark forces - at this point, we know not what - are attempting to exert control over it, and use it to bridge the gap between the Prime Material Plane and the Abyss. I need hardly emphasise how dangerous this is.}{}{}{}{}
+{181}{That does sound bad.}{}{1}{}{185}{}
+{182}{Still not my problem.}{}{1}{}{185}{}
+
+{185}{We need you to go to the SlaughterScar and investigate this evil. The most powerful clerics in my Order have already gone ahead of you and ensured there are no undead lingering in the vicinity of the entrance. Our cavalry have swept the roads ahead of you - nothing will stand in your way.}{We need you to go to the SlaughterScar and investigate this evil. The most powerful clerics in my Order have already gone ahead of you and ensured there are no undead lingering in the vicinity of the entrance. Our cavalry have swept the roads ahead of you - nothing will stand in your way.}{}{}{}{}
+{186}{And when we get there?}{}{1}{}{190}{}
+
+{190}{Destroy that Gate! Do not let it be opened, do not let it be used! We will pay you no less than 1500gp to each of you for this achievement, and you will have the unending thanks of the Luminous Order - no small thing for any associated with us.}{Destroy that Gate! Do not let it be opened, do not let it be used! We will pay you no less than 1500gp to each of you for this achievement, and you will have the unending thanks of the Luminous Order - no small thing for any associated with us.}{}{}{}{game.quests[shattered_consts.QUEST_PICKING_AT_THE_SCAR].state = qs_mentioned}
+{191}{It's a deal.}{}{1}{}{195}{}
+{192}{Fine, for that much money I'll make it my problem.}{}{1}{}{195}{}
+
+{195}{Very good. Prepare yourselves but do not be too long about leaving, and when you are ready take the south road out of town.}{Very good. Prepare yourselves but do not be too long about leaving, and when you are ready take the south road out of town.}{}{}{}{game.quests[shattered_consts.QUEST_PICKING_AT_THE_SCAR].state = qs_accepted}
+{196}{Will do.}{}{1}{}{0}{}
+
+// Accepted qs_4
+{200}{Back from SlaughterScar already? How did it go?}{Back from SlaughterScar already? How did it go?}{}{}{}{}
+{201}{Good, good.}{}{1}{}{0}{}
+
+{220}{Now, I asked you to destroy or bring for destruction any relics of evil that you found. How did that go?}{Now, I asked you to destroy or bring for destruction any relics of evil that you found. How did that go?}{}{}{}{}
+{221}{Well, I found this medallion, does that count?}{}{1}{anyone( pc.group_list(), "has_item", 6750)}{225}{}
+{222}{I cleared out the Drow, that counts as destroying evil, doesn't it?}{}{1}{}{175}{}
+
+{225}{[He takes the medallion, focuses on it for a moment, then hands it back to you.] It is evil, yes - be very careful with it. But I would not destroy it just yet. Such an item is generally used as a mark of passage, to allow one through a portal without triggering a trap or alarm. Did you see anything like that in the Temple?}{[He takes the medallion, focuses on it for a moment, then hands it back to you.] It is evil, yes - be very careful with it. But I would not destroy it just yet. Such an item is generally used as a mark of passage, to allow one through a portal without triggering a trap or alarm. Did you see anything like that in the Temple?}{}{}{}{}
+{226}{Yes, there was an arch of fire before the room where we found this.}{}{1}{}{230}{}
+{227}{[Spellcraft: He just checked out the medallion with Detect Evil. Click here to tell him about the arch of fire.]}{}{1}{spell_check(pc, 16)}{230}{}
+
+{230}{As I suspected. Now, it may be that that was the only place such a medallion would be needed, but the demons who can create such arches tend to make good use of those skills, and where there is one, there is more. So keep that medallion, it may come in handy where we are sending you next.}{As I suspected. Now, it may be that that was the only place such a medallion would be needed, but the demons who can create such arches tend to make good use of those skills, and where there is one, there is more. So keep that medallion, it may come in handy where we are sending you next.}{}{}{}{}
+{231}{I never said I was going anywhere! Surely defeating the Drow was enough.}{}{1}{}{175}{}
+{232}{You have a greater challenge than the Drow? I am ready.}{}{1}{}{175}{}
+
+{300}{Hmmm, there is something wrong - you should not have gotten this option.}{Hmmm, there is something wrong - you should not have gotten this option.}{}{}{}{}
+{301}{Dagnabit.}{}{1}{}{0}{}
+
+
+{500}{Made it!}{Made it!}{}{}{}{}
+{501}{Sweet! Back to line 1.}{}{1}{}{1}{}
+{502}{Leave it there.}{}{1}{}{0}{}

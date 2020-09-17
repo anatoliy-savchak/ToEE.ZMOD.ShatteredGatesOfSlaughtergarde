@@ -14,7 +14,7 @@ def san_heartbeat( attachee, triggerer ):
 	if randy2 < 9:
 		attachee.float_line(randy2,triggerer)
 		randy1 = 0
-        	return RUN_DEFAULT
+		return RUN_DEFAULT
 	if randy2 > 61:
 		randy2 -= 60
 		attachee.rotation = randy2

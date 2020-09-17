@@ -10,7 +10,7 @@ print("Registering " + GetConditionName())
 
 PROTO_CONTAINER_BAG_OF_HOLDING = 1400
 
-def items_get(npc, unwield_all = 1):
+def items_get(npc):
 	assert isinstance(npc, toee.PyObjHandle)
 	otype = npc.type
 	invenField = 0
@@ -28,14 +28,16 @@ def items_get(npc, unwield_all = 1):
 	result = list()
 	print("numItems: {}".format(numItems))
 	if (numItems > 0):
-		#debugg.breakp("numItems")
-		if (unwield_all):
+		if ((otype == toee.obj_t_npc) or (otype == toee.obj_t_pc)):
 			for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
-				npc.item_worn_unwield(i, 0)
+				item = npc.item_worn_at(i)
+				assert isinstance(item, toee.PyObjHandle)
+				if (item and not item in result and not (item.item_flags_get() & toee.OIF_NO_LOOT)):
+					result.append(item)
 
 		for i in range(0, 199):
 			item = npc.inventory_item(i)
-			if (item):
+			if (item and not item in result and not (item.item_flags_get() & toee.OIF_NO_LOOT)):
 				print(item)
 				result.append(item)
 				numItems -= 1
@@ -102,7 +104,7 @@ def Bag_Of_Holding_OnBuildRadialMenuEntry(attachee, args, evt_obj):
 	#radial_action.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Items)
 	radial_action.add_as_child(attachee, radial_parent_id)
 
-	if (1):
+	if (0):
 		radial_action = tpdp.RadialMenuEntryPythonAction("Autosell", toee.D20A_PYTHON_ACTION, 3013, 0, "TAG_INTERFACE_HELP")
 		#assert isinstance(radial_action, tpdp.RadialMenuEntryParent)
 		#radial_action.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Items)
@@ -147,7 +149,11 @@ def Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies(attachee, args, evt_o
 			hp = body.stat_level_get(toee.stat_hp_current)
 			print("{} hp in {}".format(hp, body))
 			if (hp >= 0): continue
-			if (not attachee.can_see(body)): continue
+			if (not attachee.can_see(body)): 
+				attachee.turn_towards(body)
+				if (not attachee.can_see(body)):
+					if (attachee.distance_to(body) > 15):
+						continue
 			items = items_get(body)
 			#items = body.inventory_items()
 			print("items: {}".format(len(items)))
@@ -158,11 +164,19 @@ def Bag_Of_Holding_OnD20PythonActionPerform_examine_bodies(attachee, args, evt_o
 					print("{}: {}".format(text, body))
 					color = toee.tf_yellow
 					tpe = item.type
+					is_idenified = item.item_flags_get() & toee.OIF_IDENTIFIED
 					if ((tpe >= toee.obj_t_weapon) and (tpe <= toee.obj_t_armor)):
 						if (item.item_flags_get() & toee.OIF_IS_MAGICAL): 
 							color = toee.tf_blue
+							if (not is_idenified):
+								if (tpe == toee.obj_t_weapon): text = "Magic Weapon"
+								elif (tpe == toee.obj_t_armor): text = "Magic Armor"
+								else: text = "Magic Item"
 					elif ((tpe == toee.obj_t_food) or (tpe == toee.obj_t_scroll) or (tpe == toee.obj_t_generic)):
 						color = toee.tf_green
+						if (not is_idenified):
+							if (tpe == toee.obj_t_scroll): text = "Magic Scroll"
+							elif (tpe == toee.obj_t_food and item.obj_get_int(toee.obj_f_category) == 4): text = "Magic Potion"
 					elif ((tpe == toee.obj_t_key) or (tpe == toee.obj_t_written)):
 						color = toee.tf_light_blue
 					body.float_text_line(text, color)
@@ -199,23 +213,38 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 			hp = body.stat_level_get(toee.stat_hp_current)
 			print("{} hp in {}".format(hp, body))
 			if (hp >= 0): continue
-			if (not attachee.can_see(body)): continue
+			if (not attachee.can_see(body)): 
+				attachee.turn_towards(body)
+				if (not attachee.can_see(body)):
+					if (attachee.distance_to(body) > 15):
+						continue
 			items = items_get(body)
 			#items = body.inventory_items()
+			transfer_to_self = 0
 			print("items: {}".format(len(items)))
 			if (items):
 				for item in items:
 					assert isinstance(item, toee.PyObjHandle)
+					transfer_to_self = 0
 					text = item.description
 					print("{}: {}".format(text, body))
 					color = toee.tf_yellow
 					tpe = item.type
+					is_idenified = item.item_flags_get() & toee.OIF_IDENTIFIED
 					if ((tpe >= toee.obj_t_weapon) and (tpe <= toee.obj_t_armor)):
 						if (item.item_flags_get() & toee.OIF_IS_MAGICAL): 
 							color = toee.tf_blue
+							if (not is_idenified):
+								if (tpe == toee.obj_t_weapon): text = "Magic Weapon"
+								elif (tpe == toee.obj_t_armor): text = "Magic Armor"
+								else: text = "Magic Item"
 					elif ((tpe == toee.obj_t_food) or (tpe == toee.obj_t_scroll) or (tpe == toee.obj_t_generic)):
 						color = toee.tf_green
+						if (not is_idenified):
+							if (tpe == toee.obj_t_scroll): text = "Magic Scroll"
+							elif (tpe == toee.obj_t_food and item.obj_get_int(toee.obj_f_category) == 4): text = "Magic Potion"
 					elif ((tpe == toee.obj_t_key) or (tpe == toee.obj_t_written)):
+						transfer_to_self = 1
 						color = toee.tf_light_blue
 					if (not modified):
 						toee.game.create_history_freeform("Transferred:\n")
@@ -223,7 +252,10 @@ def Bag_Of_Holding_OnD20PythonActionPerform_transfer_from_bodies(attachee, args,
 					weight = item.obj_get_int(toee.obj_f_item_weight)
 					text = "*. {}. {} lb\n".format(text, weight)
 					toee.game.create_history_freeform(text)
-					bag.item_get(item)
+					if (transfer_to_self):
+						attachee.item_get(item)
+					else:
+						bag.item_get(item)
 					modified = 1
 		if (modified):
 			toee.game.create_history_freeform("\n")
@@ -296,7 +328,7 @@ def Bag_Of_Holding_OnD20PythonActionPerform_autosell(attachee, args, evt_obj):
 		# force load
 		bag.object_script_execute(attachee, 0x01) #sn_use
 		toee.game.create_history_freeform("Bag of Holding contents:\n")
-		items = items_get(bag, 0)
+		items = items_get(bag)
 		num = 0
 		total_lb = 0
 		total_gp = 0
@@ -356,8 +388,8 @@ def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
 
 		# force load
 		bag.object_script_execute(attachee, 0x01) #sn_use
-		toee.game.create_history_freeform("Bag of Holding autosell:\n")
-		items = items_get(bag, 0)
+		toee.game.create_history_freeform("Bag of Holding contents:\n")
+		items = items_get(bag)
 		num = 0
 		total_lb = 0
 		total_gp = 0
@@ -378,13 +410,16 @@ def Bag_Of_Holding_OnD20PythonActionPerform_list_bag(attachee, args, evt_obj):
 			x = item.obj_get_int(toee.obj_f_item_quantity)
 			if (x > 1): x2 = " x{}".format(x)
 			info = ItemInfo(item, worth_gp, weight)
-			text = "{:02d}. {}{}.\n   {} lb. {} gp ({}), r {}\n".format(num, text, x2, weight, worth_gp, int(worth_gp_sell), int(info.ratio))
+			text = "{}{}.\n   {} lb. {} gp ({}), r {}\n".format(num, text, x2, weight, worth_gp, int(worth_gp_sell), int(info.ratio))
 			info.text = text
 			lst.append(info)
 			#toee.game.create_history_freeform(text)
 
+		num = 0
 		for info in sorted(lst, ItemInfo_compare_ratio):
-			toee.game.create_history_freeform(info.text)
+			num +=1
+			text = "{:02d}. {}".format(num, info.text)
+			toee.game.create_history_freeform(text)
 
 		if (num):
 			toee.game.create_history_freeform("---------\n")

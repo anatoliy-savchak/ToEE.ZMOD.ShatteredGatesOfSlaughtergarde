@@ -152,3 +152,11 @@ def isnull(obj, obj_when_null):
 	assert isinstance(obj_when_null, toee.PyObjHandle)
 	if (not obj is None): return obj
 	return obj_when_null
+
+def get_sibling_door(door):
+	assert isinstance(door, toee.PyObjHandle)
+	for sibling in toee.game.obj_list_range(door.location, 15, toee.OLC_PORTAL):
+		assert isinstance(sibling, toee.PyObjHandle)
+		if (sibling == door): continue
+		return sibling
+	return

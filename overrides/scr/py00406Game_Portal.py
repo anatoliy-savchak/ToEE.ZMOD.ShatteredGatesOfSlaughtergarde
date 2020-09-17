@@ -2,7 +2,7 @@ from toee import *
 from utilities import *
 from Co8 import *
 from combat_standard_routines import *
-import startup_zmod
+import startup_zmod, utils_storage, debug
 
 def san_dialog( attachee, triggerer ):
 	get_Co8_options_from_ini()
@@ -58,5 +58,6 @@ def set_intro_slides():
 	return RUN_DEFAULT
 
 def zmod_startup():
+	utils_storage.Storage.reset()
 	startup_zmod.zmod_conditions_apply_pc()
 	return

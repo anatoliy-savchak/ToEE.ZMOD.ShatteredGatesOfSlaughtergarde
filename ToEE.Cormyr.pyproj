@@ -71,7 +71,9 @@
     <Content Include="overrides\art\interface\portraits\portraits.mes" />
     <Content Include="overrides\art\meshes\meshes_save.mes" />
     <Content Include="overrides\dlg\00651Vintra.dlg" />
+    <Content Include="overrides\dlg\00652Maug.dlg" />
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
+    <Content Include="overrides\dlg\00678CaptArmin.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
     <Content Include="overrides\dlg\06410_daemon_shattered_armory.dlg" />
@@ -134,7 +136,6 @@
     <Content Include="overrides\rules\indicators\surprised2.txt" />
     <Content Include="overrides\rules\indicators\lodged_quills.txt" />
     <Content Include="overrides\rules\MapLimits.mes" />
-    <Content Include="overrides\rules\poisons.json" />
     <Content Include="overrides\rules\protos_save.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
     <Content Include="overrides\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
@@ -169,6 +170,7 @@
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
     <Content Include="overrides\rules\traps.tab" />
+    <Content Include="overrides\scr\tpModifiers\condition_template.txt" />
     <Content Include="overrides\sound\schemeindex.mes" />
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
@@ -210,8 +212,12 @@
     <Compile Include="overrides\scr\const_proto_wands.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_traps.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\cormyr_config.py" />
     <Compile Include="overrides\scr\cormyr_pc.py" />
+    <Compile Include="overrides\scr\ctrl_behaviour.py" />
     <Compile Include="overrides\scr\ctrl_daemon.py">
       <SubType>Code</SubType>
     </Compile>
@@ -224,9 +230,15 @@
     <Compile Include="overrides\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\monster_info.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\py00334generic_spawner.py" />
     <Compile Include="overrides\scr\py00406Game_Portal.py" />
+    <Compile Include="overrides\scr\py00652Maug.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
+    <Compile Include="overrides\scr\py00678CaptArmin.py" />
+    <Compile Include="overrides\scr\py00679WandyMcWand.py" />
     <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
     <Compile Include="overrides\scr\py05000_knowstone.py">
       <SubType>Code</SubType>
@@ -246,6 +258,16 @@
     </Compile>
     <Compile Include="overrides\scr\py06201_daemon_adask.py" />
     <Compile Include="overrides\scr\py06203_trap_chest.py" />
+    <Compile Include="overrides\scr\py06330_daemon_sumberton_inn2.py" />
+    <Compile Include="overrides\scr\py06320_daemon_sumberton_inn1.py" />
+    <Compile Include="overrides\scr\py06310_daemon_sumberton_market.py" />
+    <Compile Include="overrides\scr\py06300_daemon_sumberton.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
+    <Compile Include="overrides\scr\py06402_trap_fiery_demon_arch.py" />
+    <Compile Include="overrides\scr\py32007Trap8_scythe.py" />
+    <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />
     <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
     <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
     <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
@@ -271,6 +293,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\py06411_shattered_armory_encounters.py" />
+    <Compile Include="overrides\scr\py32004Trap3_poison_needle.py" />
     <Compile Include="overrides\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>
@@ -280,7 +303,9 @@
     <Compile Include="overrides\scr\Spell280 - Mage Armor.py" />
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
+    <Compile Include="overrides\scr\Spell434 - Silence.py" />
     <Compile Include="overrides\scr\Spell469 - Summon Monster III.py" />
+    <Compile Include="overrides\scr\Spell566 - Harm.py" />
     <Compile Include="overrides\scr\startup_zmod.py">
       <SubType>Code</SubType>
     </Compile>
@@ -295,6 +320,8 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\skill_appraise_bonus.py" />
+    <Compile Include="overrides\scr\tpModifiers\spell_dc_mod.py" />
     <Compile Include="overrides\scr\tpModifiers\mage_armor_auto.py" />
     <Compile Include="overrides\scr\tpModifiers\smash_object.py" />
     <Compile Include="overrides\scr\tpModifiers\close_door.py" />
@@ -351,7 +378,16 @@
     <Compile Include="overrides\scr\tpModifiers\spell_quicken_all.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\wand_attack.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\utils_conds.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\utils_inventory_source.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\utils_locks.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\utils_target_list.py">

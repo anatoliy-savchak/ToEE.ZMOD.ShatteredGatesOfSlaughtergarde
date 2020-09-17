@@ -25,6 +25,21 @@ def create_history_attack_roll(performer, target, roll, bonlistAttacker, bonlist
 	flags = toee.D20CAF_HIT
 	return 0
 
+def config_set_string(config_item, value):
+	assert isinstance(config_item, str)
+	assert isinstance(value, str)
+	return
+
+def config_set_bool(config_item, value):
+	assert isinstance(config_item, str)
+	assert isinstance(value, bool)
+	return
+
+def config_set_int(config_item, value):
+	assert isinstance(config_item, str)
+	assert isinstance(value, int)
+	return
+
 class TurnBasedStatus:
 	def __init__(self):
 		self.hourglass_state = toee.D20ACT_Full_Round_Action
@@ -543,6 +558,13 @@ class EventObjMoveSpeed(EventObj):
 	def __init__(self):
 		self.evt_obj_type = toee.ET_OnGetMoveSpeedBase # dispTypeGetMoveSpeedBase, dispTypeGetMoveSpeed, dispTypeGetModelScale
 		self.factor = 1.0
+		self.bonus_list = BonusList()
+		return
+
+class EventObjSpellEntry(EventObj):
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnGetSpellDcMod # ET_OnGetSpellDcBase
+		self.spell_entry = SpellEntry()
 		self.bonus_list = BonusList()
 		return
 

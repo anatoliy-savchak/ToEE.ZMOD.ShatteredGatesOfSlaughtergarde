@@ -3,7 +3,7 @@
 {3}{B:Let's just trade.}{}{1}{}{0}{pc.barter(npc)}
 
 
-{10}{Seven blessings upon you, @pcname@. I am Qyaixozh - it's spelt like it sounds, should you care. May I interest you in my wares? I have acids from Lyr, herbal balms from the Summer Isles, adventuring aids from Braavos, even cunning weapons of Asshai.}{Seven blessings upon you, @pcname@. I am Qyaixozh - it's spelt like it sounds, should you care. May I interest you in my wares? I have acids from Lyr, herbal balms from the Summer Isles, adventuring aids from Braavos, even cunning weapons of Asshai.}{}{}{}{}
+{10}{Seven blessings upon you, @pcname@. I am Qyaixozh - it's spelt like it sounds, should you care. May I interest you in my wares? I have acids from Lyr, herbal balms from the Summer Isles, adventuring aids from Braavos, even cunning weapons of distant Asshai.}{Seven blessings upon you, @pcname@. I am Qyaixozh - it's spelt like it sounds, should you care. May I interest you in my wares? I have acids from Lyr, herbal balms from the Summer Isles, adventuring aids from Braavos, even cunning weapons of distant Asshai.}{}{}{}{}
 {11}{B:Please show me.}{}{1}{}{0}{pc.barter(npc)}
 {12}{Are you interested in buying similar items?}{}{1}{}{20}{}
 {13}{[Bardic knowledge check - you have no idea where any of those places are. Just run away.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
@@ -23,3 +23,24 @@
 {100}{Welcome back Ser, what can Qyaixozh do for you?}{Welcome back Khaleesi, what can Qyaixozh do for you?}{}{}{}{}
 {101}{B:}{}{1}{}{0}{pc.barter(npc)}
 {102}{Just passing.}{}{1}{}{0}{}
+{103}{I have something here written in a strange language, perhaps a purveyor of the mystical such as yourself could help?}{}{1}{anyone( pc.group_list(), "has_item", 11400) or anyone( pc.group_list(), "has_item", 11401)}{110}{}
+
+{110}{Well, I can only try... show me.}{Well, I can only try... show me.}{}{}{}{}
+{111}{[Show him the drawings.]}{}{1}{anyone( pc.group_list(), "has_item", 11400)}{120}{}
+{112}{[Show him the map.]}{}{1}{anyone( pc.group_list(), "has_item", 11401)}{130}{}
+
+{120}{Hmmm. The language is Undercommon, such as spoken by the denizens of the Deep Realms. I am not fluent in it, but... the first word is 'broken' or 'ruined', the second is a negative - 'no' or 'not' - and the final word I know professionally means 'rune' or 'sigil' and is plural. So I think it says, 'Ruined! No <something> sigils.'}{Hmmm. The language is Undercommon, such as spoken by the denizens of the Deep Realms. I am not fluent in it, but... the first word is 'broken' or 'ruined', the second is a negative - 'no' or 'not', and the final word I know professionally means 'rune' or 'sigil' and is plural. So I think it says, 'Ruined! No <something> sigils.'}{}{}{}{}
+{121}{Thankyou, can you help with this map?}{}{1}{anyone( pc.group_list(), "has_item", 11401)}{125}{}
+{122}{A:}{}{1}{}{0}{}
+
+{125}{Also Undercommon. I don't recognise any of the words, but the first is a proper name - Surrinak. I would suggest this is a map to a location in the Redbark Grove, nigh to Surrinak. Let me mark it on your map. [He snatches your map straight from your pocket and scrawls on it, most disrespectfully.]}{Also Undercommon. I don't recognise any of the words, but the first is a proper name - Surrinak. I would suggest this is a map to a location in the Redbark Grove, nigh to Surrinak. Let me mark it on your map. [He snatches your map straight from your pocket and scrawls on it, most disrespectfully.]}{}{}{}{game.global_flags[12] = 1}
+{126}{A:}{}{1}{}{0}{}
+{127}{Hey!}{}{1}{}{0}{}
+{128}{I have a map?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{0}{}
+
+{130}{Hmmm... this is Undercommon, the language of the Deep Realms. I only know a little, and I'm afraid I don't recognise any of these words, but I can transliterate the first one - Surrinak. And the drawing looks like Redbark Grove, the forest surrounding Surrinak. Go there and you should find what you seek.}{Hmmm... this is Undercommon, the language of the Deep Realms. I only know a little, and I'm afraid I don't recognise any of these words, but I can transliterate the first one - Surrinak. And the drawing looks like Redbark Grove, the forest surrounding Surrinak. Go there and you should find what you seek.}{}{}{}{game.global_flags[12] = 1}
+{131}{[Mark all this on your map.] Could you also help with this drawing?}{}{1}{anyone( pc.group_list(), "has_item", 11400)}{135}{}
+{132}{A:}{}{1}{}{0}{}
+
+{135}{Also Undercommon. I know a couple of these words... the first word is 'broken' or 'ruined', the second is a negative - 'no' or 'not' - and the final word I know professionally means 'rune' or 'sigil' and is plural. So I will translate it as, 'Ruined! No <something> sigils.'}{Also Undercommon. I know a couple of these words... the first word is 'broken' or 'ruined', the second is a negative - 'no' or 'not' - and the final word I know professionally means 'rune' or 'sigil' and is plural. So I will translate it as, 'Ruined! No <something> sigils.'}{}{}{}{}
+{136}{A:}{}{1}{}{0}{}

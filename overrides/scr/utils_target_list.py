@@ -150,7 +150,7 @@ class AITargetList(object):
 		for target in self.list:
 			assert isinstance(target, AITarget)
 			if (not target.measures.value_range_is_within_melee): continue
-			if (target.measures.value_is_held): continue
+			if (target.measures.value_is_held or target.measures.value_is_sleeping): continue
 			if (target.target.d20_query(toee.Q_Critter_Is_Afraid)): continue
 			if (target.target.d20_query(toee.Q_Critter_Is_Stunned)): continue
 			#if (target.target.d20_query(toee.Q_Critter_Is_Charmed)): continue
@@ -163,7 +163,7 @@ class AITargetList(object):
 		result = None
 		for target in self.list:
 			assert isinstance(target, AITarget)
-			if (not target.measures.value_is_held): continue
+			if (not target.measures.value_is_held and not target.measures.value_is_sleeping): continue
 			if (not result): result = list()
 			result.append(target)
 		if (result and len(result) > 1): result = sorted(result, _AITargetList_cmp_attack)
@@ -188,6 +188,7 @@ class AITargetMeasure(object):
 		self.measure_affected_range = 0
 		self.measure_attack = 0
 		self.measure_is_held = 0
+		self.measure_is_sleeping = 0
 
 		self.option_distance_over_reach_allowed = 0.0
 		self.option_can_path_flags = 0
@@ -218,6 +219,7 @@ class AITargetMeasure(object):
 		self.value_affected_range_count_self = 0
 		self.value_attack = 0
 		self.value_is_held = 0
+		self.value_is_sleeping = 0
 		
 		#self.mult_is_destroyed = -1000
 		self.mult_stat_ac = 0
@@ -297,6 +299,7 @@ class AITargetMeasure(object):
 		measures.measure_divine_class = 1
 		measures.measure_attack = 1
 		measures.measure_is_held = 1
+		measures.measure_is_sleeping = 1
 		return measures
 
 	@classmethod
@@ -316,6 +319,7 @@ class AITargetMeasure(object):
 		measures.measure_divine_class = 1
 		measures.measure_attack = 1
 		measures.measure_is_held = 1
+		measures.measure_is_sleeping = 1
 		return measures
 
 def btoi(b):
@@ -374,6 +378,8 @@ class AITarget(object):
 			dist_to_target = self.npc.distance_to(self.target)
 			value_reach = 0.00 + self.npc.obj_get_int(toee.obj_f_critter_reach)
 			if (value_reach < 0.01): value_reach = 5.0
+			if (self.target.d20_query_has_spell_condition(toee.sp_Enlarge)):
+				value_reach = value_reach * 2
 
 			weapon_npc = self.target.item_worn_at(toee.item_wear_weapon_primary)
 			if (not weapon_npc):
@@ -449,6 +455,14 @@ class AITarget(object):
 
 		if (self.measures.measure_is_held):
 			self.measures.value_is_held = self.target.d20_query(toee.Q_Critter_Is_Held)
+
+		if (self.measures.measure_is_sleeping):
+			#print("measure_is_sleeping for {}".format(self.target))
+			self.measures.value_is_sleeping = self.target.d20_query_has_spell_condition(toee.sp_Sleep)
+			#print("value_is_sleeping: {}".format(self.measures.value_is_sleeping))
+			if (not self.measures.value_is_sleeping):
+				self.measures.value_is_sleeping = self.target.d20_query_has_spell_condition(toee.spell_deep_slumber)
+		
 		return
 
 	def __str__(self):
@@ -507,6 +521,10 @@ class AITarget(object):
 
 		if (self.measures.measure_is_held):
 			s += " is_held: {}".format(self.measures.value_is_held)
+
+		if (self.measures.measure_is_sleeping):
+			s += " is_sleeping: {}".format(self.measures.value_is_sleeping)
+			
 		return s
 
 	def qualify(self):

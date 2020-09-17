@@ -81,3 +81,13 @@
 {101}{Could you direct me to a certain part of the city?}{}{1}{}{40}{}
 {102}{K:}{}{1}{}{0}{}
 {103}{Just passing.}{}{1}{}{0}{}
+{104}{You must know the area, what do you make of this map? [Show him the map you found.]}{}{1}{game.global_flags[12] == 0}{110}{}
+{105}{I want to get to Surrinak, which way do I go?}{}{1}{game.global_flags[12] == 1}{120}{}
+
+{110}{Well [turns the map sideways] if you hold it like this it could be Redbark Grove, but if you turn it the other way it could be the Forest of Tarlek. And I don't even recognise the language, let alone understand it. Maybe speak to the shopkeep at Hinterland, in the marketplace? He is very well travelled.}{Well [turns the map sideways] if you hold it like this it could be Redbark Grove, but if you turn it the other way it could be the Forest of Tarlek. And I don't even recognise the language, let alone understand it. Maybe speak to the shopkeep at Hinterland, in the marketplace? He is very well travelled.}{}{}{}{game.global_flags[13] = 1}
+{111}{Thank you.}{}{1}{}{0}{}
+{112}{Could you please direct me straight to the marketplace?}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5020,424,437 )}
+
+{120}{Take the north road out of town, and turn east at the junction. And be careful, the Surrinaks are a very old family and not fond of outsiders.}{Take the north road out of town, and turn east at the junction. And be careful, the Surrinaks are a very old family and not fond of outsiders.}{}{}{}{}
+{121}{Thanks.}{}{1}{}{0}{}
+

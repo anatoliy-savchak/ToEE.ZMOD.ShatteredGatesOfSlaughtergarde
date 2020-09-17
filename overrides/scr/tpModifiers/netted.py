@@ -12,7 +12,7 @@ def netted_OnAdd(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
 
-	has_web_on = attachee.d20_query_has_spell_condition("sp-Web On")
+	has_web_on = attachee.d20_query_has_spell_condition(toee.spell_web)
 	if (has_web_on): 
 		args.condition_remove()
 		return 0
@@ -129,7 +129,7 @@ def netted_OnGetEffectTooltip(attachee, args, evt_obj):
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjEffectTooltip)
 
-	evt_obj.append(tpdp.hash("NETTED"), -1, "")
+	#evt_obj.append(tpdp.hash("NETTED"), -1, "")
 	return 0
 
 def netted_OnGetTooltip(attachee, args, evt_obj):

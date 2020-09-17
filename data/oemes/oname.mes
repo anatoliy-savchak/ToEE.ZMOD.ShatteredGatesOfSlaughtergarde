@@ -50,6 +50,9 @@
 {946}{A16 Door}
 {947}{A19 Door}
 {948}{A20 Shattered Gates}
+{950}{Door T2-T22}
+{951}{T10 Fiery Demon Arch}
+{952}{Door T21}
 
 // Container ranges from 1200 - 1599
 {1200}{Container}
@@ -62,7 +65,13 @@
 {1302}{Laboratory Footlocker 2}
 {1303}{Laboratory Footlocker 3}
 {1304}{Laboratory Footlocker 4}
-
+{1400}{Bag of Holding}
+{1401}{Generic Footlocker Crappy}
+{1402}{Generic Chest}
+{1403}{Generic Treasure Chest}
+{1404}{Generic Small Gold Chest}
+{1405}{Generic Giant Chest}
+{1406}{Generic Nice Chest}
 
 // Scenery ranges from 1600 - 1799
 {1600}{Scenery}
@@ -90,6 +99,7 @@
 {1622}{Verbobonc City Hall doors to tunnels portal}
 {1623}{Castle of Lords inside Security Barricade portal}
 {1641}{Shattered Lab Exit}
+{1642}{Shattered Temple Exit}
 {1643}{Shattered Armory Exit}
 
 {1701}{Homm door 01 prosperous farmer}

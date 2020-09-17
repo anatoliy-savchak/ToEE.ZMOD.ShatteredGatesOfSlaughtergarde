@@ -16,26 +16,6 @@ def san_enter_combat(attachee, triggerer):
 		return ctrl.enter_combat(attachee, triggerer)
 	return toee.RUN_DEFAULT
 
-class MonsterInfo:
-	def __init__(self):
-		self.proto = 0
-		self.id = None
-		self.cr = 0
-		self.name = None
-		self.activated = 0
-		self.revealed = 0
-		return
-
-	@classmethod
-	def create(cls, locx, locy, dialog_line, distance_trigger):
-		obj = cls()
-		obj.locx = locx
-		obj.locy = locy
-		obj.loc = utils_obj.sec2loc(locx, locy)
-		obj.dialog_line = dialog_line
-		obj.distance_trigger = distance_trigger
-		return obj
-
 class CtrlMonster(object):
 	def __init__(self):
 		self.option_is_melee = 1
@@ -165,4 +145,7 @@ class CtrlMonster(object):
 		if (self.option_starts_combat_sneaked):
 			#debugg.breakp("option_starts_combat_sneaked")
 			attachee.critter_flag_set(OCF_MOVING_SILENTLY)
+		return toee.RUN_DEFAULT
+
+	def dying(self, attachee, triggerer):
 		return toee.RUN_DEFAULT

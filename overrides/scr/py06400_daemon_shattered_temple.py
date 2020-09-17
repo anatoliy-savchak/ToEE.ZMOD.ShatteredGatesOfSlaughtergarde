@@ -1,53 +1,98 @@
-import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
-import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc
+import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon, debug
+import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc, monster_info
+import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, const_proto_items, math, utils_locks
+
+def san_new_map(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	print(attachee.id)
+	#debugg.breakp("san_new_map")
+	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
+	ctrl = CtrlShatteredTemple.ensure(attachee)
+	ctrl.place_encounters(1)
+	return toee.RUN_DEFAULT
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#print(attachee.id)
 	#debugg.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
-	for pc in toee.game.party:
-		pc.condition_add("Inspect")
 	ctrl = CtrlShatteredTemple.ensure(attachee)
-	ctrl.place_encounters()
+	ctrl.place_encounters(0)
 	return toee.RUN_DEFAULT
 
-NAMEID_DOOR_T7 = 907
+def san_heartbeat(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	if (attachee.map == shattered_consts.MAP_ID_SHATERRED_TEMPLE):
+		c = cst()
+		if (c):
+			c.check_sleep_status_update()
+	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(triggerer, toee.PyObjHandle)
-	if (attachee.name == NAMEID_DOOR_T7):
-		utils_obj.obj_scripts_clear(attachee)
-		#utils_obj.obj_timed_destroy(obj, 1000)
-		#toee.game.timevent_add(_door_used, (attachee, triggerer), 1000, 0) # 1000 = 1 second
-		toee.game.timevent_add(_door_used_interrupt, (attachee, triggerer), 100, 1) # 1000 = 1 second
-		for pc in toee.game.party:
-			pc.anim_goal_interrupt()
+	print("san_use name: {}, obj: {}".format(attachee.name, attachee))
 
-		
-		#return toee.SKIP_DEFAULT
-		#attachee.portal_toggle_open()
+	if (attachee.name == shattered_consts.NAMEID_DOOR_T7):
+		toee.game.timevent_add(_t7_after, (attachee, triggerer), 300, 1) # 1000 = 1 second
+
+	elif (attachee.name == shattered_consts.NAMEID_SHATTERED_TEMPLE_EXIT):
+		cst().last_leave_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		total_seconds = py00677FarSouthDoor.distance_sumbertone_to_shattered_temple_sec()
+		print("fade_and_teleport total_seconds: {}".format(total_seconds))
+		toee.game.fade_and_teleport(total_seconds, 0, 0, 5122, 538, 510 ) #sumberton
+
+	elif (attachee.name == shattered_consts.NAMEID_DOOR_T1_T2):
+		print("NAMEID_DOOR_T1_T2 clicked: {}".format(attachee))
+		loc = utils_obj.loc2sec(triggerer.location)
+		flags = attachee.portal_flags_get()
+		if (loc[1] >= 482): # is south of the door
+			if (not flags & toee.OPF_BUSTED):
+				attachee.portal_flag_set(toee.OPF_BUSTED)
+				attachee.float_text_line("Unbarred the door!", toee.tf_green)
+		elif(not flags & toee.OPF_BUSTED):
+			attachee.float_text_line("Barred!", toee.tf_blue)
+			return toee.SKIP_DEFAULT
+
+	elif (attachee.proto == shattered_consts.PROTO_DEMON_ARCH_10FT):
+		attachee.object_flag_set(toee.OF_DONTDRAW)
+		utils_obj.obj_timed_destroy(attachee, 2000, 1)
+
+	elif (attachee.name == shattered_consts.NAMEID_DOOR_T21):
+		print("NAMEID_DOOR_T21 clicked: {}".format(attachee))
+		if (not (attachee.object_flags_get() & toee.OF_DONTDRAW)):
+			attachee.object_flag_set(toee.OF_DONTDRAW)
+			utils_obj.obj_timed_destroy(attachee, 2000, 1)
+			sibling = utils_obj.get_sibling_door(attachee)
+			if (sibling and not (sibling.object_flags_get() & toee.OF_DONTDRAW)):
+				sibling.object_flag_set(toee.OF_DONTDRAW)
+				sibling.portal_toggle_open()
+				utils_obj.obj_timed_destroy(sibling, 2000, 1)
+
 	return toee.RUN_DEFAULT
 
-def _door_used(attachee, triggerer):
+def _t7_after(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	loc = attachee.location
+	assert isinstance(triggerer, toee.PyObjHandle)
+	#obj.object_flag_set(toee.OF_OFF)
 	attachee.destroy()
-	for npc in toee.game.obj_list_vicinity(loc, toee.OLC_NPC):
-		if (npc.proto == 14830):
-			py06122_cormyr_prompter.promter_talk(npc, triggerer)
-			break
+	for pc in toee.game.party:
+		pc.anim_goal_interrupt()
 	return 1
 
-def _door_used_interrupt(attachee, triggerer):
+def san_dying(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	#attachee.portal_toggle_open()
-	triggerer.anim_goal_use_object(attachee, 12, attachee.location, 1)
-	toee.game.timevent_add(_door_used, (attachee, triggerer), 1000, 0) # 1000 = 1 second
-	#for pc in toee.game.party:
-	#	pc.anim_goal_interrupt()
-	return 1
+	c = cst()
+	if (c):
+		c.critter_dying(attachee, triggerer)
+	storage = utils_storage.obj_storage_by_id(attachee.id)
+	if (storage):
+		cb = storage.get_data(ctrl_behaviour.CtrlBehaviour.get_name())
+		if (not cb):
+			cb = storage.get_data(py06211_shuttered_monster.CtrlMonster.get_name())
+		if ("dying" in dir(cb)):
+			cb.dying(attachee, triggerer)
+	return toee.RUN_DEFAULT
 
 def cst():
 	#print("CtrlShatteredLab.get_name(): {}".format(CtrlShatteredLab.get_name()))
@@ -57,21 +102,13 @@ def cst():
 	if (CtrlShatteredTemple.get_name() in o.data):
 		result = o.data[CtrlShatteredTemple.get_name()]
 	else: return None
-	#print("data: {}".format(result))
-	#debugg.breakp("csl")
+	assert isinstance(result, CtrlShatteredTemple)
 	return result
 
-class CtrlShatteredTemple(object):
-	def __init__(self):
-		self.encounters_placed = 0
-		self.monsters = dict()
-		self.m2 = list()
-		self.id = None
-		self.haertbeats_since_sleep_status_update = 0
-		return
+class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 
 	def created(self, npc):
-		self.id = npc.id
+		super(CtrlShatteredTemple, self).created(npc)
 		npc.scripts[const_toee.sn_dialog] = 6400
 		return
 
@@ -79,91 +116,88 @@ class CtrlShatteredTemple(object):
 	def get_name():
 		return "CtrlShatteredTemple"
 
-	@classmethod
-	def ensure(cls, npc):
-		data = utils_storage.obj_storage(npc).data
-		ctrl = None
-		if (cls.get_name() in data):
-			ctrl = data[cls.get_name()]
-		else:
-			ctrl = cls()
-			ctrl.created(npc)
-			utils_storage.obj_storage(npc).data[cls.get_name()] = ctrl
-		return ctrl
+	def place_encounters(self, new_map):
+		print("new_map: {}".format(new_map))
+		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
 
-	@classmethod
-	def get_from_obj(cls, npc):
-		data = utils_storage.obj_storage(npc).data
-		if (cls.get_name() in data):
-			return data[cls.get_name()]
-		return None
+		startup_zmod.zmod_templeplus_config_apply()
 
-	def place_encounters(self):
-		if (self.encounters_placed): return
-		self.encounters_placed = 1
-		#debugg.breakp("place_encounters")
+		if (self.encounters_placed and new_map == 0): return
 
-		self.monsters = dict()
-		self.m2 = list()
-		#self.destroy_all_npc()
+		this_entrance_time = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("this_entrance_time == {}".format(this_entrance_time))
+		if (not self.encounters_placed):
+			self.first_entered_shrs = this_entrance_time
+		self.last_entered_shrs = this_entrance_time
+		if (not self.last_leave_shrs):
+			self.last_leave_shrs = this_entrance_time
 
-		self.encounters_placed = 1
-		self.place_encounter_t1()
-		self.place_encounter_t2()
-		self.place_encounter_t3()
-		self.place_encounter_t4()
-		self.place_encounter_t5()
-		self.place_encounter_t6()
-		self.place_encounter_t7()
-		self.place_encounter_t8()
-		self.place_encounter_t9()
-		self.place_encounter_t10()
-		self.place_encounter_t11()
-		self.place_encounter_t12()
-		self.place_encounter_t13()
-		self.place_encounter_t14()
-		self.place_encounter_t15()
-		self.place_encounter_t16()
-		self.place_encounter_t17()
-		self.place_encounter_t18()
-		self.place_encounter_t19()
-		self.place_encounter_t20()
-		self.place_encounter_t21()
-		self.place_encounter_t22()
-		self.place_encounter_t23()
-		self.place_encounter_t24()
-		self.place_encounter_t25()
-		self.print_monsters()
+		startup_zmod.zmod_templeplus_config_apply()
 
-		# debug
-		#wizard = toee.game.party[4]
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_COLOR_SPRAY, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_OBSCURING_MIST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_INVISIBILITY, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BLUR, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_GLITTERDUST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_FIREBALL, wizard)
-		#utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_MAGIC_MISSILES_1ST, wizard)
-		#utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_ACID_SPLASH, wizard)
-		#wizard.identify_all()
-		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, toee.game.party[1])
-		#self.remove_trap_doors()
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 436, 496)
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 442, 475)
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 452, 460) #t11
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 454) #t15
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 495, 449) #t16
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 511, 450) #t17
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 471) #t18
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 530, 449) #t19
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 533, 462) #t21
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 514, 474) #t22
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_TEMPLE, 515, 499) #t23
+		if (not self.encounters_placed and 1):
+			self.place_encounter_t1()
+			self.place_encounter_t2()
+			self.place_encounter_t3()
+			self.place_encounter_t4()
+			self.place_encounter_t5()
+			self.place_encounter_t6()
+			self.place_encounter_t7()
+			self.place_encounter_t8()
+			self.place_encounter_t9()
+			self.place_encounter_t10()
+			self.place_encounter_t11()
+			self.place_encounter_t12()
+			self.place_encounter_t13()
+			self.place_encounter_t14()
+			self.place_encounter_t15()
+			self.place_encounter_t16()
+			self.place_encounter_t17()
+			self.place_encounter_t18()
+			self.place_encounter_t19()
+			self.place_encounter_t20()
+			self.place_encounter_t21()
+			self.place_encounter_t22()
+			self.place_encounter_t23()
+			self.place_encounter_t24()
+			self.place_encounter_t25()
+		
+		if (not self.encounters_placed and 1):
+			self.place_chests()
+			self.place_demon_archs()
+
+		self.encounters_placed += 1
+		utils_npc.pc_turn_all(const_toee.rotation_0200_oclock)
+
+		self.factions_existance_refresh()
+
 		utils_obj.scroll_to_leader()
+
+		self.check_sleep_status_update(1)
+		self.check_entrance_patrol()
+
+		return
+
+	def place_encounter_patrol(self, near_pc):
+		self.patrol_spawned_count += 1
+		self.last_patrol_spawned_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
+		loc1 = utils_obj.sec2loc(480, 473)
+		loc2 = utils_obj.sec2loc(480, 476)
+		if (near_pc):
+			loc1 = toee.game.leader.location - 2
+			loc2 = loc1
+
+		npc, ctrl = self.create_arcane_guard_at(loc1, const_toee.rotation_0800_oclock, "t0", "aguard1", 4, 0, 0)
+		utils_npc.npc_unexploit(npc)
+
+		npc, ctrl = self.create_arcane_guard_at(loc2, const_toee.rotation_0800_oclock, "t0", "aguard2", 5, 0, 0)
+		utils_npc.npc_unexploit(npc)
+		if (not near_pc):
+			ctrl.fire_epicenter = utils_obj.sec2loc(483, 474)
 		return
 
 	def place_encounter_t1(self):
-		self.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall")
+		self.create_promter_at(utils_obj.sec2loc(484, 475), 6400, 10, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tapestry Hall").rotation = const_toee.rotation_0800_oclock
 
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 472), const_toee.rotation_0800_oclock, "t1", "guard1")
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(481, 478), const_toee.rotation_0800_oclock, "t1", "guard2")
@@ -180,7 +214,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t2(self):
-		self.create_promter_at(utils_obj.sec2loc(487, 492), 6400, 20, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Spring")
+		self.create_promter_at(utils_obj.sec2loc(487, 492), 6400, 20, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Spring").rotation = const_toee.rotation_0200_oclock
 
 		self.create_grimlock_at(utils_obj.sec2loc(484, 492), const_toee.rotation_1100_oclock, "t2", "grmilock1")
 		self.create_grimlock_at(utils_obj.sec2loc(488, 492), const_toee.rotation_1100_oclock, "t2", "grmilock2")
@@ -197,7 +231,7 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t3(self):
-		self.create_promter_at(utils_obj.sec2loc(485, 510), 6400, 30, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Storage")
+		self.create_promter_at(utils_obj.sec2loc(485, 510), 6400, 30, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Storage").rotation = const_toee.rotation_1000_oclock
 
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(492, 510), const_toee.rotation_1100_oclock, "t3", "guard1", 1)
 		self.create_surrinak_house_guard_at(utils_obj.sec2loc(492, 514), const_toee.rotation_1100_oclock, "t3", "guard2", 1)
@@ -215,9 +249,11 @@ class CtrlShatteredTemple(object):
 
 	def place_encounter_t4(self):
 		p1 = self.create_promter_at(utils_obj.sec2loc(470, 475), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
-		p2 = self.create_promter_at(utils_obj.sec2loc(459, 479), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
+		p2 = self.create_promter_at(utils_obj.sec2loc(462, 479), 6400, 40, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Stable")
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p1.rotation = const_toee.rotation_0800_oclock
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
+		p2.rotation = const_toee.rotation_0300_oclock
 
 		self.create_riding_lizard_at(utils_obj.sec2loc(469, 470), const_toee.rotation_0800_oclock, "t4", "lizard1")
 		self.create_riding_lizard_at(utils_obj.sec2loc(464, 470), const_toee.rotation_0800_oclock, "t4", "lizard2")
@@ -246,7 +282,9 @@ class CtrlShatteredTemple(object):
 		p1 = self.create_promter_at(utils_obj.sec2loc(449, 479), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
 		p2 = self.create_promter_at(utils_obj.sec2loc(441, 486), 6400, 50, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Eastern Intersection")
 		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p1.rotation = const_toee.rotation_0800_oclock
 		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
+		p2.rotation = const_toee.rotation_0400_oclock
 
 		leader, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(438, 476), const_toee.rotation_0800_oclock, "t5", "aguard")
 		if (ctrl):
@@ -287,13 +325,13 @@ class CtrlShatteredTemple(object):
 		return
 
 	def place_encounter_t7(self):
-		self.create_promter_at(utils_obj.sec2loc(430, 493), 6400, 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northern Quarters")
+		self.create_promter_at(utils_obj.sec2loc(430, 493), 6400, 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northern Quarters").rotation = const_toee.rotation_0800_oclock
 
 		fire_epicenter = utils_obj.sec2loc(437, 494)
-		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(428, 493), const_toee.rotation_0800_oclock, "t7", "aguard1", 2)
+		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(430, 493), const_toee.rotation_0800_oclock, "t7", "aguard1", 2)
 		if (ctrl):
 			ctrl.fire_epicenter = fire_epicenter
-		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(424, 493), const_toee.rotation_0800_oclock, "t7", "aguard2", 3)
+		npc, ctrl = self.create_arcane_guard_at(utils_obj.sec2loc(427, 493), const_toee.rotation_0800_oclock, "t7", "aguard2", 3)
 		if (ctrl):
 			ctrl.fire_epicenter = fire_epicenter
 		return
@@ -734,7 +772,7 @@ class CtrlShatteredTemple(object):
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 		return npc
 
-	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name, guard_ai_type = 0):
+	def create_arcane_guard_at(self, npc_loc, rot, encounter, code_name, guard_ai_type = 0, no_draw = 1, no_kos = 1):
 		npc, ctrl = py06401_shattered_temple_encounters.CtrlArcaneGuard.create_obj_and_class(npc_loc, 0)
 		if (ctrl):
 			ctrl.guard_ai_type = guard_ai_type
@@ -742,7 +780,7 @@ class CtrlShatteredTemple(object):
 		if (npc):
 			npc.move(npc_loc)
 			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, None, 1, 1)
+			self.monster_setup(npc, encounter, code_name, None, no_draw, no_kos)
 		return npc, ctrl
 
 	def create_quaggoth_at(self, npc_loc, rot, encounter, code_name):
@@ -753,49 +791,7 @@ class CtrlShatteredTemple(object):
 			self.monster_setup(npc, encounter, code_name, None, 1, 1)
 		return npc
 
-	def create_npc_at(self, npc_loc, ctrl_class, rot, encounter, code_name):
-		npc, ctrl = ctrl_class.create_obj_and_class(npc_loc)
-		x, y = utils_obj.loc2sec(npc.location)
-		print("create_npc_at npc: {}, ctrl: {}, id: {}, coord: {},{}".format(npc, ctrl, npc.id, x, y))
-		if (npc):
-			npc.move(npc_loc)
-			npc.rotation = rot
-			self.monster_setup(npc, encounter, code_name, None, 1, 1)
-		return npc, ctrl
-
-	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
-		assert isinstance(npc, toee.PyObjHandle)
-		if (not faction): faction = shattered_consts.FACTION_SLAUGHTERGARDE_LABORATORY
-		if (faction and faction != -1):
-			npc.faction_add(faction)
-		#npc.npc_flag_set(toee.ONF_NO_ATTACK)
-		if (no_kos):
-			npc.npc_flag_unset(toee.ONF_KOS)
-		if (no_draw):
-			npc.object_flag_set(toee.OF_DONTDRAW)
-		if (monster_name):
-			nameid = utils_toee.make_custom_name(monster_name)
-			if (nameid):
-				npc.obj_set_int(toee.obj_f_critter_description_unknown, nameid)
-				npc.obj_set_int(const_toee.obj_f_description_correct, nameid)
-		info = py06211_shuttered_monster.MonsterInfo()
-		info.id = npc.id
-		info.proto = npc.proto
-		info.cr = utils_npc.npc_get_cr(npc)
-		info.name = "{}_{}_{}".format(shattered_consts.SHATERRED_TEMPLE, encounter_name, monster_code_name)
-		self.m2.append(info)
-		self.monsters[info.name] = info
-		return
-
-	def get_monsterinfo(self, encounter_name, monster_code_name):
-		key = "{}_{}_{}".format(shattered_consts.SHATERRED_TEMPLE, encounter_name, monster_code_name)
-		if (key in self.monsters):
-			info = self.monsters[key]
-			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
-			return info
-		return None
-
-	def reveal_monster(self, encounter_name, monster_code_name, no_error = 0):
+	def reveal_monster1(self, encounter_name, monster_code_name, no_error = 0):
 		npc = None
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
@@ -813,7 +809,7 @@ class CtrlShatteredTemple(object):
 			debugg.breakp("Monster not found")
 		return npc, info
 
-	def activate_monster(self, encounter_name, monster_code_name, remove_no_attack = 1, remove_no_kos = 1, no_error = 0):
+	def activate_monster1(self, encounter_name, monster_code_name, remove_no_attack = 1, remove_no_kos = 1, no_error = 0):
 		npc = None
 		info = self.get_monsterinfo(encounter_name, monster_code_name)
 		if (info):
@@ -853,7 +849,7 @@ class CtrlShatteredTemple(object):
 		exptotal1 = 0
 		per = len(toee.game.party)
 		for info in self.m2:
-			assert isinstance(info, py06211_shuttered_monster.MonsterInfo)
+			assert isinstance(info, monster_info.MonsterInfo)
 			#npc = toee.game.get_obj_by_id(info.id)
 			exp = utils_npc.npc_get_cr_exp(toee.game.leader, info.cr)
 			exptotal1 += exp // per
@@ -866,7 +862,7 @@ class CtrlShatteredTemple(object):
 		assert isinstance(npc, toee.PyObjHandle)
 		print("on_notify_combat_start: {}, {}, {}".format(ctrl, npc, toee.game.combat_turn))
 		#debugg.breakp("on_notify_combat_start")
-		if (type(ctrl) is py06401_shattered_temple_encounters.CtrlGaranaach and toee.game.combat_turn == 1):
+		if (type(ctrl) is py06401_shattered_temple_encounters.CtrlGaranaach and toee.game.combat_turn == 2):
 			#debugg.breakp("on_notify_combat_start2")
 			self.display_encounter_t13()
 			npc2, info = self.activate_encounter_t13()
@@ -884,10 +880,10 @@ class CtrlShatteredTemple(object):
 					closest = pc
 			print("closest: {}".format(closest))
 			if (not closest):
-				debugg.breakp("problem")
-			else:
-				npc2.attack(closest)
-				npc2.add_to_initiative()
+				closest = toee.game.party[0]
+				#debugg.breakp("problem")
+			npc2.attack(closest)
+			npc2.add_to_initiative()
 		elif (type(ctrl) is py06401_shattered_temple_encounters.CtrlHuntingSpider and toee.game.combat_turn == 3):
 			#debugg.breakp("on_notify_combat_start3")
 			self.display_encounter_t20()
@@ -900,7 +896,7 @@ class CtrlShatteredTemple(object):
 				for m in monsters:
 					obj = m[0]
 					objinfo = m[1]
-					assert isinstance(objinfo, py06211_shuttered_monster.MonsterInfo)
+					assert isinstance(objinfo, monster_info.MonsterInfo)
 					assert isinstance(obj, toee.PyObjHandle)
 					if (objinfo.activated > 1):
 						print("already activated: {}".format(objinfo.activated))
@@ -922,9 +918,227 @@ class CtrlShatteredTemple(object):
 			npc.rotation = rotation
 		return npc
 
-	def destroy_all_npc(self):
-		myself = toee.game.get_obj_by_id(self.id)
-		for npc in toee.game.obj_list_range(myself.location, 200, toee.OLC_NPC):
-			if (npc.id == self.id): continue
-			npc.destroy()
+	def get_monster_prefix_default(self):
+		return shattered_consts.SHATERRED_TEMPLE
+
+	def get_map_default(self):
+		return shattered_consts.MAP_ID_SHATERRED_TEMPLE
+
+	def place_chests(self):
+		#return
+		# import utils_obj, const_proto_containers, math
+		#T4
+		#Ironbound Chest
+		if (1):
+			loc = utils_obj.sec2loc(494, 517)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_GENERIC, loc)
+			chest.move(loc)
+
+			chest.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_CR4_GLYPH_OF_WARDING_BLAST
+			if ("counter_set" in dir(chest.scripts)):
+				chest.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_GLYPH_SDC28_DDC_28_CR4)
+
+			nameid = utils_toee.make_custom_name("Ironbound Chest")
+			if (nameid):
+				chest.obj_set_int(const_toee.obj_f_description_correct, nameid)
+
+			utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_RESTORATION, chest)
+			utils_item.item_create_in_inventory(const_proto_items.PROTO_ARMOR_NECKLACE_SCARAB, chest) # 750 gp
+			utils_item.item_money_create_in_inventory(chest, 20)
+
+		#T6
+		#Altar
+		if (1):
+			loc = utils_obj.sec2loc(467, 502)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chest.move(loc, 7, 12)
+
+			utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_BLACK, chest) # 500 gp
+
+		#T7
+		#Altar
+		if (1):
+			loc = utils_obj.sec2loc(421, 491)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_FOOTLOCKER, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(45)
+
+			utils_item.item_money_create_in_inventory(chest, 0, 200)
+
+		#T9
+		#Jewelry Box
+		if (1):
+			loc = utils_obj.sec2loc(442, 513)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_JEWELRY_BOX, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(45)
+
+			utils_item.item_money_create_in_inventory(chest, 0, 200)
+			utils_locks.container_setup_dc(chest, 20, 0, 10, 5, utils_locks.BREAK_DC_CHEST_SMALL)
+
+		#T16
+		#Altar left
+		if (1):
+			loc = utils_obj.sec2loc(517,444)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(90) # pointing east
+
+			# Northwestern Altar: The crone is holding her right arm out with her palm up. Her eyes are closed. The bowl holds 25 pp.
+			utils_item.item_money_create_in_inventory(chest, 25)
+		#Altar top
+		if (1):
+			loc = utils_obj.sec2loc(507,444)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(180) # pointing south
+
+			# Northeastern Altar: The crone is holding her right arm out with her palm out and fingers curled in a clawing pose. Her 
+			# fanged mouth is open. The bowl holds a gold necklace worth (400 gp).
+			utils_item.item_money_create_in_inventory(chest, 0, 400)
+		#Altar bottom 
+		if (1):
+			loc = utils_obj.sec2loc(517,456)
+			chestt = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chestt.move(loc, 0, 0)
+			chestt.rotation = math.radians(360) # pointing north
+
+			chestt.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_POISON_GAS_PRESSURIZED_UNGOL_DUST
+			if ("counter_set" in dir(chestt.scripts)):
+				chestt.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_POISON_GAS_SDC15_DDC_15_CR1)
+
+		#Altar right
+		if (1):
+			loc = utils_obj.sec2loc(507,456)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(270) # pointing west
+
+			utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_BLACK, chest) # 500 gp
+
+		#T21
+		if (1):
+			loc = utils_obj.sec2loc(537,493)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_ALTAR, loc)
+			chest.move(loc, 0, 0)
+			chest.rotation = math.radians(90+45) # pointing north
+
+			utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_BLACK, chest) # 500 gp
+
+		#T22
+		if (1):
+			loc = utils_obj.sec2loc(506,487)
+			chest = toee.game.obj_create(const_proto_containers.PROTO_CONTAINER_CHEST_GIANT, loc)
+			chest.move(loc, 8.485282, -14.1421356)
+			chest.rotation = math.radians(45) # pointing bottom left
+
+			nameid = utils_toee.make_custom_name("Sarcophagus")
+			if (nameid):
+				chest.obj_set_int(const_toee.obj_f_description_correct, nameid)
+
+			utils_locks.container_setup_dc(chest, -30, 0, 120, 8, 30)
+			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_PLUS_1, chest)
+			utils_item.item_create_in_inventory(shattered_consts.PROTO_ARMOR_SHIELD_OF_DRAGONRIDER, chest)
 		return
+
+	def place_demon_archs(self):
+		#T10
+		if (1):
+			loc = utils_obj.sec2loc(435, 460)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = 2.3561945
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+
+		#T14
+		if (1):
+			loc = utils_obj.sec2loc(478,457)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = math.radians(180+45) #3.926991
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+
+		#T15
+		if (1):
+			loc = utils_obj.sec2loc(504,449)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = math.radians(90+45) #2.3561945 poiting top-right
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+
+		#T22
+		if (1): # to T23
+			loc = utils_obj.sec2loc(522,503)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = math.radians(90+45) #2.3561945 poiting top-right
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+
+		if (1): # to T25
+			loc = utils_obj.sec2loc(514,508)
+			arch = toee.game.obj_create(shattered_consts.PROTO_DEMON_ARCH_10FT, loc)
+			arch.move(loc, 0, 0)
+			arch.rotation = math.radians(180+45) #3.926991 poiting top-left
+
+			arch.scripts[const_toee.sn_use] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+			arch.scripts[const_toee.sn_trap] = const_traps.TRAP_SCRIPT_FIERY_DEMON_ARCH
+			if ("counter_set" in dir(arch.scripts)):
+				arch.scripts.counter_set(const_toee.sn_trap, 0, const_traps.TRAP_SPEC_FIRE_SDC16_DDC_16_CR3)
+		return
+
+	def critter_dying(self, attachee, triggerer):
+		#debug.breakp("critter_dying")
+		self.factions_existance_refresh()
+
+		if (not toee.game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED]):
+			spawn_left = 0
+			if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+				spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+			print("spawn_left: {}".format(spawn_left))
+			if (spawn_left == 0):
+				toee.game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED] = 1
+				print("toee.game.global_flags[shattered_consts.GLOBAL_FLAG_TEMPLE_COMPLETED] = 1")
+
+		self.check_sleep_status_update(1)
+		return
+
+	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
+		super(CtrlShatteredTemple, self).monster_setup(npc, encounter_name, monster_code_name, monster_name, no_draw, no_kos, faction)
+		npc.scripts[const_toee.sn_dying] = shattered_consts.SHATERRED_TEMPLE_DAEMON_SCRIPT
+		return
+
+	def check_entrance_patrol(self):
+		threshhold_hours_passed = 4*24 + 16 + 1
+		left_for = self.last_entered_shrs - self.last_leave_shrs
+		passed = left_for >= threshhold_hours_passed
+		print("check_entrance_patrol left_for: {} hrs, passed: {}, treshhold: {}, last_leave_shrs: {}, last_entered_shrs: {}".format(left_for, passed, threshhold_hours_passed, self.last_leave_shrs, self.last_entered_shrs))
+		if (not passed): return 0
+
+		#print(self.factions_existance)
+		spawn_left = 0
+		if (self.factions_existance and (shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN in self.factions_existance)): 
+			spawn_left = self.factions_existance[shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN][0]
+
+		print("spawn_left: {}".format(spawn_left))
+		if (spawn_left == 0): 
+			return 0
+
+		self.place_encounter_patrol(0)
+		return 1

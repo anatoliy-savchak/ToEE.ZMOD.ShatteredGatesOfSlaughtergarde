@@ -82,8 +82,12 @@ def Net_Throw_OnProjectileDestroyed(attachee, args, evt_obj):
 		hit = flags & toee.D20CAF_HIT
 		print("hit: {}, flags: {}".format(hit, flags))
 		if (hit and tgt):
+			dc_break_free = args.get_arg(0)
+			if (not dc_break_free): dc_break_free = 6
+			dc_escape = args.get_arg(0)
+			if (not dc_escape): dc_escape = 12
 			print("adding condition netted to {}".format(tgt))
-			tgt.condition_add_with_args("netted", 6, 12)
+			tgt.condition_add_with_args("netted", dc_break_free, dc_escape)
 		else: print("missed")
 	except Exception, e:
 		print "Net_Throw_OnProjectileDestroyed error:"
