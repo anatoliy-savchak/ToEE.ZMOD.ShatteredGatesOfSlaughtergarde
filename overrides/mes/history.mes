@@ -66,3 +66,4 @@
 {64}{[ACTOR] is immune to ~paralyzed~[TAG_PARALYZED].}
 {65}{[ACTOR] is immune to ~critical hit~[TAG_CRITICAL_HIT].}
 {66}{[ACTOR] is immune to ~poison~[TAG_POISON].}
+{67}{[ACTOR] belches fire (Su).}

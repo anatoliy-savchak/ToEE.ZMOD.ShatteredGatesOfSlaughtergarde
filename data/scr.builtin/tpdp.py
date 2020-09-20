@@ -76,7 +76,7 @@ class D20Action:
 		return 0
 
 	def create_projectile_and_throw(self, protoNum, endLoc):
-		return
+		return toee.PyObjHandle()
 
 	def to_hit_processing(self, projHndl, thrownItem):
 		return
@@ -425,6 +425,8 @@ class EventArgs(object):
 		return
 	def remove_spell(self):
 		return
+	def remove_spell_with_key(self, disp_key):
+		return
 
 class EventObjModifier(EventObj):
 	def __init__(self):
@@ -546,6 +548,13 @@ class EventObjSavingThrow(EventObj):
 		self.flags = 0
 		return
 
+class EventObjImmunityTrigger(EventObj):
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnImmunityTrigger # DispIoTypeImmunityTrigger, ET_On63
+		self.should_perform_immunity_check = 1 # interrupt
+		self.immunity_key = 0 #SDDKey1
+		return
+
 class EventObjImmunityQuery(EventObj):
 	def __init__(self):
 		self.evt_obj_type = toee.ET_OnSpellImmunityCheck # dispTypeSpellImmunityCheck
@@ -577,6 +586,14 @@ class EventObjObjectBonus(EventObj):
 		self.return_val = 1
 		self.obj = 1
 		self.bonus_list = BonusList()
+		return
+
+class EventObjObjectEvent(EventObj):
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnObjectEvent # ET_OnObjectEvent
+		self.target = toee.PyObjHandle()
+		self.aoe_obj = toee.PyObjHandle()
+		self.evt_id = 1
 		return
 
 class D20SpellData:

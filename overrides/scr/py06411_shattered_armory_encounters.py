@@ -228,6 +228,12 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14941
 
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlHalfFiendOgre, self).created(npc)
+		#npc.condition_add_with_args("Initiative_Bonus", 30, 0)
+		return
+
 	def after_created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		utils_obj.obj_scripts_clear(npc)
@@ -238,5 +244,97 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 		## create inventory
 		#utils_item.item_create_in_inventory(4090, npc) # Hill Giant Club
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_PLUS_1_BLACK, npc)
+		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		npc.item_wield_best_all()
+		fog_potion = utils_item.item_create_in_inventory(8601, npc)
+		fog_potion.item_flag_set(toee.OIF_NO_NPC_PICKUP)
 		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		fog_potion = npc.item_find_by_proto(8601)
+		print("Find fog_potion {}, self: {} ".format(fog_potion, npc))
+		if (fog_potion):
+			#debug.breakp("desecrate")
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_clear_target()
+			tac.add_target_self()
+			tac.add_use_item(fog_potion.id)
+			tac.add_total_defence()
+			return tac
+
+		hp = npc.stat_level_get(toee.stat_hp_current)
+		if (hp <= 15):
+			#{939}{A6 Door}
+			print("looking for a door")
+			door = utils_obj.find_nearest_obj_by_nameid(npc, 30, 939, toee.OLC_PORTAL)
+			if (door):
+				print("door found")
+				#if (not door.portal_flags_get() & toee.OPF_OPEN)
+				if (not (door.object_flags_get() & toee.OF_DONTDRAW)):
+					tac = utils_tactics.TacticsHelper(self.get_name())
+					tac.add_clear_target()
+					tac.add_target_obj(door.id)
+					#tac.add_approach_single()
+					tac.add_goto_loc(utils_obj.sec2loc(449, 508))
+					tac.add_python_action(3018) # open_door
+					tac.add_clear_target()
+					tac.add_target_closest()
+					tac.add_attack()
+					return tac
+
+			healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
+			if (healing_potion):
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_target_self()
+				tac.add_use_item(healing_potion.id)
+				tac.add_clear_target()
+				tac.add_target_closest()
+				tac.add_attack()
+
+			npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
+
+		return None
+
+class CtrlRedspwawnFirebelcher(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14943
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		do_ball = 1
+
+		while (not tac):
+			if (do_ball): 
+				m = utils_target_list.AITargetMeasure.by_all()
+				m.measure_affected_range = 5
+				m.measure_has_los = 1
+				foes = utils_target_list.AITargetList(npc, 1, 0, m).rescan()
+				target = foes.find_affected_best(1, 1)
+				if (target):
+					print("target.measures.value_affected_range_count_foes: {}".format(target.measures.value_affected_range_count_foes))
+				else: print("no target")
+				if (not target or target.measures.value_affected_range_count_foes <= 1): 
+					do_ball = 0
+					print("skip ball")
+					continue
+
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_obj(target.target.id)
+				tac.add_python_action(3019) # belch_fire
+				tac.add_clear_target()
+				tac.add_target_closest()
+				tac.add_attack()
+				tac.add_total_defence()
+				break
+			break
+		return tac

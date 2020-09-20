@@ -106,6 +106,19 @@ def npc_find_nearest_pc(npc, distance_ft, should_see):
 			nearest_dist = obj_dist
 	return nearest
 
+def npc_find_nearest_npc_by_proto(npc, distance_ft, proto):
+	assert isinstance(npc, toee.PyObjHandle)
+	nearest = None
+	nearest_dist = 10000
+	for obj in toee.game.obj_list_range(npc.location, distance_ft, toee.OLC_NPC):
+		assert isinstance(obj, toee.PyObjHandle)
+		if (not obj.proto == proto): continue
+		obj_dist = npc.distance_to(obj)
+		if (obj_dist < nearest_dist):
+			nearest = obj
+			nearest_dist = obj_dist
+	return nearest
+
 def npc_find_nearest_pc_loc(loc, distance_ft):
 	nearest = None
 	nearest_dist = 10000

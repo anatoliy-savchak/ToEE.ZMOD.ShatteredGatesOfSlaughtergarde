@@ -132,8 +132,6 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		if (not self.last_leave_shrs):
 			self.last_leave_shrs = this_entrance_time
 
-		startup_zmod.zmod_templeplus_config_apply()
-
 		if (not self.encounters_placed and 1):
 			self.place_encounter_t1()
 			self.place_encounter_t2()
