@@ -28,3 +28,6 @@
 {62}{Continue}{}{1}{not csa().encounter_a6_is_monster_alive()}{69}{}
 {63}{An enormous red lizard hurls itself toward the doorway, smoke curling from the nostrils above its massive jaws.}{An enormous red lizard hurls itself toward the doorway, smoke curling from the nostrils above its massive jaws.}{}{}{}{csa().display_encounter_a6()}
 {69}{Close}{}{1}{}{0}{csa().activate_encounter_a6()}
+
+{70}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spot near the room's center indicates a water-filled hole.}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spotnear the room's center indicates a water-filled hole.}{}{}{}{csa().display_encounter_a7()}
+{79}{Close}{}{1}{}{0}{csa().activate_encounter_a7()}

@@ -338,3 +338,35 @@ class CtrlRedspwawnFirebelcher(ctrl_behaviour.CtrlBehaviour):
 				break
 			break
 		return tac
+
+class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14944
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
+		npc.item_wield_best_all()
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+
+		is_raged = npc.d20_query(toee.Q_Barbarian_Raged)
+		if (not is_raged):
+			#npc.condition_add_with_args("Barbarian_Raged", 0, 0)
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_rage()
+			tac.add_target_closest()
+			tac.add_attack()
+			tac.add_ready_vs_approach()
+			tac.add_approach()
+			tac.add_attack()
+			tac.add_total_defence()
+			tac.add_halt()
+			return tac
+
+		return

@@ -24,8 +24,12 @@ def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#debug.breakp("san_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
-	ctrl = CtrlShatteredArmory.ensure(attachee)
-	ctrl.heartbeat()
+	ctrl = csa()
+	if (not ctrl):
+		ctrl = CtrlShatteredArmory.ensure(attachee)
+		ctrl.place_encounters(1)
+	if (ctrl):
+		ctrl.heartbeat()
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):
@@ -102,13 +106,15 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a2()
 			#self.place_encounter_a3()
 			#self.place_encounter_a4()
-			self.place_encounter_a5()
-			self.place_encounter_a6()
+			#self.place_encounter_a5()
+			#self.place_encounter_a6()
+			self.place_encounter_a7()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -286,4 +292,26 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		npc.d20_status_init()
 		npc.set_initiative(triggerer.get_initiative())
+		return
+
+	def place_encounter_a7(self):
+		self.create_promter_at(utils_obj.sec2loc(420, 481), self.get_dialogid_default(), 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_0800_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(419, 484), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte1")
+		self.create_npc_at(utils_obj.sec2loc(418, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte2")
+		self.create_npc_at(utils_obj.sec2loc(415, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte3")
+		return
+
+	def display_encounter_a7(self):
+		print("display_encounter_a7")
+		self.reveal_monster("a7", "troglodyte1")
+		self.reveal_monster("a7", "troglodyte2")
+		self.reveal_monster("a7", "troglodyte3")
+		return
+
+	def activate_encounter_a7(self):
+		print("activate_encounter_a7")
+		self.activate_monster("a7", "troglodyte1")
+		self.activate_monster("a7", "troglodyte2")
+		self.activate_monster("a7", "troglodyte3")
 		return

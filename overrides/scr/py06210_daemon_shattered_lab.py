@@ -25,17 +25,24 @@ def san_new_map(attachee, triggerer):
 
 def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
+
 	leader = toee.game.leader
-	lscripts = leader.scripts
 	if (leader.map == shattered_consts.MAP_ID_SHATERRED_LAB):
-		c = csl()
-		if (c):
-			c.check_sleep_status_update()
+		cls_ = csl()
+		if (not cls_):
+			cls_ = CtrlShatteredLab.ensure(attachee)
+			cls_.place_encounters(1)
+		if (cls_):
+			cls_.check_sleep_status_update()
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#print(attachee.id)
+
+	if (not csl()): 
+		print("san_use no cls!")
+		return toee.RUN_DEFAULT
 
 	if (attachee.name == 1641): #{1641}{Shattered Lab Exit}
 		last_leave_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
@@ -1037,7 +1044,15 @@ class CtrlShatteredLab(object):
 
 	def storage_data_loaded_all(self):
 		print("storage_data_loaded_all map: {}".format(toee.game.leader.map))
-		if (toee.game.leader.map != shattered_consts.MAP_ID_SHATERRED_LAB): return
+		#debugg.breakp("storage_data_loaded_all")
+		if (toee.game.leader.map != shattered_consts.MAP_ID_SHATERRED_LAB): 
+			print("storage_data_loaded_all - wrong map: {} expecting {}, exiting".format(toee.game.leader.map, shattered_consts.MAP_ID_SHATERRED_LAB))
+			return
+
+		print("self.encounters_placed: {}".format(self.encounters_placed))
+		if (not self.encounters_placed):
+			self.place_encounters(1)
+
 		to_del = list()
 		objs = utils_storage.Storage().objs
 		assert isinstance(objs, dict)

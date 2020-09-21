@@ -23,9 +23,12 @@ def san_first_heartbeat(attachee, triggerer):
 def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	if (attachee.map == shattered_consts.MAP_ID_SHATERRED_TEMPLE):
-		c = cst()
-		if (c):
-			c.check_sleep_status_update()
+		ctrl = cst()
+		if (not ctrl):
+			ctrl = CtrlShatteredTemple.ensure(attachee)
+			ctrl.place_encounters(1)
+		if (ctrl):
+			ctrl.check_sleep_status_update(0)
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):

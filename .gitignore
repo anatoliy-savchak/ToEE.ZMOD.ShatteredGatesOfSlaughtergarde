@@ -210,15 +210,6 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
-# SQL Server files
-*.mdf
-*.ldf
-
-# Business Intelligence projects
-*.rdl.data
-*.bim.layout
-*.bim_*.settings
-
 # Microsoft Fakes
 FakesAssemblies/
 
@@ -1638,7 +1629,6 @@ data/rules/written_ui.mes
 
 # modules
 modules/ToEE.dat
-modules/ToEE/mes
 modules/ToEE/movies
 modules/ToEE/players
 modules/ToEE/TIGCache
