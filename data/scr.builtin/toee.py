@@ -227,6 +227,9 @@ class PyObjHandle(object):
 		"""
 		return 0
 
+	def d20_status_init(self):
+		return
+
 	def damage(self, attacker, damageType, dice, attackPower, actionType):
 		"""npc.damage(PyObjHandle: attacker, int[D20DT_BLUDGEONING]: damageType, PyDice: dice, int[D20DAP_UNSPECIFIED]: attackPower, int[D20A_NONE]: actionType) -> None"""
 		return
@@ -411,6 +414,10 @@ class PyObjHandle(object):
 	def object_flag_unset(self, flag):
 		"""npc.object_flag_unset(int[OF_DESTROYED...]: flag) -> None"""
 		return
+
+	def object_event_append(self, filter, radius_ft):
+		"""npc.object_event_append(int[OLC_CRITTERS...]: filter, int: radius_ft) -> int: event_id"""
+		return 1
 
 	def obj_get_int(self, field):
 		"""Get internal field int value. npc.obj_get_int(int[obj_f_*]: field) -> int"""
@@ -770,6 +777,7 @@ class PySpell(object):
 		self.caster_level = 1
 		self.spell_level = 0
 		self.range_exact = 0
+		self.target_loc = 0
 		self.dc = 1
 		self.id = 0
 		self.duration = 1

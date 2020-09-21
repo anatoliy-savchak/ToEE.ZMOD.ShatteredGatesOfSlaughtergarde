@@ -139,6 +139,7 @@ class AITargetList(object):
 		for target in self.list:
 			assert isinstance(target, AITarget)
 			if (not target.measures.value_affected_range): continue
+			if (target.measures.measure_has_los and not target.measures.value_has_los): continue
 			if ((target.measures.value_affected_range_count_foes > affected_num) and (can_affect_self or not target.measures.value_affected_range_count_self) and (can_affect_ally or not target.measures.value_affected_range_count_ally)):
 				affected_num = target.measures.value_affected_range_count_foes
 				result = target

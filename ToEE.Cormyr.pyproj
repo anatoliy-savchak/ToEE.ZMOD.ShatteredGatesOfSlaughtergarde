@@ -43,6 +43,7 @@
     <Folder Include="overrides\mes\" />
     <Folder Include="overrides\dlg\" />
     <Folder Include="overrides\rules\feats\" />
+    <Folder Include="overrides\rules\spell_enums\" />
     <Folder Include="overrides\sound\" />
     <Folder Include="overrides\oemes\" />
     <Folder Include="overrides\rules\indicators\" />
@@ -170,11 +171,14 @@
     <Content Include="modules\ToEE\rules\cormyr.cfg" />
     <Content Include="modules\ToEE\rules\MapList.mes" />
     <Content Include="overrides\rules\traps.tab" />
+    <Content Include="overrides\scr\tpModifiers\sp_darkness.py" />
     <Content Include="overrides\scr\tpModifiers\condition_template.txt" />
     <Content Include="overrides\sound\schemeindex.mes" />
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03019_ball_of_fire.py" />
+    <Compile Include="overrides\rules\d20_actions\action03018_open_door.py" />
     <Compile Include="overrides\rules\d20_actions\action03017_smash_object.py" />
     <Compile Include="overrides\rules\d20_actions\action03016_bar_door.py" />
     <Compile Include="overrides\rules\d20_actions\action03015_close_door.py" />
@@ -299,6 +303,7 @@
     </Compile>
     <Compile Include="overrides\scr\Spell076 - Contagion.py" />
     <Compile Include="overrides\scr\Spell090 - Cure Light Wounds.py" />
+    <Compile Include="overrides\scr\Spell096 - Darkness.py" />
     <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
     <Compile Include="overrides\scr\Spell280 - Mage Armor.py" />
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
@@ -320,6 +325,8 @@
     </Compile>
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="overrides\scr\tpModifiers\belch_fire.py" />
+    <Compile Include="overrides\scr\tpModifiers\open_door.py" />
     <Compile Include="overrides\scr\tpModifiers\skill_appraise_bonus.py" />
     <Compile Include="overrides\scr\tpModifiers\spell_dc_mod.py" />
     <Compile Include="overrides\scr\tpModifiers\mage_armor_auto.py" />

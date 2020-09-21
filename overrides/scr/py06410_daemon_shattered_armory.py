@@ -1,37 +1,57 @@
 import toee, debug, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, const_proto_wands, utils_npc
-import py06411_shattered_armory_encounters
+import py06411_shattered_armory_encounters, startup_zmod
+
+def san_new_map(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	print(attachee.id)
+	#debugg.breakp("san_new_map")
+	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
+	ctrl = CtrlShatteredArmory.ensure(attachee)
+	ctrl.place_encounters(1)
+	return toee.RUN_DEFAULT
 
 def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#print(attachee.id)
 	#debug.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
-	for pc in toee.game.party:
-		pc.condition_add("Inspect")
-		pc.condition_add("Smash_Object")
-		#if (pc.highest_arcane_caster_level > 0):
-		#	pc.condition_add("Mage_Armor_Auto")
 	ctrl = CtrlShatteredArmory.ensure(attachee)
-	ctrl.place_encounters()
+	ctrl.place_encounters(0)
 	return toee.RUN_DEFAULT
 
 def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#debug.breakp("san_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
-	ctrl = CtrlShatteredArmory.ensure(attachee)
-	ctrl.heartbeat()
+	ctrl = csa()
+	if (not ctrl):
+		ctrl = CtrlShatteredArmory.ensure(attachee)
+		ctrl.place_encounters(1)
+	if (ctrl):
+		ctrl.heartbeat()
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	print(attachee.id)
+	print("san_use id: {}, nameid: {}".format(attachee.id, attachee.name))
 
 	if (attachee.name == 1643): #{1643}{Shattered Armory Exit}
 		toee.game.fade_and_teleport( 0, 0, 0, 5107, 491, 480 ) #shopmap
+	elif (attachee.name == 939): #{939}{A6 Door}
+		print("A6 Door")
+		attachee.object_flag_set(toee.OF_DONTDRAW)
+		if (toee.game.combat_turn):
+			csa().encounter_a6_premature(attachee, triggerer)
 	else:
 		attachee.object_flag_set(toee.OF_DONTDRAW)
+		if (attachee.name == 938): #{938}{A5 Fiery Demon Arch}
+			promter = utils_npc.npc_find_nearest_npc_by_proto(attachee, 15, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
+			if (promter):
+				py06122_cormyr_prompter.promter_talk(promter, triggerer)
+			else:
+				print("promter not found!")
+				#debug.breakp("promter not found!")
 	#debug.breakp("san_use")
 	return toee.RUN_DEFAULT
 
@@ -64,29 +84,39 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def get_map_default(self):
 		return shattered_consts.MAP_ID_SHATERRED_ARMORY
 
-	def place_encounters(self):
-		#if (self.encounters_placed): return
-		#debugg.breakp("place_encounters")
+	def place_encounters(self, new_map):
+		print("new_map: {}".format(new_map))
+		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
+		startup_zmod.zmod_templeplus_config_apply()
+
+		if (self.encounters_placed and new_map == 0): return
+
+		this_entrance_time = toee.game.time.time_game_in_hours2(toee.game.time)
+		print("this_entrance_time == {}".format(this_entrance_time))
+		if (not self.encounters_placed):
+			self.first_entered_shrs = this_entrance_time
+		self.last_entered_shrs = this_entrance_time
+		if (not self.last_leave_shrs):
+			self.last_leave_shrs = this_entrance_time
 
 		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
 		if (not self.encounters_placed):
-			self.place_encounter_a1()
-			self.place_encounter_a2()
-			self.place_encounter_a3()
-			self.place_encounter_a4()
-		elif(self.encounters_placed == 1):
-			self.place_encounter_a0()
-		else:
-			self.place_encounter_a5()
+			#self.place_encounter_a1()
+			#self.place_encounter_a2()
+			#self.place_encounter_a3()
+			#self.place_encounter_a4()
+			#self.place_encounter_a5()
+			#self.place_encounter_a6()
+			self.place_encounter_a7()
 
 		self.encounters_placed += 1
-		#self.print_monsters()
+		self.factions_existance_refresh()
+		self.check_sleep_status_update(1)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 481, 499)
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 450, 445)
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 437, 522) #a2
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 484, 504) #a4
+		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
 		return
 
@@ -208,4 +238,80 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def activate_encounter_a5(self):
 		print("activate_encounter_a5")
 		self.activate_monster("a5", "ogre")
+		return
+
+	def place_encounter_a6(self):
+		self.create_promter_at(utils_obj.sec2loc(443, 509), self.get_dialogid_default(), 60, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Redspwan Prison", const_toee.rotation_0800_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(443, 500), py06411_shattered_armory_encounters.CtrlRedspwawnFirebelcher, const_toee.rotation_0400_oclock, "a6", "firebelcher")
+		return
+
+	def display_encounter_a6(self):
+		print("display_encounter_a6")
+		self.reveal_monster("a6", "firebelcher", 1)
+		return
+
+	def activate_encounter_a6(self):
+		print("activate_encounter_a6")
+		self.activate_monster("a6", "firebelcher", 1)
+		return
+
+	def encounter_a6_get_alive_monster(self):
+		info = self.get_monsterinfo("a6", "firebelcher")
+		if (not info): return None
+		npc = toee.game.get_obj_by_id(info.id)
+		if (not npc): return None
+		if (not utils_npc.npc_is_alive(npc, 1)): return None
+		return npc
+
+	def encounter_a6_is_monster_alive(self):
+		npc = self.encounter_a6_get_alive_monster()
+		if (not npc): return 0
+		return 1
+
+	def encounter_a6_premature(self, door, triggerer):
+		print("encounter_a6_premature ({}, {})".format(door, triggerer))
+		assert isinstance(triggerer, toee.PyObjHandle)
+		if (triggerer and triggerer.type == toee.obj_t_pc):
+			# only when npc is doing that
+			return 0
+
+		npc = self.encounter_a6_get_alive_monster()
+		if (not npc): return 0
+		assert isinstance(npc, toee.PyObjHandle)
+
+		self.display_encounter_a6()
+		self.activate_encounter_a6()
+		promter = utils_npc.npc_find_nearest_npc_by_proto(door, 15, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
+		if (promter):
+			promter.destroy()
+
+		# move it before the door
+		npc.move(utils_obj.sec2loc(444, 508))
+		npc.rotation = const_toee.rotation_0800_oclock
+
+		npc.d20_status_init()
+		npc.set_initiative(triggerer.get_initiative())
+		return
+
+	def place_encounter_a7(self):
+		self.create_promter_at(utils_obj.sec2loc(420, 481), self.get_dialogid_default(), 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_0800_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(419, 484), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte1")
+		self.create_npc_at(utils_obj.sec2loc(418, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte2")
+		self.create_npc_at(utils_obj.sec2loc(415, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte3")
+		return
+
+	def display_encounter_a7(self):
+		print("display_encounter_a7")
+		self.reveal_monster("a7", "troglodyte1")
+		self.reveal_monster("a7", "troglodyte2")
+		self.reveal_monster("a7", "troglodyte3")
+		return
+
+	def activate_encounter_a7(self):
+		print("activate_encounter_a7")
+		self.activate_monster("a7", "troglodyte1")
+		self.activate_monster("a7", "troglodyte2")
+		self.activate_monster("a7", "troglodyte3")
 		return

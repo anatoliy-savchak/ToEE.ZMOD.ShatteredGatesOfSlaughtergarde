@@ -1,0 +1,29 @@
+//
+// Area -- List of areas
+//   X-Coord, Y-Coord /Name /Description./Radius:<#>
+//
+//   Coords are on the main world-map.  Radius is detection radius (in sectors),
+// in other words, the # of sectors that the player must pass near it on the
+// WorldMap to make it visible if it isn't already known; default value is 5.
+//
+
+{0}{0, 0, 0, 0 /A Place Unimportant/ }
+{1}{0, 0, 0, 0 /Sumberton/Sumberton}
+{2}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 2}
+{3}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 3}
+{4}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 4}
+{5}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 5}
+{6}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 6}
+{7}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 7}
+{8}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 8}
+{9}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 9}
+{10}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 10}
+{11}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 11}
+{12}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES 12}
+{13}{0, 0, 0, 0 /Reserved/Hardcoded stuff - do not touch.}
+{14}{0, 0, 0, 0 /Slaughtergarde Laboratory/Slaughtergarde Laboratory}
+{15}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES}
+{16}{0, 0, 0, 0 /Shattered Gates/SHATTERED GATES}
+{17}{0, 0, 0, 0 /Unused 2/Enter Description Here.}
+{18}{0, 0, 0, 0 /Unused 3/Enter Description Here.}
+{19}{0, 0, 0, 0 /Unused 4/Enter Description Here.}

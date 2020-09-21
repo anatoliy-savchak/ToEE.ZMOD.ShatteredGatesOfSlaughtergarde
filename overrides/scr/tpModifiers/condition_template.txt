@@ -74,6 +74,10 @@ def OnToHitBonusBase(attachee, args, evt_obj):
 	evt_obj.attack_packet.set_flags(evt_obj.attack_packet.get_flags() | toee.D20CAF_TOUCH_ATTACK)
 	return 0
 
+def OnConditionAdd(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	return
+
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 3) # reserved
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Critter_Is_Blinded, OnQueryReturnTrue, ())
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_AOOPossible, OnQueryReturnFalse, ())

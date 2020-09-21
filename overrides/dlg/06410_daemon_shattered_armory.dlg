@@ -18,8 +18,16 @@
 {44}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{}{}{}{csa().display_encounter_a4()}
 {49}{Close}{}{1}{}{0}{csa().activate_encounter_a4()}
 
-
-{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5()}
+{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5()}
 {51}{Continue}{}{1}{}{52}{}
 {52}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{}{}{}{}
 {59}{Close}{}{1}{}{0}{csa().activate_encounter_a5()}
+
+{60}{Charred furniture litters the floor. Arrow slits pierce the eastern walls, but beyond them is earth and rock. In the northern part of the room is a badly burned and very big gnoll.}{Charred furniture litters the floor. Arrow slits pierce the eastern walls, but beyond them is earth and rock. In the northern part of the room is a badly burned and very big gnoll.}{}{}{}{}
+{61}{Continue}{}{1}{csa().encounter_a6_is_monster_alive()}{63}{}
+{62}{Continue}{}{1}{not csa().encounter_a6_is_monster_alive()}{69}{}
+{63}{An enormous red lizard hurls itself toward the doorway, smoke curling from the nostrils above its massive jaws.}{An enormous red lizard hurls itself toward the doorway, smoke curling from the nostrils above its massive jaws.}{}{}{}{csa().display_encounter_a6()}
+{69}{Close}{}{1}{}{0}{csa().activate_encounter_a6()}
+
+{70}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spot near the room's center indicates a water-filled hole.}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spotnear the room's center indicates a water-filled hole.}{}{}{}{csa().display_encounter_a7()}
+{79}{Close}{}{1}{}{0}{csa().activate_encounter_a7()}
