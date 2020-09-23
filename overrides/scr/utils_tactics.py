@@ -201,6 +201,11 @@ class TacticsHelper(object):
 		self.add_triplet("python action", str(action_enum), "")
 		return
 
+	def add_python_action0(self, action_enum):
+		assert isinstance(action_enum, int)
+		self.add_triplet("python action0", str(action_enum), "")
+		return
+
 	def add_sniper(self):
 		self.add_simple("sniper")
 		return
@@ -229,6 +234,14 @@ class TacticsHelper(object):
 
 	def add_flank(self):
 		self.add_simple("flank")
+		return
+
+	def add_charge(self):
+		self.add_simple("charge")
+		return
+
+	def add_partial_charge(self):
+		self.add_simple("partial charge")
 		return
 
 	def set_strategy(self, npc):

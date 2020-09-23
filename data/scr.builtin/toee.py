@@ -175,6 +175,10 @@ class PyObjHandle(object):
 		""" npc.condition_add_with_args(str: cond_name, int: arg0 = None, int: arg1 = None, int: arg2 = None) -> int"""
 		return 0
 
+	def conditions_get(self, kind = None):
+		result = [("condition name", 2)]
+		return
+
 	def container_flags_get(self):
 		"""npc.container_flags_get() -> OCOF_LOCKED"""
 		return

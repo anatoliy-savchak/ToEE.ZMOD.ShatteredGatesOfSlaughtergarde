@@ -347,6 +347,8 @@ class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
 		assert isinstance(npc, toee.PyObjHandle)
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		#debug.breakp("condition_add_with_args")
+		npc.condition_add_with_args("Stench_Of_Troglodyte", 0, 10, 17, 30)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
 		npc.item_wield_best_all()
@@ -357,16 +359,29 @@ class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
 
 		is_raged = npc.d20_query(toee.Q_Barbarian_Raged)
 		if (not is_raged):
+			print("go rage")
 			#npc.condition_add_with_args("Barbarian_Raged", 0, 0)
 			tac = utils_tactics.TacticsHelper(self.get_name())
 			tac.add_rage()
 			tac.add_target_closest()
+			tac.add_charge()
 			tac.add_attack()
 			tac.add_ready_vs_approach()
-			tac.add_approach()
 			tac.add_attack()
 			tac.add_total_defence()
 			tac.add_halt()
 			return tac
 
+		stenched = self.get_var("stenched")
+		if (not stenched):
+			self.vars["stenched"] = 1
+			#npc.condition_add_with_args("Barbarian_Raged", 0, 0)
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_target_closest()
+			tac.add_approach_single()
+			tac.add_python_action(3020) # produce stench
+			tac.add_attack()
+			tac.add_total_defence()
+			tac.add_halt()
+			return tac
 		return

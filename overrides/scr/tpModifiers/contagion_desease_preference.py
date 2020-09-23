@@ -21,7 +21,7 @@ def Contagion_Desease_Preference_OnD20PythonQuery(attachee, args, evt_obj):
 	assert isinstance(evt_obj, tpdp.EventObjD20Signal)
 	evt_obj.return_val = args.get_arg(0)
 	print("Contagion_Desease_Preference_OnD20PythonQuery :: evt_obj.return_val = {}".format(evt_obj.return_val))
-	debug.breakp("Contagion_Desease_Preference_OnD20PythonQuery")
+	#debug.breakp("Contagion_Desease_Preference_OnD20PythonQuery")
 	return 0
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2) # 1 - desease_number

@@ -4,11 +4,13 @@ import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, c
 
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	print(attachee.id)
-	#debugg.breakp("san_new_map")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
-	ctrl = CtrlShatteredTemple.ensure(attachee)
-	ctrl.place_encounters(1)
+	if (attachee.id == shattered_consts.SHATERRED_TEMPLE_DAEMON_ID):
+		ctrl = CtrlShatteredTemple.ensure(attachee)
+		ctrl.place_encounters(1)
+	else:
+		print("san_new_map is NOT SHATERRED_TEMPLE_DAEMON_ID!! (attachee: {}, triggerer: {})".format(attachee, triggerer))
+		debug.breakp("san_new_map")
 	return toee.RUN_DEFAULT
 
 def san_first_heartbeat(attachee, triggerer):
@@ -16,19 +18,27 @@ def san_first_heartbeat(attachee, triggerer):
 	#print(attachee.id)
 	#debugg.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
-	ctrl = CtrlShatteredTemple.ensure(attachee)
-	ctrl.place_encounters(0)
+	if (attachee.id == shattered_consts.SHATERRED_TEMPLE_DAEMON_ID):
+		ctrl = CtrlShatteredTemple.ensure(attachee)
+		ctrl.place_encounters(0)
+	else:
+		print("san_first_heartbeat is NOT SHATERRED_TEMPLE_DAEMON_ID!! (attachee: {}, triggerer: {})".format(attachee, triggerer))
+		debug.breakp("san_first_heartbeat")
 	return toee.RUN_DEFAULT
 
 def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	if (attachee.map == shattered_consts.MAP_ID_SHATERRED_TEMPLE):
-		ctrl = cst()
-		if (not ctrl):
-			ctrl = CtrlShatteredTemple.ensure(attachee)
-			ctrl.place_encounters(1)
-		if (ctrl):
-			ctrl.check_sleep_status_update(0)
+		if (attachee.id == shattered_consts.SHATERRED_TEMPLE_DAEMON_ID):
+			ctrl = cst()
+			if (not ctrl):
+				ctrl = CtrlShatteredTemple.ensure(attachee)
+				ctrl.place_encounters(1)
+			if (ctrl):
+				ctrl.check_sleep_status_update(0)
+		else:
+			print("san_heartbeat is NOT SHATERRED_TEMPLE_DAEMON_ID!! (attachee: {}, triggerer: {})".format(attachee, triggerer))
+			debug.breakp("san_heartbeat")
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):

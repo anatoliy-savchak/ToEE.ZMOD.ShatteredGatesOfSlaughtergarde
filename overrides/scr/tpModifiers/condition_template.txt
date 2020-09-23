@@ -78,13 +78,52 @@ def OnConditionAdd(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	return
 
+def OnGetSkillLevel(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjAttack)
+	
+	lodged_quills = args.get_arg(0)
+	if (lodged_quills):
+		evt_obj.bonus_list.add(-lodged_quills, 12, LODGED_QUILLS_PENALTY_MESSAGE.format(lodged_quills))
+	return 0
+
+def OnDealingDamage(attachee, args, evt_obj):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
+	assert isinstance(evt_obj, tpdp.EventObjDamage)
+	try:
+		print("Net_Throw_OnDealingDamage")
+		tgt = evt_obj.attack_packet.target
+		print("target: {}".format(tgt))
+		print("event_key: {}".format(evt_obj.attack_packet.event_key))
+		flags = evt_obj.attack_packet.get_flags()
+		hit = flags & toee.D20CAF_HIT
+		print("hit: {}, flags: {}".format(hit, flags))
+		if (hit and tgt):
+			print("adding condition netted to {}".format(tgt))
+			dc_BreakFree = args.get_arg(0)
+			dc_EscapeArtist = args.get_arg(1)
+			tgt.condition_add_with_args("netted", dc_BreakFree, dc_EscapeArtist)
+		else: print("missed")
+		evt_obj.damage_packet.final_damage = 0
+	except Exception, e:
+		print "Net_Throw_OnDealingDamage error:"
+		print '-'*60
+		traceback.print_exc(file=sys.stdout)
+		print '-'*60		
+		debugg.breakp("error")
+	return 0
+
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 3) # reserved
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Critter_Is_Blinded, OnQueryReturnTrue, ())
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_AOOPossible, OnQueryReturnFalse, ())
 modObj.AddHook(toee.ET_OnGetMoveSpeed, toee.EK_NONE, OnGetMoveSpeed, ())
 modObj.AddHook(toee.ET_OnGetAttackerConcealmentMissChance, toee.EK_NONE, OnGetAttackerConcealmentMissChance, ())
 modObj.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, netted_OnGetEffectTooltip, ())
-modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, netted_OnGetTooltip, ())
+modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, OnGetTooltip, ())
 modObj.AddHook(toee.ET_OnToHitBonusFromDefenderCondition, toee.EK_NONE, OnToHitBonusFromDefenderCondition, ())
 modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Killed, S_Killed, ())
 modObj.AddHook(toee.ET_OnToHitBonusBase, toee.EK_NONE, OnToHitBonusBase, ())
+modObj.AddHook(toee.ET_OnGetSkillLevel, toee.EK_NONE, OnGetSkillLevel, ())
+modObj.AddHook(toee.ET_OnDealingDamage, toee.EK_NONE, OnDealingDamage, ())

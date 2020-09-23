@@ -333,6 +333,7 @@
     <Compile Include="overrides\scr\tpModifiers\smash_object.py" />
     <Compile Include="overrides\scr\tpModifiers\close_door.py" />
     <Compile Include="overrides\scr\tpModifiers\cone_of_cold.py" />
+    <Compile Include="overrides\scr\tpModifiers\stench_of_troglodyte.py" />
     <Compile Include="overrides\scr\tpModifiers\transferrence.py" />
     <Compile Include="overrides\scr\tpModifiers\critter_no_con.py" />
     <Compile Include="overrides\scr\tpModifiers\construct_max_hp.py" />

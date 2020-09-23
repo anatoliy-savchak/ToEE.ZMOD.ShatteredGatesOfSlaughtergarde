@@ -482,7 +482,7 @@ class EventObjEffectTooltip(EventObj):
 
 class EventObjD20Signal(EventObj):
 	def __init__(self):
-		self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal
+		self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal, OnBeginRound
 		self.return_val = 0
 		self.data1 = 0
 		self.data2 = 0
@@ -579,7 +579,7 @@ class EventObjSpellEntry(EventObj):
 
 class EventObjObjectBonus(EventObj):
 	def __init__(self):
-		#dispTypeInitiativeMod, dispTypeSkillLevel, dispTypeAbilityCheckModifier, dispTypeGetAttackerConcealmentMissChance
+		#dispTypeInitiativeMod, dispTypeSkillLevel, dispTypeAbilityCheckModifier, dispTypeGetAttackerConcealmentMissChance, GetAbilityCheckModifier
 		#dispTypeGetLevel, dispTypeMaxDexAcBonus
 		self.evt_obj_type = toee.ET_OnGetAttackerConcealmentMissChance
 		self.flags = 1
