@@ -38,3 +38,10 @@
 
 {100}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{}{}{}{csa().display_encounter_a10()}
 {109}{Close}{}{1}{}{0}{csa().activate_encounter_a10()}
+
+{110}{Three humanoids that have short horns on their foreheads glare menacingly at you from atop the stairs - one female and two males. The males are wearing studded leather armor and wield swords in both hands, while the female wears simple brown robes.}{Three humanoids that have short horns on their foreheads glare menacingly at you from atop the stairs - one female and two males. The males are wearing studded leather armor and wield swords in both hands, while the female wears simple brown robes.}{}{}{}{csa().display_encounter_a11()}
+{111}{Continue}{}{1}{}{112}{}
+{112}{Their tabards depict a stylized gray-brown open maw.}{Their tabards depict a stylized gray-brown open maw.}{}{}{}{csa().trigger_monster_step_a11(2)}
+{113}{Continue}{}{1}{}{114}{}
+{114}{Beyond them, you can make out an austere chamber with arrow slits in the southern wall. The slits are filled with dirt.}{Beyond them, you can make out an austere chamber with arrow slits in the southern wall. The slits are filled with dirt.}{}{}{}{csa().trigger_monster_step_a11(3)}
+{119}{Close}{}{1}{}{0}{csa().activate_encounter_a11()}

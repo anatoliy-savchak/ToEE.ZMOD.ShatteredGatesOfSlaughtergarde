@@ -1,6 +1,6 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
 import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, utils_npc
-import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings
+import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings, const_proto_cloth
 
 shattered_armory_encounters = 6411
 
@@ -599,3 +599,133 @@ class CtrlOrcharix(ctrl_behaviour.CtrlBehaviour):
 		npc.condition_add_with_args("Monster_Ability_Drain_Su", dc, save, ability, dice_packed, attacks_with_drain)
 
 		return
+
+class CtrlTieflingBlademaster(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14949
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlTieflingBlademaster, self).created(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc)
+		shortsword = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SHORTSWORD_MASTERWORK, npc)
+		npc.item_wield_best_all()
+		npc.item_wield(shortsword, toee.item_wear_weapon_secondary)
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		assert isinstance(attachee, toee.PyObjHandle)
+
+		weapon = attachee.item_find_by_proto(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK)
+		if (weapon):
+			print("equipping toee.item_wear_weapon_primary: {}".format(weapon))
+			attachee.item_wield(weapon, toee.item_wear_weapon_primary)
+		else: print("PROTO_LONGSWORD_MASTERWORK not found!")
+
+		weapon = attachee.item_find_by_proto(const_proto_weapon.PROTO_WEAPON_SHORTSWORD_MASTERWORK)
+		if (weapon):
+			print("equipping toee.item_wear_weapon_secondary: {}".format(weapon))
+			attachee.item_wield(weapon, toee.item_wear_weapon_secondary)
+		else: print("PROTO_WEAPON_SHORTSWORD_MASTERWORK not found!")
+
+		utils_npc.npc_print_wears(utils_npc.npc_get_wears(attachee))
+
+		return toee.RUN_DEFAULT
+
+class CtrlTieflingWizard(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14950
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlTieflingWizard, self).created(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_ROBE_BROWN, npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
+		item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_BOLT_QUIVER, npc)
+		if (item):
+			item.obj_set_int(toee.obj_f_ammo_quantity, 20)
+		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_BRACES_OF_ARMOR_1, npc)
+		npc.item_wield_best_all()
+		return
+
+	def revealed(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_npc.npc_spell_ensure(npc, toee.spell_shield, toee.stat_level_wizard, 3, 1)
+		npc.cast_spell(toee.spell_shield, npc)
+		return
+
+	def trigger_step(self, npc, step):
+		assert isinstance(npc, toee.PyObjHandle)
+		assert isinstance(step, int)
+
+		if (step == 2):
+			utils_npc.npc_spell_ensure(npc, toee.spell_mage_armor, toee.stat_level_wizard, 3, 1)
+			npc.cast_spell(toee.spell_mage_armor, npc)
+		elif (step == 3):
+			utils_npc.npc_spell_ensure(npc, toee.spell_protection_from_good, toee.stat_level_wizard, 3, 1)
+			npc.cast_spell(toee.spell_protection_from_good, npc)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+
+		while (not tac):
+			hp_perc = utils_npc.npc_hp_current_percent(npc)
+			print("hp_perc: {}".format(hp_perc))
+
+			if (self.spells.get_spell_count(toee.spell_scorching_ray)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+					tac.add_five_foot_step()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_scorching_ray))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_magic_missile)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+					tac.add_five_foot_step()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_magic_missile))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_color_spray)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+					tac.add_five_foot_step()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_color_spray))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			break
+		return tac
+
+	def enter_combat(self, attachee, triggerer):
+		#debug.breakp("enter_combat")
+		self.spells = utils_npc_spells.NPCSpells()
+		caster_level = attachee.highest_arcane_caster_level
+		self.spells.add_spell(const_toee.spell_scorching_ray, toee.stat_level_wizard, caster_level, 2)
+		self.spells.add_spell(toee.spell_magic_missile, toee.stat_level_wizard, caster_level)
+		self.spells.add_spell(toee.spell_color_spray, toee.stat_level_wizard, caster_level)
+		return toee.RUN_DEFAULT

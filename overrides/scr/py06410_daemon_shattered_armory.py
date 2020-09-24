@@ -43,14 +43,6 @@ def san_use(attachee, triggerer):
 		attachee.object_flag_set(toee.OF_DONTDRAW)
 		if (toee.game.combat_turn):
 			csa().encounter_a6_premature(attachee, triggerer)
-	elif (attachee.name == 942): #{942}{A10 Fiery Demon Arch}
-		print("A10 Door")
-		attachee.object_flag_set(toee.OF_DONTDRAW)
-		promter = utils_npc.npc_find_nearest_npc_by_proto(attachee, 20, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
-		if (promter):
-			py06122_cormyr_prompter.promter_talk(promter, triggerer)
-		else:
-			print("promter not found!")
 	else:
 		attachee.object_flag_set(toee.OF_DONTDRAW)
 		if (attachee.name == 938): #{938}{A5 Fiery Demon Arch}
@@ -60,6 +52,13 @@ def san_use(attachee, triggerer):
 			else:
 				print("promter not found!")
 				#debug.breakp("promter not found!")
+		elif (attachee.name == 942): #{942}{A10 Fiery Demon Arch}
+			print("A10 Door")
+			promter = utils_npc.npc_find_nearest_npc_by_proto(attachee, 10, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
+			if (promter):
+				py06122_cormyr_prompter.promter_talk(promter, triggerer)
+			else:
+				print("promter not found!")
 	#debug.breakp("san_use")
 	return toee.RUN_DEFAULT
 
@@ -118,7 +117,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a5()
 			#self.place_encounter_a6()
 			#self.place_encounter_a7()
-			self.place_encounter_a10()
+			#self.place_encounter_a10()
+			self.place_encounter_a11()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -367,6 +367,33 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		return
 
 	def activate_encounter_a10(self):
-		print("activate_encounter_a7")
+		print("activate_encounter_a10")
 		self.activate_monster("a10", "orcharix")
+		return
+
+	def place_encounter_a11(self):
+		self.create_promter_at(utils_obj.sec2loc(501, 517), self.get_dialogid_default(), 110, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Tiefling Quarters", const_toee.rotation_1000_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(496, 516), py06411_shattered_armory_encounters.CtrlTieflingBlademaster, const_toee.rotation_0900_oclock, "a11", "tiefling_blade1")
+		self.create_npc_at(utils_obj.sec2loc(496, 520), py06411_shattered_armory_encounters.CtrlTieflingBlademaster, const_toee.rotation_0900_oclock, "a11", "tiefling_blade2")
+
+		self.create_npc_at(utils_obj.sec2loc(492, 517), py06411_shattered_armory_encounters.CtrlTieflingWizard, const_toee.rotation_0900_oclock, "a11", "tiefling_wiz")
+		return
+
+	def display_encounter_a11(self):
+		print("display_encounter_a11")
+		self.reveal_monster("a11", "tiefling_blade1")
+		self.reveal_monster("a11", "tiefling_blade2")
+		self.reveal_monster("a11", "tiefling_wiz")
+		return
+
+	def activate_encounter_a11(self):
+		print("activate_encounter_a7")
+		self.activate_monster("a11", "tiefling_blade1")
+		self.activate_monster("a11", "tiefling_blade2")
+		self.activate_monster("a11", "tiefling_wiz")
+		return
+
+	def trigger_monster_step_a11(self, step):
+		self.trigger_monster_step("a11", "tiefling_wiz", step)
 		return

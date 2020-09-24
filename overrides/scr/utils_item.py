@@ -8,6 +8,8 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1, is_loot = 1):
 	item_alter_worth_as_raw(item, is_loot)
 	if (npc.type == toee.obj_t_pc):
 		item.item_flag_set(toee.OIF_IDENTIFIED)
+	else: item.item_flag_unset(toee.OIF_IDENTIFIED)
+
 	if (item != toee.OBJ_HANDLE_NULL):
 		npc.item_get(item)
 	if (quantity > 1):
