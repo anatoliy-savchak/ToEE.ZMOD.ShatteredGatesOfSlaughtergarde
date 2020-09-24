@@ -34,5 +34,7 @@
 {72}{Three reptilian humanoids in leathers swim nearby. One has a spear, while the other two seem to have no weapons at all.}{Three reptilian humanoids in leathers swim nearby. One has a spear, while the other two seem to have no weapons at all.}{}{}{}{csa().trigger_monster_step_a7(2)}
 {73}{Continue}{}{1}{}{74}{}
 {74}{Two reptilian humanoids in plate armor guard far north wall of the room. Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls.}{Two reptilian humanoids in plate armor guard far north wall of the room. Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls.}{}{}{}{csa().trigger_monster_step_a7(3)}
-
 {79}{Close}{}{1}{}{0}{csa().activate_encounter_a7()}
+
+{100}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{}{}{}{csa().display_encounter_a10()}
+{109}{Close}{}{1}{}{0}{csa().activate_encounter_a10()}

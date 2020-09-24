@@ -326,6 +326,8 @@
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
     <Compile Include="overrides\scr\tpModifiers\belch_fire.py" />
+    <Compile Include="overrides\scr\tpModifiers\monster_ability_drain.py" />
+    <Compile Include="overrides\scr\tpModifiers\monster_trip_ex.py" />
     <Compile Include="overrides\scr\tpModifiers\open_door.py" />
     <Compile Include="overrides\scr\tpModifiers\skill_appraise_bonus.py" />
     <Compile Include="overrides\scr\tpModifiers\spell_dc_mod.py" />

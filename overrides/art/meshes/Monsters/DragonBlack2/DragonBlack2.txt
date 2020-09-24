@@ -1,0 +1,210 @@
+skeleton "unarmed_unarmed_combatidle.mae"
+
+{	
+	quality 0.0
+
+}
+
+
+
+
+animation "unarmed_unarmed_rturn" "unarmed_unarmed_rturn.mae"
+{
+	loopable
+	event 9  "script" "anim_obj.footstep()"
+	event 19  "script" "anim_obj.footstep()"
+	event 29  "script" "anim_obj.footstep()"
+	event 39  "script" "anim_obj.footstep()"
+	event 49  "script" "anim_obj.footstep()"
+	angle 180
+}
+
+animation "unarmed_unarmed_lturn" "unarmed_unarmed_lturn.mae"
+{
+	loopable
+	event 9  "script" "anim_obj.footstep()"
+	event 19  "script" "anim_obj.footstep()"
+	event 29  "script" "anim_obj.footstep()"
+	event 39  "script" "anim_obj.footstep()"
+	event 49  "script" "anim_obj.footstep()"
+	angle -180
+}
+
+
+
+
+
+
+animation "unarmed_unarmed_rattack" "unarmed_unarmed_rattack.mae"
+{
+	event 17 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+	
+	
+}
+animation "unarmed_unarmed_rattack2" "unarmed_unarmed_rattack2.mae"
+{
+	event 17 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+	
+	
+}
+animation "unarmed_unarmed_rattack3" "unarmed_unarmed_rattack3.mae"
+{
+	event 14 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+	
+}
+animation "unarmed_unarmed_lattack" "unarmed_unarmed_lattack.mae"
+{
+	event 16 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+}
+
+animation "unarmed_unarmed_lattack2" "unarmed_unarmed_lattack2.mae"
+{
+	event 17 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+	
+}
+
+
+animation "unarmed_unarmed_walk" "unarmed_unarmed_walk.mae"
+{
+	loopable
+	distance "origin"
+	event 9  "script" "anim_obj.footstep()"
+	event 13  "script" "anim_obj.footstep()"
+	event 37  "script" "anim_obj.footstep()"
+	event 40  "script" "anim_obj.footstep()"
+		
+	
+}
+
+animation "unarmed_unarmed_run" "unarmed_unarmed_walk.mae"
+{
+	loopable
+	distance "origin"
+	event 9  "script" "anim_obj.footstep()"
+	event 13  "script" "anim_obj.footstep()"
+	event 37  "script" "anim_obj.footstep()"
+	event 40  "script" "anim_obj.footstep()"
+		
+	
+}
+
+animation "unarmed_unarmed_idle" "unarmed_unarmed_idle.mae"
+{
+	loopable
+}
+
+animation "unarmed_unarmed_fhit" "unarmed_unarmed_fhit.mae"
+
+
+animation "unarmed_unarmed_lhit" "unarmed_unarmed_lhit.mae"
+
+
+animation "unarmed_unarmed_rhit" "unarmed_unarmed_rhit.mae"
+
+
+animation "unarmed_unarmed_bhit" "unarmed_unarmed_bhit.mae"
+
+
+
+
+animation "unarmed_unarmed_fdodge" "unarmed_unarmed_fdodge.mae"
+
+
+
+animation "unarmed_unarmed_rdodge" "unarmed_unarmed_rdodge.mae"
+
+
+
+
+animation "unarmed_unarmed_ldodge" "unarmed_unarmed_ldodge.mae"
+
+
+
+
+animation "unarmed_unarmed_bdodge" "unarmed_unarmed_bdodge.mae"
+
+{
+		
+	event 7  "script" "anim_obj.footstep()"
+	event 25  "script" "anim_obj.footstep()"
+		
+	
+}
+
+
+animation "unarmed_unarmed_rcriticalswing" "unarmed_unarmed_critical.mae"
+{
+	event 16 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+	
+}
+
+animation "unarmed_unarmed_lcriticalswing" "unarmed_unarmed_critical.mae"
+{
+	event 16 "action" "origin"
+		event 1 "script" "game.sound_local_obj ( 1180, anim_obj )"
+}
+
+
+
+animation "unarmed_unarmed_fidget" "unarmed_unarmed_fidget.mae"
+
+
+animation "unarmed_unarmed_panic" "unarmed_unarmed_panic.mae"
+{
+	loopable
+	
+}
+
+animation "unarmed_unarmed_combatidle" "unarmed_unarmed_combatidle.mae"
+{
+	loopable
+}
+
+animation "unarmed_unarmed_combatfidget" "unarmed_unarmed_combatidle.mae"
+
+animation "unarmed_unarmed_special1" "unarmed_unarmed_special1.mae"
+
+animation "falldown" "falldown.mae"
+
+animation "prone_idle" "prone_idle.mae"
+{
+	loopable
+}
+
+animation "prone_fidget" "prone_idle.mae"
+
+animation "getup" "getup.mae"
+
+
+
+animation "death" "death.mae"
+{
+	event 1 "script" "game.sound_local_obj ( 1181, anim_obj )"
+}
+
+animation "dead_idle" "dead_idle.mae"
+{
+	loopable
+}
+
+animation "dead_fidget" "dead_idle.mae"
+
+animation "death_prone_idle" "dead_idle.mae"
+{
+	loopable
+}
+
+animation "death_prone_fidget" "dead_idle.mae"
+
+
+
+
+
+
+

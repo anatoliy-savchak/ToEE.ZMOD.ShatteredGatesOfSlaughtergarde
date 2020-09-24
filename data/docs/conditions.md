@@ -172,6 +172,13 @@ temple.dll::ConditionMonsterSmiting
 Adds additional AC to shield.
 temple.dll::stru_102F1650
 
+### Temp_Ability_Loss
+**Args**
+* Arg0: ability
+* Arg1: amount
+Condition_Temp_Ability_Loss
+
+
 todo:
 pCondition_Monster_Banshee_Charisma_Drain
 .data:102EC724 30 B7 2E 10      dd offset ConditionMonsterStirge

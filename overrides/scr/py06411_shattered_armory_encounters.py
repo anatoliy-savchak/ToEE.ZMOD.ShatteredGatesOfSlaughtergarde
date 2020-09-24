@@ -571,3 +571,31 @@ class CtrlTroglodyteCleric(ctrl_behaviour.CtrlBehaviour):
 
 		#self.spells.add_spell(toee.spell_inflict_light_wounds, toee.stat_level_cleric, caster_level_cleric, 2) # due to supposed pearl of power
 		return toee.RUN_DEFAULT
+
+class CtrlOrcharix(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14948
+
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlOrcharix, self).created(npc)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		# 1 - Bite plus ability drain
+		# 2, 3 - Claws plus trip
+		# 4, 5 - Wings
+		# 6 - Tail slap plus trip
+		attacks_with_trip = (1 << 1) + (1 << 2) + (1 << 5)
+		mode = 2 # 0 any, 1 any natural, 2 specific natural
+		npc.condition_add_with_args("Monster_Trip_Ex", mode, attacks_with_trip)
+
+		dc = 16
+		save = toee.D20_Save_Fortitude
+		ability = toee.stat_constitution
+		dice_packed = toee.dice_new("1d4").packed
+		attacks_with_drain = 1
+		npc.condition_add_with_args("Monster_Ability_Drain_Su", dc, save, ability, dice_packed, attacks_with_drain)
+
+		return

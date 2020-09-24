@@ -10,6 +10,7 @@ print("Registering " + GetConditionName())
 
 def Energy_Drain_Su_DamageBonus(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjDamage)
 	print("Energy_Drain_Su_DamageBonus adding negative level")
 	target = evt_obj.attack_packet.target

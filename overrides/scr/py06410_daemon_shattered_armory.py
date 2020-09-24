@@ -43,6 +43,14 @@ def san_use(attachee, triggerer):
 		attachee.object_flag_set(toee.OF_DONTDRAW)
 		if (toee.game.combat_turn):
 			csa().encounter_a6_premature(attachee, triggerer)
+	elif (attachee.name == 942): #{942}{A10 Fiery Demon Arch}
+		print("A10 Door")
+		attachee.object_flag_set(toee.OF_DONTDRAW)
+		promter = utils_npc.npc_find_nearest_npc_by_proto(attachee, 20, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
+		if (promter):
+			py06122_cormyr_prompter.promter_talk(promter, triggerer)
+		else:
+			print("promter not found!")
 	else:
 		attachee.object_flag_set(toee.OF_DONTDRAW)
 		if (attachee.name == 938): #{938}{A5 Fiery Demon Arch}
@@ -109,13 +117,15 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a4()
 			#self.place_encounter_a5()
 			#self.place_encounter_a6()
-			self.place_encounter_a7()
+			#self.place_encounter_a7()
+			self.place_encounter_a10()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -343,4 +353,20 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 	def trigger_monster_step_a7(self, step):
 		self.trigger_monster_step("a7", "troglodyte_cleric", step)
+		return
+
+	def place_encounter_a10(self):
+		self.create_promter_at(utils_obj.sec2loc(496, 509), self.get_dialogid_default(), 100, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Western Tower", const_toee.rotation_1000_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(495, 512), py06411_shattered_armory_encounters.CtrlOrcharix, const_toee.rotation_0900_oclock, "a10", "orcharix")
+		return
+
+	def display_encounter_a10(self):
+		print("display_encounter_a10")
+		self.reveal_monster("a10", "orcharix")
+		return
+
+	def activate_encounter_a10(self):
+		print("activate_encounter_a7")
+		self.activate_monster("a10", "orcharix")
 		return
