@@ -34,5 +34,7 @@ class CtrlShatteredCitySumberton(ctrl_daemon.CtrlDaemon):
 
 	# Sleep interface
 	def can_sleep(self):
+		if (1):
+			return toee.SLEEP_SAFE
 		return toee.SLEEP_PASS_TIME_ONLY
 

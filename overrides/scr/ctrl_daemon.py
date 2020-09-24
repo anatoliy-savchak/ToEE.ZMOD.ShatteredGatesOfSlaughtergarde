@@ -398,3 +398,14 @@ class CtrlDaemon(object):
 			if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER):
 				print(npc.description)
 		return
+
+	def trigger_monster_step(self, encounter_name, monster_code_name, step):
+		info = self.get_monsterinfo(encounter_name, monster_code_name)
+		if (info):
+			npc = toee.game.get_obj_by_id(info.id)
+			if (npc):
+				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
+				if (ctrl and ("trigger_step" in dir(ctrl))):
+					result = ctrl.trigger_step(npc, step)
+					return result
+		return

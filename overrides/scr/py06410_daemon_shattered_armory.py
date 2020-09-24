@@ -88,6 +88,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		print("new_map: {}".format(new_map))
 		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
 		startup_zmod.zmod_templeplus_config_apply()
+		startup_zmod.zmod_conditions_apply_pc()
 
 		if (self.encounters_placed and new_map == 0): return
 
@@ -295,23 +296,51 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_a7(self):
-		self.create_promter_at(utils_obj.sec2loc(420, 481), self.get_dialogid_default(), 70, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_0800_oclock)
+		self.create_promter_at(utils_obj.sec2loc(420, 481), self.get_dialogid_default(), 70, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_0800_oclock)
 		
-		self.create_npc_at(utils_obj.sec2loc(419, 484), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte1")
-		self.create_npc_at(utils_obj.sec2loc(418, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte2")
-		self.create_npc_at(utils_obj.sec2loc(415, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte3")
+		self.create_npc_at(utils_obj.sec2loc(419, 484), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte_barb1")
+		self.create_npc_at(utils_obj.sec2loc(418, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte_barb2")
+		self.create_npc_at(utils_obj.sec2loc(415, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte_barb3")
+
+		self.create_npc_at(utils_obj.sec2loc(413, 479), py06411_shattered_armory_encounters.CtrlTroglodyteThug, const_toee.rotation_0700_oclock, "a7", "troglodyte_thug1")
+		self.create_npc_at(utils_obj.sec2loc(419, 479), py06411_shattered_armory_encounters.CtrlTroglodyteThug, const_toee.rotation_0600_oclock, "a7", "troglodyte_thug2")
+
+		self.create_npc_at(utils_obj.sec2loc(414, 466), py06411_shattered_armory_encounters.CtrlTroglodyteSoldier, const_toee.rotation_0400_oclock, "a7", "troglodyte_sold1")
+		self.create_npc_at(utils_obj.sec2loc(417, 466), py06411_shattered_armory_encounters.CtrlTroglodyteSoldier, const_toee.rotation_0400_oclock, "a7", "troglodyte_sold2")
+
+		self.create_npc_at(utils_obj.sec2loc(415, 475), py06411_shattered_armory_encounters.CtrlTroglodyteCleric, const_toee.rotation_0600_oclock, "a7", "troglodyte_cleric")
 		return
 
 	def display_encounter_a7(self):
 		print("display_encounter_a7")
-		self.reveal_monster("a7", "troglodyte1")
-		self.reveal_monster("a7", "troglodyte2")
-		self.reveal_monster("a7", "troglodyte3")
+		self.reveal_monster("a7", "troglodyte_barb1")
+		self.reveal_monster("a7", "troglodyte_barb2")
+		self.reveal_monster("a7", "troglodyte_barb3")
+
+		self.reveal_monster("a7", "troglodyte_thug1")
+		self.reveal_monster("a7", "troglodyte_thug2")
+
+		self.reveal_monster("a7", "troglodyte_sold1")
+		self.reveal_monster("a7", "troglodyte_sold2")
+
+		self.reveal_monster("a7", "troglodyte_cleric")
 		return
 
 	def activate_encounter_a7(self):
 		print("activate_encounter_a7")
-		self.activate_monster("a7", "troglodyte1")
-		self.activate_monster("a7", "troglodyte2")
-		self.activate_monster("a7", "troglodyte3")
+		self.activate_monster("a7", "troglodyte_barb1")
+		self.activate_monster("a7", "troglodyte_barb2")
+		self.activate_monster("a7", "troglodyte_barb3")
+
+		self.activate_monster("a7", "troglodyte_thug1")
+		self.activate_monster("a7", "troglodyte_thug1")
+
+		self.activate_monster("a7", "troglodyte_sold1")
+		self.activate_monster("a7", "troglodyte_sold2")
+
+		self.activate_monster("a7", "troglodyte_cleric")
+		return
+
+	def trigger_monster_step_a7(self, step):
+		self.trigger_monster_step("a7", "troglodyte_cleric", step)
 		return

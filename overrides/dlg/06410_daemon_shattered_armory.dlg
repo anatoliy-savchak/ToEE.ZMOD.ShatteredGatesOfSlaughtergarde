@@ -30,4 +30,9 @@
 {69}{Close}{}{1}{}{0}{csa().activate_encounter_a6()}
 
 {70}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spot near the room's center indicates a water-filled hole.}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spotnear the room's center indicates a water-filled hole.}{}{}{}{csa().display_encounter_a7()}
+{71}{Continue}{}{1}{}{72}{}
+{72}{Three reptilian humanoids in leathers swim nearby. One has a spear, while the other two seem to have no weapons at all.}{Three reptilian humanoids in leathers swim nearby. One has a spear, while the other two seem to have no weapons at all.}{}{}{}{csa().trigger_monster_step_a7(2)}
+{73}{Continue}{}{1}{}{74}{}
+{74}{Two reptilian humanoids in plate armor guard far north wall of the room. Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls.}{Two reptilian humanoids in plate armor guard far north wall of the room. Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls.}{}{}{}{csa().trigger_monster_step_a7(3)}
+
 {79}{Close}{}{1}{}{0}{csa().activate_encounter_a7()}
