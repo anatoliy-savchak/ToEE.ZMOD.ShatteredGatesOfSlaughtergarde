@@ -413,6 +413,10 @@ class CtrlTroglodyteThug(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 		npc.condition_add_with_args("Stench_Of_Troglodyte", 0, 10, 17, 30)
+		npc.condition_add("Sneak_Attack_Ex")
+		npc.condition_add("Hide_Ex")
+		
+		utils_npc.npc_skill_ensure(npc, toee.skill_tumble, 8)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
 		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_NATURAL_ARMOR_1, npc)
@@ -445,6 +449,7 @@ class CtrlTroglodyteSoldier(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 		npc.condition_add_with_args("Stench_Of_Troglodyte", 0, 10, 17, 30)
+		npc.condition_add_with_args("Bonus_Attack", 1)
 
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_HALBERD_MASTERWORK, npc)
 		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGSPEAR, npc)
@@ -458,6 +463,28 @@ class CtrlTroglodyteSoldier(ctrl_behaviour.CtrlBehaviour):
 		npc.item_wield_best_all()
 		return
 
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+
+		stenched = self.get_var("stenched")
+		if (not stenched):
+			self.vars["stenched"] = 1
+			#npc.condition_add_with_args("Barbarian_Raged", 0, 0)
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_target_closest()
+			tac.add_approach_single()
+			tac.add_python_action(3020) # produce stench
+			tac.add_attack()
+			tac.add_total_defence()
+			tac.add_halt()
+			return tac
+
+		tac = self.tactic_coup_de_grace(npc)
+		if (tac):
+			return tac
+
+		return
+
 class CtrlTroglodyteCleric(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14947
@@ -469,6 +496,7 @@ class CtrlTroglodyteCleric(ctrl_behaviour.CtrlBehaviour):
 		#npc.condition_add_with_args("Caster_Level_Add", 5, 0)
 		npc.condition_add_with_args("Stench_Of_Troglodyte", 0, 10, 17, 30)
 		utils_npc.npc_skill_ensure(npc, toee.skill_concentration, 6)
+		npc.condition_add_with_args("Bonus_Attack", 1)
 		
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
@@ -481,8 +509,8 @@ class CtrlTroglodyteCleric(ctrl_behaviour.CtrlBehaviour):
 
 	def revealed(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
-		utils_npc.npc_spell_ensure(npc, toee.spell_magic_circle_against_good, toee.stat_level_cleric, 5, 1)
-		npc.cast_spell(toee.spell_magic_circle_against_good, npc)
+		#utils_npc.npc_spell_ensure(npc, toee.spell_magic_circle_against_good, toee.stat_level_cleric, 5, 1)
+		#npc.cast_spell(toee.spell_magic_circle_against_good, npc)
 		return
 
 	def trigger_step(self, npc, step):
@@ -509,12 +537,16 @@ class CtrlTroglodyteCleric(ctrl_behaviour.CtrlBehaviour):
 			hp_perc = utils_npc.npc_hp_current_percent(npc)
 			print("hp_perc: {}".format(hp_perc))
 
+			tac = self.tactic_coup_de_grace(npc)
+			if (tac):
+				return tac
+
 			stenched = self.get_var("stenched")
 			if (not stenched):
 				self.vars["stenched"] = 1
 				#npc.condition_add_with_args("Barbarian_Raged", 0, 0)
 				tac = utils_tactics.TacticsHelper(self.get_name())
-				tac.add_goto_loc(utils_obj.sec2loc(417, 482))
+				tac.add_target_self()
 				tac.add_python_action(3020) # produce stench
 				tac.add_attack()
 				tac.add_total_defence()

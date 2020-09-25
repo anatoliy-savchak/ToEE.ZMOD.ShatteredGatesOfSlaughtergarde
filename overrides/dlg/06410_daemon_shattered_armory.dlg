@@ -30,11 +30,12 @@
 {69}{Close}{}{1}{}{0}{csa().activate_encounter_a6()}
 
 {70}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spot near the room's center indicates a water-filled hole.}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spotnear the room's center indicates a water-filled hole.}{}{}{}{csa().display_encounter_a7()}
-{71}{Continue}{}{1}{}{72}{}
-{72}{Three reptilian humanoids in leathers swim nearby. One has a spear, while the other two seem to have no weapons at all.}{Three reptilian humanoids in leathers swim nearby. One has a spear, while the other two seem to have no weapons at all.}{}{}{}{csa().trigger_monster_step_a7(2)}
-{73}{Continue}{}{1}{}{74}{}
-{74}{Two reptilian humanoids in plate armor guard far north wall of the room. Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls.}{Two reptilian humanoids in plate armor guard far north wall of the room. Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls.}{}{}{}{csa().trigger_monster_step_a7(3)}
 {79}{Close}{}{1}{}{0}{csa().activate_encounter_a7()}
+
+{90}{Five reptilian humanoids guard this room. Two in plate armor and three reptilian humanoids in leathers. One has a spear, while the other two seem to have no weapons at all.}{Five reptilian humanoids guard this room. Two in plate armor and three reptilian humanoids in leathers. One has a spear, while the other two seem to have no weapons at all.}{}{}{}{csa().display_encounter_a9()}
+{91}{Continue}{}{1}{}{92}{}
+{92}{Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls. A few inches of water cover the whole floor, and dark spot under the water near the room's center indicates a hole there.}{Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls. A few inches of water cover the whole floor, and dark spot under the water near the room's center indicates a hole there.}{}{}{}{csa().trigger_monster_step_a9(2)}
+{99}{Close}{}{1}{}{0}{csa().trigger_monster_step_a9(3);csa().activate_encounter_a9()}
 
 {100}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{}{}{}{csa().display_encounter_a10()}
 {109}{Close}{}{1}{}{0}{csa().activate_encounter_a10()}

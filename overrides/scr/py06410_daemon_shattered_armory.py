@@ -1,6 +1,6 @@
 import toee, debug, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, const_proto_wands, utils_npc
-import py06411_shattered_armory_encounters, startup_zmod
+import py06411_shattered_armory_encounters, startup_zmod, utils_sneak
 
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -125,7 +125,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a5()
 			#self.place_encounter_a6()
 			#self.place_encounter_a7()
-			self.place_encounter_a10()
+			self.place_encounter_a9()
+			#self.place_encounter_a10()
 			#self.place_encounter_a11()
 			#self.place_encounter_a12()
 
@@ -133,8 +134,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
 
 		#self.check_entrance_patrol()
@@ -316,19 +317,14 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_a7(self):
-		self.create_promter_at(utils_obj.sec2loc(420, 481), self.get_dialogid_default(), 70, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_0800_oclock)
+		p1 = self.create_promter_at(utils_obj.sec2loc(420, 481), self.get_dialogid_default(), 70, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_0800_oclock)
+		p2 = self.create_promter_at(utils_obj.sec2loc(416, 479), self.get_dialogid_default(), 70, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southeastern Arsenal", const_toee.rotation_1100_oclock)
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 		
 		self.create_npc_at(utils_obj.sec2loc(419, 484), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte_barb1")
 		self.create_npc_at(utils_obj.sec2loc(418, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte_barb2")
 		self.create_npc_at(utils_obj.sec2loc(415, 489), py06411_shattered_armory_encounters.CtrlTroglodyteBarbarians, const_toee.rotation_0900_oclock, "a7", "troglodyte_barb3")
-
-		self.create_npc_at(utils_obj.sec2loc(413, 479), py06411_shattered_armory_encounters.CtrlTroglodyteThug, const_toee.rotation_0700_oclock, "a7", "troglodyte_thug1")
-		self.create_npc_at(utils_obj.sec2loc(419, 479), py06411_shattered_armory_encounters.CtrlTroglodyteThug, const_toee.rotation_0600_oclock, "a7", "troglodyte_thug2")
-
-		self.create_npc_at(utils_obj.sec2loc(414, 466), py06411_shattered_armory_encounters.CtrlTroglodyteSoldier, const_toee.rotation_0400_oclock, "a7", "troglodyte_sold1")
-		self.create_npc_at(utils_obj.sec2loc(417, 466), py06411_shattered_armory_encounters.CtrlTroglodyteSoldier, const_toee.rotation_0400_oclock, "a7", "troglodyte_sold2")
-
-		self.create_npc_at(utils_obj.sec2loc(415, 475), py06411_shattered_armory_encounters.CtrlTroglodyteCleric, const_toee.rotation_0600_oclock, "a7", "troglodyte_cleric")
 		return
 
 	def display_encounter_a7(self):
@@ -336,14 +332,6 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.reveal_monster("a7", "troglodyte_barb1")
 		self.reveal_monster("a7", "troglodyte_barb2")
 		self.reveal_monster("a7", "troglodyte_barb3")
-
-		self.reveal_monster("a7", "troglodyte_thug1")
-		self.reveal_monster("a7", "troglodyte_thug2")
-
-		self.reveal_monster("a7", "troglodyte_sold1")
-		self.reveal_monster("a7", "troglodyte_sold2")
-
-		self.reveal_monster("a7", "troglodyte_cleric")
 		return
 
 	def activate_encounter_a7(self):
@@ -351,18 +339,50 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.activate_monster("a7", "troglodyte_barb1")
 		self.activate_monster("a7", "troglodyte_barb2")
 		self.activate_monster("a7", "troglodyte_barb3")
-
-		self.activate_monster("a7", "troglodyte_thug1")
-		self.activate_monster("a7", "troglodyte_thug1")
-
-		self.activate_monster("a7", "troglodyte_sold1")
-		self.activate_monster("a7", "troglodyte_sold2")
-
-		self.activate_monster("a7", "troglodyte_cleric")
 		return
 
-	def trigger_monster_step_a7(self, step):
-		self.trigger_monster_step("a7", "troglodyte_cleric", step)
+	def place_encounter_a9(self):
+		p1 = self.create_promter_at(utils_obj.sec2loc(416, 475), self.get_dialogid_default(), 90, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northeastern Arsenal", const_toee.rotation_0800_oclock)
+		p2 = self.create_promter_at(utils_obj.sec2loc(419, 473), self.get_dialogid_default(), 90, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northeastern Arsenal", const_toee.rotation_0800_oclock)
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
+
+		self.create_npc_at(utils_obj.sec2loc(420, 475), py06411_shattered_armory_encounters.CtrlTroglodyteThug, const_toee.rotation_0300_oclock, "a9", "troglodyte_thug1")
+		self.create_npc_at(utils_obj.sec2loc(413, 475), py06411_shattered_armory_encounters.CtrlTroglodyteThug, const_toee.rotation_0600_oclock, "a9", "troglodyte_thug2")
+
+		self.create_npc_at(utils_obj.sec2loc(420, 468), py06411_shattered_armory_encounters.CtrlTroglodyteSoldier, const_toee.rotation_0400_oclock, "a9", "troglodyte_sold1")
+		self.create_npc_at(utils_obj.sec2loc(413, 468), py06411_shattered_armory_encounters.CtrlTroglodyteSoldier, const_toee.rotation_0400_oclock, "a9", "troglodyte_sold2")
+
+		self.create_npc_at(utils_obj.sec2loc(416, 471), py06411_shattered_armory_encounters.CtrlTroglodyteCleric, const_toee.rotation_0600_oclock, "a9", "troglodyte_cleric")
+		return
+
+	def display_encounter_a9(self):
+		print("display_encounter_a9")
+		self.reveal_monster("a9", "troglodyte_thug1")
+		self.reveal_monster("a9", "troglodyte_thug2")
+
+		self.reveal_monster("a9", "troglodyte_sold1")
+		self.reveal_monster("a9", "troglodyte_sold2")
+
+		self.reveal_monster("a9", "troglodyte_cleric")
+		return
+
+	def activate_encounter_a9(self):
+		print("activate_encounter_a9")
+		npc, info = self.activate_monster("a9", "troglodyte_thug1")
+		utils_sneak.npc_make_hide(npc, 1)
+
+		npc, info = self.activate_monster("a9", "troglodyte_thug2")
+		utils_sneak.npc_make_hide(npc, 1)
+
+		self.activate_monster("a9", "troglodyte_sold1")
+		self.activate_monster("a9", "troglodyte_sold2")
+
+		self.activate_monster("a9", "troglodyte_cleric")
+		return
+
+	def trigger_monster_step_a9(self, step):
+		self.trigger_monster_step("a9", "troglodyte_cleric", step)
 		return
 
 	def place_encounter_a10(self):

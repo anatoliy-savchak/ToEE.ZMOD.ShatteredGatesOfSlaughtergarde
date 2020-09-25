@@ -1,5 +1,5 @@
 import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls
-import utils_target_list
+import utils_target_list, utils_npc
 
 class CtrlBehaviour(object):
 	def __init__(self):
@@ -75,12 +75,13 @@ class CtrlBehaviour(object):
 		print("{}::{} (round: {})".format(type(self).__name__, "start_combat", toee.game.combat_turn))
 		print("------------------------")
 		#debugg.breakp("start_combat")
-		tac = self.create_tactics(attachee)
-		if (not tac):
-			tac = self.create_tactics_default(attachee)
+		if (utils_npc.npc_hp_current(attachee) >= 0):
+			tac = self.create_tactics(attachee)
+			if (not tac):
+				tac = self.create_tactics_default(attachee)
 
-		if (tac and tac.count > 0):
-			tac.set_strategy(attachee)
+			if (tac and tac.count > 0):
+				tac.set_strategy(attachee)
 		return toee.RUN_DEFAULT
 
 	def exit_combat(self, attachee, triggerer):
