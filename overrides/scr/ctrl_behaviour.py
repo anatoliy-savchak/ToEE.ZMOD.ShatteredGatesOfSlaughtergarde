@@ -1,4 +1,5 @@
 import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls
+import utils_target_list
 
 class CtrlBehaviour(object):
 	def __init__(self):
@@ -138,3 +139,20 @@ class CtrlBehaviour(object):
 		if (self.vars and name in self.vars):
 			return self.vars[name]
 		return None
+
+	def tactic_coup_de_grace(self, npc, foes = None):
+		assert isinstance(npc, toee.PyObjHandle)
+		if (foes is None):
+			foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		coup_de_grace_targets = foes.get_coup_de_grace_targets()
+		if (coup_de_grace_targets): 
+			#debug.breakp("coup_de_grace_targets")
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_target_closest()
+			tac.add_target_obj(coup_de_grace_targets[0].target.id)
+			tac.add_approach_single()
+			tac.add_d20_action(toee.D20A_COUP_DE_GRACE, 0)
+			tac.add_attack_threatened()
+			tac.add_total_defence()
+			return tac
+		return

@@ -73,6 +73,10 @@ class CtrlGnollBarbarian2(ctrl_behaviour.CtrlBehaviour):
 		tac = None
 		is_raged = npc.d20_query(toee.Q_Barbarian_Raged)
 		while (not tac):
+			tac = self.tactic_coup_de_grace(npc)
+			if (tac):
+				return tac
+
 			tac = utils_tactics.TacticsHelper(self.get_name())
 			if (not is_raged):
 				tac.add_rage()
@@ -194,6 +198,10 @@ class CtrlFlindSoldier(ctrl_behaviour.CtrlBehaviour):
 				tac.add_total_defence()
 				tac.add_halt()
 				break
+
+			tac = self.tactic_coup_de_grace(npc)
+			if (tac):
+				return tac
 
 			tac = utils_tactics.TacticsHelper(self.get_name())
 			tac.add_target_closest()
@@ -337,6 +345,10 @@ class CtrlRedspwawnFirebelcher(ctrl_behaviour.CtrlBehaviour):
 				tac.add_total_defence()
 				break
 			break
+
+		tac = self.tactic_coup_de_grace(npc)
+		if (tac):
+			return tac
 		return tac
 
 class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
@@ -385,6 +397,11 @@ class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
 			tac.add_total_defence()
 			tac.add_halt()
 			return tac
+
+		tac = self.tactic_coup_de_grace(npc)
+		if (tac):
+			return tac
+
 		return
 
 class CtrlTroglodyteThug(ctrl_behaviour.CtrlBehaviour):
@@ -728,4 +745,115 @@ class CtrlTieflingWizard(ctrl_behaviour.CtrlBehaviour):
 		self.spells.add_spell(const_toee.spell_scorching_ray, toee.stat_level_wizard, caster_level, 2)
 		self.spells.add_spell(toee.spell_magic_missile, toee.stat_level_wizard, caster_level)
 		self.spells.add_spell(toee.spell_color_spray, toee.stat_level_wizard, caster_level)
+		return toee.RUN_DEFAULT
+
+class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14951
+
+	def created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		super(CtrlGnollPriestess, self).created(npc)
+		#utils_obj.obj_scripts_clear(npc)
+		#npc.condition_add_with_args("Caster_Level_Add", 5, 0)
+		utils_npc.npc_skill_ensure(npc, toee.skill_concentration, 6)
+		
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_LARGE, npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_FLAIL_MASTERWORK, npc)
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BULL_S_STRENGTH, npc)
+		npc.item_wield_best_all()
+		return
+
+	def revealed(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		utils_npc.npc_spell_ensure(npc, toee.spell_magic_circle_against_good, toee.stat_level_cleric, 5, 1)
+		npc.cast_spell(toee.spell_magic_circle_against_good, npc)
+		return
+
+	def trigger_step(self, npc, step):
+		assert isinstance(npc, toee.PyObjHandle)
+		assert isinstance(step, int)
+
+		if (step == 2):
+			utils_npc.npc_spell_ensure(npc, toee.spell_shield_of_faith, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
+			npc.cast_spell(toee.spell_shield_of_faith, npc)
+		elif (step == 3):
+			utils_npc.npc_spell_ensure(npc, toee.spell_divine_favor, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
+			npc.cast_spell(toee.spell_divine_favor, npc)
+		elif (step == 4):
+			utils_npc.npc_spell_ensure(npc, toee.spell_endurance, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
+			npc.cast_spell(toee.spell_endurance, npc)
+		elif (step == 5):
+			scroll = npc.item_find_by_proto(const_proto_scrolls.PROTO_SCROLL_OF_BULL_S_STRENGTH)
+			if (not scroll):
+				print("scroll PROTO_SCROLL_OF_BULL_S_STRENGTH not found!")
+				return
+			flind = utils_npc.npc_find_nearest_npc_by_proto(npc, 15, CtrlFlindSoldier.get_proto_id())
+			if (not flind):
+				print("flind not found!")
+				flind = npc
+
+			npc.use_item(scroll, flind)
+		elif (step == 6):
+			utils_npc.npc_spell_ensure(npc, toee.spell_protection_from_good, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
+			npc.cast_spell(toee.spell_protection_from_good, npc)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+
+		while (not tac):
+			hp_perc = utils_npc.npc_hp_current_percent(npc)
+			print("hp_perc: {}".format(hp_perc))
+
+			tac = self.tactic_coup_de_grace(npc, foes)
+			if (tac):
+				break
+
+			if (self.spells.get_spell_count(toee.spell_hold_person)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_hold_person))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_spiritual_weapon)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_spiritual_weapon))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+			
+
+			if (self.spells.get_spell_count(toee.spell_inflict_light_wounds)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					#tac.add_five_foot_step() NO TOUCH!!
+					tac.add_target_obj(threats[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_inflict_light_wounds))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			break
+		return tac
+
+	def enter_combat(self, attachee, triggerer):
+		self.spells = utils_npc_spells.NPCSpells()
+		caster_level_cleric = attachee.highest_divine_caster_level
+		print("caster_level_cleric: {}".format(caster_level_cleric))
+		self.spells.add_spell(toee.spell_hold_person, toee.stat_level_cleric, caster_level_cleric)
+		self.spells.add_spell(toee.spell_spiritual_weapon, toee.stat_level_cleric, caster_level_cleric)
 		return toee.RUN_DEFAULT
