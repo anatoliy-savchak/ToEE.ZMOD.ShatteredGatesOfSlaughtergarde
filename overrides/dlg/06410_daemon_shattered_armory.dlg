@@ -67,3 +67,6 @@
 
 {150}{A thin, wiry giant that has green skin stands in front of four copper doors at the end of this wide hallway. She has a greatsword as tall as a man in her clawed hands, and she's wearing a shining breastplate.}{A thin, wiry giant that has green skin stands in front of four copper doors at the end of this wide hallway. She has a greatsword as tall as a man in her clawed hands, and she's wearing a shining breastplate.}{}{}{}{csa().display_encounter_a15()}
 {159}{Close}{}{1}{}{0}{csa().activate_encounter_a15()}
+
+{160}{This huge foundry is lit by the orange glow of the molten material that must be contained in two rail-lined pits centered along the northern and southern walls.}{This huge foundry is lit by the orange glow of the molten material that must be contained in two rail-lined pits centered along the northern and southern walls.}{}{}{}{csa().display_encounter_a16()}
+{169}{Close}{}{1}{}{0}{csa().activate_encounter_a16()}

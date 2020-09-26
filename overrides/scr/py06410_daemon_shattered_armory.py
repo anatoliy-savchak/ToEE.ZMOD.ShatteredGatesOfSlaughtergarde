@@ -66,6 +66,17 @@ def san_use(attachee, triggerer):
 				py06122_cormyr_prompter.promter_talk(promter, triggerer)
 			else:
 				print("promter not found!")
+		elif (attachee.name == 946): #{946}{A16 Door}
+			print("A16 Door")
+			sibling = utils_obj.get_sibling_door(attachee)
+			if (sibling and not (sibling.object_flags_get() & toee.OF_DONTDRAW)):
+				sibling.object_flag_set(toee.OF_DONTDRAW)
+				sibling.portal_toggle_open()
+			promter = utils_npc.npc_find_nearest_npc_by_proto(attachee, 10, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
+			if (promter):
+				py06122_cormyr_prompter.promter_talk(promter, triggerer)
+			else:
+				print("promter not found!")
 				
 	#debug.breakp("san_use")
 	return toee.RUN_DEFAULT
@@ -129,8 +140,9 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a10()
 			#self.place_encounter_a11()
 			#self.place_encounter_a12()
-			self.place_encounter_a14()
-			self.place_encounter_a15()
+			#self.place_encounter_a14()
+			#self.place_encounter_a15()
+			self.place_encounter_a16()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -139,7 +151,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 457) #a15
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 457) #a15
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 508, 445) #a15
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -512,4 +525,30 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def activate_encounter_a15(self):
 		print("activate_encounter_a15")
 		self.activate_monster("a15", "troll")
+		return
+
+	def place_encounter_a16(self):
+		self.create_promter_at(utils_obj.sec2loc(519, 445), self.get_dialogid_default(), 160, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Foundry", const_toee.rotation_0300_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(533, 438), py06411_shattered_armory_encounters.CtrlElementalFireHuge, const_toee.rotation_0400_oclock, "a16", "fire_elemental")
+
+		self.create_npc_at(utils_obj.sec2loc(520, 442), py06411_shattered_armory_encounters.CtrlDerroArtisan, const_toee.rotation_0200_oclock, "a16", "derro1")
+		self.create_npc_at(utils_obj.sec2loc(520, 448), py06411_shattered_armory_encounters.CtrlDerroArtisan, const_toee.rotation_0200_oclock, "a16", "derro2")
+		self.create_npc_at(utils_obj.sec2loc(525, 445), py06411_shattered_armory_encounters.CtrlDerroArtisan, const_toee.rotation_0200_oclock, "a16", "derro3")
+		return
+
+	def display_encounter_a16(self):
+		print("display_encounter_a16")
+		self.reveal_monster("a16", "fire_elemental")
+		self.reveal_monster("a16", "derro1")
+		self.reveal_monster("a16", "derro2")
+		self.reveal_monster("a16", "derro3")
+		return
+
+	def activate_encounter_a16(self):
+		print("activate_encounter_a16")
+		self.activate_monster("a16", "fire_elemental")
+		self.activate_monster("a16", "derro1")
+		self.activate_monster("a16", "derro2")
+		self.activate_monster("a16", "derro3")
 		return

@@ -984,3 +984,84 @@ class CtrlTrollMercenary(ctrl_behaviour.CtrlBehaviour):
 		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_HEALTH_1, npc)
 		npc.item_wield_best_all()
 		return
+
+class CtrlElementalFireHuge(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14510
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		while (not tac):
+			went_to_1 = self.get_var("went_to_1")
+			if (not went_to_1):
+				self.vars["went_to_1"] = 1
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_goto(521, 445)
+				tac.add_halt()
+				tac.add_attack_threatened()
+				break
+			break
+		return tac
+
+class CtrlDerroArtisan(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14953
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_CROSSBOW_LIGHT, npc)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_BOLT_QUIVER, npc)
+
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_GREY, npc)
+		npc.item_wield_best_all()
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+
+		sound_burst_skip = 0
+		while (not tac):
+			hp_perc = utils_npc.npc_hp_current_percent(npc)
+			print("hp_perc: {}".format(hp_perc))
+
+			sound_bursted = self.get_var("sound_bursted")
+			if (not sound_bursted and not sound_burst_skip): 
+				scroll = utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_SOUND_BURST, npc)
+				if (not scroll): continue
+
+				foes.measures.measure_affected_range = 25-5
+				foes.rescan()
+				targ = foes.find_affected_best(0, 1)
+				if (not targ or targ.measures.value_affected_range_count_foes <=1):
+					sound_burst_skip = 1
+					print("find_affected_best NONE!!")
+					continue
+
+				self.vars["sound_bursted"] = 1
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				print("sound burst target {}".format(targ.target))
+				tac.add_target_obj(targ.target.id)
+				tac.add_halt()
+				tac.add_use_item(scroll.id)
+				break
+			break
+		return tac
