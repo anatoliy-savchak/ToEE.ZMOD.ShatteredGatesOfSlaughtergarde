@@ -964,3 +964,23 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		elif (self.get_var("a14") == 3):
 			self.spells.add_spell(toee.spell_spiritual_weapon, toee.stat_level_cleric, caster_level_cleric)
 		return toee.RUN_DEFAULT
+
+class CtrlTrollMercenary(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14952
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		dice_packed = toee.dice_new("3d6").packed
+		weapon_proto_filter = const_proto_weapon.PROTO_WEAPON_GREATSWORD_PLUS_1
+		npc.condition_add_with_args("Weapon_Damage_Dice", dice_packed, weapon_proto_filter)
+
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATSWORD_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_PLUS_1_BLACK, npc)
+		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_HEALTH_1, npc)
+		npc.item_wield_best_all()
+		return

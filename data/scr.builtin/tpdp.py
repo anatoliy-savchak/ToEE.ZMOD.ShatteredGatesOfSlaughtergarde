@@ -548,6 +548,18 @@ class EventObjSavingThrow(EventObj):
 		self.flags = 0
 		return
 
+class EventObjGetAttackDice(EventObj):
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnGetAttackDice # dispTypeGetAttackDice
+		self.flags = toee.D20CAF_HIT
+		self.damage_type = toee.D20DT_BLUDGEONING
+		self.bonus_list = BonusList()
+		self.dice_packed = 0
+		self.weapon = toee.PyObjHandle()
+		self.wielder = toee.PyObjHandle()
+		return
+
+
 class EventObjImmunityTrigger(EventObj):
 	def __init__(self):
 		self.evt_obj_type = toee.ET_OnImmunityTrigger # DispIoTypeImmunityTrigger, ET_On63

@@ -64,3 +64,6 @@
 {147}{Continue}{}{1}{}{148}{}
 {148}{Suspended in midair above the center of framework is the tip of one of the obelisks you've seen throughout your travels. It's floating upside down.}{Suspended in midair above the center of framework is the tip of one of the obelisks you've seen throughout your travels. It's floating upside down.}{}{}{}{csa().trigger_monster_step_a14(5)}
 {149}{Close}{}{1}{}{0}{csa().trigger_monster_step_a14(6);csa().activate_encounter_a14()}
+
+{150}{A thin, wiry giant that has green skin stands in front of four copper doors at the end of this wide hallway. She has a greatsword as tall as a man in her clawed hands, and she's wearing a shining breastplate.}{A thin, wiry giant that has green skin stands in front of four copper doors at the end of this wide hallway. She has a greatsword as tall as a man in her clawed hands, and she's wearing a shining breastplate.}{}{}{}{csa().display_encounter_a15()}
+{159}{Close}{}{1}{}{0}{csa().activate_encounter_a15()}

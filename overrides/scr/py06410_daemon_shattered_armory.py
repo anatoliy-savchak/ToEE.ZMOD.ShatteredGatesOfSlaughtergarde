@@ -130,6 +130,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a11()
 			#self.place_encounter_a12()
 			self.place_encounter_a14()
+			self.place_encounter_a15()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -137,7 +138,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 457) #a15
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -494,4 +496,20 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.trigger_monster_step("a14", "priestess2", step)
 		self.trigger_monster_step("a14", "priestess3", step)
 		self.trigger_monster_step("a14", "priestess4", step)
+		return
+
+	def place_encounter_a15(self):
+		self.create_promter_at(utils_obj.sec2loc(500, 444), self.get_dialogid_default(), 150, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Foundry Foyer", const_toee.rotation_0300_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(509, 445), py06411_shattered_armory_encounters.CtrlTrollMercenary, const_toee.rotation_0400_oclock, "a15", "troll")
+		return
+
+	def display_encounter_a15(self):
+		print("display_encounter_a15")
+		self.reveal_monster("a15", "troll")
+		return
+
+	def activate_encounter_a15(self):
+		print("activate_encounter_a15")
+		self.activate_monster("a15", "troll")
 		return

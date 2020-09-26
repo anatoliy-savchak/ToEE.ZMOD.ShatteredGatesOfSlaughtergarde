@@ -1,0 +1,8 @@
+General
+Materialblendtype alphaadd
+Texture 0 "art/interface/intgame_select/Spell_None-Target.tga"
+Color 0 255 0 255
+NotLit
+ColorFillOnly
+Double
+Clamp
