@@ -309,6 +309,7 @@
     <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
     <Compile Include="overrides\scr\Spell432 - Shout.py" />
     <Compile Include="overrides\scr\Spell434 - Silence.py" />
+    <Compile Include="overrides\scr\Spell457 - Spiritual Weapon.py" />
     <Compile Include="overrides\scr\Spell469 - Summon Monster III.py" />
     <Compile Include="overrides\scr\Spell566 - Harm.py" />
     <Compile Include="overrides\scr\startup_zmod.py">

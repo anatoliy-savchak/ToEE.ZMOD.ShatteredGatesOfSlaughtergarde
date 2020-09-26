@@ -99,6 +99,9 @@ class CtrlBehaviour(object):
 	def dying(self, attachee, triggerer):
 		return toee.RUN_DEFAULT
 
+	def join(self, npc, follower):
+		return toee.RUN_DEFAULT
+
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		return None

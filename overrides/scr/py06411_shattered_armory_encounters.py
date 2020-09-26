@@ -82,7 +82,7 @@ class CtrlGnollBarbarian2(ctrl_behaviour.CtrlBehaviour):
 				tac.add_rage()
 			tac.add_clear_target()
 			tac.add_target_closest()
-			tac.add_target_damaged()
+			#tac.add_target_damaged()
 			tac.add_flank()
 			tac.add_attack()
 			tac.add_approach_single()
@@ -157,6 +157,7 @@ class CtrlFlindSoldier(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 		#npc.scripts[const_toee.sn_will_kos] = shattered_armory_encounters
+		npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_FLIND_PLUS1, npc)
@@ -789,6 +790,7 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		#utils_obj.obj_scripts_clear(npc)
 		#npc.condition_add_with_args("Caster_Level_Add", 5, 0)
 		utils_npc.npc_skill_ensure(npc, toee.skill_concentration, 6)
+		npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
 		
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
@@ -802,8 +804,8 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 
 	def revealed(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
-		utils_npc.npc_spell_ensure(npc, toee.spell_magic_circle_against_good, toee.stat_level_cleric, 5, 1)
-		npc.cast_spell(toee.spell_magic_circle_against_good, npc)
+		utils_npc.npc_spell_ensure(npc, toee.spell_shield_of_faith, toee.stat_level_cleric, 5, 1)
+		npc.cast_spell(toee.spell_shield_of_faith, npc)
 		return
 
 	def trigger_step(self, npc, step):
@@ -811,26 +813,25 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		assert isinstance(step, int)
 
 		if (step == 2):
-			utils_npc.npc_spell_ensure(npc, toee.spell_shield_of_faith, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
-			npc.cast_spell(toee.spell_shield_of_faith, npc)
-		elif (step == 3):
 			utils_npc.npc_spell_ensure(npc, toee.spell_divine_favor, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
 			npc.cast_spell(toee.spell_divine_favor, npc)
-		elif (step == 4):
+		elif (step == 3):
 			utils_npc.npc_spell_ensure(npc, toee.spell_endurance, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
 			npc.cast_spell(toee.spell_endurance, npc)
-		elif (step == 5):
+		elif (step == 4):
 			scroll = npc.item_find_by_proto(const_proto_scrolls.PROTO_SCROLL_OF_BULL_S_STRENGTH)
 			if (not scroll):
 				print("scroll PROTO_SCROLL_OF_BULL_S_STRENGTH not found!")
 				return
-			flind = utils_npc.npc_find_nearest_npc_by_proto(npc, 15, CtrlFlindSoldier.get_proto_id())
+			flind = npc
+			if (self.get_var("a12") or self.get_var("a14") == 1):
+				flind = utils_npc.npc_find_nearest_npc_by_proto(npc, 15, CtrlFlindSoldier.get_proto_id())
 			if (not flind):
 				print("flind not found!")
 				flind = npc
 
 			npc.use_item(scroll, flind)
-		elif (step == 6):
+		elif (step == 5):
 			utils_npc.npc_spell_ensure(npc, toee.spell_protection_from_good, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
 			npc.cast_spell(toee.spell_protection_from_good, npc)
 		return
@@ -843,6 +844,10 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		threats = foes.get_threats()
 		print("threats: {}".format(threats))
 
+		invisibility_potion = None
+		if (not self.get_var("invisibility_potion used")):
+			invisibility_potion = npc.item_find_by_proto(const_proto_potions.PROTO_POTION_OF_INVISIBILITY)
+		cure_wand = npc.item_find_by_proto(const_proto_wands.PROTO_WAND_OF_CURE_MODERATE_WOUNDS)
 		while (not tac):
 			hp_perc = utils_npc.npc_hp_current_percent(npc)
 			print("hp_perc: {}".format(hp_perc))
@@ -851,22 +856,73 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 			if (tac):
 				break
 
-			if (self.spells.get_spell_count(toee.spell_hold_person)): 
+			if (invisibility_potion):
+				self.vars["invisibility_potion used"] = 1
+				#debug.breakp("invisibility_potion")
+				#is_dentified = invisibility_potion.item_flags_get() & toee.OIF_IDENTIFIED
+				#print("is_dentified: {} of {}".format(is_dentified, invisibility_potion))
+				#invisibility_potion.item_flag_set(toee.OIF_IDENTIFIED)
+
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_target_self()
+				tac.add_use_item(invisibility_potion.id)
+				tac.add_halt()
+				break
+
+			if (0 and self.spells.get_spell_count(toee.spell_invisibility)): 
+				debug.breakp("spell_invisibility")
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_target_self()
+				tac.add_halt()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_invisibility))
+				tac.add_total_defence()
+				break
+
+			if (cure_wand):
+				#foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_clear_target()
+				tac.add_target_self()
+				tac.add_target_friend_hurt()
+				tac.add_approach_single()
+				tac.add_use_item(cure_wand.id)
+				tac.add_halt()
+				break
+
+			if (0 and self.spells.get_spell_count(toee.spell_protection_from_good)): 
 				tac = utils_tactics.TacticsHelper(self.get_name())
 				tac.add_target_closest()
-				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_hold_person))
 				tac.add_halt()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_protection_from_good))
 				tac.add_total_defence()
 				break
 
 			if (self.spells.get_spell_count(toee.spell_spiritual_weapon)): 
 				tac = utils_tactics.TacticsHelper(self.get_name())
 				tac.add_target_closest()
-				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_spiritual_weapon))
 				tac.add_halt()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_spiritual_weapon))
 				tac.add_total_defence()
 				break
 			
+			if (self.spells.get_spell_count(toee.spell_doom)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_halt()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_doom))
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_hold_person)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_target_high_ac()
+				tac.add_halt()
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_hold_person))
+				tac.add_total_defence()
+				break
 
 			if (self.spells.get_spell_count(toee.spell_inflict_light_wounds)): 
 				tac = utils_tactics.TacticsHelper(self.get_name())
@@ -886,6 +942,25 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		self.spells = utils_npc_spells.NPCSpells()
 		caster_level_cleric = attachee.highest_divine_caster_level
 		print("caster_level_cleric: {}".format(caster_level_cleric))
-		self.spells.add_spell(toee.spell_hold_person, toee.stat_level_cleric, caster_level_cleric)
-		self.spells.add_spell(toee.spell_spiritual_weapon, toee.stat_level_cleric, caster_level_cleric)
+
+		if (self.get_var("a12")):
+			self.spells.add_spell(toee.spell_hold_person, toee.stat_level_cleric, caster_level_cleric)
+			self.spells.add_spell(toee.spell_spiritual_weapon, toee.stat_level_cleric, caster_level_cleric)
+			self.spells.add_spell(toee.spell_doom, toee.stat_level_cleric, caster_level_cleric)
+			self.spells.add_spell(toee.spell_protection_from_good, toee.stat_level_cleric, caster_level_cleric)
+
+		if (self.get_var("a14")):
+			self.spells.add_spell(toee.spell_inflict_light_wounds, toee.stat_level_cleric, caster_level_cleric)
+			self.spells.add_spell(toee.spell_inflict_moderate_wounds, toee.stat_level_cleric, caster_level_cleric)
+			self.spells.add_spell(toee.spell_doom, toee.stat_level_cleric, caster_level_cleric)
+			self.spells.add_spell(toee.spell_protection_from_good, toee.stat_level_cleric, caster_level_cleric)
+
+		if (self.get_var("a14") == 1):
+			utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_CURE_MODERATE_WOUNDS, attachee)
+			utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_INVISIBILITY, attachee)
+			attachee.item_worn_unwield(toee.item_wear_weapon_primary, 0)
+		elif (self.get_var("a14") == 2):
+			self.spells.add_spell(toee.spell_hold_person, toee.stat_level_cleric, caster_level_cleric)
+		elif (self.get_var("a14") == 3):
+			self.spells.add_spell(toee.spell_spiritual_weapon, toee.stat_level_cleric, caster_level_cleric)
 		return toee.RUN_DEFAULT

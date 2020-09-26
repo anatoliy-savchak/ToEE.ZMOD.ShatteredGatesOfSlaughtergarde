@@ -125,18 +125,19 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			#self.place_encounter_a5()
 			#self.place_encounter_a6()
 			#self.place_encounter_a7()
-			self.place_encounter_a9()
+			#self.place_encounter_a9()
 			#self.place_encounter_a10()
 			#self.place_encounter_a11()
 			#self.place_encounter_a12()
+			self.place_encounter_a14()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
-		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -431,47 +432,66 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def place_encounter_a12(self):
 		self.create_promter_at(utils_obj.sec2loc(538, 481), self.get_dialogid_default(), 120, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Southwestern Arsenal", const_toee.rotation_1000_oclock)
 		
-		self.create_npc_at(utils_obj.sec2loc(541, 483), py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0200_oclock, "a12", "flind_soldier1")
-		self.create_npc_at(utils_obj.sec2loc(541, 481), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0200_oclock, "a12", "priestess1")
-
-		self.create_npc_at(utils_obj.sec2loc(542, 471), py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0500_oclock, "a12", "flind_soldier2")
-		self.create_npc_at(utils_obj.sec2loc(545, 474), py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0300_oclock, "a12", "barb1")
-		self.create_npc_at(utils_obj.sec2loc(539, 474), py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0600_oclock, "a12", "barb2")
-
-		self.create_npc_at(utils_obj.sec2loc(544, 467), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0500_oclock, "a12", "priestess2")
-		self.create_npc_at(utils_obj.sec2loc(542, 467), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0500_oclock, "a12", "priestess3")
-		self.create_npc_at(utils_obj.sec2loc(540, 467), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0500_oclock, "a12", "priestess4")
+		self.create_npc_at(utils_obj.sec2loc(537, 484), py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0200_oclock, "a12", "flind_soldier1")
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(541, 487), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0200_oclock, "a12", "priestess1")
+		ctrl.vars["a12"] = 1
 		return
 
 	def display_encounter_a12(self):
 		print("display_encounter_a12")
 		self.reveal_monster("a12", "flind_soldier1")
 		self.reveal_monster("a12", "priestess1")
-
-		self.reveal_monster("a12", "barb1")
-		self.reveal_monster("a12", "barb2")
-
-		self.reveal_monster("a12", "priestess2")
-		self.reveal_monster("a12", "priestess3")
-		self.reveal_monster("a12", "priestess4")
 		return
 
 	def activate_encounter_a12(self):
 		print("activate_encounter_a12")
 		self.activate_monster("a12", "flind_soldier1")
 		self.activate_monster("a12", "priestess1")
-
-		self.activate_monster("a12", "barb1")
-		self.activate_monster("a12", "barb2")
-
-		self.activate_monster("a12", "priestess2")
-		self.activate_monster("a12", "priestess3")
-		self.activate_monster("a12", "priestess4")
 		return
 
 	def trigger_monster_step_a12(self, step):
 		self.trigger_monster_step("a12", "priestess1", step)
-		self.trigger_monster_step("a12", "priestess2", step)
-		self.trigger_monster_step("a12", "priestess3", step)
-		self.trigger_monster_step("a12", "priestess4", step)
+		return
+
+	def place_encounter_a14(self):
+		self.create_promter_at(utils_obj.sec2loc(542, 475), self.get_dialogid_default(), 140, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Northwestern Arsenal", const_toee.rotation_0500_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(542, 472), py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0500_oclock, "a14", "flind_soldier2")
+		self.create_npc_at(utils_obj.sec2loc(547, 472), py06411_shattered_armory_encounters.CtrlGnollBarbarian2, const_toee.rotation_0300_oclock, "a14", "barb1")
+		self.create_npc_at(utils_obj.sec2loc(538, 472), py06411_shattered_armory_encounters.CtrlGnollBarbarian2, const_toee.rotation_0600_oclock, "a14", "barb2")
+
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(544, 467), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0500_oclock, "a14", "priestess2")
+		ctrl.vars["a14"] = 1
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(542, 467), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0500_oclock, "a14", "priestess3")
+		ctrl.vars["a14"] = 2
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(540, 467), py06411_shattered_armory_encounters.CtrlGnollPriestess, const_toee.rotation_0500_oclock, "a14", "priestess4")
+		ctrl.vars["a14"] = 3
+		return
+
+	def display_encounter_a14(self):
+		print("display_encounter_a14")
+		self.reveal_monster("a14", "flind_soldier2")
+		self.reveal_monster("a14", "barb1")
+		self.reveal_monster("a14", "barb2")
+
+		self.reveal_monster("a14", "priestess2")
+		self.reveal_monster("a14", "priestess3")
+		self.reveal_monster("a14", "priestess4")
+		return
+
+	def activate_encounter_a14(self):
+		print("activate_encounter_a14")
+		self.activate_monster("a14", "flind_soldier2")
+		self.activate_monster("a14", "barb1")
+		self.activate_monster("a14", "barb2")
+
+		self.activate_monster("a14", "priestess2")
+		self.activate_monster("a14", "priestess3")
+		self.activate_monster("a14", "priestess4")
+		return
+
+	def trigger_monster_step_a14(self, step):
+		self.trigger_monster_step("a14", "priestess2", step)
+		self.trigger_monster_step("a14", "priestess3", step)
+		self.trigger_monster_step("a14", "priestess4", step)
 		return

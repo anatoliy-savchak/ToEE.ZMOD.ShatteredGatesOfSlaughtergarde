@@ -49,11 +49,18 @@
 
 {120}{A female gnoll bearing a flail and shield stands near a red-furred, muscular gnoll in this room, which is clearly used to store armor.}{A female gnoll bearing a flail and shield stands near a red-furred, muscular gnoll in this room, which is clearly used to store armor.}{}{}{}{csa().display_encounter_a12()}
 {121}{Continue}{}{1}{}{122}{}
-{122}{Wooden racks on the walls hold greaves, epaulets, chainmail, leather leggings, and other armor pieces. A stairway leads down from the northern part of this chamber.}{Wooden racks on the walls hold greaves, epaulets, chainmail, leather leggings, and other armor pieces. A stairway leads down from the northern part of this chamber.}{}{}{}{csa().trigger_monster_step_a12(2)}
+{122}{Wooden racks on the walls hold greaves, epaulets, chainmail, leather leggings, and other armor pieces.}{Wooden racks on the walls hold greaves, epaulets, chainmail, leather leggings, and other armor pieces.}{}{}{}{csa().trigger_monster_step_a12(2)}
 {123}{Continue}{}{1}{}{124}{}
-{124}{Two gnolls that carry greataxes share this chamber with a big red-furred gnoll, and they all bare their teeth at you.The many stone tables here have hammers, pliers, and piles of unconnected chain links on them, as well as glowing runes on their edges.}{Two gnolls that carry greataxes share this chamber with a big red-furred gnoll, and they all bare their teeth at you.The many stone tables here have hammers, pliers, and piles of unconnected chain links on them, as well as glowing runes on their edges.}{}{}{}{csa().trigger_monster_step_a12(3)}
-{125}{Continue}{}{1}{}{126}{}
-{126}{Three female gnolls in this room snarl at you as you enter, their flails and shields at the ready.}{Three female gnolls in this room snarl at you as you enter, their flails and shields at the ready.}{}{}{}{csa().trigger_monster_step_a12(4)}
-{127}{Continue}{}{1}{}{128}{}
-{128}{Behind them, next to the northern wall, is a carved wooden platform that has long wooden handles.}{Behind them, next to the northern wall, is a carved wooden platform that has long wooden handles.}{}{}{}{csa().trigger_monster_step_a12(5)}
-{129}{Close}{}{1}{}{0}{csa().trigger_monster_step_a12(6);csa().activate_encounter_a12()}
+{124}{A stairway leads down from the northern part of this chamber.}{A stairway leads down from the northern part of this chamber.}{}{}{}{csa().trigger_monster_step_a12(3)}
+{129}{Close}{}{1}{}{0}{csa().trigger_monster_step_a12(4);csa().activate_encounter_a12()}
+
+{140}{Three female gnolls in this room snarl at you as you enter, their flails and shields at the ready.}{Three female gnolls in this room snarl at you as you enter, their flails and shields at the ready.}{}{}{}{csa().display_encounter_a14()}
+{141}{Continue}{}{1}{}{142}{}
+{142}{Behind them, next to the northern wall, is a carved wooden platform that has long wooden handles.}{Behind them, next to the northern wall, is a carved wooden platform that has long wooden handles.}{}{}{}{csa().trigger_monster_step_a14(2)}
+{143}{Continue}{}{1}{}{144}{}
+{144}{Two gnolls that carry greataxes share this chamber with a big red-furred gnoll, and they all bare their teeth at you.}{Two gnolls that carry greataxes share this chamber with a big red-furred gnoll, and they all bare their teeth at you.}{}{}{}{csa().trigger_monster_step_a14(3)}
+{145}{Continue}{}{1}{}{146}{}
+{146}{An iron framework has been built atop the platform, and from it many distended, shrunken heads hang. They chant in unison, speaking in a language you don't understand.}{An iron framework has been built atop the platform, and from it many distended, shrunken heads hang. They chant in unison, speaking in a language you don't understand.}{}{}{}{csa().trigger_monster_step_a14(4)}
+{147}{Continue}{}{1}{}{148}{}
+{148}{Suspended in midair above the center of framework is the tip of one of the obelisks you've seen throughout your travels. It's floating upside down.}{Suspended in midair above the center of framework is the tip of one of the obelisks you've seen throughout your travels. It's floating upside down.}{}{}{}{csa().trigger_monster_step_a14(5)}
+{149}{Close}{}{1}{}{0}{csa().trigger_monster_step_a14(6);csa().activate_encounter_a14()}
