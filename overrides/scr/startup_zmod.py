@@ -9,6 +9,8 @@ def zmod_conditions_apply_pc():
 	return
 
 def zmod_templeplus_config_apply():
+	# import startup_zmod
+	# startup_zmod.zmod_templeplus_config_apply()
 	print("zmod_templeplus_config_apply")
 	if ("config_set_string" in dir(tpdp)):
 		tpdp.config_set_string("hpfornpchd", "average")
@@ -21,4 +23,13 @@ def zmod_templeplus_config_apply():
 	
 	firstpc = toee.game.party[0]
 	firstpc.scripts[const_toee.sn_new_map] = 6101
+	return
+
+def zmod_change_pcs_radius():
+	# import startup_zmod
+	# startup_zmod.zmod_change_pcs_radius()
+	for pc in toee.game.party:
+		print("pc proto: {}".format(pc.proto))
+		protoobj = toee.game.getproto(pc.proto)
+		protoobj.radius = 30
 	return

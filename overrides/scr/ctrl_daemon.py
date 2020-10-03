@@ -125,6 +125,15 @@ class CtrlDaemon(object):
 			return info
 		return None
 
+	def get_monsterinfo_and_npc_and_ctrl(self, encounter_name, monster_code_name):
+		npc = None
+		ctrl = None
+		info = self.get_monsterinfo(encounter_name, monster_code_name)
+		if (info):
+			npc = toee.game.get_obj_by_id(info.id)
+			ctrl = ctrl_behaviour.get_ctrl(info.id)
+		return info, npc, ctrl
+
 	def print_portals(self):
 		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL ):
 			assert isinstance(obj, toee.PyObjHandle)

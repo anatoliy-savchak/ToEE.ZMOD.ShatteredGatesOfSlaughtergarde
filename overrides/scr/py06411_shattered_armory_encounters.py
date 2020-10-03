@@ -226,11 +226,34 @@ class CtrlHillGiant(ctrl_behaviour.CtrlBehaviour):
 		#npc.scripts[const_toee.sn_will_kos] = shattered_armory_encounters
 
 		# create inventory
-		utils_item.item_create_in_inventory(4090, npc) # Hill Giant Club
+		utils_item.item_create_in_inventory(4099, npc) # Hill Giant Club
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_HIDE_MASTERWORK, npc)
 		npc.item_wield_best_all()
 
 		npc.feat_add(toee.feat_sunder, 1)
+		return
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+		while (toee.game.combat_turn == 1 and not tac):
+			tac = utils_tactics.TacticsHelper(self.get_name())
+			tac.add_clear_target()
+			tac.add_target_closest()
+			tac.add_charge()
+			tac.add_halt()
+			tac.add_total_defence()
+			break
+		return tac
+
+	def debug_replace1(self):
+		npc = self.npc_get()
+		if (not npc): return
+		item = npc.item_find_by_proto(4090)
+		if (item):
+			item.destroy()
+		utils_item.item_create_in_inventory(4099, npc) # Hill Giant Club
+		npc.item_wield_best_all()
 		return
 
 class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
@@ -241,6 +264,7 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 		assert isinstance(npc, toee.PyObjHandle)
 		super(CtrlHalfFiendOgre, self).created(npc)
 		#npc.condition_add_with_args("Initiative_Bonus", 30, 0)
+		#npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
 		return
 
 	def after_created(self, npc):
@@ -273,7 +297,7 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 			return tac
 
 		hp = npc.stat_level_get(toee.stat_hp_current)
-		if (hp <= 15):
+		if (hp <= 50):
 			#{939}{A6 Door}
 			print("looking for a door")
 			door = utils_obj.find_nearest_obj_by_nameid(npc, 30, 939, toee.OLC_PORTAL)
@@ -302,9 +326,17 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 				tac.add_target_closest()
 				tac.add_attack()
 
-			npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
-
 		return None
+
+	def trigger_step(self, npc, step):
+		assert isinstance(npc, toee.PyObjHandle)
+		assert isinstance(step, int)
+
+		npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
+		fog_potion = npc.item_find_by_proto(8601)
+		if (fog_potion):
+			npc.use_item(fog_potion)
+		return
 
 class CtrlRedspwawnFirebelcher(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
@@ -322,6 +354,10 @@ class CtrlRedspwawnFirebelcher(ctrl_behaviour.CtrlBehaviour):
 		do_ball = 1
 
 		while (not tac):
+			tac = self.tactic_coup_de_grace(npc)
+			if (tac):
+				return tac
+
 			if (do_ball): 
 				m = utils_target_list.AITargetMeasure.by_all()
 				m.measure_affected_range = 5
@@ -346,10 +382,6 @@ class CtrlRedspwawnFirebelcher(ctrl_behaviour.CtrlBehaviour):
 				tac.add_total_defence()
 				break
 			break
-
-		tac = self.tactic_coup_de_grace(npc)
-		if (tac):
-			return tac
 		return tac
 
 class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
@@ -457,7 +489,17 @@ class CtrlTroglodyteSoldier(ctrl_behaviour.CtrlBehaviour):
 		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, npc)
 		
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_BLUE, npc)
+		case = toee.game.random_range(1, 5)
+		if (case == 1):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_BLUE, npc)
+		elif (case == 2):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_ORANGE, npc)
+		elif (case == 3):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_WHITE, npc)
+		elif (case == 4):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_GREEN, npc)
+		elif (case == 5):
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_BLACK, npc)
 		
 		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		
@@ -649,6 +691,10 @@ class CtrlOrcharix(ctrl_behaviour.CtrlBehaviour):
 		npc.condition_add_with_args("Monster_Ability_Drain_Su", dc, save, ability, dice_packed, attacks_with_drain)
 
 		return
+
+	def dying(self, attachee, triggerer):
+		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_HEALTH_1, npc)
+		return toee.RUN_DEFAULT
 
 class CtrlTieflingBlademaster(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
@@ -1063,5 +1109,53 @@ class CtrlDerroArtisan(ctrl_behaviour.CtrlBehaviour):
 				tac.add_halt()
 				tac.add_use_item(scroll.id)
 				break
+			break
+		return tac
+
+class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14954
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_PADDED_RED, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_PADDED_RED, npc)
+		npc.item_wield_best_all()
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		self.spells = utils_npc_spells.NPCSpells()
+		self.spells.add_spell(toee.spell_charm_monster, toee.domain_special, 4, 2)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all())
+		foes.measures.measure_stat_save_willpower = 1
+		foes.rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+
+		while (not tac):
+			if (self.spells.get_spell_count(toee.spell_charm_monster)): 
+				targets = foes.get_charm_candidates()
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_five_foot_step()
+				if (targets):
+					tac.add_target_obj(targets[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_charm_monster))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
 			break
 		return tac

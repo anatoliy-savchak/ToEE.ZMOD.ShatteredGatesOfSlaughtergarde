@@ -1,11 +1,14 @@
 import toee, debug, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, const_proto_wands, utils_npc
-import py06411_shattered_armory_encounters, startup_zmod, utils_sneak
+import py06411_shattered_armory_encounters, startup_zmod, utils_sneak, py00677FarSouthDoor
+
+# import py06410_daemon_shattered_armory
+# py06410_daemon_shattered_armory.csa()
 
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print(attachee.id)
-	#debugg.breakp("san_new_map")
+	#debug.breakp("san_new_map")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredArmory.ensure(attachee)
 	ctrl.place_encounters(1)
@@ -15,6 +18,7 @@ def san_first_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#print(attachee.id)
 	#debug.breakp("san_first_heartbeat")
+	startup_zmod.zmod_templeplus_config_apply()
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
 	ctrl = CtrlShatteredArmory.ensure(attachee)
 	ctrl.place_encounters(0)
@@ -24,6 +28,7 @@ def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#debug.breakp("san_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
+	startup_zmod.zmod_templeplus_config_apply()
 	ctrl = csa()
 	if (not ctrl):
 		ctrl = CtrlShatteredArmory.ensure(attachee)
@@ -32,12 +37,30 @@ def san_heartbeat(attachee, triggerer):
 		ctrl.heartbeat()
 	return toee.RUN_DEFAULT
 
+def san_dying(attachee, triggerer):
+	assert isinstance(attachee, toee.PyObjHandle)
+	c = csa()
+	if (c):
+		c.critter_dying(attachee, triggerer)
+	storage = utils_storage.obj_storage_by_id(attachee.id)
+	if (storage):
+		cb = storage.get_data(ctrl_behaviour.CtrlBehaviour.get_name())
+		if (not cb):
+			cb = storage.get_data(py06211_shuttered_monster.CtrlMonster.get_name())
+		if ("dying" in dir(cb)):
+			cb.dying(attachee, triggerer)
+	return toee.RUN_DEFAULT
+
+
 def san_use(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	print("san_use id: {}, nameid: {}".format(attachee.id, attachee.name))
 
-	if (attachee.name == 1643): #{1643}{Shattered Armory Exit}
-		toee.game.fade_and_teleport( 0, 0, 0, 5107, 491, 480 ) #shopmap
+	if (attachee.name == shattered_consts.NAMEID_SHATTERED_ARMORY_EXIT): #{1643}{Shattered Armory Exit}
+		csa().last_leave_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
+		total_seconds = py00677FarSouthDoor.distance_sumbertone_to_shattered_armory_sec()
+		print("fade_and_teleport total_seconds: {}".format(total_seconds))
+		toee.game.fade_and_teleport(total_seconds, 0, 0, 5122, 538, 510 ) #sumberton
 	elif (attachee.name == 939): #{939}{A6 Door}
 		print("A6 Door")
 		attachee.object_flag_set(toee.OF_DONTDRAW)
@@ -129,20 +152,21 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
 		if (not self.encounters_placed):
-			#self.place_encounter_a1()
-			#self.place_encounter_a2()
-			#self.place_encounter_a3()
-			#self.place_encounter_a4()
-			#self.place_encounter_a5()
-			#self.place_encounter_a6()
-			#self.place_encounter_a7()
-			#self.place_encounter_a9()
-			#self.place_encounter_a10()
-			#self.place_encounter_a11()
-			#self.place_encounter_a12()
-			#self.place_encounter_a14()
-			#self.place_encounter_a15()
+			self.place_encounter_a1()
+			self.place_encounter_a2()
+			self.place_encounter_a3()
+			self.place_encounter_a4()
+			self.place_encounter_a5()
+			self.place_encounter_a6()
+			self.place_encounter_a7()
+			self.place_encounter_a9()
+			self.place_encounter_a10()
+			self.place_encounter_a11()
+			self.place_encounter_a12()
+			self.place_encounter_a14()
+			self.place_encounter_a15()
 			self.place_encounter_a16()
+			self.place_encounter_a18()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -152,12 +176,24 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 457) #a15
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 508, 445) #a15
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 508, 445) #a15
+
+		# test debug
+		toee.game.fade_and_teleport(0, 0, 0, 5124, 460, 456) #a19
+		print("test debug")
+		if (self.encounters_placed == 5):
+			print("self.encounters_placed == 5")
+			self.place_encounter_a18()
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
 		return
 
+	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
+		super(CtrlShatteredArmory, self).monster_setup(npc, encounter_name, monster_code_name, monster_name, no_draw, no_kos, faction)
+		npc.scripts[const_toee.sn_dying] = shattered_consts.MAP_ID_SHATERRED_ARMORY
+		return
+	
 	def heartbeat(self):
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
 		return
@@ -246,6 +282,12 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.activate_monster("a3", "troll")
 		return
 
+	def troll_kill(self):
+		info, npc = self.get_monsterinfo_and_npc("a3", "troll")
+		if (npc and utils_npc.npc_is_alive(npc, 1)):
+			npc.critter_kill_by_effect(toee.game.leader)
+		return
+
 	def place_encounter_a4(self):
 		self.create_promter_at(utils_obj.sec2loc(479, 490), self.get_dialogid_default(), 40, 15, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Elevator Room", const_toee.rotation_0600_oclock)
 		
@@ -276,6 +318,10 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def activate_encounter_a5(self):
 		print("activate_encounter_a5")
 		self.activate_monster("a5", "ogre")
+		return
+
+	def trigger_monster_step_a5(self, step):
+		self.trigger_monster_step("a5", "ogre", step)
 		return
 
 	def place_encounter_a6(self):
@@ -551,4 +597,20 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.activate_monster("a16", "derro1")
 		self.activate_monster("a16", "derro2")
 		self.activate_monster("a16", "derro3")
+		return
+
+	def place_encounter_a18(self):
+		self.create_promter_at(utils_obj.sec2loc(454, 445), self.get_dialogid_default(), 180, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Gate Antechamber", const_toee.rotation_0700_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(448, 445), py06411_shattered_armory_encounters.CtrlSuccubus, const_toee.rotation_0800_oclock, "a18", "succubus")
+		return
+
+	def display_encounter_a18(self):
+		print("display_encounter_a18")
+		self.reveal_monster("a18", "succubus")
+		return
+
+	def activate_encounter_a18(self):
+		print("activate_encounter_a18")
+		self.activate_monster("a18", "succubus")
 		return

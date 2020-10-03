@@ -170,6 +170,19 @@ class AITargetList(object):
 		if (result and len(result) > 1): result = sorted(result, _AITargetList_cmp_attack)
 		return result
 
+	def get_charm_candidates(self):
+		result = None
+		for target in self.list:
+			assert isinstance(target, AITarget)
+			if (target.measures.value_is_held or target.measures.value_is_sleeping): continue
+			if (target.target.d20_query(toee.Q_Critter_Is_Afraid)): continue
+			if (target.target.d20_query(toee.Q_Critter_Is_Stunned)): continue
+			if (target.target.d20_query(toee.Q_Critter_Is_Charmed)): continue
+			if (not result): result = list()
+			result.append(target)
+		if (result and len(result) > 1): result = sorted(result, _AITargetList_cmp_will_low)
+		return result
+
 class AITargetMeasure(object):
 	def __init__(self):
 		#self.measure_is_destroyed = 1
@@ -562,6 +575,14 @@ def _AITargetList_cmp_attack(m1, m2):
 	assert isinstance(m1, AITarget)
 	assert isinstance(m2, AITarget)
 	result = m2.measures.value_attack - m1.measures.value_attack
+	if (result == 0):
+		result = m1.measures.measure_stat_hp - m2.measures.measure_stat_hp
+	return result
+
+def _AITargetList_cmp_will_low(m1, m2):
+	assert isinstance(m1, AITarget)
+	assert isinstance(m2, AITarget)
+	result = m1.measures.value_stat_save_willpower - m2.measures.value_stat_save_willpower
 	if (result == 0):
 		result = m1.measures.measure_stat_hp - m2.measures.measure_stat_hp
 	return result

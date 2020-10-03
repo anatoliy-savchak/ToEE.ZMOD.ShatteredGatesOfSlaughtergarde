@@ -18,7 +18,7 @@
 {44}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{}{}{}{csa().display_encounter_a4()}
 {49}{Close}{}{1}{}{0}{csa().activate_encounter_a4()}
 
-{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5()}
+{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5();csa().trigger_monster_step_a5(1)}
 {51}{Continue}{}{1}{}{52}{}
 {52}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{}{}{}{}
 {59}{Close}{}{1}{}{0}{csa().activate_encounter_a5()}
@@ -70,3 +70,6 @@
 
 {160}{This huge foundry is lit by the orange glow of the molten material that must be contained in two rail-lined pits centered along the northern and southern walls.}{This huge foundry is lit by the orange glow of the molten material that must be contained in two rail-lined pits centered along the northern and southern walls.}{}{}{}{csa().display_encounter_a16()}
 {169}{Close}{}{1}{}{0}{csa().activate_encounter_a16()}
+
+{180}{Directly in front of you is a pool of water that stretches beyond the crumbling wall to the northwest. Sagging timbers brace the ceiling. Across the pool is a beautiful woman in purple robes. She's standing next to a fire beetle cage. Behind her, to the east, are four copper doors.}{Directly in front of you is a pool of water that stretches beyond the crumbling wall to the northwest. Sagging timbers brace the ceiling. Across the pool is a beautiful woman in purple robes. She's standing next to a fire beetle cage. Behind her, to the east, are four copper doors.}{}{}{}{csa().display_encounter_a18()}
+{189}{Close}{}{1}{}{0}{csa().activate_encounter_a18()}

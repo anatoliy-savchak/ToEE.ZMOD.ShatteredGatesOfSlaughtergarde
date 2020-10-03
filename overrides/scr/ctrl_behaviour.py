@@ -1,6 +1,17 @@
 import toee, debugg, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls
 import utils_target_list, utils_npc
 
+def get_ctrl(id):
+	assert isinstance(id, str)
+	ctrl = None
+	storage = utils_storage.obj_storage_by_id(id)
+	if (storage):
+		for t in storage.data.iteritems():
+			if (issubclass(type(t[1]), CtrlBehaviour)):
+				ctrl = t[1]
+				break
+	return ctrl
+
 class CtrlBehaviour(object):
 	def __init__(self):
 		self.id = None
@@ -68,6 +79,8 @@ class CtrlBehaviour(object):
 		npc = None
 		if (self.id):
 			npc = toee.game.get_obj_by_id(self.id)
+		if (not npc):
+			print("Failed to get NPC ctrl: {}, id: {}".format(type(self).__name__, self.id))
 		return npc
 
 	def start_combat(self, attachee, triggerer):

@@ -442,7 +442,7 @@ class EventObjModifier(EventObj):
 
 class EventObjD20Query(EventObj):
 	def __init__(self):
-		self.evt_obj_type = 29 # dispTypeD20Query
+		self.evt_obj_type = 29 # dispTypeD20Query, dispTypeBaseCasterLevelMod
 		self.return_val = 0
 		self.data1 = 0
 		self.data2 = 0
