@@ -1120,6 +1120,9 @@ class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 		assert isinstance(npc, toee.PyObjHandle)
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_charm_monster, 10) # should yield 22
+		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_suggestion, 9) # should yield 21
+		
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, npc)
@@ -1131,6 +1134,8 @@ class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 	def enter_combat(self, attachee, triggerer):
 		self.spells = utils_npc_spells.NPCSpells()
 		self.spells.add_spell(toee.spell_charm_monster, toee.domain_special, 4, 2)
+		#self.spells.add_spell(toee.spell_suggestion, toee.domain_special, 4) problem - 466 is replaced by dominate monster. leave it be for now
+		self.spells.add_spell(const_toee.spell_summon_vrock, toee.domain_special, 4)
 		return toee.RUN_DEFAULT
 
 	def create_tactics(self, npc):
@@ -1153,6 +1158,31 @@ class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 				if (targets):
 					tac.add_target_obj(targets[0].target.id)
 				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_charm_monster))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(toee.spell_suggestion)): 
+				targets = foes.get_charm_candidates()
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_five_foot_step()
+				if (targets):
+					tac.add_target_obj(targets[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_suggestion))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (self.spells.get_spell_count(const_toee.spell_summon_vrock)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				if (threats):
+					tac.add_five_foot_step()
+				
+				self.spells.prep_spell(npc, const_toee.spell_summon_vrock)
+				tac.add_cast_single_code("'Summon Vrock (INTERNAL)' domain_special 4")
 				tac.add_halt()
 				tac.add_total_defence()
 				break

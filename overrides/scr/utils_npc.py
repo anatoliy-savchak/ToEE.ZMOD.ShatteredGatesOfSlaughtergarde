@@ -48,8 +48,12 @@ def npc_stat_generate(npc):
 def npc_spell_ensure(npc, spell_id, stat_class, spell_level, memorize = 0):
 	assert isinstance(npc, toee.PyObjHandle)
 	print("{}.npc_spell_ensure(spell_id: {}, stat_class: {}, spell_level: {})".format(npc, spell_id, stat_class, spell_level))
-	npc.spell_known_add(spell_id, stat_class, spell_level)
-	npc.spell_memorized_add(spell_id, stat_class, spell_level)
+	if (stat_class == toee.domain_special):
+		npc.spell_known_add(spell_id, stat_class, spell_level, 1)
+		npc.spell_memorized_add(spell_id, stat_class, spell_level, 1)
+	else:
+		npc.spell_known_add(spell_id, stat_class, spell_level)
+		npc.spell_memorized_add(spell_id, stat_class, spell_level)
 	if (memorize):
 		npc.spells_pending_to_memorized()
 	return 1
