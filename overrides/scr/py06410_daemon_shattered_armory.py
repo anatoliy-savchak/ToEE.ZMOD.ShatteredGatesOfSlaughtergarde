@@ -100,6 +100,17 @@ def san_use(attachee, triggerer):
 				py06122_cormyr_prompter.promter_talk(promter, triggerer)
 			else:
 				print("promter not found!")
+		elif (attachee.name == 947): #{947}{A19 Door}
+			print("A16 Door")
+			sibling = utils_obj.get_sibling_door(attachee)
+			if (sibling and not (sibling.object_flags_get() & toee.OF_DONTDRAW)):
+				sibling.object_flag_set(toee.OF_DONTDRAW)
+				sibling.portal_toggle_open()
+			promter = utils_npc.npc_find_nearest_npc_by_proto(attachee, 15, py06122_cormyr_prompter.PROTO_NPC_PROMPTER)
+			if (promter):
+				py06122_cormyr_prompter.promter_talk(promter, triggerer)
+			else:
+				print("promter not found!")
 				
 	#debug.breakp("san_use")
 	return toee.RUN_DEFAULT
@@ -167,6 +178,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a15()
 			self.place_encounter_a16()
 			self.place_encounter_a18()
+			self.place_encounter_a19()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -179,11 +191,12 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 508, 445) #a15
 
 		# test debug
-		toee.game.fade_and_teleport(0, 0, 0, 5124, 460, 456) #a19
+		#toee.game.fade_and_teleport(0, 0, 0, 5124, 460, 456) #a18
+		toee.game.fade_and_teleport(0, 0, 0, 5124, 452, 445) #a19
 		print("test debug")
 		if (self.encounters_placed == 5):
 			print("self.encounters_placed == 5")
-			self.place_encounter_a18()
+			self.place_encounter_a19()
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -613,4 +626,36 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def activate_encounter_a18(self):
 		print("activate_encounter_a18")
 		self.activate_monster("a18", "succubus")
+		return
+
+	def place_encounter_a19(self):
+		self.create_promter_at(utils_obj.sec2loc(436, 445), self.get_dialogid_default(), 190, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gates", const_toee.rotation_0700_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(430, 445), py06411_shattered_armory_encounters.CtrlMezzoloth, const_toee.rotation_0800_oclock, "a19", "mezzoloth")
+		return
+
+	def display_encounter_a19(self):
+		print("display_encounter_a19")
+		self.reveal_monster("a19", "mezzoloth")
+		return
+
+	def activate_encounter_a19(self):
+		print("activate_encounter_a19")
+		self.activate_monster("a19", "mezzoloth")
+		return
+
+	def place_encounter_a20(self):
+		self.create_promter_at(utils_obj.sec2loc(436, 445), self.get_dialogid_default(), 200, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gates", const_toee.rotation_0700_oclock)
+		
+		self.create_npc_at(utils_obj.sec2loc(430, 445), py06411_shattered_armory_encounters.CtrlMezzoloth, const_toee.rotation_0800_oclock, "a20", "mezzoloth")
+		return
+
+	def display_encounter_a20(self):
+		print("display_encounter_a20")
+		self.reveal_monster("a20", "mezzoloth")
+		return
+
+	def activate_encounter_a20(self):
+		print("activate_encounter_a20")
+		self.activate_monster("a20", "mezzoloth")
 		return

@@ -1122,7 +1122,6 @@ class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_charm_monster, 10) # should yield 22
 		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_suggestion, 9) # should yield 21
-		
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, npc)
@@ -1187,5 +1186,53 @@ class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 				tac.add_total_defence()
 				break
 
+			break
+		return tac
+
+class CtrlMezzoloth(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14955
+
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_cloudkill, 7) # should yield 17
+
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_TRIDENT_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_LARGE, npc)
+		npc.item_wield_best_all()
+		return
+
+	def enter_combat(self, attachee, triggerer):
+		self.spells = utils_npc_spells.NPCSpells()
+		self.spells.add_spell(toee.spell_cloudkill, toee.domain_special, 4)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all())
+		foes.measures.measure_stat_save_willpower = 1
+		foes.rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+
+		while (not tac):
+			if (self.spells.get_spell_count(toee.spell_cloudkill)): 
+				targets = foes.get_charm_candidates()
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_self()
+				if (threats):
+					tac.add_five_foot_step()
+				if (targets):
+					tac.add_target_obj(targets[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_cloudkill))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
 			break
 		return tac

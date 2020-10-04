@@ -73,3 +73,8 @@
 
 {180}{Directly in front of you is a pool of water that stretches beyond the crumbling wall to the northwest. Sagging timbers brace the ceiling. Across the pool is a beautiful woman in purple robes. She's standing next to a fire beetle cage. Behind her, to the east, are four copper doors.}{Directly in front of you is a pool of water that stretches beyond the crumbling wall to the northwest. Sagging timbers brace the ceiling. Across the pool is a beautiful woman in purple robes. She's standing next to a fire beetle cage. Behind her, to the east, are four copper doors.}{}{}{}{csa().display_encounter_a18()}
 {189}{Close}{}{1}{}{0}{csa().activate_encounter_a18()}
+
+{190}{An upright insectile creature treads the center of this room, wielding a trident with one of its two pairs of arms and carrying a large metal shield.}{An upright insectile creature treads the center of this room, wielding a trident with one of its two pairs of arms and carrying a large metal shield.}{}{}{}{csa().display_encounter_a19()}
+{191}{Continue}{}{1}{}{192}{}
+{192}{In deep alcoves to the north and south are immense, crumbling gate arches like the ones you saw in the ruins inhabited by the goblins and the drow. Similar alcoves are set in the northeastern and southeastern corners, but you can't see what's in them.}{In deep alcoves to the north and south are immense, crumbling gate arches like the ones you saw in the ruins inhabited by the goblins and the drow. Similar alcoves are set in the northeastern and southeastern corners, but you can't see what's in them.}{}{}{}{}
+{199}{Close}{}{1}{}{0}{csa().activate_encounter_a19()}
