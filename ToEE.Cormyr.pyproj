@@ -329,6 +329,8 @@
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
     <Compile Include="overrides\scr\tpModifiers\belch_fire.py" />
     <Compile Include="overrides\scr\tpModifiers\caster_level_mod.py" />
+    <Compile Include="overrides\scr\tpModifiers\monster_ranged_poison.py" />
+    <Compile Include="overrides\scr\tpModifiers\no_move.py" />
     <Compile Include="overrides\scr\tpModifiers\weapon_damage_dice.py" />
     <Compile Include="overrides\scr\tpModifiers\monster_ability_drain.py" />
     <Compile Include="overrides\scr\tpModifiers\monster_trip_ex.py" />

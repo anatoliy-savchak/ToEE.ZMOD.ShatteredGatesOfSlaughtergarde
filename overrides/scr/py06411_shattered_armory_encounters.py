@@ -1193,7 +1193,6 @@ class CtrlMezzoloth(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14955
 
-
 	def after_created(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
@@ -1231,6 +1230,110 @@ class CtrlMezzoloth(ctrl_behaviour.CtrlBehaviour):
 				if (targets):
 					tac.add_target_obj(targets[0].target.id)
 				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_cloudkill))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+			break
+		return tac
+
+class CtrlGnollWarchief(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14956
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+
+		#npc.condition_add_with_args("Rapid_Shot", 1)
+		#npc.condition_add_with_args("Rapid_Shot_Ranger", 1)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 0, toee.stat_level_ranger)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 1, toee.stat_level_ranger)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 2, toee.stat_level_ranger)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 3, toee.stat_level_ranger)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 4, toee.stat_level_ranger)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 5, toee.stat_level_blackguard)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 6, toee.stat_level_blackguard)
+		npc.obj_set_idx_int(toee.obj_f_critter_level_idx, 7, toee.stat_level_blackguard)
+
+		npc.feat_add(toee.feat_favored_enemy_humanoid_elf, 1)
+		utils_npc.npc_generate_hp(npc)
+
+		Monster_Ranged_Poison_poison_id = 5 # Large Scorpion
+		Monster_Ranged_Poison_duration = 10
+		Monster_Ranged_Poison_dc = 10
+		Monster_Ranged_Poison_arrows = 12
+		npc.condition_add_with_args("Monster_Ranged_Poison", Monster_Ranged_Poison_poison_id, Monster_Ranged_Poison_duration, Monster_Ranged_Poison_dc, Monster_Ranged_Poison_arrows) 
+
+		# create inventory
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_16_PLUS1, npc)
+		item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_ARROW_QUIVER, npc)
+		if (item):
+			item.obj_set_int(toee.obj_f_ammo_quantity, 40)
+		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_FALCHION_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAINMAIL_MITHRAL_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_GAUNTLETS_OF_OGRE_POWER, npc)
+		npc.item_wield_best_all()
+		return
+
+class CtrlGnollHezrou(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14259
+
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
+		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
+		npc.condition_add_with_args("Spell_DC_Mod", toee.spell_chaos_hammer, 6) # should yield 18
+
+		npc.condition_add_with_args("No_Move", -1, 0)
+		return
+	
+	def enter_combat(self, attachee, triggerer):
+		self.spells = utils_npc_spells.NPCSpells()
+		self.spells.add_spell(toee.spell_chaos_hammer, toee.domain_special, 5, 10)
+		self.spells.add_spell(const_toee.spell_hezrou_stench, toee.domain_special, 5)
+
+		#script A20
+		attachee.condition_add_with_args("sp-Summoned", 0, 4)
+		attachee.condition_add_with_args("Timed-Disappear", 0, 4)
+		return toee.RUN_DEFAULT
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all())
+		foes.rescan()
+		threats = foes.get_threats()
+		print("threats: {}".format(threats))
+
+		while (not tac):
+			if (self.spells.get_spell_count(const_toee.spell_hezrou_stench)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				#tac.add_target_self()
+				if (threats):
+					tac.add_five_foot_step()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, const_toee.spell_hezrou_stench))
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+
+			if (threats):
+				break # do default
+
+			if (self.spells.get_spell_count(toee.spell_chaos_hammer)): 
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				#tac.add_target_self()
+				if (threats):
+					tac.add_five_foot_step()
+				if (threats):
+					tac.add_target_obj(threats[0].target.id)
+				tac.add_cast_single_code(self.spells.prep_spell(npc, toee.spell_chaos_hammer))
 				tac.add_halt()
 				tac.add_total_defence()
 				break

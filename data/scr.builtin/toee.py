@@ -431,6 +431,9 @@ class PyObjHandle(object):
 		"""Get internal field array int value. npc.obj_get_idx_int(int[obj_f_*]: field, subIdx) -> int"""
 		return 0
 
+	def obj_set_idx_int(self, field, subIdx, value):
+		"""Set internal field array int value. npc.obj_set_idx_int(int[obj_f_*]: field, subIdx, value) -> None"""
+		return
 
 	def obj_get_int64(self, field):
 		"""Get internal field long value. npc.obj_get_int64(int[obj_f_*]: field) -> long"""

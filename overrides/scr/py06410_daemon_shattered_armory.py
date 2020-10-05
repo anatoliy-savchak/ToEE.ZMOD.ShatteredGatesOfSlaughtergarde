@@ -179,6 +179,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a16()
 			self.place_encounter_a18()
 			self.place_encounter_a19()
+			self.place_encounter_a20()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -196,7 +197,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		print("test debug")
 		if (self.encounters_placed == 5):
 			print("self.encounters_placed == 5")
-			self.place_encounter_a19()
+			self.place_encounter_a20()
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()
@@ -645,17 +646,24 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_a20(self):
-		self.create_promter_at(utils_obj.sec2loc(436, 445), self.get_dialogid_default(), 200, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shattered Gates", const_toee.rotation_0700_oclock)
+		self.create_promter_at(utils_obj.sec2loc(420, 445), self.get_dialogid_default(), 200, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "The Warchief", const_toee.rotation_0700_oclock)
 		
-		self.create_npc_at(utils_obj.sec2loc(430, 445), py06411_shattered_armory_encounters.CtrlMezzoloth, const_toee.rotation_0800_oclock, "a20", "mezzoloth")
+		self.create_npc_at(utils_obj.sec2loc(412, 444), py06411_shattered_armory_encounters.CtrlGnollWarchief, const_toee.rotation_0800_oclock, "a20", "warchief")
+		self.create_npc_at(utils_obj.sec2loc(423, 438), py06411_shattered_armory_encounters.CtrlGnollHezrou, const_toee.rotation_0500_oclock, "a20", "hezrou")
 		return
 
 	def display_encounter_a20(self):
 		print("display_encounter_a20")
-		self.reveal_monster("a20", "mezzoloth")
+		self.reveal_monster("a20", "warchief")
 		return
 
 	def activate_encounter_a20(self):
 		print("activate_encounter_a20")
-		self.activate_monster("a20", "mezzoloth")
+		self.activate_monster("a20", "warchief")
+		self.activate_monster("a20", "hezrou")
 		return
+
+	def trigger_monster_step_a20(self, step):
+		self.reveal_monster("a20", "hezrou")
+		return
+
