@@ -77,6 +77,7 @@
     <Content Include="overrides\dlg\00678CaptArmin.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="overrides\dlg\06500_daemon_barovia.dlg" />
     <Content Include="overrides\dlg\06410_daemon_shattered_armory.dlg" />
     <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
     <Content Include="overrides\dlg\06210_daemon_shattered_lab.dlg" />
@@ -228,6 +229,7 @@
     <Compile Include="overrides\scr\data_critter.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\barovia_pc.py" />
     <Compile Include="overrides\scr\data_obj.py">
       <SubType>Code</SubType>
     </Compile>
@@ -235,6 +237,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\monster_info.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="overrides\scr\pc_gen.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\py00334generic_spawner.py" />
@@ -270,6 +275,8 @@
     </Compile>
     <Compile Include="overrides\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
     <Compile Include="overrides\scr\py06402_trap_fiery_demon_arch.py" />
+    <Compile Include="overrides\scr\py06501_barovia_encounters.py" />
+    <Compile Include="overrides\scr\py06500_daemon_barovia.py" />
     <Compile Include="overrides\scr\py32007Trap8_scythe.py" />
     <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />
     <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
@@ -298,6 +305,7 @@
     </Compile>
     <Compile Include="overrides\scr\py06411_shattered_armory_encounters.py" />
     <Compile Include="overrides\scr\py32004Trap3_poison_needle.py" />
+    <Compile Include="overrides\scr\barovia_consts.py" />
     <Compile Include="overrides\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>

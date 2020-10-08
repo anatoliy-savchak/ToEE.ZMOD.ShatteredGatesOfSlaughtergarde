@@ -514,7 +514,7 @@ class PyObjHandle(object):
 		return 0
 
 	def spell_known_add(self, spellIdx, spellClassCode, slotLevel):
-		"""npc.spell_known_add(int[...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
+		"""npc.spell_known_add(int[...]: spellIdx, int: spellClassCode, int: slotLevel [zero based]) -> None"""
 		return
 
 	def spell_memorized_add(self, spellIdx, spellClassCode, slotLevel):

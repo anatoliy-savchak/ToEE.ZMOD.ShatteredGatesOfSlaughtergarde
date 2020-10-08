@@ -6,6 +6,10 @@ PROTO_WEAPON_DAGGER_MASTERWORK = 4155 # Cost: 302 gp, Dmg: 1d4, Masterwork
 
 PROTO_WEAPON_DAGGER_THROWING = 4059 # Cost: 2 gp, Dmg: 1d4
 
+PROTO_WEAPON_MACE_LIGHT = 4071 # Cost: 5 gp, Dmg: 1d6
+PROTO_WEAPON_MACE_LIGHT_MASTERWORK = 4169 # Cost: 305 gp, Dmg: 1d6, Masterwork
+PROTO_WEAPON_MACE_LIGHT_PLUS_1 = 4109 # Cost: 2305 gp, Dmg: 1d6+1, Echn: +1
+
 # Simple One-Handed Melee Weapons
 PROTO_WEAPON_CLUB = 4074 # Cost: 0 gp, Dmg: 1d6
 PROTO_WEAPON_CLUB_MASTERWORK = 4172 # Cost: 300 gp, Dmg: 1d6
