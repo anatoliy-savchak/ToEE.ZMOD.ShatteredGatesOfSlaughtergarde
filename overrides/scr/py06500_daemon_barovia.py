@@ -5,6 +5,7 @@ import py06501_barovia_encounters, startup_zmod, utils_sneak, py00677FarSouthDoo
 # import py06500_daemon_barovia
 # py06500_daemon_barovia.cs()
 # game.fade_and_teleport(0, 0, 0, 5125, 429, 478)
+# game.fade_and_teleport(0, 0, 0, 5125, 467, 478)
 
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
@@ -106,7 +107,8 @@ class CtrlBarovia(ctrl_daemon.CtrlDaemon):
 		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
 		if (not self.encounters_placed):
-			self.place_encounter_e1()
+			#self.place_encounter_e1()
+			self.place_encounter_e2()
 
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
@@ -170,5 +172,48 @@ class CtrlBarovia(ctrl_daemon.CtrlDaemon):
 
 		self.activate_monster("e1", "eater1")
 		self.activate_monster("e1", "eater2")
+		return
+
+	def place_encounter_e2(self):
+		self.create_promter_at(utils_obj.sec2loc(476, 478), self.get_dialogid_default(), 20, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Zobmie Street Ambush", const_toee.rotation_0200_oclock)
+
+		self.create_npc_at(utils_obj.sec2loc(476, 486), py06501_barovia_encounters.CtrlZombieInfected, const_toee.rotation_1100_oclock, "e2", "zombie1")
+		self.create_npc_at(utils_obj.sec2loc(485, 484), py06501_barovia_encounters.CtrlZombieInfected, const_toee.rotation_1100_oclock, "e2", "zombie2")
+		self.create_npc_at(utils_obj.sec2loc(481, 474), py06501_barovia_encounters.CtrlZombieInfected, const_toee.rotation_0300_oclock, "e2", "zombie3")
+		self.create_npc_at(utils_obj.sec2loc(489, 472), py06501_barovia_encounters.CtrlZombieInfected, const_toee.rotation_0100_oclock, "e2", "zombie4")
+
+		self.create_npc_at(utils_obj.sec2loc(492, 477), py06501_barovia_encounters.CtrlDireMaggot, const_toee.rotation_0100_oclock, "e2", "maggot1")
+		self.create_npc_at(utils_obj.sec2loc(492, 480), py06501_barovia_encounters.CtrlDireMaggot, const_toee.rotation_0100_oclock, "e2", "maggot2")
+
+		self.create_npc_at(utils_obj.sec2loc(478, 473), py06501_barovia_encounters.CtrlVargouilleLesser, const_toee.rotation_0100_oclock, "e2", "varg1")
+		self.create_npc_at(utils_obj.sec2loc(476, 473), py06501_barovia_encounters.CtrlVargouilleLesser, const_toee.rotation_0500_oclock, "e2", "varg2")
+		return
+
+	def display_encounter_e2(self):
+		print("display_encounter_e2")
+		self.reveal_monster("e2", "zombie2")
+		self.reveal_monster("e2", "zombie2")
+		self.reveal_monster("e2", "zombie3")
+		self.reveal_monster("e2", "zombie4")
+
+		self.reveal_monster("e2", "maggot1")
+		self.reveal_monster("e2", "maggot2")
+
+		self.reveal_monster("e2", "varg1")
+		self.reveal_monster("e2", "varg2")
+		return
+
+	def activate_encounter_e2(self):
+		print("activate_encounter_e2")
+		self.activate_monster("e2", "zombie2")
+		self.activate_monster("e2", "zombie2")
+		self.activate_monster("e2", "zombie3")
+		self.activate_monster("e2", "zombie4")
+
+		self.activate_monster("e2", "maggot1")
+		self.activate_monster("e2", "maggot2")
+
+		self.activate_monster("e2", "varg1")
+		self.activate_monster("e2", "varg2")
 		return
 

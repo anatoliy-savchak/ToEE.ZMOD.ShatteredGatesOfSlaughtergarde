@@ -54,7 +54,7 @@ class CtrlBehaviour(object):
 
 	@classmethod
 	def get_name(cls):
-		return "CtrlBehaviour"
+		return type(cls).__name__
 
 	@classmethod
 	def ensure(cls, npc):

@@ -193,11 +193,11 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		# test debug
 		#toee.game.fade_and_teleport(0, 0, 0, 5124, 460, 456) #a18
-		toee.game.fade_and_teleport(0, 0, 0, 5124, 452, 445) #a19
-		print("test debug")
-		if (self.encounters_placed == 5):
-			print("self.encounters_placed == 5")
-			self.place_encounter_a20()
+		#toee.game.fade_and_teleport(0, 0, 0, 5124, 452, 445) #a19
+		#print("test debug")
+		#if (self.encounters_placed == 5):
+		#	print("self.encounters_placed == 5")
+		#	self.place_encounter_a20()
 
 		#self.check_entrance_patrol()
 		utils_obj.scroll_to_leader()

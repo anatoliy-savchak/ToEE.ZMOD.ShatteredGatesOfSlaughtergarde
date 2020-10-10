@@ -46,6 +46,13 @@ def san_will_kos(attachee, triggerer):
 	else: print("san_will_kos ctrl not found")
 	return toee.RUN_DEFAULT
 
+class CtrlBehaviourBarovia(ctrl_behaviour.CtrlBehaviour):
+	def after_created(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		npc.scripts[const_toee.sn_start_combat] = barovia_encounters
+		npc.scripts[const_toee.sn_enter_combat] = barovia_encounters
+		return
+
 class CtrlZombieInfected(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14840
@@ -53,3 +60,32 @@ class CtrlZombieInfected(ctrl_behaviour.CtrlBehaviour):
 class CtrlCarcassEater(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14841
+
+class CtrlDireMaggot(ctrl_behaviour.CtrlBehaviour):
+	@classmethod
+	def get_proto_id(cls): return 14842
+
+class CtrlVargouilleLesser(CtrlBehaviourBarovia):
+	@classmethod
+	def get_proto_id(cls): return 14891
+
+	def create_tactics(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		tac = None
+
+		shrieked = self.get_var("shrieked")
+		if (not shrieked): shrieked = 0
+
+		while (not tac):
+			if (shrieked < 1): 
+				npc.condition_add("Python_Action_Shriek")
+				tac = utils_tactics.TacticsHelper(self.get_name())
+				tac.add_target_closest()
+				tac.add_approach_single()
+				tac.add_python_action(3003)
+				self.vars["shrieked"] = 1
+				tac.add_halt()
+				tac.add_total_defence()
+				break
+			break
+		return tac
