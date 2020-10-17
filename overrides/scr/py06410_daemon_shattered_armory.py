@@ -163,8 +163,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
 		if (not self.encounters_placed):
-			self.place_encounter_a1()
-			self.place_encounter_a2()
+			#self.place_encounter_a1()
+			#self.place_encounter_a2()
 			self.place_encounter_a3()
 			self.place_encounter_a4()
 			self.place_encounter_a5()
@@ -184,6 +184,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 466, 521) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
@@ -283,7 +284,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def place_encounter_a3(self):
 		self.create_promter_at(utils_obj.sec2loc(469, 520), self.get_dialogid_default(), 30, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Blind Troll", const_toee.rotation_0000_oclock)
 		
-		self.create_npc_at(utils_obj.sec2loc(475, 517), py06411_shattered_armory_encounters.CtrlBlindTroll, const_toee.rotation_0200_oclock, "a3", "troll", 75)
+		npc = self.create_npc_at(utils_obj.sec2loc(475, 517), py06411_shattered_armory_encounters.CtrlBlindTroll, const_toee.rotation_0200_oclock, "a3", "troll", 75)[0]
+		npc.scripts[const_toee.sn_dialog] = 682
 		return
 
 	def display_encounter_a3(self):
@@ -293,7 +295,9 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 	def activate_encounter_a3(self):
 		print("activate_encounter_a3")
-		self.activate_monster("a3", "troll")
+		npc = self.activate_monster("a3", "troll", 1, 0)[0]
+		#npc.begin_dialog(toee.game.leader, 1)
+		toee.game.leader.begin_dialog(npc, 1)
 		return
 
 	def troll_kill(self):

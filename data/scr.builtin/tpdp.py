@@ -16,8 +16,8 @@ def dispatch_stat(obj, stat, bonlist):
 	""" dispatch_stat(toee.PyObjHandle: performer, int: stat, BonusList: bon_list) -> int: stat_value"""
 	return 0
 
-def create_history_type4(performer, dc, dice, roll, text, bonlist):
-	""" create_history_type4(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
+def create_history_dc_roll(performer, dc, dice, roll, text, bonlist):
+	""" create_history_dc_roll(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
 	return 0
 
 def create_history_attack_roll(performer, target, roll, bonlistAttacker, bonlistTarget, flags):

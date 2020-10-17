@@ -1,0 +1,63 @@
+{1}{[You see a troll, wearing a visor that competely covers its face. It is chained next to the winch of what may be an elevator. There are no weapons nearby, but it is HUGE. It cocks its head and says in Gnoll] who there? You no smell like gnoll.}{[You see a troll, wearing a visor that competely covers its face. It is chained next to the winch of what may be an elevator. There are no weapons nearby, but it is HUGE. It cocks its head and says in Gnoll] who there? You no smell like gnoll.}{}{}{}{}
+{2}{You poor thing, are you blind? Can I help?}{}{1}{}{10}{}
+{3}{Just passing.}{}{1}{}{20}{}
+{4}{I'm @pcname@, who's asking?}{}{1}{}{40}{}
+{5}{Food?}{}{1}{anyone( pc.group_list(), "has_item", 8005)}{50}{party_transfer_to( npc, 8005 )}
+
+
+{10}{Gah, you sound like food! You come closer, I eat you!}{Gah, you sound like food! You come closer, I eat you!}{}{}{}{}
+{11}{[Keep your distance.]}{}{1}{}{0}{npc_1(npc); keep_away2(npc, pc)}
+{12}{[Move closer.]}{}{1}{}{0}{npc.attack(pc)}
+
+
+
+{20}{[The troll sounds confused.] You no come closer. Wait for other guys. Come soon. They see who you be.}{[The troll sounds confused.] You no come closer. Wait for other guys. Come soon. They see who you be.}{}{}{}{}
+{21}{Sure, we'll keep our distance.}{}{1}{}{0}{npc_1(npc); keep_away2(npc, pc)}
+{22}{I didn't come here to stand around and wait. Now you get that elevator going for me or the Master will hear about it!}{}{1}{pc.skill_level_get(npc, skill_intimidate) >= 15}{150}{}
+{23}{I killed the other guys, is that going to be a problem?}{}{1}{}{0}{npc.attack(pc)}
+
+{40}{Me troll. Me work elevator. Who you not knowing that? You no belong here!}{Me troll. Me work elevator. Who you not knowing that? You no belong here!}{}{}{}{}
+{41}{Correct, I belong down below with the Master. Be a good troll and work that elevator for me.}{}{1}{pc.skill_level_get(npc, skill_bluff) >= 7}{0}{bluff_roll( npc, pc, 12, 150, 20 )}
+{42}{Dammit, you don't speak to me like that! Get on that winch and shut your pie hole!}{}{1}{pc.skill_level_get(npc, skill_intimidate) >= 7}{0}{intim_roll( npc, pc, 12, 150, 20 )}
+{43}{I need you to work that winch, why don't you tell me what you need and we can come to some sort of arrangement?}{}{1}{pc.skill_level_get(npc, skill_diplomacy) >= 4}{10}{}
+{44}{Sorry to disturb you.}{}{1}{}{10}{}
+{45}{[Just back away.]}{}{1}{}{0}{npc_1(npc); keep_away2(npc, pc)}
+{46}{[Just attack.]}{}{1}{}{0}{npc.attack(pc)}
+
+{50}{You bring dinner? You late. [He takes the food and swallows it in one gulp.] You need go down now?}{You bring dinner? You late. [He takes the food and swallows it in one gulp.] You need go down now?}{}{}{}{}
+{51}{Yes, get to it.}{}{1}{}{150}{}
+{52}{Later, I have other chores up here.}{}{1}{}{0}{npc_2(npc)}
+
+{90}{You just keep back.}{You just keep back.}{}{}{}{}
+{91}{Sure.}{}{1}{}{0}{}
+{92}{[Attack!]}{}{1}{}{0}{npc.attack(pc)}
+
+// return if get_2(npc)
+
+{100}{You again. You need use elevator? Where those gnolls, eh?}{You again. You need use elevator? Where those gnolls, eh?}{}{}{}{}
+{101}{Just get the elevator ready.}{}{1}{}{150}{}
+{102}{Just passing.}{}{1}{}{0}{}
+{103}{Oh, I killed the gnolls. Didn't I mention that?}{}{1}{}{0}{npc.attack(pc)}
+
+// Troll willing to work elevator for PCs
+
+{150}{Okay guys: you go down. Tell me what you kill. Good eats? Crunchies? [He cackles as he prepares the elevator.]}{Okay guys: you go down. Tell me what you kill. Good eats? Crunchies? [He cackles as he prepares the elevator.]}{}{}{}{npc_2(npc)}
+{151}{Just hurry up.}{}{1}{}{0}{}	// elevator script
+
+// if they approach after being warned
+
+{200}{I told you no come nearer, now I eat you! [He attacks!]}{I told you no come nearer, now I eat you! [He attacks!]}{}{}{}{}
+{201}{I thought I was keeping my distance!}{}{1}{}{0}{npc.attack(pc)}
+{202}{Bring it on!}{}{1}{}{0}{npc.attack(pc)}
+
+// if they are still keeping their distance
+
+{250}{I no heard from gnolls. You keep back. Where gnolls?}{I no heard from gnolls. You keep back. Where gnolls?}{}{}{}{}
+{251}{I don't know?}{}{1}{}{90}{}
+{252}{I killed them?}{}{1}{}{0}{npc.attack(pc)}
+{253}{Enough of this, you get that elevator ready or no amount of regenerating will fix what I will do to you.}{}{1}{pc.skill_level_get(npc, skill_intimidate) >= 18}{150}{}
+
+
+// npc_1(npc) warned not to approach
+
+// npc_2(npc) troll willing to elevate

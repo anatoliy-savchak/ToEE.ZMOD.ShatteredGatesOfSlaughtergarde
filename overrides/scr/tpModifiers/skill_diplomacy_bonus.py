@@ -3,7 +3,7 @@ import toee, templeplus.pymod, tpdp, debug, sys
 ###################################################
 
 def GetConditionName():
-	return "Skill_Appraise_Bonus"
+	return "Skill_Diplomacy_Bonus"
 
 print("Registering " + GetConditionName())
 ###################################################
@@ -21,4 +21,4 @@ def OnGetSkillLevel(attachee, args, evt_obj):
 	return 0
 
 modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2, 0) # 0 - skill bonus
-modObj.AddHook(toee.ET_OnGetSkillLevel, toee.EK_SKILL_APPRAISE, OnGetSkillLevel, ())
+modObj.AddHook(toee.ET_OnGetSkillLevel, toee.EK_SKILL_APPRAISE + toee.skill_diplomacy, OnGetSkillLevel, ())
