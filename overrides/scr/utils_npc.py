@@ -350,7 +350,7 @@ def bluff_roll(attachee, triggerer, dc, ayup, nope, text = None):
 	assert isinstance(dc, int)
 	assert isinstance(ayup, int)
 	assert isinstance(nope, int)
-	print("intim_roll")
+	print("bluff_roll")
 	if (text is None): text = "Bluff"
 	return skill_roll(attachee, triggerer, dc, ayup, nope, toee.skill_bluff, text)
 

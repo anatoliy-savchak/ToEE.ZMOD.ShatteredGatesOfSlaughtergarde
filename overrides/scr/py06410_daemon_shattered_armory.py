@@ -162,7 +162,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
-		if (not self.encounters_placed):
+		if (not self.encounters_placed and 0):
 			#self.place_encounter_a1()
 			#self.place_encounter_a2()
 			self.place_encounter_a3()
@@ -181,10 +181,11 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a19()
 			self.place_encounter_a20()
 
+		self.place_ark()
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 466, 521) #a5
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 541, 472) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
@@ -669,5 +670,17 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 	def trigger_monster_step_a20(self, step):
 		self.reveal_monster("a20", "hezrou")
+		return
+
+	def place_ark(self):
+		#pole1 = toee.game.obj_create(12884, utils_obj.sec2loc(544, 466), 1.4142139, -9.899495)
+		#pole1.rotation = 0.7853982
+
+		#pole2 = toee.game.obj_create(12884, utils_obj.sec2loc(544,465), -1.41421306, -4.242641)
+		#pole2.rotation = 0.7853982
+
+		ark = toee.game.obj_create(12883, utils_obj.sec2loc(543,465), -2.82842684, 5.65685368)
+		ark.rotation = 2.3561945
+
 		return
 

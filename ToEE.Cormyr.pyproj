@@ -341,6 +341,9 @@
     <Compile Include="overrides\scr\tpModifiers\caster_level_mod.py" />
     <Compile Include="overrides\scr\tpModifiers\monster_ranged_poison.py" />
     <Compile Include="overrides\scr\tpModifiers\no_move.py" />
+    <Compile Include="overrides\scr\tpModifiers\skill_bluff_bonus.py" />
+    <Compile Include="overrides\scr\tpModifiers\skill_diplomacy_bonus.py" />
+    <Compile Include="overrides\scr\tpModifiers\skill_intimidate_bonus.py" />
     <Compile Include="overrides\scr\tpModifiers\weapon_damage_dice.py" />
     <Compile Include="overrides\scr\tpModifiers\monster_ability_drain.py" />
     <Compile Include="overrides\scr\tpModifiers\monster_trip_ex.py" />
