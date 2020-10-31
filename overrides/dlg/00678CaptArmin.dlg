@@ -153,7 +153,7 @@
 {196}{Will do.}{}{1}{}{0}{}
 
 // Accepted qs_4
-{200}{Back from SlaughterScar already? How did it go?}{Back from SlaughterScar already? How did it go?}{}{}{}{}
+{200}{Back from Slaughterscar already? How did it go?}{Back from SlaughterScar already? How did it go?}{}{}{}{}
 {201}{Good, good.}{}{1}{}{0}{}
 
 {220}{Now, I asked you to destroy or bring for destruction any relics of evil that you found. How did that go?}{Now, I asked you to destroy or bring for destruction any relics of evil that you found. How did that go?}{}{}{}{}
@@ -171,6 +171,46 @@
 {300}{Hmmm, there is something wrong - you should not have gotten this option.}{Hmmm, there is something wrong - you should not have gotten this option.}{}{}{}{}
 {301}{Dagnabit.}{}{1}{}{0}{}
 
+
+{400}{Back from SlaughterScar already? How did it go?}{Back from SlaughterScar already? How did it go?}{}{}{}{}
+{401}{Good, good. For one thing, we brought you a recruit for your order. Presenting Tybalt. [You tell him the story of Tybalt's disastrous venture into the SlaughterScar to impress the Luminous Order, and your subsequent rescue.]}{}{1}{find_npc_near( npc, 14957 )}{410}{}
+{402}{Good, good. For one thing, we brought you a recruit for your order. Presenting Tybalt. [You tell him the story of Tybalt's disastrous venture into the SlaughterScar to impress the Luminous Order, and your subsequent rescue.]}{}{1}{not find_npc_near( npc, 14957 )}{420}{}
+
+{410}{[He sizes Tybalt up with barely-concealed disdain and says] you look big enough to be a warrior, that's true, but we require more than brawn and bravado. But I guess we can find some sort of place for you... perhaps as a scullion.}{[He sizes Tybalt up with barely-concealed disdain and says] you look big enough to be a warrior, that's true, but we require more than brawn and bravado. But I guess we can find some sort of place for you... perhaps as a scullion.}{}{}{}{}
+{411}{Yes, please take him.}{}{1}{}{0}{buttin( npc, pc )}
+
+{420}{[Captain Harrack looks around and says] Well, I don't see this person, if you want me to meet them then please bring them over. For now, does this mean you have completed your mission?}{[Captain Harrack looks around and says] Well, I don't see this person, if you want me to meet them then please bring them over. For now, does this mean you have completed your mission?}{}{}{}{}
+{421}{Yes. Well, no. Not quite.}{}{1}{}{430}{}
+{422}{Absolutely! [Tell him the story of how you destroyed the Gate.]}{}{1}{game.global_flags[20] == 1}{440}{}
+
+{430}{I'll leave you to it. Please don't dawdle, it is not exaggerating to say the fate of the world may be at stake.}{I'll leave you to it. Please don't dawdle, it is not exaggerating to say the fate of the world may be at stake.}{}{}{}{}
+{431}{Sure.}{}{1}{}{0}{}
+{432}{Whatever.}{}{1}{}{0}{}
+
+{440}{[Captain Armin's eyes open ever so slightly in surprise as you tell the story.] That is some tale! But it so happens our scrying and divinations told us some of the story, so I know you are telling the truth. Well done! Here is your reward. [He hands big fat bags of gold to each.]}{[Captain Armin's eyes open ever so slightly in surprise as you tell the story.] That is some tale! But it so happens our scrying and divinations told us some of the story, so I know you are telling the truth. Well done! Here is your reward. [He hands big fat bags of gold to each.]}{}{}{}{pc.money_adj(150000 * len(game.party))}
+{441}{Thanks!}{}{1}{}{445}{game.quests[shattered_consts.QUEST_PICKING_AT_THE_SCAR].state = qs_completed}
+
+{445}{Now, do you have this Tome still with you? The Order will need to study it, and secure it so it cannot be used to open any other Gates that remain in the Valley... unlikely though they should be.}{Now, do you have this Tome still with you? The Order will need to study it, and secure it so it cannot be used to open any other Gates that remain in the Valley... unlikely though they should be.}{}{}{}{}
+{446}{No, we got rid of it. We destroyed it.}{}{1}{}{460}{}
+{447}{Yes, I have it here [hand it over.]}{}{1}{anyone( pc.group_list(), "has_item", 12882)}{465}{party_transfer_to( npc, 12882 )}
+{448}{A succubus took it to hell with her and sealed the Gate from the other side. Did I neglect to mention that part?}{}{1}{game.global_flags[21] == 1}{460}{}
+
+{450}{Now, doubtless you will be looking for another adventure. So, I must ask, have you heard of a castle called... Ravenloft?}{Now, doubtless you will be looking for another adventure. So, I must ask, have you heard of a castle called... Ravenloft?}{}{}{}{}
+{451}{[To be continued....]}{}{1}{}{0}{npc.critter_flag_set(OCF_MUTE)}
+
+{460}{[Captain Harrack does not attempt to disguise his skepticism at your story but says] very well, the Order will know how to get to the bottom of this. For now, thank you again for your efforts. [He inclines his head ever so slightly toward you.]}{[Captain Harrack does not attempt to disguise his skepticism at your story but says] very well, the Order will know how to get to the bottom of this. For now, thank you again for your efforts. [He inclines his head ever so slightly toward you.]}{}{}{}{}
+{461}{[Ignore this and walk away.]}{}{1}{}{0}{npc.critter_flag_set(OCF_MUTE)}
+{462}{[Nod even more subtly back.]}{}{1}{}{450}{}
+{463}{[Curtsey in the socially apropriate manner.]}{}{1}{}{450}{}
+
+{465}{[He takes it gingerly and does not attempt to open it.] I will keep this safe and make sure it gets to the right people. For now, you have our gratitude. [He inclines his head ever so slightly toward you.]}{[He takes it gingerly and does not attempt to open it.] I will keep this safe and make sure it gets to the right people. For now, you have our gratitude. [He inclines his head ever so slightly toward you.]}{}{}{}{}
+{466}{[Ignore this and walk away.]}{}{1}{}{0}{npc.critter_flag_set(OCF_MUTE)}
+{467}{[Nod even more subtly back.]}{}{1}{}{450}{}
+{468}{[Curtsey in the socially apropriate manner.]}{}{1}{}{450}{}
+
+{470}{So, can I take this to mean you have finished your quest? Was there a working gate, and was it destoyed?}{So, can I take this to mean you have finished your quest? Was there a working gate, and was it destoyed?}{}{}{}{}
+{471}{Yes. Well, no. Not quite.}{}{1}{}{430}{}
+{472}{Absolutely! [Tell him the story of how you destroyed the Gate.]}{}{1}{game.global_flags[20] == 1}{440}{}
 
 {500}{Made it!}{Made it!}{}{}{}{}
 {501}{Sweet! Back to line 1.}{}{1}{}{1}{}

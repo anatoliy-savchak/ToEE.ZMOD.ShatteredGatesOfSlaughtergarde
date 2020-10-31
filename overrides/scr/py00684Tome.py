@@ -1,6 +1,5 @@
 from toee import *
 from utilities import *
-from scripts import *
 
 def san_use( attachee, triggerer ):
 	loc = triggerer.location
@@ -9,12 +8,11 @@ def san_use( attachee, triggerer ):
 		npc.float_line( 200, triggerer )
 		game.timevent_add(npc.destroy, (), 3000 )
 		return SKIP_DEFAULT
+	elif (anyone( triggerer.group_list(), "has_item", 12883) or find_gnrc_near( triggerer, 12883 )) and (anyone( triggerer.group_list(), "has_item", 12881) or find_gnrc_near( triggerer, 12881 )):
+		triggerer.begin_dialog(npc,400)
+		return SKIP_DEFAULT
 	else:
-		triggerer.begin_dialog(npc,1)
-	return SKIP_DEFAULT
-
-def san_dialog( attachee, triggerer ):
-	triggerer.begin_dialog(attachee,1)
+		triggerer.begin_dialog(npc,300)
 	return SKIP_DEFAULT
 
 def find_gnrc_near( obj, name ):
@@ -35,7 +33,7 @@ def do_the_ark(triggerer):
 		ark2.move(location_from_axis(423, 441))
 	else:
 		ark2 = game.obj_create(12883, location_from_axis(423, 441))
-	ark2.rotation = 5.5
+	ark2.rotation = 4.8
 	return
 	
 def do_the_sigil(triggerer):
@@ -52,26 +50,11 @@ def do_the_sigil(triggerer):
 	
 def light_up_ark(triggerer):
 	ark = find_gnrc_near( triggerer, 12883 )
-	game.particles( 'sp-Detect Secret Doors', ark )
+	ark.partsys_id = game.particles( 'sp-Detect Secret Doors', ark.obj )
 	
 def light_up_sigils(triggerer):
 	for gnrc in game.obj_list_vicinity( triggerer.location, OLC_GENERIC ):
 		if (gnrc.name == 12880):
-			game.particles( 'sp-Detect Undead 3 High', gnrc )
+			gnrc.partsys_id = game.particles( 'ef-Globe_green', gnrc.obj )
 	return
 	
-def destroy_it_all():
-	game.global_flags[20] = 1
-	for gnrc in game.obj_list_vicinity( location_from_axis(423, 433), OLC_GENERIC ):
-		if (gnrc.name == 12880):
-			game.particles( 'sp-Disrupt Undead-hit', gnrc )
-			game.timevent_add(gnrc.destroy, (), 2000 )
-	for ark in game.obj_list_vicinity( location_from_axis(423, 441), OLC_GENERIC ):
-		if (ark.name == 12883):
-			game.particles( 'Orb-Summon-Balor', ark )
-			game.timevent_add(ark.destroy, (), 2000 )
-	for gate in game.obj_list_vicinity( location_from_axis(423, 433), OLC_SCENERY ):
-		if (gate.name == 2006):
-			game.particles( 'sp-Fireball-Hit', gate )
-			game.timevent_add(gate.destroy, (), 2000 )
-	return

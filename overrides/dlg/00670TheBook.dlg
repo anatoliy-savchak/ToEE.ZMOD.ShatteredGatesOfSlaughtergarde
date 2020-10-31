@@ -1,3 +1,5 @@
+// Book you buy
+
 {1}{[The book is called, "To The Valley Below" and is a travel guide to the various settlements of the Valley of Obelisks. It was written by B. Botany (Esq). Once you start reading, click on the text to move to the next page, or choose 'Close the book' at any time.]}{[The book is called, "To The Valley Below" and is a travel guide to the various settlements of the Valley of Obelisks. It was written by B. Botany (Esq). Once you start reading, click on the text to move to the next page, or choose 'Close the book' at any time.]}{}{}{}{}
 {2}{[It appears to be alphabetical. Start at the beginning.]}{}{1}{}{10}{}
 {3}{[Skip to the K's.]}{}{1}{}{30}{}
@@ -60,7 +62,49 @@
 
 {75}{Sumberton (Small City):The city of Sumberton is the most important trade center in the Valley of Obelisks. Demographics: 45% human, 15% halfling, 10% dwarf, 8% gnome, 5% elf, 5% half-elf, 5% half-orc, 5% all others.}{Sumberton (Small City):The city of Sumberton is the most important trade center in the Valley of Obelisks. Demographics: 45% human, 15% halfling, 10% dwarf, 8% gnome, 5% elf, 5% half-elf, 5% half-orc, 5% all others.}{}{}{}{}
 {76}{[Close the book.]}{}{1}{}{0}{npc.destroy()}
-{77}{[That's it? That's all it says about the Valley's biggest - and only - city? Good thing you can go there and see for yourself! anyway, keep reading.]}{}{1}{}{80}{}
+{77}{[That's it? That's all it says about the Valley's biggest - and only - city? Good thing you can go there and see for yourself! Anyway, keep reading.]}{}{1}{}{80}{}
 
 {80}{Tulvercross (Small Town): Tulvercross boasts some of the best grassland in the Valley of Obelisks, so it has horse, sheep, and cattle ranches nearby rather than the farms that dominate the rest of the valley.} {Tulvercross (Small Town): Tulvercross boasts some of the best grassland in the Valley of Obelisks, so it has horse, sheep, and cattle ranches nearby rather than the farms that dominate the rest of the valley.}{}{}{}{}
 {81}{The Perdekark and the Entrighan noble families of the town have a rivalry that started as a dispute over rangeland but quickly became personal. Members of the two clans aren't always violent toward one another, but minor acts of sabotage and intimidation are common. [End of Book.]}{}{1}{}{0}{npc.destroy()}
+
+
+
+// Barbarian
+
+{200}{You are an illiterate barbarian! Put this book down before you ruin it!}{You are an illiterate barbarian! Put this book down before you ruin it!}{}{}{}{}
+
+
+// The Tome of SlaughterGarde
+
+// Notta gotta the Right Stuff
+
+{300}{[This is a grimoire that details how to use the Gates of Slaughtergarde to link to the Abyss. To empower a Gate, it says you need a 'force for good, bound and reversed', and five sigils (the Gate nearest Gashkarr only has four). The other Gates in the room are smashed beyond repair.]}{[This is a grimoire that details how to use the Gates of Slaughtergarde to link to the Abyss. To empower a Gate, it says you need a 'force for good, bound and reversed', and five sigils (the gate nearest Gashkarr only has four). The other Gates in the room are smashed beyond repair.]}{}{}{}{}
+{301}{Well I have this Ark, it seems to be a 'force for good bound and reversed'. I better find a sigil.}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{0}{npc.destroy()}
+{302}{I have a sigil, surely they had created this 'force for good'? I should search.}{}{1}{anyone( pc.group_list(), "has_item", 12881)}{0}{npc.destroy()}
+{303}{I have both those things! Better tell Ted there is a bug. He'll be glad to hear it.}{}{1}{anyone( pc.group_list(), "has_item", 12883) and anyone( pc.group_list(), "has_item", 12881)}{}{npc.destroy()}
+{304}{I have neither of these things. Better go back and check again.}{}{1}{not anyone( pc.group_list(), "has_item", 12883) and not anyone( pc.group_list(), "has_item", 12881)}{0}{npc.destroy()}
+
+// Gotta Right Stuff, let's incant!
+
+{400}{[This is a grimoire that details how to use the Gates of Slaughtergarde to link to the Abyss. To empower a Gate, it says you need a 'force for good, bound and reversed', and five sigils (the Gate nearest Gashkarr only has four). You have these things, and can now either Use, or Destroy, the Gate.]}{[This is a grimoire that details how to use the Gates of Slaughtergarde to link to the Abyss. To empower a Gate, it says you need a 'force for good, bound and reversed', and five sigils (the gate nearest Gashkarr only has four). You have these things, and can now either Use, or Destroy, the Gate.}{}{}{}{}
+{401}{Let's just leave it for now.}{}{1}{}{0}{npc.destroy()}
+{402}{Begin the ritual!}{}{1}{}{410}{}
+
+{410}{[You position the Ark in front of the Gate.]}{[You position the Ark in front of the Gate.]}{}{}{}{do_the_ark(pc)}
+{411}{[Continue.]}{}{1}{}{420}{}
+
+{420}{[There are four sigils at critical points in the Gate's structure, and a gap where a fifth has been removed or destroyed. You place your sigil in the gap, and it locks into place of its own accord.]}{[There are four sigils at critical points in the Gate's structure, and a gap where a fifth has been removed or destroyed. You place your sigil in the gap, and it locks into place of its own accord.]}{}{}{}{do_the_sigil(pc)}
+{421}{[Continue.]}{}{1}{}{430}{}
+
+{430}{[You look up the markings on the sigils in the various astrological tables in the Tome, and begin to intone the relevant passages.]}{[You look up the markings on the sigils in the various astrological tables in the Tome, and begin to intone the relevant passages.]}{}{}{}{}
+{431}{[Continue.]}{}{1}{}{435}{}
+
+{435}{[The ark begins to glow, and power pours from it into the Gate.]}{[The ark begins to glow, and power pours from it into the Gate.]}{}{}{}{light_up_ark(pc)}
+{436}{This is getting exciting!}{}{1}{}{440}{}
+
+{440}{[One by one the sigils begin to glow.]}{[One by one the sigils begin to glow.]}{}{}{}{light_up_sigils(pc)}
+{441}{Now we're getting somewhere!}{}{1}{}{450}{}
+
+{450}{[With a shout you utter the final incantation, and the Gate to hell opens!]}{[With a shout you utter the final incantation, and the Gate to hell opens!]}{}{}{}{}
+{451}{Use the power coursing between the planes to destroy the Gate!}{}{1}{}{0}{destroy_it_all()}
+{452}{Run through the Gate!}{}{1}{}{0}{}

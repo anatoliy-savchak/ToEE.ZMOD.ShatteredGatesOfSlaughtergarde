@@ -234,3 +234,65 @@ def npc_make_hide_and_surprise(npc):
 
 	npc.condition_add("SurpriseRound2")
 	return 1
+
+def npc_move_silently_against_listener(npc, target):
+	assert isinstance(npc, toee.PyObjHandle)
+	assert isinstance(target, toee.PyObjHandle)
+
+	dice20 = toee.dice_new("1d20")
+
+	npc_bonus_list = tpdp.BonusList()
+	npc_roll = dice20.roll()
+	npc_score = tpdp.dispatch_skill(npc, toee.skill_move_silently, npc_bonus_list, toee.OBJ_HANDLE_NULL, 1)
+	npc_score_total = npc_score + npc_roll
+	print("npc hide roll: {}, skill: {}, total: {}".format(npc_roll, npc_score, npc_score_total))
+
+	target_bonus_list = tpdp.BonusList()
+	target_roll = dice20.roll()
+	target_score = tpdp.dispatch_skill(target, toee.skill_listen, target_bonus_list, toee.OBJ_HANDLE_NULL, 1)
+	target_score_total = target_score + target_roll
+	print("target listen roll: {}, skill: {}, total: {}".format(target_roll, target_score, target_score_total))
+	success = npc_score_total > target_score_total
+	hist_id = tpdp.create_history_type6_opposed_check(npc, target, npc_roll, target_roll, npc_bonus_list, target_bonus_list, 5126, 103 - success, 1) # \overrides\tpmes\combat.mes" 
+	toee.game.create_history_from_id(hist_id)
+	return not success
+
+def npc_listen_against_pc(npc, distance_threshhold):
+	assert isinstance(npc, toee.PyObjHandle)
+	assert isinstance(distance_threshhold, int)
+	objects = toee.game.obj_list_vicinity(npc.location, toee.OLC_PC | toee.OLC_NPC)
+	if (not objects): return None
+	foes = []
+	for obj in objects:
+		assert isinstance(obj, toee.PyObjHandle)
+		if (obj == npc): continue
+		f = obj.object_flags_get()
+		if ((f & toee.OF_OFF) or (f & toee.OF_DESTROYED) or (f & toee.OF_DONTDRAW)): continue
+		if (obj.allegiance_shared(npc)): continue
+		dist = npc.distance_to(obj)
+		if (dist > distance_threshhold): 
+			continue
+		print("distance: {}".format(dist))
+		if (not obj.critter_flags_get() & toee.OCF_MOVING_SILENTLY): return obj
+		foes.append(obj)
+	if (not foes): return None
+
+	dice20 = toee.dice_new("1d20")
+
+	npc_bonus_list = tpdp.BonusList()
+	npc_roll = dice20.roll()
+	npc_score = tpdp.dispatch_skill(npc, toee.skill_listen, npc_bonus_list, toee.OBJ_HANDLE_NULL, 1)
+	npc_score_total = npc_score + npc_roll
+	print("npc listen roll: {}, skill: {}, total: {}".format(npc_roll, npc_score, npc_score_total))
+
+	for target in foes:
+		target_bonus_list = tpdp.BonusList()
+		target_roll = dice20.roll()
+		target_score = tpdp.dispatch_skill(target, toee.skill_move_silently, target_bonus_list, toee.OBJ_HANDLE_NULL, 1)
+		target_score_total = target_score + target_roll
+		print("target move silently roll: {}, skill: {}, total: {}".format(target_roll, target_score, target_score_total))
+		success = npc_score_total > target_score_total
+		hist_id = tpdp.create_history_type6_opposed_check(npc, target, npc_roll, target_roll, npc_bonus_list, target_bonus_list, 5125, 103 - success, 1) # \overrides\tpmes\combat.mes" 
+		toee.game.create_history_from_id(hist_id)
+		if (success): return target
+	return None

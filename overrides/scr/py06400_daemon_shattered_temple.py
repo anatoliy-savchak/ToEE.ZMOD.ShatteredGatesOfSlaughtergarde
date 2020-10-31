@@ -490,7 +490,10 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_t16(self):
-		self.create_promter_at(utils_obj.sec2loc(506, 449), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone")
+		p1 = self.create_promter_at(utils_obj.sec2loc(506, 449), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone", const_toee.rotation_0200_oclock)
+		p2 = self.create_promter_at(utils_obj.sec2loc(513, 452), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone", const_toee.rotation_0600_oclock)
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		leader, ctrl = self.create_npc_at(utils_obj.sec2loc(512, 450), py06401_shattered_temple_encounters.CtrlLanthurrae, const_toee.rotation_0200_oclock, "t16", "priestess")
 		minion = self.create_npc_at(utils_obj.sec2loc(510, 448), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock1")[0]

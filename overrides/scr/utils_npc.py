@@ -180,7 +180,7 @@ def npc_get_cr_exp(pc, cr):
 def find_pc_closest_to_origin(loc):
 	f = None
 	fdist = 0.0
-	for obj in game.party:
+	for obj in toee.game.party:
 		assert isinstance(obj, toee.PyObjHandle)
 		if (f is None): 
 			f = obj

@@ -1,7 +1,7 @@
 from toee import *
 from utilities import *
 from scripts import *
-import utils_obj
+import utils_obj, utils_sneak
 from utils_npc import *
 
 def san_dialog( attachee, triggerer ):
@@ -48,13 +48,8 @@ def activate_heartbeat(attachee):
 def san_heartbeat(attachee, triggerer):
 	print("troll heartbeat")
 	talkto = None
-	maxx = 470
-	for pc in game.party:
-		x, y = utils_obj.loc2sec(pc.location)
-		if (x > maxx):
-			talkto = pc
-			print("talkto: {}".format(talkto))
-			break
+
+	talkto = utils_sneak.npc_listen_against_pc(attachee, 10)
 	if (talkto): 
 		san_dialog(attachee, talkto)
 		attachee.scripts[0x13] = 0

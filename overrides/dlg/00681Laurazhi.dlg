@@ -1,0 +1,277 @@
+{1}{[You see a beautiful woman.] If you got this far, you must be capable. I need capable allies.}{[You see a beautiful woman.] If you got this far, you must be capable. I need capable allies.}{}{}{}{}
+{2}{[Detect Evil - she is pure evil! Almost certainly an Outsider. Click here to confront her on this.]}{}{1}{pc.stat_level_get(stat_level_paladin) >= 1 or game.global_flags[17] == 1}{10}{}
+{3}{[Spot check! This woman is in disguise - in fact, she may not even be a woman! Click to confront her.]}{}{1}{spot(npc, pc, 17)}{10}{}	// Disguise is 17 - this should be rolled
+{4}{Introductions? I'm @pcname@. What brings you to a place like this?}{}{1}{}{50}{}
+
+{10}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{}{}{}{game.global_flags[18] = 1}
+{11}{I cannot work with a fiend. Begone.}{}{1}{}{0}{}
+{13}{I cannot work with you if I do not trust you, no deal.}{}{1}{pc.stat_level_get(stat_level_paladin) == 0}{0}{}
+{14}{Tell me what you know and perhaps we can work together.}{}{1}{pc.stat_level_get(stat_level_paladin) == 0}{0}{succ_dipl(npc, pc)}
+
+{50}{I am Laurazhi, sorceress. You are adventurers also? What have you found?}{I am Laurazhi, sorceress. You are adventurers also? What have you found?}{}{}{}{}
+{51}{[Tell her of the ark.]}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{60}{}
+{52}{[Tell her of the sigil.]}{}{1}{anyone( pc.group_list(), "has_item", 12881)}{60}{}
+{53}{Our business is our own. Tell us what you know.}{}{1}{}{0}{npc_1(npc); succ_dipl(npc, pc)}
+{54}{Nothing to speak of, what about you? How did a lone woman survive this place?}{}{1}{}{70}{}
+
+{60}{[She nods.] I know of what you speak. The gate I seek requires an ark to repair it, and sigils to empower it. You have done well in what you have found.}{[She nods.] I know of what you speak. The gate I seek requires an ark to repair it, and sigils to empower it. You have done well in what you have found.}{}{}{}{}
+{61}{...and this is the point you tell me what you have found.}{}{1}{}{0}{succ_dipl(npc, pc)}
+
+{70}{My speciality is illusions: monsters won't kill what they don't see. I have found some minor trinkets, but I believe the main treasure - a gate of great power - lies beyond.}{My speciality is illusions: monsters won't kill what they don't see. I have found some minor trinkets, but I believe the main treasure - a gate of great power - lies beyond.}{}{}{}{}
+{71}{I don't believe that. What are you hiding?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{10}{}
+{72}{What can you tell us of it?}{}{1}{}{0}{succ_dipl(npc, pc)}
+
+
+// returned chatter, npc_2 set (friendly or helpful dipl check), not in party
+
+{100}{The brave adventurers return! Have you defeated the gnoll, and what did you find?}{The brave adventurers return! Have you defeated the gnoll, and what did you find?}{}{}{}{}
+{101}{Getting there, getting there... what did you say your area of expertise was?}{}{1}{game.global_flags[18] == 0}{110}{}
+{104}{I'm working on it!}{}{1}{}{0}{}
+
+{110}{I have many skills, many ways I can impress... [She smiles at you knowingly.] But if you ask what skills brought me here, I am a sorceress who specialises in illusion. Simple-minded monsters are easily fooled, so I have not had to fight. I will need allies to get me to the gate, though. Perhaps we can... partner?}{I have many skills, many ways I can impress... But if you ask what skills brought me here, I am a sorceress who specialises in illusion. Simple-minded monsters are easily fooled, so I have not had to fight. I will need allies to get me to the gate, though. What say you?}{}{}{}{}
+{111}{Sure, let's team up.}{}{1}{}{4250}{}
+{112}{The monsters may be simple minded but I am not and I know you are lying. Be honest.}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 21)}{120}{}		// dc +2 because she has now been studying the party, how best to bluff them
+{113}{I'll have to think about it.}{}{1}{}{0}{}
+
+{120}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{}{}{}{game.global_flags[18] = 1}
+{121}{I cannot work with a fiend. Begone.}{}{1}{}{0}{npc_2_undo(npc)}
+{123}{I cannot work with you if I do not trust you, no deal.}{}{1}{pc.stat_level_get(stat_level_paladin) == 0}{0}{npc_2_undo(npc)}
+{124}{That makes no sense. Why would you help seal the gate, and how can I trust you?}{}{1}{pc.stat_level_get(stat_level_paladin) == 0}{130}{}
+
+{130}{[She smirks.] Know you nothing of the selfishness of demons? I wish to return home, so I need the gate to take me back - after that, I care nothing for it or for those who would use it, even those in the Abyss. If I must seal it to ensure I get home, so be it. I will help you and not betray you because it serves my purpose.}{[She smirks.] Know you nothing of the selfishness of demons? I wish to return home, so I need the gate to take me back - after that, I care nothing for it or for those who would use it, even those in the Abyss. If I must seal it to ensure I get home, so be it. I will help you and not betray you because it serves my purpose.}{}{}{}{}
+{131}{Ummm, that almost makes sense? Sure, let's do this. Join up.}{}{1}{}{600}{}
+{132}{There will still come a moment when you are back in the Abyss, that we will have to rely on trust you haven't earned. No deal.}{}{1}{}{0}{npc_2_undo(npc)}
+
+
+// spellcraft check reveals she is bluffing (floatline)
+
+{150}{[Spellcraft check: Whatever she is doing, she is not casting a spell - the hand gestures and muttering are for show!]}{[Spellcraft check: Whatever she is doing, she is not casting a spell - the hand gestures and muttering are for show!]}{}{}{}{}	// dc is bluff - 19. Roll
+
+// modifiers: : PCs have the Ark (+2); PCs have a sigil (+4); PCs look badly wounded (-2): a
+PC is obviously a cleric or paladin of a good deity (- 2); a PC is obviously a cleric or paladin of a lawful deity (-4).
+
+// Unfriendly (l or lower):
+
+{200}{What you seek lies beyond the door. Do not tarry, lest they prepare for your arrival.}{What you seek lies beyond the door. Do not tarry, lest they prepare for your arrival.}{}{}{}{}
+{201}{What? How do you know what I seek?}{}{1}{}{210}{}
+
+{210}{The same that I seek, the gate! If you wish to catch its guardians out, act now. My sorcerer's sight tells me they are preparing defenses - quickly, before they are too powerful! Go! [She turns away!]}{The same that I seek, the gate! If you wish to catch its guardians out, act now. My sorcerer's sight tells me they are preparing defenses - quickly, before they are too powerful! Go! [She turns away!]}{}{}{}{away(npc)}
+{211}{Thank you for the warning.}{}{1}{}{0}{}
+{212}{I don't trust you, you are hiding something from me.}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{320}{}	
+
+// Indifferent (2- 14): 
+
+{300}{The gate is restless now with the gnoll warchief's meddling. Defeat the guardian and the war chief and it's yours to do with what you will.}{The gate is restless now with the gnoll warchief's meddling. Defeat the guardian and the war chief and it's yours to do with what you will.}{}{}{}{}
+{301}{What can you tell me of the warchief?}{}{1}{}{310}{}
+
+{310}{He is the leader of the gnolls, a huge powerful creature. You should probably try to catch him by surprise - do not sneak around, a bold frontal charge is required. This is not the moment for timidity.}{He is the leader of the gnolls, a huge powerful creature. You should probably try to catch him by surprise - do not sneak around, a bold frontal charge is required. This is not the moment for timidity.}{}{}{}{}
+{311}{Thanks, I'll keep that in mind.}{}{1}{}{0}{}
+{312}{Just charge in? No defensive spells or tactics? I don't like the sound of this, and I question why you would say it.}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{320}{}
+
+{320}{There is a time for caution, and a time to strike before the enemy is prepared or can summon help. I have said all I will say. If you survive we may yet meet again.}{There is a time for caution, and a time to strike before the enemy is prepared or can summon help. I have said all I will say. If you survive we may yet meet again.}{}{}{}{}
+{321}{Hmmm.}{}{1}{}{0}{}
+
+
+
+// Friendly (15-29): 
+
+{400}{The gnoll and his mezzoloth minion can manipulate the gate, but they currently lack two items required to open it. A 'force of good, bound and reversed' must be brought to the gate, and the missing sigil must be replaced.}{The gnoll and his mezzoloth minion can manipulate the gate, but they currently lack two items required to open it. A 'force of good, bound and reversed' must be brought to the gate, and the missing sigil must be replaced.}{}{}{}{}
+{401}{And how is the gate then opened?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 10}{410}{}
+{402}{And can we use these items to destroy it?}{}{1}{}{510}{}
+{403}{So this ark, does this count as a 'force for good'?}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{450}{}
+{404}{This is the sigil you mean? [Show her the sigil you found.]}{}{1}{anyone( pc.group_list(), "has_item", 12881)}{405}{}
+
+{405}{You have it! Well done! This acts like a rope in a pulley system - the power of the 'force of good, bound and reversed', such as the ark they use, will flow through the sigil and power the gate. It can then be used to ferry beings either to or from the Abyss.}{You have it! Well done! This acts like a rope in a pulley system - the power of the 'force of good, bound and reversed', such as the ark they use, will flow through the sigil and power the gate. It can then be used to ferry beings either to or from the Abyss.}{}{}{}{}
+{406}{Why in the name of the Gods would you want to do that?}{}{1}{game.party_alignment == LAWFUL_GOOD or game.party_alignment == NEUTRAL_GOOD or game.party_alignment == CHAOTIC_GOOD or game.party_alignment == LAWFUL_NEUTRAL}{464}{}
+{407}{And you think you can get home that way?}{}{1}{game.global_flags[18] == 1}{460}{}
+{408}{That is how the gate is powered, how is it operated?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 10}{410}{}
+{409}{Is this the ark you mean?}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{455}{}
+
+{410}{I am not sure. I have been watching while invisible to see if they have made the attempt, but they have not. Doubtless when we defeat them we will find some mechanism, or secret. Or we could torture the gnoll.}{I am not sure. I have been watching while invisible to see if they have made the attempt, but they have not. Doubtless when we defeat them we will find some mechanism, or secret. Or we could torture the gnoll.}{}{}{}{}
+{411}{'We'? What 'we' is this?}{}{1}{}{420}{}
+{412}{I don't believe you.}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{430}{}
+{413}{Torture is not really my thing, you see...}{}{1}{}{440}{}
+
+{420}{It benefits us both, and Grashnarr is a powerful enemy. But you will find me a worthy ally, and grateful too... [She runs her finger down your arm as she says this, and the skin tingles.]}{It benefits us both, and Grashnarr is a powerful enemy. But you will find me a worthy ally.}{}{}{}{}
+{421}{[You sense no reason to think she is not telling the truth.]}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 4 and (sense( npc, pc, 19) == 0)}{425}{}	// FAILED sense motive check!
+{422}{I will have to think about this.}{}{1}{}{0}{}
+{423}{I'm game, let's do this.}{}{1}{}{425}{}
+{424}{No, no, a thousand times no. I am a paladin and will not have your evil near me. Begone!}{}{1}{pc.stat_level_get(stat_level_paladin) == 1}{0}{}
+
+{425}{Then let us go! [She falls in.]}{Then let us go! [She falls in.]}{}{}{}{pc.ai_follower_add(npc)}
+{426}{Onward!}{}{1}{}{0}{}
+{427}{What will we face up ahead?}{}{1}{}{470}{}
+{428}{Can we talk about your gear?}{}{1}{}{485}{}
+
+{430}{[She blushes and looks away.] All right, I am exaggerating. I have been keeping my distance until some chance, such as your arrival, came along. Shall we go?}{[She blushes and looks away.] All right, I am exaggerating. I have been keeping my distance until some chance, such as your arrival, came along. Shall we go?}{}{}{}{}
+{431}{You are still lying, tell the truth!}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 17)}{435}{}	// DC -2 as you have caught her out once
+{432}{I will have to think about all this. Goodbye for now.}{}{1}{}{0}{}
+{434}{[You sense no reason to think she is not telling the truth this time.] So you want to join me?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 4 and (sense( npc, pc, 9) == 0)}{420}{}	// FAILED sense motive check!
+
+{435}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{}{}{}{game.global_flags[18] = 1}
+{436}{I cannot work with a fiend. Begone.}{}{1}{}{0}{npc_2_undo(npc)}
+{437}{I cannot work with you if I do not trust you, no deal.}{}{1}{pc.stat_level_get(stat_level_paladin) == 0}{0}{npc_2_undo(npc)}
+{438}{How can I trust you?}{}{1}{pc.stat_level_get(stat_level_paladin) == 0}{130}{}
+
+{440}{No, of course not. [She laughs a tinkling laugh.] That part was not serious! But our first task is to defeat them, then we can figure out how to use the gate. I am confident with my knowledge and your experience, we will succeed.}{No, of course not. [She laughs a tinkling laugh.] That part was not serious! But our first task is to defeat them, then we can figure out how to use the gate. I am confident with my knowledge and your experience, we will succeed.}{}{}{}{}
+{441}{Maybe. I have to move on now, I will let you know what happens.}{}{1}{}{320}{}
+{442}{Again with 'we'. Do you want to join me?}{}{1}{}{420}{}
+{443}{I cannot work with a demon, so you can forget 'we'. Just keep out of my way.}{}{1}{game.global_flags[18] == 1}{0}{}
+
+{450}{Yes! This is what they intended to use: it has the tip of one of the obelisks from the valley bound inside it, reversed by corrupting magicks. Combined with the sigil, the gate will be operative. It can then be used to ferry beings either to or from the Abyss.}{Yes! This is what they intended to use: it has the tip of one of the obelisks from the valley bound inside it, reversed by corrupting magicks. Combined with the sigil, the gate will be operative. It can then be used to ferry beings either to or from the Abyss.}{}{}{}{}
+{451}{A sigil like this?}{}{1}{{anyone( pc.group_list(), "has_item", 12881)}{455}{}
+{452}{Why would you want to do that?}{}{1}{}{464}{}
+{453}{And you think you can get home that way?}{}{1}{game.global_flags[18] == 1}{460}{}
+{454}{That is how the gate is powered, how is it operated?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 10}{410}{}
+
+{455}{Indeed! Now we only need defeat Gashkarr - let us have at him!}{Indeed! Now we only need defeat Gashkarr - let us have at him!}{}{}{}{}
+{456}{Sure, join up.}{}{1}{}{425}{}
+{457}{You want to join my group? I'm in charge, you know.}{}{1}{}{420}{}
+{458}{I'll have to think about it.}{}{1}{}{0}{}
+
+
+{460}{Of course - I will be using the gate for its intended purpose. But should you help me, you can use the power for yourself, whether to summon puissant allies, or bend its magical forces to your will. Or we can destroy it, if you prefer. I care not, I only wish to go home. Shall we be about it?}{Of course - I will be using the gate for its intended purpose. But should you help me, you can use the power for yourself, whether to summon puissant allies, or bend its magical forces to your will. Or we can destroy it, if you prefer. I care not, I only wish to go home. Shall we be about it?}{}{}{}{}
+{461}{'We' again? Are you inviting yourself into my group?}{}{1}{}{420}{}
+{462}{How do I know I can trust you?}{}{1}{}{130}{}
+{463}{No, I will not ally with a demon and just *hope* you help me destroy the gate from the other side. No deal.}{}{1}{}{320}{npc_2_undo(npc)}
+
+{464}{Well, a gate of such power is, well, powerful! The wise do not fear to bend power to their will, and I have learned many things during my magical studies. I am confident we can use this gate for our own ends.}{Well, a gate of such power is, well, powerful! The wise do not fear to bend power to their will, and I have learned many things during my magical studies. I am confident we can use this gate for our own ends.}{}{}{}{}
+{465}{'We' again? Are you inviting yourself into my group?}{}{1}{}{420}{}
+{466}{Your 'ends' being to transport yourself home?}{}{1}{game.global_flags[18] == 1}{460}{}
+{467}{I'll think about it.}{}{1}{}{0}{}
+
+{470}{The Gnoll Warchief Gashkarr, a powerful leader. Like many Gnolls he is a Ranger, and has also trained under some unholy diety, if I know my clerics. He has a Mezzoloth, you know these? An evil outsider, like a giant insect the size of a man, with powers to create fear, darkness or deadly clouds.}{The Gnoll Warchief Gashkarr, a powerful leader. Like many Gnolls he is a Ranger, and has also trained under some unholy diety, if I know my clerics. He has a Mezzoloth, you know these? An evil outsider, like a giant insect the size of a man, with powers to create fear, darkness or deadly clouds.}{}{}{}{}
+{471}{Thanks, I'll be careful.}{}{1}{}{0}{}
+
+{485}{Not right now, no.}{Not right now, no.}{}{}{}{}
+{486}{Drat.}{}{1}{}{0}{}
+
+// Helpful (30 or more): As friendly, except that Laurazhi 3150 explains that the Tome of Slaughtergarde  controls the gate (but not how). After a battle against the mezzoloth and Gashkarr in which the PCs are victorious, she helps place the sigil and the ark, and she volunteers to use the Tome to close the gate. She closes it all right-from the other side, after she has absconded with the Tome.
+
+
+{500}{The gnoll and his mezzoloth minion can manipulate the gate using an ancient grimoire, the Tome of Slaughtergarde. Gashkarr has the Tome but they currently lack two items required to open it. A 'force of good, bound and reversed' must be brought to the gate, and the missing sigil must be replaced.}{The gnoll and his mezzoloth minion can manipulate the gate using an ancient grimoire, the Tome of Slaughtergarde. Gashkarr has the Tome but they currently lack two items required to open it. A 'force of good, bound and reversed' must be brought to the gate, and the missing sigil must be replaced.}{}{}{}{}
+{502}{And can we use these items to destroy it?}{}{1}{}{510}{}
+{503}{So this ark, does this count as a 'force for good'?}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{550}{}
+{504}{This is the sigil you mean? [Show her the sigil you found.]}{}{1}{anyone( pc.group_list(), "has_item", 12882)}{505}{}
+
+{505}{You have it! Well done! This acts like a rope in a pulley system - the power of the 'force of good, bound and reversed', such as the ark they use, will flow through the sigil and power the gate. It can then be used to ferry beings either to or from the Abyss.}{You have it! Well done! This acts like a rope in a pulley system - the power of the 'force of good, bound and reversed', such as the ark they use, will flow through the sigil and power the gate. It can then be used to ferry beings either to or from the Abyss.}{}{}{}{}
+{506}{Why in the name of the Gods would you want to do that?}{}{1}{game.party_alignment == LAWFUL_GOOD or game.party_alignment == NEUTRAL_GOOD or game.party_alignment == CHAOTIC_GOOD or game.party_alignment == LAWFUL_NEUTRAL}{464}{}
+{507}{And you think you can get home that way?}{}{1}{game.global_flags[18] == 1}{460}{}
+{509}{Is this the ark you mean?}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{455}{}
+
+{510}{If you wish, or we can turn the power of the gate to some other end: the wise know that such great power can be bent to the will. But if you are intent on destroying it, I will assist - I can use it to send me to the place of my hearts desire, and from the there I can assist in sealing the gate.}{If you wish, or we can turn the power of the gate to some other end: the wise know that such great power can be bent to the will. But if you are intent on destroying it, I will assist - I can use it to send me to the place of my hearts desire, and from the there I can assist in sealing the gate.}{}{}{}{}
+{511}{I have to think about all this.}{}{1}{}{0}{}
+{512}{And you want to join the group?}{}{1}{}{420}{}
+{513}{You're speaking of returning home to the Abyss?}{}{1}{game.global_flags[18] == 1}{460}{}
+{514}{All this talk of bending such power to our will, or summoning the Abyss, that is not why I am here. Begone from me.}{}{1}{}{0}{npc_2_undo(npc)}
+
+{550}{Yes! This is what they intended to use: it has the tip of one of the obelisks from the valley bound inside it, reversed by corrupting magicks. Combined with the sigil, the gate will be powered. It can then be operated with the Tome to ferry beings either to or from the Abyss.}{Yes! This is what they intended to use: it has the tip of one of the obelisks from the valley bound inside it, reversed by corrupting magicks. Combined with the sigil, the gate will be powered. It can then be operated with the Tome to ferry beings either to or from the Abyss.}{}{}{}{}
+{551}{A sigil like this?}{}{1}{{anyone( pc.group_list(), "has_item", 12882)}{455}{}
+{552}{Why would you want to do that?}{}{1}{}{464}{}
+{553}{And you think you can get home that way?}{}{1}{game.global_flags[18] == 1}{460}{}
+
+// returning chatter, not npc_2 set (not friendly or annoyed), Gashkarr alive
+
+{600}{I have said all I have to say. If you slay Gashkarr and wish my assistance with the gate, I will be open to negotiations, otherwise leave me.}{I have said all I have to say. If you slay Gashkarr and wish my assistance with the gate, I will be open to negotiations, otherwise leave me.}{}{}{}{}
+{601}{E:}{}{1}{}{0}{}
+
+
+// returning chatter, Gashkarr dead (whether she is on your side or has been angry at you, she will bluff and pretend to be friendly if Gashkarr is dead and she thinks you can use the gate.
+
+{650}{You have defeated the Warchief! That was no simple feat... well done! Now, did you search his body, and what did you find?}{You have defeated the Warchief! That was no simple feat... well done! Now, did you search his body, and what did you find?}{}{}{}{}
+{651}{Nothing.}{}{1}{}{667}{}
+{652}{I found this Tome. It's mine now.}{}{1}{anyone( pc.group_list(), "has_item", 12882)}{660}{}
+
+{655}{That is my belief, based on my research, and indeed it is the reason I risked life and limb and came here. I truly believe the power we shall discover will be worth it. But first we must place the sigils and ark, please do so and we can begin.}{That is my belief, based on my research, and indeed it is the reason I risked life and limb and came here. I truly believe the power we shall discover will be worth it. But first we must place the sigils and ark, please do so and we can begin.}{}{}{}{}
+{656}{Wait a minute, you just want to go home!}{}{1}{game.global_flags[18] == 1}{695}{}
+{657}{[Start the process.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
+{658}{You're lying, I can feel it in my bones! What are you really up to?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{695}{}
+{659}{I have to think about this.}{}{1}{}{0}{game.global_flags[19] = 1}
+
+{660}{Excellent. Now, do you have the ark and sigil? They will power the gate, and the Tome will operate it.}{Excellent. Now, do you have the ark and sigil? They will power the gate, and the Tome will operate it.}{}{}{}{}
+{661}{Yes, I have them.}{}{1}{anyone( pc.group_list(), "has_item", 12883) and anyone( pc.group_list(), "has_item", 12881)}{680}{}
+{663}{I have an ark.}{}{1}{anyone( pc.group_list(), "has_item", 12883)}{670}{}
+{664}{This is the sigil you mean?}{}{1}{anyone( pc.group_list(), "has_item", 12881)}{670}{}
+{665}{No, I don't seem to.}{}{1}{}{670}{}
+
+{667}{Please, seach harder. He will have a grimoire on him to operate the Gate!}{Please, seach harder. He will have a grimoire on him to operate the Gate!}{}{}{}{}
+{668}{Fine, I'll look again.}{}{1}{}{0}{}
+{669}{Oh, you mean this? Yes, I have the Tome.}{}{1}{anyone( pc.group_list(), "has_item", 12882)}{660}{}
+
+{670}{They are needed to power the gate! Come, join me and let us search them out, they cannot be far and the denizens of this place will be no match for us with Gashkarr fallen.}{They are needed to power the gate! Come, join me and let us search them out, they cannot be far and the denizens of this place will be no match for us with Gashkarr fallen.}{}{}{}{}
+{671}{Yes, let's join forces.}{}{1}{}{425}{}
+{672}{First, tell me what to do with everything.}{}{1}{}{675}{}
+
+{675}{So you can cut me out? No, dear, we do this together or not at all. If you do not wish my company while you find the ark and sigil, that is fine, I will wait here.}{So you can cut me out? No, dear, we do this together or not at all. If you do not wish my company while you find the ark and sigil, that is fine, I will wait here.}{}{}{}{pc.ai_follower_remove(npc)}
+{676}{We'll see.}{}{1}{}{0}{}
+
+{680}{Well done, I could kiss you! [She giggles with anticipation.] But that can wait until later. Place the ark before the gate, and the sigil in that hole, and hand me the Tome so I may intone the ritual.}{Well done, I could kiss you! [She giggles with anticipation.] But that can wait until later. Place the ark before the gate, and the sigil in that hole, and hand me the Tome so I may intone the ritual.}{}{}{}{}
+{681}{Wait wait wait... what ritual?}{}{1}{}{685}{}
+
+{685}{Do not be scared. It is a simple intonation that activates each of the sigils in turn [she points at the 4 sigils around the gate and the spot for the missing 5th that you carry.] It can be used to open or seal the gate.}{Do not be scared. It is a simple intonation that activates each of the sigils in turn [she points at the 4 sigils around the gate and the spot for the missing 5th that you carry.] It can be used to open or seal the gate.}{}{}{}{}
+{686}{[Start the ritual.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
+{687}{So we can seal the gate that way, prevent anyone using it?}{}{1}{}{690}{}
+{688}{What about using the power of the gate for other means? It is a great force of magical energy, surely it can serve in other ways than just a gate?}{}{1}{}{655}{}
+
+{690}{Yes, of course. Come, let us put an end to this threat. Place the ark and sigils and I will intone the spell.}{Yes, of course. Come, let us put an end to this threat. Place the ark and sigils and I will intone the spell.}{}{}{}{}
+{691}{[Do so.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
+{692}{Don't rush me! Let me consider this.}{}{1}{}{0}{game.global_flags[19] = 1}
+{693}{No, you've been talking about using the gate all this time, now I am meant to believe you will just throw that power away? You're lying!}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 17)}{695}{}	// dc -2 as she is contradicting herself	
+
+{695}{I wish to use the power of the gate to return to my home, but I can seal it from the other side, and I will. I never intended anything other than to keep my word. I will make any promise, swear any oath, perform any service... [she runs her lightly hand over your chest] to convince you.}{I wish to use the power of the gate to return to my home, but I can seal it from the other side, and I will. I never intended anything other than to keep my word. I will make any promise, swear any oath, do whatever it takes to convince you.}{}{}{}{}
+{696}{[Carry on as she says and seal the gate.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
+{697}{I will have to consider this.}{}{1}{}{0}{game.global_flags[19] = 1}
+{698}{No, I wish to use the power of the gate for my own. Begone!}{}{1}{}{0}{npc.attack(pc)}
+
+
+// probably move ark from inventory to specific place in front of gate 423, 439
+
+{700}{[The damaged gate is missing a sigil. You place your sigil in the spot, and the ark in front of the gate. Laurazhi reads from the Tome of Slaughtergarde a series of intonations, and one by one the five sigils around the gate begin to glow.]}{[The damaged gate is missing a sigil. You place your sigil in the spot, and the ark in front of the gate. Laurazhi reads from the Tome of Slaughtergarde a series of intonations, and one by one the five sigils around the gate begin to glow.]}{}{}{}{ark(npc, pc)}
+{701}{[Continue.]}{}{1}{}{705}{pc.ai_follower_remove(npc)}
+
+{705}{[As she continues to read from the Tome, a wave of power flows from the ark into the gate.]}{[As she continues to read from the Tome, a wave of power flows from the ark into the gate.]}{}{}{}{move_her(npc); light_up_ark(pc)}
+{706}{Wow, something's happening!}{}{1}{}{710}{}
+
+{710}{[After one final incantation, the Gate itself erupts in a hellish brilliance, and through it you can see the fields of the damned. Screams and the scent of sulfur begin to faintly emerge.]}{[After one final incantation, the Gate itself erupts in a hellish brilliance, and through it you can see the fields of the damned. Screams and the scent of sulfur begin to faintly emerge.]}{}{}{}{light_up_sigils(pc)}
+{711}{It's... beautiful. So beautiful...}{}{1}{}{0}{final_run(npc, pc)}
+{712}{I'm having second thoughts... stop chanting.}{}{1}{}{0}{final_run(npc, pc)}
+
+{715}{[With a shriek of triumph, Laurazhi runs through the Gate!]}{[With a shriek of triumph, Laurazhi runs through the Gate!]}{}{}{}{game.global_flags[21] = 1}
+
+
+// in party chatter, Gashkarr still alive. Floatline
+
+{750}{Let us be about our business.}{Let us be about our business.}{}{}{}{}
+
+
+// game.global_flag[19] - party have killed Gashkarr but refused to go along with her
+
+{800}{Have you reconsidered? We waste time tarrying here, and undead spawn in the Slaughtergarde all the time.}{Have you reconsidered? We waste time tarrying here, and undead spawn in the Slaughtergarde all the time.}{}{}{}{}
+{801}{Let's do this thing.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
+{802}{Tell me one more time, what do you plan to achieve?}{}{1}{game.global_flags[18] == 0}{810}{}
+{803}{Tell me one more time, what do you plan to achieve?}{}{1}{game.global_flags[18] == 1}{820}{}
+{804}{I have decided to keep the power of the Gate for my own. Begone!}{}{1}{}{0}{npc.attack(pc)}
+
+{810}{I wish to harnass the power of the Gate, as do you. There is power enough to share. It is a Gate, so it can move us, to the Abyss or anywhere we choose - also, it will bring allies, but only from the Abyss. That was its purpose. Or, the raw power of the Gate can be reshaped by those of who know magic.}{I wish to harnass the power of the Gate, as do you. There is power enough to share. It is a Gate, so it can move us, to the Abyss or anywhere we choose - also, it will bring allies, but only from the Abyss. That was its purpose. Or, the raw power of the Gate can be reshaped by those of who know magic.}{}{}{}{}
+{811}{I wish to destroy the gate - what do you say to that?}{}{1}{}{830}{}
+{812}{What allies do you have in the Abyss?}{}{1}{}{835}{}
+{813}{Very well, I will risk this if the rewards are so great.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
+{814}{You are clearly lying, you wish to open a Gate to Hell! Tell the truth!}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{820}{}
+
+{820}{I simply wish to return to my home. Help me and my gratitude, and the power of the gate, will be yours. Once I have opened it you can harness its power, or I will show you how to seal it. Help me. [There is a pleading, a vulnerability in her eyes.]}{I simply wish to return to my home. Help me and my gratitude, and the power of the gate, will be yours. Once I have opened it you can harness its power, or I will show you how to seal it. Help me. [There is a pleading, a vulnerability in her eyes.]}{}{}{}{}
+{821}{All right, let's do this.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
+{822}{No, I'm sorry, I cannot risk it.}{}{1}{}{0}{npc.attack(pc)}
+
+{830}{Then we must compromise. The Gate must be activated so its powers can be used to seal it - allow me to pass through to the place of my hearts desire, and I will show you how to use the Tome to seal it.}{Then we must compromise. The Gate must be activated so its powers can be used to seal it - allow me to pass through to the place of my hearts desire, and I will show you how to use the Tome to seal it.}{}{}{}{}
+{831}{You have a deal.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
+{832}{No, the risk is too great.}{}{1}{}{0}{}
+
+{835}{[She chuckles.] Demon-summoning is an ancient way to achieve knowledge, as well as an edge in battle. If you are sensible, no harm will come to you: a summoning will not turn on its caller. Did you not see something similar with Gashkarr? Come, let us not be children - power is in our grasp.}{[She chuckles.] Demon-summoning is an ancient way to achieve knowledge, as well as an edge in battle. If you are sensible, no harm will come to you: a summoning will not turn on its caller. Did you not see something similar with Gashkarr? Come, let us not be children - power is in our grasp.}{}{}{}{}
+{836}{Yes, let do this.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}			// move them to the Gate and restart dialogue at 700?
+{837}{But I wish to destroy the gate!}{}{1}{}{830}{}
+{838}{No, I will not use this evil thing. I am leaving with the Tome, you can do what you want.}{}{1}{}{0}{npc.attack(pc)}
+
+// npc_1 = -2 on check
+// npc_2 = successful (friendly) check before
+
+// so on npc_2, she will sit it out and wait and see how battle pans out, possibly joining in on PCs side if they are winning. If NPC_2 is not set, she should attack them in behind when they are fighting mezzoloth / gnoll

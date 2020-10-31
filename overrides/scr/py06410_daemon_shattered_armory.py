@@ -181,17 +181,21 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a19()
 			self.place_encounter_a20()
 
-		self.place_ark()
+		self.place_encounter_a3()
+		#self.place_ark()
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 541, 472) #a5
+		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 464, 522) #a3
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 541, 472) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 498) #a10
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 528, 481) #a11
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 496, 457) #a15
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 508, 445) #a15
+
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 456)
 
 		# test debug
 		#toee.game.fade_and_teleport(0, 0, 0, 5124, 460, 456) #a18
@@ -621,7 +625,8 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 	def place_encounter_a18(self):
 		self.create_promter_at(utils_obj.sec2loc(454, 445), self.get_dialogid_default(), 180, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Gate Antechamber", const_toee.rotation_0700_oclock)
 		
-		self.create_npc_at(utils_obj.sec2loc(448, 445), py06411_shattered_armory_encounters.CtrlSuccubus, const_toee.rotation_0800_oclock, "a18", "succubus")
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(448, 445), py06411_shattered_armory_encounters.CtrlSuccubus, const_toee.rotation_0800_oclock, "a18", "succubus")
+		npc.scripts[const_toee.sn_dialog] = 681
 		return
 
 	def display_encounter_a18(self):
@@ -631,7 +636,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 	def activate_encounter_a18(self):
 		print("activate_encounter_a18")
-		self.activate_monster("a18", "succubus")
+		self.activate_monster("a18", "succubus", 1, 0)
 		return
 
 	def place_encounter_a19(self):
@@ -673,11 +678,11 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_ark(self):
-		#pole1 = toee.game.obj_create(12884, utils_obj.sec2loc(544, 466), 1.4142139, -9.899495)
-		#pole1.rotation = 0.7853982
+		pole1 = toee.game.obj_create(12884, utils_obj.sec2loc(544, 466), 1.4142139, -9.899495)
+		pole1.rotation = 0.7853982
 
-		#pole2 = toee.game.obj_create(12884, utils_obj.sec2loc(544,465), -1.41421306, -4.242641)
-		#pole2.rotation = 0.7853982
+		pole2 = toee.game.obj_create(12884, utils_obj.sec2loc(544,465), -1.41421306, -4.242641)
+		pole2.rotation = 0.7853982
 
 		ark = toee.game.obj_create(12883, utils_obj.sec2loc(543,465), -2.82842684, 5.65685368)
 		ark.rotation = 2.3561945

@@ -3,7 +3,7 @@
   <header boneCount="153" boneDataStart="40" materialCount="1" materialDataStart="15340" vertexCount="2248" vertexDataStart="15468" faceCount="1114" faceDataStart="195308" padding="AAAAAAAAAAA=" />
   <materials>
     <material id="art/meshes/Monsters/DragonBlack/DragonBlack.mdf">
-      <id_hex_preserve>YXJ0L21lc2hlcy9Nb25zdGVycy9DaG1yYS9DaG1yYS5tZGYACBwvAHAFLwAIHC8AEBwvAIgAAAAAAAAAwWBAAMFgQACw/xIA9GT7d0gW+Hd5Qup31P4SAAEAAACZnjYAAAAAAOT+EgCHzkAAsP8SAHvXQAD/////FQAAAMD/EgA=</id_hex_preserve>
+      <id_hex_preserve>YXJ0L21lc2hlcy9Nb25zdGVycy9EcmFnb25CbGFjay9EcmFnb25CbGFjay5tZGYAEBwvAIgAAAAAAAAAwWBAAMFgQACw/xIA9GT7d0gW+Hd5Qup31P4SAAEAAACZnjYAAAAAAOT+EgCHzkAAsP8SAHvXQAD/////FQAAAMD/EgA=</id_hex_preserve>
     </material>
   </materials>
   <bones>
