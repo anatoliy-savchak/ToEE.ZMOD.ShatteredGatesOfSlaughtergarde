@@ -10,7 +10,7 @@ def san_dialog( attachee, triggerer ):
 	if not attachee.has_met( triggerer ):
 		triggerer.begin_dialog( attachee, 1 )
 	else:
-		if anyone( pc.group_list(), "has_follower", 14957 ):
+		if anyone( game.leader.group_list(), "has_follower", 14957 ):
 			triggerer.begin_dialog( attachee, 400 )
 			return SKIP_DEFAULT			
 		elif game.quests[shattered_consts.QUEST_LUMINOSITY].state == qs_accepted:

@@ -120,7 +120,7 @@ class CtrlBarovia(ctrl_daemon.CtrlDaemon):
 
 	def monster_setup(self, npc, encounter_name, monster_code_name, monster_name, no_draw = 1, no_kos = 1, faction = None):
 		super(CtrlBarovia, self).monster_setup(npc, encounter_name, monster_code_name, monster_name, no_draw, no_kos, faction)
-		npc.scripts[const_toee.sn_dying] = barovia_consts.MAP_ID_BAROVIA
+		npc.scripts[const_toee.sn_dying] = barovia_consts.BAROVIA_DAEMON_SCRIPT
 		return
 	
 	def heartbeat(self):

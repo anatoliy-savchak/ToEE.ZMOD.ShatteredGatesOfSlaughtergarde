@@ -289,7 +289,8 @@ class Storage(object):
 				mod_name = os.path.basename(isofmodule).split('.')[0]
 				if (not (mod_cache and isofmodule in mod_cache)):
 					mod_path = os.path.join(os.getcwd(), "overrides", "scr", mod_name +".py")
-					mod_object = imp.load_source(mod_name, mod_path)
+					#mod_object = imp.load_source(mod_name, mod_path)
+					mod_object = __import__(mod_name)
 					mod_cache[isofmodule] = mod_object
 				else:
 					mod_object = mod_cache[isofmodule]

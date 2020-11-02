@@ -1,6 +1,7 @@
 import toee, debug, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, const_proto_wands, utils_npc
 import py06411_shattered_armory_encounters, startup_zmod, utils_sneak, py00677FarSouthDoor
+import sys, traceback
 
 # import py06410_daemon_shattered_armory
 # py06410_daemon_shattered_armory.csa()
@@ -28,7 +29,6 @@ def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	#debug.breakp("san_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_ARMORY): toee.RUN_DEFAULT
-	startup_zmod.zmod_templeplus_config_apply()
 	ctrl = csa()
 	if (not ctrl):
 		ctrl = CtrlShatteredArmory.ensure(attachee)
@@ -39,16 +39,24 @@ def san_heartbeat(attachee, triggerer):
 
 def san_dying(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	c = csa()
-	if (c):
-		c.critter_dying(attachee, triggerer)
-	storage = utils_storage.obj_storage_by_id(attachee.id)
-	if (storage):
-		cb = storage.get_data(ctrl_behaviour.CtrlBehaviour.get_name())
-		if (not cb):
-			cb = storage.get_data(py06211_shuttered_monster.CtrlMonster.get_name())
-		if ("dying" in dir(cb)):
-			cb.dying(attachee, triggerer)
+	print("Critter DYING: {}".format(attachee))
+	try:
+		c = csa()
+		if (c):
+			c.critter_dying(attachee, triggerer)
+		storage = utils_storage.obj_storage_by_id(attachee.id)
+		if (storage):
+			cb = storage.get_data(ctrl_behaviour.CtrlBehaviour.get_name())
+			if (not cb):
+				cb = storage.get_data(py06211_shuttered_monster.CtrlMonster.get_name())
+			if ("dying" in dir(cb)):
+				cb.dying(attachee, triggerer)
+	except Exception, e:
+		print "Close_Door_Perform:"
+		print '-'*60
+		traceback.print_exc(file=sys.stdout)
+		print '-'*60		
+		debug.breakp("error")
 	return toee.RUN_DEFAULT
 
 
@@ -148,7 +156,6 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		print("new_map: {}".format(new_map))
 		print("place_encounters.encounters_placed == {}".format(self.encounters_placed))
 		startup_zmod.zmod_templeplus_config_apply()
-		startup_zmod.zmod_conditions_apply_pc()
 
 		if (self.encounters_placed and new_map == 0): return
 
@@ -162,9 +169,9 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		#todo - remember destroyed doors
 		#self.remove_door_by_name(921) #{921}{Portcullis A2}
-		if (not self.encounters_placed and 0):
-			#self.place_encounter_a1()
-			#self.place_encounter_a2()
+		if (not self.encounters_placed):
+			self.place_encounter_a1()
+			self.place_encounter_a2()
 			self.place_encounter_a3()
 			self.place_encounter_a4()
 			self.place_encounter_a5()
@@ -181,12 +188,11 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.place_encounter_a19()
 			self.place_encounter_a20()
 
-		self.place_encounter_a3()
 		#self.place_ark()
 		self.encounters_placed += 1
 		self.factions_existance_refresh()
 		self.check_sleep_status_update(1)
-		toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 464, 522) #a3
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 464, 522) #a3
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 541, 472) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 499) #a5
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 429, 481) #a7
@@ -196,6 +202,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 508, 445) #a15
 
 		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 460, 456)
+		#toee.game.fade_and_teleport(0, 0, 0, shattered_consts.MAP_ID_SHATERRED_ARMORY, 433, 481)
 
 		# test debug
 		#toee.game.fade_and_teleport(0, 0, 0, 5124, 460, 456) #a18

@@ -1,6 +1,9 @@
 import os, json
 import toee, utils_item
 
+# import utils_inventory_source
+# utils_inventory_source.inventory_source_parse_one(123).print_items()
+
 def inventory_source_parse_one(id, file_path = None):
 	assert isinstance(id, int)
 
@@ -200,15 +203,15 @@ class InventorySourceItem:
 		print("InventorySourceItem id: {}, platinum ({}, {}), gold ({}, {}), silver ({}, {}), copper ({}, {})".format(self.id, self.money_platinum[0], self.money_platinum[1], self.money_gold[0], self.money_gold[1], self.money_silver[0], self.money_silver[1], self.money_copper[0], self.money_copper[1]))
 
 		if (self.one_of_entries):
-			print("one_of_entries: {}".format(len(entry)))
+			print("one_of_entries: {}".format(len(self.one_of_entries)))
 			for entry in self.one_of_entries:
 				if (not entry): continue
-				random_index = toee.game.random_range(0, len(entry)-1)
-				proto = entry[random_index]
-				if (not proto): continue
-				item = toee.game.obj_create(proto, toee.game.leader.location)
-				print("{}/{}: {}: {}".format(random_index, len(entry)-1, proto, item))
-				item.destroy()
+				print("entry:")
+				for proto in entry:
+					if (not proto): continue
+					item = toee.game.obj_create(proto, toee.game.leader.location)
+					print("{}: {}".format(proto, item))
+					item.destroy()
 
 		if (self.items):
 			for protoPercent in self.items:
