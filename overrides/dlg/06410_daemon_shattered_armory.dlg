@@ -1,7 +1,7 @@
 {10}{In the red glow issuing from a giant beetle in a cage near the northern wall, you see three gnolls wearing breastplates and wielding greataxes.}{In the red glow issuing from a giant beetle in a cage near the northern wall, you see three gnolls wearing breastplates and wielding greataxes.}{}{}{}{csa().display_encounter_a1()}
 {11}{Continue}{}{1}{}{12}{}
 {12}{They stand in front of a wooden stockade. Double doors that have massive wooden handles are built into the middle of the stockade. Those doors have a stylized three-headed flail painted across them in red, along with the threat "Turn back or die!"" painted in Common.}{They stand in front of a wooden stockade. Double doors that have massive wooden handles are built into the middle of the stockade. Those doors have a stylized three-headed flail painted across them in red, along with the threat "Turn back or die!"" painted in Common.}{}{}{}{}
-{19}{Close}{}{1}{}{0}{csa().activate_encounter_a1()}
+{19}{Close}{}{1}{}{0}{csa().activate_encounter_a1();npc.destroy()}
 
 {20}{More glowing beetles in cages line this broad hall, which leads to another wooden stockade. This one has a portcullis in the center. Two gnolls aim their longbows over the stockade at you.}{More glowing beetles in cages line this broad hall, which leads to another wooden stockade. This one has a portcullis in the center. Two gnolls aim their longbows over the stockade at you.}{}{}{}{csa().display_encounter_a2()}
 {29}{Close}{}{1}{}{0}{csa().activate_encounter_a2()}

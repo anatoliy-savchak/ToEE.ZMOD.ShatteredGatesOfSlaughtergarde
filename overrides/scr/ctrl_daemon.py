@@ -13,6 +13,7 @@ class CtrlDaemon(object):
 		self.last_patrol_spawned_shrs = 0
 		self.patrol_spawned_count = 0
 		self.factions_existance = dict()
+		self.promters_info = list()
 		return
 
 	@classmethod
@@ -77,6 +78,11 @@ class CtrlDaemon(object):
 		print("promter {}:{} placed {} {}".format(line_id, new_name, npc.id, npc))
 		if (rotation):
 			npc.rotation = rotation
+
+		info = monster_info.MonsterInfo()
+		info.id = npc.id
+		info.proto = npc.proto
+		self.promters_info.append(info)
 		return npc
 
 	def get_monster_faction_default(self, npc):
@@ -203,6 +209,7 @@ class CtrlDaemon(object):
 
 	def check_npc_enemy(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
+		if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER): return 0
 		result = npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE)
 		return result
 
@@ -381,7 +388,7 @@ class CtrlDaemon(object):
 
 	def factions_existance_refresh(self):
 		print("factions_existance_refresh")
-		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2, 0)
 		print(self.factions_existance)
 		return
 

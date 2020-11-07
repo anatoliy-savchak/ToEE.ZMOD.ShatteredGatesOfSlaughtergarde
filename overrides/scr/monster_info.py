@@ -20,9 +20,10 @@ class MonsterInfo:
 		return npc
 
 	@staticmethod
-	def get_factions_existance(monsters, debug = 0):
+	def get_factions_existance(monsters, debug = 0, result = None):
 		assert isinstance(monsters, list)
-		result = dict() # of tuple(alive, dead)
+		if (result is None):
+			result = dict() # of tuple(alive, dead)
 		notfound = list()
 		for monster in monsters:
 			assert isinstance(monster, MonsterInfo)
