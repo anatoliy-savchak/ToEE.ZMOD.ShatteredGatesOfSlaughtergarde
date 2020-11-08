@@ -120,7 +120,7 @@ modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_Critter_Is_Blinded, OnQueryReturnTr
 modObj.AddHook(toee.ET_OnD20Query, toee.EK_Q_AOOPossible, OnQueryReturnFalse, ())
 modObj.AddHook(toee.ET_OnGetMoveSpeed, toee.EK_NONE, OnGetMoveSpeed, ())
 modObj.AddHook(toee.ET_OnGetAttackerConcealmentMissChance, toee.EK_NONE, OnGetAttackerConcealmentMissChance, ())
-modObj.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, netted_OnGetEffectTooltip, ())
+modObj.AddHook(toee.ET_OnGetEffectTooltip, toee.EK_NONE, OnGetEffectTooltip, ())
 modObj.AddHook(toee.ET_OnGetTooltip, toee.EK_NONE, OnGetTooltip, ())
 modObj.AddHook(toee.ET_OnToHitBonusFromDefenderCondition, toee.EK_NONE, OnToHitBonusFromDefenderCondition, ())
 modObj.AddHook(toee.ET_OnD20Signal, toee.EK_S_Killed, S_Killed, ())

@@ -179,6 +179,7 @@
     <Content Include="overrides\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="overrides\rules\d20_actions\action03020_activate_item_swift.py" />
     <Compile Include="overrides\rules\d20_actions\action03019_ball_of_fire.py" />
     <Compile Include="overrides\rules\d20_actions\action03018_open_door.py" />
     <Compile Include="overrides\rules\d20_actions\action03017_smash_object.py" />
@@ -335,10 +336,12 @@
     <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\tpModifiers\armor_blurring.py" />
     <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
     <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
     <Compile Include="overrides\scr\tpModifiers\belch_fire.py" />
     <Compile Include="overrides\scr\tpModifiers\caster_level_mod.py" />
+    <Compile Include="overrides\scr\tpModifiers\armor_displacement.py" />
     <Compile Include="overrides\scr\tpModifiers\monster_ranged_poison.py" />
     <Compile Include="overrides\scr\tpModifiers\no_move.py" />
     <Compile Include="overrides\scr\tpModifiers\skill_bluff_bonus.py" />

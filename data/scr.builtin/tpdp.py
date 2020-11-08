@@ -191,7 +191,7 @@ class RadialMenuEntryPythonAction(RadialMenuEntryAction):
 		"""RadialMenuEntryPythonAction(PySpellStore: spell_store, int: action_type, int: action_id, int: data1, str: helpTopic)"""
 		return
 
-class RadialMenuEntryParent:
+class RadialMenuEntryParent(RadialMenuEntry):
 	def __init__(self, combesMesLine):
 		assert isinstance(combesMesLine, int)
 		return
