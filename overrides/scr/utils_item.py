@@ -5,7 +5,7 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1, is_loot = 1):
 	assert isinstance(npc, toee.PyObjHandle)
 	assert isinstance(is_loot, int)
 	item = toee.game.obj_create(item_proto_num, npc.location)
-	item_alter_worth_as_raw(item, is_loot)
+	#item_alter_worth_as_raw(item, is_loot)
 	if (npc.type == toee.obj_t_pc):
 		item.item_flag_set(toee.OIF_IDENTIFIED)
 	else: item.item_flag_unset(toee.OIF_IDENTIFIED)
@@ -15,7 +15,7 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1, is_loot = 1):
 	if (quantity > 1):
 		for i in range(2, quantity):
 			item = toee.game.obj_create(item_proto_num, npc.location)
-			item_alter_worth_as_raw(item, is_loot)
+			#item_alter_worth_as_raw(item, is_loot)
 			if (item != toee.OBJ_HANDLE_NULL):
 				npc.item_get(item)
 	return item
