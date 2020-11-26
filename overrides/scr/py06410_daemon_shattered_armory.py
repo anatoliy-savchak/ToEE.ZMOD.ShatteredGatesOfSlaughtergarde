@@ -424,7 +424,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 	def encounter_a6_get_alive_monster(self):
 		info = self.get_monsterinfo("a6", "firebelcher")
-		if (not info): return None
+		if (not info): return 1
 		npc = toee.game.get_obj_by_id(info.id)
 		if (not npc): return None
 		if (not utils_npc.npc_is_alive(npc, 1)): return None
@@ -452,6 +452,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		if (promter):
 			promter.destroy()
 
+		npc = self.encounter_a6_get_alive_monster()
 		# move it before the door
 		npc.move(utils_obj.sec2loc(444, 508))
 		npc.rotation = const_toee.rotation_0800_oclock

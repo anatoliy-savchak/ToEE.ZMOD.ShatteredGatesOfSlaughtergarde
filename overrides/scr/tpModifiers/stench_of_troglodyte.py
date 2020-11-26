@@ -148,7 +148,7 @@ def Stench_Of_Troglodyte_Hit_OnDealingDamage2(attachee, args, evt_obj):
 	assert isinstance(args, tpdp.EventArgs)
 	assert isinstance(evt_obj, tpdp.EventObjDamage)
 	if (not args.get_arg(3)): return 0
-	evt_obj.bonus_list.add(-2, 0, "Sickened")
+	evt_obj.damage_packet.bonus_list.add(-2, 0, "Sickened")
 	return 0
 
 def Stench_Of_Troglodyte_Hit_OnBeginRound(attachee, args, evt_obj):

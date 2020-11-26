@@ -912,3 +912,12 @@ def g():
 		npc.item_wield_best_all()
 
 	return
+
+# import cormyr_pc
+# cormyr_pc.modify_domain_magic()
+def modify_domain_magic():
+	npc = game.leader
+	print("domains: {} {}".format(npc.stat_level_get(stat_domain_1), npc.stat_level_get(stat_domain_2)))
+	npc.obj_set_int(obj_f_critter_domain_1, magic)
+	print("domains after: {} {}".format(npc.stat_level_get(stat_domain_1), npc.stat_level_get(stat_domain_2)))
+	return

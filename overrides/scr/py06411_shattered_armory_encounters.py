@@ -552,8 +552,8 @@ class CtrlTroglodyteCleric(ctrl_behaviour.CtrlBehaviour):
 
 	def revealed(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
-		#utils_npc.npc_spell_ensure(npc, toee.spell_magic_circle_against_good, toee.stat_level_cleric, 5, 1)
-		#npc.cast_spell(toee.spell_magic_circle_against_good, npc)
+		utils_npc.npc_spell_ensure(npc, toee.spell_magic_circle_against_good, toee.stat_level_cleric, 5, 1)
+		npc.cast_spell(toee.spell_magic_circle_against_good, npc)
 		return
 
 	def trigger_step(self, npc, step):
