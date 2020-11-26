@@ -44,25 +44,25 @@
 {902}{Start over.}{}{1}{}{1}{}
 
 {1000}{Barter options:}{Barter options:}{}{}{}{}
-{1001}{B: Sell}{}{1}{}{0}{barter_sell(npc)}
-{1002}{B: Buy Simple Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons.PROTOS_WEAPON_SIMPLE)}
-{1003}{B: Buy Martial Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons.PROTOS_WEAPON_MARTIAL)}
-{1004}{B: Buy Exotic Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons.PROTOS_WEAPON_EXOTIC)}
+{1001}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1002}{B: Buy Simple Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons.PROTOS_WEAPON_SIMPLE)}
+{1003}{B: Buy Martial Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons.PROTOS_WEAPON_MARTIAL)}
+{1004}{B: Buy Exotic Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons.PROTOS_WEAPON_EXOTIC)}
 {1005}{More...}{}{1}{}{1010}{}
 
 {1010}{Barter options:}{Barter options:}{}{}{}{}
 {1011}{Browse Masterwork Weapon}{}{1}{}{1020}{}
 {1012}{Browse Magic Weapon}{}{1}{}{1030}{}
 {1018}{Back}{}{1}{}{1000}{}
-{1019}{Bye}{}{1}{}{0}{}
+{1019}{E:}{}{1}{}{0}{}
 
 {1020}{Barter Masterwork options:}{Barter Masterwork options:}{}{}{}{}
-{1022}{B: Buy Masterwork Simple Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_masterwork.PROTOS_WEAPON_SIMPLE_MASTERWORK)}
-{1023}{B: Buy Masterwork Martial Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_masterwork.PROTOS_WEAPON_MARTIAL_MASTERWORK)}
-{1024}{B: Buy Masterwork Exotic Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_masterwork.PROTOS_WEAPON_EXOTIC_MASTERWORK)}
-{1026}{Bye}{}{1}{}{0}{}
+{1022}{B: Buy Masterwork Simple Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons_masterwork.PROTOS_WEAPON_SIMPLE_MASTERWORK)}
+{1023}{B: Buy Masterwork Martial Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons_masterwork.PROTOS_WEAPON_MARTIAL_MASTERWORK)}
+{1024}{B: Buy Masterwork Exotic Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons_masterwork.PROTOS_WEAPON_EXOTIC_MASTERWORK)}
+{1026}{E:}{}{1}{}{0}{}
 
 {1030}{Barter Magic Weapon options:}{Barter Magic Weapon options:}{}{}{}{}
-{1032}{B: Buy Magic Minor Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MINOR)}
-{1033}{B: Buy Magic Medium Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MEDIUM)}
-{1036}{Bye}{}{1}{}{0}{}
+{1032}{B: Buy Magic Minor Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MINOR)}
+{1033}{B: Buy Magic Medium Weapon}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MEDIUM)}
+{1036}{E:}{}{1}{}{0}{}

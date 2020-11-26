@@ -1050,7 +1050,7 @@ class CtrlDrowAcolyte(ctrl_behaviour.CtrlBehaviour):
 		#utils_npc.npc_skill_ensure(npc, toee.skill_hide, 8)
 		#npc.condition_add_with_args("Initiative_Bonus", 30, 0) # TESTONLY!
 
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAINMAIL_FINE_MASTERWORK, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAINMAIL_MASTERWORK_FINE, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_MASTERWORK, npc)
 		npc.item_wield_best_all()
 

@@ -279,3 +279,18 @@ def autosell(sell_modifier, items):
 	toee.game.leader.money_adj(total_sell_adj)
 	print("attachee.money_adj: {}".format(total_sell_adj))
 	return
+
+def barter_sell(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	item_clear_all(npc.substitute_inventory)
+	return
+
+def barter_list(npc, protos):
+	assert isinstance(npc, toee.PyObjHandle)
+	subs = npc.substitute_inventory
+	item_clear_all(subs)
+	for i in protos:
+		item = toee.game.obj_create(i, subs.location)
+		item.item_flag_set(toee.OIF_IDENTIFIED)
+		subs.item_get(item)
+	return
