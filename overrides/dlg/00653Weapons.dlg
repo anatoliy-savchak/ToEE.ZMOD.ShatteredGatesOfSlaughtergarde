@@ -64,6 +64,5 @@
 
 {1030}{Barter Magic Weapon options:}{Barter Magic Weapon options:}{}{}{}{}
 {1032}{B: Buy Magic Minor Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MINOR)}
-{1033}{B: Buy Magic Medium Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MINOR)}
-{1034}{B: Buy Magic Major Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MINOR)}
+{1033}{B: Buy Magic Medium Weapon}{}{1}{}{0}{barter_list(npc, const_proto_list_weapons_magic.PROTOS_WEAPON_MEDIUM)}
 {1036}{Bye}{}{1}{}{0}{}

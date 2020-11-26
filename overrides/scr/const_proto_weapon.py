@@ -118,7 +118,7 @@ PROTO_LONGSWORD_PLUS_1 = 4081 # Cost 2315 gp, Dmg: 1d8, Ench: +1
 PROTO_LONGSWORD_PLUS_1_FLAMING = 4028 # Cost 8315 gp, Dmg: 1d8, Ench: +1, Weapon Flaming
 PROTO_LONGSWORD_PLUS_1_HOLY = 4028 # Cost 18315 gp, Dmg: 1d8+2d6, Ench: +1, Weapon Holy
 PROTO_LONGSWORD_PLUS_2 = 4082 # Cost 8315 gp, Dmg: 1d8, Ench: +2
-PROTO_LONGSWORD_PLUS_2_FLAMING = 4048 # Smelted Longsword. Cost 10315 (!!! 8315) gp, Dmg: 1d8, Ench: +1, Weapon Flaming
+PROTO_LONGSWORD_PLUS_2_FLAMING = 4248 # Smelted Longsword. Cost 10315 (!!! 18315) gp, Dmg: 1d8, Ench: +2, Weapon Flaming
 PROTO_LONGSWORD_PLUS_3 = 4083 # Cost 18315 gp, Dmg: 1d8, Ench: +3
 PROTO_LONGSWORD_PLUS_4 = 4084 # Cost 32315 gp, Dmg: 1d8, Ench: +4
 PROTO_LONGSWORD_PLUS_5 = 4085 # Cost 50315 gp, Dmg: 1d8, Ench: +5
@@ -200,7 +200,7 @@ PROTO_WEAPON_LONGBOW_COMPOSITE_16_PLUS1 = 4717 # Cost: 2700 gp, Dmg: 1d8+4
 PROTO_WEAPON_LONGBOW_PLUS_2 = 4299 # Cost: 8375 gp, Dmg: 1d8, Ench: +1
 PROTO_WEAPON_LONGBOW_PLUS_1_FLAMING = 4348 # Cost: 8375 gp, Dmg: 1d8, Ench: +1, Weapon Flaming
 PROTO_WEAPON_LONGBOW_PLUS_1_FROST = 4108 # Cost: 18375(!!! 8375) gp, Dmg: 1d8, Ench: +1, Weapon Frost
-PROTO_WEAPON_LONGBOW_PLUS_2_FROST = 4349 # Cost: 18375(!!! 32375) gp, Dmg: 1d8, Ench: +2, Weapon Frost
+PROTO_WEAPON_LONGBOW_PLUS_2_FROST = 4349 # Cost: 18375 gp, Dmg: 1d8, Ench: +2, Weapon Frost
 
 PROTO_WEAPON_SHORTBOW = 4201 # Cost: 30 gp, Dmg: 1d6
 PROTO_WEAPON_SHORTBOW_MASTERWORK = 4202 # Cost: 330 gp, Dmg: 1d6, Masterwork
