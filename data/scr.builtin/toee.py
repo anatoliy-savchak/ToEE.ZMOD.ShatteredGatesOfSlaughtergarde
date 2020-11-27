@@ -4409,3 +4409,27 @@ trickery = 20
 war = 21
 water = 22
 special = 23
+
+# Schools
+Abjuration = 1
+Conjuration = 2
+Divination = 3
+Enchantment = 4
+Evocation = 5
+Illusion = 6
+Necromancy = 7
+Transmutation = 8
+
+# Subschools
+Calling = 1
+Creation = 2
+Healing = 3
+Summoning = 4
+Charm = 5
+Compulsion = 6
+Figment = 7
+Glamer = 8
+Pattern = 9
+Phantasm = 10
+Shadow = 11
+Scrying = 12

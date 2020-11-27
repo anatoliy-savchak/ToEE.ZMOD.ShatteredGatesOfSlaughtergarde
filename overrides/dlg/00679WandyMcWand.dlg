@@ -11,7 +11,7 @@
 {23}{Because I'm a man of VISION. Ha ha ha, see what I did there? Ha ha.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{30}{}
 
 {30}{So, will you be buying a wand?}{So, will you be buying a wand?}{}{}{}{}
-{31}{B:Yes please.}{}{1}{}{0}{pc.barter(npc)}
+{31}{Yes please.}{}{1}{}{1200}{}
 {32}{Not at this time.}{}{1}{}{0}{}
 
 
@@ -21,9 +21,45 @@
 {100}{Hello again.}{Hello again.}{}{}{}{}
 {101}{Hi.}{}{1}{}{30}{}
 {102}{F:}{}{1}{}{0}{}
-{103}{B:Can I buy a wand?}{}{1}{}{0}{pc.barter(npc)}
+{103}{Can I buy a wand?}{}{1}{}{1200}{}
 {104}{Do you deal in second hand items?}{}{1}{not get_1(npc)}{110}{npc_1(npc)}
 
 {110}{Yes, both buying and selling. If it is magical I can do you a good deal.}{Yes, both buying and selling. If it is magical I can do you a good deal.}{}{}{}{}
-{111}{B:}{}{1}{}{0}{pc.barter(npc)}
+{111}{Barter}{}{1}{}{1200}{}
 {112}{F:}{}{1}{}{0}{}
+
+{1200}{Barter options:}{Barter options:}{}{}{}{}
+{1201}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1202}{Buy Arcane Wand}{}{1}{}{1210}{}
+{1204}{Buy Divine Wand}{}{1}{}{1230}{}
+{1209}{E:}{}{1}{}{0}{}
+
+{1210}{Barter options:}{Barter options:}{}{}{}{}
+{1212}{B:Buy Arcane Wand Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_0)}
+{1212}{B:Buy Arcane Wand Level 1}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_1)}
+{1213}{B:Buy Arcane Wand Level 2}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_2)}
+{1217}{Next...}{}{1}{}{1220}{}
+{1218}{Back...}{}{1}{}{1200}{}
+{1219}{E:}{}{1}{}{0}{}
+
+{1220}{Barter options:}{Barter options:}{}{}{}{}
+{1222}{B:Buy Arcane Wand Level 3}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_3)}
+{1223}{B:Buy Arcane Wand Level 4}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_4)}
+{1224}{B:Buy Arcane Wand Level 5}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_5)}
+{1228}{Back...}{}{1}{}{1200}{}
+{1229}{E:}{}{1}{}{0}{}
+
+{1230}{Barter options:}{Barter options:}{}{}{}{}
+{1232}{B:Buy Divine Wand Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_0)}
+{1232}{B:Buy Divine Wand Level 1}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_1)}
+{1233}{B:Buy Divine Wand Level 2}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_2)}
+{1237}{Next...}{}{1}{}{1240}{}
+{1238}{Back...}{}{1}{}{1200}{}
+{1239}{E:}{}{1}{}{0}{}
+
+{1240}{Barter options:}{Barter options:}{}{}{}{}
+{1242}{B:Buy Divine Wand Level 3}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_3)}
+{1243}{B:Buy Divine Wand Level 4}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_4)}
+{1244}{B:Buy Divine Wand Level 5}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_5)}
+{1248}{Back...}{}{1}{}{1200}{}
+{1249}{E:}{}{1}{}{0}{}

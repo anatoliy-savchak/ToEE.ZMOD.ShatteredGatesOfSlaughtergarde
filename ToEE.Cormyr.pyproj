@@ -77,6 +77,7 @@
     <Content Include="overrides\dlg\00661Armour.dlg" />
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\00678CaptArmin.dlg" />
+    <Content Include="overrides\dlg\00679WandyMcWand.dlg" />
     <Content Include="overrides\dlg\00682BlindTroll.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
@@ -204,6 +205,7 @@
     <Compile Include="overrides\scr\const_deseases.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_proto_list_wands.py" />
     <Compile Include="overrides\scr\const_proto_wondrous.py" />
     <Compile Include="overrides\scr\const_proto_food.py" />
     <Compile Include="overrides\scr\const_animate.py">
