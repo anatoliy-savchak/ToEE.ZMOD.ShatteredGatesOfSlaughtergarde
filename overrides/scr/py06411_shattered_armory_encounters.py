@@ -1125,8 +1125,8 @@ class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_PADDED_RED, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_PADDED_RED, npc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_PADDED_RED, npc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_PADDED_RED, npc)
 		npc.item_wield_best_all()
 		return
 

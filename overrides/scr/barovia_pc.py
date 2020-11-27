@@ -15,8 +15,8 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_BREASTPLATE_GLOVES, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_BREASTPLATE_GLOVES, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_HELMES_PLUMED_SILVER, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_TOWER_STEEL, pc)
@@ -36,7 +36,7 @@ def barovia_team5():
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_PADDED_RED, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_PADDED_RED, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_PADDED_RED, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_CIRCLET_HOODLESS, pc)
 		utils_item.item_create_in_inventory(PROTO_CLOAK_BLUE.PROTO_CLOAK_BLUE, pc)
 
@@ -55,8 +55,8 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_BREASTPLATE_GLOVES, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_BREASTPLATE_GLOVES, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_CIRCLET_HOODLESS, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_RED, pc)
 
@@ -73,8 +73,8 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_BREASTPLATE_GLOVES, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_BREASTPLATE_GLOVES, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_WOODEN, pc)
@@ -96,7 +96,7 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_LEATHER_BOOTS_GREEN, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_LEATHER_BOOTS_GREEN, pc)
 		#utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_LEATHER_CLOTHING, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_MONK_OUTFIT, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_CIRCLET_HOODLESS, pc)

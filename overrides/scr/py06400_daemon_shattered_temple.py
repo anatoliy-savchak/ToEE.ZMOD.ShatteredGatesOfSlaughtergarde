@@ -718,7 +718,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_MASTERWORK, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+			utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, npc)
 			#utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOAK_BLACK, npc)
 			if (not skip_longbow):
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_14, npc)
@@ -765,7 +765,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		npc = toee.game.obj_create(PROTO_NPC_DROW_RIDER, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+			utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc)
 			npc.feat_add(toee.feat_weapon_focus_glaive, 1)

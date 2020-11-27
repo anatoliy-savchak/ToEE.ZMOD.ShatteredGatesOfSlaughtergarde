@@ -71,9 +71,9 @@ def create_guard_at(loc):
 	# helm
 	item_create_in_inventory(PROTO_HELMS_LEATHER_CAP, npc)
 	# hands
-	item_create_in_inventory(PROTO_GLOVES_PADDED_TAN, npc)
+	item_create_in_inventory(PROTO_CLOTH_GLOVES_PADDED_TAN, npc)
 	# boots
-	item_create_in_inventory(PROTO_BOOTS_PADDED_TAN, npc)
+	item_create_in_inventory(PROTO_CLOTH_BOOTS_PADDED_TAN, npc)
 	# melee
 	item_create_in_inventory(PROTO_WEAPON_SHORTSWORD, npc)
 	# ranged
@@ -172,9 +172,9 @@ def create_shadar_kai_at(loc, make_inentory = 1):
 		# helm
 		item_create_in_inventory(PROTO_HELM_HOODLESS_CIRCLET, npc)
 		# hands
-		item_create_in_inventory(PROTO_GLOVES_PADDED_TAN, npc)
+		item_create_in_inventory(PROTO_CLOTH_GLOVES_PADDED_TAN, npc)
 		# boots
-		item_create_in_inventory(PROTO_BOOTS_PADDED_TAN, npc)
+		item_create_in_inventory(PROTO_CLOTH_BOOTS_PADDED_TAN, npc)
 		# melee
 		weapon_primary = item_create_in_inventory(PROTO_WEAPON_SPIKED_CHAIN, npc)
 		# ranged
@@ -235,9 +235,9 @@ def create_kithguard_at(loc):
 	# helm
 	item_create_in_inventory(PROTO_HELM_HOODLESS_CIRCLET, npc)
 	# hands
-	item_create_in_inventory(PROTO_GLOVES_PADDED_TAN, npc)
+	item_create_in_inventory(PROTO_CLOTH_GLOVES_PADDED_TAN, npc)
 	# boots
-	item_create_in_inventory(PROTO_BOOTS_PADDED_TAN, npc)
+	item_create_in_inventory(PROTO_CLOTH_BOOTS_PADDED_TAN, npc)
 	# melee
 	weapon_primary = item_create_in_inventory(PROTO_WEAPON_SPIKED_CHAIN_MASTERWORK, npc)
 	# ranged
