@@ -9,8 +9,6 @@ PROTO_BOOTS_PADDED_TAN = 6023 # Cost: 0.1 gp, AC: 0, Max Dex: 100
 PROTO_GLOVES_PADDED_TAN = 6024 # Cost: 0.1 gp, AC: 0, Max Dex: 100
 PROTO_BOOTS_PADDED_RED = 6348 # Cost: 0.1 gp, AC: 0, Max Dex: 100
 PROTO_GLOVES_PADDED_RED = 6349 # Cost: 0.1 gp, AC: 0, Max Dex: 100
-PROTO_HELMS_GENERIC_PC_HELM = 6032
-PROTO_HELMS_LEATHER_CAP = 6034
 
 # LEATHER_ARMOR
 PROTO_ARMOR_LEATHER_ARMOR_BROWN = 6013 # Cost: 10 gp, AC: 2, Max Dex: 6, Weight: 15
@@ -72,7 +70,6 @@ PROTO_ARMOR_CHAINMAIL_PLUS_1_RED = 6049 # Cost: 1500 (!!! 1300) gp, AC: 5, Max D
 PROTO_ARMOR_CHAINMAIL_PLUS_2_RED = 6094 # Cost: 4300 gp, AC: 5, Max Dex: 2
 PROTO_ARMOR_CHAINMAIL_PLUS_3_RED = 6095 # Cost: 4300 gp, AC: 5, Max Dex: 2
 
-PROTO_HELMES_CHAIN_HELMET = 6018 # Cost: 10 gp
 PROTO_BOOTS_CHAINMAIL_BOOTS = 6020 # Cost: 2 gp
 PROTO_GLOVES_CHAINMAIL_GLOVES = 6021 # Cost: 2 gp
 
@@ -117,51 +114,42 @@ PROTO_ARMOR_FULL_PLATE_MITHRAL = 6339 # Cost: 10500 gp, AC: 8, Max Dex: 3, Maste
 PROTO_ARMOR_FULL_PLATE_DWARVEN = 6317 # Cost: 16500 gp, AC: 8, Max Dex: 1, DR: 3/-
 PROTO_ARMOR_FULL_PLATE_PLUS_1 = 6104 # Cost: 2650 gp, AC: 8, Max Dex: 1, Ench: +1
 PROTO_ARMOR_FULL_PLATE_PLUS_1_BLACK = 6308 # Cost: 2650 gp, AC: 8, Max Dex: 1, Ench: +1
-PROTO_HELMES_PLUMED_SILVER = 6035 #
-PROTO_HELMES_PLUMED_GOLD = 6036 #
-
-# CLOAK
-PROTO_CLOAK_FUR = 6421 # Cost: 5 cp BUGGED, DONT USE
-PROTO_CLOAK_BLACK = 6233 # Cost: 5 cp
-PROTO_CLOAK_RED = 6124 # Cost: 5 cp
-PROTO_CLOAK_WHITE = 6234 # Cost: 5 cp
-PROTO_CLOAK_GREEN = 6269 # Cost: 5 cp
-PROTO_CLOAK_ORANGE = 6427 # Cost: 5 cp
-PROTO_CLOAK_VIOLET = 6428 # Cost: 5 cp
-PROTO_CLOAK_BLUE = 6338 # Cost: 5 cp
-
-# HELM
-PROTO_HELM_HOODLESS_CIRCLET = 6335 # Cost: 1 cp
-PROTO_HELM_HEADBAND_OF_THE_STOUT_HEART = 6730 # Cost: 350 gp
-
-# GLOVES MAGIC
-PROTO_GLOVES_GLOVES_OF_DEXTERITY_2 = 6199 # Cost: 4000 gp, Dex: +2
-PROTO_GLOVES_GAUNTLETS_OF_OGRE_POWER = 6245 # Cost: 4000 gp, Str: +2
-
-# CLOAK MAGIC
-PROTO_CLOAK_OF_RESISTANCE_1_ORANGE = 6691 # Cost: 1000 gp, Save: +1
-PROTO_CLOAK_OF_RESISTANCE_1_WHITE = 6671 # Cost: 1000 gp, Save: +1
-PROTO_CLOAK_OF_RESISTANCE_1_GREEN = 6661 # Cost: 1000 gp, Save: +1
-PROTO_CLOAK_OF_RESISTANCE_1_BLUE = 6676 # Cost: 1000 gp, Save: +1
-PROTO_CLOAK_OF_RESISTANCE_1_BLACK = 6656 # Cost: 1000 gp, Save: +1
-
-PROTO_CLOAK_OF_CHARISMA_4_BLUE = 6709 # Cost: 16000 gp, Cha: +4
-PROTO_CLOAK_OF_CHARISMA_4_STARS = 6706 # Cost: 16000 gp, Cha: +4
-
-# BELTS
-PROTO_BELT_LIFTING = 6729 # Cost 500 gp
 
 # SHIELDS
-PROTO_SHIELD_WOODEN_SMALL = 6076 # Cost 3 gp
-PROTO_SHIELD_WOODEN_LARGE = 6064 # Cost 7 gp
-PROTO_SHIELD_WOODEN_LARGE_MASTERWORK = 6065 # Cost 207 gp
+PROTO_SHIELD_BUCKLER = 6059 # Cost 15 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
+PROTO_SHIELD_BUCKLER_MASTERWORK = 6231 # Cost 165 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
+PROTO_SHIELD_BUCKLER_MASTERWORK_DARKWOOD = 6311 # Cost 205 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: 0
+PROTO_SHIELD_BUCKLER_MASTERWORK_MITHRAL = 6340 # Cost 1015 gp, AC: +1, Arcane Spell Failure: 0, Skill Check Penalty: 0
 
-PROTO_SHIELD_STEEL_SMALL = 6074 # Cost 3 gp
-PROTO_SHIELD_STEEL_LARGE = 6060 # Cost 7 gp
-PROTO_SHIELD_STEEL_TOWER = 6078 # Cost 30 gp
+PROTO_SHIELD_SMALL_WOODEN = 6076 # Cost 3 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
+PROTO_SHIELD_SMALL_MASTERWORK_WOODEN = 6232 # Cost 153 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
 
-PROTO_SHIELD_BUCKLER = 6059 # Cost 5 gp
-PROTO_SHIELD_BUCKLER_MASTERWORK = 6231 # Cost 5 gp
+PROTO_SHIELD_SMALL_STEEL = 6074 # Cost 9 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
+PROTO_SHIELD_SMALL_STEEL_2 = 6077 # Cost 9 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
+PROTO_SHIELD_SMALL_MASTERWORK_STEEL = 6074 # Cost 159 gp, AC: +1, Arcane Spell Failure: 5, Skill Check Penalty: -1
 
-PROTO_SHIELD_STEEL_LARGE_DRAGONRIDER_RED = 6731 # Cost 7500 gp, Ench: +1, Energy Absorb Fire: 5
-PROTO_SHIELD_WOODEN_LARGE_PLUS_1 = 6732 # Cost 1170 gp, Ench: +1
+PROTO_SHIELD_LARGE_WOODEN = 6064 # Cost 7 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2
+PROTO_SHIELD_LARGE_WOODEN_2 = 6070 # Cost 7 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2
+PROTO_SHIELD_LARGE_WOODEN_3 = 6071 # Cost 7 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2
+PROTO_SHIELD_LARGE_WOODEN_4 = 6072 # Cost 7 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2
+PROTO_SHIELD_LARGE_WOODEN_SPIKED = 6136 # Cost 7 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2
+PROTO_SHIELD_LARGE_MASTERWORK_WOODEN = 6065 # Cost 207 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2
+
+PROTO_SHIELD_LARGE_STEEL = 6060 # Cost 20 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_STEEL_2 = 6062 # Cost 20 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_STEEL_3 = 6068 # Cost 20 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_STEEL_4 = 6069 # Cost 20 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_ELVISH = 6073 # Overpowered!!. Cost 100 gp, AC: +2, Arcane Spell Failure: 0, Skill Check Penalty: 0, Weight: 0
+
+PROTO_SHIELD_LARGE_MASTERWORK_STEEL = 6063 # Cost 170 gp, AC: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_PLUS_1_STEEL = 6050 # Cost 1170 gp, AC: +2, Ench: +1, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_PLUS_2_STEEL = 6051 # Cost 4170 gp, AC: +2, Ench: +2, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_PLUS_3_STEEL = 6052 # Cost 9170 gp, AC: +2, Ench: +3, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_PLUS_4_STEEL = 6053 # Cost 16170 gp, AC: +2, Ench: +4, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+PROTO_SHIELD_LARGE_PLUS_5_STEEL = 6054 # Cost 25170 gp, AC: +2, Ench: +5, Arcane Spell Failure: 15, Skill Check Penalty: -2, Weight: 15
+
+PROTO_SHIELD_TOWER_WOODEN = 6080 # Cost 25 gp, AC: +4, Arcane Spell Failure: 50, Skill Check Penalty: -10, Weight: 15, Max Dex: +2
+PROTO_SHIELD_TOWER_STEEL = 6078 # Cost 30 gp, AC: +4, Arcane Spell Failure: 50, Skill Check Penalty: -10, Weight: 15, Max Dex: +2
+PROTO_SHIELD_TOWER_MASTERWORK_STEEL = 6079 # Cost 30 gp, AC: +4, Arcane Spell Failure: 50, Skill Check Penalty: -10, Weight: 15, Max Dex: +2
+
+PROTO_SHIELD_LARGE_STEEL_DRAGONRIDER_RED = 6731 # Cost 7500 gp, AC: +2, Ench: +1, Energy Absorb Fire: 5

@@ -82,7 +82,7 @@
 
 {1100}{Barter options:}{Barter options:}{}{}{}{}
 {1101}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
-{1102}{B: Buy Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR)}
-{1103}{B: Buy Masterwork Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_MASTERWORK)}
-{1104}{B: Buy Magic Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_MAGIC)}
+{1102}{B: Buy Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_AND_SHIELDS)}
+{1104}{B: Buy Masterwork Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_AND_SHIELDS_MASTERWORK)}
+{1105}{B: Buy Magic Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_AND_SHIELDS_MAGIC)}
 {1109}{E:}{}{1}{}{0}{}

@@ -10,6 +10,8 @@ from const_proto_items import *
 from const_proto_potions import *
 from const_proto_wands import *
 import const_proto_cloth
+from const_proto_cloth import *
+from const_proto_wondrous import *
 
 def cmrlv5():
 	kostyantyn = game.party[0]
@@ -23,8 +25,8 @@ def cmrlv5():
 	npc.feat_add(feat_weapon_finesse_spike_chain, 1) # game.party[0].feat_add(feat_weapon_finesse_spike_chain, 0)
 	obj_scripts_clear(npc)
 	item_create_in_inventory(PROTO_ARMOR_MITHRAL_SHIRT_PLUS_1, npc)
-	item_create_in_inventory(PROTO_GLOVES_GLOVES_OF_DEXTERITY_2, npc)
-	item_create_in_inventory(PROTO_CLOAK_OF_CHARISMA_4_STARS, npc)
+	item_create_in_inventory(PROTO_WONDROUS_GLOVES_GLOVES_OF_DEXTERITY_2, npc)
+	item_create_in_inventory(PROTO_WONDROUS_CLOAK_OF_CHARISMA_4_STARS, npc)
 	item_create_in_inventory(PROTO_WEAPON_SPIKED_CHAIN_PLUS_1, npc)
 	item_create_in_inventory(PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
 	item_create_in_inventory(PROTO_AMMO_BOLT_QUIVER, npc)
@@ -37,7 +39,7 @@ def cmrlv5():
 	npc = andriy
 	obj_scripts_clear(npc)
 	item_create_in_inventory(PROTO_ARMOR_MITHRAL_SHIRT_PLUS_1, npc)
-	item_create_in_inventory(PROTO_CLOAK_OF_RESISTANCE_1_GREEN, npc)
+	item_create_in_inventory(PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_GREEN, npc)
 	item_create_in_inventory(PROTO_WEAPON_GREATAXE_PLUS_1, npc)
 	item_create_in_inventory(PROTO_WEAPON_LONGBOW, npc)
 	item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
@@ -50,7 +52,7 @@ def cmrlv5():
 	npc = eugene
 	obj_scripts_clear(npc)
 	item_create_in_inventory(PROTO_ARMOR_FULL_PLATE_PLUS_1_BLACK, npc)
-	item_create_in_inventory(PROTO_GLOVES_GAUNTLETS_OF_OGRE_POWER, npc)
+	item_create_in_inventory(PROTO_WONDROUS_GLOVES_GAUNTLETS_OF_OGRE_POWER, npc)
 	item_create_in_inventory(PROTO_CLOAK_OF_RESISTANCE_1_BLACK, npc)
 	item_create_in_inventory(PROTO_WEAPON_HANDAXE_MASTERWORK, npc)
 	item_create_in_inventory(PROTO_WEAPON_WARHAMMER_PLUS_1, npc)
@@ -64,7 +66,7 @@ def cmrlv5():
 	npc = wolodya
 	obj_scripts_clear(npc)
 	item_create_in_inventory(PROTO_ARMOR_FULL_PLATE_PLUS_1, npc)
-	item_create_in_inventory(PROTO_GLOVES_GAUNTLETS_OF_OGRE_POWER, npc)
+	item_create_in_inventory(PROTO_WONDROUS_GLOVES_GAUNTLETS_OF_OGRE_POWER, npc)
 	item_create_in_inventory(PROTO_WEAPON_GREATAXE_PLUS_1, npc)
 	item_create_in_inventory(PROTO_WEAPON_LONGBOW, npc)
 	item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
@@ -98,7 +100,7 @@ def c1():
 		item_create_in_inventory(PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
 		item_create_in_inventory(PROTO_BOOTS_LEATHER_BOOTS_GREEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_SHORTSWORD, npc)
-		item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_SHORTBOW, npc)
 		item = item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -130,7 +132,7 @@ def c1():
 		item_create_in_inventory(PROTO_ARMOR_PADDED_ARMOR_TAN, npc)
 		item_create_in_inventory(PROTO_BOOTS_LEATHER_BOOTS_FINE, npc)
 		#item_create_in_inventory(PROTO_WEAPON_MORNINGSTAR, npc)
-		#item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		#item_create_in_inventory(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -198,7 +200,7 @@ def c2():
 		item_create_in_inventory(PROTO_ARMOR_BANDED_MAIL, npc)
 		item_create_in_inventory(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory(PROTO_LONGSWORD, npc)
-		item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -267,7 +269,7 @@ def c3():
 		item_create_in_inventory(PROTO_ARMOR_BREASTPLATE, npc)
 		item_create_in_inventory(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory(PROTO_WEAPON_MORNINGSTAR, npc)
-		item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -340,7 +342,7 @@ def c4():
 		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		#item_create_in_inventory_buy(PROTO_LONGSWORD, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_LARGE, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_LARGE_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -359,7 +361,7 @@ def c4():
 		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_MORNINGSTAR, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -448,7 +450,7 @@ def c5():
 		item_create_in_inventory(PROTO_ARMOR_BREASTPLATE_MASTERWORK, npc)
 		item_create_in_inventory(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory(PROTO_LONGSWORD_MASTERWORK, npc, 2)
-		item_create_in_inventory(PROTO_SHIELD_WOODEN_LARGE_MASTERWORK, npc)
+		item_create_in_inventory(PROTO_SHIELD_LARGE_MASTERWORK_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_LONGBOW_MASTERWORK, npc)
 		item = item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -467,7 +469,7 @@ def c5():
 		item_create_in_inventory(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory(PROTO_WEAPON_MORNINGSTAR_MASTERWORK, npc)
 		item_create_in_inventory(PROTO_LONGSWORD_MASTERWORK, npc)
-		item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
 		item = item_create_in_inventory(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -540,7 +542,7 @@ def c6():
 		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		#item_create_in_inventory_buy(PROTO_LONGSWORD, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_LARGE, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_LARGE_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -559,7 +561,7 @@ def c6():
 		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_MORNINGSTAR, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -618,7 +620,7 @@ def c7():
 		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		#item_create_in_inventory_buy(PROTO_LONGSWORD, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_LARGE, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_LARGE_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -637,7 +639,7 @@ def c7():
 		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_MORNINGSTAR, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -701,7 +703,7 @@ def d():
 		item_create_in_inventory(PROTO_ARMOR_STUDDED_LEATHER_ARMOR, npc)
 		item_create_in_inventory(PROTO_BOOTS_LEATHER_BOOTS_GREEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_SHORTSWORD, npc)
-		#item_create_in_inventory(PROTO_SHIELD_WOODEN_SMALL, npc)
+		#item_create_in_inventory(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory(PROTO_WEAPON_SHORTBOW, npc)
 		item = item_create_in_inventory(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -730,7 +732,7 @@ def del2():
 	if (1==1):
 		item_create_in_inventory_buy(PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_SMALL_WOODEN, npc)
 		npc.identify_all()
 		npc.item_wield_best_all()
 
@@ -803,7 +805,7 @@ def elv2():
 		item_clear_by_proto(npc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
 		item_create_in_inventory(PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):
@@ -864,7 +866,7 @@ def g():
 		item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_BROWN, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		#item_create_in_inventory_buy(PROTO_LONGSWORD, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_LARGE, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_LARGE_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_LONGBOW, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_ARROW_QUIVER, npc)
 		if (item):
@@ -883,7 +885,7 @@ def g():
 		#item_create_in_inventory_buy(PROTO_ARMOR_BREASTPLATE, npc)
 		item_create_in_inventory_buy(PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_MORNINGSTAR, npc)
-		item_create_in_inventory_buy(PROTO_SHIELD_WOODEN_SMALL, npc)
+		item_create_in_inventory_buy(PROTO_SHIELD_SMALL_WOODEN, npc)
 		item_create_in_inventory_buy(PROTO_WEAPON_CROSSBOW_LIGHT, npc)
 		item = item_create_in_inventory_buy(PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):

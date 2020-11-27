@@ -519,7 +519,7 @@ class CtrlDrowZombie(ctrl_behaviour.CtrlBehaviour):
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD, npc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_HALF_PLATE, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_STEEL, npc)
 		npc.item_wield_best_all()
 		return
 
@@ -626,7 +626,7 @@ class CtrlShenn(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_end_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_exit_combat] = shattered_temple_encounters
 
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_LARGE, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_LARGE_STEEL, npc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_MASTERWORK, npc)
 		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_SCIMITAR_MASTERWORK, npc)
 		#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_12_MASTERWORK, npc)

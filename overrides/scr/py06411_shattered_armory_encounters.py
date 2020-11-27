@@ -1,6 +1,6 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
 import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, utils_npc
-import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings, const_proto_cloth
+import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings, const_proto_cloth, const_proto_wondrous
 
 shattered_armory_encounters = 6411
 
@@ -161,7 +161,7 @@ class CtrlFlindSoldier(ctrl_behaviour.CtrlBehaviour):
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_FLIND_PLUS1, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_LARGE_PLUS_1, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_LARGE_PLUS_1_STEEL, npc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_MASTERWORK, npc)
 		npc.item_wield_best_all()
 		return
@@ -491,15 +491,15 @@ class CtrlTroglodyteSoldier(ctrl_behaviour.CtrlBehaviour):
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
 		case = toee.game.random_range(1, 5)
 		if (case == 1):
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_BLUE, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_BLUE, npc)
 		elif (case == 2):
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_ORANGE, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_ORANGE, npc)
 		elif (case == 3):
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_WHITE, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_WHITE, npc)
 		elif (case == 4):
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_GREEN, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_GREEN, npc)
 		elif (case == 5):
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_OF_RESISTANCE_1_BLACK, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_BLACK, npc)
 		
 		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		
@@ -842,7 +842,7 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_LARGE, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_LARGE_WOODEN, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_FLAIL_MASTERWORK, npc)
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BULL_S_STRENGTH, npc)
 		npc.item_wield_best_all()
@@ -1201,7 +1201,7 @@ class CtrlMezzoloth(ctrl_behaviour.CtrlBehaviour):
 
 		# create inventory
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_TRIDENT_PLUS_1, npc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_LARGE, npc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_LARGE_STEEL, npc)
 		npc.item_wield_best_all()
 		return
 

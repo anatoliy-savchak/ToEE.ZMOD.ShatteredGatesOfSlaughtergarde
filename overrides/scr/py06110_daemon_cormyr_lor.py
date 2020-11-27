@@ -8,6 +8,7 @@ from const_proto_armor import *
 from const_proto_weapon import *
 from const_proto_containers import *
 from math import radians
+from const_proto_cloth import *
 
 # DAEMON
 def cormyr_lor_san_new_map( attachee, triggerer ):

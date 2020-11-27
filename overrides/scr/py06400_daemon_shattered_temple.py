@@ -719,7 +719,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_MASTERWORK, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
-			#utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_BLACK, npc)
+			#utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOAK_BLACK, npc)
 			if (not skip_longbow):
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_14, npc)
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_ARROW_QUIVER, npc)

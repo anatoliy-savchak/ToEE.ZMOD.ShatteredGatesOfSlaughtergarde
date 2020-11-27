@@ -17,9 +17,9 @@ def barovia_team5():
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_BREASTPLATE_GLOVES, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_HELMES_PLUMED_SILVER, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_HELMES_PLUMED_SILVER, pc)
 
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_TOWER, pc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_TOWER_STEEL, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_PLUS_1, pc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_PLUS_1, pc)
 		pc.item_wield_best_all()
@@ -38,7 +38,7 @@ def barovia_team5():
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_PADDED_RED, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_PADDED_RED, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_CIRCLET_HOODLESS, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_BLUE, pc)
+		utils_item.item_create_in_inventory(PROTO_CLOAK_BLUE.PROTO_CLOAK_BLUE, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAINMAIL_MITHRAL_PLUS_1, pc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATAXE_PLUS_1, pc)
@@ -77,7 +77,7 @@ def barovia_team5():
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_GLOVES_BREASTPLATE_GLOVES, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, pc)
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_SMALL, pc)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_WOODEN, pc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_MACE_LIGHT, pc)
 
 		utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_CURE_LIGHT_WOUNDS, pc)

@@ -1,5 +1,5 @@
 import toee, debugg, utils_obj, const_toee, utils_item, utils_toee, py06122_cormyr_prompter, utils_npc, const_proto_armor, utils_item, const_proto_items, const_proto_weapon
-import py06202_vargouille_lesser, const_proto_wands, math, const_proto_potions, const_proto_scrolls
+import py06202_vargouille_lesser, const_proto_wands, math, const_proto_potions, const_proto_scrolls, const_proto_cloth, const_proto_wondrous
 
 MAP_ID_ADASK = 5120
 PROTO_NPC_ZOMBIE_BUGBEAR = 14890
@@ -52,7 +52,7 @@ def do_hook_doors():
 def do_setup_chests():
 	PROTO_CONTAINER_CHEST_TRAPPED = 1301
 	obj = toee.game.obj_create(PROTO_CONTAINER_CHEST_TRAPPED, utils_obj.sec2loc(543, 531))
-	utils_item.item_create_in_inventory(const_proto_armor.PROTO_HELM_HEADBAND_OF_THE_STOUT_HEART, obj)
+	utils_item.item_create_in_inventory(const_proto_cloth.PROTO_HELM_HEADBAND_OF_THE_STOUT_HEART, obj)
 	utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_WHITE, obj, 2)
 	utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_LIGHT_WOUNDS, obj)
 	utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_IDENTIFY, obj)
@@ -119,7 +119,7 @@ def do_encounter_a4():
 	PROTO_NPC_HOBGOBLIN_1 = 14188
 	obj = toee.game.obj_create(PROTO_NPC_HOBGOBLIN_1, utils_obj.sec2loc(438, 467))
 	utils_obj.obj_scripts_clear(obj)
-	utils_item.item_create_in_inventory(const_proto_armor.PROTO_BELT_LIFTING, obj)
+	utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_BELT_LIFTING, obj)
 	obj.condition_add_with_args("Base_Attack_Bonus1", 1, 0)
 	#utils_item.item_clear_all(obj)
 	nearest_pc = utils_npc.npc_find_nearest_pc(obj, 30, 1)
@@ -149,7 +149,7 @@ def do_encounter_a5():
 def do_encounter_a8():
 	obj = toee.game.obj_create(PROTO_NPC_ZOMBIE_BUGBEAR, utils_obj.sec2loc(406, 476))
 	utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_MORNINGSTAR, obj)
-	utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_SMALL, obj)
+	utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_WOODEN, obj)
 	obj.scripts[const_toee.sn_dying] = 6201
 	nearest_pc = utils_npc.npc_find_nearest_pc(obj, 30, 1)
 	if (nearest_pc):
