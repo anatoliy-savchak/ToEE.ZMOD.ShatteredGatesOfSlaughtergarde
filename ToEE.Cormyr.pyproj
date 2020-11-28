@@ -74,6 +74,7 @@
     <Content Include="overrides\dlg\00651Vintra.dlg" />
     <Content Include="overrides\dlg\00652Maug.dlg" />
     <Content Include="overrides\dlg\00653Weapons.dlg" />
+    <Content Include="overrides\dlg\00655Scrolls.dlg" />
     <Content Include="overrides\dlg\00661Armour.dlg" />
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\00678CaptArmin.dlg" />
@@ -205,6 +206,9 @@
     <Compile Include="overrides\scr\const_deseases.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_proto_list_scrolls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="overrides\scr\const_proto_list_wands.py" />
     <Compile Include="overrides\scr\const_proto_wondrous.py" />
     <Compile Include="overrides\scr\const_proto_food.py" />
@@ -259,6 +263,7 @@
     <Compile Include="overrides\scr\py00406Game_Portal.py" />
     <Compile Include="overrides\scr\py00652Maug.py" />
     <Compile Include="overrides\scr\py00653Weapons.py" />
+    <Compile Include="overrides\scr\py00655Scrolls.py" />
     <Compile Include="overrides\scr\py00661Armour.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
     <Compile Include="overrides\scr\py00678CaptArmin.py" />
