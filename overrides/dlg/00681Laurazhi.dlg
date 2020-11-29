@@ -1,6 +1,6 @@
 {1}{[You see a beautiful woman.] If you got this far, you must be capable. I need capable allies.}{[You see a beautiful woman.] If you got this far, you must be capable. I need capable allies.}{}{}{}{}
 {2}{[Detect Evil - she is pure evil! Almost certainly an Outsider. Click here to confront her on this.]}{}{1}{pc.stat_level_get(stat_level_paladin) >= 1 or game.global_flags[17] == 1}{10}{}
-{3}{[Spot check! This woman is in disguise - in fact, she may not even be a woman! Click to confront her.]}{}{1}{spot(npc, pc, 17)}{10}{}	// Disguise is 17 - this should be rolled
+{3}{[Spot check! This woman is in disguise - in fact, she may not even be a woman! Click to confront her.]}{}{1}{utils_npc.spot_check(npc, pc, 17)}{10}{}	// Disguise is 17 - this should be rolled
 {4}{Introductions? I'm @pcname@. What brings you to a place like this?}{}{1}{}{50}{}
 
 {10}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{Very well, I have demon blood, yes. I cannot help that, and I wish you no harm, I am simply seeking a way home. There is a gate here that I hope to use to return to the Abyss. After that, you may do as you will with it - or if you wish to seal it, I will help you to do so, if you help me. What do you say?}{}{}{}{game.global_flags[18] = 1}
@@ -119,7 +119,7 @@ PC is obviously a cleric or paladin of a good deity (- 2); a PC is obviously a c
 {443}{I cannot work with a demon, so you can forget 'we'. Just keep out of my way.}{}{1}{game.global_flags[18] == 1}{0}{}
 
 {450}{Yes! This is what they intended to use: it has the tip of one of the obelisks from the valley bound inside it, reversed by corrupting magicks. Combined with the sigil, the gate will be operative. It can then be used to ferry beings either to or from the Abyss.}{Yes! This is what they intended to use: it has the tip of one of the obelisks from the valley bound inside it, reversed by corrupting magicks. Combined with the sigil, the gate will be operative. It can then be used to ferry beings either to or from the Abyss.}{}{}{}{}
-{451}{A sigil like this?}{}{1}{{anyone( pc.group_list(), "has_item", 12881)}{455}{}
+{451}{A sigil like this?}{}{1}{anyone( pc.group_list(), "has_item", 12881)}{455}{}
 {452}{Why would you want to do that?}{}{1}{}{464}{}
 {453}{And you think you can get home that way?}{}{1}{game.global_flags[18] == 1}{460}{}
 {454}{That is how the gate is powered, how is it operated?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 10}{410}{}

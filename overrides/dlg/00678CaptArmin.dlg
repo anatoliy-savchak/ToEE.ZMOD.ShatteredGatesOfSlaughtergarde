@@ -155,6 +155,7 @@
 // Accepted qs_4
 {200}{Back from Slaughterscar already? How did it go?}{Back from SlaughterScar already? How did it go?}{}{}{}{}
 {201}{Good, good.}{}{1}{}{0}{}
+{202}{It's done! [Tell him the story of how you destroyed the Gate.]}{}{1}{game.global_flags[20] == 1}{440}{}
 
 {220}{Now, I asked you to destroy or bring for destruction any relics of evil that you found. How did that go?}{Now, I asked you to destroy or bring for destruction any relics of evil that you found. How did that go?}{}{}{}{}
 {221}{Well, I found this medallion, does that count?}{}{1}{anyone( pc.group_list(), "has_item", 6750)}{225}{}

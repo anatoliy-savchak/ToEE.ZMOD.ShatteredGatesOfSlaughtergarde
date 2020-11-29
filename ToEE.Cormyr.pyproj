@@ -79,6 +79,7 @@
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\00678CaptArmin.dlg" />
     <Content Include="overrides\dlg\00679WandyMcWand.dlg" />
+    <Content Include="overrides\dlg\00681Laurazhi.dlg" />
     <Content Include="overrides\dlg\00682BlindTroll.dlg" />
     <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
     <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
@@ -268,6 +269,7 @@
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
     <Compile Include="overrides\scr\py00678CaptArmin.py" />
     <Compile Include="overrides\scr\py00679WandyMcWand.py" />
+    <Compile Include="overrides\scr\py00681Laurazhi.py" />
     <Compile Include="overrides\scr\py00682BlindTroll.py" />
     <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
     <Compile Include="overrides\scr\py05000_knowstone.py">

@@ -1,6 +1,6 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
 import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, utils_npc
-import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings, const_proto_cloth, const_proto_wondrous
+import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings, const_proto_cloth, const_proto_wondrous, shattered_consts
 
 shattered_armory_encounters = 6411
 
@@ -693,7 +693,7 @@ class CtrlOrcharix(ctrl_behaviour.CtrlBehaviour):
 		return
 
 	def dying(self, attachee, triggerer):
-		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_HEALTH_1, npc)
+		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_HEALTH_1, attachee)
 		return toee.RUN_DEFAULT
 
 class CtrlTieflingBlademaster(ctrl_behaviour.CtrlBehaviour):
@@ -844,7 +844,7 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_LARGE_WOODEN, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_FLAIL_MASTERWORK, npc)
-		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BULL_S_STRENGTH, npc)
+		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_BULLS_STRENGTH, npc)
 		npc.item_wield_best_all()
 		return
 
@@ -865,9 +865,9 @@ class CtrlGnollPriestess(ctrl_behaviour.CtrlBehaviour):
 			utils_npc.npc_spell_ensure(npc, toee.spell_endurance, toee.stat_level_cleric, npc.highest_divine_caster_level, 1)
 			npc.cast_spell(toee.spell_endurance, npc)
 		elif (step == 4):
-			scroll = npc.item_find_by_proto(const_proto_scrolls.PROTO_SCROLL_OF_BULL_S_STRENGTH)
+			scroll = npc.item_find_by_proto(const_proto_scrolls.PROTO_SCROLL_OF_BULLS_STRENGTH)
 			if (not scroll):
-				print("scroll PROTO_SCROLL_OF_BULL_S_STRENGTH not found!")
+				print("scroll PROTO_SCROLL_OF_BULLS_STRENGTH not found!")
 				return
 			flind = npc
 			if (self.get_var("a12") or self.get_var("a14") == 1):
@@ -1112,6 +1112,11 @@ class CtrlDerroArtisan(ctrl_behaviour.CtrlBehaviour):
 			break
 		return tac
 
+class CtrlDerroArtisanBoss(CtrlDerroArtisan):
+	def dying(self, attachee, triggerer):
+		utils_item.item_create_in_inventory(12881, attachee)
+		return toee.RUN_DEFAULT
+
 class CtrlSuccubus(ctrl_behaviour.CtrlBehaviour):
 	@classmethod
 	def get_proto_id(cls): return 14954
@@ -1339,3 +1344,8 @@ class CtrlGnollHezrou(ctrl_behaviour.CtrlBehaviour):
 				break
 			break
 		return tac
+
+	def dying(self, attachee, triggerer):
+		toee.game.global_flags[shattered_consts.GLOBAL_FLAG_WARCHIEF_KILLED] = 1
+		utils_item.item_create_in_inventory(12882, attachee)
+		return toee.RUN_DEFAULT

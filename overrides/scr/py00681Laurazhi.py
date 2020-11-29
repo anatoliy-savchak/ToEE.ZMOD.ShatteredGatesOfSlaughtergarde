@@ -1,6 +1,7 @@
 from toee import *
 from utilities import *
 from scripts import *
+import utils_npc
 
 def san_dialog( attachee, triggerer ):
 	attachee.turn_towards(triggerer)
@@ -116,7 +117,8 @@ def final_run(attachee, triggerer):
 	attachee.critter_flag_set(OCF_MUTE)
 	game.timevent_add(run_off, (attachee, triggerer), 1000 )
 	game.timevent_add(destroy_it_all, (), 4000)
-	RETURN
+	game.global_flags[20] == 1
+	return
 
 def run_off( attachee, triggerer ):
 	attachee.runoff(location_from_axis(423, 435))
@@ -158,7 +160,8 @@ def do_the_sigil(triggerer):
 	
 def light_up_ark(triggerer):
 	ark = find_gnrc_near( triggerer, 12883 )
-	game.particles( 'sp-Detect Secret Doors', ark )
+	if (ark):
+		game.particles( 'sp-Detect Secret Doors', ark )
 	
 def light_up_sigils(triggerer):
 	for gnrc in game.obj_list_vicinity( triggerer.location, OLC_GENERIC ):

@@ -311,12 +311,10 @@ def npc_unexploit(npc):
 		item.item_flag_set(toee.OIF_NO_LOOT)
 	return npc
 
-def skill_roll(attachee, triggerer, dc, ayup, nope, skill_num, text):
+def skill_roll2(attachee, triggerer, dc, skill_num, text):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(triggerer, toee.PyObjHandle)
 	assert isinstance(dc, int)
-	assert isinstance(ayup, int)
-	assert isinstance(nope, int)
 	assert isinstance(skill_num, int)
 	assert isinstance(text, str)
 
@@ -327,6 +325,19 @@ def skill_roll(attachee, triggerer, dc, ayup, nope, skill_num, text):
 	success = skill_value + roll_result >= dc
 	hist_id = tpdp.create_history_dc_roll(triggerer, dc, dice, roll_result, text, bon_list)
 	toee.game.create_history_from_id(hist_id)
+
+	return success
+
+def skill_roll(attachee, triggerer, dc, ayup, nope, skill_num, text):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(ayup, int)
+	assert isinstance(nope, int)
+	assert isinstance(skill_num, int)
+	assert isinstance(text, str)
+
+	success = skill_roll2(attachee, triggerer, dc, skill_num, text)
 
 	if success:
 		triggerer.begin_dialog( attachee, ayup )
@@ -353,6 +364,16 @@ def bluff_roll(attachee, triggerer, dc, ayup, nope, text = None):
 	print("bluff_roll")
 	if (text is None): text = "Bluff"
 	return skill_roll(attachee, triggerer, dc, ayup, nope, toee.skill_bluff, text)
+
+def spot_check(attachee, triggerer, dc, text = None):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(ayup, int)
+	assert isinstance(nope, int)
+	print("bluff_roll")
+	if (text is None): text = "Spot"
+	return skill_roll2(attachee, triggerer, dc, toee.skill_spot, text)
 
 def party_add_skill_bonus(skill_num, bonus):
 	# import utils_npc

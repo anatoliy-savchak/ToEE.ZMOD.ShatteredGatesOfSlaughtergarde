@@ -694,7 +694,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		self.create_npc_at(utils_obj.sec2loc(520, 442), py06411_shattered_armory_encounters.CtrlDerroArtisan, const_toee.rotation_0200_oclock, "a16", "derro1")
 		self.create_npc_at(utils_obj.sec2loc(520, 448), py06411_shattered_armory_encounters.CtrlDerroArtisan, const_toee.rotation_0200_oclock, "a16", "derro2")
-		self.create_npc_at(utils_obj.sec2loc(525, 445), py06411_shattered_armory_encounters.CtrlDerroArtisan, const_toee.rotation_0200_oclock, "a16", "derro3")
+		self.create_npc_at(utils_obj.sec2loc(525, 445), py06411_shattered_armory_encounters.CtrlDerroArtisanBoss, const_toee.rotation_0200_oclock, "a16", "derro3")
 		return
 
 	def display_encounter_a16(self):
@@ -720,7 +720,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		if (self.skip_delayed(delayed, 0)): return
 		
-		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(448, 445), py06411_shattered_armory_encounters.CtrlSuccubus, const_toee.rotation_0800_oclock, "a18", "succubus")
+		npc, ctrl = self.create_npc_at(utils_obj.sec2loc(461, 440), py06411_shattered_armory_encounters.CtrlSuccubus, const_toee.rotation_0500_oclock, "a18", "succubus")
 		npc.scripts[const_toee.sn_dialog] = 681
 		return
 
