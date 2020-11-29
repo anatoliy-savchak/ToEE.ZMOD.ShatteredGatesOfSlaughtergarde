@@ -29,7 +29,7 @@ def encounter_exists(setup, encounter):
 # Sleep interface
 def encounter_create(encounter):
 	assert isinstance(encounter, toee.PyRandomEncounter)
-	print("encounter_create encounter.flage: {}".format(encounter.flags))
+	print("encounter_create encounter.flags: {}".format(encounter.flags))
 	try:
 		if (encounter.flags & toee.ES_F_SLEEP_ENCOUNTER):
 			daemon_ctrl = ctrl_daemon.CtrlDaemon.get_current_daemon()

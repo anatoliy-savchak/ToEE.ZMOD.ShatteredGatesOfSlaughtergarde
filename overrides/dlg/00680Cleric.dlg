@@ -19,7 +19,7 @@
 {36}{And to you.}{}{1}{}{0}{}
 {37}{Bah, humbug.}{}{1}{}{0}{}
 
-{40}{I can offer the removal of curses, poisons, diseases or even the raising of the dead. Please note there is a limit to how many spells I can cast.}{I can offer the removal of curses, poisons, diseases or even the raising of the dead. Please note there is a limit to how many spells I can cast.}{}{}{}{}
+{40}{I can offer the removal of curses, poisons, diseases or even the raising of the dead. Please note there is a limit to my power - the Sun God's radiance is mine to supplicate, not to command.}{I can offer the removal of curses, poisons, diseases or even the raising of the dead. Please note there is a limit to my influence with the Sun God.}{}{}{}{}
 {41}{Remove Curse. Please.}{}{1}{}{70}{}
 {42}{Cure Poison.}{}{1}{}{80}{}
 {43}{Heal my diseases, if it pleases.}{}{1}{}{60}{}
@@ -55,6 +55,14 @@
 {111}{O Gods put it away, put it away!}{}{1}{}{0}{}
 {112}{B:Yes, sweet Pelor YES!!}{}{1}{}{0}{pc.barter(npc)}
 
+
+{500}{So you want to change my inventory? Let's find it first!}{So you want to change my inventory? Let's find it first!}{}{}{}{}
+{502}{Agreed. Try container_inventory_source}{}{1}{}{510}{box3(npc, pc)}
+{503}{Meh.}{}{1}{}{}{}
+
+{510}{Did it work?}{Did it work?}{}{}{}{}
+{511}{Try again.}{}{1}{}{500}{}
+{512}{Ayup.}{}{1}{}{0}{}
 
 
 

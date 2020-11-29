@@ -67,3 +67,4 @@
 {65}{[ACTOR] is immune to ~critical hit~[TAG_CRITICAL_HIT].}
 {66}{[ACTOR] is immune to ~poison~[TAG_POISON].}
 {67}{[ACTOR] belches fire (Su).}
+{68}{[ACTOR] strikes with ~ability drain~[TAG_CHANGE_ABILITY_SCORES] on [TARGET]!}

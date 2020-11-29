@@ -175,6 +175,10 @@ class PyObjHandle(object):
 		""" npc.condition_add_with_args(str: cond_name, int: arg0 = None, int: arg1 = None, int: arg2 = None) -> int"""
 		return 0
 
+	def conditions_get(self, kind = None):
+		result = [("condition name", 2)]
+		return
+
 	def container_flags_get(self):
 		"""npc.container_flags_get() -> OCOF_LOCKED"""
 		return
@@ -427,6 +431,9 @@ class PyObjHandle(object):
 		"""Get internal field array int value. npc.obj_get_idx_int(int[obj_f_*]: field, subIdx) -> int"""
 		return 0
 
+	def obj_set_idx_int(self, field, subIdx, value):
+		"""Set internal field array int value. npc.obj_set_idx_int(int[obj_f_*]: field, subIdx, value) -> None"""
+		return
 
 	def obj_get_int64(self, field):
 		"""Get internal field long value. npc.obj_get_int64(int[obj_f_*]: field) -> long"""
@@ -507,7 +514,7 @@ class PyObjHandle(object):
 		return 0
 
 	def spell_known_add(self, spellIdx, spellClassCode, slotLevel):
-		"""npc.spell_known_add(int[...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
+		"""npc.spell_known_add(int[...]: spellIdx, int: spellClassCode, int: slotLevel [zero based]) -> None"""
 		return
 
 	def spell_memorized_add(self, spellIdx, spellClassCode, slotLevel):
@@ -4377,3 +4384,52 @@ sp_Web_Off = 238
 sp_Web_On = 237
 sp_Wind_Wall = 239
 sp_Wind_Wall_Hit = 240
+
+none = 0
+air = 1
+animal = 2
+chaos = 3
+death = 4
+destruction = 5
+earth = 6
+evil = 7
+fire = 8
+good = 9
+healing = 10
+knowledge = 11
+law = 12
+luck = 13
+magic = 14
+plant = 15
+protection = 16
+strength = 17
+sun = 18
+travel = 19
+trickery = 20
+war = 21
+water = 22
+special = 23
+
+# Schools
+Abjuration = 1
+Conjuration = 2
+Divination = 3
+Enchantment = 4
+Evocation = 5
+Illusion = 6
+Necromancy = 7
+Transmutation = 8
+
+# Subschools
+Calling = 1
+Creation = 2
+Healing = 3
+Summoning = 4
+Charm = 5
+Compulsion = 6
+Figment = 7
+Glamer = 8
+Pattern = 9
+Phantasm = 10
+Shadow = 11
+Scrying = 12

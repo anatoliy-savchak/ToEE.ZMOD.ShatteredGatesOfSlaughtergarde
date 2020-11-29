@@ -8,12 +8,14 @@ def GetConditionName():
 print("Registering " + GetConditionName())
 ###################################################
 
+D20STD_SPELL_DESCRIPTOR_FEAR = 0x100000
 
 def Python_Action_Shriek_Check(attachee, args, evt_obj):
 	return 1
 
 def Python_Action_Shriek_Perform(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(args, tpdp.EventArgs)
 	try:
 		#debugg.breakp("Python_Action_Shriek_Perform")
 		caster = attachee
@@ -22,7 +24,9 @@ def Python_Action_Shriek_Perform(attachee, args, evt_obj):
 		affected = toee.game.obj_list_range(caster.location, 60, toee.OLC_CRITTERS)
 		print("found: {}".format(affected))
 		dce = toee.dice_new("2d4")
-		dc = 12
+		dc = args.get_arg(0)
+		if (not dc):
+			dc = 12
 		furthest = None
 		furthest_dist = 0
 		for target in affected:
@@ -42,7 +46,7 @@ def Python_Action_Shriek_Perform(attachee, args, evt_obj):
 			if (not furthest or furthest_dist < dist):
 				furthest = target
 				furthest_dist = dist
-			saved = target.saving_throw(dc, toee.D20_Save_Will, toee.D20STD_F_SPELL_DESCRIPTOR_FEAR, caster)
+			saved = target.saving_throw(dc, toee.D20_Save_Will, D20STD_SPELL_DESCRIPTOR_FEAR, caster)
 			if (saved): continue
 			remaining = dce.roll()
 			#part = toee.game.particles('sp-Fear-Hit', target)

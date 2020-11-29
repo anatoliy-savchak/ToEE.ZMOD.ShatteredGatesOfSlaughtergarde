@@ -4,11 +4,13 @@ import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, c
 
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
-	print(attachee.id)
-	#debugg.breakp("san_new_map")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
-	ctrl = CtrlShatteredTemple.ensure(attachee)
-	ctrl.place_encounters(1)
+	if (attachee.id == shattered_consts.SHATERRED_TEMPLE_DAEMON_ID):
+		ctrl = CtrlShatteredTemple.ensure(attachee)
+		ctrl.place_encounters(1)
+	else:
+		print("san_new_map is NOT SHATERRED_TEMPLE_DAEMON_ID!! (attachee: {}, triggerer: {})".format(attachee, triggerer))
+		debug.breakp("san_new_map")
 	return toee.RUN_DEFAULT
 
 def san_first_heartbeat(attachee, triggerer):
@@ -16,19 +18,27 @@ def san_first_heartbeat(attachee, triggerer):
 	#print(attachee.id)
 	#debugg.breakp("san_first_heartbeat")
 	if (attachee.map != shattered_consts.MAP_ID_SHATERRED_TEMPLE): toee.RUN_DEFAULT
-	ctrl = CtrlShatteredTemple.ensure(attachee)
-	ctrl.place_encounters(0)
+	if (attachee.id == shattered_consts.SHATERRED_TEMPLE_DAEMON_ID):
+		ctrl = CtrlShatteredTemple.ensure(attachee)
+		ctrl.place_encounters(0)
+	else:
+		print("san_first_heartbeat is NOT SHATERRED_TEMPLE_DAEMON_ID!! (attachee: {}, triggerer: {})".format(attachee, triggerer))
+		debug.breakp("san_first_heartbeat")
 	return toee.RUN_DEFAULT
 
 def san_heartbeat(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	if (attachee.map == shattered_consts.MAP_ID_SHATERRED_TEMPLE):
-		ctrl = cst()
-		if (not ctrl):
-			ctrl = CtrlShatteredTemple.ensure(attachee)
-			ctrl.place_encounters(1)
-		if (ctrl):
-			ctrl.check_sleep_status_update(0)
+		if (attachee.id == shattered_consts.SHATERRED_TEMPLE_DAEMON_ID):
+			ctrl = cst()
+			if (not ctrl):
+				ctrl = CtrlShatteredTemple.ensure(attachee)
+				ctrl.place_encounters(1)
+			if (ctrl):
+				ctrl.check_sleep_status_update(0)
+		else:
+			print("san_heartbeat is NOT SHATERRED_TEMPLE_DAEMON_ID!! (attachee: {}, triggerer: {})".format(attachee, triggerer))
+			debug.breakp("san_heartbeat")
 	return toee.RUN_DEFAULT
 
 def san_use(attachee, triggerer):
@@ -480,7 +490,10 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_t16(self):
-		self.create_promter_at(utils_obj.sec2loc(506, 449), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone")
+		p1 = self.create_promter_at(utils_obj.sec2loc(506, 449), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone", const_toee.rotation_0200_oclock)
+		p2 = self.create_promter_at(utils_obj.sec2loc(513, 452), 6400, 160, 10, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Shrine of the Crone", const_toee.rotation_0600_oclock)
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		leader, ctrl = self.create_npc_at(utils_obj.sec2loc(512, 450), py06401_shattered_temple_encounters.CtrlLanthurrae, const_toee.rotation_0200_oclock, "t16", "priestess")
 		minion = self.create_npc_at(utils_obj.sec2loc(510, 448), py06401_shattered_temple_encounters.CtrlGrimlock, const_toee.rotation_0200_oclock, "t16", "grimlock1")[0]
@@ -705,8 +718,8 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		npc = toee.game.obj_create(PROTO_NPC_SURRINAK_HOUSE_GUARD, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_MASTERWORK, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
-			#utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_BLACK, npc)
+			utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, npc)
+			#utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOAK_BLACK, npc)
 			if (not skip_longbow):
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_LONGBOW_COMPOSITE_14, npc)
 				utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_ARROW_QUIVER, npc)
@@ -752,7 +765,7 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		npc = toee.game.obj_create(PROTO_NPC_DROW_RIDER, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_BOOTS_BREASTPLATE_BOOTS, npc)
+			utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GLAIVE_MASTERWORK, npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_LONGSWORD_MASTERWORK, npc)
 			npc.feat_add(toee.feat_weapon_focus_glaive, 1)

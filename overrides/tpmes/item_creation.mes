@@ -1,0 +1,141 @@
+// Item Creation.mes
+// Text used in the item creation user interface
+
+// 0-9 Item Creation Modes (printed as the title of the window)
+{0}{Alchemy}
+{1}{Brew Potion}
+{2}{Scribe Scroll}
+{3}{Craft Wand}
+{4}{Craft Rod}
+{5}{Craft Wondrous Item}
+{6}{Craft Staff}
+{7}{Forge Ring}
+{8}{Craft Magic Arms & Armor}
+
+
+// 10-19 Item Creation Names (printed above the items to be created)
+{10}{Special Substances and Items} // from Players Handbook: Table 7-9 
+{11}{Potions}
+{12}{Scrolls}
+{13}{Wands}
+{14}{Rods}
+{15}{Wondrous Items}
+{16}{Staves}
+{17}{Rings}
+{18}{Magic Arms & Armor}
+
+
+// 1000-1999 Weapon Enhancement Strings
+{1000}{+1}
+{1001}{+2}
+{1002}{+3}
+{1003}{+4}
+{1004}{+5}
+{1005}{Anarchic}
+{1006}{Axiomatic}
+{1007}{Bane}
+{1008}{Brilliant Energy}
+{1009}{Dancing}
+{1010}{Defending}
+{1011}{Distance}
+{1012}{Disruption}
+{1013}{Flaming}
+{1014}{Flaming Burst}
+{1015}{Frost}
+{1016}{Ghost Touch}
+{1017}{Holy}
+{1018}{Icy Burst}
+{1019}{Keen}
+{1020}{Ki Focus}
+{1021}{Merciful}
+{1022}{Mighty Cleaving}
+{1023}{Returning}
+{1024}{Seeking}
+{1025}{Shock}
+{1026}{Shocking Burst}
+{1027}{Speed}
+{1028}{Spell Storing}
+{1029}{Throwing}
+{1030}{Thundering}
+{1031}{Unholy}
+{1032}{Vicious}
+{1033}{Vorpal}
+{1034}{Wounding}
+
+
+// armor bonuses
+{1200}{+1}
+{1201}{+2}
+{1202}{+3}
+{1203}{+4}
+{1204}{+5}
+{1205}{Fortification, Light}
+{1206}{Glamered}
+{1207}{Slick}
+{1208}{Shadow}
+{1209}{Silent Moves}
+{1210}{Spell Resistance 13}
+{1211}{Spell Resistance 15}
+{1212}{Spell Resistance 17}
+{1213}{Spell Resistance 19}
+{1214}{Twilight}
+{1215}{Freedom}
+
+// shield bonuses
+{1400}{+1}
+{1401}{+2}
+{1402}{+3}
+{1403}{+4}
+{1404}{+5}
+{1405}{Animated}
+{1406}{Arrow Deflection}
+{1407}{Bashing}
+{1408}{Blinding}
+{1409}{Fortification, Light}
+{1410}{Spell Resistance 13}
+{1411}{Spell Resistance 15}
+{1412}{Spell Resistance 17}
+{1413}{Spell Resistance 19}
+{1414}{Displacement}
+{1415}{Blurring}
+
+// 10000-19999 Misc. Strings Used
+
+{10000}{Item Information} // above item information window in item creation screen
+{10001}{Create} // Button Text for the Create Button
+{10002}{Cancel} // Button Text for the Cancel Button
+{10003}{Item Cost:} // Label text for the cost of the item
+{10004}{Experience Cost:} // Label text for the cost of the item in XP
+{10005}{Value:} // Label text for the final value of the item (in gold peices)
+{10006}{Skill Required:} // Label text for the minimum skill required to make (for Alchemy)
+{10007}{Prereq:} // Label text used prior to listing prerequisites for making items
+{10008}{Enhancement Cost:} // Label for text of the cost of adding the enhancements to an item
+{10009}{Enh. Bonus:} // Label for the enhancement bonus
+
+{20000}{Level: 0}
+{20001}{Level: 1}
+{20002}{Level: 2}
+{20003}{Level: 3}
+{20004}{Level: 4}
+{20005}{Level: 5}
+{20006}{Level: 6}
+{20007}{Level: 7}
+{20008}{Level: 8}
+{20009}{Level: 9}
+{20010}{Level: 10}
+{20011}{Level: 11}
+{20012}{Level: 12}
+{20013}{Level: 13}
+{20014}{Level: 14}
+{20015}{Level: 15}
+{20016}{Level: 16}
+{20017}{Level: 17}
+{20018}{Level: 18}
+{20019}{Level: 19}
+{20020}{Level: 20}
+
+{20100}{Alignment: Good}
+{20101}{Alignment: Lawful}
+{20102}{Alignment: Evil}
+{20103}{Alignment: Chaotic}
+{20104}{INVALID PREREQ}

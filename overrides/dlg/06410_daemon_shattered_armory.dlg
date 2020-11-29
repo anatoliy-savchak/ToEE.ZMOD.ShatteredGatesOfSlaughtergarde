@@ -1,7 +1,7 @@
 {10}{In the red glow issuing from a giant beetle in a cage near the northern wall, you see three gnolls wearing breastplates and wielding greataxes.}{In the red glow issuing from a giant beetle in a cage near the northern wall, you see three gnolls wearing breastplates and wielding greataxes.}{}{}{}{csa().display_encounter_a1()}
 {11}{Continue}{}{1}{}{12}{}
 {12}{They stand in front of a wooden stockade. Double doors that have massive wooden handles are built into the middle of the stockade. Those doors have a stylized three-headed flail painted across them in red, along with the threat "Turn back or die!"" painted in Common.}{They stand in front of a wooden stockade. Double doors that have massive wooden handles are built into the middle of the stockade. Those doors have a stylized three-headed flail painted across them in red, along with the threat "Turn back or die!"" painted in Common.}{}{}{}{}
-{19}{Close}{}{1}{}{0}{csa().activate_encounter_a1()}
+{19}{Close}{}{1}{}{0}{csa().activate_encounter_a1();npc.destroy()}
 
 {20}{More glowing beetles in cages line this broad hall, which leads to another wooden stockade. This one has a portcullis in the center. Two gnolls aim their longbows over the stockade at you.}{More glowing beetles in cages line this broad hall, which leads to another wooden stockade. This one has a portcullis in the center. Two gnolls aim their longbows over the stockade at you.}{}{}{}{csa().display_encounter_a2()}
 {29}{Close}{}{1}{}{0}{csa().activate_encounter_a2()}
@@ -18,7 +18,7 @@
 {44}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{Large braziers occupy niches in the walls between the arches, their fires finishing off the weird interplay of light in this vast hall. A stooped giant stands guard near the western wall, leaning on his massive club.}{}{}{}{csa().display_encounter_a4()}
 {49}{Close}{}{1}{}{0}{csa().activate_encounter_a4()}
 
-{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5()}
+{50}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{A giant that has leathery wings, has a distended jaw, and wears plate armor stands in the center of this room. Standing skeletons of horses line the northern wall, and a jumble of bones shaped like a huge horse lies near an iron portcullis to the east.}{}{}{}{csa().display_encounter_a5();csa().trigger_monster_step_a5(1)}
 {51}{Continue}{}{1}{}{52}{}
 {52}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{Beyond that gate is a jumble of earth and rock. The southern wall supports a steep stairway leading up to copper doors that are barred on this side.}{}{}{}{}
 {59}{Close}{}{1}{}{0}{csa().activate_encounter_a5()}
@@ -31,3 +31,57 @@
 
 {70}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spot near the room's center indicates a water-filled hole.}{A cloying odor surrounds the three reptilian humanoids that crouch here. Racks of bladed weapons line the walls. Water rushes down the eastern wall and flows over the floor, and a dark spotnear the room's center indicates a water-filled hole.}{}{}{}{csa().display_encounter_a7()}
 {79}{Close}{}{1}{}{0}{csa().activate_encounter_a7()}
+
+{90}{Five reptilian humanoids guard this room. Two in plate armor and three reptilian humanoids in leathers. One has a spear, while the other two seem to have no weapons at all.}{Five reptilian humanoids guard this room. Two in plate armor and three reptilian humanoids in leathers. One has a spear, while the other two seem to have no weapons at all.}{}{}{}{csa().display_encounter_a9()}
+{91}{Continue}{}{1}{}{92}{}
+{92}{Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls. A few inches of water cover the whole floor, and dark spot under the water near the room's center indicates a hole there.}{Wooden racks containing warhammers, flails, and other bludgeoning weapons line the walls. A few inches of water cover the whole floor, and dark spot under the water near the room's center indicates a hole there.}{}{}{}{csa().trigger_monster_step_a9(2)}
+{99}{Close}{}{1}{}{0}{csa().trigger_monster_step_a9(3);csa().activate_encounter_a9()}
+
+{100}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{In the center of this chamber is a gray-brown dragon coated in wicked spikes. The room otherwise appears empty. A portcullis is in the southern wall, but you can see only rock and earth beyond its bars.}{}{}{}{csa().display_encounter_a10()}
+{109}{Close}{}{1}{}{0}{csa().activate_encounter_a10()}
+
+{110}{Three humanoids that have short horns on their foreheads glare menacingly at you from atop the stairs - one female and two males. The males are wearing studded leather armor and wield swords in both hands, while the female wears simple brown robes.}{Three humanoids that have short horns on their foreheads glare menacingly at you from atop the stairs - one female and two males. The males are wearing studded leather armor and wield swords in both hands, while the female wears simple brown robes.}{}{}{}{csa().display_encounter_a11()}
+{111}{Continue}{}{1}{}{112}{}
+{112}{Their tabards depict a stylized gray-brown open maw.}{Their tabards depict a stylized gray-brown open maw.}{}{}{}{csa().trigger_monster_step_a11(2)}
+{113}{Continue}{}{1}{}{114}{}
+{114}{Beyond them, you can make out an austere chamber with arrow slits in the southern wall. The slits are filled with dirt.}{Beyond them, you can make out an austere chamber with arrow slits in the southern wall. The slits are filled with dirt.}{}{}{}{csa().trigger_monster_step_a11(3)}
+{119}{Close}{}{1}{}{0}{csa().activate_encounter_a11()}
+
+{120}{A female gnoll bearing a flail and shield stands near a red-furred, muscular gnoll in this room, which is clearly used to store armor.}{A female gnoll bearing a flail and shield stands near a red-furred, muscular gnoll in this room, which is clearly used to store armor.}{}{}{}{csa().display_encounter_a12()}
+{121}{Continue}{}{1}{}{122}{}
+{122}{Wooden racks on the walls hold greaves, epaulets, chainmail, leather leggings, and other armor pieces.}{Wooden racks on the walls hold greaves, epaulets, chainmail, leather leggings, and other armor pieces.}{}{}{}{csa().trigger_monster_step_a12(2)}
+{123}{Continue}{}{1}{}{124}{}
+{124}{A stairway leads down from the northern part of this chamber.}{A stairway leads down from the northern part of this chamber.}{}{}{}{csa().trigger_monster_step_a12(3)}
+{129}{Close}{}{1}{}{0}{csa().trigger_monster_step_a12(4);csa().activate_encounter_a12()}
+
+{140}{Three female gnolls in this room snarl at you as you enter, their flails and shields at the ready.}{Three female gnolls in this room snarl at you as you enter, their flails and shields at the ready.}{}{}{}{csa().display_encounter_a14()}
+{141}{Continue}{}{1}{}{142}{}
+{142}{Behind them, next to the northern wall, is a carved wooden platform that has long wooden handles.}{Behind them, next to the northern wall, is a carved wooden platform that has long wooden handles.}{}{}{}{csa().trigger_monster_step_a14(2)}
+{143}{Continue}{}{1}{}{144}{}
+{144}{Two gnolls that carry greataxes share this chamber with a big red-furred gnoll, and they all bare their teeth at you.}{Two gnolls that carry greataxes share this chamber with a big red-furred gnoll, and they all bare their teeth at you.}{}{}{}{csa().trigger_monster_step_a14(3)}
+{145}{Continue}{}{1}{}{146}{}
+{146}{An iron framework has been built atop the platform, and from it many distended, shrunken heads hang. They chant in unison, speaking in a language you don't understand.}{An iron framework has been built atop the platform, and from it many distended, shrunken heads hang. They chant in unison, speaking in a language you don't understand.}{}{}{}{csa().trigger_monster_step_a14(4)}
+{147}{Continue}{}{1}{}{148}{}
+{148}{Suspended in midair above the center of framework is the tip of one of the obelisks you've seen throughout your travels. It's floating upside down.}{Suspended in midair above the center of framework is the tip of one of the obelisks you've seen throughout your travels. It's floating upside down.}{}{}{}{csa().trigger_monster_step_a14(5)}
+{149}{Close}{}{1}{}{0}{csa().trigger_monster_step_a14(6);csa().activate_encounter_a14()}
+
+{150}{A thin, wiry giant that has green skin stands in front of four copper doors at the end of this wide hallway. She has a greatsword as tall as a man in her clawed hands, and she's wearing a shining breastplate.}{A thin, wiry giant that has green skin stands in front of four copper doors at the end of this wide hallway. She has a greatsword as tall as a man in her clawed hands, and she's wearing a shining breastplate.}{}{}{}{csa().display_encounter_a15()}
+{159}{Close}{}{1}{}{0}{csa().activate_encounter_a15()}
+
+{160}{This huge foundry is lit by the orange glow of the molten material that must be contained in two rail-lined pits centered along the northern and southern walls.}{This huge foundry is lit by the orange glow of the molten material that must be contained in two rail-lined pits centered along the northern and southern walls.}{}{}{}{csa().display_encounter_a16()}
+{169}{Close}{}{1}{}{0}{csa().activate_encounter_a16()}
+
+{180}{Directly in front of you is a pool of water that stretches beyond the crumbling wall to the northwest. Sagging timbers brace the ceiling. Across the pool is a beautiful woman in purple robes. She's standing next to a fire beetle cage. Behind her, to the east, are four copper doors.}{Directly in front of you is a pool of water that stretches beyond the crumbling wall to the northwest. Sagging timbers brace the ceiling. Across the pool is a beautiful woman in purple robes. She's standing next to a fire beetle cage. Behind her, to the east, are four copper doors.}{}{}{}{csa().display_encounter_a18()}
+{189}{Close}{}{1}{}{0}{csa().activate_encounter_a18()}
+
+{190}{An upright insectile creature treads the center of this room, wielding a trident with one of its two pairs of arms and carrying a large metal shield.}{An upright insectile creature treads the center of this room, wielding a trident with one of its two pairs of arms and carrying a large metal shield.}{}{}{}{csa().display_encounter_a19()}
+{191}{Continue}{}{1}{}{192}{}
+{192}{In deep alcoves to the north and south are immense, crumbling gate arches like the ones you saw in the ruins inhabited by the goblins and the drow. Similar alcoves are set in the northeastern and southeastern corners, but you can't see what's in them.}{In deep alcoves to the north and south are immense, crumbling gate arches like the ones you saw in the ruins inhabited by the goblins and the drow. Similar alcoves are set in the northeastern and southeastern corners, but you can't see what's in them.}{}{}{}{}
+{199}{Close}{}{1}{}{0}{csa().activate_encounter_a19()}
+
+{200}{"If you can't go to the Abyss, by Yeenoghu, bring the Abyss to you!" bellows a powerfully built gnoll who suddenly stands up atop the eastern balcony, ending his rant with a howl of diabolic laughter. Then he begins chanting as he ducks down again.}{"If you can't go to the Abyss, by Yeenoghu, bring the Abyss to you!" bellows a powerfully built gnoll who suddenly stands up atop the eastern balcony, ending his rant with a howl of diabolic laughter. Then he begins chanting as he ducks down again.}{}{}{}{csa().display_encounter_a20()}
+{201}{Continue}{}{1}{}{202}{}
+{202}{Before you can react, the remaining sigils on the northeastern gate flash briefly. A blast of fetid and hot wind slams into you, carrying on it the screams of the tormented. In a wavelike mass, a vast pile of skulls crashes through the gate. The skulls spill across a large portion of the room, many crumbling to dust as they tumble.}{Before you can react, the remaining sigils on the northeastern gate flash briefly. A blast of fetid and hot wind slams into you, carrying on it the screams of the tormented. In a wavelike mass, a vast pile of skulls crashes through the gate. The skulls spill across a large portion of the room, many crumbling to dust as they tumble.}{}{}{}{}
+{203}{Continue}{}{1}{}{204}{csa().trigger_monster_step_a20(0)}
+{204}{Amid all the skulls lurches a massive toadlike creature that has wicked spines running down its back. It rumbles and growls, turning its awful gaze on you as it extends its clawed fingers. A flickering bubble of translucent energy surrounds it and the skulls, and a tendril of the same energy extends back into the center of the gate.}{Amid all the skulls lurches a massive toadlike creature that has wicked spines running down its back. It rumbles and growls, turning its awful gaze on you as it extends its clawed fingers. A flickering bubble of translucent energy surrounds it and the skulls, and a tendril of the same energy extends back into the center of the gate.}{}{}{}{}
+{209}{Close}{}{1}{}{0}{csa().activate_encounter_a20()}

@@ -13,6 +13,7 @@ class CtrlDaemon(object):
 		self.last_patrol_spawned_shrs = 0
 		self.patrol_spawned_count = 0
 		self.factions_existance = dict()
+		self.promters_info = list()
 		return
 
 	@classmethod
@@ -77,6 +78,11 @@ class CtrlDaemon(object):
 		print("promter {}:{} placed {} {}".format(line_id, new_name, npc.id, npc))
 		if (rotation):
 			npc.rotation = rotation
+
+		info = monster_info.MonsterInfo()
+		info.id = npc.id
+		info.proto = npc.proto
+		self.promters_info.append(info)
 		return npc
 
 	def get_monster_faction_default(self, npc):
@@ -124,6 +130,15 @@ class CtrlDaemon(object):
 			assert isinstance(info, monster_info.MonsterInfo)
 			return info
 		return None
+
+	def get_monsterinfo_and_npc_and_ctrl(self, encounter_name, monster_code_name):
+		npc = None
+		ctrl = None
+		info = self.get_monsterinfo(encounter_name, monster_code_name)
+		if (info):
+			npc = toee.game.get_obj_by_id(info.id)
+			ctrl = ctrl_behaviour.get_ctrl(info.id)
+		return info, npc, ctrl
 
 	def print_portals(self):
 		for obj in toee.game.obj_list_range(toee.game.party[0].location, 200, toee.OLC_PORTAL ):
@@ -194,6 +209,7 @@ class CtrlDaemon(object):
 
 	def check_npc_enemy(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
+		if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER): return 0
 		result = npc.faction_has(shattered_consts.FACTION_SLAUGHTERGARDE_SPAWN) or npc.faction_has(shattered_consts.FACTION_WILDERNESS_HOSTILE)
 		return result
 
@@ -372,7 +388,7 @@ class CtrlDaemon(object):
 
 	def factions_existance_refresh(self):
 		print("factions_existance_refresh")
-		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2)
+		self.factions_existance = monster_info.MonsterInfo.get_factions_existance(self.m2, 0)
 		print(self.factions_existance)
 		return
 
@@ -397,4 +413,15 @@ class CtrlDaemon(object):
 		for npc in toee.game.obj_list_range(toee.game.leader.location, 200, toee.OLC_NPC):
 			if (npc.proto == py06122_cormyr_prompter.PROTO_NPC_PROMPTER):
 				print(npc.description)
+		return
+
+	def trigger_monster_step(self, encounter_name, monster_code_name, step):
+		info = self.get_monsterinfo(encounter_name, monster_code_name)
+		if (info):
+			npc = toee.game.get_obj_by_id(info.id)
+			if (npc):
+				ctrl = ctrl_behaviour.CtrlBehaviour.get_from_obj(npc)
+				if (ctrl and ("trigger_step" in dir(ctrl))):
+					result = ctrl.trigger_step(npc, step)
+					return result
 		return

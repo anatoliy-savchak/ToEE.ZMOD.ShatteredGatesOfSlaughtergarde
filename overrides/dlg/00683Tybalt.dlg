@@ -1,0 +1,109 @@
+{1}{[You see a prisoner, a human male, chained to the wall. He is badly injured with both battle wounds and what looks like the marks of torture. He mutters incoherently on the edge of consciousness.]}{[You see a prisoner, a human male, chained to the wall. He is badly injured with both battle wounds and what looks like the marks of torture. He mutters incoherently on the edge of consciousness.]}{}{}{}{}
+{2}{[Listen to his ramblings.]}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{10}{}
+{3}{[Set him free and talk to him.]}{}{1}{}{20}{}
+{4}{[Leave him chained and talk to him.]}{}{1}{}{30}{}
+{5}{[Leave.]}{}{1}{}{0}{npc_1(npc)}
+
+{10}{...howling... damn hound... must kill him, take girl... master pleased... become wolf, greatest wolf, kill hound... hate dogs SOOOO MUCH!!! It's LIKE AN EYE, A GREAT BURNING WHEEL OF FIRE!!! [He starts to shriek, eyes closed, still not conscious.]}{...howling... damn hound... must kill him, take girl... master pleased... become wolf, greatest wolf, kill hound... hate dogs SOOOO MUCH!!! It's LIKE AN EYE, A GREAT BURNING WHEEL OF FIRE!!! [He starts to shriek, eyes closed, still not conscious.]}{}{}{}{}
+{11}{[Slap him and get on with the questioning.]}{}{1}{}{30}{}
+{12}{[That was fun, let's move on to the next amusement.]}{}{1}{}{0}{npc_1(npc)}
+
+{20}{[You undo the chains easily enough and chafe his wrists until he responds.] Thank you... thank you so much. I am... <cough> Tybalt, fighter extraordinaire. Well, maybe not that good... I got captured pretty quickly. Who are you?}{[You undo the chains easily enough and chafe his wrists until he responds.] Thank you... thank you so much. I am... <cough> Tybalt, fighter extraordinaire. Well, maybe not that good... I got captured pretty quickly. Who are you?}{}{}{}{npc_2(npc)}
+{21}{@pcname@. What on earth brings you here?}{}{1}{}{40}{}
+{22}{We'll ask the questions. Why are you here?}{}{1}{}{40}{}
+
+{30}{[You slap him a few times until you have his attention.] I'm <cough> I'm Tybalt, I'm a fighter from Sumberton. Please help me. I can help you fight your way out, if you can find my gear. Please <cough> please don't leave me here. They... they did things to me...}{[You slap him a few times until you have his attention.] I'm <cough> I'm Tybalt, I'm a fighter from Sumberton. Please help me. I can help you fight your way out, if you can find my gear. Please <cough> please don't leave me here. They... they did things to me...}{}{}{}{}
+{31}{We'll do things to you if you don't help us. Now, what is up ahead?}{}{1}{}{50}{}
+{32}{Why are you chained up in a transposed part of the Abyss anyway?}{}{1}{}{40}{}
+{33}{Boring! Goodbye.}{}{1}{}{0}{}
+
+{40}{I <cough> I grew up in Sumberton, always wanted to join the Luminous Order... well, <painful gasp> I trained as a fighter but no-one showed any interest in me... they approach you, you know... so I thought I would come down here to the SlaughterScar and take the initiative, as it were... pretty dumb, I guess...}{I <cough> I grew up in Sumberton, always wanted to join the Luminous Order... well, <painful gasp> I trained as a fighter but no-one showed any interest in me... they approach you, you know... so I thought I would come down here to the SlaughterScar and take the initiative, as it were... pretty dumb, I guess...}{}{}{}{}
+{41}{You can say that again. Now, what is up ahead?}{}{1}{}{50}{}
+{42}{A curse I know only too well, brother.}{}{-9}{}{60}{give_a_ton()}
+{43}{Were there any more in your party?}{}{1}{}{45}{}
+
+{45}{No, just me... dumb, dumb, dumb... <winces in pain> I was always better at hitting things than, well, thinking. I did bring a horse, though, did you see my horse?}{No, just me... dumb, dumb, dumb... <winces in pain> I was always better at hitting things than, well, thinking. Hey, you're cute. Got a boyfriend? Say, I did bring a horse, though, did you see my horse?}{}{}{}{}
+{46}{Errr, I saw the *remains* of a horse, in a room with an Ogre thing... I'm sorry for your loss. What did you say was up ahead?}{}{1}{}{50}{}
+{47}{No, no horses. Now, what can you tell me about the rest of this place?}{}{1}{}{50}{}
+{48}{E:}{}{1}{}{0}{}
+
+{50}{There's a dragon in here, I know that much. A Fang Dragon, they say, not sure what that is... there's gnolls, flinds, trolls, you always find them together... those lizardy creatures, a lot of them around... <cough> but the main boss is down those stairs, you follow the water... [he points west.]}{There's a dragon in here, I know that much. A Fang Dragon, they say, not sure what that is... there's gnolls, flinds, trolls, you always find them together... those lizardy creatures, a lot of them around... <cough> but the main boss is down those stairs, you follow the water... [he points west.]}{}{}{}{}
+{51}{More, dammit, tell me more!}{}{1}{}{55}{}
+{52}{Go on.}{}{1}{}{55}{}
+{53}{E:}{}{1}{}{0}{}
+
+{55}{I'm guessing, but I'm sure, I'm sure the main boss is down there. Big gnoll, with some sort of fiend to guard him, like a big bug. Just follow the water... <coughs uncontrollably for a while>. Please don't leave me here.}{I'm guessing, but I'm sure, I'm sure the main boss is down there. Big gnoll, with some sort of fiend to guard him, like a big bug. Just follow the water... <coughs uncontrollably for a while>. Please don't leave me here.}{}{}{}{}
+{56}{I guess you'd better come along.}{}{1}{pc.follower_atmax() == 0}{200}{}
+{57}{Sorry, we're full. }{}{1}{}{0}{}
+{58}{What good are you? Besides at getting captured?}{}{1}{}{60}{}
+
+{60}{Please... I can really hit a foe, if you can find my greatsword... it's an antique, beautifully made, been in the family for generations but still razor shape... not magical but just wonderfully made... <groan> I've killed lots of monsters, goblins, kobolds, even a carrion crawler. I can help.}{Please... I can really hit a foe, if you can find my greatsword... it's an antique, beautifully made, been in the family for generations but still razor shape... not magical but just wonderfully made... <groan> I've killed lots of monsters, goblins, kobolds, even a carrion crawler. I can help.}{}{}{}{}
+{61}{Here's your sword back, but you're on your own.}{}{1}{anyone( pc.group_list(), "has_item", 4651)}{70}{party_transfer_to( npc, 4651 )}
+{62}{You're in luck, we found your sword. All right, we'll give you a go.}{}{1}{anyone( pc.group_list(), "has_item", 4651)}{200}{party_transfer_to( npc, 4651 )}
+{63}{I haven't seen an antique greatsword but we can lend you something. Join up.}{}{1}{}{200}{}
+{64}{No, you're of no use that I can see. Goodbye.}{}{1}{}{0}{}
+{65}{We're full, what can I say? Good luck!}{}{1}{}{0}{}
+
+{70}{No, you can't leave me! I'll follow you, I swear! <staggers unsteadily to his feet>.}{No, you can't leave me! I'll follow you, I swear! <staggers unsteadily to his feet>.}{}{}{}{}
+{71}{This is why we didn't unchain you.}{}{1}{not get_2(npc)}{0}{}
+{72}{Fine, fine, join up.}{}{1}{pc.follower_atmax() == 0}{200}{}
+{73}{Just go away.}{}{1}{get_2(npc) and pc.follower_atmax() == 0}{0}{pc.ai_follower_add(npc)}
+{74}{[Chain him back up.]}{}{1}{get_2(npc)}{0}{npc.attack(pc)}
+{75}{Bah humbug.}{}{1}{get_2(npc) and pc.follower_atmax() == 1}{0}{}
+
+
+// chatter again, not chained, not joined
+
+{100}{Please, take me with you, don't leave me down here! I swear I'll follow you otherwise!}{Please, take me with you, don't leave me down here! I swear I'll follow you otherwise!}{}{}{}{}
+{102}{Fine, fine, join up.}{}{1}{pc.follower_atmax() == 0}{200}{}
+{103}{Just go away.}{}{1}{get_2(npc) and pc.follower_atmax() == 0}{0}{pc.ai_follower_add(npc)}
+{104}{[Chain him back up.]}{}{1}{get_2(npc)}{0}{npc.attack(pc)}
+{105}{Bah humbug.}{}{1}{get_2(npc) and pc.follower_atmax() == 1}{0}{run_aways(npc)}
+
+
+// chatter again, chained, not joined
+
+{150}{Thank Pelor you came back! Please take me with you, I don't want any treasure, I just want to get out of here.}{Thank Pelor you came back! Please take me with you, I don't want any treasure, I just want to get out of here. Are those new boots?}{}{}{}{}
+{151}{This is why we didn't unchain you.}{}{1}{}{0}{}
+{152}{Fine, fine, join up.}{}{1}{pc.follower_atmax() == 0}{200}{npc_2(npc)}
+{155}{We're full.}{}{1}{pc.follower_atmax() == 1}{0}{}
+{156}{I'll set you free but you are not coming with me. [Do so.]}{}{1}{}{0}{npc_2(npc)}
+{157}{[Ignore him.]}{}{1}{}{0}{}
+
+
+{200}{Thanks, you won't regret this. [Tries to take a step and almost collapses.] I could use some healing magic if you have any... maybe my half-plate if you found it. Oh, wait, I have that. I do need boots though. And something to eat. Does anyone have a spare buckler? I could use a towel too...}{Thanks, you won't regret this. [Tries to take a step and almost collapses.] I could use some healing magic if you have any... maybe my half-plate if you found it. Oh, wait, I have that. I do need boots though. And something to eat. Does anyone have a spare buckler? I could use a towel too...}{}{}{}{pc.follower_add(npc)}
+{201}{What have I done?}{}{1}{}{0}{}
+
+
+// in party chatter
+
+{300}{Yes?}{Yes?}{}{}{}{}
+{301}{Never mind.}{}{1}{}{0}{}
+{302}{Enough tagging along, I want you to go away.}{}{1}{npc.map != 5122 and npc.map != 5020 and npc.map != 5007}{310}{}
+{303}{Enough tagging along, I want you to go away.}{}{1}{npc.map == 5122 or npc.map == 5020 or npc.map == 5007}{320}{}
+
+{310}{No thank you.}{No thank you.}{}{}{}{}
+{311}{Fine.}{}{1}{}{0}{}
+
+{320}{Well you got me back to Sumberton, so, sure. Thanks!}{Well you got me back to Sumberton, so, sure. Thanks!}{}{}{}{pc.follower_remove( npc )}
+{321}{No, thank you. For leaving.}{}{1}{}{0}{run_aways(npc)}
+{322}{Bye.}{}{1}{}{0}{run_aways(npc)}
+
+{350}{Home again!}{Home again!}{}{}{}{}
+
+// chat again but he still unconscious
+
+{500}{[The wounded prisoner is still lying there in a stupor.]}{[The wounded prisoner is still lying there in a stupor.]}{}{}{}{}
+{503}{[Set him free and talk to him.]}{}{1}{}{20}{npc_1_undo(npc)}
+{504}{[Leave him chained and talk to him.]}{}{1}{}{30}{npc_1_undo(npc)}
+{505}{[Leave him again.]}{}{1}{}{0}{}
+
+// introduced to Armin
+
+{600}{Wow, you mean it? I mean, I thought I would have to start at the bottom... that's awesome. Thanks so much!!!}{Wow, you mean it? I mean, I thought I would have to start at the bottom... that's awesome. Thanks so much!!!}{}{}{}{pc.follower_remove( npc )}
+{601}{Don't mention it.}{}{1}{}{0}{npc.critter_flag_set(OCF_MUTE); buttin2( npc, pc )}
+
+
+
+// npc_2(npc) means you have set him free
+// npc_1(npc) means you have not spoken to him

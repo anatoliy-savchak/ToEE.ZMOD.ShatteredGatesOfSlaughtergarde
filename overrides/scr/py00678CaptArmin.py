@@ -10,7 +10,10 @@ def san_dialog( attachee, triggerer ):
 	if not attachee.has_met( triggerer ):
 		triggerer.begin_dialog( attachee, 1 )
 	else:
-		if game.quests[shattered_consts.QUEST_LUMINOSITY].state == qs_accepted:
+		if anyone( game.leader.group_list(), "has_follower", 14957 ):
+			triggerer.begin_dialog( attachee, 400 )
+			return SKIP_DEFAULT			
+		elif game.quests[shattered_consts.QUEST_LUMINOSITY].state == qs_accepted:
 			triggerer.begin_dialog( attachee, 100 )
 			return SKIP_DEFAULT
 		elif game.quests[shattered_consts.QUEST_LUMINOSITY].state == qs_mentioned:
@@ -47,3 +50,13 @@ def san_heartbeat( attachee, triggerer ):
 			game.new_sid = 0
 			return RUN_DEFAULT
 	return RUN_DEFAULT
+
+def buttin( attachee, triggerer):
+	npc = find_npc_near(attachee,14957)
+	if (npc != OBJ_HANDLE_NULL):
+		triggerer.begin_dialog(npc,600)
+		npc.turn_towards(triggerer)
+		attachee.turn_towards(npc)
+	else:
+		triggerer.begin_dialog(attachee,420)
+	return SKIP_DEFAULT

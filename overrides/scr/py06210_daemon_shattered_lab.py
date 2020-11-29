@@ -1,6 +1,6 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee
 import py06122_cormyr_prompter, py06211_shuttered_monster, utils_sneak, utils_npc, const_proto_items, tpdp, const_proto_scrolls, py06213_hobgoblin_cleric, const_proto_rings, shattered_consts
-import py00677FarSouthDoor, monster_info, ctrl_daemon, startup_zmod
+import py00677FarSouthDoor, monster_info, ctrl_daemon, startup_zmod, const_proto_cloth
 
 DEBUG_WRITE_MONSTERS_PATH = None #"d:\\temp\\monsters.txt"
 PROTO_NPC_HOWLER = 14893
@@ -235,7 +235,7 @@ class CtrlShatteredLab(object):
 			#utils_item.item_clear_all(npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_PICK_HEAVY, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_HALF_PLATE, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_LARGE, npc)
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_LARGE_WOODEN, npc)
 			npc.condition_add_with_args("Base_Attack_Bonus1", 1, 0)
 			npc.item_wield_best_all()
 			npc.obj_set_int(toee.obj_f_npc_challenge_rating, -1)
@@ -300,7 +300,7 @@ class CtrlShatteredLab(object):
 			utils_item.item_clear_all(npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_BATTLEAXE, npc)
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_HALF_PLATE, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
+			utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_STEEL, npc)
 			npc.item_wield_best_all()
 			npc.move(npc_loc)
 			npc.rotation = rot
@@ -458,7 +458,7 @@ class CtrlShatteredLab(object):
 			npc.rotation = const_toee.rotation_1100_oclock
 			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAIN_SHIRT_MASTERWORK, npc)
 			item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_SCIMITAR_MASTERWORK, npc)
-			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_WOODEN_SMALL, npc)
+			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_WOODEN, npc)
 			npc.item_wield_best_all()
 			#utils_npc.npc_print_wears(utils_npc.npc_get_wears(npc))
 			self.monster_setup(npc, "l15", "goblin_underboss", None, 1, 1)
@@ -552,7 +552,7 @@ class CtrlShatteredLab(object):
 			npc.item_wield_best_all()
 			item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SPEAR, npc)
 			npc.item_wield(item, toee.item_wear_weapon_primary)
-			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_STEEL_SMALL, npc)
+			item = utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_STEEL, npc)
 			npc.item_wield(item, toee.item_wear_shield)
 			npc.move(npc_loc)
 			npc.rotation = rot
@@ -579,7 +579,7 @@ class CtrlShatteredLab(object):
 		npc = toee.game.obj_create(PROTO_NPC_DARK_CREEPER, npc_loc)
 		if (npc):
 			utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_BLACK, npc)
-			utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_BLACK, npc)
+			utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOAK_BLACK, npc)
 			utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER, npc)
 			#utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_THROWING, npc, 5)
 			utils_item.item_create_in_inventory(const_proto_rings.PROTO_RING_PLAIN_COPPER, npc)

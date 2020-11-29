@@ -1,9 +1,9 @@
 {1}{[You see a huge metal construct, which appears to be walking a patrol around the room. It looks at you without breaking stride, but then continues walking without saying anything.]}{[You see a huge metal construct, which appears to be walking a patrol around the room. It looks at you without breaking stride, but then continues walking without saying anything.]}{}{}{}{}
 {2}{Hello?}{}{1}{}{0}{maug_dipl(npc, pc)}	// dipl
-{3}{[Feat Tracking - the construct has worn a groove in the floor with its walking, but you see no sign of any other tracks in the room. Perhaps the goblinoids avoid this thing? Click here to speak to it.]}{}{1}{pc.has_feat(feat_track)}{0}{maug_dipl(npc, pc)}	// dipl
-{4}{[Detect Evil - this thing has no taint of evil on it! Click here to speak to it.]}{}{1}{game.global_flags[2] == 1 or pc.stat_level_get(stat_level_paladin) >= 1}{0}{maug_dipl(npc, pc)}	// dipl
-{5}{[Knowledge Check - this construct appears to be a maug: made in Acheron in the distant past, they are Law-abiding constructs that exist for battle against Chaos. Click here to speak to it - or slink away if you prefer.]}{}{1}{bard_know(pc, 5)}{0}{maug_dipl(npc, pc)}	// dipl
-{6}{Quietly slink away.}{}{1}{}{0}{}
+{3}{Quietly slink away.}{}{1}{}{0}{}
+{4}{[Feat Tracking - the construct has worn a groove in the floor with its walking, but you see no sign of any other tracks in the room. Perhaps the goblinoids avoid this thing? Click here to speak to it.]}{}{1}{pc.has_feat(feat_track)}{0}{maug_dipl(npc, pc)}	// dipl
+{5}{[Detect Evil - this thing has no taint of evil on it! Click here to speak to it.]}{}{1}{game.global_flags[2] == 1 or pc.stat_level_get(stat_level_paladin) >= 1}{0}{maug_dipl(npc, pc)}	// dipl
+{6}{[Knowledge Check - this construct appears to be a maug: made in Acheron in the distant past, they are Law-abiding constructs that exist for battle against Chaos. Click here to speak to it - or slink away if you prefer.]}{}{1}{bard_know(pc, 5)}{0}{maug_dipl(npc, pc)}	// dipl
 
 // dipl 1 or less (hostile)
 

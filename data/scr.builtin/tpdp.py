@@ -16,8 +16,8 @@ def dispatch_stat(obj, stat, bonlist):
 	""" dispatch_stat(toee.PyObjHandle: performer, int: stat, BonusList: bon_list) -> int: stat_value"""
 	return 0
 
-def create_history_type4(performer, dc, dice, roll, text, bonlist):
-	""" create_history_type4(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
+def create_history_dc_roll(performer, dc, dice, roll, text, bonlist):
+	""" create_history_dc_roll(toee.PyObjHandle: performer, int: dc, toee.PyDice: dice, int: roll, str: tex, BonusList: bon_list) -> int: rollHistId"""
 	return 0
 
 def create_history_attack_roll(performer, target, roll, bonlistAttacker, bonlistTarget, flags):
@@ -191,7 +191,7 @@ class RadialMenuEntryPythonAction(RadialMenuEntryAction):
 		"""RadialMenuEntryPythonAction(PySpellStore: spell_store, int: action_type, int: action_id, int: data1, str: helpTopic)"""
 		return
 
-class RadialMenuEntryParent:
+class RadialMenuEntryParent(RadialMenuEntry):
 	def __init__(self, combesMesLine):
 		assert isinstance(combesMesLine, int)
 		return
@@ -442,7 +442,7 @@ class EventObjModifier(EventObj):
 
 class EventObjD20Query(EventObj):
 	def __init__(self):
-		self.evt_obj_type = 29 # dispTypeD20Query
+		self.evt_obj_type = 29 # dispTypeD20Query, dispTypeBaseCasterLevelMod
 		self.return_val = 0
 		self.data1 = 0
 		self.data2 = 0
@@ -482,7 +482,7 @@ class EventObjEffectTooltip(EventObj):
 
 class EventObjD20Signal(EventObj):
 	def __init__(self):
-		self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal
+		self.evt_obj_type = 48 # dispTypeD20AdvanceTime, dispTypeD20Signal, dispTypePythonSignal, dispTypeBeginRound, dispTypeDestructionDomain, ET_OnD20Signal, OnBeginRound
 		self.return_val = 0
 		self.data1 = 0
 		self.data2 = 0
@@ -548,6 +548,18 @@ class EventObjSavingThrow(EventObj):
 		self.flags = 0
 		return
 
+class EventObjGetAttackDice(EventObj):
+	def __init__(self):
+		self.evt_obj_type = toee.ET_OnGetAttackDice # dispTypeGetAttackDice
+		self.flags = toee.D20CAF_HIT
+		self.damage_type = toee.D20DT_BLUDGEONING
+		self.bonus_list = BonusList()
+		self.dice_packed = 0
+		self.weapon = toee.PyObjHandle()
+		self.wielder = toee.PyObjHandle()
+		return
+
+
 class EventObjImmunityTrigger(EventObj):
 	def __init__(self):
 		self.evt_obj_type = toee.ET_OnImmunityTrigger # DispIoTypeImmunityTrigger, ET_On63
@@ -579,7 +591,7 @@ class EventObjSpellEntry(EventObj):
 
 class EventObjObjectBonus(EventObj):
 	def __init__(self):
-		#dispTypeInitiativeMod, dispTypeSkillLevel, dispTypeAbilityCheckModifier, dispTypeGetAttackerConcealmentMissChance
+		#dispTypeInitiativeMod, dispTypeSkillLevel, dispTypeAbilityCheckModifier, dispTypeGetAttackerConcealmentMissChance, GetAbilityCheckModifier
 		#dispTypeGetLevel, dispTypeMaxDexAcBonus
 		self.evt_obj_type = toee.ET_OnGetAttackerConcealmentMissChance
 		self.flags = 1

@@ -5,15 +5,17 @@ def item_create_in_inventory(item_proto_num, npc, quantity = 1, is_loot = 1):
 	assert isinstance(npc, toee.PyObjHandle)
 	assert isinstance(is_loot, int)
 	item = toee.game.obj_create(item_proto_num, npc.location)
-	item_alter_worth_as_raw(item, is_loot)
+	#item_alter_worth_as_raw(item, is_loot)
 	if (npc.type == toee.obj_t_pc):
 		item.item_flag_set(toee.OIF_IDENTIFIED)
+	else: item.item_flag_unset(toee.OIF_IDENTIFIED)
+
 	if (item != toee.OBJ_HANDLE_NULL):
 		npc.item_get(item)
 	if (quantity > 1):
 		for i in range(2, quantity):
 			item = toee.game.obj_create(item_proto_num, npc.location)
-			item_alter_worth_as_raw(item, is_loot)
+			#item_alter_worth_as_raw(item, is_loot)
 			if (item != toee.OBJ_HANDLE_NULL):
 				npc.item_get(item)
 	return item
@@ -276,4 +278,19 @@ def autosell(sell_modifier, items):
 	total_sell_adj = int(total_sell)
 	toee.game.leader.money_adj(total_sell_adj)
 	print("attachee.money_adj: {}".format(total_sell_adj))
+	return
+
+def barter_sell(npc):
+	assert isinstance(npc, toee.PyObjHandle)
+	item_clear_all(npc.substitute_inventory)
+	return
+
+def barter_list(npc, protos):
+	assert isinstance(npc, toee.PyObjHandle)
+	subs = npc.substitute_inventory
+	item_clear_all(subs)
+	for i in protos:
+		item = toee.game.obj_create(i, subs.location)
+		item.item_flag_set(toee.OIF_IDENTIFIED)
+		subs.item_get(item)
 	return

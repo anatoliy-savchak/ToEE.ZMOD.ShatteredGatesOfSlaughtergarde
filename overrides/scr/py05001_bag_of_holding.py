@@ -155,7 +155,11 @@ class CtrlBagOfHolding(object):
 			weight = obj.obj_get_int(toee.obj_f_item_weight)
 			if (curr_weight + weight > max_weight):
 				leader.item_get(obj)
-				text = "Overweight! Item: {}, weight: {}.".format(obj.description, weight)
+				descr = obj.description
+				flags = obj.item_flags_get()
+				if (flags & OIF_IS_MAGICAL and not flags & OIF_IDENTIFIED):
+					descr = 'magic item'
+				text = "Overweight! Item: {}, weight: {}.".format(descr, weight)
 				leader.float_text_line(text, toee.tf_red)
 				text = text + "\n"
 				toee.game.create_history_freeform(text)

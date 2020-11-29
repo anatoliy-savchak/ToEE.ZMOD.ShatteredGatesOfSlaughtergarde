@@ -1,0 +1,5 @@
+{10}{The streets are choked with mist, limiting vision to only a few dozen feet. The buildings here at the edge of town look abandoned, burned out, or barricaded. Garbage litters the ground, and a carrion stench assaults your nose. Ahead, an overturned haycart blocks the street.}{The streets are choked with mist, limiting vision to only a few dozen feet. The buildings here at the edge of town look abandoned, burned out, or barricaded. Garbage litters the ground, and a carrion stench assaults your nose. Ahead, an overturned haycart blocks the street.}{}{}{}{cs().display_encounter_e1()}
+{19}{Close}{}{1}{}{0}{cs().activate_encounter_e1()}
+
+{20}{The everpresent mists clear slightly, revealing a human body lying face down in the street amid the garbage. One of the buildings facing the street has its door smashed in.}{The everpresent mists clear slightly, revealing a human body lying face down in the street amid the garbage. One of the buildings facing the street has its door smashed in.}{}{}{}{cs().display_encounter_e2()}
+{29}{Close}{}{2}{}{0}{cs().activate_encounter_e2()}

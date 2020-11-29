@@ -11,7 +11,7 @@ print("Registering " + GetConditionName())
 def OnGetSkillLevel(attachee, args, evt_obj):
 	assert isinstance(attachee, toee.PyObjHandle)
 	assert isinstance(args, tpdp.EventArgs)
-	assert isinstance(evt_obj, tpdp.EventObjAttack)
+	assert isinstance(evt_obj, tpdp.EventObjObjectBonus)
 	
 	skill_bonus = args.get_arg(0)
 	if (not skill_bonus): skill_bonus = 19

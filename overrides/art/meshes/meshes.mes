@@ -230,6 +230,9 @@
 {1204}{monsters\Ghasts\_mohrg_\_mohrg_}
 {1205}{monsters\Earth_Elemental\StoneG_o_l_e_m}
 {1206}{monsters\Skeleton\licheton}
+{1207}{monsters\DragonBlack\DragonBlack}
+{1208}{monsters\DragonFang\DragonFang}
+{1209}{monsters\DragonBlack2\DragonBlack2}
 
 //  Weapons 10000-10999
 {10000}{Weapons\SwordTest}

@@ -119,6 +119,14 @@ temple.dll::stru_102EC6C0
 Stability bonus (against Trip) +4.
 temple.dll::stru_102EC37C
 
+
+### Monster Melee Paralysis
+**Args**
+* Arg0: dc
+* Arg1: dicePacked
+Adds melee paralyzed condition.
+temple.dll::ConditionMonsterMeleeParalysis
+
 ### Paralyzed
 **Args**
 * Arg0: round remaining
@@ -172,6 +180,13 @@ temple.dll::ConditionMonsterSmiting
 Adds additional AC to shield.
 temple.dll::stru_102F1650
 
+### Temp_Ability_Loss
+**Args**
+* Arg0: ability
+* Arg1: amount
+Condition_Temp_Ability_Loss
+
+
 todo:
 pCondition_Monster_Banshee_Charisma_Drain
 .data:102EC724 30 B7 2E 10      dd offset ConditionMonsterStirge
@@ -179,7 +194,6 @@ pCondition_Monster_Banshee_Charisma_Drain
 .data:102EC72C B0 B8 2E 10      dd offset ConditionMonsterMeleeDisease
 .data:102EC730 08 B9 2E 10      dd offset ConditionMonsterMeleePoison
 .data:102EC734 60 B9 2E 10      dd offset ConditionMonsterCarrionCrawler
-.data:102EC738 A8 B9 2E 10      dd offset ConditionMonsterMeleeParalysis
 .data:102EC73C 18 BA 2E 10      dd offset ConditionMonsterMeleeParalysisNoElf
 .data:102EC754 F8 BC 2E 10      dd offset ConditionMonsterSalamander
 .data:102EC758 50 BD 2E 10      dd offset ConditionMonsterOozeSplit

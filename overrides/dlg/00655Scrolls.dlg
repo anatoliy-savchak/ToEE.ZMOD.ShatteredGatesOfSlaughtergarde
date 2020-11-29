@@ -3,29 +3,29 @@
 
 {10}{Yes, I say 'scrolls'. Because I am selling scrolls. It's called advertising. I thought this was generally understood.}{Yes, I say 'scrolls'. Because I am selling scrolls. It's called advertising. I thought this was generally understood.}{}{}{}{}
 {11}{Cheeky. What sort of scrolls?}{}{1}{}{20}{}
-{12}{B:Just show me your stock.}{}{1}{}{0}{pc.barter(npc)}
+{12}{Just show me your stock.}{}{1}{}{1300}{}
 {13}{You must know what is going on around here, where would I find adventure?}{}{1}{game.quests[1].state == qs_unknown}{15}{}
 
 {15}{[He shrugs.] I get plenty of adventurers in here, of course, but they tend to keep their opportunities to themselves. Prefer to boast after the fact, know what I mean? [Strokes his chin.] I reckon you should try a tavern, maybe the Sly Wink. A lot of adventurers head there. It's right outside the main doors to this market, you can't miss it.}{[He shrugs.] I get plenty of adventurers in here, of course, but they tend to keep their opportunities to themselves. Prefer to boast after the fact, know what I mean? [Strokes his chin.] I reckon you should try a tavern, maybe the Sly Wink. A lot of adventurers head there. It's right outside the main doors to this market, you can't miss it.}{}{}{}{}
-{16}{B: Thanks. Before I go, show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+{16}{Thanks. Before I go, show me what you have.}{}{1}{}{1300}{}
 {17}{Thanks, I'll just go back to browsing.}{}{1}{}{0}{}
 {18}{[Follow his directions and go straight there.]}{}{1}{}{0}{game.fade_and_teleport( 0,0,0,5007,497,441 )}
 
 {20}{Oh, just low level stuff. Nothing powerful... if I could get my hands on powerful scrolls, I'd summon a balor and turn everyone who ever wronged me into... well, never mind. Let's just say I wouldn't be working here! So, low level arcane and divine scrolls only.}{Oh, just low level stuff. Nothing powerful... if I could get my hands on powerful scrolls, I'd summon a balor and turn everyone who ever wronged me into... well, never mind. Let's just say I wouldn't be working here! So, low level arcane and divine scrolls only.}{}{}{}{}
-{21}{B:Of course. Please show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+{21}{Of course. Please show me what you have.}{}{1}{}{1300}{}
 {22}{I'm after power, you understand? Real power. So where do I go?}{}{1}{pc.stat_level_get(stat_level_wizard) >= 1 or pc.stat_level_get(stat_level_sorcerer) >= 1}{26}{}
 {23}{And did you scribe them yourself?}{}{1}{}{40}{}
 {24}{E:}{}{1}{}{0}{}
 
 {26}{[He blinks.] I believe the traditional manner is to adventure and quest for it?}{[He blinks.] I believe the traditional manner is to adventure and quest for it?}{}{}{}{}
 {27}{Oh, son, if I had a balor right now...}{}{1}{}{0}{}
-{28}{B:Fine, show me what you have.}{}{1}{}{0}{pc.barter(npc)}
+{28}{Fine, show me what you have.}{}{1}{}{1300}{}
 {29}{E:}{}{1}{}{0}{}
 
 {40}{Me? No, I'm not a spell caster. Just a merchant. I get them from a wholesaler, no idea where she gets them from. Supply and demand, you know. I happen to sell scrolls, but really, I would sell whatever there was a need for. It's just business.}{Me? No, I'm not a spell caster. Just a merchant. I get them from a wholesaler, not sure where she gets them from. Supply and demand, you know. I happen to sell scrolls, but really, I would sell whatever there was a need for. It's just business.}{}{}{}{}
 {41}{And could you introduce me to this wholesaler?}{}{1}{}{46}{}
 {42}{But as someone in the industry, you must know of local arcane schools, that sort of thing?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 5}{50}{}
-{43}{B:Well, you have the supply and I have the demand, show me your wares.}{}{1}{}{0}{pc.barter(npc)}
+{43}{Well, you have the supply and I have the demand, show me your wares.}{}{1}{}{1300}{}
 {44}{E:}{}{1}{}{0}{}
 
 {46}{So you can cut out the middle man, who in this case is me? Absolutely not.}{So you can cut out the middle man, who in this case is me? Absolutely not.}{}{}{}{}
@@ -43,28 +43,82 @@
 {61}{I'll keep my eye out then.}{}{1}{}{65}{}
 
 {65}{Look, I've said enough. Now do you want to buy something or not?}{Look, I've said enough. Now do you want to buy something or not?}{}{}{}{}
-{66}{B:Yes.}{}{1}{}{0}{pc.barter(npc)}
+{66}{Yes.}{}{1}{}{1300}{}
 {67}{No.}{}{1}{}{0}{}
 
 
 // returning chatter
 
 {100}{Welcome back. Need some more firepower, do you?}{Welcome back. Need some more firepower, do you?}{}{}{}{}
-{101}{B:Absolutely! Sell me you wares.}{}{1}{}{0}{pc.barter(npc)}
+{101}{Absolutely! Sell me you wares.}{}{1}{}{1300}{}
 {102}{Do you have anything new?}}{}{1}{}{110}{}
 {103}{Do you buy scrolls?}{}{1}{}{120}{}
 {104}{No, just browsing.}{}{1}{}{0}{}
 
 {110}{I don't remember what I was selling last time, so I'm not sure if my stock is new or not, but I can say that I get regular deliveries. So I'll go with probably.}{I don't remember what I was selling last time, so I'm not sure if my stock is new or not, but I can say that I get regular deliveries. So I'll go with probably.}{}{}{}{}
-{111}{B:Great, I'll take a look.}{}{1}{}{0}{pc.barter(npc)}
+{111}{Great, I'll take a look.}{}{1}{}{1300}{}
 {112}{F:}{}{1}{}{0}{}
 {113}{These deliveries, where did you say they come from?}{}{1}{}{46}{}
 {115}{Deliveries, eh? You must be well connected, and know of local arcane schools. What can you tell me?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 6 and game.global_flags[4] == 0}{50}{}
 
 {120}{Of course!}{Of course!}{}{}{}{}
-{121}{B:Great! Let's do this!}{}{1}{}{0}{pc.barter(npc)}
+{121}{Great! Let's do this!}{}{1}{}{1300}{}
 {122}{E:}{}{1}{}{0}{}
 
 {900}{Made it!}{Made it}{}{}{}{}
 {901}{Yay!}{}{1}{}{0}{{}
 {902}{Start over.}{}{1}{}{1}{}
+
+{1300}{Barter options:}{Barter options:}{}{}{}{}
+{1301}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1302}{Buy Arcane Scroll}{}{1}{}{1310}{}
+{1304}{Buy Divine Scroll}{}{1}{}{1340}{}
+{1309}{E:}{}{1}{}{0}{}
+
+{1310}{Barter options:}{Barter options:}{}{}{}{}
+{1312}{B:Buy Arcane Scroll Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_0)}
+{1313}{B:Buy Arcane Scroll Level 1}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_1)}
+{1314}{B:Buy Arcane Scroll Level 2}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_2)}
+{1317}{Next...}{}{1}{}{1320}{}
+{1318}{Back...}{}{1}{}{1300}{}
+{1319}{E:}{}{1}{}{0}{}
+
+{1320}{Barter options:}{Barter options:}{}{}{}{}
+{1322}{B:Buy Arcane Scroll Level 3}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_3)}
+{1323}{B:Buy Arcane Scroll Level 4}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_4)}
+{1324}{B:Buy Arcane Scroll Level 5}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_5)}
+{1327}{Next...}{}{1}{}{1330}{}
+{1328}{Back...}{}{1}{}{1300}{}
+{1329}{E:}{}{1}{}{0}{}
+
+{1330}{Barter options:}{Barter options:}{}{}{}{}
+{1332}{B:Buy Arcane Scroll Level 6}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_6)}
+{1333}{B:Buy Arcane Scroll Level 7}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_7)}
+{1334}{B:Buy Arcane Scroll Level 8}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_8)}
+{1335}{B:Buy Arcane Scroll Level 9}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_ARCANE_LEVEL_9)}
+{1338}{Back...}{}{1}{}{1300}{}
+{1339}{E:}{}{1}{}{0}{}
+
+{1340}{Barter options:}{Barter options:}{}{}{}{}
+{1342}{B:Buy Divine Scroll Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_0)}
+{1343}{B:Buy Divine Scroll Level 1}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_1)}
+{1344}{B:Buy Divine Scroll Level 2}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_2)}
+{1347}{Next...}{}{1}{}{1350}{}
+{1348}{Back...}{}{1}{}{1300}{}
+{1349}{E:}{}{1}{}{0}{}
+
+{1350}{Barter options:}{Barter options:}{}{}{}{}
+{1352}{B:Buy Divine Scroll Level 3}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_3)}
+{1353}{B:Buy Divine Scroll Level 4}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_4)}
+{1354}{B:Buy Divine Scroll Level 5}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_5)}
+{1357}{Next...}{}{1}{}{1360}{}
+{1358}{Back...}{}{1}{}{1300}{}
+{1359}{E:}{}{1}{}{0}{}
+
+{1360}{Barter options:}{Barter options:}{}{}{}{}
+{1362}{B:Buy Divine Scroll Level 6}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_6)}
+{1363}{B:Buy Divine Scroll Level 7}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_7)}
+{1364}{B:Buy Divine Scroll Level 8}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_8)}
+{1365}{B:Buy Divine Scroll Level 9}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_scrolls.PROTOS_WANDS_DIVINE_LEVEL_9)}
+{1368}{Back...}{}{1}{}{1300}{}
+{1369}{E:}{}{1}{}{0}{}

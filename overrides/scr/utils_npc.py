@@ -48,8 +48,12 @@ def npc_stat_generate(npc):
 def npc_spell_ensure(npc, spell_id, stat_class, spell_level, memorize = 0):
 	assert isinstance(npc, toee.PyObjHandle)
 	print("{}.npc_spell_ensure(spell_id: {}, stat_class: {}, spell_level: {})".format(npc, spell_id, stat_class, spell_level))
-	npc.spell_known_add(spell_id, stat_class, spell_level)
-	npc.spell_memorized_add(spell_id, stat_class, spell_level)
+	if (stat_class == toee.domain_special):
+		npc.spell_known_add(spell_id, stat_class, spell_level, 1)
+		npc.spell_memorized_add(spell_id, stat_class, spell_level, 1)
+	else:
+		npc.spell_known_add(spell_id, stat_class, spell_level)
+		npc.spell_memorized_add(spell_id, stat_class, spell_level)
 	if (memorize):
 		npc.spells_pending_to_memorized()
 	return 1
@@ -176,7 +180,7 @@ def npc_get_cr_exp(pc, cr):
 def find_pc_closest_to_origin(loc):
 	f = None
 	fdist = 0.0
-	for obj in game.party:
+	for obj in toee.game.party:
 		assert isinstance(obj, toee.PyObjHandle)
 		if (f is None): 
 			f = obj
@@ -306,3 +310,81 @@ def npc_unexploit(npc):
 		assert isinstance(item, toee.PyObjHandle)
 		item.item_flag_set(toee.OIF_NO_LOOT)
 	return npc
+
+def skill_roll2(attachee, triggerer, dc, skill_num, text):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(skill_num, int)
+	assert isinstance(text, str)
+
+	bon_list = tpdp.BonusList()
+	skill_value = tpdp.dispatch_skill(triggerer, skill_num, bon_list, toee.OBJ_HANDLE_NULL, 1)
+	dice = toee.dice_new("1d20")
+	roll_result = dice.roll()
+	success = skill_value + roll_result >= dc
+	hist_id = tpdp.create_history_dc_roll(triggerer, dc, dice, roll_result, text, bon_list)
+	toee.game.create_history_from_id(hist_id)
+
+	return success
+
+def skill_roll(attachee, triggerer, dc, ayup, nope, skill_num, text):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(ayup, int)
+	assert isinstance(nope, int)
+	assert isinstance(skill_num, int)
+	assert isinstance(text, str)
+
+	success = skill_roll2(attachee, triggerer, dc, skill_num, text)
+
+	if success:
+		triggerer.begin_dialog( attachee, ayup )
+	else:
+		triggerer.begin_dialog( attachee, nope )
+	return success
+
+def intim_roll(attachee, triggerer, dc, ayup, nope, text = None):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(ayup, int)
+	assert isinstance(nope, int)
+	print("intim_roll")
+	if (text is None): text = "Intimidate"
+	return skill_roll(attachee, triggerer, dc, ayup, nope, toee.skill_intimidate, text)
+
+def bluff_roll(attachee, triggerer, dc, ayup, nope, text = None):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(ayup, int)
+	assert isinstance(nope, int)
+	print("bluff_roll")
+	if (text is None): text = "Bluff"
+	return skill_roll(attachee, triggerer, dc, ayup, nope, toee.skill_bluff, text)
+
+def spot_check(attachee, triggerer, dc, text = None):
+	assert isinstance(attachee, toee.PyObjHandle)
+	assert isinstance(triggerer, toee.PyObjHandle)
+	assert isinstance(dc, int)
+	assert isinstance(ayup, int)
+	assert isinstance(nope, int)
+	print("bluff_roll")
+	if (text is None): text = "Spot"
+	return skill_roll2(attachee, triggerer, dc, toee.skill_spot, text)
+
+def party_add_skill_bonus(skill_num, bonus):
+	# import utils_npc
+	# utils_npc.party_add_skill_bonus(skill_intimidate, 20)
+	# utils_npc.party_add_skill_bonus(skill_diplomacy, 20)
+	# utils_npc.party_add_skill_bonus(skill_bluff, 9)
+	for pc in toee.game.party:
+		if (skill_num == toee.skill_intimidate):
+			pc.condition_add("Skill_Intimidate_Bonus", bonus, 0)
+		elif (skill_num == toee.skill_diplomacy):
+			pc.condition_add("Skill_Diplomacy_Bonus", bonus, 0)
+		elif (skill_num == toee.skill_bluff):
+			pc.condition_add("Skill_Bluff_Bonus", bonus, 0)
+	return
