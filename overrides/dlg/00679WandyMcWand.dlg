@@ -29,7 +29,7 @@
 {112}{F:}{}{1}{}{0}{}
 
 {1200}{Barter options:}{Barter options:}{}{}{}{}
-{1201}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1201}{B:Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
 {1202}{Buy Arcane Wand}{}{1}{}{1210}{}
 {1204}{Buy Divine Wand}{}{1}{}{1230}{}
 {1209}{E:}{}{1}{}{0}{}
