@@ -1,6 +1,6 @@
 import toee, debugg, utils_toee, utils_storage, utils_obj, utils_item, const_proto_weapon, const_proto_armor, const_toee, ctrl_daemon, debug
 import ctrl_behaviour, py06122_cormyr_prompter, shattered_consts, py06211_shuttered_monster, const_proto_scrolls, py06401_shattered_temple_encounters, const_proto_wands, utils_npc, monster_info
-import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, const_proto_items, math, utils_locks
+import py00677FarSouthDoor, startup_zmod, const_proto_containers, const_traps, const_proto_items, math, utils_locks, const_proto_cloth
 
 def san_new_map(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)

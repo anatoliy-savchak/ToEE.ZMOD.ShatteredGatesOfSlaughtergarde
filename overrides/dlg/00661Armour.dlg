@@ -1,19 +1,19 @@
 {1}{[You see a gent with what appears to one iron hand, selling armour.] Need armour, eh? You've come to the right place. What'll it be?}{[You see a gent with what appears to one iron hand, selling armour.] Need armour, eh? You've come to the right place. what'll it be?}{}{}{}{}
 {2}{Introductions, perhaps? I'm @pcname@.}{}{1}{}{10}{}
-{3}{TradeYes indeed, show me what you have.}{}{1}{}{1100}{}
+{3}{Yes indeed, show me what you have.}{}{1}{}{1100}{}
 {4}{No, just browsing.}{}{1}{}{0}{}
 {5}{What happened to your hand?}{}{1}{}{30}{}
 {9}{Testing!}{}{1}{}{900}{}
 
 {10}{Arnauld's the name, armour's the game. Medium and heavy weight metal armour, you won't find better in Sumberton.}{Arnauld's the name, armour's the game. Medium and heavy weight metal armour, you won't find better in Sumberton.}{}{}{}{}
-{11}{TradeI'll be the judge of that, show me your wares.}{}{1}{}{1100}{}
+{11}{I'll be the judge of that, show me your wares.}{}{1}{}{1100}{}
 {12}{What if I want lighter armour, leather and such?}{}{1}{}{20}{}
 {13}{Nice to meet you. Dare I ask about your hand?}{}{1}{}{30}{}
 {14}{E:}{}{1}{}{0}{}
 
 {20}{[He snorts.] Then I'd question your sanity! Do you think a bit of boiled leather is going to stop an orc's battleaxe? Or even a goblin's spear? Moments like that, you need heavy metal, make no mistake. But if you're determined... there's a lass further along that sells leather gear, got an Elvish look.}{[He snorts.] Then I'd question your sanity! Do you think a bit of boiled leather is going to stop an orc's battleaxe? Or even a goblin's spear? Moments like that, you need heavy metal, make no mistake. But if you're determined... there's a lass further along that sells leather gear, got an Elvish look.}{}{}{}{}
 {21}{Thanks, I'll go and see her.}{}{1}{}{0}{}
-{22}{TradeYou've convinced me, show me what you have.}{}{1}{}{1100}{}
+{22}{You've convinced me, show me what you have.}{}{1}{}{1100}{}
 {23}{You sound like you speak from experience. Were you in the colours?}{}{1}{pc.skill_level_get(npc, skill_gather_information) >= 5}{40}{}
 {24}{I'll think about it.}{}{1}{}{0}{}
 {25}{Do you buy used armour?}{}{1}{}{60}{}
@@ -31,7 +31,7 @@
 {40}{Yeah, I served in the national forces under old Donellgan. More'na decade. Spent a lot of time stationed at the Keep, and also patrolled all over the Valley at one time or another.}{Yeah, I served in the national forces under old Donellgan. More'na decade. Spent a lot of time stationed at the Keep, and also patrolled all over the Valley at one time or another.}{}{}{}{}
 {41}{So what sort of things are out there?}{}{1}{game.global_flags[6] == 0}{50}{}
 {42}{E:}{}{1}{}{0}{}
-{43}{TradeI don't want to open old wounds, let's just trade.}{}{1}{}{1100}{}
+{43}{I don't want to open old wounds, let's just trade.}{}{1}{}{1100}{}
 
 
 {50}{Well, we mostly saw humanoids... bugbears like I said, other sorts of goblin, some ogres. Some weird things in the highlands to the west - I killed a carrion crawler in the Sardarian Hills once, and we saw wyverns flying over the Painted Canyon's beyond. Mostly we patrolled the western foothills, or around the Slaughterscar.}{Well, we mostly saw humanoids... bugbears like I said, other sorts of goblin, some ogres. Some weird things in the highlands to the west - I killed a carrion crawler in the Sardarian Hills once, and we saw wyverns flying over the Painted Canyon's beyond. Mostly we patrolled the western foothills, or around the Slaughterscar.}{}{}{}{game.global_flags[6] = 1}
