@@ -84,7 +84,7 @@ PROTO_SCROLL_OF_CHILL_TOUCH = 9059 # Scroll of Chill Touch. Price: 25, Spell Lev
 PROTO_SCROLL_OF_RAY_OF_ENFEEBLEMENT = 9383 # Scroll of Ray of Enfeeblement. Price: 25, Spell Level: 1, Spell: 'Ray of Enfeeblement' class_sorcerer 1
 
 # Level 1 Arcane Transmutation
-PROTO_SCROLL_OF_ENLARGE_PERSON = 9152 # Scroll of Enlarge Person. Price: 25, Spell Level: 1, Spell: 'Enlarge Person' class_sorcerer 1
+PROTO_SCROLL_OF_ENLARGE_PERSON = 9152 # Scroll of Enlarge Person. Price: 25, Spell Level: 1, Spell: 'Enlarge' class_sorcerer 1
 PROTO_SCROLL_OF_EXPEDITIOUS_RETREAT = 9159 # Scroll of Expeditious Retreat. Price: 25, Spell Level: 1, Spell: 'Expeditious Retreat' class_sorcerer 1
 PROTO_SCROLL_OF_MAGIC_WEAPON = 9292 # Scroll of Magic Weapon. Price: 25, Spell Level: 1, Spell: 'Magic Weapon' class_sorcerer 1
 PROTO_SCROLL_OF_RAY_OF_CLUMSINESS = 9389 # Scroll of Ray of Clumsiness. Price: 25, Spell Level: 1, Spell: 'Ray of Clumsiness' class_sorcerer 1
@@ -92,8 +92,8 @@ PROTO_SCROLL_OF_REDUCE_PERSON = 9386 # Scroll of Reduce Person. Price: 25, Spell
 
 # Level 1 Divine Abjuration
 PROTO_SCROLL_OF_ENTROPIC_SHIELD = 9155 # Scroll of Entropic Shield. Price: 25, Spell Level: 1, Spell: 'Entropic Shield' class_cleric 1
-PROTO_SCROLL_OF_HIDE_FROM_ANIMALS = 9256 # Scroll of Hide from Animals. Price: 25, Spell Level: 1, Spell: 'Hide from Animals' class_druid 1
-PROTO_SCROLL_OF_HIDE_FROM_UNDEAD = 9257 # Scroll of Hide from Undead. Price: 25, Spell Level: 1, Spell: 'Hide from Undead' class_cleric 1
+PROTO_SCROLL_OF_HIDE_FROM_ANIMALS = 9256 # Scroll of Hide from Animals. Price: 25, Spell Level: 1, Spell: 'Invisibility to Animals' class_druid 1
+PROTO_SCROLL_OF_HIDE_FROM_UNDEAD = 9257 # Scroll of Hide from Undead. Price: 25, Spell Level: 1, Spell: 'Invisibility to Undead' class_cleric 1
 PROTO_SCROLL_OF_SANCTUARY = 9407 # Scroll of Sanctuary. Price: 25, Spell Level: 1, Spell: 'Sanctuary' class_cleric 1
 PROTO_SCROLL_OF_SHIELD_OF_FAITH = 9427 # Scroll of Shield of Faith. Price: 25, Spell Level: 1, Spell: 'Shield of Faith' class_cleric 1
 
@@ -111,7 +111,7 @@ PROTO_SCROLL_OF_DETECT_LAW = 9113 # Scroll of Detect Law. Price: 25, Spell Level
 PROTO_SCROLL_OF_BANE = 9025 # Scroll of Bane. Price: 25, Spell Level: 1, Spell: 'Bane' class_cleric 1
 PROTO_SCROLL_OF_BLESS = 9037 # Scroll of Bless. Price: 25, Spell Level: 1, Spell: 'Bless' class_cleric 1
 PROTO_SCROLL_OF_CALM_ANIMALS = 9047 # Scroll of Calm Animals. Price: 25, Spell Level: 1, Spell: 'Calm Animals' class_druid 1
-PROTO_SCROLL_OF_CHARM_ANIMAL = 9057 # Scroll of Charm Animal. Price: 25, Spell Level: 1, Spell: 'Charm Animal' class_druid 1
+PROTO_SCROLL_OF_CHARM_ANIMAL = 9057 # Scroll of Charm Animal. Price: 25, Spell Level: 1, Spell: 'Charm Person or Animal' class_druid 1
 PROTO_SCROLL_OF_COMMAND = 9067 # Scroll of Command. Price: 25, Spell Level: 1, Spell: 'Command' class_cleric 1
 
 # Level 1 Divine Evocation
@@ -299,7 +299,7 @@ PROTO_SCROLL_OF_QUENCH = 9663 # Scroll of Quench. Price: 375, Spell Level: 3, Sp
 # Level 4 Arcane Abjuration
 PROTO_SCROLL_OF_DIMENSIONAL_ANCHOR = 9122 # Scroll of Dimensional Anchor. Price: 700, Spell Level: 4, Spell: 'Dimensional Anchor' class_sorcerer 4
 PROTO_SCROLL_OF_FREEDOM_OF_MOVEMENT = 9188 # Scroll of Freedom of Movement. Price: 1,000, Spell Level: 4, Spell: 'Freedom of Movement' class_bard 4
-PROTO_SCROLL_OF_GLOBE_OF_INVULNERABILITY_LESSER = 9311 # Scroll of Globe of Invulnerability, Lesser. Price: 700, Spell Level: 4, Spell: 'Lesser Globe Invulnerability' class_sorcerer 4
+PROTO_SCROLL_OF_GLOBE_OF_INVULNERABILITY_LESSER = 9311 # Scroll of Globe of Invulnerability, Lesser. Price: 700, Spell Level: 4, Spell: 'Lesser Globe of Invulnerability' class_sorcerer 4
 PROTO_SCROLL_OF_REMOVE_CURSE = 9391 # Scroll of Remove Curse. Price: 375, Spell Level: 4, Spell: 'Remove Curse' class_bard 3
 PROTO_SCROLL_OF_STONESKIN = 9462 # Scroll of Stoneskin. Price: 950, Spell Level: 4, Spell: 'Stoneskin' class_sorcerer 4
 
@@ -377,7 +377,7 @@ PROTO_SCROLL_OF_DISMISSAL = 9128 # Scroll of Dismissal. Price: 700, Spell Level:
 # Level 5 Arcane Conjuration
 PROTO_SCROLL_OF_CLOUDKILL = 9065 # Scroll of Cloudkill. Price: 1,125, Spell Level: 5, Spell: 'Cloudkill' class_sorcerer 5
 PROTO_SCROLL_OF_EXTRAPLANAR_CHEST = 9265 # Scroll of Extraplanar Chest. Price: 1,125, Spell Level: 5, Spell: 'Extraplanar Chest' class_wizard 5
-PROTO_SCROLL_OF_MORDENKAINENS_FAITHFUL_HOUND = 9320 # Scroll of Mordenkainen's Faithful Hound. Price: 1,125, Spell Level: 5, Spell: 'Mordenkainen Faithful Hound' class_sorcerer 5
+PROTO_SCROLL_OF_MORDENKAINENS_FAITHFUL_HOUND = 9320 # Scroll of Mordenkainen's Faithful Hound. Price: 1,125, Spell Level: 5, Spell: 'Mordenkainens Faithful Hound' class_sorcerer 5
 PROTO_SCROLL_OF_SUMMON_MONSTER_V = 9471 # Scroll of Summon Monster V. Price: 1,125, Spell Level: 5, Spell: 'Summon Monster V' class_sorcerer 5
 PROTO_SCROLL_OF_TELEPORT = 9492 # Scroll of Teleport. Price: 1,125, Spell Level: 5, Spell: 'Teleport' class_sorcerer 5
 
@@ -412,7 +412,7 @@ PROTO_SCROLL_OF_DISPEL_WATER = 9546 # Scroll of Dispel Water. Price: 1,125, Spel
 PROTO_SCROLL_OF_SPELL_RESISTANCE = 9451 # Scroll of Spell Resistance. Price: 1,125, Spell Level: 5, Spell: 'Spell Resistance' class_cleric 5
 
 # Level 5 Divine Conjuration
-PROTO_SCROLL_OF_CURE_LIGHT_WOUNDS_MASS = 9221 # Scroll of Cure Light Wounds, Mass. Price: 1,125, Spell Level: 5, Spell: 'Cure Light Wounds, Mass' class_cleric 5
+PROTO_SCROLL_OF_CURE_LIGHT_WOUNDS_MASS = 9221 # Scroll of Cure Light Wounds, Mass. Price: 1,125, Spell Level: 5, Spell: 'Healing Circle' class_cleric 5
 PROTO_SCROLL_OF_RAISE_DEAD = 9379 # Scroll of Raise Dead. Price: 6,125, Spell Level: 5, Spell: 'Raise Dead' class_cleric 5
 PROTO_SCROLL_OF_SUMMON_NATURES_ALLY_V = 9480 # Scroll of Summon Nature's Ally V. Price: 1,125, Spell Level: 5, Spell: 'Summon Natures Ally V' class_druid 5
 
@@ -428,14 +428,14 @@ PROTO_SCROLL_OF_FLAME_STRIKE = 9178 # Scroll of Flame Strike. Price: 1,125, Spel
 # Level 5 Divine Illusion
 
 # Level 5 Divine Necromancy
-PROTO_SCROLL_OF_INFLICT_LIGHT_WOUNDS_MASS = 9061 # Scroll of Inflict Light Wounds, Mass. Price: 1,125, Spell Level: 5, Spell: 'Inflict Light Wounds, Mass' domain_special 5
+PROTO_SCROLL_OF_INFLICT_LIGHT_WOUNDS_MASS = 9061 # Scroll of Inflict Light Wounds, Mass. Price: 1,125, Spell Level: 5, Spell: 'Circle of Doom' domain_special 5
 PROTO_SCROLL_OF_SLAY_LIVING = 9437 # Scroll of Slay Living. Price: 1,125, Spell Level: 5, Spell: 'Slay Living' class_cleric 5
 
 # Level 5 Divine Transmutation
 PROTO_SCROLL_OF_RIGHTEOUS_MIGHT = 9404 # Scroll of Righteous Might. Price: 1,125, Spell Level: 5, Spell: 'Righteous Might' class_cleric 5
 
 # Level 6 Arcane Abjuration
-PROTO_SCROLL_OF_DISPEL_MAGIC_GREATER = 9654 # Scroll of Dispel Magic, Greater. Price: 1,650, Spell Level: 6, Spell: 'Greater Dispel Magic' class_wizard 6
+PROTO_SCROLL_OF_DISPEL_MAGIC_GREATER = 9654 # Scroll of Dispel Magic, Greater. Price: 1,650, Spell Level: 6, Spell: 'Greater Dispelling' class_wizard 6
 
 # Level 6 Arcane Conjuration
 PROTO_SCROLL_OF_HEROES_FEAST = 9694 # Scroll of Heroes' Feast. Price: 1,650, Spell Level: 6, Spell: 'Heroes Feast' class_bard 6
@@ -471,8 +471,8 @@ PROTO_SCROLL_OF_TENSERS_TRANSFORMATION = 9677 # Scroll of Tenser's Transformatio
 # Level 6 Divine Abjuration
 
 # Level 6 Divine Conjuration
-PROTO_SCROLL_OF_CURE_MODERATE_WOUNDS_MASS = 9685 # Scroll of Cure Moderate Wounds, Mass. Price: 1,650, Spell Level: 6, Spell: 'Cure Moderate Wounds, Mass' class_cleric 6
 PROTO_SCROLL_OF_HEAL = 9548 # Scroll of Heal. Price: 1,650, Spell Level: 6, Spell: 'Heal' class_cleric 6
+PROTO_SCROLL_OF_CURE_MODERATE_WOUNDS_MASS = 9685 # Scroll of Cure Moderate Wounds, Mass. Price: 1,650, Spell Level: 6, Spell: 'Mass Cure Moderate Wounds' class_cleric 6
 PROTO_SCROLL_OF_SUMMON_NATURES_ALLY_VI = 9481 # Scroll of Summon Nature's Ally VI. Price: 1,650, Spell Level: 6, Spell: 'Summon Natures Ally VI' class_druid 6
 
 # Level 6 Divine Divination
@@ -496,13 +496,13 @@ PROTO_SCROLL_OF_SUMMON_MONSTER_VII = 9473 # Scroll of Summon Monster VII. Price:
 # Level 7 Arcane Divination
 
 # Level 7 Arcane Enchantment
-PROTO_SCROLL_OF_HOLD_PERSON_MASS = 9657 # Scroll of Hold Person, Mass. Price: 2,275, Spell Level: 7, Spell: 'Hold Person, Mass' class_wizard 7
 PROTO_SCROLL_OF_INSANITY = 9658 # Scroll of Insanity. Price: 2,275, Spell Level: 7, Spell: 'Insanity' class_wizard 7
+PROTO_SCROLL_OF_HOLD_PERSON_MASS = 9657 # Scroll of Hold Person, Mass. Price: 2,275, Spell Level: 7, Spell: 'Mass Hold Person' class_wizard 7
 PROTO_SCROLL_OF_POWER_WORD_BLIND = 9659 # Scroll of Power Word Blind. Price: 2,275, Spell Level: 7, Spell: 'Power Word Blind' class_wizard 7
 
 # Level 7 Arcane Evocation
 PROTO_SCROLL_OF_DELAYED_BLAST_FIREBALL = 9670 # Scroll of Delayed Blast Fireball. Price: 2,275, Spell Level: 7, Spell: 'Delayed Blast Fireball' class_wizard 6
-PROTO_SCROLL_OF_MORDENKAINENS_SWORD = 9675 # Scroll of Mordenkainen's Sword. Price: 2,275, Spell Level: 7, Spell: 'Mordenkainen Sword' class_wizard 7
+PROTO_SCROLL_OF_MORDENKAINENS_SWORD = 9675 # Scroll of Mordenkainen's Sword. Price: 2,275, Spell Level: 7, Spell: 'Mordenkainens Sword' class_wizard 7
 PROTO_SCROLL_OF_PRISMATIC_SPRAY = 9676 # Scroll of Prismatic Spray. Price: 2,275, Spell Level: 7, Spell: 'Prismatic Spray' class_wizard 7
 
 # Level 7 Arcane Illusion
@@ -515,7 +515,7 @@ PROTO_SCROLL_OF_FINGER_OF_DEATH = 9671 # Scroll of Finger of Death. Price: 2,275
 # Level 7 Divine Abjuration
 
 # Level 7 Divine Conjuration
-PROTO_SCROLL_OF_CURE_SERIOUS_WOUNDS_MASS = 9686 # Scroll of Cure Serious Wounds, Mass. Price: 2,275, Spell Level: 7, Spell: 'Cure Serious Wounds, Mass' class_cleric 7
+PROTO_SCROLL_OF_CURE_SERIOUS_WOUNDS_MASS = 9686 # Scroll of Cure Serious Wounds, Mass. Price: 2,275, Spell Level: 7, Spell: 'Mass Cure Serious Wounds' class_cleric 7
 PROTO_SCROLL_OF_SUMMON_NATURES_ALLY_VII = 9482 # Scroll of Summon Nature's Ally VII. Price: 2,275, Spell Level: 7, Spell: 'Summon Natures Ally VII' class_druid 7
 
 # Level 7 Divine Divination
@@ -529,7 +529,7 @@ PROTO_SCROLL_OF_HOLY_WORD = 9696 # Scroll of Holy Word. Price: 2,275, Spell Leve
 # Level 7 Divine Illusion
 
 # Level 7 Divine Necromancy
-PROTO_SCROLL_OF_INFLICT_SERIOUS_WOUNDS_MASS = 9063 # Scroll of Inflict Serious Wounds, Mass. Price: 2,275, Spell Level: 7, Spell: 'Inflict Ser. Wounds, Mass' domain_special 7
+PROTO_SCROLL_OF_INFLICT_SERIOUS_WOUNDS_MASS = 9063 # Scroll of Inflict Serious Wounds, Mass. Price: 2,275, Spell Level: 7, Spell: 'Mass Inflict Moderate Wounds' domain_special 7
 
 # Level 7 Divine Transmutation
 
@@ -557,7 +557,7 @@ PROTO_SCROLL_OF_HORRID_WILTING = 9689 # Scroll of Horrid Wilting. Price: 3,000, 
 # Level 8 Divine Abjuration
 
 # Level 8 Divine Conjuration
-PROTO_SCROLL_OF_CURE_CRITICAL_WOUNDS_MASS = 9687 # Scroll of Cure Critical Wounds, Mass. Price: 3,000, Spell Level: 8, Spell: 'Cure Critical Wounds, Mass' class_cleric 8
+PROTO_SCROLL_OF_CURE_CRITICAL_WOUNDS_MASS = 9687 # Scroll of Cure Critical Wounds, Mass. Price: 3,000, Spell Level: 8, Spell: 'Mass Cure Critical Wounds' class_cleric 8
 PROTO_SCROLL_OF_SUMMON_NATURES_ALLY_VIII = 9483 # Scroll of Summon Nature's Ally VIII. Price: 3,000, Spell Level: 8, Spell: 'Summon Natures Ally VIII' class_druid 8
 
 # Level 8 Divine Divination
@@ -569,7 +569,7 @@ PROTO_SCROLL_OF_SUMMON_NATURES_ALLY_VIII = 9483 # Scroll of Summon Nature's Ally
 # Level 8 Divine Illusion
 
 # Level 8 Divine Necromancy
-PROTO_SCROLL_OF_INFLICT_CRITICAL_WOUNDS_MASS = 9064 # Scroll of Inflict Critical Wounds, Mass. Price: 3,000, Spell Level: 8, Spell: 'Inflict Ser. Wounds, Mass' domain_special 8
+PROTO_SCROLL_OF_INFLICT_CRITICAL_WOUNDS_MASS = 9064 # Scroll of Inflict Critical Wounds, Mass. Price: 3,000, Spell Level: 8, Spell: 'Mass Inflict Serious Wounds' domain_special 8
 
 # Level 8 Divine Transmutation
 
@@ -581,7 +581,7 @@ PROTO_SCROLL_OF_SUMMON_MONSTER_IX = 9475 # Scroll of Summon Monster IX. Price: 3
 # Level 9 Arcane Divination
 
 # Level 9 Arcane Enchantment
-PROTO_SCROLL_OF_HOLD_MONSTER_MASS = 9692 # Scroll of Hold Monster, Mass. Price: 3,825, Spell Level: 9, Spell: 'Hold Monster, Mass' class_wizard 9
+PROTO_SCROLL_OF_HOLD_MONSTER_MASS = 9692 # Scroll of Hold Monster, Mass. Price: 3,825, Spell Level: 9, Spell: 'Mass Hold Monster' class_wizard 9
 PROTO_SCROLL_OF_POWER_WORD_KILL = 9693 # Scroll of Power Word Kill. Price: 3,825, Spell Level: 9, Spell: 'Power Word Kill' class_wizard 9
 
 # Level 9 Arcane Evocation
