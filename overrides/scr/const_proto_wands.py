@@ -12,6 +12,7 @@ PROTO_WAND_OF_RESISTANCE = 12399 # Wand of Resistance. Price: 375, Spell Level: 
 
 # Level 0 Arcane Conjuration
 PROTO_WAND_OF_ACID_SPLASH = 12532 # Wand of Acid Splash. Price: 375, Spell Level: 0, Spell: 'Acid Splash' class_sorcerer 0
+PROTO_WAND_OF_ACID_SPLASH_USED_25 = 12060 # Wand of Acid Splash. Price: 375, Spell Level: 0, Spell: 'Acid Splash' class_sorcerer 0
 
 # Level 0 Arcane Divination
 PROTO_WAND_OF_DETECT_MAGIC = 12114 # Wand of Detect Magic. Price: 375, Spell Level: 0, Spell: 'Detect Magic' class_bard 0
@@ -23,6 +24,7 @@ PROTO_WAND_OF_DAZE = 12099 # Wand of Daze. Price: 375, Spell Level: 0, Spell: 'D
 # Level 0 Arcane Evocation
 PROTO_WAND_OF_FLARE = 12180 # Wand of Flare. Price: 375, Spell Level: 0, Spell: 'Flare' class_sorcerer 0
 PROTO_WAND_OF_RAY_OF_FROST = 12384 # Wand of Ray of Frost. Price: 375, Spell Level: 0, Spell: 'Ray of Frost' class_sorcerer 0
+PROTO_WAND_OF_RAY_OF_FROST_USED_25 = 12061 # Wand of Ray of Frost. Price: 187, Spell Level: 0, Spell: 'Ray of Frost' class_sorcerer 0
 
 # Level 0 Arcane Illusion
 
@@ -152,6 +154,7 @@ PROTO_WAND_OF_RESIST_ENERGY = 12400 # Wand of Resist Energy. Price: 4,500, Spell
 # Level 2 Arcane Conjuration
 PROTO_WAND_OF_FOG_CLOUD = 12183 # Wand of Fog Cloud. Price: 4,500, Spell Level: 2, Spell: 'Fog Cloud' class_sorcerer 2
 PROTO_WAND_OF_GLITTERDUST = 12196 # Wand of Glitterdust. Price: 4,500, Spell Level: 2, Spell: 'Glitterdust' class_sorcerer 2
+PROTO_WAND_OF_GLITTERDUST_USED = 12197 # Wand of Glitterdust. Price: 2,250, Spell Level: 2, Spell: 'Glitterdust' class_sorcerer 2
 PROTO_WAND_OF_MELFS_ACID_ARROW = 12304 # Wand of Melf's Acid Arrow. Price: 4,500, Spell Level: 2, Spell: 'Melfs Acid Arrow' class_sorcerer 2
 PROTO_WAND_OF_SUMMON_MONSTER_II = 12468 # Wand of Summon Monster II. Price: 4,500, Spell Level: 2, Spell: 'Summon Monster II' class_sorcerer 2
 PROTO_WAND_OF_WEB = 12531 # Wand of Web. Price: 4,500, Spell Level: 2, Spell: 'Web' class_sorcerer 2
@@ -168,6 +171,7 @@ PROTO_WAND_OF_TASHAS_HIDEOUS_LAUGHTER = 12490 # Wand of Tasha's Hideous Laughter
 # Level 2 Arcane Evocation
 PROTO_WAND_OF_GUST_OF_WIND = 12214 # Wand of Gust of Wind. Price: 4,500, Spell Level: 2, Spell: 'Gust of Wind' class_sorcerer 2
 PROTO_WAND_OF_SCORCHING_RAY_1ST = 12608 # Wand of Scorching Ray, 1st. Price: 4,500, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 2
+PROTO_WAND_OF_SCORCHING_RAY_1ST_USED = 12603 # Wand of Scorching Ray, 1st. Price: 4,500, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 2
 PROTO_WAND_OF_SCORCHING_RAY_2ND = 12609 # Wand of Scorching Ray, 2nd. Price: 9,000, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 4
 PROTO_WAND_OF_SCORCHING_RAY_3RD = 12610 # Wand of Scorching Ray, 3rd. Price: 13,500, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 6
 PROTO_WAND_OF_SHATTER = 12425 # Wand of Shatter. Price: 4,500, Spell Level: 2, Spell: 'Shatter' class_sorcerer 2
@@ -279,6 +283,7 @@ PROTO_WAND_OF_GASEOUS_FORM = 12189 # Wand of Gaseous Form. Price: 11,250, Spell 
 PROTO_WAND_OF_GLIBNESS = 12567 # Wand of Glibness. Price: 15,750, Spell Level: 3, Spell: 'Glibness' class_bard 3
 PROTO_WAND_OF_MAGIC_WEAPON_GREATER = 12205 # Wand of Magic Weapon, Greater. Price: 11,250, Spell Level: 3, Spell: 'Greater Magic Weapon' class_sorcerer 3
 PROTO_WAND_OF_HASTE = 12219 # Wand of Haste. Price: 11,250, Spell Level: 3, Spell: 'Haste' class_sorcerer 3
+PROTO_WAND_OF_HASTE_USED = 12220 # Wand of Haste. Price: 11,250, Spell Level: 3, Spell: 'Haste' class_sorcerer 3
 PROTO_WAND_OF_KEEN_EDGE = 12261 # Wand of Keen Edge. Price: 11,250, Spell Level: 3, Spell: 'Keen Edge' class_sorcerer 3
 PROTO_WAND_OF_SLOW = 12440 # Wand of Slow. Price: 11,250, Spell Level: 3, Spell: 'Slow' class_sorcerer 3
 

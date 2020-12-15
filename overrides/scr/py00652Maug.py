@@ -27,7 +27,7 @@ def san_first_heartbeat( attachee, triggerer ):
 def san_dying(attachee, triggerer):
 	assert isinstance(attachee, toee.PyObjHandle)
 	if (toee.game.quests[shattered_consts.QUEST_MAUG].state != qs_completed):
-		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK2, attachee)
+		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, attachee)
 	return toee.RUN_DEFAULT
 
 def san_resurrect( attachee, triggerer ):

@@ -212,6 +212,7 @@ PROTOS_WANDS_ARCANE_LEVEL_2_ABJURATION = [ \
 PROTOS_WANDS_ARCANE_LEVEL_2_CONJURATION = [ \
 	 const_proto_wands.PROTO_WAND_OF_FOG_CLOUD \
 	, const_proto_wands.PROTO_WAND_OF_GLITTERDUST \
+	, const_proto_wands.PROTO_WAND_OF_GLITTERDUST_USED \
 	, const_proto_wands.PROTO_WAND_OF_MELFS_ACID_ARROW \
 	, const_proto_wands.PROTO_WAND_OF_SUMMON_MONSTER_II \
 	, const_proto_wands.PROTO_WAND_OF_WEB\
@@ -231,6 +232,7 @@ PROTOS_WANDS_ARCANE_LEVEL_2_ENCHANTMENT = [ \
 PROTOS_WANDS_ARCANE_LEVEL_2_EVOCATION = [ \
 	 const_proto_wands.PROTO_WAND_OF_GUST_OF_WIND \
 	, const_proto_wands.PROTO_WAND_OF_SCORCHING_RAY_1ST \
+	, const_proto_wands.PROTO_WAND_OF_SCORCHING_RAY_1ST_USED \
 	, const_proto_wands.PROTO_WAND_OF_SCORCHING_RAY_2ND \
 	, const_proto_wands.PROTO_WAND_OF_SCORCHING_RAY_3RD \
 	, const_proto_wands.PROTO_WAND_OF_SHATTER \
@@ -379,6 +381,7 @@ PROTOS_WANDS_ARCANE_LEVEL_3_TRANSMUTATION = [ \
 	, const_proto_wands.PROTO_WAND_OF_GLIBNESS \
 	, const_proto_wands.PROTO_WAND_OF_MAGIC_WEAPON_GREATER \
 	, const_proto_wands.PROTO_WAND_OF_HASTE \
+	, const_proto_wands.PROTO_WAND_OF_HASTE_USED \
 	, const_proto_wands.PROTO_WAND_OF_KEEN_EDGE \
 	, const_proto_wands.PROTO_WAND_OF_SLOW\
 	, ]

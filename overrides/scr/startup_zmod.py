@@ -20,6 +20,7 @@ def zmod_templeplus_config_apply():
 		tpdp.config_set_bool("preferuse5footstep", 1)
 		tpdp.config_set_bool("disabletargetsurrounded", 1)
 		tpdp.config_set_bool("disablechooserandomspell_regardinvulnerablestatus", 1)
+		tpdp.config_set_bool("iszmod", 1)
 	
 	firstpc = toee.game.party[0]
 	firstpc.scripts[const_toee.sn_new_map] = 6101

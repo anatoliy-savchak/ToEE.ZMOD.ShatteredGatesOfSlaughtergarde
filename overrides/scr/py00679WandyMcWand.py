@@ -1,4 +1,4 @@
-import toee, utils_item, const_proto_list_wands
+import toee, utils_item, const_proto_list_wands, const_proto_wands
 from utilities import *
 from scripts import *
 

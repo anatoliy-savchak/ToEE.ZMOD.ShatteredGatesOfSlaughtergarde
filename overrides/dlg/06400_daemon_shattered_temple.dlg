@@ -49,7 +49,7 @@
 {112}{Nearby, a small lamp provides soft light. A red stone altar is set against the western wall, topped by a four-armed statue that has wavy daggers. Red stone streaked with purple makes up the walls, looking disturbingly like flesh.}{Nearby, a small lamp provides soft light. A red stone altar is set against the western wall, topped by a four-armed statue that has wavy daggers. Red stone streaked with purple makes up the walls, looking disturbingly like flesh.}{}{}{}{}
 {113}{Continue}{}{1}{}{114}{}
 {114}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{Mosaic footprints emerge from the northern hallway, pass under the debris pile, and head out the door where you are.}{}{}{}{}
-{119}{Close}{}{1}{}{0}{cst().activate_encounter_t11()}
+{119}{Close}{}{1}{}{0}{cst().activate_encounter_t11();npc.destroy()}
 
 {120}{From the gloom comes a black dragon almost the size of a man, its gullet wide open. Beyond the dragon is a room that has suffered a cave-in along the northern wall. A passageway leaves the room to the east, passing under a demon arch that has neither dark energy nor flames in it.}{From the gloom comes a black dragon almost the size of a man, its gullet wide open. Beyond the dragon is a room that has suffered a cave-in along the northern wall. A passageway leaves the room to the east, passing under a demon arch that has neither dark energy nor flames in it.}{}{}{}{cst().display_encounter_t12()}
 {121}{Continue}{}{1}{}{122}{}
