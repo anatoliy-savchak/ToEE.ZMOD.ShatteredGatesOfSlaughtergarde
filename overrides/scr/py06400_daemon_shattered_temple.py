@@ -62,6 +62,8 @@ def san_use(attachee, triggerer):
 		if (loc[1] >= 482): # is south of the door
 			if (not flags & toee.OPF_BUSTED):
 				attachee.portal_flag_set(toee.OPF_BUSTED)
+				attachee.portal_flag_unset(toee.OPF_JAMMED)
+				attachee.portal_flag_unset(toee.OPF_LOCKED)
 				attachee.float_text_line("Unbarred the door!", toee.tf_green)
 		elif(not flags & toee.OPF_BUSTED):
 			attachee.float_text_line("Barred!", toee.tf_blue)
