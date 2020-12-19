@@ -1,7 +1,7 @@
 from toee import *
 from utilities import *
 from scripts import *
-import utils_npc
+import utils_npc, shattered_consts
 
 def san_dialog( attachee, triggerer ):
 	attachee.turn_towards(triggerer)
@@ -9,10 +9,10 @@ def san_dialog( attachee, triggerer ):
 		triggerer.begin_dialog( attachee, 1 )
 		return SKIP_DEFAULT
 	else:
-		if game.global_flags[19] == 1:
+		if game.global_flags[shattered_consts.GLOBAL_FLAG_LAURAZHI_CONSIDERING] == 1:
 			triggerer.begin_dialog( attachee, 800 )
 			return SKIP_DEFAULT
-		elif game.global_flags[104] == 1:
+		elif game.global_flags[shattered_consts.GLOBAL_FLAG_WARCHIEF_KILLED] == 1:
 			triggerer.begin_dialog( attachee, 650 )
 			return SKIP_DEFAULT
 		elif (attachee.leader_get() != OBJ_HANDLE_NULL):

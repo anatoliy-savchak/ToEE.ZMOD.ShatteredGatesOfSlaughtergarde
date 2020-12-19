@@ -847,3 +847,14 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 		if (encounter.id != 6410): return
 		self.place_encounter_patrol(1)
 		return
+
+	def critter_dying(self, attachee, triggerer):
+		assert isinstance(attachee, toee.PyObjHandle)
+		#debug.breakp("critter_dying")
+		self.factions_existance_refresh()
+
+		if (attachee and attachee.proto == py06411_shattered_armory_encounters.CtrlGnollWarchief.get_proto_id()):
+			toee.game.global_flags[shattered_consts.GLOBAL_FLAG_WARCHIEF_KILLED] = 1
+
+		self.check_sleep_status_update(1)
+		return

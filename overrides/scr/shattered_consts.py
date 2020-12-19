@@ -80,6 +80,7 @@ GLOBAL_FLAG_NORBERT_SAYS_TO_SPEAK_TO_THE_HINTERLANDIER = 13 # Norbert says to sp
 GLOBAL_FLAG_TEMPLE_COMPLETED = 14 # whatever you need to do in the Temple to win
 GLOBAL_FLAG_MAUG_DETECT_MAGIC = 15 # cast Detect Magic on maug
 GLOBAL_FLAG_LAB_CLEARED = 16 # killed every Slaughtergarde spawn and friends
+GLOBAL_FLAG_LAURAZHI_CONSIDERING = 19 #
 
 GLOBAL_FLAG_MAY_SLEEP_INN = 56 # room flag at Inn (same one as ToEE)
 

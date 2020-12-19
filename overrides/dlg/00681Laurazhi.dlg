@@ -245,6 +245,7 @@ PC is obviously a cleric or paladin of a good deity (- 2); a PC is obviously a c
 
 
 // game.global_flag[19] - party have killed Gashkarr but refused to go along with her
+// game.global_flag[19] - party have killed Gashkarr but refused to go along with her
 
 {800}{Have you reconsidered? We waste time tarrying here, and undead spawn in the Slaughtergarde all the time.}{Have you reconsidered? We waste time tarrying here, and undead spawn in the Slaughtergarde all the time.}{}{}{}{}
 {801}{Let's do this thing.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
