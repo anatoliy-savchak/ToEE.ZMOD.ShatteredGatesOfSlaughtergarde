@@ -289,8 +289,14 @@ def barter_list(npc, protos):
 	assert isinstance(npc, toee.PyObjHandle)
 	subs = npc.substitute_inventory
 	item_clear_all(subs)
+	items = dict()
+	j = 0
 	for i in protos:
+		j += 1
 		item = toee.game.obj_create(i, subs.location)
 		item.item_flag_set(toee.OIF_IDENTIFIED)
-		subs.item_get(item)
+		items["{}_{}_{}".format(item.description, i, j)] = item
+
+	for key in items.iterkeys():
+		subs.item_get(items[key])
 	return

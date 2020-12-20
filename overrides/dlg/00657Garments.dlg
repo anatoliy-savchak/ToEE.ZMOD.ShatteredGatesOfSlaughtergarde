@@ -131,3 +131,22 @@
 {221}{I'm sorry to trouble you so, my lady.}{}{1}{}{0}{}
 {222}{Something I said?}{}{1}{}{0}{}
 
+{1400}{Barter options:}{Barter options:}{}{}{}{}
+{1401}{B:Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1402}{Buy Cloth}{}{1}{}{1410}{}
+{1409}{E:}{}{1}{}{0}{}
+
+{1410}{Barter options:}{Barter options:}{}{}{}{}
+{1412}{B:Buy Garbs}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_GARBS)}
+{1413}{B:Buy Robes}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_ROBES)}
+{1414}{B:Buy Misc Outfit}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_OUTFIT)}
+{1417}{Next...}{}{1}{}{1420}{}
+{1418}{Back...}{}{1}{}{1400}{}
+{1419}{E:}{}{1}{}{0}{}
+
+{1420}{Barter options:}{Barter options:}{}{}{}{}
+{1422}{B:Buy Boots}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_BOOTS)}
+{1423}{B:Buy Gloves}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_GLOVES)}
+{1424}{B:Buy Cloaks}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_CLOAKS2)}
+{1425}{B:Buy Headdress}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_cloth.PROTO_CLOTH_HEADDRESS)}
+{1429}{E:}{}{1}{}{0}{}

@@ -75,7 +75,9 @@
     <Content Include="overrides\dlg\00652Maug.dlg" />
     <Content Include="overrides\dlg\00653Weapons.dlg" />
     <Content Include="overrides\dlg\00655Scrolls.dlg" />
+    <Content Include="overrides\dlg\00657Garments.dlg" />
     <Content Include="overrides\dlg\00661Armour.dlg" />
+    <Content Include="overrides\dlg\00674Cloaks.dlg" />
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\00678CaptArmin.dlg" />
     <Content Include="overrides\dlg\00679WandyMcWand.dlg" />
@@ -267,6 +269,7 @@
     <Compile Include="overrides\scr\py00653Weapons.py" />
     <Compile Include="overrides\scr\py00655Scrolls.py" />
     <Compile Include="overrides\scr\py00661Armour.py" />
+    <Compile Include="overrides\scr\py00674Cloaks.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
     <Compile Include="overrides\scr\py00678CaptArmin.py" />
     <Compile Include="overrides\scr\py00679WandyMcWand.py" />
