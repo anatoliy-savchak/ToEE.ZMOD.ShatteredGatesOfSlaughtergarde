@@ -52,6 +52,7 @@ def do_hook_doors():
 def do_setup_chests():
 	PROTO_CONTAINER_CHEST_TRAPPED = 1301
 	obj = toee.game.obj_create(PROTO_CONTAINER_CHEST_TRAPPED, utils_obj.sec2loc(543, 531))
+	PROTO_HELM_HEADBAND_OF_THE_STOUT_HEART = 6730 # Cost: 350 gp, Will+1
 	utils_item.item_create_in_inventory(const_proto_cloth.PROTO_HELM_HEADBAND_OF_THE_STOUT_HEART, obj)
 	utils_item.item_create_in_inventory(const_proto_items.PROTO_GENERIC_PEARL_WHITE, obj, 2)
 	utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_LIGHT_WOUNDS, obj)

@@ -742,7 +742,7 @@ class CtrlTieflingWizard(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_ROBE_BROWN, npc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_ROBES_BROWN, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
 		item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):

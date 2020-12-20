@@ -20,7 +20,7 @@ def barovia_team5():
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_SILVER_PLATE_BOOTS, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_SILVER_GLOVES, pc)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_HELMES_PLUMED_SILVER, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_HELM_PLUMED_SILVER, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_TOWER_STEEL, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_PLUS_1, pc)

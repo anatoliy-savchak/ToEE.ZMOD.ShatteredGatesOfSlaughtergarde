@@ -69,7 +69,7 @@ def create_guard_at(loc):
 	# armor
 	item_create_in_inventory(PROTO_ARMOR_LEATHER_ARMOR_MASTERWORK, npc)
 	# helm
-	item_create_in_inventory(PROTO_HELMS_LEATHER_CAP, npc)
+	item_create_in_inventory(PROTO_CLOTH_CAP_LEATHER, npc)
 	# hands
 	item_create_in_inventory(PROTO_CLOTH_GLOVES_PADDED_TAN, npc)
 	# boots
@@ -170,7 +170,7 @@ def create_shadar_kai_at(loc, make_inentory = 1):
 		# armor
 		item_create_in_inventory(PROTO_ARMOR_STUDDED_LEATHER_ARMOR_MASTERWORK, npc)
 		# helm
-		item_create_in_inventory(PROTO_HELM_HOODLESS_CIRCLET, npc)
+		item_create_in_inventory(PROTO_CLOTH_CIRCLET_HOODLESS, npc)
 		# hands
 		item_create_in_inventory(PROTO_CLOTH_GLOVES_PADDED_TAN, npc)
 		# boots
@@ -233,7 +233,7 @@ def create_kithguard_at(loc):
 	# armor
 	item_create_in_inventory(PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
 	# helm
-	item_create_in_inventory(PROTO_HELM_HOODLESS_CIRCLET, npc)
+	item_create_in_inventory(PROTO_CLOTH_CIRCLET_HOODLESS, npc)
 	# hands
 	item_create_in_inventory(PROTO_CLOTH_GLOVES_PADDED_TAN, npc)
 	# boots
