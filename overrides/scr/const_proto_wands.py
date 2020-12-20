@@ -98,6 +98,7 @@ PROTO_WAND_OF_RAY_OF_ENFEEBLEMENT = 12383 # Wand of Ray of Enfeeblement. Price: 
 
 # Level 1 Arcane Transmutation
 PROTO_WAND_OF_ENLARGE_PERSON = 12152 # Wand of Enlarge Person. Price: 750, Spell Level: 1, Spell: 'Enlarge' class_sorcerer 1
+PROTO_WAND_OF_ENLARGE_PERSON_USED = 12151 # Wand of Enlarge Person (25 charges). Price: 375, Spell Level: 1, Spell: 'Enlarge' class_sorcerer 1
 PROTO_WAND_OF_EXPEDITIOUS_RETREAT = 12159 # Wand of Expeditious Retreat. Price: 750, Spell Level: 1, Spell: 'Expeditious Retreat' class_sorcerer 1
 PROTO_WAND_OF_MAGIC_WEAPON = 12292 # Wand of Magic Weapon. Price: 750, Spell Level: 1, Spell: 'Magic Weapon' class_sorcerer 1
 PROTO_WAND_OF_RAY_OF_CLUMSINESS = 12064 # Wand of Ray of Clumsiness. Price: 750, Spell Level: 1, Spell: 'Ray of Clumsiness' class_sorcerer 1
