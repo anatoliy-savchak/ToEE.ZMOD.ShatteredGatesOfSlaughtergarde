@@ -798,7 +798,7 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_PLUS_1_BLACK, npc)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, npc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_SILVER_PLATE_BOOTS, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_MASTERWORK, npc)
 		utils_item.item_money_create_in_inventory(npc, 100) # pearl of power
 		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)

@@ -207,6 +207,7 @@
     <Compile Include="overrides\scr\const_deseases.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="overrides\scr\const_proto_list_cloth.py" />
     <Compile Include="overrides\scr\const_proto_list_scrolls.py">
       <SubType>Code</SubType>
     </Compile>
