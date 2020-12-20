@@ -1,5 +1,8 @@
 # Armor Price pattern - Masterwork: +150, Echantment +1: +1000, Echantment +2: +4000, Echantment +3: +9000
 
+# Mitral grants: spell failure -10%, max Dex +2, armor check penalty -3, armor type lowers.
+# Mitral Light Armor: +1000 gp, Medium: +4000 gp, Heavy: +9000 gp, other: +500 gp/lb.
+
 ## LIGHT ARMOR
 # PADDED_ARMOR
 PROTO_ARMOR_PADDED_ARMOR_TAN = 6022 # Cost: 5 gp, AC: 1, Max Dex: 8, Weight: 10
@@ -34,10 +37,6 @@ PROTO_ARMOR_CHAIN_SHIRT_PLUS_3 = 6397 # Cost: 9250 gp, AC: 4, Max Dex: 4, Ench: 
 PROTO_ARMOR_MITHRAL_SHIRT = 6315 # Cost: 1100 gp, AC: 4, Max Dex: 6, Masterwork
 PROTO_ARMOR_MITHRAL_SHIRT_PLUS_1 = 6725 # Cost: 2100 gp, AC: 4, Max Dex: 6, Ench: +1
 
-PROTO_ARMOR_CHAIN_ELVEN_GREEN = 6214 # Cost: 5150 gp, AC: 5, Max Dex: 4, Ench: +1
-PROTO_ARMOR_CHAIN_ELVEN_PURPLE = 6215 # Cost: 8150 gp, AC: 5, Max Dex: 4, Ench: +2
-PROTO_ARMOR_CHAIN_ELVEN_BLUE = 6125 # Cost: 13150 gp, AC: 5, Max Dex: 4, Ench: +3
-
 ## MEDIUM ARMOR
 # HIDE
 PROTO_ARMOR_HIDE = 6216 # Cost: 15 gp, AC: 3, Max Dex: 4
@@ -62,6 +61,10 @@ PROTO_ARMOR_CHAINMAIL_PLUS_3_RED = 6095 # Cost: 4300 gp, AC: 5, Max Dex: 2
 
 PROTO_ARMOR_CHAINMAIL_MITHRAL_PLUS_1 = 6735 # Cost: 5135 gp, AC: 5, Max Dex: 4, Ench: +1
 PROTO_ARMOR_CHAINMAIL_PLUS_1_MITHRAL = 6735 # Cost: 5135 gp, AC: 5, Max Dex: 4, Ench: +1
+
+PROTO_ARMOR_CHAIN_ELVEN_GREEN = 6214 # Cost: 5150 gp, AC: 5, Max Dex: 4, Ench: +1
+PROTO_ARMOR_CHAIN_ELVEN_PURPLE = 6215 # Cost: 8150 gp, AC: 5, Max Dex: 4, Ench: +2
+PROTO_ARMOR_CHAIN_ELVEN_BLUE = 6125 # Cost: 13150 gp, AC: 5, Max Dex: 4, Ench: +3
 
 # BREASTPLATE
 PROTO_ARMOR_BREASTPLATE = 6103 # Cost: 200 gp, AC: 5, Max Dex: 3
