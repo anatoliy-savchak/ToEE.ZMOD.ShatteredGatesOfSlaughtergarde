@@ -1,5 +1,5 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
-import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, utils_npc
+import const_proto_potions, utils_obj, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, utils_npc
 import py06401_shattered_temple_encounters, const_proto_items, const_proto_rings, const_proto_cloth, const_proto_wondrous, shattered_consts
 
 shattered_armory_encounters = 6411
@@ -57,7 +57,7 @@ class CtrlGnollBarbarian2(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 
 		# create inventory
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_GREATAXE_MASTERWORK, npc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_BREASTPLATE_PLUS_1_BLACK, npc)
 		npc.item_wield_best_all()
@@ -277,7 +277,7 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 		## create inventory
 		#utils_item.item_create_in_inventory(4090, npc) # Hill Giant Club
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_PLUS_1_BLACK, npc)
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		npc.item_wield_best_all()
 		fog_potion = utils_item.item_create_in_inventory(8601, npc)
 		fog_potion.item_flag_set(toee.OIF_NO_NPC_PICKUP)
@@ -316,7 +316,7 @@ class CtrlHalfFiendOgre(ctrl_behaviour.CtrlBehaviour):
 					tac.add_attack()
 					return tac
 
-			healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
+			healing_potion = npc.item_find_by_proto(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
 			if (healing_potion):
 				tac = utils_tactics.TacticsHelper(self.get_name())
 				tac.add_clear_target()
@@ -396,7 +396,7 @@ class CtrlTroglodyteBarbarians(ctrl_behaviour.CtrlBehaviour):
 		npc.condition_add_with_args("Stench_Of_Troglodyte", 0, 10, 17, 30)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc, 2)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc, 2)
 		npc.item_wield_best_all()
 		return
 
@@ -453,7 +453,7 @@ class CtrlTroglodyteThug(ctrl_behaviour.CtrlBehaviour):
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_STUDDED_LEATHER_ARMOR_PLUS_1, npc)
 		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_AMULET_OF_NATURAL_ARMOR_1, npc)
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		
 		npc.item_wield_best_all()
 		return
@@ -501,7 +501,7 @@ class CtrlTroglodyteSoldier(ctrl_behaviour.CtrlBehaviour):
 		elif (case == 5):
 			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_BLACK, npc)
 		
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		
 		npc.item_wield_best_all()
 		return
@@ -742,7 +742,7 @@ class CtrlTieflingWizard(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_armory_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_armory_encounters
 
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_ROBE_BROWN, npc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_ROBES_BROWN, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_CROSSBOW_LIGHT_MASTERWORK, npc)
 		item = utils_item.item_create_in_inventory(const_proto_weapon.PROTO_AMMO_BOLT_QUIVER, npc)
 		if (item):

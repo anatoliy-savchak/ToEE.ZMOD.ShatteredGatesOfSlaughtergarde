@@ -2367,3 +2367,7 @@ modules/ToEE/townmap/5194
 modules/ToEE/townmap/5195
 modules/ToEE/townmap/5196
 data/rules/protos.tab.0
+modules/ToEE/maps/ZMOD_REV_*/
+modules/ToEE/maps/ZMOD_VILLAGE/
+modules/ToEE/art/ground/ZMOD_REV_*/
+modules/ToEE/art/ground/ZMOD_VILLAGE/

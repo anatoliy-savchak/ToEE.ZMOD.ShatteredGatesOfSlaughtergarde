@@ -35,7 +35,7 @@
 {1209}{E:}{}{1}{}{0}{}
 
 {1210}{Barter options:}{Barter options:}{}{}{}{}
-{1212}{B:Buy Arcane Wand Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_0)}
+{1212}{B:Buy Arcane Wand Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_0+[const_proto_wands.PROTO_WAND_OF_RAY_OF_FROST_USED_25, const_proto_wands.PROTO_WAND_OF_ACID_SPLASH_USED_25])}
 {1213}{B:Buy Arcane Wand Level 1}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_1)}
 {1214}{B:Buy Arcane Wand Level 2}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_ARCANE_LEVEL_2)}
 {1217}{Next...}{}{1}{}{1220}{}
@@ -50,7 +50,7 @@
 {1229}{E:}{}{1}{}{0}{}
 
 {1230}{Barter options:}{Barter options:}{}{}{}{}
-{1232}{B:Buy Divine Wand Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_0)}
+{1231}{B:Buy Divine Wand Level 0}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_0)}
 {1232}{B:Buy Divine Wand Level 1}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_1)}
 {1233}{B:Buy Divine Wand Level 2}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_wands.PROTOS_WANDS_DIVINE_LEVEL_2)}
 {1237}{Next...}{}{1}{}{1240}{}

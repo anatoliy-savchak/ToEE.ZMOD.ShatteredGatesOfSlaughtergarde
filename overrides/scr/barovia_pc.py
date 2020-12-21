@@ -1,5 +1,8 @@
 import toee, pc_gen, utils_item
-import const_proto_armor, const_proto_weapon, const_proto_wands, const_proto_cloth
+import const_proto_armor
+import const_proto_weapon
+import const_proto_wands
+import const_proto_cloth
 
 # import barovia_pc
 # barovia_pc.barovia_team5()
@@ -15,9 +18,9 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, pc)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_BREASTPLATE_GLOVES, pc)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_HELMES_PLUMED_SILVER, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_SILVER_PLATE_BOOTS, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_SILVER_GLOVES, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_HELM_PLUMED_SILVER, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_TOWER_STEEL, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_PLUS_1, pc)
@@ -55,8 +58,8 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, pc)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_BREASTPLATE_GLOVES, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_SILVER_PLATE_BOOTS, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_SILVER_GLOVES, pc)
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_CIRCLET_HOODLESS, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_CLOAK_RED, pc)
 
@@ -73,8 +76,8 @@ def barovia_team5():
 		pcg.apply_pc(pc)
 
 		utils_item.item_clear_by_proto(pc, const_proto_cloth.PROTO_CLOTH_GARB_BROWN)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_BREASTPLATE_BOOTS, pc)
-		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_BREASTPLATE_GLOVES, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_SILVER_PLATE_BOOTS, pc)
+		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_GLOVES_SILVER_GLOVES, pc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, pc)
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_SHIELD_SMALL_WOODEN, pc)

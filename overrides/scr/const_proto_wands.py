@@ -7,12 +7,12 @@
 # 3   11 250	 5625 + 450 XP
 # 4   21 000	10500 + 840 XP
 
-
 # Level 0 Arcane Abjuration
 PROTO_WAND_OF_RESISTANCE = 12399 # Wand of Resistance. Price: 375, Spell Level: 0, Spell: 'Resistance' class_sorcerer 0
 
 # Level 0 Arcane Conjuration
 PROTO_WAND_OF_ACID_SPLASH = 12532 # Wand of Acid Splash. Price: 375, Spell Level: 0, Spell: 'Acid Splash' class_sorcerer 0
+PROTO_WAND_OF_ACID_SPLASH_USED_25 = 12060 # Wand of Acid Splash. Price: 375, Spell Level: 0, Spell: 'Acid Splash' class_sorcerer 0
 
 # Level 0 Arcane Divination
 PROTO_WAND_OF_DETECT_MAGIC = 12114 # Wand of Detect Magic. Price: 375, Spell Level: 0, Spell: 'Detect Magic' class_bard 0
@@ -24,6 +24,7 @@ PROTO_WAND_OF_DAZE = 12099 # Wand of Daze. Price: 375, Spell Level: 0, Spell: 'D
 # Level 0 Arcane Evocation
 PROTO_WAND_OF_FLARE = 12180 # Wand of Flare. Price: 375, Spell Level: 0, Spell: 'Flare' class_sorcerer 0
 PROTO_WAND_OF_RAY_OF_FROST = 12384 # Wand of Ray of Frost. Price: 375, Spell Level: 0, Spell: 'Ray of Frost' class_sorcerer 0
+PROTO_WAND_OF_RAY_OF_FROST_USED_25 = 12061 # Wand of Ray of Frost. Price: 187, Spell Level: 0, Spell: 'Ray of Frost' class_sorcerer 0
 
 # Level 0 Arcane Illusion
 
@@ -77,7 +78,6 @@ PROTO_WAND_OF_TRUE_STRIKE = 12509 # Wand of True Strike. Price: 750, Spell Level
 PROTO_WAND_OF_CHARM_PERSON = 12056 # Wand of Charm Person. Price: 750, Spell Level: 1, Spell: 'Charm Person' class_sorcerer 1
 PROTO_WAND_OF_CONFUSION_LESSER = 12570 # Wand of Confusion, Lesser. Price: 750, Spell Level: 1, Spell: 'Lesser Confusion' class_bard 1
 PROTO_WAND_OF_SLEEP = 12438 # Wand of Sleep. Price: 750, Spell Level: 1, Spell: 'Sleep' class_sorcerer 1
-PROTO_WAND_OF_TASHAS_HIDEOUS_LAUGHTER = 12490 # Wand of Tasha's Hideous Laughter. Price: 4,500, Spell Level: 1, Spell: 'Tashas Hideous Laughter' class_bard 1
 
 # Level 1 Arcane Evocation
 PROTO_WAND_OF_BURNING_HANDS = 12546 # Wand of Burning Hands. Price: 750, Spell Level: 1, Spell: 'Burning Hands' class_sorcerer 1
@@ -97,7 +97,8 @@ PROTO_WAND_OF_CHILL_TOUCH = 12059 # Wand of Chill Touch. Price: 750, Spell Level
 PROTO_WAND_OF_RAY_OF_ENFEEBLEMENT = 12383 # Wand of Ray of Enfeeblement. Price: 750, Spell Level: 1, Spell: 'Ray of Enfeeblement' class_sorcerer 1
 
 # Level 1 Arcane Transmutation
-PROTO_WAND_OF_ENLARGE_PERSON = 12152 # Wand of Enlarge Person. Price: 750, Spell Level: 1, Spell: 'Enlarge Person' class_sorcerer 1
+PROTO_WAND_OF_ENLARGE_PERSON = 12152 # Wand of Enlarge Person. Price: 750, Spell Level: 1, Spell: 'Enlarge' class_sorcerer 1
+PROTO_WAND_OF_ENLARGE_PERSON_USED = 12151 # Wand of Enlarge Person (25 charges). Price: 375, Spell Level: 1, Spell: 'Enlarge' class_sorcerer 1
 PROTO_WAND_OF_EXPEDITIOUS_RETREAT = 12159 # Wand of Expeditious Retreat. Price: 750, Spell Level: 1, Spell: 'Expeditious Retreat' class_sorcerer 1
 PROTO_WAND_OF_MAGIC_WEAPON = 12292 # Wand of Magic Weapon. Price: 750, Spell Level: 1, Spell: 'Magic Weapon' class_sorcerer 1
 PROTO_WAND_OF_RAY_OF_CLUMSINESS = 12064 # Wand of Ray of Clumsiness. Price: 750, Spell Level: 1, Spell: 'Ray of Clumsiness' class_sorcerer 1
@@ -111,8 +112,6 @@ PROTO_WAND_OF_SHIELD_OF_FAITH = 12427 # Wand of Shield of Faith. Price: 750, Spe
 
 # Level 1 Divine Conjuration
 PROTO_WAND_OF_CURE_LIGHT_WOUNDS = 12090 # Wand of Cure Light Wounds. Price: 750, Spell Level: 1, Spell: 'Cure Light Wounds' class_cleric 1
-PROTO_WAND_OF_DELAY_POISON = 12104 # Wand of Delay Poison. Price: 4,500, Spell Level: 1, Spell: 'Delay Poison' class_ranger 1
-PROTO_WAND_OF_RESTORATION_LESSER = 12272 # Wand of Restoration, Lesser. Price: 750, Spell Level: 1, Spell: 'Lesser Restoration' class_paladin 1
 PROTO_WAND_OF_SUMMON_NATURES_ALLY_I = 12476 # Wand of Summon Nature's Ally I. Price: 750, Spell Level: 1, Spell: 'Summon Natures Ally I' class_druid 1
 
 # Level 1 Divine Divination
@@ -125,7 +124,7 @@ PROTO_WAND_OF_DETECT_LAW = 12113 # Wand of Detect Law. Price: 750, Spell Level: 
 PROTO_WAND_OF_BANE = 12536 # Wand of Bane. Price: 750, Spell Level: 1, Spell: 'Bane' class_cleric 1
 PROTO_WAND_OF_BLESS = 12539 # Wand of Bless. Price: 750, Spell Level: 1, Spell: 'Bless' class_cleric 1
 PROTO_WAND_OF_CALM_ANIMALS = 12548 # Wand of Calm Animals. Price: 750, Spell Level: 1, Spell: 'Calm Animals' class_druid 1
-PROTO_WAND_OF_CHARM_ANIMAL = 12057 # Wand of Charm Animal. Price: 750, Spell Level: 1, Spell: 'Charm Animal' class_druid 1
+PROTO_WAND_OF_CHARM_ANIMAL = 12057 # Wand of Charm Animal. Price: 750, Spell Level: 1, Spell: 'Charm Person or Animal' class_druid 1
 PROTO_WAND_OF_COMMAND = 12067 # Wand of Command. Price: 750, Spell Level: 1, Spell: 'Command' class_cleric 1
 
 # Level 1 Divine Evocation
@@ -156,6 +155,7 @@ PROTO_WAND_OF_RESIST_ENERGY = 12400 # Wand of Resist Energy. Price: 4,500, Spell
 # Level 2 Arcane Conjuration
 PROTO_WAND_OF_FOG_CLOUD = 12183 # Wand of Fog Cloud. Price: 4,500, Spell Level: 2, Spell: 'Fog Cloud' class_sorcerer 2
 PROTO_WAND_OF_GLITTERDUST = 12196 # Wand of Glitterdust. Price: 4,500, Spell Level: 2, Spell: 'Glitterdust' class_sorcerer 2
+PROTO_WAND_OF_GLITTERDUST_USED = 12197 # Wand of Glitterdust. Price: 2,250, Spell Level: 2, Spell: 'Glitterdust' class_sorcerer 2
 PROTO_WAND_OF_MELFS_ACID_ARROW = 12304 # Wand of Melf's Acid Arrow. Price: 4,500, Spell Level: 2, Spell: 'Melfs Acid Arrow' class_sorcerer 2
 PROTO_WAND_OF_SUMMON_MONSTER_II = 12468 # Wand of Summon Monster II. Price: 4,500, Spell Level: 2, Spell: 'Summon Monster II' class_sorcerer 2
 PROTO_WAND_OF_WEB = 12531 # Wand of Web. Price: 4,500, Spell Level: 2, Spell: 'Web' class_sorcerer 2
@@ -167,12 +167,12 @@ PROTO_WAND_OF_SEE_INVISIBILITY = 12414 # Wand of See Invisibility. Price: 4,500,
 PROTO_WAND_OF_ANIMAL_TRANCE = 12535 # Wand of Animal Trance. Price: 4,500, Spell Level: 2, Spell: 'Animal Trance' class_bard 2
 PROTO_WAND_OF_CALM_EMOTIONS = 12549 # Wand of Calm Emotions. Price: 4,500, Spell Level: 2, Spell: 'Calm Emotions' class_bard 2
 PROTO_WAND_OF_DAZE_MONSTER = 12577 # Wand of Daze Monster. Price: 4,500, Spell Level: 2, Spell: 'Daze Monster' class_sorcerer 0
-PROTO_WAND_OF_HEROISM = 12569 # Wand of Heroism. Price: 4,500, Spell Level: 2, Spell: 'Heroism' class_bard 2
-PROTO_WAND_OF_RAGE = 12559 # Wand of Rage. Price: 4,500, Spell Level: 2, Spell: 'Rage' class_bard 2
+PROTO_WAND_OF_TASHAS_HIDEOUS_LAUGHTER = 12490 # Wand of Tasha's Hideous Laughter. Price: 4,500, Spell Level: 2, Spell: 'Tashas Hideous Laughter' class_bard 1
 
 # Level 2 Arcane Evocation
 PROTO_WAND_OF_GUST_OF_WIND = 12214 # Wand of Gust of Wind. Price: 4,500, Spell Level: 2, Spell: 'Gust of Wind' class_sorcerer 2
 PROTO_WAND_OF_SCORCHING_RAY_1ST = 12608 # Wand of Scorching Ray, 1st. Price: 4,500, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 2
+PROTO_WAND_OF_SCORCHING_RAY_1ST_USED = 12603 # Wand of Scorching Ray, 1st. Price: 4,500, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 2
 PROTO_WAND_OF_SCORCHING_RAY_2ND = 12609 # Wand of Scorching Ray, 2nd. Price: 9,000, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 4
 PROTO_WAND_OF_SCORCHING_RAY_3RD = 12610 # Wand of Scorching Ray, 3rd. Price: 13,500, Spell Level: 2, Spell: 'Scorching Ray' class_wizard 6
 PROTO_WAND_OF_SHATTER = 12425 # Wand of Shatter. Price: 4,500, Spell Level: 2, Spell: 'Shatter' class_sorcerer 2
@@ -200,10 +200,11 @@ PROTO_WAND_OF_FOXS_CUNNING = 12566 # Wand of Fox's Cunning. Price: 4,500, Spell 
 PROTO_WAND_OF_KNOCK = 12262 # Wand of Knock. Price: 4,500, Spell Level: 2, Spell: 'Knock' class_sorcerer 2
 
 # Level 2 Divine Abjuration
-PROTO_WAND_OF_PROTECTION_FROM_ENERGY = 12369 # Wand of Protection From Energy. Price: 4,500, Spell Level: 2, Spell: 'Protection from Energy' class_ranger 2
 
 # Level 2 Divine Conjuration
 PROTO_WAND_OF_CURE_MODERATE_WOUNDS = 12092 # Wand of Cure Moderate Wounds. Price: 4,500, Spell Level: 2, Spell: 'Cure Moderate Wounds' class_cleric 2
+PROTO_WAND_OF_DELAY_POISON = 12104 # Wand of Delay Poison. Price: 4,500, Spell Level: 2, Spell: 'Delay Poison' class_ranger 1
+PROTO_WAND_OF_RESTORATION_LESSER = 12272 # Wand of Restoration, Lesser. Price: 750, Spell Level: 2, Spell: 'Lesser Restoration' class_paladin 1
 PROTO_WAND_OF_REMOVE_PARALYSIS = 12394 # Wand of Remove Paralysis. Price: 4,500, Spell Level: 2, Spell: 'Remove Paralysis' class_cleric 2
 PROTO_WAND_OF_SUMMON_NATURES_ALLY_II = 12477 # Wand of Summon Nature's Ally II. Price: 4,500, Spell Level: 2, Spell: 'Summon Natures Ally II' class_druid 2
 
@@ -218,7 +219,6 @@ PROTO_WAND_OF_HOLD_ANIMAL = 12226 # Wand of Hold Animal. Price: 4,500, Spell Lev
 PROTO_WAND_OF_CONSECRATE = 12074 # Wand of Consecrate. Price: 4,500, Spell Level: 2, Spell: 'Consecrate' class_cleric 2
 PROTO_WAND_OF_DESECRATE = 12107 # Wand of Desecrate. Price: 4,500, Spell Level: 2, Spell: 'Desecrate' class_cleric 2
 PROTO_WAND_OF_SPIRITUAL_WEAPON = 12457 # Wand of Spiritual Weapon. Price: 4,500, Spell Level: 2, Spell: 'Spiritual Weapon' class_cleric 2
-PROTO_WAND_OF_WIND_WALL = 12553 # Wand of Wind Wall. Price: 4,500, Spell Level: 2, Spell: 'Wind Wall' class_ranger 2
 
 # Level 2 Divine Illusion
 
@@ -243,7 +243,6 @@ PROTO_WAND_OF_MAGIC_CIRCLE_AGAINST_CHAOS = 12282 # Wand of Magic Circle Against 
 PROTO_WAND_OF_MAGIC_CIRCLE_AGAINST_EVIL = 12283 # Wand of Magic Circle Against Evil. Price: 11,250, Spell Level: 3, Spell: 'Magic Circle against Evil' class_sorcerer 3
 PROTO_WAND_OF_MAGIC_CIRCLE_AGAINST_GOOD = 12284 # Wand of Magic Circle Against Good. Price: 11,250, Spell Level: 3, Spell: 'Magic Circle against Good' class_sorcerer 3
 PROTO_WAND_OF_MAGIC_CIRCLE_AGAINST_LAW = 12285 # Wand of Magic Circle Against Law. Price: 11,250, Spell Level: 3, Spell: 'Magic Circle against Law' class_sorcerer 3
-PROTO_WAND_OF_REMOVE_CURSE = 12391 # Wand of Remove Curse. Price: 11,250, Spell Level: 3, Spell: 'Remove Curse' class_bard 3
 
 # Level 3 Arcane Conjuration
 PROTO_WAND_OF_SLEET_STORM = 12439 # Wand of Sleet Storm. Price: 11,250, Spell Level: 3, Spell: 'Sleet Storm' class_sorcerer 3
@@ -254,10 +253,11 @@ PROTO_WAND_OF_SUMMON_MONSTER_III = 12469 # Wand of Summon Monster III. Price: 11
 PROTO_WAND_OF_CLAIRAUDIENCE_CLAIRVOYANCE = 12062 # Wand of Clairaudience/Clairvoyance. Price: 11,250, Spell Level: 3, Spell: 'Clairaudience/Clairvoyance' class_sorcerer 3
 
 # Level 3 Arcane Enchantment
-PROTO_WAND_OF_CONFUSION = 12073 # Wand of Confusion. Price: 4,500, Spell Level: 3, Spell: 'Confusion' class_bard 3
 PROTO_WAND_OF_DEEP_SLUMBER = 12578 # Wand of Deep Slumber. Price: 11,250, Spell Level: 3, Spell: 'Deep Slumber' class_sorcerer 3
 PROTO_WAND_OF_GOOD_HOPE = 12615 # Wand of Good Hope. Price: 36,500, Spell Level: 3, Spell: 'Good Hope' class_bard 3
+PROTO_WAND_OF_HEROISM = 12569 # Wand of Heroism. Price: 4,500, Spell Level: 3, Spell: 'Heroism' class_bard 2
 PROTO_WAND_OF_HOLD_PERSON = 12228 # Wand of Hold Person. Price: 4,500, Spell Level: 3, Spell: 'Hold Person' class_sorcerer 3
+PROTO_WAND_OF_RAGE = 12559 # Wand of Rage. Price: 4,500, Spell Level: 3, Spell: 'Rage' class_bard 2
 
 # Level 3 Arcane Evocation
 PROTO_WAND_OF_FIREBALL_5TH = 12006 # Wand of Fireball, 5th. Price: 11,250, Spell Level: 3, Spell: 'Fireball' class_sorcerer 3
@@ -284,12 +284,13 @@ PROTO_WAND_OF_GASEOUS_FORM = 12189 # Wand of Gaseous Form. Price: 11,250, Spell 
 PROTO_WAND_OF_GLIBNESS = 12567 # Wand of Glibness. Price: 15,750, Spell Level: 3, Spell: 'Glibness' class_bard 3
 PROTO_WAND_OF_MAGIC_WEAPON_GREATER = 12205 # Wand of Magic Weapon, Greater. Price: 11,250, Spell Level: 3, Spell: 'Greater Magic Weapon' class_sorcerer 3
 PROTO_WAND_OF_HASTE = 12219 # Wand of Haste. Price: 11,250, Spell Level: 3, Spell: 'Haste' class_sorcerer 3
+PROTO_WAND_OF_HASTE_USED = 12220 # Wand of Haste. Price: 11,250, Spell Level: 3, Spell: 'Haste' class_sorcerer 3
 PROTO_WAND_OF_KEEN_EDGE = 12261 # Wand of Keen Edge. Price: 11,250, Spell Level: 3, Spell: 'Keen Edge' class_sorcerer 3
 PROTO_WAND_OF_SLOW = 12440 # Wand of Slow. Price: 11,250, Spell Level: 3, Spell: 'Slow' class_sorcerer 3
 
 # Level 3 Divine Abjuration
 PROTO_WAND_OF_NEGATIVE_ENERGY_PROTECTION = 12617 # Wand of Negative Energy Protection. Price: 21,000, Spell Level: 3, Spell: 'Negative Energy Protection' class_cleric 4
-PROTO_WAND_OF_REPEL_VERMIN = 12396 # Wand of Repel Vermin. Price: 11,250, Spell Level: 3, Spell: 'Repel Vermin' class_ranger 3
+PROTO_WAND_OF_PROTECTION_FROM_ENERGY = 12369 # Wand of Protection From Energy. Price: 4,500, Spell Level: 3, Spell: 'Protection from Energy' class_ranger 2
 
 # Level 3 Divine Conjuration
 PROTO_WAND_OF_CURE_SERIOUS_WOUNDS = 12093 # Wand of Cure Serious Wounds. Price: 11,250, Spell Level: 3, Spell: 'Cure Serious Wounds' class_cleric 3
@@ -298,7 +299,6 @@ PROTO_WAND_OF_REMOVE_DISEASE = 12392 # Wand of Remove Disease. Price: 11,250, Sp
 PROTO_WAND_OF_SUMMON_NATURES_ALLY_III = 12478 # Wand of Summon Nature's Ally III. Price: 11,250, Spell Level: 3, Spell: 'Summon Natures Ally III' class_druid 3
 
 # Level 3 Divine Divination
-PROTO_WAND_OF_DISCERN_LIES = 12125 # Wand of Discern Lies. Price: 21,000, Spell Level: 3, Spell: 'Discern Lies' class_paladin 3
 
 # Level 3 Divine Enchantment
 PROTO_WAND_OF_DOMINATE_ANIMAL = 12139 # Wand of Dominate Animal. Price: 11,250, Spell Level: 3, Spell: 'Dominate Animal' class_druid 3
@@ -308,6 +308,7 @@ PROTO_WAND_OF_PRAYER = 12359 # Wand of Prayer. Price: 11,250, Spell Level: 3, Sp
 PROTO_WAND_OF_CALL_LIGHTNING = 12547 # Wand of Call Lightning. Price: 11,250, Spell Level: 3, Spell: 'Call Lightning' class_druid 3
 PROTO_WAND_OF_INVISIBILITY_PURGE = 12254 # Wand of Invisibility Purge. Price: 11,250, Spell Level: 3, Spell: 'Invisibility Purge' class_cleric 3
 PROTO_WAND_OF_SEARING_LIGHT = 12412 # Wand of Searing Light. Price: 11,250, Spell Level: 3, Spell: 'Searing Light' class_cleric 3
+PROTO_WAND_OF_WIND_WALL = 12553 # Wand of Wind Wall. Price: 4,500, Spell Level: 3, Spell: 'Wind Wall' class_ranger 2
 
 # Level 3 Divine Illusion
 
@@ -316,7 +317,6 @@ PROTO_WAND_OF_ANIMATE_DEAD = 12613 # Wand of Animate Dead. Price: 11,250, Spell 
 PROTO_WAND_OF_BESTOW_CURSE = 12538 # Wand of Bestow Curse. Price: 11,250, Spell Level: 3, Spell: 'Bestow Curse' class_cleric 3
 PROTO_WAND_OF_CONTAGION = 12076 # Wand of Contagion. Price: 11,250, Spell Level: 3, Spell: 'Contagion' class_cleric 3
 PROTO_WAND_OF_INFLICT_SERIOUS_WOUNDS = 12250 # Wand of Inflict Serious Wounds. Price: 11,250, Spell Level: 3, Spell: 'Inflict Serious Wounds' class_cleric 3
-PROTO_WAND_OF_POISON = 12352 # Wand of Poison. Price: 21,000, Spell Level: 3, Spell: 'Poison' class_druid 3
 
 # Level 3 Divine Transmutation
 PROTO_WAND_OF_MAGIC_FANG_GREATER = 12204 # Wand of Magic Fang, Greater. Price: 11,250, Spell Level: 3, Spell: 'Greater Magic Fang' class_druid 3
@@ -325,9 +325,9 @@ PROTO_WAND_OF_MELD_INTO_STONE = 12303 # Wand of Meld Into Stone. Price: 11,250, 
 PROTO_WAND_OF_QUENCH = 12573 # Wand of Quench. Price: 11,250, Spell Level: 3, Spell: 'Quench' class_druid 3
 
 # Level 4 Arcane Abjuration
-PROTO_WAND_OF_BREAK_ENCHANTMENT = 12544 # Wand of Break Enchantment. Price: 21,000, Spell Level: 4, Spell: 'Break Enchantment' class_bard 4
 PROTO_WAND_OF_DIMENSIONAL_ANCHOR = 12122 # Wand of Dimensional Anchor. Price: 21,000, Spell Level: 4, Spell: 'Dimensional Anchor' class_sorcerer 4
 PROTO_WAND_OF_FREEDOM_OF_MOVEMENT = 12188 # Wand of Freedom of Movement. Price: 21,000, Spell Level: 4, Spell: 'Freedom of Movement' class_bard 4
+PROTO_WAND_OF_REMOVE_CURSE = 12391 # Wand of Remove Curse. Price: 11,250, Spell Level: 4, Spell: 'Remove Curse' class_bard 3
 PROTO_WAND_OF_STONESKIN = 12462 # Wand of Stoneskin. Price: 21,000, Spell Level: 4, Spell: 'Stoneskin' class_sorcerer 4
 
 # Level 4 Arcane Conjuration
@@ -339,9 +339,8 @@ PROTO_WAND_OF_SUMMON_MONSTER_IV = 12470 # Wand of Summon Monster IV. Price: 21,0
 
 # Level 4 Arcane Enchantment
 PROTO_WAND_OF_CHARM_MONSTER = 12055 # Wand of Charm Monster. Price: 11,250, Spell Level: 4, Spell: 'Charm Monster' class_sorcerer 3
+PROTO_WAND_OF_CONFUSION = 12073 # Wand of Confusion. Price: 4,500, Spell Level: 4, Spell: 'Confusion' class_bard 3
 PROTO_WAND_OF_CRUSHING_DESPAIR = 12576 # Wand of Crushing Despair. Price: 21,000, Spell Level: 4, Spell: 'Crushing Despair' class_sorcerer 4
-PROTO_WAND_OF_DOMINATE_PERSON = 12068 # Wand of Dominate Person. Price: 21,000, Spell Level: 4, Spell: 'Dominate Person' class_bard 4
-PROTO_WAND_OF_HOLD_MONSTER = 12227 # Wand of Hold Monster. Price: 21,000, Spell Level: 4, Spell: 'Hold Monster' class_bard 4
 
 # Level 4 Arcane Evocation
 PROTO_WAND_OF_FIRE_SHIELD = 12173 # Wand of Fire Shield. Price: 21,000, Spell Level: 4, Spell: 'Fire Shield' class_sorcerer 4
@@ -360,8 +359,7 @@ PROTO_WAND_OF_FEAR = 12002 # Wand of Fear. Price: 21,000, Spell Level: 4, Spell:
 
 # Level 4 Divine Abjuration
 PROTO_WAND_OF_DISMISSAL = 12128 # Wand of Dismissal. Price: 21,000, Spell Level: 4, Spell: 'Dismissal' class_cleric 4
-PROTO_WAND_OF_DISPEL_CHAOS = 12129 # Wand of Dispel Chaos. Price: 21,000, Spell Level: 4, Spell: 'Dispel Chaos' class_paladin 4
-PROTO_WAND_OF_DISPEL_EVIL = 12130 # Wand of Dispel Evil. Price: 21,000, Spell Level: 4, Spell: 'Dispel Evil' class_paladin 4
+PROTO_WAND_OF_REPEL_VERMIN = 12396 # Wand of Repel Vermin. Price: 11,250, Spell Level: 4, Spell: 'Repel Vermin' class_ranger 3
 
 # Level 4 Divine Conjuration
 PROTO_WAND_OF_CURE_CRITICAL_WOUNDS = 12089 # Wand of Cure Critical Wounds. Price: 21,000, Spell Level: 4, Spell: 'Cure Critical Wounds' class_cleric 4
@@ -370,6 +368,7 @@ PROTO_WAND_OF_RESTORATION = 12401 # Wand of Restoration. Price: 21,000, Spell Le
 PROTO_WAND_OF_SUMMON_NATURES_ALLY_IV = 12479 # Wand of Summon Nature's Ally IV. Price: 21,000, Spell Level: 4, Spell: 'Summon Natures Ally IV' class_druid 4
 
 # Level 4 Divine Divination
+PROTO_WAND_OF_DISCERN_LIES = 12125 # Wand of Discern Lies. Price: 21,000, Spell Level: 4, Spell: 'Discern Lies' class_paladin 3
 
 # Level 4 Divine Enchantment
 
@@ -383,6 +382,7 @@ PROTO_WAND_OF_HOLY_SWORD = 12063 # Wand of Holy Sword. Price: 21,000, Spell Leve
 PROTO_WAND_OF_BLIGHT = 12554 # Wand of Blight. Price: 21,000, Spell Level: 4, Spell: 'Blight' class_druid 4
 PROTO_WAND_OF_DEATH_WARD = 12101 # Wand of Death Ward. Price: 21,000, Spell Level: 4, Spell: 'Death Ward' class_cleric 4
 PROTO_WAND_OF_INFLICT_CRITICAL_WOUNDS = 12246 # Wand of Inflict Critical Wounds. Price: 21,000, Spell Level: 4, Spell: 'Inflict Critical Wounds' class_cleric 4
+PROTO_WAND_OF_POISON = 12352 # Wand of Poison. Price: 21,000, Spell Level: 4, Spell: 'Poison' class_druid 3
 
 # Level 4 Divine Transmutation
 PROTO_WAND_OF_CONTROL_PLANTS = 12079 # Wand of Control Plants. Price: 24,000, Spell Level: 4, Spell: 'Control Plants' class_druid 8
@@ -391,6 +391,7 @@ PROTO_WAND_OF_REINCARNATION = 12611 # Wand of Reincarnation. Price: 21,000, Spel
 PROTO_WAND_OF_SPIKE_STONES = 12456 # Wand of Spike Stones. Price: 21,000, Spell Level: 4, Spell: 'Spike Stones' class_druid 4
 
 # Level 5 Arcane Abjuration
+PROTO_WAND_OF_BREAK_ENCHANTMENT = 12544 # Wand of Break Enchantment. Price: 21,000, Spell Level: 5, Spell: 'Break Enchantment' class_bard 4
 
 # Level 5 Arcane Conjuration
 PROTO_WAND_OF_CLOUDKILL = 12065 # Wand of Cloudkill. Price: 24,000, Spell Level: 5, Spell: 'Cloudkill' class_sorcerer 5
@@ -400,7 +401,9 @@ PROTO_WAND_OF_TELEPORT = 12492 # Wand of Teleport. Price: 24,000, Spell Level: 5
 # Level 5 Arcane Divination
 
 # Level 5 Arcane Enchantment
+PROTO_WAND_OF_DOMINATE_PERSON = 12068 # Wand of Dominate Person. Price: 21,000, Spell Level: 5, Spell: 'Dominate Person' class_bard 4
 PROTO_WAND_OF_FEEBLEMIND = 12167 # Wand of Feeblemind. Price: 24,000, Spell Level: 5, Spell: 'Feeblemind' class_sorcerer 5
+PROTO_WAND_OF_HOLD_MONSTER = 12227 # Wand of Hold Monster. Price: 21,000, Spell Level: 5, Spell: 'Hold Monster' class_bard 4
 PROTO_WAND_OF_MIND_FOG = 12309 # Wand of Mind Fog. Price: 24,000, Spell Level: 5, Spell: 'Mind Fog' class_sorcerer 5
 
 # Level 5 Arcane Evocation
@@ -414,7 +417,9 @@ PROTO_WAND_OF_CONE_OF_COLD = 12072 # Wand of Cone of Cold. Price: 24,000, Spell 
 
 # Level 5 Divine Abjuration
 PROTO_WAND_OF_DISPEL_AIR = 12555 # Wand of Dispel Air. Price: 24,000, Spell Level: 5, Spell: 'Dispel Air' class_cleric 5
+PROTO_WAND_OF_DISPEL_CHAOS = 12129 # Wand of Dispel Chaos. Price: 21,000, Spell Level: 5, Spell: 'Dispel Chaos' class_paladin 4
 PROTO_WAND_OF_DISPEL_EARTH = 12556 # Wand of Dispel Earth. Price: 24,000, Spell Level: 5, Spell: 'Dispel Earth' class_cleric 5
+PROTO_WAND_OF_DISPEL_EVIL = 12130 # Wand of Dispel Evil. Price: 21,000, Spell Level: 5, Spell: 'Dispel Evil' class_paladin 4
 PROTO_WAND_OF_DISPEL_FIRE = 12557 # Wand of Dispel Fire. Price: 24,000, Spell Level: 5, Spell: 'Dispel Fire' class_cleric 5
 PROTO_WAND_OF_DISPEL_GOOD = 12131 # Wand of Dispel Good. Price: 24,000, Spell Level: 5, Spell: 'Dispel Good' class_cleric 5
 PROTO_WAND_OF_DISPEL_LAW = 12132 # Wand of Dispel Law. Price: 24,000, Spell Level: 5, Spell: 'Dispel Law' class_cleric 5

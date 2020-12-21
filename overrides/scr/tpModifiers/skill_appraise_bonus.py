@@ -17,6 +17,8 @@ def OnGetSkillLevel(attachee, args, evt_obj):
 	if (not skill_bonus): skill_bonus = 19
 
 	if (skill_bonus):
+		if ("config_set_bool" in dir(tpdp)):
+			if (tpdp.config_get_bool("iszmod")): return 0
 		evt_obj.bonus_list.add(skill_bonus, 12, "RAW")
 	return 0
 
