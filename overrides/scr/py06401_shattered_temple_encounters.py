@@ -1,5 +1,5 @@
 import toee, debug, tpdp, utils_storage, utils_npc_spells, const_toee, utils_tactics, const_proto_weapon, utils_item, const_proto_armor, const_proto_scrolls, ctrl_behaviour
-import const_proto_potions, utils_obj, const_proto_food, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, shattered_consts, const_proto_cloth
+import const_proto_potions, utils_obj, utils_npc, utils_target_list, const_proto_wands, utils_sneak, const_deseases, utils_npc_spells, shattered_consts, const_proto_cloth
 
 shattered_temple_encounters = 6401
 
@@ -49,8 +49,8 @@ class CtrlDoomFistMonk(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		# create inventory
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_MAGE_ARMOR, npc)
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_MAGE_ARMOR, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_LIGHT_WOUNDS, npc)
 		utils_item.item_create_in_inventory(MONK_THROW_WEAPON, npc)
 		npc.item_wield_best_all()
 		#npc.condition_add_with_args("Fighting_Defensively_Monster", 0, 0)
@@ -71,7 +71,7 @@ class CtrlDoomFistMonk(ctrl_behaviour.CtrlBehaviour):
 		return toee.RUN_DEFAULT
 
 	def UsePotion(self, attachee):
-		potion = attachee.item_find_by_proto(const_proto_food.PROTO_POTION_OF_MAGE_ARMOR)
+		potion = attachee.item_find_by_proto(const_proto_potions.PROTO_POTION_OF_MAGE_ARMOR)
 		print("potion: {}".format(potion))
 		if (potion):
 			attachee.use_item(potion)
@@ -89,7 +89,7 @@ class CtrlDoomFistMonk(ctrl_behaviour.CtrlBehaviour):
 		tac = None
 		melees = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_melee()).rescan()
 		dagger = npc.item_find_by_proto(MONK_THROW_WEAPON)
-		healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_LIGHT_WOUNDS)
+		healing_potion = npc.item_find_by_proto(const_proto_potions.PROTO_POTION_OF_CURE_LIGHT_WOUNDS)
 		while (1):
 			if (dagger): 
 				print("dagger option, value_range_is_within_melee: {}".format(melees.aggr.value_range_is_within_melee))
@@ -197,7 +197,7 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 		npc.scripts[const_toee.sn_start_combat] = shattered_temple_encounters
 		npc.scripts[const_toee.sn_enter_combat] = shattered_temple_encounters
 		# create inventory
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_MITHRAL_SHIRT, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_SPIKED_CHAIN_MASTERWORK, npc)
@@ -232,7 +232,7 @@ class CtrlArcaneGuard(ctrl_behaviour.CtrlBehaviour):
 	def create_tactics(self, npc):
 		assert isinstance(npc, toee.PyObjHandle)
 		tac = None
-		healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
+		healing_potion = npc.item_find_by_proto(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
 		primary_weapon = npc.item_worn_at(toee.item_wear_weapon_primary)
 
 		foes = utils_target_list.AITargetList(npc, 1, 0, utils_target_list.AITargetMeasure.by_all()).rescan()
@@ -801,7 +801,7 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 		utils_item.item_create_in_inventory(const_proto_cloth.PROTO_CLOTH_BOOTS_SILVER_PLATE_BOOTS, npc)
 		utils_item.item_create_in_inventory(const_proto_weapon.PROTO_WEAPON_DAGGER_MASTERWORK, npc)
 		utils_item.item_money_create_in_inventory(npc, 100) # pearl of power
-		utils_item.item_create_in_inventory(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
+		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		utils_item.item_create_in_inventory(const_proto_scrolls.PROTO_SCROLL_OF_RESIST_ENERGY, npc, 2)
 		wand = utils_item.item_create_in_inventory(const_proto_wands.PROTO_WAND_OF_SOUND_BURST, npc)
 		if (wand):
@@ -857,7 +857,7 @@ class CtrlLanthurrae(ctrl_behaviour.CtrlBehaviour):
 					tac.add_total_defence()
 					break
 
-				healing_potion = npc.item_find_by_proto(const_proto_food.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
+				healing_potion = npc.item_find_by_proto(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS)
 				if (healing_potion):
 					tac = utils_tactics.TacticsHelper(self.get_name())
 					tac.add_clear_target()

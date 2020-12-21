@@ -215,6 +215,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="overrides\scr\const_proto_list_wands.py" />
+    <Compile Include="overrides\scr\const_proto_list_potions.py" />
     <Compile Include="overrides\scr\const_proto_wondrous.py" />
     <Compile Include="overrides\scr\const_proto_food.py" />
     <Compile Include="overrides\scr\const_animate.py">
