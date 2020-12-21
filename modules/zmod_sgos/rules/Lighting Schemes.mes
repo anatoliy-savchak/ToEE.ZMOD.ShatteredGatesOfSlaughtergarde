@@ -1,0 +1,15 @@
+//
+// Available ambient lighting schemes
+//
+
+//
+// Each message specifies a new ambient lighting scheme.  The text of 
+// the message is the base file name of the scheme message file contained 
+// in the Rules folder.  Message 0 must remain unchanged, and message 1
+// must exist and is the default lighting used if no other lighting scheme
+// is specified.
+//
+
+{0}{<map default>}
+{1}{Lighting Default}
+{2}{Lighting Dungeon}

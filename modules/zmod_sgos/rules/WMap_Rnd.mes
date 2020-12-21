@@ -1,0 +1,331 @@
+WorldMap Random Encounter Info
+
+
+Saved World Width/Length (Used for when world size changes...)
+{100}{0, 0}
+
+Radii are in tiles.  Here are some usefull values:
+   1600  <-- 25  sectors
+   3160  <-- all the way from The Blimp to Shrouded Hills
+   6400  <-- 100 sectors
+  33550  <-- all the way from Shrouded Hills to Tarant
+
+When referencing a chart, the code uses the smallest circle that
+includes the current location.  This gives the effect of smaller
+circles being on top of larger circles.
+
+Frequency Chart
+{10000}{32, 32, 64, 20%}  //Sample
+
+Power Chart -- Easy/Average/Powerful
+{20000}{32, 32, 64, Powerful}  //Sample
+
+Encounter Index Chart starts at 30000
+{30000}{16, 16, 64, 54}
+
+Encounter Tables:
+
+Table Description: Frequency %, Critter Count, Base Proto Num, MinLevel: <value>, MaxLevel: <value>, GlobalFlag: <value>, TriggerCount: <value>
+Note: Frequencies do *NOT* have to add up to 100%, it will roll based on how many it actually gets
+
+(terrain - 1) * (powerMax - 1) * timeOfDayMax +
+(power - 1) * timeOfDayMax +
+timeOfDay
+
+2 * 3 * 9 = 54 terrain based tables
+2 * 3 = 6 tables per terrain
+
+{49999}{2}  // # of Distinct Encounter Tables
+
+Lush Grasslands
+  Table 0 Grasslands Day Easy
+{50000}{80%, First: 28427, 1-4}  // Lesser Boar
+{50001}{30%, First: 28428, 1}	Greater Boar
+
+  
+  Table 1 Grasslands Night Easy
+{50100}{50%, First: 28428, 1-2}  // Greater Boar
+{50101}{10%, First: 28421, 1}  // Lycanthrope
+
+  Table 2 Grasslands Day Average
+{50200}{50%, First: 28428, 1-2}  // Greater Boar
+{50201}{50%, First: 28355, 2-4}  // Putrid Rodent
+{50202}{15%, First: 27323, 1-3}  //Dragaron
+
+  Table 3 Grasslands Night Average
+{50300}{50%, First: 28429, 1-2}  // Feral Boar
+{50301}{20%, First: 28342, 1}	//Venom Hound
+{50302}{30%, First: 28355, 3-6}  // Putrid Rodent
+{50303}{20%, First: 28421, 1}  // Lycanthrope
+
+  Table 4 Grasslands Day Powerful
+{50400}{2%, First: 28360, 1}  // Vorpal Bunny
+{50401}{30%, First: 28355, 3-6}  // Putrid Rodent
+{50402}{50%, First: 28342, 1, Second: 28340, 2-3}	//Venom Hound + Timber Wolves
+{50403}{30%, First: 27321, 1-3, Second: 27322, 1}  //Wyverns
+
+  Table 5 Grasslands Night Powerful
+{50500}{50%, First: 28355, 3-6}  // Putrid Rodent
+{50501}{50%, First: 28342, 1, Second: 28340, 3-5}	//Venom Hound + Timber Wolves
+{50502}{30%, First: 27322, 1-3}  // Greater Wyvern
+{50503}{30%, First: 28422, 1, Second: 28340, 1-4}  // Howler + Wolves
+
+Plains
+  Table 6 Plains Day Easy
+{50600}{50%, First: 28339, 1-2}  // Ailing Wolf
+{50601}{50%, First: 28345, 1-2} // Lesser Spider
+{50602}{30%, First: 28346, 1-2} // Prodigious Vermin
+{50603}{50%, First: 28332, 1-2}  // Cougar
+
+  Table 7 Plains Night Easy
+{50700}{50%, First: 28339, 1-3}  // Ailing Wolf
+{50701}{50%, First: 28345, 1-3} // Lesser Spider
+{50702}{20%, First: 28346, 1} // Greater Spider
+{50703}{10%, First: 28327, 1} // Were Rat
+
+  Table 8 Plains Day Average
+{50800}{50%, First: 28456, 1}  // Mountain Lion
+{50801}{50%, First: 28346, 1-5} // Prodigious Vermin
+{50802}{20%, First: 28356, 1-3} // Rock-Rat
+
+  Table 9 Plains Night Average
+{50900}{50%, First: 28339, 1-2}  // Ailing Wolf
+{50901}{20%, First: 28327, 1-3} // Were Rat
+{50902}{10%, First: 28352, 1-2} // Widower
+
+  Table 10 Plains Day Powerful
+{51000}{50%, First: 28339, 2-3}  // Ailing Wolf
+{51001}{20%, First: 28356, 1-5, Second: 28357, 1} // Rock-Rat + Granite-Rat
+{51002}{50%, First: 28456, 1-3}  // Mountain Lions
+
+//Mysterious Apparition
+{51003}{2000%, First: 27366, 1, GlobalFlag: 2701}
+
+  Table 11 Plains Night Powerful
+{51100}{50%, First: 28339, 3-5}  // Ailing Wolfs
+{51101}{20%, First: 28327, 2-5} // Were Rat
+{50102}{20%, First: 28352, 2-4} // Widower
+
+Swamps
+  Table 12 Swamps Easy Day
+{51200}{50%, First: 28373, 1-2}  // Slither Guard
+
+  Table 13 Swamps Easy Night
+{51300}{5%, First: 28379, 1}  // Slime Deamon
+{51301}{5%, First: 28367, 1-2}  // Muck Walker
+
+  Table 14 Swamps Average Day
+{51400}{50%, First: 28373, 1-4}  // Slither Guard
+{51401}{20%, First: 28373, 1-2, Second: 28374, 1}  // Slither Guard + Snake Menace
+{51402}{10%, First: 28394, 1}  // Swamp Ape
+
+  Table 15 Swamps Average Night
+{51500}{50%, First: 28379, 1}  // Slime Deamon
+{51501}{50%, First: 28367, 1-2}  // Muck Walker
+
+  Table 16 Swamps Powerful Day
+{51600}{50%, First: 28373, 2-4}  // Slither Guard
+{51601}{20%, First: 28373, 2, Second: 28375, 1}  // Slither Guard + Elemental Snake
+{51602}{50%, First: 28394, 1-2}  // Swamp Ape
+
+  Table 17 Swamps Powerful Night
+{51700}{50%, First: 28379, 1}  // Slime Deamon
+{51701}{50%, First: 28367, 2-4}  // Muck Walker
+
+Elven Forest
+  Table 18 Elven Forest Easy Day
+{51800}{50%, First: 27337, 1-2}  // Kites
+{51801}{1%, First: 27328, 1}  // Lesser Gowrath
+{51802}{15%, First: 28452, 1}  // Willowisp
+{51803}{10%, First: 28452, 2, Second: 28453, 1}  // Willowisp and volar's
+
+  Table 19 Elven Forest Easy Night
+{51900}{50%, First: 27337, 1-2, Second: 27338, 1-2}  // Kites
+{51901}{1%, First: 28454, 1}  // Death Lantern
+{51902}{10%, First: 28452, 1}  // Willowisp
+
+  Table 20 Elven Forest Average Day
+{52000}{20%, First: 27328, 1-2, Second: 27329, 1}  // Lesser Gowrath
+{52001}{10%, First: 28452, 1-2, Second: 28453, 1}  // Willowisp
+{52002}{20%, First: 27324, 1-2}  // Phage Dragaron
+
+  Table 21 Elven Forest Average Night
+{52100}{50%, First: 27337, 1-3, Second: 27338, 1-3}  // Kites
+{52101}{10%, First: 28454, 1}  // Death Lantern
+{52102}{10%, First: 28452, 2, Second: 28453, 1}  // Willowisp
+
+  Table 22 Elven Forest Powerful Day
+{52200}{1%, First: 27365, 1}  // Lethe Wyvern
+{52201}{20%, First: 27328, 2-4, Second: 27329, 1-2}  // Lesser Gowrath
+{52202}{10%, First: 28452, 2, Second: 28453, 1}  // Willowisp and volar's
+{52203}{50%, First: 27324, 1, Second: 27334, 1-2}  // Phage Dragaron + Hell Beast
+
+  Table 23 Elven Forest Powerful Night
+{52300}{50%, First: 27337, 1-4, Second: 27338, 1-4, Third: 27339, 1}  // Kites
+{52301}{20%, First: 28454, 1-2}  // Death Lantern
+{52302}{40%, First: 28452, 1-4, Second: 28453, 1}  // Willowisp
+
+Jungle
+    Table 24 Jungle Easy Day
+{52400}{50%, First: 28388, 1-2}  // Monkey
+{52401}{10%, First: 28393, 1}  // Greater Gorilla
+{52402}{50%, First: 27341, 1-2}  // Lesser Krag
+
+  Table 25 Jungle Easy Night
+{52500}{50%, First: 28334, 1-2}  // Tiger
+
+  Table 26 Jungle Average Day
+{52600}{50%, First: 28389, 1, Second: 28388, 1-2}  // Leprous Monkey + Monkey
+{52501}{50%, First: 28390, 4-8}  // Monkey Swarmers
+{52502}{50%, First: 28393, 1}  // Greater Gorilla
+{52503}{5%, First: 28395, 1}  // Skullcrusher
+{52504}{50%, First: 27341, 2-3: Second: 27342, 1-2}  // Lesser Krag+Warrior
+
+  Table 27 Jungle Average Night
+{52700}{50%, First: 28334, 1-2}  // Great Tiger
+{52701}{20%, First: 27333, 1-2}  // Fever Beast
+{52702}{50%, First: 28389, 1-3}  // Leprous Monkey 
+
+  Table 28 Jungle Powerful Day
+{52800}{50%, First: 28393, 2-3, Second: 28395, 1}  // Greater Gorilla + Skullcrusher
+{52801}{50%, First: 28390, 4-8, Second: 28392, 1}  // Monkey Swarmers+Apish Shaman
+{52802}{50%, First: 27331, 1, Second: 28393, 2}  // Wargun+Gorilla
+{52803}{60%, First: 28390, 4-8}  // Monkey Swarmers
+{52804}{50%, First: 27341, 2-3, Second: 27342, 2-3, Third: 27343, 1}  // Lesser Krag+Warrior+Chief
+{52805}{50%, First: 27341, 1-3, Second: 27342, 1-3, Third: 27343, 1, Fourth: 27344, 1}  // Lesser Krag+Warrior+Chief+Shaman
+
+  Table 29 Jungle Powerful Night
+{52900}{50%, First: 27333, 1-2, Second: 28389,2-4}  // Fever Beast+Leprous Monkey 
+{52901}{50%, First: 27331, 1, Second: 28393, 2, Third: 28389, 2-4}  // Wargun+Gorilla+LepMonk
+
+Desert
+    Table 30 Desert Day Easy
+{53000}{50%, First: 28320, 1}  // Spider
+{53001}{50%, First: 28345, 1-3}  // Lesser Spider
+{53002}{20%, First: 28417, 1}  // Arachnix
+//Putrid Husk
+
+  Table 31 Desert Night Easy
+{53100}{50%, First: 28346, 1}  // Greater Spider
+{53101}{50%, First: 28345, 2-3}  // Lesser Spider
+
+  Table 32 Desert Day Average
+{53200}{50%, First: 28346, 1-2}  // Greater Spider
+{53201}{50%, First: 28320, 1, Second: 28345, 2-4}  // Spider+Lesser
+{53202}{50%, First: 28417, 1-2}  // Arachnix
+//Putrid Husk
+{53203}{50%, First: 28419, 1-2}  // InsectressHuntress
+
+  Table 33 Desert Night Average
+{53300}{50%, First: 28350, 1}  // Dread Spider
+{53301}{50%, First: 28346, 1, Second: 28345, 2-4}  // Greater Spider
+
+  Table 34 Desert Day Powerful
+{53400}{50%, First: 28346, 1-2, Second: 28345, 2-6}  // Greater Spider
+{53401}{50%, First: 28350, 1, Second: 28320, 1-3}  // Dread Spider
+{53402}{20%, First: 28350, 1-2}  // Dread Spider+husks
+{53403}{50%, First: 28419, 1-2, Second: 28345, 3-6}  // Insectress Hunter
+{53404}{50%, First: 28420, 1, Second: 28417, 2-3}  // PlagMadeArach
+
+  Table 35 Desert Night Powerful
+{53500}{50%, First: 28350, 1, Second: 28320, 1-3}  // Dread Spider+Husks
+{53501}{50%, First: 28346, 1-2, Second: 28345, 2-6}  // Greater Spider
+{53502}{20%, First: 28350, 1-2}  // Dread Spider
+
+Forest
+    Table 36 Forest Easy Day
+{53600}{50%, First: 28399, 1}  // Black Bear
+{53601}{20%, First: 27336, 1-2}  // Lesser Kite
+{53602}{60%, First: 28339, 1-2}  // Ailing Wolves
+{53603}{5%, First: 28339, 1-2, Second: 28319, 1}  // Ailing Wolves+Wolves
+
+  Table 37 Forest Easy Night
+{53700}{50%, First: 27336, 1-2}  // Lesser Kite
+{53701}{5%, First: 27340, 1}  // Kite Berserker
+{53702}{60%, First: 28339, 1-2, Second: 28319, 1}  // Ailing Wolves+Wolves
+{53703}{5%, First: 28319, 2-4}  // Wolves
+
+  Table 38 Forest Average Day
+{53800}{50%, First: 28330, 1}  // Grizzly Bear
+{53801}{50%, First: 28399, 1, Second: 28403, 1-3}  // Black Bear+Cubs
+{53802}{60%, First: 28319, 2-4}  // Wolves
+{53803}{5%, First: 28319, 1-4, Second: 28340, 1-2}  // Wolves + Timber Wolves
+
+  Table 39 Forest Average Night
+{53900}{50%, First: 27336, 1-3, Second: 27338, 1-2}  // Lesser Kite+Warrior
+{53901}{50%, First: 27340, 2}  // Kite Berserker
+{53902}{60%, First: 28319, 1-4, Second: 28340, 1-2}  // Wolves + Timber Wolves
+{53903}{5%, First: 28340, 2-4}  // Timber Wolves
+
+  Table 40 Forest Powerful Day
+{54000}{50%, First: 28397, 1-2}  // Golden Bear
+{54001}{50%, First: 28330, 1-2, Second: 28401, 1-3}  // Grizzly Bear+Cubs
+{54002}{50%, First: 28399, 2-3, Second: 28404, 1}  // Black Bears+Ancient Bear
+{54003}{20%, First: 28340, 2-4}  // Timber Wolves
+{54004}{20%, First: 28319, 1-4, Second: 28343, 1}  // Wolves+Patriarch
+{54005}{20%, First: 28339, 2-4, Second: 28344, 1}  // Ailing Wolves+BruteFang
+
+  Table 41 Forest Powerful Night
+{54100}{50%, First: 27337, 1-4, Second: 27338, 1-3}  // Kite Warrior+Bowmen
+{54101}{50%, First: 27337, 1-3, Second: 27338, 2-3, Third: 27339, 1}  // Kite Warrior+Chief+Shaman
+{54102}{50%, First: 27340, 3-6}  // Kite Berserker
+{54103}{20%, First: 28340, 3-6}  // Timber Wolves
+
+Snowy Plains
+  Table 42 Snowy Plains Easy Day
+{54200}{50%, First: 28339, 1-2}  // Ailing Wolf
+{54201}{5%, First: 28339, 1-2, Second: 28319, 1}  // Ailing Wolves+Wolves
+{54202}{30%, First: 28399, 1}  // Black Bear
+
+  Table 43 Snowy Plains Easy Night
+{54300}{20%, First: 28319, 1}  // Wolf
+{54301}{50%, First: 28339, 1-2}  // Ailing Wolf
+
+  Table 44 Snowy Plains Average Day
+{54400}{50%, First: 28339, 1-2}  // Ailing Wolf
+{54401}{60%, First: 28319, 2-4}  // Wolves
+{54402}{5%, First: 28319, 1-4, Second: 28340, 1-2}  // Wolves + Timber Wolves
+{54403}{50%, First: 28398, 1}  // Polar Bear
+
+  Table 45 Snowy Plains Average Night
+{54500}{50%, First: 28339, 1-2}  // Ailing Wolf
+{54501}{20%, First: 28319, 1-4, Second: 28340, 1-2}  // Wolves + Timber Wolves
+
+  Table 46 Snowy Plains Powerful Day
+{54600}{50%, First: 28339, 1-2}  // Ailing Wolf
+{54601}{50%, First: 28398, 2-3}  // Polar Bear
+{54602}{20%, First: 28340, 2-4}  // Timber Wolves
+{54603}{20%, First: 28319, 1-4, Second: 28341, 1}  // Wolves+ShiverBit
+{54604}{20%, First: 28339, 2-4, Second: 28344, 1}  // Ailing Wolves+BruteFang
+
+  Table 47 Snowy Plains Powerful Night
+{54700}{50%, First: 28339, 1-2}  // Ailing Wolf
+{54701}{20%, First: 28340, 2-4}  // Timber Wolves
+{54702}{20%, First: 28339, 2-4, Second: 28344, 1}  // Ailing Wolves+BruteFang
+
+Unused
+  Table 48 Easy Day
+{54800}{50%, First: 28339, 1-2}
+
+  Table 49 Easy Night
+{54900}{50%, First: 28339, 1-2}
+
+  Table 50 Average Day
+{55000}{50%, First: 28339, 1-2}
+
+  Table 51 Average Night
+{55100}{50%, First: 28339, 1-2}
+
+  Table 52 Powerful Day
+{55200}{50%, First: 28339, 1-2}
+
+  Table 53 Powerful Night
+{55300}{50%, First: 28339, 1-2}
+
+
+Start of User-Defined Tables:
+Remember to adjust the number of Distinct Encounter Tables at line 49999
+whenever you add a new table.
+
+  Table 54 // Sample
+{55400}{50%, First: 28339, 1, TriggerCount: 1}
