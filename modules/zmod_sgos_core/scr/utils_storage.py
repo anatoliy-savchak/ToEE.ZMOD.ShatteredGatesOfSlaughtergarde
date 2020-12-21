@@ -1,4 +1,4 @@
-import toee, json, os, sys, inspect, imp, traceback, debug
+import toee, json, os, sys, inspect, imp, traceback, debug, tpdp
 
 def obj_storage(obj):
 	assert isinstance(obj, toee.PyObjHandle)
@@ -8,11 +8,33 @@ def obj_storage_by_id(id):
 	assert isinstance(obj, toee.PyObjHandle)
 	return Storage.getObjectStorageByName(id)
 
+def obj_storage_by_alias(alias):
+	assert isinstance(obj, toee.PyObjHandle)
+	return Storage.getObjectStorageByAlias(alias)
+
+def ca(alias):
+	assert isinstance(obj, toee.PyObjHandle)
+	o = Storage.getObjectStorageByAlias(alias)
+	if (o):
+		for c in o.data.itervalues():
+			if (c): return c
+	return
+
+def cn(obj):
+	assert isinstance(obj, toee.PyObjHandle)
+	o = Storage.getObjectStorageByName(obj.id)
+	if (o):
+		for c in o.data.itervalues():
+			if (c): return c
+	return
+
 class ObjectStorage(object):
+
 	def __init__(self, aname):
 		self.name = aname
 		self.data = dict()
 		self.origin = None
+		self.alias = None
 		return
 
 	def get_data(self, name):
@@ -44,11 +66,20 @@ class Storage(object):
 	_objs = dict()
 
 	@staticmethod
+	def get_default_module():
+		result = tpdp.config_get_string("defaultmodule")
+		if (not result):
+			return "zmod_sgos"
+		return result
+
+	@staticmethod
 	def save(savegame):
 		#breakp("Storage.save({})".format(savegame))
 		try:
-			saveDirBase = "modules\\ToEE\\save\\"
+			saveDirBase = "modules\\{}\\save\\".format(Storage.get_default_module())
+			saveDirName = "d" + savegame
 			saveDirName = "d" + savegame + "\\storage"
+			#saveDirName = "\\Current\\dSlot"
 			saveDir = saveDirBase + saveDirName
 			#print(saveDir)
 			if (not os.path.exists(saveDir)):
@@ -60,21 +91,30 @@ class Storage(object):
 
 			Storage.saveObjects(saveDir)
 		except :
-			print "Storage.save error:", sys.exc_info()[0]
-		#breakp("Storage.save end({})".format(savegame))
+			print "!!!!!!!!!!!!! Storage.save error:"
+			print '-'*60
+			traceback.print_exc(file=sys.stdout)
+			print '-'*60		
+			print("saveDir: {}".format(saveDir))
+			debug.breakp("error")
 		return
 
 	@staticmethod
 	def load(savegame):
 		#breakp("Storage.load({})".format(savegame))
-		saveDirBase = "modules\\ToEE\\save\\"
+		saveDirBase = "modules\\{}\\save\\".format(Storage.get_default_module())
+		saveDirName = "d" + savegame
 		saveDirName = "d" + savegame + "\\storage"
+		#saveDirName = "\\Current\\dSlot"
 		saveDir = saveDirBase + saveDirName
 		ss = Storage()
 		oo = ss.objs
 		oo.clear()
 		if (os.path.exists(saveDir)):
 			Storage.loadObjects(saveDir)
+		else: 
+			print("Storage failed to locate dir: {}".format(saveDir))
+			#debug.breakp("")
 		return
 
 	@staticmethod
@@ -121,6 +161,15 @@ class Storage(object):
 		objStorage = ObjectStorage(name)
 		oo[name] = objStorage
 		return objStorage
+
+	@staticmethod
+	def getObjectStorageByAlias(alias):
+		ss = Storage()
+		oo = ss.objs
+		for o in oo.itervalues():
+			if ("alias" in dir(o)):
+				if (o.alias == alias): return o
+		return
 
 	@staticmethod
 	def saveObjects(dirname):
@@ -214,12 +263,12 @@ class Storage(object):
 				return None
 			return ostorage
 		except Exception, e:
-			print "loadObjectStorage error:"
+			print("loadObjectStorage error, dir: {}. file: {}".format(dirname, fileName))
 			print '-'*60
-			f.close()
 			traceback.print_exc(file=sys.stdout)
 			print '-'*60		
 			debug.breakp("error")
+			f.close()
 		return
 
 	@staticmethod
@@ -272,9 +321,10 @@ class Storage(object):
 			#	print("{} : {}".format(key, propval[key]))
 
 			isofclass = None
+			isofmodule = None
+			mod_object = None
 			if ("_isofclass" in propval):
 				isofclass = propval[u'_isofclass']
-			isofmodule = None
 			if ("_isofmodule" in propval):
 				isofmodule = propval[u'_isofmodule']
 
@@ -306,8 +356,8 @@ class Storage(object):
 		except Exception, e:
 			print "!!!!!!!!!!!!! make_instance_from_dic error:"
 			print '-'*60
-			print("mod_class: {}, isofclass: {}, mod_object: {}, ".format(mod_class, isofclass, mod_object))
 			traceback.print_exc(file=sys.stdout)
+			print("mod_class: {}, isofclass: {}, mod_object: {}, ".format(mod_class, isofclass, mod_object))
 			print '-'*60		
 			debug.breakp("error")
 		return result
