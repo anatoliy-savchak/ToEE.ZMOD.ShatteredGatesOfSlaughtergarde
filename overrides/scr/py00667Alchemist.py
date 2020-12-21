@@ -1,6 +1,7 @@
 from toee import *
 from utilities import *
 from scripts import *
+import utils_item, const_proto_list_potions
 
 def san_dialog( attachee, triggerer ):
 	attachee.turn_towards(triggerer)

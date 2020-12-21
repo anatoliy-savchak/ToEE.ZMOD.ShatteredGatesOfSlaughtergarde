@@ -77,6 +77,7 @@
     <Content Include="overrides\dlg\00655Scrolls.dlg" />
     <Content Include="overrides\dlg\00657Garments.dlg" />
     <Content Include="overrides\dlg\00661Armour.dlg" />
+    <Content Include="overrides\dlg\00667Alchemist.dlg" />
     <Content Include="overrides\dlg\00674Cloaks.dlg" />
     <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
     <Content Include="overrides\dlg\00678CaptArmin.dlg" />
@@ -271,6 +272,7 @@
     <Compile Include="overrides\scr\py00653Weapons.py" />
     <Compile Include="overrides\scr\py00655Scrolls.py" />
     <Compile Include="overrides\scr\py00661Armour.py" />
+    <Compile Include="overrides\scr\py00667Alchemist.py" />
     <Compile Include="overrides\scr\py00674Cloaks.py" />
     <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
     <Compile Include="overrides\scr\py00678CaptArmin.py" />
