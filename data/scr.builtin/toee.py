@@ -524,6 +524,10 @@ class PyObjHandle(object):
 	def spells_pending_to_memorized():
 		return
 
+	def standpoint_set(self, standpoint_type, jump_point_id):
+		"""npc.standpoint_set(int[STANDPOINT_DAY...]: standpoint_type, int: jump_point_id) -> None"""
+		return
+
 	def stat_base_set(self, stat, value):
 		"""Sets specific stat. npc.stat_base_set(int[stat_strength-stat_psi_points_cur]: stat, int: value) -> int"""
 		return
@@ -4433,3 +4437,7 @@ Pattern = 9
 Phantasm = 10
 Shadow = 11
 Scrying = 12
+
+STANDPOINT_DAY = 0
+STANDPOINT_NIGHT = 1
+STANDPOINT_SCOUT = 2

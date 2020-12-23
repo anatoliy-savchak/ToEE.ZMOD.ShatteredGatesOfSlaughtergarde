@@ -148,6 +148,7 @@
     <Content Include="modules\zmod_sgos_core\rules\indicators\surprise_round2.txt" />
     <Content Include="modules\zmod_sgos_core\rules\indicators\surprised2.txt" />
     <Content Include="modules\zmod_sgos_core\rules\indicators\lodged_quills.txt" />
+    <Content Include="modules\zmod_sgos_core\rules\jumppoint.tab" />
     <Content Include="modules\zmod_sgos_core\rules\MapLimits.mes" />
     <Content Include="modules\zmod_sgos_core\rules\protos_save.tab" />
     <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
@@ -342,6 +343,7 @@
     <Compile Include="modules\zmod_sgos_core\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="modules\zmod_sgos_core\scr\Spell055 - Charm Monster.py" />
     <Compile Include="modules\zmod_sgos_core\scr\Spell076 - Contagion.py" />
     <Compile Include="modules\zmod_sgos_core\scr\Spell090 - Cure Light Wounds.py" />
     <Compile Include="modules\zmod_sgos_core\scr\Spell096 - Darkness.py" />

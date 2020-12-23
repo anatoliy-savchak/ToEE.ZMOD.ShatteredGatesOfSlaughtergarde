@@ -1,10 +1,15 @@
 from toee import *
 from utilities import *
 from scripts import *
-import utils_npc, shattered_consts
+import utils_npc, shattered_consts, const_toee
 
 def san_dialog( attachee, triggerer ):
+	assert isinstance(attachee, PyObjHandle)
 	attachee.turn_towards(triggerer)
+	attachee.npc_flag_set(ONF_NO_ATTACK)
+	attachee.critter_flag_unset(OCF_SURRENDERED)
+	attachee.scripts[const_toee.sn_will_kos] = 681
+
 	if not attachee.has_met( triggerer ):
 		triggerer.begin_dialog( attachee, 1 )
 		return SKIP_DEFAULT
@@ -25,6 +30,10 @@ def san_dialog( attachee, triggerer ):
 			triggerer.begin_dialog( attachee, 600 )
 			return SKIP_DEFAULT
 	return SKIP_DEFAULT
+
+def san_will_kos(attachee, triggerer):
+	print("san_will_kos = 0: {}, {}".format(attachee, triggerer))
+	return 0
 
 def san_first_heartbeat( attachee, triggerer ):
 	return RUN_DEFAULT
@@ -183,4 +192,15 @@ def destroy_it_all():
 		if (gate.name == 2006):
 			game.particles( 'sp-Fireball-Hit', gate )
 			game.timevent_add(gate.destroy, (), 2000 )
+	return
+
+def go_gate(npc):
+	assert isinstance(npc, PyObjHandle)
+	npc.standpoint_set(STANDPOINT_DAY, 887)
+	npc.standpoint_set(STANDPOINT_NIGHT, 887)
+	#npc.move(location_from_axis(450, 443))
+	#npc.faction_add(1)
+	for obj in game.obj_list_vicinity(location_from_axis(422, 444), OLC_NPC):
+		print("clearing obj_f_npc_combat_focus for: {}".format(obj))
+		obj.obj_set_obj(obj_f_npc_combat_focus, OBJ_HANDLE_NULL)
 	return

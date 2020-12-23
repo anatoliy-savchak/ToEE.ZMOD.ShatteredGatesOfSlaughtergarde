@@ -255,7 +255,7 @@ class CtrlDaemon(object):
 			npc.critter_kill_by_effect(killer)
 		return
 
-	def kill_enemy_by_encounter(self, encounter_code):
+	def kill_enemy_by_encounter(self, encounter_code, do_autosell = 1):
 		sm = 0.0
 		killer = toee.game.leader
 		for info in self.m2:
@@ -269,31 +269,32 @@ class CtrlDaemon(object):
 				sm = utils_item.acquire_sell_modifier_once()
 			print("Killing {}, {}".format(info.name, npc))
 
-			items = utils_item.items_get(npc, 1)
-			if (items):
-				recieve_items = list()
-				i = len(items)
-				while i > 0:
-					i -= 1
-					item = items[i]
-					assert isinstance(item, toee.PyObjHandle)
-					if (not item.type in [toee.obj_t_weapon, toee.obj_t_ammo, toee.obj_t_armor, toee.obj_t_money, toee.obj_t_food]): 
-						recieve_items.append(item)
-						continue
-					item_flags = item.item_flags_get()
-					if (item_flags & toee.OIF_IS_MAGICAL):
-						recieve_items.append(item)
-
-				for item in recieve_items:
-					items.remove(item)
-					if (not killer.item_get(item)):
-						for npc in toee.game.party:
-							if (npc != killer):
-								if (killer.item_get(item)):
-									break
-
+			if (do_autosell):
+				items = utils_item.items_get(npc, 1)
 				if (items):
-					utils_item.autosell(sm, items)
+					recieve_items = list()
+					i = len(items)
+					while i > 0:
+						i -= 1
+						item = items[i]
+						assert isinstance(item, toee.PyObjHandle)
+						if (not item.type in [toee.obj_t_weapon, toee.obj_t_ammo, toee.obj_t_armor, toee.obj_t_money, toee.obj_t_food]): 
+							recieve_items.append(item)
+							continue
+						item_flags = item.item_flags_get()
+						if (item_flags & toee.OIF_IS_MAGICAL):
+							recieve_items.append(item)
+
+					for item in recieve_items:
+						items.remove(item)
+						if (not killer.item_get(item)):
+							for npc in toee.game.party:
+								if (npc != killer):
+									if (killer.item_get(item)):
+										break
+
+					if (items):
+						utils_item.autosell(sm, items)
 
 			npc.critter_kill_by_effect(killer)
 		return

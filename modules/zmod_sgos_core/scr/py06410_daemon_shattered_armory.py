@@ -760,7 +760,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			self.create_promter_at(utils_obj.sec2loc(420, 445), self.get_dialogid_default(), 200, 20, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "The Warchief", const_toee.rotation_0700_oclock)
 
 		if (self.skip_delayed(delayed, 0)): return
-		
+
 		self.create_npc_at(utils_obj.sec2loc(412, 444), py06411_shattered_armory_encounters.CtrlGnollWarchief, const_toee.rotation_0800_oclock, "a20", "warchief")
 		self.create_npc_at(utils_obj.sec2loc(423, 438), py06411_shattered_armory_encounters.CtrlGnollHezrou, const_toee.rotation_0500_oclock, "a20", "hezrou")
 		return
@@ -855,6 +855,7 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 
 		if (attachee and attachee.proto == py06411_shattered_armory_encounters.CtrlGnollWarchief.get_proto_id()):
 			toee.game.global_flags[shattered_consts.GLOBAL_FLAG_WARCHIEF_KILLED] = 1
+			attachee.obj_set_obj(toee.obj_f_npc_combat_focus, toee.OBJ_HANDLE_NULL)
 
 		self.check_sleep_status_update(1)
 		return

@@ -517,7 +517,10 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_t17(self):
-		self.create_promter_at(utils_obj.sec2loc(512, 466), 6400, 170, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Living Pictures")
+		p1 = self.create_promter_at(utils_obj.sec2loc(512, 466), 6400, 170, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Living Pictures", const_toee.rotation_1100_oclock)
+		p2 = self.create_promter_at(utils_obj.sec2loc(512, 479), 6400, 170, 5, py06122_cormyr_prompter.PROMTER_DIALOG_METHOD_DIALOG, "Living Pictures", const_toee.rotation_0500_oclock)
+		p1.obj_set_obj(toee.obj_f_last_hit_by, p2)
+		p2.obj_set_obj(toee.obj_f_last_hit_by, p1)
 
 		self.create_npc_at(utils_obj.sec2loc(517, 469), py06401_shattered_temple_encounters.CtrlWight, const_toee.rotation_0000_oclock, "t17", "wight")
 		return

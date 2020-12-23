@@ -1279,6 +1279,9 @@ class CtrlGnollWarchief(ctrl_behaviour.CtrlBehaviour):
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_CHAINMAIL_MITHRAL_PLUS_1, npc)
 		utils_item.item_create_in_inventory(const_proto_items.PROTO_WONDROUS_GAUNTLETS_OF_OGRE_POWER, npc)
 		npc.item_wield_best_all()
+
+		print("CtrlGnollWarchief:: adding tome...")
+		utils_item.item_create_in_inventory(12882, npc) # tome
 		return
 
 class CtrlGnollHezrou(ctrl_behaviour.CtrlBehaviour):

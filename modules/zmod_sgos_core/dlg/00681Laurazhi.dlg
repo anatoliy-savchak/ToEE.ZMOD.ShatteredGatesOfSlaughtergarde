@@ -184,9 +184,10 @@ PC is obviously a cleric or paladin of a good deity (- 2); a PC is obviously a c
 
 {655}{That is my belief, based on my research, and indeed it is the reason I risked life and limb and came here. I truly believe the power we shall discover will be worth it. But first we must place the sigils and ark, please do so and we can begin.}{That is my belief, based on my research, and indeed it is the reason I risked life and limb and came here. I truly believe the power we shall discover will be worth it. But first we must place the sigils and ark, please do so and we can begin.}{}{}{}{}
 {656}{Wait a minute, you just want to go home!}{}{1}{game.global_flags[18] == 1}{695}{}
-{657}{[Start the process.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
-{658}{You're lying, I can feel it in my bones! What are you really up to?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{695}{}
-{659}{I have to think about this.}{}{1}{}{0}{game.global_flags[19] = 1}
+{657}{[Start the process.]}{}{1}{npc.distance_to(location_from_axis(423, 434)) <= 40}{700}{party_transfer_to( npc, 12882 )}
+{658}{Meet me near the gate.}{}{1}{npc.distance_to(location_from_axis(423, 434)) > 40}{0}{go_gate(npc)}
+{659}{You're lying, I can feel it in my bones! What are you really up to?}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 19)}{695}{}
+{660}{I have to think about this.}{}{1}{}{0}{game.global_flags[19] = 1}
 
 {660}{Excellent. Now, do you have the ark and sigil? They will power the gate, and the Tome will operate it.}{Excellent. Now, do you have the ark and sigil? They will power the gate, and the Tome will operate it.}{}{}{}{}
 {661}{Yes, I have them.}{}{1}{anyone( pc.group_list(), "has_item", 12883) and anyone( pc.group_list(), "has_item", 12881)}{680}{}
@@ -209,14 +210,16 @@ PC is obviously a cleric or paladin of a good deity (- 2); a PC is obviously a c
 {681}{Wait wait wait... what ritual?}{}{1}{}{685}{}
 
 {685}{Do not be scared. It is a simple intonation that activates each of the sigils in turn [she points at the 4 sigils around the gate and the spot for the missing 5th that you carry.] It can be used to open or seal the gate.}{Do not be scared. It is a simple intonation that activates each of the sigils in turn [she points at the 4 sigils around the gate and the spot for the missing 5th that you carry.] It can be used to open or seal the gate.}{}{}{}{}
-{686}{[Start the ritual.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
-{687}{So we can seal the gate that way, prevent anyone using it?}{}{1}{}{690}{}
-{688}{What about using the power of the gate for other means? It is a great force of magical energy, surely it can serve in other ways than just a gate?}{}{1}{}{655}{}
+{686}{[Start the ritual.]}{}{1}{npc.distance_to(location_from_axis(423, 434)) <= 40}{700}{party_transfer_to( npc, 12882 )}
+{687}{Meet me near the gate.}{}{1}{npc.distance_to(location_from_axis(423, 434)) > 40}{0}{go_gate(npc)}
+{688}{So we can seal the gate that way, prevent anyone using it?}{}{1}{}{690}{}
+{689}{What about using the power of the gate for other means? It is a great force of magical energy, surely it can serve in other ways than just a gate?}{}{1}{}{655}{}
 
 {690}{Yes, of course. Come, let us put an end to this threat. Place the ark and sigils and I will intone the spell.}{Yes, of course. Come, let us put an end to this threat. Place the ark and sigils and I will intone the spell.}{}{}{}{}
-{691}{[Do so.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
-{692}{Don't rush me! Let me consider this.}{}{1}{}{0}{game.global_flags[19] = 1}
-{693}{No, you've been talking about using the gate all this time, now I am meant to believe you will just throw that power away? You're lying!}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 17)}{695}{}	// dc -2 as she is contradicting herself	
+{691}{[Do so.]}{}{1}{npc.distance_to(location_from_axis(423, 434)) <= 40}{700}{party_transfer_to( npc, 12882 )}
+{692}{Meet me near the gate.}{}{1}{npc.distance_to(location_from_axis(423, 434)) > 40}{0}{go_gate(npc)}
+{693}{Don't rush me! Let me consider this.}{}{1}{}{0}{game.global_flags[19] = 1}
+{694}{No, you've been talking about using the gate all this time, now I am meant to believe you will just throw that power away? You're lying!}{}{1}{pc.skill_level_get(npc, skill_sense_motive) >= 6 and sense( npc, pc, 17)}{695}{}	// dc -2 as she is contradicting herself	
 
 {695}{I wish to use the power of the gate to return to my home, but I can seal it from the other side, and I will. I never intended anything other than to keep my word. I will make any promise, swear any oath, perform any service... [she runs her lightly hand over your chest] to convince you.}{I wish to use the power of the gate to return to my home, but I can seal it from the other side, and I will. I never intended anything other than to keep my word. I will make any promise, swear any oath, do whatever it takes to convince you.}{}{}{}{}
 {696}{[Carry on as she says and seal the gate.]}{}{1}{}{700}{party_transfer_to( npc, 12882 )}
@@ -248,10 +251,11 @@ PC is obviously a cleric or paladin of a good deity (- 2); a PC is obviously a c
 // game.global_flag[19] - party have killed Gashkarr but refused to go along with her
 
 {800}{Have you reconsidered? We waste time tarrying here, and undead spawn in the Slaughtergarde all the time.}{Have you reconsidered? We waste time tarrying here, and undead spawn in the Slaughtergarde all the time.}{}{}{}{}
-{801}{Let's do this thing.}{}{1}{}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
-{802}{Tell me one more time, what do you plan to achieve?}{}{1}{game.global_flags[18] == 0}{810}{}
-{803}{Tell me one more time, what do you plan to achieve?}{}{1}{game.global_flags[18] == 1}{820}{}
-{804}{I have decided to keep the power of the Gate for my own. Begone!}{}{1}{}{0}{npc.attack(pc)}
+{801}{Let's do this thing.}{}{1}{npc.distance_to(location_from_axis(423, 434)) <= 40}{700}{party_transfer_to( npc, 12882 )}		// move them to the Gate and restart dialogue at 700?
+{802}{Meet me near the gate.}{}{1}{npc.distance_to(location_from_axis(423, 434)) > 40}{0}{go_gate(npc)}
+{803}{Tell me one more time, what do you plan to achieve?}{}{1}{game.global_flags[18] == 0}{810}{}
+{804}{Tell me one more time, what do you plan to achieve?}{}{1}{game.global_flags[18] == 1}{820}{}
+{805}{I have decided to keep the power of the Gate for my own. Begone!}{}{1}{}{0}{npc.attack(pc)}
 
 {810}{I wish to harnass the power of the Gate, as do you. There is power enough to share. It is a Gate, so it can move us, to the Abyss or anywhere we choose - also, it will bring allies, but only from the Abyss. That was its purpose. Or, the raw power of the Gate can be reshaped by those of who know magic.}{I wish to harnass the power of the Gate, as do you. There is power enough to share. It is a Gate, so it can move us, to the Abyss or anywhere we choose - also, it will bring allies, but only from the Abyss. That was its purpose. Or, the raw power of the Gate can be reshaped by those of who know magic.}{}{}{}{}
 {811}{I wish to destroy the gate - what do you say to that?}{}{1}{}{830}{}
