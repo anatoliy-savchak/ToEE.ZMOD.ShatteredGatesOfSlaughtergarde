@@ -223,6 +223,36 @@ def items_get(npc, unwield_all = 1):
 	print(result)
 	return result
 
+def item_has(npc, itemproto): # find
+	assert isinstance(npc, toee.PyObjHandle)
+	otype = npc.type
+	invenField = 0
+	invenNumField = 0
+	if ((otype == toee.obj_t_npc) or (otype == toee.obj_t_pc)):
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	elif ((otype == toee.obj_t_container) or (otype == toee.obj_t_bag)):
+		invenField = toee.obj_f_container_inventory_list_idx
+		invenNumField = toee.obj_f_container_inventory_num
+	else:
+		invenField = toee.obj_f_critter_inventory_list_idx
+		invenNumField = toee.obj_f_critter_inventory_num
+	numItems = npc.obj_get_int(invenNumField)
+	result = list()
+	#print("numItems: {}".format(numItems))
+	if (numItems > 0):
+		#debugg.breakp("numItems")
+		for i in range(toee.item_wear_helmet, toee.item_wear_lockpicks):
+			item = npc.item_worn_at(i)
+			if (item and item.proto == itemproto):
+				return item
+
+		for i in range(0, 199):
+			item = npc.inventory_item(i)
+			if (item and item.proto == itemproto):
+				return item
+	return toee.OBJ_HANDLE_NULL
+
 def acquire_sell_modifier_once():
 	highest_appraise = -999
 	highest_obj = None

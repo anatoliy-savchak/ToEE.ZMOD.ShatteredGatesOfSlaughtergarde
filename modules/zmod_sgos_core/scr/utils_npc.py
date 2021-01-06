@@ -299,7 +299,8 @@ def npc_print_wears(dic):
 	assert isinstance(dic, dict)
 	for key, value in dic.iteritems():
 		if (value):
-			print("{} = {}".format(key, value))
+			assert isinstance(value, toee.PyObjHandle)
+			print("{} = {}, proto: {}".format(key, value, value.proto))
 	return
 
 def npc_unexploit(npc):
@@ -388,3 +389,28 @@ def party_add_skill_bonus(skill_num, bonus):
 		elif (skill_num == toee.skill_bluff):
 			pc.condition_add("Skill_Bluff_Bonus", bonus, 0)
 	return
+
+class HairStyle:
+	def __init__(self, packed = 0):
+		self.packed = packed
+		self.race = (packed & 7) # HairStyleRace
+		self.gender = (packed >> 3) & 1 # Gender
+		self.size = (packed >> 10) & 3 # HairStyleSize;
+		self.style = (packed >> 4) & 7
+		self.color = (packed >> 7) & 7 # const_toee.hair_color_black, const_toee.hair_color_white
+		return
+
+	def pack(self):
+		self.packed = (self.race & 7) | ((self.gender) & 1) << 3 | ((self.size) & 3) << 10 | (self.style & 7) << 4| (self.color & 7) << 7
+		return self.packed
+
+	def update_npc(self, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		self.pack()
+		npc.obj_set_int(toee.obj_f_critter_hair_style, self.packed)
+		return self.packed
+
+	@classmethod
+	def from_npc(cls, npc):
+		assert isinstance(npc, toee.PyObjHandle)
+		return cls(npc.obj_get_int(toee.obj_f_critter_hair_style))

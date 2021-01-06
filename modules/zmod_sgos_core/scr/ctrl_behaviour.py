@@ -34,15 +34,22 @@ class CtrlBehaviour(object):
 		return
 
 	@classmethod
-	def get_proto_id():
-		return 14919
+	def get_proto_id(cls):
+		return 0
+
+	@classmethod
+	def get_alias(self):
+		return
 
 	@classmethod
 	def create_obj_and_class(cls, loc, call_created=1):
 		protoid = cls.get_proto_id()
 		npc = toee.game.obj_create(protoid, loc)
 		ctrl = cls()
-		utils_storage.obj_storage(npc).data[cls.get_name()] = ctrl
+		o = utils_storage.obj_storage(npc)
+		o.data[cls.get_name()] = ctrl
+		o.alias = cls.get_alias()
+		o.origin = npc.origin
 		if (call_created):
 			ctrl.created(npc)
 		return npc, ctrl
@@ -110,6 +117,9 @@ class CtrlBehaviour(object):
 		return toee.RUN_DEFAULT
 
 	def dying(self, attachee, triggerer):
+		return toee.RUN_DEFAULT
+
+	def dialog(self, attachee, triggerer):
 		return toee.RUN_DEFAULT
 
 	def join(self, npc, follower):

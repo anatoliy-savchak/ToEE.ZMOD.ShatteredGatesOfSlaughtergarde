@@ -175,3 +175,18 @@ def find_nearest_obj_by_nameid(npc, distance_ft, nameid, flags = None):
 			nearest = obj
 			nearest_dist = obj_dist
 	return nearest
+
+def find_nearest_obj_by_nameid_loc(loc, distance_ft, nameid, flags = None):
+	assert isinstance(npc, toee.PyObjHandle)
+	if (not flags):
+		flags = toee.OLC_ALL
+	nearest = None
+	nearest_dist = 10000
+	for obj in toee.game.obj_list_range(loc, distance_ft, flags):
+		assert isinstance(obj, toee.PyObjHandle)
+		if (not obj.name == nameid): continue
+		obj_dist = obj.distance_to(loc)
+		if (obj_dist < nearest_dist):
+			nearest = obj
+			nearest_dist = obj_dist
+	return nearest
