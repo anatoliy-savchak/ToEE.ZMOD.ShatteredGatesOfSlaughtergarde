@@ -665,9 +665,11 @@ class StatInspect:
 			cond_name_l = cond_tuple[0].lower()
 			if (cond_name_l == "monster spell resistance"):
 				return cond_tuple[1][0]
+			if (cond_name_l == "spell resistance"):
+				return cond_tuple[1][0]
 
 		sr = self.npc.d20_query(toee.EK_Q_Critter_Has_Spell_Resistance - toee.EK_Q_Helpless)
-		if (sr): return sr
+		if (sr): return "yes"
 		return
 
 class StatInspectWeapon:

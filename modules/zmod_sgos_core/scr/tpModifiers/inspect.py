@@ -29,8 +29,29 @@ def Inspect_OnD20PythonActionPerform(attachee, args, evt_obj):
 	#debug.breakp("Lodged_Quills_OnD20PythonActionPerform start")
 	try:
 		#debug.breakp("Inspect_OnD20PythonActionPerform")
-		s = npc_stat_generate(evt_obj.d20a.target)
-		toee.game.alert_show(s, "Close")
+
+		bon_list = tpdp.BonusList()
+		skill_value = tpdp.dispatch_skill(attachee, toee.skill_knowledge_nature, bon_list, toee.OBJ_HANDLE_NULL, 1)
+		dice = toee.dice_new("1d20")
+		roll_result = dice.roll()
+
+		inspect = stat_inspect.StatInspect(evt_obj.d20a.target)
+		values = inspect.build()
+		cr = 1
+		if ("cr" in values):
+			cr = values["cr"]
+
+		dc = cr + 10
+		success = skill_value + roll_result >= dc
+		hist_id = tpdp.create_history_dc_roll(attachee, dc, dice, roll_result, "Inspect check", bon_list)
+		toee.game.create_history_from_id(hist_id)
+
+		if (success):
+			s = stat_generator.StatGenerator(values).generate()
+			#s = npc_stat_generate(evt_obj.d20a.target)
+			toee.game.alert_show(s, "Close")
+		else: 
+			attachee.float_text_line("Failure!", toee.tf_red)
 	except Exception, e:
 		print "Inspect_OnD20PythonActionPerform:"
 		print '-'*60
@@ -45,16 +66,3 @@ modObj = templeplus.pymod.PythonModifier(GetConditionName(), 2, 1)
 modObj.AddHook(toee.ET_OnBuildRadialMenuEntry, toee.EK_NONE, Inspect_OnBuildRadialMenuEntry, ())
 #modObj.AddHook(toee.ET_OnD20PythonActionCheck, 3005, Inspect_OnD20PythonActionCheck, ())
 modObj.AddHook(toee.ET_OnD20PythonActionPerform, 3005, Inspect_OnD20PythonActionPerform, ())
-
-def npc_stat_generate(npc):
-	assert isinstance(npc, toee.PyObjHandle)
-
-	print("stat_inspect.StatInspect")
-	inspect = stat_inspect.StatInspect(npc)
-	print(inspect)
-	values = inspect.build()
-	print("stat_generator.StatGenerator")
-	result = stat_generator.StatGenerator(values).generate()
-	print(result)
-	return result
-

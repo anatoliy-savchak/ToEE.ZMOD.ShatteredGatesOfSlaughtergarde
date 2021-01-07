@@ -6,16 +6,27 @@ class StatGenerator:
 		print(values)
 		return
 
-	def generate(self):
+	def generate(self, score = None):
 		lines = list()
 		line = ""
+
+		cr = self.values["cr"]
+		hd = self.values["hd"]
+
+		dc = 10
+		if (cr):
+			dc = cr + 10
+		elif(hd):
+			dc = hd + 10
+
+		if (not score): score = 10
+		score_mod = score - dc
 
 		# title
 		if (1):
 			line = self.values["full_name"]
-			cr = self.values["cr"]
 			if (cr):
-				line = "{}                              CR {}".format(line, cr)
+				line = "{}                              CR {}".format(line, inf(cr, score_mod, 0))
 			if (line):
 				lines.append(line)
 
@@ -25,7 +36,7 @@ class StatGenerator:
 			gender = self.values["gender"]
 			if (gender): line = gender + " "
 			class_name_dict = self.values["class_name_dict"]
-			if (class_name_dict):
+			if (class_name_dict and score_mod >= 5):
 				phrase = ""
 				comma = ""
 				for k in class_name_dict.keys():
@@ -45,9 +56,9 @@ class StatGenerator:
 			size_name = self.values["size_name"]
 			if (size_name): line = line + size_name + " "
 			type_name = self.values["type_name"]
-			if (type_name): line = line + type_name + " "
+			if (type_name and score_mod >= 5): line = line + type_name + " "
 			subtype_name_list = self.values["subtype_name_list"]
-			if (subtype_name_list):
+			if (subtype_name_list and score_mod >= 5):
 				line = line + "("
 				phrase = ""
 				comma = ""
@@ -61,7 +72,7 @@ class StatGenerator:
 				lines.append(line)
 
 		# Init, Senses
-		if (1):
+		if (1 and score_mod >= 5):
 			line = ""
 			initiative_bonus = self.values["initiative_bonus"]
 			if (not initiative_bonus is None): 
@@ -80,20 +91,20 @@ class StatGenerator:
 		lines.append(self.dashes())
 
 		# AC
-		if (1):
+		if (1 and score_mod >= 5):
 			line = ""
 			line = "AC {}, touch {}, flat-footed {}".format(self.values["ac"], self.values["ac_touch"], self.values["ac_flatfooted"])
 			comma = "; "
-			if (toee.feat_dodge in self.values["feats"]):
+			if (toee.feat_dodge in self.values["feats"] and score_mod >= 10):
 				line += comma + "Dodge"
 				comma = ", "
-			if (toee.feat_mobility in self.values["feats"]):
+			if (toee.feat_mobility in self.values["feats"] and score_mod >= 10):
 				line += comma + "Mobility"
 				comma = ", "
-			if (toee.feat_improved_uncanny_dodge in self.values["feats"]):
+			if (toee.feat_improved_uncanny_dodge in self.values["feats"] and score_mod >= 10):
 				line += comma + "Improved Uncanny Dodge"
 				comma = ", "
-			elif (toee.feat_uncanny_dodge in self.values["feats"]):
+			elif (toee.feat_uncanny_dodge in self.values["feats"] and score_mod >= 10):
 				line += comma + "Uncanny Dodge"
 				comma = ", "
 
@@ -101,10 +112,9 @@ class StatGenerator:
 				lines.append(line)
 
 		# hp, fast healing, regeneration, damage reduction (DR)
-		if (1):
+		if (1 and score_mod >= 0):
 			hp_max = self.values["hp_max"]
 			hp_current = self.values["hp_current"]
-			hd = self.values["hd"]
 			stemplate = "hp {0} ({1} HD)"
 			if (hp_max != hp_current): stemplate = "hp {2}/{0} ({1} HD)"
 			line = stemplate.format(hp_max, hd, hp_current)
@@ -112,7 +122,7 @@ class StatGenerator:
 				lines.append(line)
 
 		# Immune
-		if (1):
+		if (1 and score_mod >= 10):
 			immunities_dic = self.values["immunities_dic"]
 			if (immunities_dic):
 				comma = ""
@@ -127,14 +137,14 @@ class StatGenerator:
 					lines.append(line)
 		
 		# Resist
-		if (1):
+		if (1 and score_mod >= 10):
 			sr = self.values["sr"]
 			if (sr):
 				line = "SR {}".format(sr)
 				lines.append(line)
 
 		# Fort, Ref, Will
-		if (1):
+		if (1 and score_mod >= 5):
 			line = "Fort {}, Ref {}, Will {}".format(self.str_signed(self.values["save_fort"]), self.str_signed(self.values["save_ref"]), self.str_signed(self.values["save_will"]))
 			if (line):
 				lines.append(line)
@@ -143,7 +153,7 @@ class StatGenerator:
 		lines.append(self.dashes())
 
 		# Speed
-		if (1):
+		if (1 and score_mod >= 5):
 			line = "Speed {} ft. ({} squares)".format(self.values["speed_ft"], self.values["speed_sq"])
 			if (line):
 				lines.append(line)
@@ -151,7 +161,7 @@ class StatGenerator:
 		line_melee = ""
 		line_ranged = ""
 		# Melee, ranged
-		if (1):
+		if (1 and score_mod >= 10):
 			weapon_list = self.values["weapon_list"]
 			if (weapon_list):
 				comma = ""
@@ -180,18 +190,18 @@ class StatGenerator:
 						comma = " and "
 
 		# Melee
-		if (1):
+		if (1 and score_mod >= 10):
 			if (line_melee):
 				line_melee = "Melee " + line_melee
 				lines.append(line_melee)
 		# Ranged
-		if (1):
+		if (1 and score_mod >= 10):
 			if (line_ranged):
 				line_ranged = "Ranged " + line_ranged
 				lines.append(line_ranged)
 
 		# Base Atk
-		if (1):
+		if (1 and score_mod >= 5):
 			line = "Base Atk {}".format(self.str_signed(self.values["bab"]))
 			if (line):
 				lines.append(line)
@@ -201,7 +211,7 @@ class StatGenerator:
 			if (line):
 				lines.append(line)
 		# Combat gear
-		if (1):
+		if (1 and score_mod >= 15):
 			line = ""
 			combat_gear_dic = self.values["combat_gear_dic"]
 			if (combat_gear_dic):
@@ -220,7 +230,7 @@ class StatGenerator:
 		lines.append(self.dashes())
 
 		# Abilities
-		if (1):
+		if (1 and score_mod >= 5):
 			line = "Abilities Str {}, Dex {}, Con {}, Int {}, Wis {}, Cha {}".format(self.values["str"], self.values["dex"], self.values["con"], self.values["int"], self.values["wis"], self.values["cha"])
 			if (line):
 				lines.append(line)
@@ -230,7 +240,7 @@ class StatGenerator:
 			if (line):
 				lines.append(line)
 		# Feats
-		if (1):
+		if (1 and score_mod >= 10):
 			line = ""
 			feat_name_dic = self.values["feat_name_dic"]
 			if (feat_name_dic):
@@ -242,7 +252,7 @@ class StatGenerator:
 			if (line):
 				lines.append(line)
 		# Skills
-		if (1):
+		if (1 and score_mod >= 10):
 			line = ""
 			skill_name_dic = self.values["skill_name_dic"]
 			if (skill_name_dic):
@@ -256,7 +266,7 @@ class StatGenerator:
 			if (line):
 				lines.append(line)
 		# Posessions
-		if (1):
+		if (1 and score_mod >= 20):
 			line = ""
 			combat_gear_dic = self.values["posessions_dic"]
 			if (combat_gear_dic):
@@ -284,3 +294,7 @@ class StatGenerator:
 
 	def dashes(self):
 		return "---------------------------------------------------------"
+
+def inf(val, score, dc):
+	if (score >= dc): return val
+	return "?"
