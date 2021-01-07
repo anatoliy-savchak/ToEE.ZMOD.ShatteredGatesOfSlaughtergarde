@@ -491,15 +491,15 @@ class CtrlTroglodyteSoldier(ctrl_behaviour.CtrlBehaviour):
 		utils_item.item_create_in_inventory(const_proto_armor.PROTO_ARMOR_FULL_PLATE_MASTERWORK, npc)
 		case = toee.game.random_range(1, 5)
 		if (case == 1):
-			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_BLUE, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_PLUS_1_BLUE, npc)
 		elif (case == 2):
-			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_ORANGE, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_PLUS_1_ORANGE, npc)
 		elif (case == 3):
-			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_WHITE, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_PLUS_1_WHITE, npc)
 		elif (case == 4):
-			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_GREEN, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_PLUS_1_GREEN, npc)
 		elif (case == 5):
-			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_1_BLACK, npc)
+			utils_item.item_create_in_inventory(const_proto_wondrous.PROTO_WONDROUS_CLOAK_OF_RESISTANCE_PLUS_1_BLACK, npc)
 		
 		utils_item.item_create_in_inventory(const_proto_potions.PROTO_POTION_OF_CURE_MODERATE_WOUNDS, npc)
 		

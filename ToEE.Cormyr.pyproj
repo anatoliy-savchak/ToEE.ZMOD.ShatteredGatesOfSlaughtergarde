@@ -220,6 +220,7 @@
     </Compile>
     <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_wands.py" />
     <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_potions.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_wondrous.py" />
     <Compile Include="modules\zmod_sgos_core\scr\const_proto_wondrous.py" />
     <Compile Include="modules\zmod_sgos_core\scr\const_proto_food.py" />
     <Compile Include="modules\zmod_sgos_core\scr\const_animate.py">

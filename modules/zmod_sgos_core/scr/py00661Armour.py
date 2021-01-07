@@ -1,4 +1,4 @@
-import toee, utils_item, const_proto_list_armor
+import toee, utils_item, const_proto_list_armor, const_proto_list_wondrous
 from utilities import *
 from scripts import *
 

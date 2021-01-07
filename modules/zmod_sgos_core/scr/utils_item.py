@@ -325,8 +325,14 @@ def barter_list(npc, protos):
 		j += 1
 		item = toee.game.obj_create(i, subs.location)
 		item.item_flag_set(toee.OIF_IDENTIFIED)
+		#items["{}_{}_{}".format(item.description, i, j)] = i
 		items["{}_{}_{}".format(item.description, i, j)] = item
+		#item.destroy()
 
-	for key in items.iterkeys():
-		subs.item_get(items[key])
+	for key in sorted(items):
+		print(key)
+		#item = toee.game.obj_create(items[key], subs.location)
+		#item.item_flag_set(toee.OIF_IDENTIFIED)
+		item = items[key]
+		subs.item_get(item)
 	return
