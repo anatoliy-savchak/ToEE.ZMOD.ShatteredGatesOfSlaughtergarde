@@ -2371,3 +2371,16 @@ modules/ToEE/maps/ZMOD_REV_*/
 modules/ToEE/maps/ZMOD_VILLAGE/
 modules/ToEE/art/ground/ZMOD_REV_*/
 modules/ToEE/art/ground/ZMOD_VILLAGE/
+modules/zmod_sgos/Save/
+modules/zmod_sgos/players
+modules/zmod_sgos.2/
+modules/zmod_sgos.1/
+modules/zmod_sgos/TioPack.exe
+modules/zmod_sgos/doTioPack.bat
+modules/zmod_sgos_core.dat
+modules/zmod_sgos.dat
+dattool.exe
+modules/zmod_sgos_core/scr/utils_item.py.bak
+*.bak
+modules/zmod_sgos_core/TioPack.exe
+modules/zmod_sgos_core/doTioPack.bat

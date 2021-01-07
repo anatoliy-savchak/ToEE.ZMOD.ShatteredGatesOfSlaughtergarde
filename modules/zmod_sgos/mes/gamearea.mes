@@ -1,0 +1,29 @@
+//
+// Area -- List of areas
+//   X-Coord, Y-Coord /Name /Description./Radius:<#>
+//
+//   Coords are on the main world-map.  Radius is detection radius (in sectors),
+// in other words, the # of sectors that the player must pass near it on the
+// WorldMap to make it visible if it isn't already known; default value is 5.
+//
+
+{0}{0, 0, 0, 0 /A Place Unimportant/ }
+{1}{0, 0, 0, 0 /Hommlet/HOMMLET}
+{2}{0, 0, 0, 0 /Moathouse/MOATHOUSE}
+{3}{0, 0, 0, 0 /Nulb/NULB}
+{4}{0, 0, 0, 0 /Temple of Elemental Evil/TEMPLE OF ELEMENTAL EVIL}
+{5}{0, 0, 0, 0 /Emridy Meadows/EMRIDY MEADOWS}
+{6}{0, 0, 0, 0 /Imeryds Run/IMERYDS RUN}
+{7}{0, 0, 0, 0 /Welkwood Bog/WELKWOOD BOG}
+{8}{0, 0, 0, 0 /Moathouse Cave Exit/MOATHOUSE CAVE EXIT}
+{9}{0, 0, 0, 0 /Hickory Branch/HICKORY BRANCH}
+{10}{0, 0, 0, 0 /Deklo Grove/DEKLO GROVE}
+{11}{0, 0, 0, 0 /Burnt Farmhouse/BURNT FARMHOUSE}
+{12}{0, 0, 0, 0 /Ogre Cave/OGRE CAVE}
+{13}{0, 0, 0, 0 /Reserved/Hardcoded stuff - do not touch.}
+{14}{0, 0, 0, 0 /Verbobonc/VERBOBONC}
+{15}{0, 0, 0, 0 /Verbobonc Cave Exit/VERBOBONC CAVE EXIT}
+{16}{0, 0, 0, 0 /Hommlet Quarry/HOMMLET QUARRY}
+{17}{0, 0, 0, 0 /Unused 2/Enter Description Here.}
+{18}{0, 0, 0, 0 /Unused 3/Enter Description Here.}
+{19}{0, 0, 0, 0 /Unused 4/Enter Description Here.}

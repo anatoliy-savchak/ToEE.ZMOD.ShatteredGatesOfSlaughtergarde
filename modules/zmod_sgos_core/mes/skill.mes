@@ -1,0 +1,126 @@
+{0}{Appraise}
+{1}{Bluff}
+{2}{Concentration}
+{3}{Diplomacy}
+{4}{Disable Device}
+{5}{Gather Info.}
+{6}{Heal}
+{7}{Hide}
+{8}{Intimidate}
+{9}{Listen}
+{10}{Move Silently}
+{11}{Open Lock}
+{12}{Sleight of Hand} 
+{13}{Search}
+{14}{Sense Motive}
+{15}{Spellcraft}
+{16}{Spot}
+{17}{Tumble}
+{18}{Use Magic Device}
+{19}{Survival} 
+{20}{Perform}
+{21}{Alchemy}
+{22}{Balance}
+{23}{Climb}
+{24}{Craft}
+{25}{Decipher Script}
+{26}{Disguise}
+{27}{Escape Artist}
+{28}{Forgery}
+{29}{Handle Animal}
+{30}{Innuendo}
+{31}{Intuit Direction}
+{32}{Jump}
+{33}{Knowledge (Arcana)}
+{34}{Knowledge (Religion)}
+{35}{Knowledge (Dungeoneering)}
+{36}{Knowledge (All)}
+{37}{Profession}
+{38}{Read Lips}
+{39}{Ride}
+{40}{Swim}
+{41}{Use Rope}
+
+// Message used when an item is identified via alchemy
+{1000}{Substance Identified}
+// Message used when an item is already identified and tried again
+{1001}{Substance Already Known}
+// Message used when the item is not identifiable (by object type)
+{1002}{Substance Cannot Be Identified}
+// Message used when you are too poor to afford identifying
+{1003}{Not Enough Money}
+// Message used when you fail your skill roll
+{1004}{Alchemy Check Failed}
+// Message used when you try to activate blindly an item but fail
+{1005}{Use Magic Device: Activate Blindly Failed!}
+// Message used when you try to activate blindly and there was a mishap!
+// This message is played in conjunction with the activate blindly failed message
+{1006}{Use Magic Device: Mishap!}
+// Message used when you try to use a scroll via use magic device and fail.
+{1007}{Use Magic Device: Use Scroll Failed}
+// Message used when you try to use a wand via use magic device and fail
+{1008}{Use Magic Device: Use Wand Failed}
+// Message used when you try to emulate an ability score via use magic device and fail
+{1009}{Use Magic Device: Emulate Ability Score Failed}
+// Message used when you try to decipher script and you pick an invalid item
+{1010}{Decipher Script: Invalid Item}
+// Message used when you try to decipher script and you already know the item is identified.
+{1011}{Decipher Script: Already Known}
+// Message used when you try to decipher script and you have already tried today and failed.
+{1012}{Decipher Script: Already Tried Today}
+// Message used when you try to decipher script and you have failed
+{1013}{Decipher Script: Failure}
+// Message used when you try to decipher script and succeed
+{1014}{Decipher Script: Success}
+// Message used when you try to use Spellcraft to copy a scroll into your spellbook and succeed
+{1015}{Spellcraft: Success}
+// Message used when you try to use Spellcraft to copy a scroll into your spellbook and you have failed
+{1016}{Spellcraft: Failure}
+// Message used when you try to use Spellcraft to copy a scroll into your spellbook and you have failed previously and need to raise your rank
+{1017}{Spellcraft: Failure, Raise Rank}
+// when you're trying to copy a scroll from a prohibited school (spell specialization)
+{1018}{Spellcraft: School Prohibited}
+
+// HTN - these are the short descriptions of each skill
+{5000} Appraise {Allows a character to accurately judge an item's worth.} 
+{5001} Bluff {Can be used to feint an opponent during combat or deceive an NPC.}
+{5002} Concentration {You are particularly good at focusing your mind and can use this skill whenever you might potentially be distracted.}
+{5003} Diplomacy {A character skilled in diplomacy understands rules of conduct, social expectations, and the ability to give others the right impression of one's self; often used with NPCs.}
+{5004} Disable Device {Use this skill to disarm a trap on a chest or door.}
+{5005} Gather Information {Used for making contacts, finding out local gossip, rumormongering and collecting general information.}
+{5006} Heal {Keep a badly wounded friend from dying, help others recover faster from wounds, and treat disease.}
+{5007} Hide {Use this skill to sink back into the shadows and proceed unseen.}
+{5008} Intimidate {Use to frighten an opponent or make someone give you the information you want; includes verbal threats and body language.}
+{5009} Listen {Use to hear enemies approaching, to detect someone sneaking up on you, and to avoid surprise rounds.}
+{5010} Move Silently {You can use this skill to sneak up behind an enemy or to slink away without being noticed.}
+{5011} Open Lock {You can pick locks of many types. Requires a simple tool, without which a -2 circumstance penalty is imposed.}
+{5012} Sleight of Hand {You can lift a purse, palm an object, hide a light weapon in your clothing, and so forth.} 
+{5013} Search {Allows you to discern some small detail or irregularity through active effort.}
+{5014} Sense Motive {Represents sensitivity to body language, speech, and mannerisms. Allows you to know when someone is bluffing or discern a hidden message in conversation.}
+{5015} Spellcraft {Use this skill to identify spells as they are cast or spells already in place.}
+{5016} Spot {Used primarily to detect characters or creatures who are in hiding.}
+{5017} Tumble {Use this skill to move through an enemy square or avoid an attack of opportunity.}
+{5018} Use Magic Device {Use this skill to activate magic devices, including scrolls and wands, that you could not otherwise activate.}
+{5019} Survival {You can help keep yourself and others safe and fed in the wild; may be used to follow tracks, hunt game, etc.} 
+{5020} Perform {You are skilled in artistic expression (perhaps several kinds) and you know how to put on a show.}
+{5021}{Alchemy}
+{5022}{Balance}
+{5023}{Climb}
+{5024} Craft {You are trained in a trade or art; in ToEE the craft skill available is alchemy.}
+{5025}{Decipher Script}
+{5026}{Disguise}
+{5027}{Escape Artist}
+{5028}{Forgery}
+{5029}{Handle Animal}
+{5030}{Innuendo}
+{5031}{Intuit Direction}
+{5032}{Jump}
+{5033}{Knowledge (Arcana)}
+{5034}{Knowledge (Religion)}
+{5035}{Knowledge (Dungeoneering): Use this skill to identify monster capabilities via Inspect.}
+{5036}{Knowledge (All)}
+{5037}{Profession}
+{5038}{Read Lips}
+{5039}{Ride}
+{5040}{Swim}
+{5041}{Use Rope}

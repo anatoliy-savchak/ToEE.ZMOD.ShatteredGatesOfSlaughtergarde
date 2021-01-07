@@ -7,7 +7,7 @@
     <ProjectHome>.</ProjectHome>
     <ProjectTypeGuids>{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <SearchPath>data\scr.builtin;data\scr</SearchPath>
-    <WorkingDirectory>.\overrides\data\scr</WorkingDirectory>
+    <WorkingDirectory>.\modules\zmod_sgos_core\data\scr</WorkingDirectory>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <WebBrowserUrl>http://localhost</WebBrowserUrl>
     <OutputPath>.</OutputPath>
@@ -37,60 +37,62 @@
     <Folder Include="data\mes\" />
     <Folder Include="data\oemes\" />
     <Folder Include="data\rules\" />
-    <Folder Include="overrides\art\meshes\" />
-    <Folder Include="overrides\art\meshes\Scenery\" />
-    <Folder Include="overrides\art\meshes\Scenery\Portals\" />
-    <Folder Include="overrides\mes\" />
-    <Folder Include="overrides\dlg\" />
-    <Folder Include="overrides\rules\feats\" />
-    <Folder Include="overrides\rules\spell_enums\" />
-    <Folder Include="overrides\sound\" />
-    <Folder Include="overrides\oemes\" />
-    <Folder Include="overrides\rules\indicators\" />
-    <Folder Include="overrides\rules\protos\" />
+    <Folder Include="modules\" />
+    <Folder Include="modules\zmod_sgos_core\" />
+    <Folder Include="modules\zmod_sgos_core\art\meshes\" />
+    <Folder Include="modules\zmod_sgos_core\art\meshes\Scenery\" />
+    <Folder Include="modules\zmod_sgos_core\art\meshes\Scenery\Portals\" />
+    <Folder Include="modules\zmod_sgos_core\mes\" />
+    <Folder Include="modules\zmod_sgos_core\dlg\" />
+    <Folder Include="modules\zmod_sgos_core\rules\feats\" />
+    <Folder Include="modules\zmod_sgos_core\rules\spell_enums\" />
+    <Folder Include="modules\zmod_sgos_core\sound\" />
+    <Folder Include="modules\zmod_sgos_core\oemes\" />
+    <Folder Include="modules\zmod_sgos_core\rules\indicators\" />
+    <Folder Include="modules\zmod_sgos_core\rules\protos\" />
     <Folder Include="data\scr\" />
     <Folder Include="modules\" />
-    <Folder Include="modules\ToEE\" />
-    <Folder Include="modules\ToEE\art\" />
-    <Folder Include="modules\ToEE\rules\" />
-    <Folder Include="modules\ToEE\art\ground\" />
-    <Folder Include="overrides\mes\description\" />
-    <Folder Include="overrides\mes\long_descr\" />
+    <Folder Include="modules\zmod_sgos\" />
+    <Folder Include="modules\zmod_sgos\art\" />
+    <Folder Include="modules\zmod_sgos\rules\" />
+    <Folder Include="modules\zmod_sgos\art\ground\" />
+    <Folder Include="modules\zmod_sgos_core\mes\description\" />
+    <Folder Include="modules\zmod_sgos_core\mes\long_descr\" />
     <Folder Include="data\rules\protos\" />
-    <Folder Include="overrides\scr\tpModifiers\" />
-    <Folder Include="overrides\" />
-    <Folder Include="overrides\rules\" />
-    <Folder Include="overrides\rules\d20_actions\" />
-    <Folder Include="overrides\scr\" />
-    <Folder Include="overrides\art\" />
-    <Folder Include="overrides\art\interface\" />
-    <Folder Include="overrides\art\interface\portraits\" />
+    <Folder Include="modules\zmod_sgos_core\scr\tpModifiers\" />
+    <Folder Include="modules\zmod_sgos_core\" />
+    <Folder Include="modules\zmod_sgos_core\rules\" />
+    <Folder Include="modules\zmod_sgos_core\rules\d20_actions\" />
+    <Folder Include="modules\zmod_sgos_core\scr\" />
+    <Folder Include="modules\zmod_sgos_core\art\" />
+    <Folder Include="modules\zmod_sgos_core\art\interface\" />
+    <Folder Include="modules\zmod_sgos_core\art\interface\portraits\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\docs\portrait.md" />
     <Content Include="data\oemes\oname.mes" />
-    <Content Include="overrides\art\interface\portraits\portraits.mes" />
-    <Content Include="overrides\art\meshes\meshes_save.mes" />
-    <Content Include="overrides\dlg\00651Vintra.dlg" />
-    <Content Include="overrides\dlg\00652Maug.dlg" />
-    <Content Include="overrides\dlg\00653Weapons.dlg" />
-    <Content Include="overrides\dlg\00655Scrolls.dlg" />
-    <Content Include="overrides\dlg\00657Garments.dlg" />
-    <Content Include="overrides\dlg\00661Armour.dlg" />
-    <Content Include="overrides\dlg\00667Alchemist.dlg" />
-    <Content Include="overrides\dlg\00674Cloaks.dlg" />
-    <Content Include="overrides\dlg\00677FarSouthDoor.dlg" />
-    <Content Include="overrides\dlg\00678CaptArmin.dlg" />
-    <Content Include="overrides\dlg\00679WandyMcWand.dlg" />
-    <Content Include="overrides\dlg\00681Laurazhi.dlg" />
-    <Content Include="overrides\dlg\00682BlindTroll.dlg" />
-    <Content Include="overrides\dlg\06112_cormyr_lor_doors.dlg" />
-    <Content Include="overrides\dlg\06120_cormyr_sw_daemon.dlg" />
-    <Content Include="overrides\dlg\06500_daemon_barovia.dlg" />
-    <Content Include="overrides\dlg\06410_daemon_shattered_armory.dlg" />
-    <Content Include="overrides\dlg\06400_daemon_shattered_temple.dlg" />
-    <Content Include="overrides\dlg\06210_daemon_shattered_lab.dlg" />
-    <Content Include="overrides\dlg\06201_daemon_adask.dlg" />
+    <Content Include="modules\zmod_sgos_core\art\interface\portraits\portraits.mes" />
+    <Content Include="modules\zmod_sgos_core\art\meshes\meshes_save.mes" />
+    <Content Include="modules\zmod_sgos_core\dlg\00651Vintra.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00652Maug.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00653Weapons.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00655Scrolls.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00657Garments.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00661Armour.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00667Alchemist.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00674Cloaks.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00677FarSouthDoor.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00678CaptArmin.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00679WandyMcWand.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00681Laurazhi.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\00682BlindTroll.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06112_cormyr_lor_doors.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06120_cormyr_sw_daemon.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06500_daemon_barovia.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06410_daemon_shattered_armory.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06400_daemon_shattered_temple.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06210_daemon_shattered_lab.dlg" />
+    <Content Include="modules\zmod_sgos_core\dlg\06201_daemon_adask.dlg" />
     <Content Include="data\docs\conditions.html">
       <SubType>Content</SubType>
       <DependentUpon>data\docs\conditions.md</DependentUpon>
@@ -98,404 +100,407 @@
     <Content Include="data\docs\conditions.md" />
     <Content Include="data\docs\dialog.md" />
     <Content Include="data\docs\trap.md" />
-    <Content Include="overrides\dlg\00406Game_Portal.dlg" />
-    <Content Include="overrides\mes\description_save.mes" />
-    <Content Include="overrides\mes\description\cormyr_names.mes" />
-    <Content Include="overrides\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
-    <Content Include="overrides\mes\description\obj_t_armor_6726_studded_leather_plus_1.mes" />
-    <Content Include="overrides\mes\description\obj_t_generic_12707_knowstone_fireball.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14765_DireRat.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14766_giant_fire_beetle.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14767_giant_stag_beetle.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14768_giant_bombardier_beetle.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14769_monstrous_scorpion_small.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14771_monstrous_scorpion_large.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14773_Monstrous_Spider_Small.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14830_prompter.mes" />
-    <Content Include="overrides\mes\description\obj_t_npc_14832_shadar_kai.mes" />
-    <Content Include="overrides\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
-    <Content Include="overrides\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
-    <Content Include="overrides\mes\gamekeylog.mes" />
-    <Content Include="overrides\mes\gamequestlog.mes" />
-    <Content Include="overrides\mes\history.mes" />
-    <Content Include="overrides\mes\intgame.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14765_DireRat.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14766_giant_fire_beetle.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14767_giant_stag_beetle.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14768_giant_bombardier_beetle.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14769_monstrous_scorpion_small.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14771_monstrous_scorpion_large.mes" />
-    <Content Include="overrides\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
-    <Content Include="overrides\mes\map_names.mes" />
-    <Content Include="overrides\oemes\faction.mes" />
-    <Content Include="overrides\rules\combat_vars.mes" />
-    <Content Include="overrides\rules\indicators\netted.txt" />
-    <Content Include="overrides\rules\indicators\surprise_round2.txt" />
-    <Content Include="overrides\rules\indicators\surprised2.txt" />
-    <Content Include="overrides\rules\indicators\lodged_quills.txt" />
-    <Content Include="overrides\rules\MapLimits.mes" />
-    <Content Include="overrides\rules\protos_save.tab" />
-    <Content Include="overrides\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
-    <Content Include="overrides\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
-    <Content Include="overrides\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14093_bugbear_mm1.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.bk0" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14761_Monstrous_Centipede_Medium.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14762_Monstrous_Centipede_Large.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14763_Monstrous_Centipede_Huge.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14765_DireRat.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14766_giant_fire_beetle.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14767_giant_stag_beetle.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14768_giant_bombardier_beetle.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14769_monstrous_scorpion_small.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14770_monstrous_scorpion_medium.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14771_monstrous_scorpion_large.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14772_monstrous_scorpion_huge.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14773_Monstrous_Spider_Small.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14830_prompter.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14831_man.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14832_shadar_kai.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14833_shadowscale_marauder.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14834_stirge.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14835_banelar.tab" />
-    <Content Include="overrides\rules\protos\obj_t_npc_14888_lizard_undead.tab" />
-    <Content Include="overrides\rules\protos\obj_t_weapon_4708_greataxe_plus1.tab" />
-    <Content Include="overrides\rules\protos\obj_t_weapon_4709_spiked_chain_plus_1.tab" />
-    <Content Include="overrides\rules\protos\proto_wands.tab" />
-    <Content Include="modules\ToEE\art\ground\ground.mes" />
-    <Content Include="modules\ToEE\rules\cormyr.cfg" />
-    <Content Include="modules\ToEE\rules\MapList.mes" />
-    <Content Include="overrides\rules\traps.tab" />
-    <Content Include="overrides\scr\tpModifiers\sp_darkness.py" />
-    <Content Include="overrides\scr\tpModifiers\condition_template.txt" />
-    <Content Include="overrides\sound\schemeindex.mes" />
-    <Content Include="overrides\sound\schemelist.mes" />
+    <Content Include="modules\zmod_sgos_core\dlg\00406Game_Portal.dlg" />
+    <Content Include="modules\zmod_sgos_core\mes\description_save.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\cormyr_names.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_armor_6725_mithral_shirt_plus_1.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_armor_6726_studded_leather_plus_1.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_generic_12707_knowstone_fireball.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14765_DireRat.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14766_giant_fire_beetle.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14767_giant_stag_beetle.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14768_giant_bombardier_beetle.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14769_monstrous_scorpion_small.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14771_monstrous_scorpion_large.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14773_Monstrous_Spider_Small.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14830_prompter.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_npc_14832_shadar_kai.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_weapon_4708_greataxe_plus1.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\description\obj_t_weapon_4709_spiked_chain_plus_1.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\gamekeylog.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\gamequestlog.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\history.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\intgame.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14760_Monstrous_Centipede_SSV.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14761_Monstrous_Centipede_Medium.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14762_Monstrous_Centipede_Large.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14763_Monstrous_Centipede_Huge.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14765_DireRat.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14766_giant_fire_beetle.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14767_giant_stag_beetle.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14768_giant_bombardier_beetle.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14769_monstrous_scorpion_small.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14770_monstrous_scorpion_medium.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14771_monstrous_scorpion_large.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\long_descr\obj_t_npc_14772_monstrous_scorpion_huge.mes" />
+    <Content Include="modules\zmod_sgos_core\mes\map_names.mes" />
+    <Content Include="modules\zmod_sgos_core\oemes\faction.mes" />
+    <Content Include="modules\zmod_sgos_core\rules\combat_vars.mes" />
+    <Content Include="modules\zmod_sgos_core\rules\indicators\netted.txt" />
+    <Content Include="modules\zmod_sgos_core\rules\indicators\surprise_round2.txt" />
+    <Content Include="modules\zmod_sgos_core\rules\indicators\surprised2.txt" />
+    <Content Include="modules\zmod_sgos_core\rules\indicators\lodged_quills.txt" />
+    <Content Include="modules\zmod_sgos_core\rules\jumppoint.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\MapLimits.mes" />
+    <Content Include="modules\zmod_sgos_core\rules\protos_save.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_armor_6725_mithral_shirt_plus_1.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_armor_6726_studded_leather_plus_1.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_generic_12707_knowstone_fireball.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14093_bugbear_mm1.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.bk0" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14760_Monstrous_Centipede_SSV.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14761_Monstrous_Centipede_Medium.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14762_Monstrous_Centipede_Large.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14763_Monstrous_Centipede_Huge.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14764_Monstrous_Centipede_Gargantuan.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14765_DireRat.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14766_giant_fire_beetle.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14767_giant_stag_beetle.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14768_giant_bombardier_beetle.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14769_monstrous_scorpion_small.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14770_monstrous_scorpion_medium.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14771_monstrous_scorpion_large.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14772_monstrous_scorpion_huge.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14773_Monstrous_Spider_Small.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14830_prompter.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14831_man.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14832_shadar_kai.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14833_shadowscale_marauder.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14834_stirge.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14835_banelar.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_npc_14888_lizard_undead.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_weapon_4708_greataxe_plus1.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\obj_t_weapon_4709_spiked_chain_plus_1.tab" />
+    <Content Include="modules\zmod_sgos_core\rules\protos\proto_wands.tab" />
+    <Content Include="modules\zmod_sgos\art\ground\ground.mes" />
+    <Content Include="modules\zmod_sgos\rules\cormyr.cfg" />
+    <Content Include="modules\zmod_sgos\rules\MapList.mes" />
+    <Content Include="modules\zmod_sgos_core\rules\traps.tab" />
+    <Content Include="modules\zmod_sgos_core\scr\tpModifiers\sp_darkness.py" />
+    <Content Include="modules\zmod_sgos_core\scr\tpModifiers\condition_template.txt" />
+    <Content Include="modules\zmod_sgos_core\sound\schemeindex.mes" />
+    <Content Include="modules\zmod_sgos_core\sound\schemelist.mes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="overrides\rules\d20_actions\action03020_activate_item_swift.py" />
-    <Compile Include="overrides\rules\d20_actions\action03019_ball_of_fire.py" />
-    <Compile Include="overrides\rules\d20_actions\action03018_open_door.py" />
-    <Compile Include="overrides\rules\d20_actions\action03017_smash_object.py" />
-    <Compile Include="overrides\rules\d20_actions\action03016_bar_door.py" />
-    <Compile Include="overrides\rules\d20_actions\action03015_close_door.py" />
-    <Compile Include="overrides\rules\d20_actions\action03014_throw_net.py" />
-    <Compile Include="overrides\rules\d20_actions\action03013_bag_of_holding_lautosell.py" />
-    <Compile Include="overrides\rules\d20_actions\action03012_break_object.py" />
-    <Compile Include="overrides\rules\d20_actions\action03011_monster_bite.py" />
-    <Compile Include="overrides\rules\d20_actions\action03010_breath_weapon.py" />
-    <Compile Include="overrides\rules\d20_actions\action03006_bag_of_holding_inventory.py" />
-    <Compile Include="overrides\rules\d20_actions\action03009_bag_of_holding_list.py" />
-    <Compile Include="overrides\rules\d20_actions\action03008_bag_of_holding_transfer_from_bodies.py" />
-    <Compile Include="overrides\rules\d20_actions\action03007_bag_of_holding_examine.py" />
-    <Compile Include="overrides\rules\d20_actions\action03005_inspect.py" />
-    <Compile Include="overrides\rules\d20_actions\action03004_remove_quills.py" />
-    <Compile Include="overrides\scr\behavior.py">
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03020_activate_item_swift.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03019_ball_of_fire.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03018_open_door.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03017_smash_object.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03016_bar_door.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03015_close_door.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03014_throw_net.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03013_bag_of_holding_lautosell.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03012_break_object.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03011_monster_bite.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03010_breath_weapon.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03006_bag_of_holding_inventory.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03009_bag_of_holding_list.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03008_bag_of_holding_transfer_from_bodies.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03007_bag_of_holding_examine.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03005_inspect.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03004_remove_quills.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\behavior.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_deseases.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_deseases.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_list_items.py" />
-    <Compile Include="overrides\scr\const_proto_list_cloth.py" />
-    <Compile Include="overrides\scr\const_proto_list_scrolls.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_items.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_cloth.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_scrolls.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_list_wands.py" />
-    <Compile Include="overrides\scr\const_proto_list_potions.py" />
-    <Compile Include="overrides\scr\const_proto_wondrous.py" />
-    <Compile Include="overrides\scr\const_proto_food.py" />
-    <Compile Include="overrides\scr\const_animate.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_wands.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_potions.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_wondrous.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_wondrous.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_food.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_animate.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_cloth.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_cloth.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_list_armor.py" />
-    <Compile Include="overrides\scr\const_proto_list_weapons_magic.py" />
-    <Compile Include="overrides\scr\const_proto_list_weapons_masterwork.py" />
-    <Compile Include="overrides\scr\const_proto_list_weapons.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_armor.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_weapons_magic.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_weapons_masterwork.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_list_weapons.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_potions.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_potions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_rings.py" />
-    <Compile Include="overrides\scr\const_proto_scrolls.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_rings.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_scrolls.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_wands.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_wands.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_traps.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_traps.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\cormyr_config.py" />
-    <Compile Include="overrides\scr\cormyr_pc.py" />
-    <Compile Include="overrides\scr\ctrl_behaviour.py" />
-    <Compile Include="overrides\scr\ctrl_daemon.py">
+    <Compile Include="modules\zmod_sgos_core\scr\cormyr_config.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\cormyr_pc.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\ctrl_behaviour.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\ctrl_daemon.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\data_critter.py">
+    <Compile Include="modules\zmod_sgos_core\scr\data_critter.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\barovia_pc.py" />
-    <Compile Include="overrides\scr\data_obj.py">
+    <Compile Include="modules\zmod_sgos_core\scr\barovia_pc.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\data_obj.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\debugg.py">
+    <Compile Include="modules\zmod_sgos_core\scr\debugg.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\monster_info.py">
+    <Compile Include="modules\zmod_sgos_core\scr\monster_info.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\pc_gen.py">
+    <Compile Include="modules\zmod_sgos_core\scr\pc_gen.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py00334generic_spawner.py" />
-    <Compile Include="overrides\scr\py00406Game_Portal.py" />
-    <Compile Include="overrides\scr\py00652Maug.py" />
-    <Compile Include="overrides\scr\py00653Weapons.py" />
-    <Compile Include="overrides\scr\py00655Scrolls.py" />
-    <Compile Include="overrides\scr\py00661Armour.py" />
-    <Compile Include="overrides\scr\py00667Alchemist.py" />
-    <Compile Include="overrides\scr\py00674Cloaks.py" />
-    <Compile Include="overrides\scr\py00677FarSouthDoor.py" />
-    <Compile Include="overrides\scr\py00678CaptArmin.py" />
-    <Compile Include="overrides\scr\py00679WandyMcWand.py" />
-    <Compile Include="overrides\scr\py00681Laurazhi.py" />
-    <Compile Include="overrides\scr\py00682BlindTroll.py" />
-    <Compile Include="overrides\scr\py05001_bag_of_holding.py" />
-    <Compile Include="overrides\scr\py05000_knowstone.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py00334generic_spawner.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00406Game_Portal.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00652Maug.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00653Weapons.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00655Scrolls.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00661Armour.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00667Alchemist.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00674Cloaks.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00677FarSouthDoor.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00678CaptArmin.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00679WandyMcWand.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00681Laurazhi.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py00682BlindTroll.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py05001_bag_of_holding.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py05000_knowstone.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06120_cormyr_sw_daemon.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06120_cormyr_sw_daemon.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06121_marauder.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06121_marauder.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06122_cormyr_prompter.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06122_cormyr_prompter.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06123_banelar.py" />
-    <Compile Include="overrides\scr\py06124_shadowscale_chief.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06123_banelar.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06124_shadowscale_chief.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06201_daemon_adask.py" />
-    <Compile Include="overrides\scr\py06203_trap_chest.py" />
-    <Compile Include="overrides\scr\py06330_daemon_sumberton_inn2.py" />
-    <Compile Include="overrides\scr\py06320_daemon_sumberton_inn1.py" />
-    <Compile Include="overrides\scr\py06310_daemon_sumberton_market.py" />
-    <Compile Include="overrides\scr\py06300_daemon_sumberton.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06201_daemon_adask.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06203_trap_chest.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06330_daemon_sumberton_inn2.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06320_daemon_sumberton_inn1.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06310_daemon_sumberton_market.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06300_daemon_sumberton.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
-    <Compile Include="overrides\scr\py06402_trap_fiery_demon_arch.py" />
-    <Compile Include="overrides\scr\py06501_barovia_encounters.py" />
-    <Compile Include="overrides\scr\py06500_daemon_barovia.py" />
-    <Compile Include="overrides\scr\py32007Trap8_scythe.py" />
-    <Compile Include="overrides\scr\py32021_trap_cr4_glyph_of_warding.py" />
-    <Compile Include="overrides\scr\py06214_doors_autodestroy.py" />
-    <Compile Include="overrides\scr\py06213_hobgoblin_cleric.py" />
-    <Compile Include="overrides\scr\py06212_trap_scything_blade_trap.py" />
-    <Compile Include="overrides\scr\py06202_vargouille_lesser.py" />
-    <Compile Include="overrides\scr\py06125_knell_beetle_lesser.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06403_trap_poison_gas_pressurized_ungol_dust.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06402_trap_fiery_demon_arch.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06501_barovia_encounters.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06500_daemon_barovia.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py32007Trap8_scythe.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py32021_trap_cr4_glyph_of_warding.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06214_doors_autodestroy.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06213_hobgoblin_cleric.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06212_trap_scything_blade_trap.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06202_vargouille_lesser.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06125_knell_beetle_lesser.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06127_shambling_mound.py" />
-    <Compile Include="overrides\scr\py06126_shocker_lizard.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06127_shambling_mound.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06126_shocker_lizard.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06211_shuttered_monster.py" />
-    <Compile Include="overrides\scr\py06210_daemon_shattered_lab.py" />
-    <Compile Include="overrides\scr\py06204_daemon_crossroad.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06211_shuttered_monster.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06210_daemon_shattered_lab.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06204_daemon_crossroad.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py00630_dwarf_item.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py00630_dwarf_item.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06401_shattered_temple_encounters.py" />
-    <Compile Include="overrides\scr\py06410_daemon_shattered_armory.py" />
-    <Compile Include="overrides\scr\py06400_daemon_shattered_temple.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06401_shattered_temple_encounters.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06410_daemon_shattered_armory.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06400_daemon_shattered_temple.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\py06411_shattered_armory_encounters.py" />
-    <Compile Include="overrides\scr\py32004Trap3_poison_needle.py" />
-    <Compile Include="overrides\scr\barovia_consts.py" />
-    <Compile Include="overrides\scr\shattered_consts.py">
+    <Compile Include="modules\zmod_sgos_core\scr\py06411_shattered_armory_encounters.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py32004Trap3_poison_needle.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\barovia_consts.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\shattered_consts.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\Spell076 - Contagion.py" />
-    <Compile Include="overrides\scr\Spell090 - Cure Light Wounds.py" />
-    <Compile Include="overrides\scr\Spell096 - Darkness.py" />
-    <Compile Include="overrides\scr\Spell228 - Hold Person.py" />
-    <Compile Include="overrides\scr\Spell275 - Lightning Bolt.py" />
-    <Compile Include="overrides\scr\Spell280 - Mage Armor.py" />
-    <Compile Include="overrides\scr\Spell427 - Shield of Faith.py" />
-    <Compile Include="overrides\scr\Spell432 - Shout.py" />
-    <Compile Include="overrides\scr\Spell434 - Silence.py" />
-    <Compile Include="overrides\scr\Spell457 - Spiritual Weapon.py" />
-    <Compile Include="overrides\scr\Spell469 - Summon Monster III.py" />
-    <Compile Include="overrides\scr\Spell566 - Harm.py" />
-    <Compile Include="overrides\scr\startup_zmod.py">
+    <Compile Include="modules\zmod_sgos_core\scr\Spell055 - Charm Monster.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell076 - Contagion.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell090 - Cure Light Wounds.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell096 - Darkness.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell228 - Hold Person.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell275 - Lightning Bolt.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell280 - Mage Armor.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell427 - Shield of Faith.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell432 - Shout.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell434 - Silence.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell457 - Spiritual Weapon.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell469 - Summon Monster III.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\Spell566 - Harm.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\startup_zmod.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\stat_generator.py">
+    <Compile Include="modules\zmod_sgos_core\scr\stat_generator.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\stat_inspect.py">
+    <Compile Include="modules\zmod_sgos_core\scr\stat_inspect.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\tpModifiers\ability_check_modifier_attacker.py">
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\ability_check_modifier_attacker.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\tpModifiers\armor_blurring.py" />
-    <Compile Include="overrides\scr\tpModifiers\bag_of_holding.py" />
-    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus2.py" />
-    <Compile Include="overrides\scr\tpModifiers\belch_fire.py" />
-    <Compile Include="overrides\scr\tpModifiers\caster_level_mod.py" />
-    <Compile Include="overrides\scr\tpModifiers\armor_displacement.py" />
-    <Compile Include="overrides\scr\tpModifiers\monster_ranged_poison.py" />
-    <Compile Include="overrides\scr\tpModifiers\no_move.py" />
-    <Compile Include="overrides\scr\tpModifiers\skill_bluff_bonus.py" />
-    <Compile Include="overrides\scr\tpModifiers\skill_diplomacy_bonus.py" />
-    <Compile Include="overrides\scr\tpModifiers\skill_intimidate_bonus.py" />
-    <Compile Include="overrides\scr\tpModifiers\weapon_damage_dice.py" />
-    <Compile Include="overrides\scr\tpModifiers\monster_ability_drain.py" />
-    <Compile Include="overrides\scr\tpModifiers\monster_trip_ex.py" />
-    <Compile Include="overrides\scr\tpModifiers\open_door.py" />
-    <Compile Include="overrides\scr\tpModifiers\bonus_attack.py" />
-    <Compile Include="overrides\scr\tpModifiers\skill_appraise_bonus.py" />
-    <Compile Include="overrides\scr\tpModifiers\spell_dc_mod.py" />
-    <Compile Include="overrides\scr\tpModifiers\mage_armor_auto.py" />
-    <Compile Include="overrides\scr\tpModifiers\smash_object.py" />
-    <Compile Include="overrides\scr\tpModifiers\close_door.py" />
-    <Compile Include="overrides\scr\tpModifiers\cone_of_cold.py" />
-    <Compile Include="overrides\scr\tpModifiers\stench_of_troglodyte.py" />
-    <Compile Include="overrides\scr\tpModifiers\transferrence.py" />
-    <Compile Include="overrides\scr\tpModifiers\critter_no_con.py" />
-    <Compile Include="overrides\scr\tpModifiers\construct_max_hp.py" />
-    <Compile Include="overrides\scr\tpModifiers\vulnurability_cold.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_critical_hits.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_paralysis.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_sleep.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_stunning.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_poison.py" />
-    <Compile Include="overrides\scr\tpModifiers\netted.py" />
-    <Compile Include="overrides\scr\tpModifiers\net_throw.py" />
-    <Compile Include="overrides\scr\tpModifiers\surprise_round2.py" />
-    <Compile Include="overrides\scr\tpModifiers\surprised2.py" />
-    <Compile Include="overrides\scr\tpModifiers\energy_drain_su.py" />
-    <Compile Include="overrides\scr\tpModifiers\summon_monster_preference.py" />
-    <Compile Include="overrides\scr\tpModifiers\contagion_desease_preference.py" />
-    <Compile Include="overrides\scr\tpModifiers\initiative_bonus.py" />
-    <Compile Include="overrides\scr\tpModifiers\combat_messages.py">
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\armor_blurring.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\bag_of_holding.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\base_attack_bonus2.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\belch_fire.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\caster_level_mod.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\armor_displacement.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\monster_ranged_poison.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\no_move.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\skill_bluff_bonus.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\skill_diplomacy_bonus.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\skill_intimidate_bonus.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\weapon_damage_dice.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\monster_ability_drain.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\monster_trip_ex.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\open_door.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\bonus_attack.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\skill_appraise_bonus.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\spell_dc_mod.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\mage_armor_auto.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\smash_object.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\close_door.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\cone_of_cold.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\stench_of_troglodyte.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\transferrence.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\critter_no_con.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\construct_max_hp.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\vulnurability_cold.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_critical_hits.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_paralysis.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_sleep.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_stunning.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_poison.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\netted.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\net_throw.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\surprise_round2.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\surprised2.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\energy_drain_su.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\summon_monster_preference.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\contagion_desease_preference.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\initiative_bonus.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\combat_messages.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\tpModifiers\defensive_casting_disable.py" />
-    <None Include="overrides\scr\tpModifiers\drow.py" />
-    <Compile Include="overrides\scr\tpModifiers\fighting_defensively_monster.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_blindness.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_visual.py" />
-    <Compile Include="overrides\scr\tpModifiers\inspect.py" />
-    <Compile Include="overrides\scr\tpModifiers\cast_defensively_ex.py" />
-    <Compile Include="overrides\scr\tpModifiers\break_object.py" />
-    <Compile Include="overrides\scr\tpModifiers\monster_bite.py" />
-    <Compile Include="overrides\scr\tpModifiers\line_of_acid.py" />
-    <Compile Include="overrides\scr\tpModifiers\shadow_cloak_su.py" />
-    <Compile Include="overrides\scr\tpModifiers\quills_ex.py" />
-    <Compile Include="overrides\scr\tpModifiers\lodged_quills.py" />
-    <Compile Include="overrides\scr\tpModifiers\napping.py" />
-    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus1.py" />
-    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus5.py" />
-    <Compile Include="overrides\scr\tpModifiers\base_attack_bonus3.py" />
-    <Compile Include="overrides\scr\tpModifiers\pull_down_ceiling.py" />
-    <Compile Include="overrides\scr\tpModifiers\lethal_shock.py" />
-    <Compile Include="overrides\scr\tpModifiers\python_action_shriek.py" />
-    <Compile Include="overrides\scr\tpModifiers\hide_ex.py" />
-    <Compile Include="overrides\scr\tpModifiers\immunity_illusion.py" />
-    <Compile Include="overrides\scr\tpModifiers\stunning_shock.py" />
-    <Compile Include="overrides\scr\tpModifiers\base_movement.py" />
-    <Compile Include="overrides\scr\tpModifiers\caster_level_base_add.py" />
-    <Compile Include="overrides\scr\tpModifiers\self_saving_fortitude.py">
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\defensive_casting_disable.py" />
+    <None Include="modules\zmod_sgos_core\scr\tpModifiers\drow.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\fighting_defensively_monster.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_blindness.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_visual.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\inspect.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\cast_defensively_ex.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\break_object.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\monster_bite.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\line_of_acid.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\shadow_cloak_su.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\quills_ex.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\lodged_quills.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\napping.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\base_attack_bonus1.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\base_attack_bonus5.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\base_attack_bonus3.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\pull_down_ceiling.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\lethal_shock.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\python_action_shriek.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\hide_ex.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\immunity_illusion.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\stunning_shock.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\base_movement.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\caster_level_base_add.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\self_saving_fortitude.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\tpModifiers\spell_quicken.py" />
-    <Compile Include="overrides\scr\tpModifiers\spell_quicken_all.py">
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\spell_quicken.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\spell_quicken_all.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\tpModifiers\wand_attack.py">
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\wand_attack.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_conds.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_conds.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_inventory_source.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_inventory_source.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_locks.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_locks.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_target_list.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_target_list.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_item.py" />
-    <Compile Include="overrides\scr\utils_npc.py" />
-    <Compile Include="overrides\scr\utils_npc_spells.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_item.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\utils_npc.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\utils_npc_spells.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_obj.py" />
-    <Compile Include="overrides\scr\const_proto_armor.py" />
-    <Compile Include="overrides\scr\const_proto_containers.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_obj.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_armor.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_containers.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\const_proto_items.py" />
-    <Compile Include="overrides\scr\const_proto_weapon.py" />
-    <Compile Include="overrides\scr\py06101_daemon_pc.py" />
-    <Compile Include="overrides\scr\py06110_daemon_cormyr_lor.py" />
-    <Compile Include="overrides\scr\py06111_sneak.py" />
-    <Compile Include="overrides\scr\py06112_cormyr_lor_doors.py">
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_items.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_proto_weapon.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06101_daemon_pc.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06110_daemon_cormyr_lor.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06111_sneak.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\py06112_cormyr_lor_doors.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_sneak.py" />
-    <Compile Include="overrides\scr\const_toee.py" />
-    <Compile Include="overrides\scr\utils_spell.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_sneak.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\const_toee.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\utils_spell.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_storage.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_storage.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\utils_tactics.py">
+    <Compile Include="modules\zmod_sgos_core\scr\utils_tactics.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\scr\_include.py" />
-    <Compile Include="overrides\rules\d20_actions\action03002_pull_down_ceiling.py" />
-    <Compile Include="overrides\rules\d20_actions\action03001_lethal_shock.py">
+    <Compile Include="modules\zmod_sgos_core\scr\_include.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03002_pull_down_ceiling.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03001_lethal_shock.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="overrides\rules\d20_actions\action03003_shriek.py" />
-    <Compile Include="overrides\scr\random_encounter.py" />
-    <Compile Include="overrides\scr\_co8init.py" />
-    <None Include="overrides\scr\utils_toee.py" />
-    <Compile Include="overrides\scr\tpModifiers\ai_improved_trip_aoo.py" />
-    <Compile Include="overrides\scr\tpModifiers\ex-Entangled.py" />
-    <Compile Include="overrides\scr\tpModifiers\sneak_attack_add.py" />
-    <Compile Include="overrides\scr\tpModifiers\sneak_attack_ex.py" />
+    <Compile Include="modules\zmod_sgos_core\rules\d20_actions\action03003_shriek.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\random_encounter.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\_co8init.py" />
+    <None Include="modules\zmod_sgos_core\scr\utils_toee.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\ai_improved_trip_aoo.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\ex-Entangled.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\sneak_attack_add.py" />
+    <Compile Include="modules\zmod_sgos_core\scr\tpModifiers\sneak_attack_ex.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
