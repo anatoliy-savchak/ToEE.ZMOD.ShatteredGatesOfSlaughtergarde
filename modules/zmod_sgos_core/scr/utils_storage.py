@@ -74,12 +74,12 @@ class Storage(object):
 
 	@staticmethod
 	def save(savegame):
-		#breakp("Storage.save({})".format(savegame))
+		#debug.breakp("Storage.save({})".format(savegame))
 		try:
 			saveDirBase = "modules\\{}\\save\\".format(Storage.get_default_module())
-			saveDirName = "d" + savegame
-			saveDirName = "d" + savegame + "\\storage"
-			#saveDirName = "\\Current\\dSlot"
+			#saveDirName = "d" + savegame
+			#saveDirName = "d" + savegame + "\\storage"
+			saveDirName = "\\Current\\dSlot"
 			saveDir = saveDirBase + saveDirName
 			#print(saveDir)
 			if (not os.path.exists(saveDir)):
@@ -103,10 +103,11 @@ class Storage(object):
 	def load(savegame):
 		#breakp("Storage.load({})".format(savegame))
 		saveDirBase = "modules\\{}\\save\\".format(Storage.get_default_module())
-		saveDirName = "d" + savegame
-		saveDirName = "d" + savegame + "\\storage"
-		#saveDirName = "\\Current\\dSlot"
+		saveDirName = "\\Current\\dSlot"
 		saveDir = saveDirBase + saveDirName
+		if (not os.path.exists(saveDir)):
+			saveDirName = "d" + savegame + "\\storage"
+			saveDir = saveDirBase + saveDirName
 		ss = Storage()
 		oo = ss.objs
 		oo.clear()
@@ -114,7 +115,7 @@ class Storage(object):
 			Storage.loadObjects(saveDir)
 		else: 
 			print("Storage failed to locate dir: {}".format(saveDir))
-			#debug.breakp("")
+			debug.breakp("")
 		return
 
 	@staticmethod
