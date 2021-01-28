@@ -3,7 +3,7 @@ class PyObjHandle(object):
 
 	def __init__(self, dummy = 0):
 		self.area = 1	#	Gets the id of the current area, which is based on the current map.
-		self.char_classes = ("first_class_name", "second_class_name")	#	a tuple containing the character classes array
+		self.char_classes = (stat_level_barbarian, stat_level_barbarian)	#	a tuple containing the character classes array
 		self.highest_arcane_class = 1	#	Highest Arcane spell casting class
 		self.highest_divine_class = 1	#	Highest Divine spell casting class
 		self.highest_arcane_caster_level = 1	#	Highest Arcane caster level
@@ -204,7 +204,7 @@ class PyObjHandle(object):
 		#npc.cast_spell(int[spell_aid...]: spellEnum|, PyObjHandle: targetObj) -> None
 		return
 
-	def d20_send_signal(self, signalId, obj):
+	def d20_send_signal(self, signalId, arg1 = None, arg2 = None):
 		"""Send d20 signal. npc.d20_send_signal(int[DK_SIG_HP_Changed+signalId]: signalId, PyObjHandle: obj)"""
 		return
 
