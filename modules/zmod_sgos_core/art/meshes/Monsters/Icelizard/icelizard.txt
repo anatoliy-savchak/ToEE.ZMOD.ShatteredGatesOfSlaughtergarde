@@ -1,0 +1,116 @@
+skeleton "unarmed_unarmed_fidget.mae"
+
+{
+	quality 0.1
+}
+
+
+animation "unarmed_unarmed_rturn" "unarmed_unarmed_rturn.mae"
+{
+	loopable
+	angle 180
+}
+
+animation "unarmed_unarmed_lturn" "unarmed_unarmed_lturn.mae"
+{
+	loopable
+	angle -180
+}
+
+
+animation "unarmed_unarmed_rattack" "unarmed_unarmed_rattack.mae"
+{
+	event 13 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 690, anim_obj )"
+}
+
+animation "unarmed_unarmed_lattack" "unarmed_unarmed_rattack.mae"
+{
+	event 13 "action" "origin"
+	event 1 "script" "game.sound_local_obj ( 690, anim_obj )"
+}
+
+animation "unarmed_unarmed_walk" "unarmed_unarmed_fly.mae"
+{
+	loopable
+	distance "origin"
+}
+
+animation "unarmed_unarmed_run" "unarmed_unarmed_fly.mae"
+{
+	loopable
+	distance "origin"
+}
+
+animation "unarmed_unarmed_idle" "unarmed_unarmed_combatIdle.mae"
+{
+	loopable
+}
+
+animation "unarmed_unarmed_fhit" "unarmed_unarmed_fhit.mae"
+
+animation "unarmed_unarmed_lhit" "unarmed_unarmed_fhit.mae"
+
+animation "unarmed_unarmed_rhit" "unarmed_unarmed_fhit.mae"
+
+animation "unarmed_unarmed_bhit" "unarmed_unarmed_fhit.mae"
+
+
+animation "unarmed_unarmed_fidget" "unarmed_unarmed_fidget.mae"
+
+animation "unarmed_unarmed_panic" "unarmed_unarmed_panic.mae"
+{
+	loopable
+}
+
+
+animation "unarmed_unarmed_combatidle" "unarmed_unarmed_combatidle.mae"
+{
+	loopable
+}
+
+animation "unarmed_unarmed_combatfidget" "unarmed_unarmed_combatidle.mae"
+
+
+
+animation "abjuration_casting" "abjuration_casting.mae"
+{
+	event 17 "action" "origin"
+	event 1 "script" "game.particles( '', anim_obj )"
+}
+	
+
+animation "abjuration_conjuring" "abjuration_conjuring.mae"
+{
+	event 0 "action" "origin"
+	event 0 "script" "game.particles( '', anim_obj )"
+	
+}
+
+
+
+animation "falldown" "falldown.mae"
+
+animation "prone_idle" "prone_idle.mae"
+{
+	loopable
+}
+
+animation "prone_fidget" "prone_fidget.mae"
+
+animation "getup" "getup.mae"
+
+animation "death" "death.mae"
+{
+	event 1 "script" "game.sound_local_obj ( 691, anim_obj )"
+}
+
+
+animation "dead_idle" "dead_idle.mae"
+{
+	loopable
+}
+
+animation "dead_fidget" "dead_fidget.mae"
+
+

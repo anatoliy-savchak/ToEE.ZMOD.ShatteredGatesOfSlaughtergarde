@@ -2384,3 +2384,8 @@ modules/zmod_sgos_core/scr/utils_item.py.bak
 *.bak
 modules/zmod_sgos_core/TioPack.exe
 modules/zmod_sgos_core/doTioPack.bat
+modules/zmod_sgos/enemy_rolls.txt
+modules/zmod_sgos/overall_rolls.txt
+modules/zmod_sgos/npc_rolls.txt
+modules/zmod_sgos/party_rolls.txt
+modules/zmod_sgos/pc_rolls.txt

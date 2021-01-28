@@ -1,0 +1,18 @@
+General
+
+Color 255 255 255 255
+
+Texture 0 "art/meshes/Monsters/icelizard/IceLizardwing.tga"
+UVType 0 Mesh
+BlendType 0 modulate
+
+Texture 1 "art/meshes/Monsters/icelizard/IceLizard_glow.tga"
+UVType 1 drift
+speed 0.05
+BlendType 1 currentalpha
+
+Texture 2 "art/meshes/Monsters/icelizard/IceLizardwing_alpha.tga"
+UVType 2 mesh
+BlendType 2 modulate
+
+
