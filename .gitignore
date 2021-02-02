@@ -2389,3 +2389,7 @@ modules/zmod_sgos/overall_rolls.txt
 modules/zmod_sgos/npc_rolls.txt
 modules/zmod_sgos/party_rolls.txt
 modules/zmod_sgos/pc_rolls.txt
+modules/zmod_sgos.dat.v1
+modules/zmod_sgos_core.dat.v1
+modules/zmod_sgos/zmod_sgos.dat
+modules/zmod_sgos_core/zmod_sgos_core.dat
