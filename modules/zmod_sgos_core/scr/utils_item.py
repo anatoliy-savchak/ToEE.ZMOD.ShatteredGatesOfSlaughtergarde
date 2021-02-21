@@ -315,24 +315,30 @@ def barter_sell(npc):
 	item_clear_all(npc.substitute_inventory)
 	return
 
-def barter_list(npc, protos):
+def barter_list(npc, protos, mode = 0):
 	assert isinstance(npc, toee.PyObjHandle)
 	subs = npc.substitute_inventory
 	item_clear_all(subs)
 	items = dict()
 	j = 0
-	for i in protos:
+	div = 1
+	if (mode == 1): div = 2
+	count = len(protos) / div
+	print("barter_list: {}".format(protos))
+	for i in range(0, count):
 		j += 1
-		item = toee.game.obj_create(i, subs.location)
+		proto = protos[i*div]
+		quant = 1
+		print("{}({}): {} ({})".format(i, i*div, proto, quant))
+		if (mode == 1): quant = protos[i*div + (div - 1)]
+		item = toee.game.obj_create(proto, subs.location)
 		item.item_flag_set(toee.OIF_IDENTIFIED)
-		#items["{}_{}_{}".format(item.description, i, j)] = i
+		if (quant > 1):
+			item.obj_set_int(toee.obj_f_item_quantity, quant)
 		items["{}_{}_{}".format(item.description, i, j)] = item
-		#item.destroy()
 
 	for key in sorted(items):
 		print(key)
-		#item = toee.game.obj_create(items[key], subs.location)
-		#item.item_flag_set(toee.OIF_IDENTIFIED)
 		item = items[key]
 		subs.item_get(item)
 	return

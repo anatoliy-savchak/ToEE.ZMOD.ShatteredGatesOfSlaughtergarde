@@ -3,6 +3,8 @@ import toee, utils_item
 
 # import utils_inventory_source
 # utils_inventory_source.inventory_source_parse_one(123).print_items()
+# utils_inventory_source.inventory_source_parse_one(21, "modules\\zmod_sgos_core\\rules\\InvenSource.mes").print_items()
+
 
 def inventory_source_parse_one(id, file_path = None):
 	assert isinstance(id, int)

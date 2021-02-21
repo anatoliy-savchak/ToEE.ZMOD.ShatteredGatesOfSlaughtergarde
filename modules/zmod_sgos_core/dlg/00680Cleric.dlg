@@ -47,13 +47,13 @@
 {102}{F:}{}{1}{}{0}{}
 {103}{[Just give him the nod.]}{}{1}{}{0}{}
 {104}{Might I trouble you for healing?}{}{1}{}{40}{}
-{105}{B:}{}{1}{get_1(npc)}{0}{pc.barter(npc)}
-{106}{B:Do you have anything to sell, may I ask? Holy things, as in?}{}{1}{pc.stat_level_get(stat_level_bard) == 0 and not get_1(npc)}{0}{pc.barter(npc)}
+{105}{B:}{}{1}{get_1(npc)}{0}{utils_item.barter_list(npc, get_cleric_items(), 1)}
+{106}{B:Do you have anything to sell, may I ask? Holy things, as in?}{}{1}{pc.stat_level_get(stat_level_bard) == 0 and not get_1(npc)}{0}{utils_item.barter_list(npc, get_cleric_items(), 1)}
 {108}{I never did ask, do you have anything to sell under that cloak, perchance? A Mace of Disruption, Holy Avenger, Wand of Miracles, the usual things one might find in a church gift shop?}{}{1}{pc.stat_level_get(stat_level_bard) >= 1 and not get_1(npc)}{110}{npc_1(npc)}
 
 {110}{You mean, like this? [He opens his robe and you behold all the wonders of creation.]}{You mean, like this? [He opens his robe and you behold all the wonders of creation.]}{}{}{}{}
 {111}{O Gods put it away, put it away!}{}{1}{}{0}{}
-{112}{B:Yes, sweet Pelor YES!!}{}{1}{}{0}{pc.barter(npc)}
+{112}{B:Yes, sweet Pelor YES!!}{}{1}{}{0}{utils_item.barter_list(npc, get_cleric_items(), 1)}
 
 
 {500}{So you want to change my inventory? Let's find it first!}{So you want to change my inventory? Let's find it first!}{}{}{}{}

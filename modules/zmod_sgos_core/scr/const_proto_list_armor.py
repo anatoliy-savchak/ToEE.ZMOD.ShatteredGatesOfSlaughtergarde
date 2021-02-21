@@ -186,6 +186,10 @@ PROTOS_ARMOR_PLUS_2 = [const_proto_armor.PROTO_ARMOR_CHAINMAIL_PLUS_2_RED, const
 
 #============================================
 #_PLUS_3
+PROTOS_ARMOR_PLUS_3_LEATHER = [\
+	const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_PLUS_3_BROWN \
+	, ]
+
 PROTOS_ARMOR_PLUS_3 = [\
 	const_proto_armor.PROTO_ARMOR_LEATHER_ARMOR_PLUS_3_BROWN \
 	, const_proto_armor.PROTO_ARMOR_CHAIN_ELVEN_BLUE

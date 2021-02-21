@@ -1,5 +1,5 @@
 {1}{[You see a half-elven woman draped in leather. She watches you with a single arched eyebrow, that tells a voluminous tale of inquisitive wonder - mostly, wondering what you want.]}{[You see a half-elven woman draped in leather. She watches you with a single arched eyebrow, that tells a voluminous tale of inquisitive wonder - mostly, wondering what you want.]}{}{}{}{}
-{2}{B:Can I buy some leather?}{}{1}{}{0}{pc.barter(npc)}
+{2}{Can I buy some leather?}{}{1}{}{1100}{}
 {3}{Introductions, perhaps? I'm @pcname@.}{}{1}{}{10}{}
 {4}{Leather, eh? You're into leather? Heh. Hehehehe. Nice.}{}{1}{pc.stat_level_get(stat_level_bard) >= 1}{20}{npc.reaction_adj( pc, -20 )}
 {5}{Never mind.}{}{1}{}{0}{}
@@ -7,7 +7,7 @@
 {7}{Leather? You skin animals to make garments? You know what you're really making? You're making me sick, that's what. I'd expect better from someone with Elven blood.}{}{1}{pc.stat_level_get(stat_level_druid) >= 1}{30}{npc.reaction_adj( pc, -20 )}
 
 {10}{Kallini at your service. [She nods her head.] As you have deduced, I sell leather: I also buy it. Please let me know if you wish to make a purchase.}{Kallini at your service. [She nods her head.] As you have deduced, I sell leather: I also buy it. Please let me know if you wish to make a purchase.}{}{}{}{}
-{11}{B:Yes.}{}{1}{}{0}{pc.barter(npc)}
+{11}{Yes.}{}{1}{}{1100}{}
 {12}{No.}{}{1}{}{0}{}
 
 {20}{[She does not answer, but looks at you as though she is mentally skinning and tanning you. Very, very slowly.]}{[She does not answer, but looks at you as though she is mentally skinning and tanning you. Very, very slowly.]}{}{}{}{}
@@ -15,7 +15,7 @@
 {22}{[Run away.]}{}{1}{}{0}{away(npc)}
 
 {25}{Where I come from, such a question is considered inappropriate.}{Where I come from, such a question is considered inappropriate.}{}{}{}{npc.reaction_adj( pc, -10 )}
-{26}{B:Yeah, where I come from too. Sorry. So, can I buy some leather?}{}{1}{}{0}{pc.barter(npc)}
+{26}{Yeah, where I come from too. Sorry. So, can I buy some leather?}{}{1}{}{1100}{}
 {27}{A:}{}{1}{}{0}{}
 {28}{Oh toughen up.}{}{1}{}{0}{}
 
@@ -26,13 +26,13 @@
 // normal return
 
 {100}{Welcome back. [Kallini waves her hand to indicate her wares.]}{Welcome back. [Kallini waves her hand to indicate her wares.]}{}{}{}{}
-{101}{B: Care to trade?}{}{1}{}{0}{pc.barter(npc)}
+{101}{Care to trade?}{}{1}{}{1100}{}
 {102}{Just browsing.}{}{1}{}{0}{}
 {103}{So, where do you get your leather from?}{}{1}{not get_1(npc)}{110}{}
 
 {110}{Mostly by skinning people who make snide remarks about my penchant for leather.}{Mostly by skinning people who make snide remarks about my penchant for leather.}{}{}{}{npc_1(npc)}
 {111}{Ha ha. Heh. I'll just go.}{}{1}{}{0}{}
-{112}{B:That explains the bitter taste! No, that makes no sense. Well, just sell me some leather please.}{}{1}{}{0}{}
+{112}{That explains the bitter taste! No, that makes no sense. Well, just sell me some leather please.}{}{1}{}{1100}{}
 
 
 // not happy return (re < 40)
@@ -46,6 +46,11 @@
 {901}{Yay!}{}{1}{}{0}{}
 {902}{Start again.}{}{1}{}{1}{}
 
-
-
 // npc_1(npc) - she cracks her leather joke.
+
+{1100}{Barter options:}{Barter options:}{}{}{}{}
+{1101}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1102}{B: Buy Leather}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_LEATHER + const_proto_list_cloth.PROTO_CLOTH_BOOTS_LEATHER + const_proto_list_cloth.PROTO_CLOTH_GLOVES_LEATHER + const_proto_list_cloth.PROTO_CLOTH_HEADDRESS_CAPS_LEATHER)}
+{1104}{B: Buy Masterwork Leather Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_LEATHER_MASTERWORK)}
+{1105}{B: Buy Magic Leather Armor}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_ARMOR_LEATHER_PLUS_1 + const_proto_list_armor.PROTOS_ARMOR_PLUS_3_LEATHER)}
+{1109}{E:}{}{1}{}{0}{}

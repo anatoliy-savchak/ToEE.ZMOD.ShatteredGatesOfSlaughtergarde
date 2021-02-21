@@ -3,7 +3,7 @@
 {3}{[This little runt isn't from your clan! Blow pipeweed smoke in her face, stomp the dust off your hairy feet and walk away.]}{}{1}{pc.stat_level_get(stat_race) == race_halfling}{0}{}
 
 {10}{Yes!}{Yes!}{}{}{}{}
-{11}{B:}{}{1}{}{0}{pc.barter(npc)}
+{11}{Barter}{}{1}{}{1100}{}
 {12}{Just browsing.}{}{1}{}{0}{}
 {13}{If I may be so forward, would you be a member of the local Guildhouse? I ask because I am told much of the trade is run by halflings such as your good self.}{}{1}{game.global_flags[9] == 1}{20}{}
 
@@ -17,18 +17,18 @@
 
 {30}{Well the Guild is in the middle of town, a little north of where we are now. But you can't just stroll in, you'll need an invitation or a contract of business. If you really want to make contact with a master, Vintra is usually hanging around the Sly Wink tavern, chat to her. Don't tell her I said so though. [She winks.]}{Well the Guild is in the middle of town, a little north of where we are now. But you can't just stroll in, you'll need an invitation or a contract of business. If you really want to make contact with a master, Vintra is usually hanging around the Sly Wink tavern, chat to her. Don't tell her I said so though. [She winks.]}{}{}{}{}
 {31}{Thank you, I'll head to the Tavern. [Go straight there.]}{}{1}{}{0}{}	// tp into tavern
-{32}{B:Before I go, please show me your shields.}{}{1}{}{0}{pc.barter(npc)}
+{32}{Before I go, please show me your shields.}{}{1}{}{1100}{}
 {33}{E:}{}{1}{}{0}{}
 {34}{Do you buy second hand shields?}{}{1}{}{40}{}
 
 {40}{Certainly. I know some carpenters who can repair wooden shields - swap out the damaged slats - so I'll give you a good price on anything wooden.}{Certainly. I know some carpenters who can repair wooden shields - swap out the damaged slats - so I'll give you a good price on anything wooden.}{}{}{}{}
-{41}{B:Thanks. Let's trade.}{}{1}{}{0}{}
+{41}{Thanks. Let's trade.}{}{1}{}{1100}{}
 {42}{E:}{}{1}{}{0}{}
 
 // return
 
 {100}{Shields!}{Shields!}{}{}{}{}
-{101}{B:Yes!}{}{1}{}{0}{pc.barter(npc)}
+{101}{Yes!}{}{1}{}{1100}{}
 {102}{No.}{}{1}{}{0}{}
 {103}{Are you be a member of the local Guildhouse? I'm told much of the local trade is run by halflings such as your good self.}{}{1}{game.global_flags[9] == 1}{20}{}
 
@@ -36,3 +36,10 @@
 {900}{Made it!}{Made it}{}{}{}{}
 {901}{Yay!}{}{1}{}{0}{{}
 {902}{Start over.}{}{1}{}{1}{}
+
+{1100}{Barter options:}{Barter options:}{}{}{}{}
+{1101}{B: Sell}{}{1}{}{0}{utils_item.barter_sell(npc)}
+{1102}{B: Buy Shields}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_SHIELDS)}
+{1104}{B: Buy Masterwork Shields}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_SHIELDS_MASTERWORK)}
+{1105}{B: Buy Magic Shields}{}{1}{}{0}{utils_item.barter_list(npc, const_proto_list_armor.PROTOS_SHIELDS_MAGIC)}
+{1109}{E:}{}{1}{}{0}{}
