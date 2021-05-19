@@ -3,7 +3,7 @@ class PyObjHandle(object):
 
 	def __init__(self, dummy = 0):
 		self.area = 1	#	Gets the id of the current area, which is based on the current map.
-		self.char_classes = (stat_level_barbarian, stat_level_barbarian)	#	a tuple containing the character classes array
+		self.char_classes = (stat_level_barbarian, stat_level_wizard)	#	a tuple containing the character classes array
 		self.highest_arcane_class = 1	#	Highest Arcane spell casting class
 		self.highest_divine_class = 1	#	Highest Divine spell casting class
 		self.highest_arcane_caster_level = 1	#	Highest Arcane caster level
@@ -11,7 +11,7 @@ class PyObjHandle(object):
 		self.description = ""	#	Gets description display name
 		self.name = 1	#	GetNameId
 		self.location = 9223372036854775807	#	Gets location LongLong
-		self.location_full	= object()	#	Gets location LocAndOffsets
+		self.location_full	= object()	#	Gets location tpdp.LocAndOffsets
 		self.type = obj_t_npc	#	Gets obj_f type like obj_t_npc
 		self.radius = 1.1	#	Gets and Sets radius
 		self.height = 1.1	#	Gets and Sets RenderHeight double
@@ -204,7 +204,7 @@ class PyObjHandle(object):
 		#npc.cast_spell(int[spell_aid...]: spellEnum|, PyObjHandle: targetObj) -> None
 		return
 
-	def d20_send_signal(self, signalId, arg1 = None, arg2 = None):
+	def d20_send_signal(self, signalId, obj):
 		"""Send d20 signal. npc.d20_send_signal(int[DK_SIG_HP_Changed+signalId]: signalId, PyObjHandle: obj)"""
 		return
 
@@ -377,6 +377,11 @@ class PyObjHandle(object):
 		"""npc.has_met(PyObjHandle: target) -> int"""
 		return 1
 
+	def has_item(self, nameId):
+		"""npc.has_item(PyObjHandle: target) -> int"""
+		return 1
+	
+
 	def make_class(self, stat_class, level):
 		"""Makes npc to have class levels. npc.make_class(int[stat_level_barbarian - ...]: stat_class, int: level) -> int"""
 		return 1
@@ -398,6 +403,9 @@ class PyObjHandle(object):
 	
 	def move(self, new_loc_x, new_loc_y, off_x, off_y):
 		return
+	
+	def npc_flags_get(self):
+		return 1 #ONF_EX_FOLLOWER
 	
 	def npc_flag_set(self, flag):
 		"""npc.npc_flag_set(int[ONF_EX_FOLLOWER...]: flag) -> None"""
@@ -428,6 +436,10 @@ class PyObjHandle(object):
 		return 0
 
 	def obj_get_idx_int(self, field, subIdx):
+		"""Get internal field array int value. npc.obj_get_idx_int(int[obj_f_*]: field, subIdx) -> int"""
+		return 0
+
+	def obj_get_idx_int64(self, field, subIdx):
 		"""Get internal field array int value. npc.obj_get_idx_int(int[obj_f_*]: field, subIdx) -> int"""
 		return 0
 
@@ -479,10 +491,13 @@ class PyObjHandle(object):
 		return
 
 	def reflex_save_and_damage(self, attacker, dc, reduction, flags, damageDice, damageType, attackPower, actionType, spellId):
-		"""npc.reflex_save_and_damage(PyObjHandle: attacker, int: dc, int[D20_Save_Reduction_Half]: reduction, int[D20SavingThrowFlag]: flags, PyDice: damageDice, int[D20DAP_UNSPECIFIED]: damageType, int[D20DAP_UNSPECIFIED]: attackPower, int[D20A_NONE]: actionType, int: spellId) -> None"""
-		return
+		"""npc.reflex_save_and_damage(PyObjHandle: attacker, int: dc, int[D20_Save_Reduction_Half]: reduction, int[D20SavingThrowFlag]: flags, PyDice: damageDice, int[D20DAP_UNSPECIFIED]: damageType, int[D20DAP_UNSPECIFIED]: attackPower, int[D20A_NONE]: actionType, int: spellId) -> int[saved]"""
+		return 1
 
 	def refresh_turn(self):
+		return
+
+	def runoff(self, loc, off_x, off_y):
 		return
 
 	def saving_throw(self, dc, type, saving_throw_flags, attacker, d20a_type = None):
@@ -518,14 +533,14 @@ class PyObjHandle(object):
 		return
 
 	def spell_memorized_add(self, spellIdx, spellClassCode, slotLevel):
-		"""npc.spell_memorized_add(int[skill_appraise...]: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
+		"""npc.spell_memorized_add(int: spellIdx, int: spellClassCode, int: slotLevel) -> None"""
 		return
 	
-	def spells_pending_to_memorized():
+	def spells_pending_to_memorized(self):
 		return
 
-	def standpoint_set(self, standpoint_type, jump_point_id):
-		"""npc.standpoint_set(int[STANDPOINT_DAY...]: standpoint_type, int: jump_point_id) -> None"""
+	def standpoint_set(self, type, jumppoint, loc = 0, mapid = None, loc_x = 0.0, loc_y = 0.0):
+		"""npc.standpoint_set(int[STANDPOINT_DAY]: type, int: jumppoint, long: loc = 0, int: mapid = None, float: loc_x = 0.0, float: loc_y = 0.0) -> None, see jumppoint.tab"""
 		return
 
 	def stat_base_set(self, stat, value):
@@ -548,7 +563,7 @@ class PyObjHandle(object):
 		"""npc.unconceal() -> int"""
 		return
 
-	def use_item():
+	def use_item(self, item, target = None):
 		"""npc.use_item(PyObjHandle: item, PyObjHandle: target = None) -> int"""
 		return 1
 
@@ -561,6 +576,7 @@ class game(object):
 	quests = PyQuests()
 	char_ui_display_type = 0
 	global_flags = PyGlobalFlags()
+	time = PyTimeStamp()
 
 	@staticmethod
 	def obj_create(protoId, loc, offset_x = None, offset_y = None):
@@ -592,6 +608,17 @@ class game(object):
 		""" Get 1 if combat is active. game.combat_is_active() -> int"""
 		return 0
 	
+	@staticmethod
+	def written_ui_show(obj):
+		""" Show written ui dialog if obj.type == obj_t_written and obj_f_written_text_start_line is set and exists in rules\\written_ui.mes. returns 1 if did displayed that"""
+		assert isinstance(obj, PyObjHandle)
+		return 1
+
+	@staticmethod
+	def is_daytime():
+		h = game.time.time_elapsed() // 3600000 % 24
+		return (h >= 6 and h < 18)
+
 	@staticmethod
 	def create_history_freeform(histText):
 		""" game.create_history_freeform(str: histText) -> None"""
@@ -880,6 +907,21 @@ class PyGlobalFlags(object):
 	def __setitem__(self, index, data):
 		assert isinstance(data, int)
 		return
+
+class PyTimeStamp:
+	def time_elapsed(self, time_stamp):
+		assert isinstance(time_stamp, PyTimeStamp)
+		return PyTimeStamp()
+
+	def time_game_in_hours(self, time_stamp):
+		""" game's today's time hour """
+		assert isinstance(time_stamp, PyTimeStamp)
+		return 1
+
+	def time_game_in_hours2(self, time_stamp):
+		""" hours from the beginning in game in game time"""
+		assert isinstance(time_stamp, PyTimeStamp)
+		return 1
 
 RUN_DEFAULT = 1
 SKIP_DEFAULT = 0
