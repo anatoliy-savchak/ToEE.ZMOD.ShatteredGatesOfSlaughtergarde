@@ -206,6 +206,14 @@ class CtrlShatteredLab(object):
 			loc2 = loc1
 			loc3 = loc2
 
+		if (1): # check if previous patrol already present
+			for obj in toee.game.obj_list_range(loc1, 20, toee.OLC_NPC):
+				if (not utils_npc.npc_is_alive(obj)): continue
+				if (obj.is_friendly(toee.game.leader)): continue
+				print("Found previous patrol: {}".format(obj))
+				print("Skip spawning new patrol")
+				return
+
 		npc = self.create_goblin_scrounger_at(loc1, const_toee.rotation_1100_oclock, "l_patrol", "goblin1", 0, 1)
 		utils_npc.npc_unexploit(npc)
 

@@ -257,6 +257,14 @@ class CtrlShatteredArmory(ctrl_daemon.CtrlDaemon):
 			loc2 = loc1
 			loc3 = loc1
 
+		if (1): # check if previous patrol already present
+			for obj in toee.game.obj_list_range(loc1, 20, toee.OLC_NPC):
+				if (not utils_npc.npc_is_alive(obj)): continue
+				if (obj.is_friendly(toee.game.leader)): continue
+				print("Found previous patrol: {}".format(obj))
+				print("Skip spawning new patrol")
+				return
+
 		npc, ctrl = self.create_npc_at(loc1, py06411_shattered_armory_encounters.CtrlFlindSoldier, const_toee.rotation_0100_oclock, "a0", "flind")
 		utils_npc.npc_unexploit(npc)
 		self.reveal_monster("a0", "flind")

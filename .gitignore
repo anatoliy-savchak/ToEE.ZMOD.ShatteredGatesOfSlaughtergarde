@@ -2139,6 +2139,7 @@ modules/ToEE/art/ground/VIGNETTE_09_Chaotic_Neutral
 
 modules/ToEE/rules/daynight.nxd
 modules/ToEE/Save/
+modules/ToEE/Save.my/
 modules/ToEE/enemy_rolls.txt
 modules/ToEE/npc_rolls.txt
 modules/ToEE/overall_rolls.txt
@@ -2372,6 +2373,7 @@ modules/ToEE/maps/ZMOD_VILLAGE/
 modules/ToEE/art/ground/ZMOD_REV_*/
 modules/ToEE/art/ground/ZMOD_VILLAGE/
 modules/zmod_sgos/Save/
+modules/zmod_sgos/Save.my/
 modules/zmod_sgos/players
 modules/zmod_sgos.2/
 modules/zmod_sgos.1/

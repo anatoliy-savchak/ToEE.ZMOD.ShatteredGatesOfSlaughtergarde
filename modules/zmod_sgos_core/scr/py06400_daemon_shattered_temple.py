@@ -191,10 +191,19 @@ class CtrlShatteredTemple(ctrl_daemon.CtrlDaemon):
 		return
 
 	def place_encounter_patrol(self, near_pc):
-		self.patrol_spawned_count += 1
 		self.last_patrol_spawned_shrs = toee.game.time.time_game_in_hours2(toee.game.time)
-		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
+
 		loc1 = utils_obj.sec2loc(480, 473)
+		if (1): # check if previous patrol already present
+			for obj in toee.game.obj_list_range(loc1, 20, toee.OLC_NPC):
+				if (not utils_npc.npc_is_alive(obj)): continue
+				if (obj.is_friendly(toee.game.leader)): continue
+				print("Found previous patrol: {}".format(obj))
+				print("Skip spawning new patrol")
+				return
+
+		self.patrol_spawned_count += 1
+		print("place_encounter_patrol {}".format(self.patrol_spawned_count))
 		loc2 = utils_obj.sec2loc(480, 476)
 		if (near_pc):
 			loc1 = toee.game.leader.location - 2
