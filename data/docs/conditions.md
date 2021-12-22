@@ -186,6 +186,11 @@ temple.dll::stru_102F1650
 * Arg1: amount
 Condition_Temp_Ability_Loss
 
+### Monster Subtype Fire
+**Args**
+* None
+None damage from D20DT_FIRE and double from D20DT_COLD.
+ConditionSubtypeFire
 
 todo:
 pCondition_Monster_Banshee_Charisma_Drain
